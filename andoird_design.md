@@ -58,6 +58,10 @@ Androidの標準ライブラリとしてBionic libcがBSDライセンスで公�
 * pathデリミタ  
 Windowsでは\\だが、Linux系は/となるので、その差を吸収するようにうまく作るようにする。  
 /を基本として、\\は内部以外では使わないのが望ましい。
+* bitmapの上限反転を正順化  
+Androidで使われるbitmapは正順。  
+OpenGL/DirectXでは描画時に反転など楽にできるのでどちらでも影響は少ない。  
+変更しても基本的には問題ないはずだが、組み込みDrawDeviceでは問題が出たため、プラグイン等でも影響あると思われる。
 
 # 機種依存問題等
 [GLSL機種依存問題](http://dench.flatlib.jp/opengl/glsl)

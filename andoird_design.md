@@ -40,6 +40,16 @@ Android アプリの各種リソースは Java で読むことを想定されて
 文字列などは、Java からリフレクションを利用してアクセスするか、起動時に Java で C 側へすべて登録してしまう必要がある。  
 アイコンは C 側からは触らないだろうから、何も対応しない。
 
+## データ保存場所
+ファイル類は Activity::getFilesDir() に保存する。  
+一時データは Activity::getCacheDir() に保存する。  
+外部ストレージのアプリデータフォルダは Environment::getExternalFilesDir() で取得した場所。  
+Environment::getExternalStorageDirectory() ではルートが取れる。  
+もしくは、getprop "EXTERNAL_STORAGE_MOUNT" でSDがマウントされた場所を取得する。
+キーと値のペアであれば、　SharedPreference で保存るのが望ましい。オプション設定はここか？  
+レコード状のデータの場合は、ContentResolver を使い SQLite に保存するのが望ましい、またアプリ間共有も可能。  
+ユーザーオプションは SharedPreference へ、セーブデータは外部ストレージがデフォルトを予定。
+
 # 要求
 * パーミッション確認ダイアログ(6.0以降からJavaで実装)  
 以前はインストール時にパーミッション確認があったが、6.0以降からアプリが任意タイミングで出来るようになった。そのため自前で確認要求する必要がある。  

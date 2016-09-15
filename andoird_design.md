@@ -103,7 +103,8 @@ OpenGL/DirectXでは描画時に反転など楽にできるのでどちらでも
 Windows 版ではクリップボードなどで受け渡しだが、Android だと Intent。  
 初期は起動フォルダ指定のみ対応でもいいが、将来的にはあったほうが良い。
 * コマンドライン引数は読み込まない
-* -printdatapathは無効、ContentResolverやIntentで取得できるようにするのが望まし。
+* -printdatapathは無効、ContentResolverやIntentで取得できるようにするのが望ましい。
+* -aboutでのライセンス情報表示など無効、ゲーム中から呼び出して表示する方法が必須。
 
 # 機種依存問題等
 [GLSL機種依存問題](http://dench.flatlib.jp/opengl/glsl)

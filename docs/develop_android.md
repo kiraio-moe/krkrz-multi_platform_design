@@ -11,7 +11,7 @@ Asset以外にもGoogle Play の拡張ファイル(Expansion Files)や指定サ�
 
 ## アプリケーション(ゲーム)名の変更
 以下の2つのXMLファイルのapp_name要素を変更します。  
-既定ではGameName/ゲーム名と言うものが入っているので、そこをリリースするゲームの名前に変更します。
+既定ではGameName/ゲーム名と言うものが入っているので、そこをリリースするゲームの名前に変更します。  
 krkrz/android/app/src/product/res/values/strings.xml (英語)  
 krkrz/android/app/src/product/res/values-ja/strings.xml (日本語)
 

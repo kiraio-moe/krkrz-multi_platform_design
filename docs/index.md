@@ -6,3 +6,4 @@
 * [Android版のリリース方法](https://krkrz.github.io/multi_platform_design/develop_android.html)
 * [動画再生機能](https://krkrz.github.io/multi_platform_design/video_overlay.html)
 * [プラグインの作り方/利用方法](https://krkrz.github.io/android_plugins/)
+* [サウンド](https://krkrz.github.io/multi_platform_design/audio.html)

@@ -15,6 +15,8 @@ Android では現在のところ Windows 版に比べて動画関連機能は圧
 * open
 * play
 * stop
+* pause
+* rewind
 
 ## プロパティ
 * audioVolume

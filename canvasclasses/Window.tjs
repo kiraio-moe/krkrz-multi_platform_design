@@ -1,0 +1,105 @@
+
+/**
+ * ウインドウのサイズ制御と画面への拡縮表示制御は環境依存で固定化して隠蔽
+ * 隠蔽するかどうかは、オプションが良いか？ strictモードとかそういう
+ * 移植のために互換性を確保出来た方が良い場合もあるし、今あるWindowクラスを流用出来た方が楽
+ * メソッドなどはifdef?で増減か、オプションで動的にとなると、コンストラクタから別メソッド読んで、そっちで登録切り替え？
+ * ※フルスクリーン切り換えのみプロパティ準備
+ */
+class Window {
+
+	/**
+	 * コンストラクタ
+	 * ※描画領域サイズは生成時のみ指定
+	 * @param width  描画領域の横幅
+	 * @param height 描画領域の縦幅
+	 */
+	function Window(width, height);
+
+	//< フルスクリーン指定
+	property fullScreen;
+
+	// ---------------------------------------------------------------
+	// イベント処理
+	// ---------------------------------------------------------------
+
+	/**
+	 * 画面更新コールバック
+	 * 画面更新処理時に呼び出される
+	 * この呼び出しの間に独自の描画処理を行う
+	 */
+	function onDraw();
+
+	// onDrawが呼ばれる、自前呼び出しか、vsink待ちして、スレッドから呼ばれるか？
+	// タイマーで適当に60fpsか30fpsにして使うか？
+	function startDrawing();
+
+	/**
+	 * マウス系イベント
+	 * Android などの場合は最初のタッチでの動作でエミュ
+	 */
+	onMouseXXXX();
+
+	/**
+	 * タッチ系イベント
+	 * Windows でマウスしかない場合は、それでエミュ
+	 */
+	function onTouchXXXX();
+
+	/**
+	 * キー操作系要検討
+	 */
+	function onKeyXXX();
+
+	/**
+	 * ウインドウがアクティブになった
+	 */
+	function onActivate();
+
+	/**
+	 * ウインドウが非アクティブになった
+	 */
+	function onDeactivate();
+
+	/**
+	 * 終了確認用
+	 */
+	function onClose(); --> 元々ある onCloseQuery で統一
+
+	// ---------------------------------------------------------------
+	// modalダイアログ機能 : 今のダイアログってSystemクラスにあるんだよな……
+	// ---------------------------------------------------------------
+
+	/**
+	 * 簡易確認表示
+	 * @param text 表示するテキスト
+	 */
+	function inform(text, func);
+
+	/**
+	 * 簡易 YES/NO 確認
+	 * @param text 表示するテキスト
+	 * @return YES なら true
+	 */
+	function confirm(text, func);
+
+	/**
+	 * 簡易テキスト入力
+	 * @param text 初期表示
+	 * @return 入力結果 (void の場合はキャンセル)
+	 */
+	function inputText(text, func); // --> 次期送りでは…
+
+	// ダイアログ機能ボタン文言調整用
+	property okText;
+	property cancelText;
+	property yesText;
+	property noText;
+
+	/**
+	 * 描画用のCanvasクラスのインスタンスを得る
+	 * onDraw 内で
+	 */
+	property canvas
+}
+

@@ -1,0 +1,37 @@
+
+// 演算関係は最初は実装しない
+// 最初は多数の変数を受け渡ししたりするのを回避するのが主目的
+class Matrix44 {
+
+	functiont Matrix44();  単位行列で生成
+	functiont Matrix44(m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44);
+
+	/**
+	 * マトリックス設定
+	 */
+	function set(m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44);
+	function set(array);	// 1次元配列からコピー
+	function set(matrix);	// matrixからコピー
+
+	// function identity();  単位行列化
+	function reset();
+
+	property array;	// 1次元配列で受け取る(r)
+
+	property m11;
+	property m12;
+	property m13;
+	property m14;
+	property m21;
+	property m22;
+	property m23;
+	property m24;
+	property m31;
+	property m32;
+	property m33;
+	property m34;
+	property m41;
+	property m42;
+	property m43;
+	property m44;
+};

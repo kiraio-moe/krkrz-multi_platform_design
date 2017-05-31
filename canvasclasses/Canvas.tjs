@@ -1,0 +1,162 @@
+
+// Window作ったら自動的に生成されているのがいいか？ drawDevice/fontと同一仕様
+// オプションでdrawDevice系かCanvas系か指定できるような(排他指定)
+//
+// 互換のためCanvasにLTOを問い合わせてなかったら、自動的にデフォルトOffscreenを追加、
+// 自動追加されたOffscreenは自動更新がONでLayer更新されたら、その更新をCanvasに通知
+// して自動更新がかかるようにする。そうすれば、DrawDevice依存していなければ、そのまま
+// のスクリプトで動かすことが可能となる。
+class Canvas {
+	function Canvas( window? )
+
+    //< クリア色指定・描画処理前の画面クリア色
+	property clearColor;
+
+	
+	/**
+	 * 描画領域全体をクリア
+	 * @param argb クリア色(未指定時はclearColorプロパティでクリアされる)
+	 */
+	function clear(argb);
+
+	/**
+	 * 現在の描画内容全体をBitmap/Offscreenにキャプチャ
+	 * ビットマップのサイズはスクリーンサイズに補正
+	 * Offscreenの場合は変更されず
+	 * @param dest キャプチャ先Bitmap/Offscreen
+	 */
+	function capture(dest);
+
+	/**
+	 * 描画ターゲットスクリーン指定
+	 * @param screen 描画対象となるスクリーンIdを設定する。null で直接描画に戻る
+	 */
+	//function setTargetScreen(screenId);
+	// ---> property の方が良くないかな？
+	// Window.drawDevice と同じような扱いで
+	// propertyへ canvas.targetScreen で設定
+
+    /**
+	 * スクリーンを描画
+	 * クロスフェードトランジション相当描画
+	 * @param screenId 描画用スクリーン
+	 * @param opacity 不透明度指定(0～1.0)
+	 */
+	function drawScreen(screen, opacity);
+
+	/**
+	 * スクリーンを描画
+	 * ユニバーサルトランジション相当描画
+	 * @param screen 描画用スクリーン
+	 * @param maskTexture マスク用テクスチャ(grayなものに限る)
+	 * @param vague vague値
+	 * @param opacity 不透明度指定(0～1.0)
+	 */
+	function drawScreenUT(screen, maskTexture, vague, opacity);
+
+
+	/**
+	 * 矩形クリッピングの設定
+	 * @param l
+	 * @param t
+	 * @param w
+	 * @param h
+	 */
+	// function setClip( l, t, w, h );
+
+	/**
+	 * アルファクリッピングの設定(setClipとは排他)
+	 * @param maskTextureId マスク用テクスチャ(grayなものに限る)
+	 * @param l オフセット指定
+	 * @param t オフセット指定
+	 */
+	function setClipMask(maskTexture, l, t);
+
+	property clipRect;	// Rectクラス --> setClip はこれでいいか canvas.clipRect.set( l, t, r, b ); で代用できる
+
+	//< 描画の合成モード指定・できれば吉里吉里互換で一式
+	property blendMode;
+
+	//< 描画のストレッチ指定
+	property stretchType;
+
+	/**
+	 * 描画マトリックス指定
+	 */
+	//function setMatrix(m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44);
+	//function setMatrix(matrix44);
+
+	property matrix;	// Matrix44 クラス --> setMatrix は canvas.matrix.set(...);で代用できる
+
+	// save/restore で matrix と clip のセーブと復元は欲しいよね。push/pop
+	// sprite 作る時も
+
+	// ---------------------------------------------------------------
+	// 2D系描画処理
+
+	/**
+	 * 単色での塗りつぶし
+	 * @param left
+	 * @param top
+	 * @param width
+	 * @param height
+	 * @param colors 4頂点の頂点カラーARGB。void/null は未定義(0xffffffff)、単独数値なら単色、配列なら4頂点個別指定
+	 */
+	function fill(left, top, width, height, colors);
+
+	/**
+	 * テクスチャでのメッシュ描画
+	 * @param texture テクスチャ番号
+	 * @param mesh メッシュ情報(Meshオブジェクトで指定)
+	 */
+ 	function drawMesh(texture, mesh);
+
+	// 追加……(仮？)
+	function drawTexture( texture, left, top );
+
+	// ---------------------------------------------------------------
+	// テキスト描画
+
+// >>>> この辺りはFontクラスが既にあるので、それが使えるのが好ましい。
+	/**
+	 * フォント生成
+	 * @param name フォント名
+	 * @return フォントID
+	 */
+	function createFont(name);
+	
+	/**
+	 * フォント生成
+	 * @param fontFile フォントファイル
+	 * @return フォントID
+	 */
+	function createFontFromFile(filename,index=0);//font内には複数格納されている場合もあるので、indexも必要
+
+	/**
+	 * フォントの破棄
+	 * @param fontID
+	 */
+	function removeFont(fontId);
+// <<<<
+
+	/**
+	 * テキスト描画
+	 * @param font フォント
+	 * @param x X位置
+	 * @param y Y位置
+	 * @param text テキスト
+	 * @param color 色指定
+	 */
+	function drawText(font, x, y, text, color);
+
+	// Windowの描画領域サイズと同じだが、スケールなど考慮せず
+	property width;
+	property height;
+
+
+	// TODO : 以下のメソッドも必要
+	function applyMatrix();
+	function applyIdentityMatrix();
+	function applyClipRect();
+	function applyNoClipRect();
+};

@@ -1,0 +1,340 @@
+
+/**
+ * メッシュ情報オブジェクト
+ * ※ drawMesh 用の情報最適化のために専用オブジェクト化
+ */
+class Mesh {
+
+  function Mesh();
+  // メソッドを検討
+  
+  /**
+   * 矩形領域の追加
+   * @param u テクスチャ中座標x
+   * @param v テクスチャ中座標y
+   * @param w 横幅
+   * @param h 縦幅
+   * @param x 配置位置x
+   * @param y 配置位置y
+   * @parmm argb 頂点カラー指定
+   */
+  function addRange(l,t,w,h,x,y,argb);
+};
+
+/**
+ * ウインドウのサイズ制御と画面への拡縮表示制御は環境依存で固定化して隠蔽
+ * ※フルスクリーン切り換えのみプロパティ準備
+ */
+class Window {
+
+	/**
+	 * コンストラクタ
+	 * ※描画領域サイズは生成時のみ指定
+	 * @param width  描画領域の横幅
+	 * @param height 描画領域の縦幅
+	 */
+	function Window(width, height);
+
+	// ---------------------------------------------------------------
+	// 画角制御
+	// ---------------------------------------------------------------
+
+	//< フルスクリーン指定
+	property fullScreen;
+
+	// ---------------------------------------------------------------
+	// 全体描画機能
+	// ---------------------------------------------------------------
+
+    //< クリア色指定・描画処理前の画面クリア色
+	property clearColor;
+	
+	/**
+	 * 現在の描画内容全体をBitmapにキャプチャ
+	 * ビットマップのサイズはスクリーンサイズに補正
+	 * @param destBitmap キャプチャ先Bitmap
+	 */
+	function capture(destBitmap);
+
+	/**
+	 * 描画領域全体をクリア
+	 * @param argb クリア色
+	 */
+	function clear(argb);
+	
+	// ---------------------------------------------------------------
+	// テクスチャ処理用メソッド
+	// ---------------------------------------------------------------
+	
+	/**
+	 * 描画用画像の読み込み
+	 * @param bitmap 吉里吉里Bitmap
+	 * @param gray 強制 gray 化
+	 * @return テクスチャID
+	 */
+	function createTexture(bitmap, gray=false);
+	
+	/**
+	 * 描画用画像ファイルの読み込み
+	 * @param filename ファイル名
+	 * @return テクスチャID
+	 */
+	function createTextureFromFile(filename);
+	
+	// createTexture/createTextureFromFile : は共通化してしまって、文字列ならファイル名/クラスならBitmapとして扱う方がメソッド少なく便利そう。
+	// --> Texture クラスのコンストラクタで生成する方がいいかも
+
+	/**
+	 * テクスチャの破棄 ---> Texture class を invalide する
+	 * @param textureId
+	 */
+	function removeTexture(textureId);
+
+	// ---------------------------------------------------------------
+	// スクリーン専用処理
+	// ---------------------------------------------------------------
+
+	// スクリーンは画面全体のトランジションや合成制御を目的としたテクスチャ
+	// いわゆるレンダーターゲット
+	
+	/**
+	 * スクリーンの作成 (破棄は removeTextureでOK)
+	 * @param width 横幅
+	 * @param height 縦幅
+	 * 省略時は描画領域のサイズ
+	 * @return テクスチャID
+	 */
+	function createScreen(width, height);
+
+	/**
+	 * 描画ターゲットスクリーン指定
+	 * @param screen 描画対象となるスクリーンIdを設定する。null で直接描画に戻る
+	 */
+	function setTargetScreen(screenId);
+	// ---> property の方が良くないかな？
+	// Window.drawDevice と同じような扱いで
+
+	/**
+	 * 描画画面全体をスクリーンに対してキャプチャ
+	 * @param destScreenId キャプチャ先スクリーン
+	 */
+	function captureToScreen(destScreenId);
+
+	/**
+	 * Bitmapからスクリーンに領域指定してコピー
+	 * @param screenId スクリーンID
+	 * @param bitmap 吉里吉里ビットマップ
+	 * @param sleft 描画元x
+	 * @param stop 描画元y
+	 * @param width サイズ横幅
+	 * @param height サイズ縦幅
+	 * @param left 描画先x
+	 * @param top 描画先y
+	 */
+	function copyToScreen(screenId, bitmap, sleft, stop, width, height, left, top);
+
+    /**
+	 * スクリーンからBitmapに領域指定してコピー
+	 * @param screenId スクリーンID
+	 * @param destBitmap 格納先ビットマップ
+	 * @param sleft 描画元x
+	 * @param stop 描画元y
+	 * @param width サイズ横幅
+	 * @param height サイズ縦幅
+	 * @param dleft 描画先x
+	 * @param dtop 描画先y
+	 */
+	function copyFromScreen(screenId, destBitmap, left, top, width, height, dleft, dtop);
+
+	/**
+	 * スクリーンからキャプチャ
+	 * @param destBitmap 格納先ビットマップ
+	 * ビットマップのサイズはスクリーンサイズに補正
+	 */
+	function captureScreen(screenId, destBitmap);
+	
+	/**
+	 * @param laytree BitmapLayerTreeOwner なオブジェクトをスクリーンに反映
+	 * ※更新部分のみ反映できるのが望ましい
+	 */
+	function updateToScreen(screenId, laytree);
+	
+    /**
+	 * スクリーンを描画
+	 * クロスフェードトランジション相当描画
+	 * @param screenId 描画用スクリーン
+	 * @param opacity 不透明度指定(0～1.0)
+	 */
+	function drawScreen(screenId, opacity);
+  
+	/**
+	 * スクリーンを描画
+	 * ユニバーサルトランジション相当描画
+	 * @param screenId 描画用スクリーン
+	 * @param maskTextureId マスク用テクスチャ(grayなものに限る)
+	 * @param vague vague値
+	 * @param opacity 不透明度指定(0～1.0)
+	 */
+	function drawScreenUT(screenId, maskTextureId, vague, opacity);
+
+	// ---------------------------------------------------------------
+	// 描画機能
+	// ---------------------------------------------------------------
+
+	// ※クリップ・合成モード・ストレッチ指定はプリミティブ描画系にのみ影響
+	
+	/**
+	 * 矩形クリッピングの設定
+	 * @param l
+	 * @param t
+	 * @param w
+	 * @param h
+	 */
+	function setClip(l, t, w, h);
+
+	/**
+	 * アルファクリッピングの設定(setClipとは排他)
+	 * @param maskTextureId マスク用テクスチャ(grayなものに限る)
+	 * @param l オフセット指定
+	 * @param t オフセット指定
+	 */
+	function setClipMask(maskTextureId, l, t);
+
+	//< 描画の合成モード指定・できれば吉里吉里互換で一式
+	property blendMode;
+
+	//< 描画のストレッチ指定
+	property stretchType;
+	
+	/**
+	 * 描画マトリックス指定
+	 */
+	function setMatrix(m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44);
+
+	// ---------------------------------------------------------------
+	// 2D系描画処理
+
+	/**
+	 * 単色での塗りつぶし
+	 * @param left
+	 * @param top
+	 * @param width
+	 * @param height
+	 * @param colors 4頂点の頂点カラーARGB。void/null は未定義(0xffffffff)、単独数値なら単色、配列なら4頂点個別指定
+	 */
+	function fill(left, top, width, height, colors);
+
+	/**
+	 * テクスチャでのメッシュ描画
+	 * @param textureId テクスチャ番号
+	 * @param mesh メッシュ情報(Meshオブジェクトで指定)
+	 */
+ 	function drawMesh(textureId, mesh);
+
+	// ---------------------------------------------------------------
+	// テキスト描画
+
+	/**
+	 * フォント生成
+	 * @param name フォント名
+	 * @return フォントID
+	 */
+	function createFont(name);
+	
+	/**
+	 * フォント生成
+	 * @param fontFile フォントファイル
+	 * @return フォントID
+	 */
+	function createFontFromFile(filename);
+
+	/**
+	 * フォントの破棄
+	 * @param fontID
+	 */
+	function removeFont(fontId);
+
+	/**
+	 * テキスト描画
+	 * @param fontId フォント
+	 * @param x X位置
+	 * @param y Y位置
+	 * @param text テキスト
+	 * @param color 色指定
+	 */
+	function drawText(fontId, x, y, text, color);
+
+	// ---------------------------------------------------------------
+	// イベント処理
+	// ---------------------------------------------------------------
+
+	/**
+	 * 画面更新コールバック
+	 * 画面更新処理時に呼び出される
+	 * この呼び出しの間に独自の描画処理を行う
+	 */
+	function onDraw();
+	
+	/**
+	 * マウス系イベント
+	 * Android などの場合は最初のタッチでの動作でエミュ
+	 */
+	onMouseXXXX();
+	
+	/**
+	 * タッチ系イベント
+	 * Windows でマウスしかない場合は、それでエミュ
+	 */
+	function onTouchXXXX();
+
+	/**
+	 * キー操作系要検討
+	 */
+	function onKeyXXX();
+	
+	/**
+	 * ウインドウがアクティブになった
+	 */
+	function onActivate();
+
+	/**
+	 * ウインドウが非アクティブになった
+	 */
+	function onDeactivate();
+	
+	/**
+	 * 終了確認用
+	 */
+	function onClose();
+
+	// ---------------------------------------------------------------
+	// modalダイアログ機能 
+	// ---------------------------------------------------------------
+
+	/**
+	 * 簡易確認表示
+	 * @param text 表示するテキスト
+	 */
+	function inform(text);
+
+	/**
+	 * 簡易 YES/NO 確認
+	 * @param text 表示するテキスト
+	 * @return YES なら true
+	 */
+	function confirm(text);
+
+	/**
+	 * 簡易テキスト入力
+	 * @param text 初期表示
+	 * @return 入力結果 (void の場合はキャンセル)
+	 */
+	function inputText(text);
+
+	// ダイアログ機能ボタン文言調整用
+	property okText;
+	property cancelText;
+	property yesText;
+	property noText;
+}
+

@@ -1,0 +1,45 @@
+// レンダーターゲット
+// テクスチャとしても利用可能
+class Offscreen {
+	function Offscreen( width, height );
+	// invalidateで無効化
+	/**
+	 * Bitmapからスクリーンに領域指定してコピー
+	 * @param bitmap 吉里吉里ビットマップ
+	 * @param sleft 描画元x
+	 * @param stop 描画元y
+	 * @param width サイズ横幅
+	 * @param height サイズ縦幅
+	 * @param left 描画先x
+	 * @param top 描画先y
+	 */
+	function copyFromBitmap( bitmap, sleft, stop, width, height, left, top);
+
+    /**
+	 * スクリーンからBitmapに領域指定してコピー
+	 * @param destBitmap 格納先ビットマップ
+	 * @param sleft 描画元x
+	 * @param stop 描画元y
+	 * @param width サイズ横幅
+	 * @param height サイズ縦幅
+	 * @param dleft 描画先x
+	 * @param dtop 描画先y
+	 */
+	function copyToBitmap( destBitmap, left, top, width, height, dleft, dtop);
+
+	// function captureScreen(screenId, destBitmap);
+	// copyToBitmap で引数が1つだけの時は、同機能となる仕様へ
+
+	/**
+	 * @param laytree BitmapLayerTreeOwner なオブジェクトをスクリーンに反映
+	 * ※更新部分のみ反映できるのが望ましい
+	 * 生成時に laytree を持てる持てないの指定があった方がいいような
+	 * 理想的には継承で、OffscreenLTOクラス新設か？
+	 */
+	function update( laytree );
+
+	property width;
+	property height;
+
+	property nativeHandle;	// 環境依存
+};

@@ -1,0 +1,20 @@
+class Texture {
+	// @param gray 強制 gray 化
+	// @param p2 サイズ2の累乗化(必須ではないが高速化する環境もある、一応指定可能に、内部で吸収でもいいが…… obsolate化の可能性あり)undocumentがいいか？
+	function Texture( filename, gray=false, p2=false );
+	function Texture( bitmap, gray=false, p2=false );
+
+	// invalidateで無効化
+
+	// 幅と高さ(有効範囲), pot指定されていなければ、memoryXXと同一
+	property width;
+	property height;
+	// 実際の幅(ハードウェア上の)
+	property memoryWidth;
+	property memoryHeight;
+
+	property isGray;
+	property isPowerOfTwo; // function isPowerOfTwo(x) { return (x & (x - 1)) == 0; }
+
+	property nativeHandle;	// 環境依存
+};

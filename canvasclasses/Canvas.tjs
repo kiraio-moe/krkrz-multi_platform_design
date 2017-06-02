@@ -26,6 +26,8 @@ class Canvas {
 	 * @param dest キャプチャ先Bitmap/Offscreen
 	 */
 	function capture(dest);
+	// frontバッファ か backバッファの指定が必要そう。
+	// タイミングによってbackは空だったりする。
 
 	/**
 	 * 描画ターゲットスクリーン指定
@@ -149,7 +151,8 @@ class Canvas {
 	 */
 	function drawText(font, x, y, text, color);
 
-	// Windowの描画領域サイズと同じだが、スケールなど考慮せず
+	// Windowの描画領域サイズと同じだが、OpenGLが返すものを取得する、設定は出来ない。
+	// Viewport 設定も必要か？
 	property width;
 	property height;
 

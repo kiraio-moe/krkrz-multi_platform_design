@@ -34,7 +34,8 @@ class Offscreen {
 	 * @param laytree BitmapLayerTreeOwner なオブジェクトをスクリーンに反映
 	 * ※更新部分のみ反映できるのが望ましい
 	 * 生成時に laytree を持てる持てないの指定があった方がいいような
-	 * 理想的には継承で、OffscreenLTOクラス新設か？
+	 * Offscreen を継承した OffscreenLTOクラスを作るのが良さそう。
+	 * 継承と言っても同一メソッドを持つクラスにするか、きちんとした継承かは考える。
 	 */
 	function update( laytree );
 

@@ -24,10 +24,11 @@ class Canvas {
 	 * ビットマップのサイズはスクリーンサイズに補正
 	 * Offscreenの場合は変更されず
 	 * @param dest キャプチャ先Bitmap/Offscreen
+	 * @param front front bufferからのキャプチャかback bufferからのキャプチャかの指定。trueでfront、falseでback
+	 *
+	 * OpenGLメモ : glCopyTexImage2D でテクスチャへのコピー、glReadPixels でメモリへのコピー。ES3ならMapping機能でもう少し柔軟。
 	 */
-	function capture(dest);
-	// frontバッファ か backバッファの指定が必要そう。
-	// タイミングによってbackは空だったりする。
+	function capture(dest,front=true);
 
 	/**
 	 * 描画ターゲットスクリーン指定

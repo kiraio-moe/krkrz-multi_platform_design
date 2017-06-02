@@ -29,6 +29,9 @@ class Canvas {
 	 * OpenGLメモ : glCopyTexImage2D でテクスチャへのコピー、glReadPixels でメモリへのコピー。ES3ならMapping機能でもう少し柔軟。
 	 */
 	function capture(dest,front=true);
+	// Offscreenの場合はそれをレンダーターゲットにしてしまった方が良さそうな気がするがどうだろうか？
+	// Textureへキャプチャして、Textureとして再利用するのなら、そちらの方が使い勝手良さそうな…
+	// left,top,width,heightの指定も可能に出来るが、無用かどうか。あったらあったで使い道ありそうではあるが。
 
 	/**
 	 * 描画ターゲットスクリーン指定

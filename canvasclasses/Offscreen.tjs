@@ -26,6 +26,16 @@ class Offscreen {
 	 * @param dtop 描画先y
 	 */
 	function copyToBitmap( destBitmap, left, top, width, height, dleft, dtop);
+	// レンダーターゲットへはTextureを設定する(再利用のため)ので、実質的にTextureからメモリへのコピーになるが、
+	// OpenGL ES 2.0 では調べた範囲では出来ない(フレームバッファとして設定されている間ならフレームバッファからの
+	// コピーとして出来るはず)と思われる。
+	// OpenGL ES 3.0 以降なら PBOを使用してコピーできる(はず)
+	// OpenGL ES 2.0 ならレンダーターゲットとしてフレームバッファに設定している間、OpenGL ES 3.0 ならいつでも可能
+	// と言うことになるが、2.0 の制限は分かり辛過ぎるので、OpenGL ES 3.0 以降でないと使えないメソッドと言う扱いの
+	// 方が妥当と思われる。
+	// OpenGL ES 3.0 は Android 4.3以降だが、一部端末で問題が出るため、4.4以降のものも含まれる。
+	// この点注意してこのメソッドを扱う必要がある。
+
 
 	// function captureScreen(screenId, destBitmap);
 	// copyToBitmap で引数が1つだけの時は、同機能となる仕様へ

@@ -34,7 +34,20 @@ class Window {
 
 	// onDrawが呼ばれる、自前呼び出しか、vsink待ちして、スレッドから呼ばれるか？
 	// タイマーで適当に60fpsか30fpsにして使うか？
-	function startDrawing();
+	// OpenGL の eglSwapBuffers は、キューに積むのみで実際にvsink待ちするわけではないようなので、
+	// 呼び出し周期を適当に設定可能にして、その周期以上で呼び出されるようにするのが妥当か？
+	// 内部的に再描画が必要であっても、指定周期は待つような。
+	// つまり、property drawCycle のようなプロパティで、60や30など設定するのが良さそう。
+	// v-syncがいつ発生したかは分からないため、タイミング的に次のvsyncになってしまっているかもしれないが、そこは気にしない。
+	// function startDrawing();
+	property drawCycle;
+
+	/**
+	 * Windowsと同じ。
+	 * ティアリング等発生する場合に設定する。
+	 * 指定できない環境では、設定しても無意味(常時vsync待ちがある)。
+	 */
+	property waitVSync;
 
 	/**
 	 * マウス系イベント
@@ -102,6 +115,6 @@ class Window {
 	 * 描画用のCanvasクラスのインスタンスを得る
 	 * onDraw 内で
 	 */
-	property canvas
+	property canvas;
 }
 

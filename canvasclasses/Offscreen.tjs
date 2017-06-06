@@ -1,8 +1,17 @@
-// レンダーターゲット
-// テクスチャとしても利用可能
+/**
+ * オフスクリーン。
+ * いわゆるレンダーターゲット。テクスチャとしても利用可能。
+ * OpenGL ES2.0 では、FBO, Renderbuffer, Texture が生成される。
+ */
 class Offscreen {
-	function Offscreen( width, height );
-	// invalidateで無効化
+	/**
+	 * オフスクリーンを生成。破棄はinvalidate時に行われるので、不要になったら明示的なinvalidate推奨。
+	 * @param width オフスクリーン幅
+	 * @param height オフスクリーン高さ
+	 * @param pbo PBOを生成するかどうか(OpenGL ES 3.0以降でメインメモリとGPU間で何度もコピーする場合DMAを利用して効率的にコピーできる。ただOpenGL ES依存なオプションを入れていいか悩むところ)
+	 */
+	function Offscreen( width, height, pbo=false );
+
 	/**
 	 * Bitmapからスクリーンに領域指定してコピー
 	 * @param bitmap 吉里吉里ビットマップ
@@ -29,12 +38,20 @@ class Offscreen {
 	// レンダーターゲットへはTextureを設定する(再利用のため)ので、実質的にTextureからメモリへのコピーになるが、
 	// OpenGL ES 2.0 では調べた範囲では出来ない(フレームバッファとして設定されている間ならフレームバッファからの
 	// コピーとして出来るはず)と思われる。
+	// glGetTextureImage は、OpenGL にはあるが、ES では使えない。
 	// OpenGL ES 3.0 以降なら PBOを使用してコピーできる(はず)
 	// OpenGL ES 2.0 ならレンダーターゲットとしてフレームバッファに設定している間、OpenGL ES 3.0 ならいつでも可能
 	// と言うことになるが、2.0 の制限は分かり辛過ぎるので、OpenGL ES 3.0 以降でないと使えないメソッドと言う扱いの
 	// 方が妥当と思われる。
+	// もしくは、コピーが必要な時にフレームバッファに設定されていない場合、一時的に設定してコピー後元に戻すという
+	// 方法で一応実現可能。
+	// PBO がスマートだが、どうしても 2.0 でと言うことなら、一時設定もやむなし。
 	// OpenGL ES 3.0 は Android 4.3以降だが、一部端末で問題が出るため、4.4以降のものも含まれる。
 	// この点注意してこのメソッドを扱う必要がある。
+	// PBO でも glGetTextureImage がないので、結局一度フレームバッファに設定する羽目になるのであった。
+	// つまり、このメソッドは極力使わないことを推奨する方が良さげと言うか、非効率的
+	// 現在フレームバッファに設定されているのであれば、マシであるが。
+	// ただし、実際に非効率的かは速度を計測しないことにはわからない。
 
 
 	// function captureScreen(screenId, destBitmap);
@@ -44,13 +61,33 @@ class Offscreen {
 	 * @param laytree BitmapLayerTreeOwner なオブジェクトをスクリーンに反映
 	 * ※更新部分のみ反映できるのが望ましい
 	 * 生成時に laytree を持てる持てないの指定があった方がいいような
-	 * Offscreen を継承した OffscreenLTOクラスを作るのが良さそう。
+	 * 
+	 * Offscreen を継承した OffscreenLayerTreeOwnerクラスを作るのが良さそう。
 	 * 継承と言っても同一メソッドを持つクラスにするか、きちんとした継承かは考える。
+	 * OpenGL ES3.0 以降であればPBOが使え、PBOからTextureへの転送はDMA処理されるため、CPU負荷が軽い。
+	 * Layer更新時に自動的にPBOコピーからTextureへ転送するプロパティ追加して、自動転送とする方が、結果的に高速に動く。
+	 * 毎フレーム更新するような場合は、PBO/Textureを2つ作りダブルバッファリングすることで、転送待ちをなくせる。
+	 * つまり、OffscreenLayerTreeOwnerクラスでは、PBOは強制的に作られることになる。
+	 * OpenGL ES 2.0 の時は、PBOが使えないので転送待ちが発生してしまうが、4.4以降の端末の方が多いだろうから影響は少ないか？
 	 */
 	function update( laytree );
 
+	/**
+	 * 幅、生成時に指定されたもの
+	 */
 	property width;
+	/**
+	 * 高さ、生成時に指定されたもの
+	 */
 	property height;
 
-	property nativeHandle;	// 環境依存
+	/**
+	 * 環境依存のハンドル
+	 * OpenGL ES下ではtexture idとなる。
+	 */
+	property nativeHandle;
 };
+// 形式上 Texture <- Offscreen <- OffscreenLayerTreeOwner の継承関係があるようなスタイルが好ましい
+// メソッド等
+// ただ、一部 Texture Ofscreen は互換性がない方がわかりやすいか……
+

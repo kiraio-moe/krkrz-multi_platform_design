@@ -80,7 +80,10 @@ class Canvas {
 
 	property clipRect;	// Rectクラス --> setClip はこれでいいか canvas.clipRect.set( l, t, r, b ); で代用できる
 
-	//< 描画の合成モード指定・できれば吉里吉里互換で一式
+	/**
+	 * 描画の合成モード指定・できれば吉里吉里互換で一式
+	 * bmOpaque, bmAlpha, bmAdd, bmAddWithAlpha : まで実装済み。
+	 */
 	property blendMode;
 
 	//< 描画のストレッチ指定
@@ -160,10 +163,41 @@ class Canvas {
 	property width;
 	property height;
 
+	/**
+	 * clipRectプロパティの矩形をクリッピング領域として適用します。
+	 * プロパティに入れただけではクリッピングはされません。
+	 */
+	function applyClipRect();
+
+	/**
+	 * 矩形クリッピングを無効化します。
+	 */
+	function disableClipRect();
 
 	// TODO : 以下のメソッドも必要
 	function applyMatrix();
 	function applyIdentityMatrix();
-	function applyClipRect();
-	function applyNoClipRect();
+
+
+	/**
+	 * Vertex Shader/Fragment Shaderを登録(コンパイル)する。
+	 * コンパイルに失敗した場合は例外が出る。エラー詳細はログへ。
+	 * シェーダーへ値を渡す辺りはどうするか？ スクリプトでID取得してもらって、それに値設定を細かくやってもらうか？
+	 * シェーダーを自由にできると便利だが、各種値の設定が厄介。
+	 * @param name 登録名
+	 * @param vertex バーティクスシェーダースクリプト
+	 * @param gragment フラグメントシェーダースクリプト
+	 * @return 登録番号
+	 */
+	function registerShader( name:string, vertex:string, fragment:string );
+	/**
+	 * シェーダー登録を解除する(なくてもいいか？、とりあえずは終了時に自動削除されるようにしておく)
+	 */
+	// function unregisterShader( name:string );
+
+	/**
+	 * 現在のシェーダー番号の設定/取得
+	 */
+	property currentShader;
 };
+

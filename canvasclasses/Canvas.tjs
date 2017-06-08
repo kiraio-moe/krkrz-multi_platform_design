@@ -42,6 +42,13 @@ class Canvas {
 	// Window.drawDevice と同じような扱いで
 	// propertyへ canvas.targetScreen で設定
 
+
+	/**
+	 * 描画ターゲット指定
+	 * Offscreenクラスを指定可能。null/void指定で直接描画に。
+	 */
+	property renderTarget;
+
     /**
 	 * スクリーンを描画
 	 * クロスフェードトランジション相当描画
@@ -71,14 +78,22 @@ class Canvas {
 	// function setClip( l, t, w, h );
 
 	/**
-	 * アルファクリッピングの設定(setClipとは排他)
+	 * アルファクリッピングの設定(setClipとは排他) -> 実装上は clipRect と排他である必要はないので、
 	 * @param maskTextureId マスク用テクスチャ(grayなものに限る)
 	 * @param l オフセット指定
 	 * @param t オフセット指定
 	 */
 	function setClipMask(maskTexture, l, t);
 
-	property clipRect;	// Rectクラス --> setClip はこれでいいか canvas.clipRect.set( l, t, r, b ); で代用できる
+	/**
+	 * クリッピング用矩形のRectクラス
+	 * canvas.clipRect.set( l, t, r, b ); 等で呼び出せる。
+	 * applyClipRect を呼び出さないとクリッピング矩形は有効化されない。
+	 * disableClipRect で無効化。
+	 *
+	 * setClipRect( l, t, r, b ) の方が扱いやすかったかも……
+	 */
+	property clipRect;
 
 	/**
 	 * 描画の合成モード指定・できれば吉里吉里互換で一式
@@ -86,8 +101,17 @@ class Canvas {
 	 */
 	property blendMode;
 
-	//< 描画のストレッチ指定
-	property stretchType;
+	/**
+	 * 描画のストレッチ指定
+	 * OpenGLだとテクスチャに指定するパラメータ
+	 * Textureクラスに移動するか？
+	 * 補間方法は画像ごとに指定する可能性が高いか？
+	 * Nearest と Linear しかないが、Offscreen にはシェーダーで Cubic や Lanczos くらいあった方が良さげ？
+	 * とりあえずは Nearest と Linear のみとする
+	 *
+	 * property stretchType;
+	 */
+
 
 	/**
 	 * 描画マトリックス指定
@@ -173,6 +197,9 @@ class Canvas {
 	 * 矩形クリッピングを無効化します。
 	 */
 	function disableClipRect();
+
+
+
 
 	// TODO : 以下のメソッドも必要
 	function applyMatrix();

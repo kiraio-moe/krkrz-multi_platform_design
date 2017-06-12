@@ -61,6 +61,13 @@ class Window {
 	 */
 	function onTouchXXXX();
 
+	// 以下のようなイベントに集約する方が、エミュよりスマートに思える。
+	// MouseXXXとTouchXXXと同時発生しつつ、基本はonPointer系で単一処理にするような。
+	// 一応パラメータでどのデバイスからの入力か識別可能にはしておく形
+	function onPointerDown();
+	function onPointerMove();
+	function onPointerUp();
+
 	/**
 	 * キー操作系要検討
 	 */

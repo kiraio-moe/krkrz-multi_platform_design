@@ -24,6 +24,11 @@
  * シェーダー + それを扱う Sprite 等を実現する TJS2 スクリプトをセットで配布すれば、それで演出強化できる。
  *
  * シェーダースクリプトをファイル入力する場合は、UTF-8で記述すること。
+ *
+ *
+ * シェーダー内で使用できない(内部定義されている)変数名
+ * ShaderProgram
+ * finalize
  */
 class ShaderProgram {
 
@@ -35,18 +40,4 @@ class ShaderProgram {
 	 */
 	function ShaderProgram( vertex:string, fragment:string, file:boolean=true );
 
-	/**
-	 * シェーダー内で定義され、追加されたプロパティの型を取得します(シェーダースクリプト見ればわかる話だけど一応)。
-	 * @param name シェーダー入力変数名
-	 * @return 型情報
-	 */
-	function getType( name:string );
-
-	/**
-	 * このシェーダーを有効化します。
-	 * 描画時に呼び出します。
-	 * シェーダークラスのインスタンスを指定して描画を行うメソッドは、シェーダーが指定されていると既に有効化されているものとして処理します。
-	 * 各種プロパティを設定する前に、まずはこのメソッドを呼び出し、必要な値をプロパティに設定した後、Canvasの描画命令を呼び出してください。
-	 */
-	function useProgram();
 };

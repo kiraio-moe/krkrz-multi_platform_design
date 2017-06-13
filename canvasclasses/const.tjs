@@ -1,0 +1,11 @@
+/**
+ * ’Ç‰Á‚³‚ê‚é“à•”’è”B
+ */
+
+const 
+/* Canvas blend mode */
+ bmOpaque = 0,
+ bmAlpha = 1,
+ bmAdd = 2,
+ bmAddWithAlpha = 3,
+

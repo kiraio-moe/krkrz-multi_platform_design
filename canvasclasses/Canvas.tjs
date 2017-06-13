@@ -147,6 +147,10 @@ class Canvas {
 	// 追加……(仮？)
 	function drawTexture( texture, left, top );
 
+
+	// シェーダー設定メソッドは OpenGL ES2.0の仕様に起因するものであったが、drawTexture でも shader 指定することになり、二重指定となり煩雑。
+	// シェーダークラスのプロパティを保持する形にして内部的に設定する形にすれば、drawTexture で shader 指定すれば済むことになり、そちらの方が
+	// 手軽に使えるため、この仕様は変更する。
 	/**
 	 * シェーダーを設定します。
 	 * onDraw 内で描画時に呼び出します。
@@ -154,7 +158,7 @@ class Canvas {
 	 * 各種プロパティを設定する前に、まずはこのメソッドを呼び出し、必要な値をプロパティに設定した後、Canvasの描画命令を呼び出してください。
 	 * @param shader コンパイルしたシェーダーを渡します。
 	 */
-	function setShader( shader:ShaderProgram );
+	/* function setShader( shader:ShaderProgram ); */
 
 	// ---------------------------------------------------------------
 	// テキスト描画
@@ -196,25 +200,32 @@ class Canvas {
 	property width;
 	property height;
 
+	// applyMatrix系廃止に伴い、統一するために廃止する予定
 	/**
 	 * clipRectプロパティの矩形をクリッピング領域として適用します。
 	 * プロパティに入れただけではクリッピングはされません。
 	 */
-	function applyClipRect();
-
+	/* function applyClipRect(); */
 	/**
 	 * 矩形クリッピングを無効化します。
 	 */
-	function disableClipRect();
+	/* function disableClipRect(); */
 
-
+	/**
+	 * 上記メソッド廃止に伴い、有効/無効プロパティ追加予定。
+	 */
+	property enableClipRect;
 
 
 	// TODO : 以下のメソッドも必要
-	function applyMatrix();
-	function applyIdentityMatrix();
+	// 不要であった。OpenGL ES2.0 の場合は、シェーダーでマトリックス演算前提のため、現在のマトリックスを設定するような処理がない。1.0ではあった。
+	// つまり、描画時に毎回シェーダーへマトリックスを設定してやるので、現在設定されているマトリックスが呼び出し時点で設定されることとなる。
+	/* function applyMatrix(); */
+	/* function applyIdentityMatrix(); */
 
 
+	// シェーダーは別クラスとし、登録せずにユーザー(TJS2スクリプト)管理と言う形にした。
+	// 使う直前にsetShaderを呼び出してシェーダーを設定する。
 	/**
 	 * Vertex Shader/Fragment Shaderを登録(コンパイル)する。
 	 * コンパイルに失敗した場合は例外が出る。エラー詳細はログへ。
@@ -225,15 +236,14 @@ class Canvas {
 	 * @param gragment フラグメントシェーダースクリプト
 	 * @return 登録番号
 	 */
-	function registerShader( name:string, vertex:string, fragment:string );
+	/* function registerShader( name:string, vertex:string, fragment:string ); */
 	/**
 	 * シェーダー登録を解除する(なくてもいいか？、とりあえずは終了時に自動削除されるようにしておく)
 	 */
-	// function unregisterShader( name:string );
-
+	/* function unregisterShader( name:string ); */
 	/**
 	 * 現在のシェーダー番号の設定/取得
 	 */
-	property currentShader;
+	/* property currentShader; */
 };
 

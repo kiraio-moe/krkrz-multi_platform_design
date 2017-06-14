@@ -1,20 +1,70 @@
+/**
+ * テクスチャクラス
+ * ハードウェア上のテクスチャとほぼ対応。
+ */
 class Texture {
-	// @param gray 強制 gray 化
-	// @param p2 サイズ2の累乗化(必須ではないが高速化する環境もある、一応指定可能に、内部で吸収でもいいが…… obsolate化の可能性あり)undocumentがいいか？
+	/**
+	 * コンストラクタ
+	 * @filename 画像ファイル名
+	 * @param gray 強制 gray 化(内部ではアルファテクスチャ)
+	 * @param p2 サイズ2の累乗化(必須ではないが高速化する環境もある、一応指定可能に、内部で吸収でもいいが…… obsolate化の可能性あり)undocumentがいいか？
+	 */
 	function Texture( filename, gray=false, p2=false );
+
+	/**
+	 * コンストラクタ
+	 * @param bitmap テクスチャの元となるBitmapクラスのインスタンス
+	 * @param gray 強制 gray 化(内部ではアルファテクスチャ)
+	 * @param p2 サイズ2の累乗化(必須ではないが高速化する環境もある、一応指定可能に、内部で吸収でもいいが…… obsolate化の可能性あり)undocumentがいいか？
+	 */
 	function Texture( bitmap, gray=false, p2=false );
 
-	// invalidateで無効化
+	// invalidateでテクスチャ無効化
+	// 明示的に呼び出すことを推奨
 
-	// 幅と高さ(有効範囲), pot指定されていなければ、memoryXXと同一
+	/* 幅(有効範囲), pot指定されていなければ、memoryWidthと同一 */
 	property width;
+	/** 高さ(有効範囲), pot指定されていなければ、memoryHeightと同一 */
 	property height;
-	// 実際の幅(ハードウェア上の)
+
+	/** 実際(ハードウェア上)の幅 */
 	property memoryWidth;
+	/** 実際(ハードウェア上)の高さ */
 	property memoryHeight;
 
+	/** 8bitカラーかどうか(内部ではアルファテクスチャ) */
 	property isGray;
-	property isPowerOfTwo; // function isPowerOfTwo(x) { return (x & (x - 1)) == 0; }
 
-	property nativeHandle;	// 環境依存
+	/** テクスチャサイズが2の累乗値かどうか */
+	property isPowerOfTwo;
+
+	/**
+	 * ネイティブハンドル(環境依存)
+	 * OpenGL ES2/3 環境下ではテクスチャID
+	 */
+	property nativeHandle;
+
+	/** 拡大縮小時の補間方法 */
+	property stretchType;
+
+	/** 水平方向ラップモード */
+	property wrapModeHorizontal;
+	/** 垂直方向ラップモード */
+	property wrapModeVertical;
+
+
+	// 以下、クラス定数扱い(staticでread only)
+	// stretchType に指定
+	/** 最近傍点法 */
+	property stNearest;
+	/** 線形補間 */
+	property stLinear;
+
+	// wrapModeHorizontal/wrapModeVertical に指定
+	/** 繰り返し */
+	property wmRepeat;
+	/** 端色引き延ばし。2の累乗サイズでない場合はこの定数でなければならない (default) */
+	property wmClampToEdge;
+	/** ミラー繰り返し */
+	property wmMirror;
 };

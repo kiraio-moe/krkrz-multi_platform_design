@@ -108,6 +108,8 @@ class Canvas {
 	 * 補間方法は画像ごとに指定する可能性が高いか？
 	 * Nearest と Linear しかないが、Offscreen にはシェーダーで Cubic や Lanczos くらいあった方が良さげ？
 	 * とりあえずは Nearest と Linear のみとする
+	 * それ以外の補間方法はシェーダーによる実装となるが、シェーダークラス新設により、スクリプト側で実装可能となった。
+	 * つまり、stretchType は Nearest として、drawTexture で指定するシェーダーで補間させ、拡大縮小する。
 	 *
 	 * property stretchType;
 	 */

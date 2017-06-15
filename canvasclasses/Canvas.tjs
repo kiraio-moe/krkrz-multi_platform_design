@@ -56,6 +56,7 @@ class Canvas {
 	 * @param opacity 不透明度指定(0～1.0)
 	 */
 	function drawScreen(screen, opacity);
+	// drawTexture に2枚のテクスチャを指定して描画することで代用可能
 
 	/**
 	 * スクリーンを描画
@@ -67,16 +68,6 @@ class Canvas {
 	 */
 	function drawScreenUT(screen, maskTexture, vague, opacity);
 
-
-	/**
-	 * 矩形クリッピングの設定
-	 * @param l
-	 * @param t
-	 * @param w
-	 * @param h
-	 */
-	// function setClip( l, t, w, h );
-
 	/**
 	 * アルファクリッピングの設定(setClipとは排他) -> 実装上は clipRect と排他である必要はないので、
 	 * @param maskTextureId マスク用テクスチャ(grayなものに限る)
@@ -84,6 +75,7 @@ class Canvas {
 	 * @param t オフセット指定
 	 */
 	function setClipMask(maskTexture, l, t);
+	// drawTextre で通常テクスチャとアルファテクスチャを指定し、シェーダーを書くことで実現可能。
 
 	/**
 	 * クリッピング用矩形のRectクラス
@@ -101,27 +93,8 @@ class Canvas {
 	 */
 	property blendMode;
 
-	/**
-	 * 描画のストレッチ指定
-	 * OpenGLだとテクスチャに指定するパラメータ
-	 * Textureクラスに移動するか？
-	 * 補間方法は画像ごとに指定する可能性が高いか？
-	 * Nearest と Linear しかないが、Offscreen にはシェーダーで Cubic や Lanczos くらいあった方が良さげ？
-	 * とりあえずは Nearest と Linear のみとする
-	 * それ以外の補間方法はシェーダーによる実装となるが、シェーダークラス新設により、スクリプト側で実装可能となった。
-	 * つまり、stretchType は Nearest として、drawTexture で指定するシェーダーで補間させ、拡大縮小する。
-	 *
-	 * property stretchType;
-	 */
-
-
-	/**
-	 * 描画マトリックス指定
-	 */
-	//function setMatrix(m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44);
-	//function setMatrix(matrix44);
-
-	property matrix;	// Matrix44 クラス --> setMatrix は canvas.matrix.set(...);で代用できる
+	/** 描画マトリックス指定(Matrix44 クラス) */
+	property matrix;
 
 	// save/restore で matrix と clip のセーブと復元は欲しいよね。push/pop
 	// sprite 作る時も
@@ -138,6 +111,8 @@ class Canvas {
 	 * @param colors 4頂点の頂点カラーARGB。void/null は未定義(0xffffffff)、単独数値なら単色、配列なら4頂点個別指定
 	 */
 	function fill(left, top, width, height, colors);
+	// left, top は省略して、matrix指定の方が統一性が取れるよな……
+	// matrix stack 使用するのなら、そっちの方がやりやすいだろうし
 
 	/**
 	 * テクスチャでのメッシュ描画
@@ -164,21 +139,9 @@ class Canvas {
 	 */
 	property defaultShader;
 
-	// シェーダー設定メソッドは OpenGL ES2.0の仕様に起因するものであったが、drawTexture でも shader 指定することになり、二重指定となり煩雑。
-	// シェーダークラスのプロパティを保持する形にして内部的に設定する形にすれば、drawTexture で shader 指定すれば済むことになり、そちらの方が
-	// 手軽に使えるため、この仕様は変更する。
-	/**
-	 * シェーダーを設定します。
-	 * onDraw 内で描画時に呼び出します。
-	 * シェーダークラスのインスタンスを指定して描画を行うメソッドは、シェーダーが既に有効化されているものとして処理します。
-	 * 各種プロパティを設定する前に、まずはこのメソッドを呼び出し、必要な値をプロパティに設定した後、Canvasの描画命令を呼び出してください。
-	 * @param shader コンパイルしたシェーダーを渡します。
-	 */
-	/* function setShader( shader:ShaderProgram ); */
 
 	// ---------------------------------------------------------------
 	// テキスト描画
-
 // >>>> この辺りはFontクラスが既にあるので、それが使えるのが好ましい。
 	/**
 	 * フォント生成
@@ -231,35 +194,5 @@ class Canvas {
 	 * 上記メソッド廃止に伴い、有効/無効プロパティ追加予定。
 	 */
 	property enableClipRect;
-
-
-	// TODO : 以下のメソッドも必要
-	// 不要であった。OpenGL ES2.0 の場合は、シェーダーでマトリックス演算前提のため、現在のマトリックスを設定するような処理がない。1.0ではあった。
-	// つまり、描画時に毎回シェーダーへマトリックスを設定してやるので、現在設定されているマトリックスが呼び出し時点で設定されることとなる。
-	/* function applyMatrix(); */
-	/* function applyIdentityMatrix(); */
-
-
-	// シェーダーは別クラスとし、登録せずにユーザー(TJS2スクリプト)管理と言う形にした。
-	// 使う直前にsetShaderを呼び出してシェーダーを設定する。
-	/**
-	 * Vertex Shader/Fragment Shaderを登録(コンパイル)する。
-	 * コンパイルに失敗した場合は例外が出る。エラー詳細はログへ。
-	 * シェーダーへ値を渡す辺りはどうするか？ スクリプトでID取得してもらって、それに値設定を細かくやってもらうか？
-	 * シェーダーを自由にできると便利だが、各種値の設定が厄介。
-	 * @param name 登録名
-	 * @param vertex バーティクスシェーダースクリプト
-	 * @param gragment フラグメントシェーダースクリプト
-	 * @return 登録番号
-	 */
-	/* function registerShader( name:string, vertex:string, fragment:string ); */
-	/**
-	 * シェーダー登録を解除する(なくてもいいか？、とりあえずは終了時に自動削除されるようにしておく)
-	 */
-	/* function unregisterShader( name:string ); */
-	/**
-	 * 現在のシェーダー番号の設定/取得
-	 */
-	/* property currentShader; */
 };
 

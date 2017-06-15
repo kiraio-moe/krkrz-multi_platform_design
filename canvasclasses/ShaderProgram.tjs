@@ -52,8 +52,9 @@ class ShaderProgram {
 	 * コンストラクタ
 	 * @param vertex パーティンクシェーダーを指定します。fileがtrueの時はファイル名、falseの時は直接文字列を指定します。
 	 * @param fragment フラグメントシェーダーを指定します。fileがtrueの時はファイル名、falseの時は直接文字列を指定します。
-	 * @param file vertex/fragmentで指定された文字列がファイルか直接スクリプト指定かを選択します。
+	 * @param vsfile vertexで指定された文字列がファイルか直接スクリプト指定かを選択します。
+	 * @param fsfile fragmentで指定された文字列がファイルか直接スクリプト指定かを選択します。
 	 */
-	function ShaderProgram( vertex:string, fragment:string, file:boolean=true );
+	function ShaderProgram( vertex:string, fragment:string, vsfile:boolean=true, fsfile:boolean=true );
 
 };

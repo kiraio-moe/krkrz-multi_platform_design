@@ -146,9 +146,23 @@ class Canvas {
 	 */
  	function drawMesh(texture, mesh);
 
-	// 追加……(仮？)
-	function drawTexture( texture, left, top );
+	/**
+	 * テクスチャを描画する。
+	 * テクスチャのみを指定した場合はdefaultShaderで描画される。
+	 * 位置や拡大縮小は matrix で指定する。
+	 * @param texture 描画に使用するテクスチャを指定する
+	 * @param texture2 描画に使用する2枚目のテクスチャを指定する
+	 * @param shader 描画に使用するシェーダーを指定する
+	 */
+	function drawTexture( texture );
+	function drawTexture( texture, shader );
+	function drawTexture( texture, texture2, shader );
 
+	/**
+	 * テクスチャの描画に使用されるデフォルトのシェーダー
+	 * 設定もできるが、基本的に変更する必要はない
+	 */
+	property defaultShader;
 
 	// シェーダー設定メソッドは OpenGL ES2.0の仕様に起因するものであったが、drawTexture でも shader 指定することになり、二重指定となり煩雑。
 	// シェーダークラスのプロパティを保持する形にして内部的に設定する形にすれば、drawTexture で shader 指定すれば済むことになり、そちらの方が

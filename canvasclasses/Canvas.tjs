@@ -20,28 +20,13 @@ class Canvas {
 	function clear(argb);
 
 	/**
-	 * 現在の描画内容全体をBitmap/Offscreenにキャプチャ
+	 * 現在の描画内容全体をBitmap/Texture/Offscreenにキャプチャ
 	 * ビットマップのサイズはスクリーンサイズに補正
-	 * Offscreenの場合は変更されず
-	 * @param dest キャプチャ先Bitmap/Offscreen
+	 * Texture/Offscreenの場合は変更されない
+	 * @param dest キャプチャ先Bitmap/Texture/Offscreen
 	 * @param front front bufferからのキャプチャかback bufferからのキャプチャかの指定。trueでfront、falseでback
-	 *
-	 * OpenGLメモ : glCopyTexImage2D でテクスチャへのコピー、glReadPixels でメモリへのコピー。ES3ならMapping機能でもう少し柔軟。
 	 */
 	function capture(dest,front=true);
-	// Offscreenの場合はそれをレンダーターゲットにしてしまった方が良さそうな気がするがどうだろうか？
-	// Textureへキャプチャして、Textureとして再利用するのなら、そちらの方が使い勝手良さそうな…
-	// left,top,width,heightの指定も可能に出来るが、無用かどうか。あったらあったで使い道ありそうではあるが。
-
-	/**
-	 * 描画ターゲットスクリーン指定
-	 * @param screen 描画対象となるスクリーンIdを設定する。null で直接描画に戻る
-	 */
-	//function setTargetScreen(screenId);
-	// ---> property の方が良くないかな？
-	// Window.drawDevice と同じような扱いで
-	// propertyへ canvas.targetScreen で設定
-
 
 	/**
 	 * 描画ターゲット指定
@@ -49,47 +34,10 @@ class Canvas {
 	 */
 	property renderTarget;
 
-    /**
-	 * スクリーンを描画
-	 * クロスフェードトランジション相当描画
-	 * @param screenId 描画用スクリーン
-	 * @param opacity 不透明度指定(0～1.0)
-	 */
-	function drawScreen(screen, opacity);
-	// drawTexture に2枚のテクスチャを指定して描画することで代用可能
-
 	/**
-	 * スクリーンを描画
-	 * ユニバーサルトランジション相当描画
-	 * @param screen 描画用スクリーン
-	 * @param maskTexture マスク用テクスチャ(grayなものに限る)
-	 * @param vague vague値
-	 * @param opacity 不透明度指定(0～1.0)
-	 */
-	function drawScreenUT(screen, maskTexture, vague, opacity);
-
-	/**
-	 * アルファクリッピングの設定(setClipとは排他) -> 実装上は clipRect と排他である必要はないので、
-	 * @param maskTextureId マスク用テクスチャ(grayなものに限る)
-	 * @param l オフセット指定
-	 * @param t オフセット指定
-	 */
-	function setClipMask(maskTexture, l, t);
-	// drawTextre で通常テクスチャとアルファテクスチャを指定し、シェーダーを書くことで実現可能。
-
-	/**
-	 * クリッピング用矩形のRectクラス
-	 * canvas.clipRect.set( l, t, r, b ); 等で呼び出せる。
-	 * applyClipRect を呼び出さないとクリッピング矩形は有効化されない。
-	 * disableClipRect で無効化。
-	 *
-	 * setClipRect( l, t, r, b ) の方が扱いやすかったかも……
-	 */
-	property clipRect;
-
-	/**
-	 * 描画の合成モード指定・できれば吉里吉里互換で一式
-	 * bmOpaque, bmAlpha, bmAdd, bmAddWithAlpha : まで実装済み。
+	 * 描画の合成モード指定
+	 * bmDisable, bmOpaque, bmAlpha, bmAdd, bmAddWithAlpha が指定可能
+	 * ここにないブレンド方法が必要であればシェーダーを記述する。
 	 */
 	property blendMode;
 
@@ -101,7 +49,6 @@ class Canvas {
 
 	// ---------------------------------------------------------------
 	// 2D系描画処理
-
 	/**
 	 * 単色での塗りつぶし
 	 * @param left
@@ -113,6 +60,7 @@ class Canvas {
 	function fill(left, top, width, height, colors);
 	// left, top は省略して、matrix指定の方が統一性が取れるよな……
 	// matrix stack 使用するのなら、そっちの方がやりやすいだろうし
+	// fill( width, height, colors, shader=null );
 
 	/**
 	 * テクスチャでのメッシュ描画
@@ -124,46 +72,50 @@ class Canvas {
 	/**
 	 * テクスチャを描画する。
 	 * テクスチャのみを指定した場合はdefaultShaderで描画される。
-	 * 位置や拡大縮小は matrix で指定する。
+	 * 位置や拡大縮小、回転は matrix で指定する。
+	 * テクスチャはTextureクラスだけでなく、Offscreenクラスを指定しても問題ない。
+	 * Offscreenクラスを指定する場合は、renderTargetからそのOffscreenクラスは外されていることが前提(循環しないように)。
 	 * @param texture 描画に使用するテクスチャを指定する
 	 * @param texture2 描画に使用する2枚目のテクスチャを指定する
+	 * @param texture3 描画に使用する3枚目のテクスチャを指定する
 	 * @param shader 描画に使用するシェーダーを指定する
+	 *
+	 * OpenGL ES 2.0の場合はテクスチャ最大8枚、3.0は頂点側最大16枚，フラグメント側最大16枚なので、まだ追加できるが、
+	 * とりあえずは3枚まで定義しておく。
+	 * 将来的にはテクスチャを配列で渡すバージョンを作り、4枚以上はそちらで対応する。
 	 */
 	function drawTexture( texture );
 	function drawTexture( texture, shader );
 	function drawTexture( texture, texture2, shader );
+	function drawTexture( texture, texture2, texture3, shader );
 
 	/**
-	 * テクスチャの描画に使用されるデフォルトのシェーダー
+	 * テクスチャの描画に使用されるデフォルトのシェーダー(drawTextureでtexture1枚のみ渡した時のシェーダー)
 	 * 設定もできるが、基本的に変更する必要はない
 	 */
 	property defaultShader;
 
+	/** 描画領域の幅。基本的にはクライアント領域と一致、Windowリサイズから再描画まで一時的にずれる期間あり */
+	property width;
+	/** 描画領域の高さ */
+	property height;
+
+	/**
+	 * クリッピング用矩形のRectクラス
+	 * canvas.clipRect.set( l, t, r, b ); 等で呼び出せる。
+	 * enableClipRect で有効/無効設定可
+	 */
+	property clipRect;
+
+	/**
+	 * 矩形でクリッピングするかどうかの設定
+	 * true の時、clipRectプロパティによってクリッピングされる
+	 */
+	property enableClipRect;
+
 
 	// ---------------------------------------------------------------
 	// テキスト描画
-// >>>> この辺りはFontクラスが既にあるので、それが使えるのが好ましい。
-	/**
-	 * フォント生成
-	 * @param name フォント名
-	 * @return フォントID
-	 */
-	function createFont(name);
-	
-	/**
-	 * フォント生成
-	 * @param fontFile フォントファイル
-	 * @return フォントID
-	 */
-	function createFontFromFile(filename,index=0);//font内には複数格納されている場合もあるので、indexも必要
-
-	/**
-	 * フォントの破棄
-	 * @param fontID
-	 */
-	function removeFont(fontId);
-// <<<<
-
 	/**
 	 * テキスト描画
 	 * @param font フォント
@@ -174,25 +126,36 @@ class Canvas {
 	 */
 	function drawText(font, x, y, text, color);
 
-	// Windowの描画領域サイズと同じだが、OpenGLが返すものを取得する、設定は出来ない。
-	// Viewport 設定も必要か？
-	property width;
-	property height;
 
-	// applyMatrix系廃止に伴い、統一するために廃止する予定
-	/**
-	 * clipRectプロパティの矩形をクリッピング領域として適用します。
-	 * プロパティに入れただけではクリッピングはされません。
+	// ---------------------------------------------------------------
+	// 以下、シェーダーで実現可能なため、メソッドとしての実装は行わない予定
+    /**
+	 * スクリーンを描画
+	 * クロスフェードトランジション相当描画
+	 * @param screenId 描画用スクリーン
+	 * @param opacity 不透明度指定(0～1.0)
 	 */
-	/* function applyClipRect(); */
-	/**
-	 * 矩形クリッピングを無効化します。
-	 */
-	/* function disableClipRect(); */
+	// function drawScreen(screen, opacity);
+	// drawTexture に2枚のテクスチャを指定して描画することで代用可能
 
 	/**
-	 * 上記メソッド廃止に伴い、有効/無効プロパティ追加予定。
+	 * スクリーンを描画
+	 * ユニバーサルトランジション相当描画
+	 * @param screen 描画用スクリーン
+	 * @param maskTexture マスク用テクスチャ(grayなものに限る)
+	 * @param vague vague値
+	 * @param opacity 不透明度指定(0～1.0)
 	 */
-	property enableClipRect;
+	// function drawScreenUT(screen, maskTexture, vague, opacity);
+	// drawTexture に3枚のテクスチャを指定して描画することで代用可能
+
+	/**
+	 * アルファクリッピングの設定(setClipとは排他) -> 実装上は clipRect と排他である必要はないので、
+	 * @param maskTextureId マスク用テクスチャ(grayなものに限る)
+	 * @param l オフセット指定
+	 * @param t オフセット指定
+	 */
+	function setClipMask(maskTexture, l, t);
+	// drawTextre で通常テクスチャとアルファテクスチャを指定し、シェーダーを書くことで実現可能。
 };
 

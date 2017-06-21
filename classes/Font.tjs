@@ -1,0 +1,8 @@
+class Font {
+	/**
+	 * フォントシステムにフォントを追加する。
+	 * @param storage フォントファイル名
+	 * @return ファイルに入っているフェイス名を配列で返す。
+	 */
+	static function addFont( storage ) : Array;
+};

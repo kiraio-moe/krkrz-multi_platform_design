@@ -1,0 +1,116 @@
+
+function BitmapLayerTreeOwner()
+	/**
+	 * クリックをレイヤに通知します(使用非推奨)
+	 */
+	function fireClick( x, y );
+	/**
+	 * ダブルクリックをレイヤに通知します(使用非推奨)
+	 */
+	function fireDoubleClick( x, y );
+	/**
+	 * マウス押下をレイヤに通知します。
+	 */
+	function fireMouseDown( x, y, mb, flags );
+	/**
+	 * マウス押下をレイヤに通知します。
+	 */
+	function fireMouseUp( x, y, mb, flags );
+	/**
+	 * マウス移動をレイヤに通知します。
+	 */
+	function fireMouseMove( x, y, flags );
+	/**
+	 * マウスのホイール回転をレイヤに通知します。
+	 */
+	function fireMouseWheel( shift, delta, x, y );
+	/**
+	 * マウスキャプチャ解除をレイヤに通知します。
+	 */
+	function fireReleaseCapture();
+	/**
+	 * マウスがWindow外に出たことをレイヤに通知します。
+	 */
+	function fireMouseOutOfWindow();
+	/**
+	 * タッチされたことをレイヤに通知します。
+	 */
+	function fireTouchDown( x, y, cx, cy, id );
+	/**
+	 * タッチが離されたことをレイヤに通知します。
+	 */
+	function fireTouchUp( x, y, cx, cy, id );
+	/**
+	 * タッチが移動されたことをレイヤに通知します。
+	 */
+	function fireTouchMove( x, y, cx, cy, id );
+	/**
+	 * 拡大操作されたことをレイヤに通知します。
+	 */
+	function fireTouchScaling( startdist, curdist, cx, cy, flag );
+	/**
+	 * 回転操作されたことをレイヤに通知します。
+	 */
+	function fireTouchRotate( startangle, curangle, dist, cx, cy, flag );
+	/**
+	 * マルチタッチ状態変化をレイヤに通知します。
+	 */
+	function fireMultiTouch();
+	/**
+	 * キーが押されたことをレイヤに通知します。
+	 */
+	function fireKeyDown( key, shift );
+	/**
+	 * キーが離されたことをレイヤに通知します。
+	 */
+	function fireKeyUp( key, shift );
+	/**
+	 * 文字が入力されたことをレイヤに通知します。
+	 */
+	function fireKeyPress( key);
+	/**
+	 * 画面が回転されたことをレイヤに通知します。
+	 */
+	function fireDisplayRotate( orientation, rotate, bpp, hresolution, vresolution );
+	/**
+	 * 必要なら1秒間隔で呼び出します。
+	 * 現在のレイヤのマウス位置確認とヒントの更新、カーソルタイプ、レイヤEnter/Leaveが再チェックされます。
+	 * 内部的にはマウスカーソル移動0呼び出しが行われています。
+	 * 必要かどうかは…？
+	 */
+	function fireRecheckInputState();
+
+	// ---------
+	// events
+	function onSetMouseCursor( cursor );
+	function onGetCursorPos( x, y );
+	function onSetCursorPos( x, y );
+	function onReleaseMouseCapture();
+	function onSetHintText( sender, hint );
+	function onResizeLayer( w, h );
+	function onChangeLayerImage();
+	function onSetAttentionPoint( layer, x, y );
+	function onDisableAttentionPoint();
+	function onSetImeMode( mode );
+	function onResetImeMode();
+
+	/** 幅(readonly) */
+	property width;
+	/** 高さ(readonly) */
+	property height;
+	/** 描画されているBitmapクラスのインスタンス(readonly) */
+	proporty bitmap;
+	/** 更新領域、Rectクラス。isUpdatedがtrueの時のみ内容有効(readonly) */
+	proporty dirtyRect;
+	/** 更新の有無(readonly) */
+	proporty isUpdated;
+
+	/** LTOインターフェイス、内部使用(readonly) */
+	property layerTreeOwnerInterface;
+
+	/** フォーカスのあるレイヤ */
+	propoerty focusedLayer;
+
+	/** プライマリレイヤ(readonly) */
+	property primaryLayer;
+};

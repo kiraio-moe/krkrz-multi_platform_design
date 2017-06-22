@@ -2,6 +2,8 @@
  * オフスクリーン。
  * いわゆるレンダーターゲット。テクスチャとしても利用可能。
  * OpenGL ES2.0 では、FBO, Renderbuffer, Texture が生成される。
+ * レンダーターゲットとして設定しないのであれば、わざわざこのクラスを使用する必要性はない。
+ * Textureクラスを使用した方が良い。
  */
 class Offscreen {
 	/**
@@ -12,65 +14,64 @@ class Offscreen {
 	 */
 	function Offscreen( width, height, pbo=false );
 
+
 	/**
-	 * Bitmapからスクリーンに領域指定してコピー
-	 * @param bitmap 吉里吉里ビットマップ
-	 * @param sleft 描画元x
-	 * @param stop 描画元y
-	 * @param width サイズ横幅
-	 * @param height サイズ縦幅
-	 * @param left 描画先x
-	 * @param top 描画先y
+	 * 矩形コピー
+	 * @param dleft コピー先左端
+	 * @param dtop コピー先上端
+	 * @param src Bitmapクラスのオブジェクト
+	 * @param srcRect srcのコピー元矩形
 	 */
-	function copyFromBitmap( bitmap, sleft, stop, width, height, left, top);
+	function copyRect( dleft, dtop, src, srcRect:Rect );
+
+	/**
+	 * 矩形コピー
+	 * @param dleft コピー先左端
+	 * @param dtop コピー先上端
+	 * @param src Bitmapクラスのオブジェクト
+	 * @param sleft コピー元左端位置
+	 * @param stop コピー元上端位置
+	 * @param swidth コピー元幅
+	 * @param sheight コピー元高さ
+	 */
+	function copyRect( dleft, dtop, src, sleft, stop, swidth, sheight );
 
     /**
-	 * スクリーンからBitmapに領域指定してコピー
+	 * Bitmapにコピー
 	 * @param destBitmap 格納先ビットマップ
-	 * @param sleft 描画元x
-	 * @param stop 描画元y
+	 * @param dleft コピー先左端
+	 * @param dtop コピー先上端
+	 * @param sleft コピー元左端
+	 * @param stop コピー元上端
 	 * @param width サイズ横幅
 	 * @param height サイズ縦幅
-	 * @param dleft 描画先x
-	 * @param dtop 描画先y
 	 */
-	function copyToBitmap( destBitmap, left, top, width, height, dleft, dtop);
+	function copyTo( destBitmap, dleft, dtop, sleft, stop, width, height );
+
+    /**
+	 * Bitmapにコピー
+	 * BitmapはOffscreenのサイズに合わせて拡大縮小される
+	 * @param destBitmap 格納先ビットマップ
+	 */
+	function copyTo( destBitmap );
+
+    /**
+	 * Bitmapにコピー
+	 * @param destBitmap 格納先ビットマップ
+	 * @param dleft コピー先左端
+	 * @param dtop コピー先上端
+	 * @param srcRect コピー元矩形
+	 */
+	function copyTo( destBitmap, dleft, dtop, srcRect:Rect );
+
 	// レンダーターゲットへはTextureを設定する(再利用のため)ので、実質的にTextureからメモリへのコピーになるが、
-	// OpenGL ES 2.0 では調べた範囲では出来ない(フレームバッファとして設定されている間ならフレームバッファからの
-	// コピーとして出来るはず)と思われる。
-	// glGetTextureImage は、OpenGL にはあるが、ES では使えない。
-	// OpenGL ES 3.0 以降なら PBOを使用してコピーできる(はず)
-	// OpenGL ES 2.0 ならレンダーターゲットとしてフレームバッファに設定している間、OpenGL ES 3.0 ならいつでも可能
-	// と言うことになるが、2.0 の制限は分かり辛過ぎるので、OpenGL ES 3.0 以降でないと使えないメソッドと言う扱いの
-	// 方が妥当と思われる。
-	// もしくは、コピーが必要な時にフレームバッファに設定されていない場合、一時的に設定してコピー後元に戻すという
-	// 方法で一応実現可能。
-	// PBO がスマートだが、どうしても 2.0 でと言うことなら、一時設定もやむなし。
-	// OpenGL ES 3.0 は Android 4.3以降だが、一部端末で問題が出るため、4.4以降のものも含まれる。
-	// この点注意してこのメソッドを扱う必要がある。
-	// PBO でも glGetTextureImage がないので、結局一度フレームバッファに設定する羽目になるのであった。
+	// OpenGL ES 2.0/3.0 ではフレームバッファからしかコピーできない。
+	// このため copyTo メソッドは、一度フレームバッファに設定してからコピーし、その後元のレンダーターゲットに
+	// 戻すような処理が行われる。
 	// つまり、このメソッドは極力使わないことを推奨する方が良さげと言うか、非効率的
 	// 現在フレームバッファに設定されているのであれば、マシであるが。
 	// ただし、実際に非効率的かは速度を計測しないことにはわからない。
-
-
-	// function captureScreen(screenId, destBitmap);
-	// copyToBitmap で引数が1つだけの時は、同機能となる仕様へ
-
-	/**
-	 * @param laytree BitmapLayerTreeOwner なオブジェクトをスクリーンに反映
-	 * ※更新部分のみ反映できるのが望ましい
-	 * 生成時に laytree を持てる持てないの指定があった方がいいような
-	 * 
-	 * Offscreen を継承した OffscreenLayerTreeOwnerクラスを作るのが良さそう。
-	 * 継承と言っても同一メソッドを持つクラスにするか、きちんとした継承かは考える。
-	 * OpenGL ES3.0 以降であればPBOが使え、PBOからTextureへの転送はDMA処理されるため、CPU負荷が軽い。
-	 * Layer更新時に自動的にPBOコピーからTextureへ転送するプロパティ追加して、自動転送とする方が、結果的に高速に動く。
-	 * 毎フレーム更新するような場合は、PBO/Textureを2つ作りダブルバッファリングすることで、転送待ちをなくせる。
-	 * つまり、OffscreenLayerTreeOwnerクラスでは、PBOは強制的に作られることになる。
-	 * OpenGL ES 2.0 の時は、PBOが使えないので転送待ちが発生してしまうが、4.4以降の端末の方が多いだろうから影響は少ないか？
-	 */
-	function update( laytree );
+	// そもそも CPU <-> GPU 間の転送はなるべく避けた方が良い。
 
 	/**
 	 * 幅、生成時に指定されたもの
@@ -87,7 +88,3 @@ class Offscreen {
 	 */
 	property nativeHandle;
 };
-// 形式上 Texture <- Offscreen <- OffscreenLayerTreeOwner の継承関係があるようなスタイルが好ましい
-// メソッド等
-// ただ、一部 Texture Ofscreen は互換性がない方がわかりやすいか……
-

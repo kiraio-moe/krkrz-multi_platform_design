@@ -1,5 +1,5 @@
 
-function BitmapLayerTreeOwner()
+class BitmapLayerTreeOwner {
 	/**
 	 * クリックをレイヤに通知します(使用非推奨)
 	 */
@@ -79,6 +79,11 @@ function BitmapLayerTreeOwner()
 	 * 必要かどうかは…？
 	 */
 	function fireRecheckInputState();
+
+	/**
+	 * 更新矩形情報をクリアする
+	 */
+	function clearDirtyRect();
 
 	// ---------
 	// events

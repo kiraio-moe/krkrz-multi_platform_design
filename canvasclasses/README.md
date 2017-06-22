@@ -17,8 +17,36 @@ Meshクラスではもし3D対応した時に名前が被りそうなので、�
 * Window.tjs  
 メソッド等が大きく削られ、一部追加されたWindowクラス。
 
+## Layerを描画する方法
+BitmapLayerTreeOwnerクラスにclearDirtyRectメソッド、dirtyRect/isUpdatedプロパティを追加した。  
+BitmapLayerTreeOwnerクラスをオーナーとしてLayerクラスを生成。  
+描画タイミングでBitmapLayerTreeOwner.isUpdatedがtrueなら以前から画像が更新されているので、テクスチャに画像を転送する。  
+更新された領域はdirtyRectで取得。  
+テクスチャサイズはプライマリーレイヤサイズ(BitmapLayerTreeOwner.bitmap)と合わせておく。  
+仮想コードで書くと以下のように記述することで更新矩形をテクスチャに転送できる。  
+```javascript
+BitmapLayerTreeOwner lto;
+Texture texture = new Texture( width, height );
+texture.copyRect( lto.dirtyRect.left, lto.dirtyRect.top, lto.bitmap, lto.dirtyRect );
+lto.clearDirtyRect();
+```
+Offscreenクラスにも同様のコピーメソッドがあるので、同じように出来るが、レンダーターゲットとして設定できるようFBOなど含むためメモリ的にオーバーヘッドがある。  
+レンダーターゲットとして使わないのであれば、Textureクラスを使う方が良い。  
+Layerで描画するという用途的に、Offscreenクラスを使う必要はないと思われる。
+
+
 ## 互換性に関して
 OffscreenにLayer Treeを描画する機能の要望があり、更新領域のみコピー可能ということで、OffscreenクラスはLayer Tree Ownerインターフェイスを持つ実装した方が良い。   
 OffscreenにLTOインターフェイスを持たせれば、従来とほぼ互換動作を実現できる。  
 現在のWindowクラスのLTOインターフェイスは、ほぼDrawDeviceが提供しているが、DrawDeviceではなく新設されたハードウェア描画が使われる場合に、Windowを指定してLayerが生成された時、Offscreenクラスを内部で生成しCanvasにデフォルトOffscreenとして登録、Layer更新時の通知からOnDrawイベントを生成して、Canvasでの描画開始前にデフォルトOffscreenを描画、もしくはOnDraw呼出し後に描画することで、従来と同じようにLayerが使用可能となるように実装できると考えられる。  
 ただし、DrawDeviceに関してはなくなるので、DrawDevice依存している部分や独自DrawDeviceを使用している場合、その部分の互換性は失われる。
+
+## TextureLayerTreeOwner
+今回はTextureLayerTreeOwnerを作らなくても、上述のBitmapLayerTreeOwnerのメンバ追加によって部分的な更新は対応できるため、作らない。  
+互換性向上のためにはTextureLayerTreeOwnerは必要であるので、PBOを使った非同期更新の効率の良い実装で将来作りたい。  
+その場合、OpenGL ES3.0 以降専用となるが、それほど大きな問題ではないだろう。  
+
+OpenGL ES3.0 以降であればPBOが使え、PBOからTextureへの転送はDMA処理されるため、CPU負荷が軽い。  
+Layer更新時に自動的にPBOコピーからTextureへ転送する。  
+それに合わせてOnDrawイベント呼び出しを行い、画面へ描画を反映させると従来と同じような動作となる。  
+毎フレーム更新するような場合は、PBO/Textureを2つ作りダブルバッファリングすることで、転送待ちをなくせる。  

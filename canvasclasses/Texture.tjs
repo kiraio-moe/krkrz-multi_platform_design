@@ -19,8 +19,37 @@ class Texture {
 	 */
 	function Texture( bitmap, gray=false, p2=false );
 
+	/**
+	 * コンストラクタ
+	 * テクスチャの内容は未初期化なのでごみが入っている。
+	 * @param width テクスチャ幅
+	 * @param height テクスチャ高さ
+	 * @param alpha アルファテクスチャかどうか
+	 */
+	function Texture( width, height, alpha=false );
+
 	// invalidateでテクスチャ無効化
 	// 明示的に呼び出すことを推奨
+
+	/**
+	 * 矩形コピー
+	 * @param dleft コピー先左端
+	 * @param dtop コピー先上端
+	 * @param src Bitmapクラスのオブジェクト
+	 * @param srcRect srcのコピー元矩形
+	 */
+	function copyRect( dleft, dtop, src, srcRect:Rect );
+	/**
+	 * 矩形コピー
+	 * @param dleft コピー先左端
+	 * @param dtop コピー先上端
+	 * @param src Bitmapクラスのオブジェクト
+	 * @param sleft コピー元左端位置
+	 * @param stop コピー元上端位置
+	 * @param swidth コピー元幅
+	 * @param sheight コピー元高さ
+	 */
+	function copyRect( dleft, dtop, src, sleft, stop, swidth, sheight );
 
 	/* 幅(有効範囲), pot指定されていなければ、memoryWidthと同一 */
 	property width;

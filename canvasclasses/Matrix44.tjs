@@ -3,6 +3,9 @@
 // 最初は多数の変数を受け渡ししたりするのを回避するのが主目的
 // テストのために一部メソッドは追加。
 // 実使用だと乗算や現在の行列に移動量をかけるなど必要装に思うが……
+//
+// OpenGLのため列優先行列であることに注意(列優先の方が演算量的に有利)。
+// DirectXなどから見ると転置されているように感じる(シェーダのHLSLでは列優先のようだ)。
 class Matrix44 {
 
 	functiont Matrix44();  単位行列で生成
@@ -15,7 +18,7 @@ class Matrix44 {
 	function set(array);	// 1次元配列からコピー
 	function set(matrix);	// matrixからコピー
 
-	// function identity();  単位行列化
+	// 単位行列化
 	function reset();
 
 	/**
@@ -24,8 +27,9 @@ class Matrix44 {
 	 * 設定のみで現在の行列との演算などは行われません。
 	 * @param x 設定するX座標値
 	 * @param y 設定するY座標値
+	 * @param z 設定するZ座標値
 	 */
-	function setTranslate( x:real, y:real );
+	function setTranslate( x:real, y:real, z:real=0.0 );
 
 	/**
 	 * 拡大率設定
@@ -33,8 +37,9 @@ class Matrix44 {
 	 * 設定のみで現在の行列との演算などは行われません。
 	 * @param x 設定するX軸拡大率
 	 * @param y 設定するY軸拡大率
+	 * @param z 設定するZ軸拡大率
 	 */
-	function setScale( x:real, y:real );
+	function setScale( x:real, y:real, z=1.0 );
 
 	/**
 	 * 回転量設定
@@ -42,7 +47,31 @@ class Matrix44 {
 	 * 設定のみで現在の行列との演算などは行われません。
 	 * @param degree 回転角度
 	 */
-	function setRotate( degree:real );
+	function setRotateZ( degree:real );
+
+	/**
+	 * 自身に行列を加算します
+	 * @param matrix 加算する行列
+	 */
+	function add( matrix:Matrix44 );
+
+	/**
+	 * 自身から行列を減算します
+	 * @param matrix 減算する行列
+	 */
+	function sub( matrix:Matrix44 );
+
+	/**
+	 * 自身に行列を乗算します
+	 * @param matrix 乗算する行列
+	 */
+	function mul( matrix:Matrix44 );
+
+	/**
+	 * 自身から行列を除算します
+	 * @param matrix 除算する行列
+	 */
+	function div( matrix:Matrix44 );
 
 	property array;	// 1次元配列で受け取る(r)
 

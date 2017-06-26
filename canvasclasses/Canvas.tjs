@@ -113,6 +113,12 @@ class Canvas {
 	 */
 	property enableClipRect;
 
+	/**
+	 * 描画をフラッシュする。
+	 * 描画を反映したいrenderTargetを入れ替える場合などに使われる。
+	 * onDraw中にrenderTargetを入れ替えると、内部的にflushは呼ばれる。
+	 */
+	function flush();
 
 	// ---------------------------------------------------------------
 	// テキスト描画

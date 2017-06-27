@@ -44,8 +44,15 @@ class Canvas {
 	/** 描画マトリックス指定(Matrix44 クラス) */
 	property matrix;
 
-	// save/restore で matrix と clip のセーブと復元は欲しいよね。push/pop
-	// sprite 作る時も
+	/**
+	 * matrix と clip の状態を保存する(スタック)
+	 */
+	function save();
+
+	/**
+	 * matrix と clip の状態を復元する(スタック)
+	 */
+	function restore();
 
 	// ---------------------------------------------------------------
 	// 2D系描画処理

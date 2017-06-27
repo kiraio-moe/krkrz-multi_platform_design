@@ -71,6 +71,14 @@ class Matrix32 {
 	function rotate( degree:real );
 
 	/**
+	 * 行列を回転させる
+	 * @param degree 回転角度
+	 * @param px 中心点
+	 * @param py 中心点
+	 */
+	function rotate( degree:real, px:real, py:real );
+
+	/**
 	 * 行列を拡大させる
 	 * @param x 拡大率X座標値
 	 * @param y 拡大率Y座標値

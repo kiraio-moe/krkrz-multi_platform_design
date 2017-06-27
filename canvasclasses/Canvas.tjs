@@ -57,17 +57,13 @@ class Canvas {
 	// ---------------------------------------------------------------
 	// 2D系描画処理
 	/**
-	 * 単色での塗りつぶし
-	 * @param left
-	 * @param top
+	 * 色での塗りつぶし
 	 * @param width
 	 * @param height
-	 * @param colors 4頂点の頂点カラーARGB。void/null は未定義(0xffffffff)、単独数値なら単色、配列なら4頂点個別指定
+	 * @param colors 4頂点の頂点カラーARGB。単独数値なら単色、配列なら4頂点個別指定
+	 * @param shader 塗りつぶしシェーダー
 	 */
-	function fill(left, top, width, height, colors);
-	// left, top は省略して、matrix指定の方が統一性が取れるよな……
-	// matrix stack 使用するのなら、そっちの方がやりやすいだろうし
-	// fill( width, height, colors, shader=null );
+	function fill( width, height, colors=0xffffffff, shader=null );
 
 	/**
 	 * テクスチャでのメッシュ描画
@@ -101,6 +97,12 @@ class Canvas {
 	 * 設定もできるが、基本的に変更する必要はない
 	 */
 	property defaultShader;
+	
+	/**
+	 * fill時に使用されるデフォルトのシェーダー
+	 * 設定もできるが、基本的に変更する必要はない
+	 */
+	property defaultFillShader;
 
 	/** 描画領域の幅。基本的にはクライアント領域と一致、Windowリサイズから再描画まで一時的にずれる期間あり */
 	property width;

@@ -6,27 +6,27 @@ class Texture {
 	/**
 	 * コンストラクタ
 	 * @filename 画像ファイル名
-	 * @param gray 強制 gray 化(内部ではアルファテクスチャ)
+	 * @param format カラーフォーマット(tcfRGBA or tcfAlpha), tcfAlpha選択時に色情報はグレイスケール化される
 	 * @param p2 サイズ2の累乗化(必須ではないが高速化する環境もある、一応指定可能に、内部で吸収でもいいが…… obsolate化の可能性あり)undocumentがいいか？
 	 */
-	function Texture( filename, gray=false, p2=false );
+	function Texture( filename, format=tcfRGBA, p2=false );
 
 	/**
 	 * コンストラクタ
 	 * @param bitmap テクスチャの元となるBitmapクラスのインスタンス
-	 * @param gray 強制 gray 化(内部ではアルファテクスチャ)
+	 * @param format カラーフォーマット(tcfRGBA or tcfAlpha), tcfAlpha選択時に色情報はグレイスケール化される
 	 * @param p2 サイズ2の累乗化(必須ではないが高速化する環境もある、一応指定可能に、内部で吸収でもいいが…… obsolate化の可能性あり)undocumentがいいか？
 	 */
-	function Texture( bitmap, gray=false, p2=false );
+	function Texture( bitmap, format=tcfRGBA, p2=false );
 
 	/**
 	 * コンストラクタ
 	 * テクスチャの内容は未初期化なのでごみが入っている。
 	 * @param width テクスチャ幅
 	 * @param height テクスチャ高さ
-	 * @param alpha アルファテクスチャかどうか
+	 * @param format カラーフォーマット(tcfRGBA or tcfAlpha)
 	 */
-	function Texture( width, height, alpha=false );
+	function Texture( width, height, format=tcfRGBA );
 
 	// invalidateでテクスチャ無効化
 	// 明示的に呼び出すことを推奨
@@ -50,6 +50,12 @@ class Texture {
 	 * @param sheight コピー元高さ
 	 */
 	function copyRect( dleft, dtop, src, sleft, stop, swidth, sheight );
+	/**
+	 * 矩形コピー
+	 * bitmap全体をコピーします。はみ出す場合はクリッピングされます。
+	 * @param src Bitmapクラスのオブジェクト
+	 */
+	function copyRect( src:Bitmap );
 
 	/* 幅(有効範囲), pot指定されていなければ、memoryWidthと同一 */
 	property width;

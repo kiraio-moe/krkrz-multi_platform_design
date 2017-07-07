@@ -3,6 +3,18 @@
  * メッシュ情報オブジェクト
  * ※ drawMesh 用の情報最適化のために専用オブジェクト化
  * VBO や VAO(ES3) など色々検討課題が多いので、Meshは一度わきに置いておく
+ *
+ * property として追加されたメンバとShaderProgramのメンバを結び付けて描画を行うためのクラス。
+ * プロパティが VertexBuffer クラスの場合は、attributeのShaderProgramメンバとして
+ * Texture/Offscreenの場合は、テクスチャとして設定後、uniformのShaderProgramとして
+ * 設定される。
+ * Texture/Offscreenのインデックスは順不同。
+ *
+ * → Indexbuffer と vertexbuffer の関連付けが上記では実現できない。
+ * もう少し検討の必要あり？
+ * VertexBufferがIndexbufferの場合は、別動作にすると何とかなるか。
+ *
+ * VAOを使うには事前にshaderが必要なので、そのセットアップメソッドも必要。
  */
 class Mesh2D {
 

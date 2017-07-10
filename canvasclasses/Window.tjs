@@ -50,23 +50,40 @@ class Window {
 	property waitVSync;
 
 	/**
-	 * マウス系イベント
-	 * Android などの場合は最初のタッチでの動作でエミュ
+	 * 何らかのポインティングデバイスで押下された
+	 * @param type タッチもしくはマウスボタンの種類
+	 * @param x X位置
+	 * @param y Y位置
+	 * @param cx 接触幅(ピクセル数)、マウスの時は1
+	 * @param cy 接触高さ(ピクセル数)、マウスの時は1
+	 * @param shift 修飾キー状態、タッチの時は0
+	 * @param id タッチID、マウスの時は常に0
 	 */
-	onMouseXXXX();
+	function onPointerDown( type, x, y, cx, cy, shift, id );
 
 	/**
-	 * タッチ系イベント
-	 * Windows でマウスしかない場合は、それでエミュ
+	 * 何らかのポインティングデバイスが移動された
+	 * @param type タッチもしくはマウス。マウスボタンの種類ではなく、マウスとして通知。
+	 * @param x X位置
+	 * @param y Y位置
+	 * @param cx 接触幅(ピクセル数)、マウスの時は1
+	 * @param cy 接触高さ(ピクセル数)、マウスの時は1
+	 * @param shift 修飾キー状態(マウス押下状態を含む)、タッチの時は0
+	 * @param id タッチID、マウスの時は常に0
 	 */
-	function onTouchXXXX();
+	function onPointerMove( type, x, y, cx, cy, shift, id );
 
-	// 以下のようなイベントに集約する方が、エミュよりスマートに思える。
-	// MouseXXXとTouchXXXと同時発生しつつ、基本はonPointer系で単一処理にするような。
-	// 一応パラメータでどのデバイスからの入力か識別可能にはしておく形
-	function onPointerDown();
-	function onPointerMove();
-	function onPointerUp();
+	/**
+	 * 何らかのポインティングデバイスが離された
+	 * @param type タッチもしくはマウスボタンの種類
+	 * @param x X位置
+	 * @param y Y位置
+	 * @param cx 接触幅(ピクセル数)、マウスの時は1
+	 * @param cy 接触高さ(ピクセル数)、マウスの時は1
+	 * @param shift 修飾キー状態、タッチの時は0
+	 * @param id タッチID、マウスの時は常に0
+	 */
+	function onPointerUp( type, x, y, cx, cy, shift, id );
 
 	/**
 	 * キー操作系要検討

@@ -9,3 +9,15 @@ const
  bmAdd = 2,
  bmAddWithAlpha = 3,
 
+
+/* Pointer type */
+ ptUnknown = 0,
+ ptMouseLeft = 1,
+ ptMouseRight = 2,
+ ptMouseMiddle = 3,
+ ptMouseX1 = 4,
+ ptMouseX2 = 5,
+ ptMouse = 6,
+ ptTouch = 7,
+ ptPen = 8,
+ 

@@ -17,7 +17,8 @@ OSの違いによる避けがたい仕様を除く。
 * DirectX 11必須
 
 ### Android
-* Android4.2以降限定  
+* Android4.4以降限定  
+* OpenGL ES 3.0以降推奨(2.0必須 再考の可能性あり)
 
 その他 [Android作業項目や制限等](andoird_design.md) を参照。
 
@@ -31,6 +32,9 @@ Android Studioやコマンドライン(make)併用。
 ### 開発の進め方
 [開発の進め方](development_plan.md)
 
+### マルチプラットフォーム版への対応
+[吉里吉里Z マルチプラットフォーム版開発/移植時の注意点](cautionary_note.md)
+
 ### その他マルチプラットフォーム化に関して
 プラットフォーム依存部分のスタブ作成と各種ライブラリでの実装(置き換え)で行うとPC上である程度開発できるので効率的に進められる。  
 グラフィック部分をPC上でOpenGL(ES2)を使い開発出来るとAndroidの開発効率がかなり違うが、それをできるまでの工数を考える必要がある。  
@@ -39,9 +43,9 @@ Android Studioやコマンドライン(make)併用。
 
 #### 各種ライブラリは以下のものを検討
 
-* POCO : Threadや環境情報など
-* PortAudio : サウンド。Android の OpenSL は対応していないので別実装の必要あり
-* GLFW : OS GUI周り。Android はこの部分独自になるが、OpenGL は共通。
+* POCO : Threadや環境情報など → Thread は C++11の機能+pthreadへ
+* PortAudio : サウンド。Android の OpenSL は対応していないので別実装の必要あり → 環境ごとに実装
+* GLFW : OS GUI周り。Android はこの部分独自になるが、OpenGL は共通。 → 環境ごとに実装
 * Movie は固有で実装。
 
 Windowについては、Androidでは1つのみ生成可能、Layer Tree Ownerでダイアログのハードウェアレイヤーの実装案で将来代替も考慮。

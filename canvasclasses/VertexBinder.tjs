@@ -1,0 +1,36 @@
+/**
+ * VertexBufferとシェーダーに入力する頂点情報を関連付けるためのクラス。
+ * ShaderProgramのプロパティにはこのクラスのインスタンスを設定する。
+ * ShaderProgramに設定されたVertexBinderは、シェーダーへ頂点情報として渡される。
+ */
+
+class VertexBinder {
+
+	/**
+	 * コンストラクタ
+	 * @param 関連付けるVertexBuffer
+	 */
+	function VertexBinder( vertex:VertexBuffer );
+
+	/**
+	 * 頂点バッファ(VertexBufferクラス readonly)
+	 */
+	property vertexBuffer;
+
+	/**
+	 * 頂点ごとのストライド(バイト数)
+	 */
+	property stride;
+
+	/**
+	 * 頂点要素数 (1～4)
+	 * デフォルトは4
+	 */
+	property componentCount;
+
+	/**
+	 * 頂点バッファ
+	 * デフォルトは0
+	 */
+	property offset;
+};

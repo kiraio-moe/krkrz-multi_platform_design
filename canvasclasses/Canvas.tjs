@@ -17,7 +17,7 @@ class Canvas {
 	 * 描画領域全体をクリア
 	 * @param argb クリア色(未指定時はclearColorプロパティでクリアされる)
 	 */
-	function clear(argb);
+	function clear(argb:int);
 
 	/**
 	 * 現在の描画内容全体をBitmap/Texture/Offscreenにキャプチャ
@@ -26,7 +26,7 @@ class Canvas {
 	 * @param dest キャプチャ先Bitmap/Texture/Offscreen
 	 * @param front front bufferからのキャプチャかback bufferからのキャプチャかの指定。trueでfront、falseでback
 	 */
-	function capture(dest,front=true);
+	function capture(dest,front:bool=true);
 
 	/**
 	 * 描画ターゲット指定
@@ -61,16 +61,16 @@ class Canvas {
 	 * @param width
 	 * @param height
 	 * @param colors 4頂点の頂点カラーARGB。単独数値なら単色、配列なら4頂点個別指定
-	 * @param shader 塗りつぶしシェーダー
+	 * @param shader 塗りつぶしシェーダー。nullの時defaultFillShaderで塗りつぶされる
 	 */
-	function fill( width, height, colors=0xffffffff, shader=null );
+	function fill( width:int, height:int, colors=0xffffffff, shader=null );
 
 	/**
 	 * テクスチャでのメッシュ描画
-	 * @param texture テクスチャ番号
-	 * @param mesh メッシュ情報(Meshオブジェクトで指定)
+	 * メッシュ(頂点情報)は、呼び出し前にshaderに関連付け(プロパティで設定)しておく
+	 * @param shader テクスチャや頂点情報まで関連付けられたシェーダーを指定する
 	 */
- 	function drawMesh(texture, mesh);
+ 	function drawMesh( shader:ShaderProgram );
 
 	/**
 	 * テクスチャを描画する。
@@ -87,10 +87,10 @@ class Canvas {
 	 * とりあえずは3枚まで定義しておく。
 	 * 将来的にはテクスチャを配列で渡すバージョンを作り、4枚以上はそちらで対応する。
 	 */
-	function drawTexture( texture );
-	function drawTexture( texture, shader );
-	function drawTexture( texture, texture2, shader );
-	function drawTexture( texture, texture2, texture3, shader );
+	function drawTexture( texture:Texture );
+	function drawTexture( texture:Texture, shader:ShaderProgram );
+	function drawTexture( texture:Texture, texture2:Texture, shader:ShaderProgram );
+	function drawTexture( texture:Texture, texture2:Texture, texture3:Texture, shader:ShaderProgram );
 
 	/**
 	 * テクスチャの描画に使用されるデフォルトのシェーダー(drawTextureでtexture1枚のみ渡した時のシェーダー)
@@ -141,38 +141,6 @@ class Canvas {
 	 * @param text テキスト
 	 * @param color 色指定
 	 */
-	function drawText(font, x, y, text, color);
-
-
-	// ---------------------------------------------------------------
-	// 以下、シェーダーで実現可能なため、メソッドとしての実装は行わない予定
-    /**
-	 * スクリーンを描画
-	 * クロスフェードトランジション相当描画
-	 * @param screenId 描画用スクリーン
-	 * @param opacity 不透明度指定(0～1.0)
-	 */
-	// function drawScreen(screen, opacity);
-	// drawTexture に2枚のテクスチャを指定して描画することで代用可能
-
-	/**
-	 * スクリーンを描画
-	 * ユニバーサルトランジション相当描画
-	 * @param screen 描画用スクリーン
-	 * @param maskTexture マスク用テクスチャ(grayなものに限る)
-	 * @param vague vague値
-	 * @param opacity 不透明度指定(0～1.0)
-	 */
-	// function drawScreenUT(screen, maskTexture, vague, opacity);
-	// drawTexture に3枚のテクスチャを指定して描画することで代用可能
-
-	/**
-	 * アルファクリッピングの設定(setClipとは排他) -> 実装上は clipRect と排他である必要はないので、
-	 * @param maskTextureId マスク用テクスチャ(grayなものに限る)
-	 * @param l オフセット指定
-	 * @param t オフセット指定
-	 */
-	function setClipMask(maskTexture, l, t);
-	// drawTextre で通常テクスチャとアルファテクスチャを指定し、シェーダーを書くことで実現可能。
+	function drawText(font:Font, x:int, y:int, text:string, color:int);
 };
 

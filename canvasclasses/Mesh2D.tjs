@@ -1,5 +1,9 @@
-
 /**
+ * 色々と検討した結果Meshクラスと言うものはやめて、VertexBuffer/VertexBinderの2つのクラスとCanvas,ShaderProgramとの合わせ技で同等の
+ * 機能を実現する方向にする。
+ * Meshクラスは、LayerやSprite等と似たような性質で、他のクラス等と設計思想的に少し毛色が違ってしまうのと、ShaderProgramへの指定と
+ * TJS2スクリプトとの合わせ技で同等の機能が実現できるため。
+ *
  * メッシュ情報オブジェクト
  * ※ drawMesh 用の情報最適化のために専用オブジェクト化
  * VBO や VAO(ES3) など色々検討課題が多いので、Meshは一度わきに置いておく
@@ -15,6 +19,16 @@
  * VertexBufferがIndexbufferの場合は、別動作にすると何とかなるか。
  *
  * VAOを使うには事前にshaderが必要なので、そのセットアップメソッドも必要。
+ *
+ * プロパティと対応付けようと思ったけど、オフセットやストライドなど、一つのVertexBufferに複数の頂点データまとめておく手法が使えないか。
+ * 明示的にバインドさせるメソッドを追加するのがよい？
+ *
+ *
+ * Mesh クラスと言うものがそもそも要らないか
+ * 他と設計思想が異なっている気もする
+ * VertexBuffer, VertexBinder の2つのクラスを作り、VertexBufferで頂点情報を保持、VertexBinderでストライドやオフセットなどの情報を保持
+ * VertexBinderをShaderProgramのプロパティにセットして、ShaderProgramで頂点等の設定を行うのがスマートか？
+ * テクスチャもShaderProgramのプロパティにセット
  */
 class Mesh2D {
 
@@ -41,4 +55,11 @@ class Mesh2D {
    * @parmm argb 頂点カラー指定
    */
   function addRange(l,t,w,h,x,y,argb);
+  
+  
+  /**
+   * インデックスバッファが使われているかどうか
+   * 追加されているメンバのVertexBufferからIndexタイプのものがあるかどうか探せば対応できるが…
+   */
+  property useIndex;
 };

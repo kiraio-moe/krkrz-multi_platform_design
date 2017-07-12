@@ -1,0 +1,80 @@
+/**
+ * 頂点情報を保持するクラス
+ *
+ * 位置の指定やUV座標などを細かく設定したい場合に使用する。
+ *
+ * プラグインで頂点の配列を直接変更できるようにポインタアクセスも可能とする。
+ * シェーダー+TJS2スクリプト+プラグインでの頂点操作で従来のようなLayer拡張性を確保できると考えられる。
+ * 従来のプラグイン内でほぼ関係していたものに比べるとやや複雑になるかもしれない。
+ */
+class VertexBuffer {
+
+	/**
+	 * コンストラクタ
+	 * @param size バッファのバイト数
+	 * @param dataType byte/ubyte/short/ushort/int/float
+	 * @param updateType Stream/Static/Dynamic データ更新頻度
+	 * @param isIndex インデックスバッファかどうか。頂点バッファならfalse
+	 * @param data 頂点配列、nullだと未初期化値になる。Staticの時は必ず指定すること。
+	 */
+	function VertexBuffer( size:int, dataType:int, updateType:int, isIndex:bool = false, data:Array = null );
+
+	/**
+	 * 頂点データを設定/更新
+	 * Staticの時は失敗する(例外)
+	 * @param array 頂点配列
+	 * @param offset 変更を開始するオフセット
+	 */
+	function setVertex( array:Array, offset:int = 0 );
+
+	/**
+	 * 頂点データをロックし、データへのポインタ(read/write指定)を返す
+	 * プラグイン用
+	 * @return 頂点データへのポインタ、ロックに失敗した時はnull
+	 */
+	function lock();
+
+	/**
+	 * 頂点データのロックを解除する
+	 * プラグイン用
+	 * データの受け渡しが終わったら、バッファが使用される前に呼び出す。
+	 * lockを維持せず、更新したら即座にunlockするのが好ましい。
+	 */
+	function unlock();
+
+	/**
+	 * バッファサイズ(readonly)
+	 */
+	property size;
+
+	/**
+	 * 頂点データの型(readonly)
+	 */
+	property dataType;
+
+	/**
+	 * データ更新頻度(readonly)
+	 */
+	property updateType;
+
+	/**
+	 * インデックスバッファかどうか(readonly)
+	 */
+	property isIndex;
+
+	/** データ型定数 */
+	property dtByte;
+	property dtUByte;
+	property dtShort;
+	property dtUShort;
+	property dtInt;
+	property dtFloat;
+
+	/** 更新頻度定数 */
+	/** 毎フレーム更新 */
+	property utStream;
+	/** 変更なし */
+	property utStatic;
+	/** 頻繁に更新される */
+	property utDynamic
+};

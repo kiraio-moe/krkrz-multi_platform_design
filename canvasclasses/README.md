@@ -50,3 +50,34 @@ OpenGL ES3.0 以降であればPBOが使え、PBOからTextureへの転送はDMA
 Layer更新時に自動的にPBOコピーからTextureへ転送する。  
 それに合わせてOnDrawイベント呼び出しを行い、画面へ描画を反映させると従来と同じような動作となる。  
 毎フレーム更新するような場合は、PBO/Textureを2つ作りダブルバッファリングすることで、転送待ちをなくせる。  
+
+## 間接的に実現できる機能
+### クロスフェード
+```javascript
+var crossfadeShader = new ShaderProgram( default.vert, crossfade.frag );
+crossfadeShader.s_opacity = 0.0;
+Canvas.drawTexture( prevTexture, nextTexture, crossfadeShader );
+```
+のようなスクリプトで実現可能。  
+シェーダーのopcityを変化させることで徐々にフェードを進める。  
+crossfadeShaderなどのシェーダーは1個だけ作り、保持し続けるのが効率的。
+
+### ユニバーサルトランジション
+```javascript
+var universalShader = new ShaderProgram( default.vert, universal.frag );
+universalShader.s_vague = 64.0/255.0;
+universalShader.s_phase = 0.0;
+Canvas.drawTexture( prevTexture, nextTexture, ruleTexture, crossfadeShader );
+```
+のようなスクリプトで実現可能。  
+シェーダーのphaseを変化させることで徐々にフェードを進める。  
+universalShaderなどのシェーダーは1個だけ作り、保持し続けるのが効率的。
+
+### アルファクリッピング
+```javascript
+var alphaclipShader = new ShaderProgram( default.vert, alphaclip.frag );
+Canvas.drawTexture( texture, clipAlpha, alphaclipShader );
+```
+のようなスクリプトで実現可能。  
+alphaclipShaderなどのシェーダーは1個だけ作り、保持し続けるのが効率的。
+

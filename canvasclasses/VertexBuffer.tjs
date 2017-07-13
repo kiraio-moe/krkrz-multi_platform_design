@@ -3,7 +3,7 @@
  *
  * 位置の指定やUV座標などを細かく設定したい場合に使用する。
  *
- * プラグインで頂点の配列を直接変更できるようにポインタアクセスも可能とする。
+ * プラグインで頂点の配列を直接変更できるようにポインタアクセスも可能とする(ただしOpenGLES3.0以降)。
  * シェーダー+TJS2スクリプト+プラグインでの頂点操作で従来のようなLayer拡張性を確保できると考えられる。
  * 従来のプラグイン内でほぼ関係していたものに比べるとやや複雑になるかもしれない。
  */
@@ -11,32 +11,41 @@ class VertexBuffer {
 
 	/**
 	 * コンストラクタ
+	 * 未初期化の頂点バッファを作る。
 	 * @param size バッファのバイト数
-	 * @param dataType byte/ubyte/short/ushort/int/float
+	 * @param dataType データの型。dtByte/dtUByte/dtShort/dtUShort/dtInt/dtFloat
+	 * @param updateType データ更新頻度。utStream/utStatic/utDynamic 
+	 * @param isIndex インデックスバッファかどうか。頂点バッファならfalse
+	 */
+	function VertexBuffer( size:int, dataType:int, updateType:int, isIndex:bool = false );
+
+	/**
+	 * コンストラクタ
+	 * @param data 頂点配列。バッファサイズはこの配列の要素数×データ型サイズ。
+	 * @param dataType byte/ubyte/short/ushort/int/float データの型
 	 * @param updateType Stream/Static/Dynamic データ更新頻度
 	 * @param isIndex インデックスバッファかどうか。頂点バッファならfalse
-	 * @param data 頂点配列、nullだと未初期化値になる。Staticの時は必ず指定すること。
 	 */
-	function VertexBuffer( size:int, dataType:int, updateType:int, isIndex:bool = false, data:Array = null );
+	function VertexBuffer( data:Array, dataType:int, updateType:int, isIndex:bool = false, );
 
 	/**
 	 * 頂点データを設定/更新
 	 * Staticの時は失敗する(例外)
 	 * @param array 頂点配列
-	 * @param offset 変更を開始するオフセット
+	 * @param offset 変更を開始する配列オフセットインデックス(非バイトサイズ)
 	 */
 	function setVertex( array:Array, offset:int = 0 );
 
 	/**
 	 * 頂点データをロックし、データへのポインタ(read/write指定)を返す
-	 * プラグイン用
+	 * プラグイン用( OpenGL ES 3.0以降でないと使えない )
 	 * @return 頂点データへのポインタ、ロックに失敗した時はnull
 	 */
 	function lock();
 
 	/**
 	 * 頂点データのロックを解除する
-	 * プラグイン用
+	 * プラグイン用( OpenGL ES 3.0以降でないと使えない )
 	 * データの受け渡しが終わったら、バッファが使用される前に呼び出す。
 	 * lockを維持せず、更新したら即座にunlockするのが好ましい。
 	 */
@@ -61,6 +70,11 @@ class VertexBuffer {
 	 * インデックスバッファかどうか(readonly)
 	 */
 	property isIndex;
+
+	/**
+	 * ネイティブハンドル
+	 */
+	property nativeHandle;
 
 	/** データ型定数 */
 	property dtByte;

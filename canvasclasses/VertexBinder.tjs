@@ -19,6 +19,7 @@ class VertexBinder {
 
 	/**
 	 * 頂点ごとのストライド(バイト数)
+	 * デフォルトは0
 	 */
 	property stride;
 
@@ -29,8 +30,14 @@ class VertexBinder {
 	property componentCount;
 
 	/**
-	 * 頂点バッファ
+	 * 頂点バッファオフセット(バイト数)
 	 * デフォルトは0
 	 */
 	property offset;
+
+	/**
+	 * 正規化するかどうか。trueの場合、非float型の時[-1.0～0.0～1.0]の間に正規化されシェーダーに送られる
+	 * デフォルトはfalse
+	 */
+	property normalize;
 };

@@ -81,7 +81,9 @@ class VertexBuffer {
 	property dtUByte;
 	property dtShort;
 	property dtUShort;
-	property dtInt;
+	property dtInt;		// ES3.0
+	property dtUInt;	// ES3.0
+	property dtFixed;
 	property dtFloat;
 
 	/** 更新頻度定数 */
@@ -90,5 +92,14 @@ class VertexBuffer {
 	/** 変更なし */
 	property utStatic;
 	/** 頻繁に更新される */
-	property utDynamic
+	property utDynamic;
+
+	/** プリミティブ型定数 */
+	property ptPoints;
+	property ptLineStrip;
+	property ptLineLoop;
+	property ptLines;
+	property ptTriangleStrip;
+	property ptTriangleFan;
+	property ptTriangles;
 };

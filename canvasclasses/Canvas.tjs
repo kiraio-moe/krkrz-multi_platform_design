@@ -58,19 +58,37 @@ class Canvas {
 	// 2D系描画処理
 	/**
 	 * 色での塗りつぶし
-	 * @param width
-	 * @param height
+	 * XY座標はmatrixで指定する。
+	 * @param width 塗りつぶし範囲幅
+	 * @param height 塗りつぶし範囲高さ
 	 * @param colors 4頂点の頂点カラーARGB。単独数値なら単色、配列なら4頂点個別指定
 	 * @param shader 塗りつぶしシェーダー。nullの時defaultFillShaderで塗りつぶされる
 	 */
 	function fill( width:int, height:int, colors=0xffffffff, shader=null );
 
 	/**
-	 * テクスチャでのメッシュ描画
-	 * メッシュ(頂点情報)は、呼び出し前にshaderに関連付け(プロパティで設定)しておく
+	 * メッシュ描画
+	 * メッシュ(VertexBinder:頂点情報)は、呼び出し前にshaderに関連付け(プロパティで設定)しておく。
+	 * テクスチャ情報も同様に関連付けしておく。
+	 * 呼出し後shaderに関連付けた情報は解除(=void)する。
 	 * @param shader テクスチャや頂点情報まで関連付けられたシェーダーを指定する
+	 * @param count 描画する頂点数
+	 * @param primitiveType トライアングルなどの指定
+	 * @param offset 頂点配列の中で描画開始するオフセット
 	 */
- 	function drawMesh( shader:ShaderProgram );
+ 	function drawMesh( shader:ShaderProgram, count:int, primitiveType:int=VertexBuffer.ptTriangles, offset:int=0 );
+
+ 	/**
+ 	 * メッシュ描画のインデックスバッファ使用版
+	 * メッシュ(VertexBinder:頂点情報)は、呼び出し前にshaderに関連付け(プロパティで設定)しておく。
+	 * テクスチャ情報も同様に関連付けしておく。
+	 * 呼出し後shaderに関連付けた情報は解除(=void)する。
+	 * @param shader テクスチャや頂点情報まで関連付けられたシェーダーを指定する
+	 * @param index インデックスバッファを指定する
+	 * @param count 描画するインデックス数
+	 * @param primitiveType トライアングルなどの指定
+ 	 */
+ 	function drawMesh( shader:ShaderProgram, index:VertexBinder, count:int, primitiveType:int=VertexBuffer.ptTriangles );
 
 	/**
 	 * テクスチャを描画する。

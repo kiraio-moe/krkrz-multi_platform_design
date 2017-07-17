@@ -111,6 +111,15 @@ class Canvas {
 	function drawTexture( texture:Texture, texture2:Texture, texture3:Texture, shader:ShaderProgram );
 
 	/**
+	 * テクスチャに一部分を描画する
+	 * @param rect テクスチャ内で描画する矩形領域
+	 * @param texture 描画するテクスチャ
+	 * @param shader 描画に使用するシェーダー
+	 */
+	function drawTextureAtlas( rect:Rect, texture:Texture );
+	function drawTextureAtlas( rect:Rect, texture:Texture, shader:ShaderProgram );
+
+	/**
 	 * テクスチャの描画に使用されるデフォルトのシェーダー(drawTextureでtexture1枚のみ渡した時のシェーダー)
 	 * 設定もできるが、基本的に変更する必要はない。
 	 * voidを入れると組み込みの初期デフォルトシェーダーに戻る。

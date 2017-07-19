@@ -3,7 +3,6 @@
  * ShaderProgramのプロパティにはこのクラスのインスタンスを設定する。
  * ShaderProgramに設定されたVertexBinderは、シェーダーへ頂点情報として渡される。
  */
-
 class VertexBinder {
 
 	/**

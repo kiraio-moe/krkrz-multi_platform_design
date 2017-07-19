@@ -1,11 +1,8 @@
-
-// Window作ったら自動的に生成されているのがいいか？ drawDevice/fontと同一仕様
-// オプションでdrawDevice系かCanvas系か指定できるような(排他指定)
-//
-// 互換のためCanvasにLTOを問い合わせてなかったら、自動的にデフォルトOffscreenを追加、
-// 自動追加されたOffscreenは自動更新がONでLayer更新されたら、その更新をCanvasに通知
-// して自動更新がかかるようにする。そうすれば、DrawDevice依存していなければ、そのまま
-// のスクリプトで動かすことが可能となる。
+/**
+ * Canvasは描画機能を提供するクラスです。
+ * Windowを生成すると、プロパティcanvasが自動的に作られます。
+ * 使用する時は、このcanvasプロパティを使用します。
+ */
 class Canvas {
 	function Canvas( window? )
 
@@ -111,7 +108,7 @@ class Canvas {
 	function drawTexture( texture:Texture, texture2:Texture, texture3:Texture, shader:ShaderProgram );
 
 	/**
-	 * テクスチャに一部分を描画する
+	 * テクスチャの一部分を描画する
 	 * @param rect テクスチャ内で描画する矩形領域
 	 * @param texture 描画するテクスチャ
 	 * @param shader 描画に使用するシェーダー
@@ -158,10 +155,8 @@ class Canvas {
 	 */
 	function flush();
 
-	// ---------------------------------------------------------------
-	// テキスト描画
 	/**
-	 * テキスト描画
+	 * テキスト描画(未実装)
 	 * @param font フォント
 	 * @param x X位置
 	 * @param y Y位置

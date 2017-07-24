@@ -1,23 +1,34 @@
 /**
- * �ǉ����������萔�B
+ * 追加される内部定数。
  */
 
-const 
-/* Canvas blend mode */
- bmOpaque = 0,
- bmAlpha = 1,
- bmAdd = 2,
- bmAddWithAlpha = 3,
+
+/** 不透明合成 */
+const bmOpaque = 0;
+/** アルファ合成 */
+const bmAlpha = 1;
+/** 加算合成 */
+const bmAdd = 2;
+/** アルファ付き加算合成 */
+const bmAddWithAlpha = 3;
 
 
-/* Pointer type */
- ptUnknown = 0,
- ptMouseLeft = 1,
- ptMouseRight = 2,
- ptMouseMiddle = 3,
- ptMouseX1 = 4,
- ptMouseX2 = 5,
- ptMouse = 6,
- ptTouch = 7,
- ptPen = 8,
- 
+/* 不明な入力タイプ */
+const ptUnknown = 0;
+/* マウス左入力 */
+const ptMouseLeft = 1;
+/* マウス右入力 */
+const ptMouseRight = 2;
+/* マウス中入力 */
+const ptMouseMiddle = 3;
+/* マウスX1入力 */
+const ptMouseX1 = 4;
+/* マウスX2入力 */
+const ptMouseX2 = 5;
+/* マウス入力 */
+const ptMouse = 6;
+/* タッチ入力 */
+const ptTouch = 7;
+/* ペン入力 */
+const ptPen = 8;
+

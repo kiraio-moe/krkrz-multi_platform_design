@@ -1,173 +1,173 @@
 /**
- * 4x4s—ñ
- * OpenGL‚Ì‚½‚ß—ñ—Dæs—ñ‚Å‚ ‚é‚±‚Æ‚É’ˆÓ(—ñ—Dæ‚Ì•û‚ª‰‰Z—Ê“I‚É—L—˜)B
- * DirectX‚È‚Ç‚©‚çŒ©‚é‚Æ“]’u‚³‚ê‚Ä‚¢‚é‚æ‚¤‚ÉŠ´‚¶‚é(ƒVƒF[ƒ_‚ÌHLSL‚Å‚Í—ñ—Dæ‚Å“¯‚¶)B
+ * 4x4è¡Œåˆ—
+ * OpenGLã®ãŸã‚åˆ—å„ªå…ˆè¡Œåˆ—ã§ã‚ã‚‹ã“ã¨ã«æ³¨æ„(åˆ—å„ªå…ˆã®æ–¹ãŒæ¼”ç®—é‡çš„ã«æœ‰åˆ©)ã€‚
+ * DirectXãªã©ã‹ã‚‰è¦‹ã‚‹ã¨è»¢ç½®ã•ã‚Œã¦ã„ã‚‹ã‚ˆã†ã«æ„Ÿã˜ã‚‹(ã‚·ã‚§ãƒ¼ãƒ€ã®HLSLã§ã¯åˆ—å„ªå…ˆã§åŒã˜)ã€‚
  */
 class Matrix44 {
 
-	functiont Matrix44();  ’PˆÊs—ñ‚Å¶¬
+	functiont Matrix44();  å˜ä½è¡Œåˆ—ã§ç”Ÿæˆ
 	functiont Matrix44(m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44);
 
 	/**
-	 * ƒ}ƒgƒŠƒbƒNƒXİ’è
+	 * ãƒãƒˆãƒªãƒƒã‚¯ã‚¹è¨­å®š
 	 */
 	function set(m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44);
-	function set(array);	// 1ŸŒ³”z—ñ‚©‚çƒRƒs[
-	function set(matrix);	// matrix‚©‚çƒRƒs[
+	function set(array);	// 1æ¬¡å…ƒé…åˆ—ã‹ã‚‰ã‚³ãƒ”ãƒ¼
+	function set(matrix);	// matrixã‹ã‚‰ã‚³ãƒ”ãƒ¼
 
-	// ’PˆÊs—ñ‰»
+	// å˜ä½è¡Œåˆ—åŒ–
 	function reset();
 
 	/**
-	 * ˆÚ“®—Êİ’è
-	 * s—ñ‚ÌXYZˆÚ“®ˆÊ’u‚É’l‚ğİ’è‚µ‚Ü‚·B
-	 * İ’è‚Ì‚İ‚ÅŒ»İ‚Ìs—ñ‚Æ‚Ì‰‰Z‚È‚Ç‚Ís‚í‚ê‚Ü‚¹‚ñB
-	 * @param x İ’è‚·‚éXÀ•W’l
-	 * @param y İ’è‚·‚éYÀ•W’l
-	 * @param z İ’è‚·‚éZÀ•W’l
+	 * ç§»å‹•é‡è¨­å®š
+	 * è¡Œåˆ—ã®XYZç§»å‹•ä½ç½®ã«å€¤ã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * è¨­å®šã®ã¿ã§ç¾åœ¨ã®è¡Œåˆ—ã¨ã®æ¼”ç®—ãªã©ã¯è¡Œã‚ã‚Œã¾ã›ã‚“ã€‚
+	 * @param x è¨­å®šã™ã‚‹Xåº§æ¨™å€¤
+	 * @param y è¨­å®šã™ã‚‹Yåº§æ¨™å€¤
+	 * @param z è¨­å®šã™ã‚‹Zåº§æ¨™å€¤
 	 */
 	function setTranslate( x:real, y:real, z:real=0.0 );
 
 	/**
-	 * Šg‘å—¦İ’è
-	 * s—ñ‚ÌXYZŠg‘åˆÊ’u‚É’l‚ğİ’è‚µ‚Ü‚·B
-	 * İ’è‚Ì‚İ‚ÅŒ»İ‚Ìs—ñ‚Æ‚Ì‰‰Z‚È‚Ç‚Ís‚í‚ê‚Ü‚¹‚ñB
-	 * @param x İ’è‚·‚éX²Šg‘å—¦
-	 * @param y İ’è‚·‚éY²Šg‘å—¦
-	 * @param z İ’è‚·‚éZ²Šg‘å—¦
+	 * æ‹¡å¤§ç‡è¨­å®š
+	 * è¡Œåˆ—ã®XYZæ‹¡å¤§ä½ç½®ã«å€¤ã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * è¨­å®šã®ã¿ã§ç¾åœ¨ã®è¡Œåˆ—ã¨ã®æ¼”ç®—ãªã©ã¯è¡Œã‚ã‚Œã¾ã›ã‚“ã€‚
+	 * @param x è¨­å®šã™ã‚‹Xè»¸æ‹¡å¤§ç‡
+	 * @param y è¨­å®šã™ã‚‹Yè»¸æ‹¡å¤§ç‡
+	 * @param z è¨­å®šã™ã‚‹Zè»¸æ‹¡å¤§ç‡
 	 */
 	function setScale( x:real, y:real, z=1.0 );
 
 	/**
-	 * ‰ñ“]—Êİ’è
-	 * Z²‰ñ“]‚ğİ’è‚µ‚Ü‚·B
-	 * İ’è‚Ì‚İ‚ÅŒ»İ‚Ìs—ñ‚Æ‚Ì‰‰Z‚È‚Ç‚Ís‚í‚ê‚Ü‚¹‚ñB
-	 * @param degree ‰ñ“]Šp“x
+	 * å›è»¢é‡è¨­å®š
+	 * Zè»¸å›è»¢ã‚’è¨­å®šã—ã¾ã™ã€‚
+	 * è¨­å®šã®ã¿ã§ç¾åœ¨ã®è¡Œåˆ—ã¨ã®æ¼”ç®—ãªã©ã¯è¡Œã‚ã‚Œã¾ã›ã‚“ã€‚
+	 * @param degree å›è»¢è§’åº¦
 	 */
 	function setRotateZ( degree:real );
 
 	/**
-	 * ‰ñ“]—Êİ’è
-	 * İ’è‚Ì‚İ‚ÅŒ»İ‚Ìs—ñ‚Æ‚Ì‰‰Z‚È‚Ç‚Ís‚í‚ê‚Ü‚¹‚ñB
-	 * ‰ñ“]²‚Í³‹K‰»„§
-	 * @param degree ‰ñ“]Šp“x
-	 * @param x ‰ñ“]²X
-	 * @param y ‰ñ“]²Y
-	 * @param z ‰ñ“]²Z
+	 * å›è»¢é‡è¨­å®š
+	 * è¨­å®šã®ã¿ã§ç¾åœ¨ã®è¡Œåˆ—ã¨ã®æ¼”ç®—ãªã©ã¯è¡Œã‚ã‚Œã¾ã›ã‚“ã€‚
+	 * å›è»¢è»¸ã¯æ­£è¦åŒ–æ¨å¥¨
+	 * @param degree å›è»¢è§’åº¦
+	 * @param x å›è»¢è»¸X
+	 * @param y å›è»¢è»¸Y
+	 * @param z å›è»¢è»¸Z
 	 */
 	function setRotate( degree:real, x:real, y:real, z:real );
 
 	/**
-	 * ©g‚És—ñ‚ğ‰ÁZ‚µ‚Ü‚·
-	 * @param matrix ‰ÁZ‚·‚és—ñ
+	 * è‡ªèº«ã«è¡Œåˆ—ã‚’åŠ ç®—ã—ã¾ã™
+	 * @param matrix åŠ ç®—ã™ã‚‹è¡Œåˆ—
 	 */
 	function add( matrix:Matrix44 );
 
 	/**
-	 * ©g‚©‚çs—ñ‚ğŒ¸Z‚µ‚Ü‚·
-	 * @param matrix Œ¸Z‚·‚és—ñ
+	 * è‡ªèº«ã‹ã‚‰è¡Œåˆ—ã‚’æ¸›ç®—ã—ã¾ã™
+	 * @param matrix æ¸›ç®—ã™ã‚‹è¡Œåˆ—
 	 */
 	function sub( matrix:Matrix44 );
 
 	/**
-	 * ©g‚És—ñ‚ğæZ‚µ‚Ü‚·
-	 * @param matrix æZ‚·‚és—ñ
+	 * è‡ªèº«ã«è¡Œåˆ—ã‚’ä¹—ç®—ã—ã¾ã™
+	 * @param matrix ä¹—ç®—ã™ã‚‹è¡Œåˆ—
 	 */
 	function mul( matrix:Matrix44 );
 
 	/**
-	 * ©g‚©‚çs—ñ‚ğœZ‚µ‚Ü‚·
-	 * @param matrix œZ‚·‚és—ñ
+	 * è‡ªèº«ã‹ã‚‰è¡Œåˆ—ã‚’é™¤ç®—ã—ã¾ã™
+	 * @param matrix é™¤ç®—ã™ã‚‹è¡Œåˆ—
 	 */
 	function div( matrix:Matrix44 );
 
 	/**
-	 * s—ñ‚ğˆÚ“®‚µ‚Ü‚·
-	 * @param x ˆÚ“®‚·‚éXÀ•W’l
-	 * @param y ˆÚ“®‚·‚éYÀ•W’l
-	 * @param z ˆÚ“®‚·‚éZÀ•W’l
+	 * è¡Œåˆ—ã‚’ç§»å‹•ã—ã¾ã™
+	 * @param x ç§»å‹•ã™ã‚‹Xåº§æ¨™å€¤
+	 * @param y ç§»å‹•ã™ã‚‹Yåº§æ¨™å€¤
+	 * @param z ç§»å‹•ã™ã‚‹Zåº§æ¨™å€¤
 	 */
 	function translate( x:real, y:real, z:real=0.0 );
 
 	/**
-	 * s—ñ‚ğ‰ñ“]‚µ‚Ü‚·
-	 * @param degree ‰ñ“]Šp“x
-	 * @param x ‰ñ“]²X
-	 * @param y ‰ñ“]²Y
-	 * @param z ‰ñ“]²Z
+	 * è¡Œåˆ—ã‚’å›è»¢ã—ã¾ã™
+	 * @param degree å›è»¢è§’åº¦
+	 * @param x å›è»¢è»¸X
+	 * @param y å›è»¢è»¸Y
+	 * @param z å›è»¢è»¸Z
 	 */
 	function rotate( degree:real, x:real, y:real, z:real );
 
 	/**
-	 * s—ñ‚ğŠg‘åk¬‚µ‚Ü‚·
-	 * @param x X²Šg‘å—¦
-	 * @param y Y²Šg‘å—¦
-	 * @param z Z²Šg‘å—¦
+	 * è¡Œåˆ—ã‚’æ‹¡å¤§ç¸®å°ã—ã¾ã™
+	 * @param x Xè»¸æ‹¡å¤§ç‡
+	 * @param y Yè»¸æ‹¡å¤§ç‡
+	 * @param z Zè»¸æ‹¡å¤§ç‡
 	 */
 	function scale( x:real, y:real, z=1.0 );
 
 	/**
-	 * •½s“Š‰e•ÏŠ·s—ñ‚ğİ’è
-	 * @param left ¶’[
-	 * @param right ‰E’[
-	 * @param bottom ‰º’[
-	 * @param top ã’[
-	 * @param znear ‘S–Ê
-	 * @param zfar ”w–Ê
+	 * å¹³è¡ŒæŠ•å½±å¤‰æ›è¡Œåˆ—ã‚’è¨­å®š
+	 * @param left å·¦ç«¯
+	 * @param right å³ç«¯
+	 * @param bottom ä¸‹ç«¯
+	 * @param top ä¸Šç«¯
+	 * @param znear å…¨é¢
+	 * @param zfar èƒŒé¢
 	 */
 	function ortho( left, right, bottom, top, znear, zfar );
 
 	/**
-	 * •½s“Š‰e•ÏŠ·s—ñ‚ğİ’è
-	 * @param left ¶’[
-	 * @param right ‰E’[
-	 * @param bottom ‰º’[
-	 * @param top ã’[
+	 * å¹³è¡ŒæŠ•å½±å¤‰æ›è¡Œåˆ—ã‚’è¨­å®š
+	 * @param left å·¦ç«¯
+	 * @param right å³ç«¯
+	 * @param bottom ä¸‹ç«¯
+	 * @param top ä¸Šç«¯
 	 */
 	function ortho( left, right, bottom, top );
 
 	/**
-	 * “§‹“Š‰e•ÏŠ·s—ñ‚ğİ’è
-	 * @param left ¶’[
-	 * @param right ‰E’[
-	 * @param bottom ‰º’[
-	 * @param top ã’[
-	 * @param znear ‘S–Ê
-	 * @param zfar ”w–Ê
+	 * é€è¦–æŠ•å½±å¤‰æ›è¡Œåˆ—ã‚’è¨­å®š
+	 * @param left å·¦ç«¯
+	 * @param right å³ç«¯
+	 * @param bottom ä¸‹ç«¯
+	 * @param top ä¸Šç«¯
+	 * @param znear å…¨é¢
+	 * @param zfar èƒŒé¢
 	 */
 	function frustum( left, right, bottom, top, znear, zfar );
 
 	/**
-	 * Ë‰e•ÏŠ·s—ñ‚ğİ’è
-	 * @param fovy ‹–ìŠp
-	 * @param aspect ƒAƒXƒyƒNƒg”ä
-	 * @param znear ‘S–Ê
-	 * @param zfar ”w–Ê
+	 * å°„å½±å¤‰æ›è¡Œåˆ—ã‚’è¨­å®š
+	 * @param fovy è¦–é‡è§’
+	 * @param aspect ã‚¢ã‚¹ãƒšã‚¯ãƒˆæ¯”
+	 * @param znear å…¨é¢
+	 * @param zfar èƒŒé¢
 	 */
 	function perspective( fovy, aspect, znear, zfar );
 
 	/**
-	 * Ë‰e•ÏŠ·s—ñ‚ğİ’è
-	 * @param fovy ‹–ìŠp
-	 * @param width •
-	 * @param height ‚‚³
-	 * @param znear ‘S–Ê
-	 * @param zfar ”w–Ê
+	 * å°„å½±å¤‰æ›è¡Œåˆ—ã‚’è¨­å®š
+	 * @param fovy è¦–é‡è§’
+	 * @param width å¹…
+	 * @param height é«˜ã•
+	 * @param znear å…¨é¢
+	 * @param zfar èƒŒé¢
 	 */
 	function perspectiveFov( fovy, width, height, znear, zfar );
 
 	/**
-	 * Šeís—ñ‚ğ—p‚¢‚½À•W•ÏŠ·
-	 * @param model ƒ‚ƒfƒ‹s—ñ
-	 * @param proj ƒvƒƒWƒFƒNƒVƒ‡ƒ“s—ñ
-	 * @param viewport ƒrƒ…[ƒ|[ƒg
-	 * @param x XÀ•W’l(in/out)
-	 * @param y YÀ•W’l(in/out)
-	 * @param z ZÀ•W’l(in/out)
+	 * å„ç¨®è¡Œåˆ—ã‚’ç”¨ã„ãŸåº§æ¨™å¤‰æ›
+	 * @param model ãƒ¢ãƒ‡ãƒ«è¡Œåˆ—
+	 * @param proj ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ã‚·ãƒ§ãƒ³è¡Œåˆ—
+	 * @param viewport ãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆ
+	 * @param x Xåº§æ¨™å€¤(in/out)
+	 * @param y Yåº§æ¨™å€¤(in/out)
+	 * @param z Zåº§æ¨™å€¤(in/out)
 	 */
 	static function project( model:Matrix44, proj:Matrix44, viewport:Rect, x, y, z );
 
-	property array;	// 1ŸŒ³”z—ñ‚Åó‚¯æ‚é(r)
+	property array;	// 1æ¬¡å…ƒé…åˆ—ã§å—ã‘å–ã‚‹(r)
 
 	property m11;
 	property m12;

@@ -1,106 +1,106 @@
 /**
- * Canvas�͕`��@�\��񋟂���N���X�ł��B
- * Window�𐶐�����ƁA�v���p�e�Bcanvas�������I�ɍ���܂��B
- * �g�p���鎞�́A����canvas�v���p�e�B���g�p���܂��B
+ * Canvasは描画機能を提供するクラスです。
+ * Windowを生成すると、プロパティcanvasが自動的に作られます。
+ * 使用する時は、このcanvasプロパティを使用します。
  */
 class Canvas {
 	function Canvas( window? )
 
-    //< �N���A�F�w��E�`�揈���O�̉�ʃN���A�F
+    //< クリア色指定・描画処理前の画面クリア色
 	property clearColor;
 
 	
 	/**
-	 * �`��̈�S�̂��N���A
-	 * @param argb �N���A�F(���w�莞��clearColor�v���p�e�B�ŃN���A�����)
+	 * 描画領域全体をクリア
+	 * @param argb クリア色(未指定時はclearColorプロパティでクリアされる)
 	 */
 	function clear(argb:int);
 
 	/**
-	 * ���݂̕`����e�S�̂�Bitmap/Texture/Offscreen�ɃL���v�`��
-	 * �r�b�g�}�b�v�̃T�C�Y�̓X�N���[���T�C�Y�ɕ␳
-	 * Texture/Offscreen�̏ꍇ�͕ύX����Ȃ�
-	 * @param dest �L���v�`����Bitmap/Texture/Offscreen
-	 * @param front front buffer����̃L���v�`����back buffer����̃L���v�`�����̎w��Btrue��front�Afalse��back
+	 * 現在の描画内容全体をBitmap/Texture/Offscreenにキャプチャ
+	 * ビットマップのサイズはスクリーンサイズに補正
+	 * Texture/Offscreenの場合は変更されない
+	 * @param dest キャプチャ先Bitmap/Texture/Offscreen
+	 * @param front front bufferからのキャプチャかback bufferからのキャプチャかの指定。trueでfront、falseでback
 	 */
 	function capture(dest,front:bool=true);
 
 	/**
-	 * �`��^�[�Q�b�g�w��
-	 * Offscreen�N���X���w��\�Bnull/void�w��Œ��ڕ`��ɁB
+	 * 描画ターゲット指定
+	 * Offscreenクラスを指定可能。null/void指定で直接描画に。
 	 */
 	property renderTarget;
 
 	/**
-	 * �`��̍������[�h�w��
-	 * bmDisable, bmOpaque, bmAlpha, bmAdd, bmAddWithAlpha ���w��\
-	 * �����ɂȂ��u�����h���@���K�v�ł���΃V�F�[�_�[���L�q����B
+	 * 描画の合成モード指定
+	 * bmDisable, bmOpaque, bmAlpha, bmAdd, bmAddWithAlpha が指定可能
+	 * ここにないブレンド方法が必要であればシェーダーを記述する。
 	 */
 	property blendMode;
 
-	/** �`��}�g���b�N�X�w��(Matrix44 �N���X) */
+	/** 描画マトリックス指定(Matrix44 クラス) */
 	property matrix;
 
 	/**
-	 * matrix �� clip �̏�Ԃ�ۑ�����(�X�^�b�N)
+	 * matrix と clip の状態を保存する(スタック)
 	 */
 	function save();
 
 	/**
-	 * matrix �� clip �̏�Ԃ𕜌�����(�X�^�b�N)
+	 * matrix と clip の状態を復元する(スタック)
 	 */
 	function restore();
 
 	// ---------------------------------------------------------------
-	// 2D�n�`�揈��
+	// 2D系描画処理
 	/**
-	 * �F�ł̓h��Ԃ�
-	 * XY���W��matrix�Ŏw�肷��B
-	 * @param width �h��Ԃ��͈͕�
-	 * @param height �h��Ԃ��͈͍���
-	 * @param colors 4���_�̒��_�J���[ARGB�B�P�Ɛ��l�Ȃ�P�F�A�z��Ȃ�4���_�ʎw��
-	 * @param shader �h��Ԃ��V�F�[�_�[�Bnull�̎�defaultFillShader�œh��Ԃ����
+	 * 色での塗りつぶし
+	 * XY座標はmatrixで指定する。
+	 * @param width 塗りつぶし範囲幅
+	 * @param height 塗りつぶし範囲高さ
+	 * @param colors 4頂点の頂点カラーARGB。単独数値なら単色、配列なら4頂点個別指定
+	 * @param shader 塗りつぶしシェーダー。nullの時defaultFillShaderで塗りつぶされる
 	 */
 	function fill( width:int, height:int, colors=0xffffffff, shader=null );
 
 	/**
-	 * ���b�V���`��
-	 * ���b�V��(VertexBinder:���_���)�́A�Ăяo���O��shader�Ɋ֘A�t��(�v���p�e�B�Őݒ�)���Ă����B
-	 * �e�N�X�`���������l�Ɋ֘A�t�����Ă����B
-	 * �ďo����shader�Ɋ֘A�t�������͉���(=void)����B
-	 * @param shader �e�N�X�`���Ⓒ�_���܂Ŋ֘A�t����ꂽ�V�F�[�_�[���w�肷��
-	 * @param count �`�悷�钸�_��
-	 * @param primitiveType �g���C�A���O���Ȃǂ̎w��
-	 * @param offset ���_�z��̒��ŕ`��J�n����I�t�Z�b�g
+	 * メッシュ描画
+	 * メッシュ(VertexBinder:頂点情報)は、呼び出し前にshaderに関連付け(プロパティで設定)しておく。
+	 * テクスチャ情報も同様に関連付けしておく。
+	 * 呼出し後shaderに関連付けた情報は解除(=void)する。
+	 * @param shader テクスチャや頂点情報まで関連付けられたシェーダーを指定する
+	 * @param count 描画する頂点数
+	 * @param primitiveType トライアングルなどの指定
+	 * @param offset 頂点配列の中で描画開始するオフセット
 	 */
  	function drawMesh( shader:ShaderProgram, count:int, primitiveType:int=VertexBuffer.ptTriangles, offset:int=0 );
 
  	/**
- 	 * ���b�V���`��̃C���f�b�N�X�o�b�t�@�g�p��
-	 * ���b�V��(VertexBinder:���_���)�́A�Ăяo���O��shader�Ɋ֘A�t��(�v���p�e�B�Őݒ�)���Ă����B
-	 * �e�N�X�`���������l�Ɋ֘A�t�����Ă����B
-	 * �ďo����shader�Ɋ֘A�t�������͉���(=void)����B
-	 * @param shader �e�N�X�`���Ⓒ�_���܂Ŋ֘A�t����ꂽ�V�F�[�_�[���w�肷��
-	 * @param index �C���f�b�N�X�o�b�t�@���w�肷��
-	 * @param count �`�悷��C���f�b�N�X��
-	 * @param primitiveType �g���C�A���O���Ȃǂ̎w��
+ 	 * メッシュ描画のインデックスバッファ使用版
+	 * メッシュ(VertexBinder:頂点情報)は、呼び出し前にshaderに関連付け(プロパティで設定)しておく。
+	 * テクスチャ情報も同様に関連付けしておく。
+	 * 呼出し後shaderに関連付けた情報は解除(=void)する。
+	 * @param shader テクスチャや頂点情報まで関連付けられたシェーダーを指定する
+	 * @param index インデックスバッファを指定する
+	 * @param count 描画するインデックス数
+	 * @param primitiveType トライアングルなどの指定
  	 */
  	function drawMesh( shader:ShaderProgram, index:VertexBinder, count:int, primitiveType:int=VertexBuffer.ptTriangles );
 
 	/**
-	 * �e�N�X�`����`�悷��B
-	 * �e�N�X�`���݂̂��w�肵���ꍇ��defaultShader�ŕ`�悳���B
-	 * �ʒu��g��k���A��]�� matrix �Ŏw�肷��B
-	 * �e�N�X�`����Texture�N���X�����łȂ��AOffscreen�N���X���w�肵�Ă����Ȃ��B
-	 * Offscreen�N���X���w�肷��ꍇ�́ArenderTarget���炻��Offscreen�N���X�͊O����Ă��邱�Ƃ��O��(�z���Ȃ��悤��)�B
-	 * @param texture �`��Ɏg�p����e�N�X�`�����w�肷��
-	 * @param texture2 �`��Ɏg�p����2���ڂ̃e�N�X�`�����w�肷��
-	 * @param texture3 �`��Ɏg�p����3���ڂ̃e�N�X�`�����w�肷��
-	 * @param shader �`��Ɏg�p����V�F�[�_�[���w�肷��
+	 * テクスチャを描画する。
+	 * テクスチャのみを指定した場合はdefaultShaderで描画される。
+	 * 位置や拡大縮小、回転は matrix で指定する。
+	 * テクスチャはTextureクラスだけでなく、Offscreenクラスを指定しても問題ない。
+	 * Offscreenクラスを指定する場合は、renderTargetからそのOffscreenクラスは外されていることが前提(循環しないように)。
+	 * @param texture 描画に使用するテクスチャを指定する
+	 * @param texture2 描画に使用する2枚目のテクスチャを指定する
+	 * @param texture3 描画に使用する3枚目のテクスチャを指定する
+	 * @param shader 描画に使用するシェーダーを指定する
 	 *
-	 * OpenGL ES 2.0�̏ꍇ�̓e�N�X�`���ő�8���A3.0�͒��_���ő�16���C�t���O�����g���ő�16���Ȃ̂ŁA�܂��ǉ��ł��邪�A
-	 * �Ƃ肠������3���܂Œ�`���Ă����B
-	 * �����I�ɂ̓e�N�X�`����z��œn���o�[�W���������A4���ȏ�͂�����őΉ�����B
+	 * OpenGL ES 2.0の場合はテクスチャ最大8枚、3.0は頂点側最大16枚，フラグメント側最大16枚なので、まだ追加できるが、
+	 * とりあえずは3枚まで定義しておく。
+	 * 将来的にはテクスチャを配列で渡すバージョンを作り、4枚以上はそちらで対応する。
 	 */
 	function drawTexture( texture:Texture );
 	function drawTexture( texture:Texture, shader:ShaderProgram );
@@ -108,60 +108,60 @@ class Canvas {
 	function drawTexture( texture:Texture, texture2:Texture, texture3:Texture, shader:ShaderProgram );
 
 	/**
-	 * �e�N�X�`���̈ꕔ����`�悷��
-	 * @param rect �e�N�X�`�����ŕ`�悷���`�̈�
-	 * @param texture �`�悷��e�N�X�`��
-	 * @param shader �`��Ɏg�p����V�F�[�_�[
+	 * テクスチャの一部分を描画する
+	 * @param rect テクスチャ内で描画する矩形領域
+	 * @param texture 描画するテクスチャ
+	 * @param shader 描画に使用するシェーダー
 	 */
 	function drawTextureAtlas( rect:Rect, texture:Texture );
 	function drawTextureAtlas( rect:Rect, texture:Texture, shader:ShaderProgram );
 
 	/**
-	 * �e�N�X�`���̕`��Ɏg�p�����f�t�H���g�̃V�F�[�_�[(drawTexture��texture1���̂ݓn�������̃V�F�[�_�[)
-	 * �ݒ���ł��邪�A��{�I�ɕύX����K�v�͂Ȃ��B
-	 * void������Ƒg�ݍ��݂̏����f�t�H���g�V�F�[�_�[�ɖ߂�B
+	 * テクスチャの描画に使用されるデフォルトのシェーダー(drawTextureでtexture1枚のみ渡した時のシェーダー)
+	 * 設定もできるが、基本的に変更する必要はない。
+	 * voidを入れると組み込みの初期デフォルトシェーダーに戻る。
 	 */
 	property defaultShader;
 	
 	/**
-	 * fill���Ɏg�p�����f�t�H���g�̃V�F�[�_�[
-	 * �ݒ���ł��邪�A��{�I�ɕύX����K�v�͂Ȃ�
-	 * void������Ƒg�ݍ��݂̏����f�t�H���g�V�F�[�_�[�ɖ߂�B
+	 * fill時に使用されるデフォルトのシェーダー
+	 * 設定もできるが、基本的に変更する必要はない
+	 * voidを入れると組み込みの初期デフォルトシェーダーに戻る。
 	 */
 	property defaultFillShader;
 
-	/** �`��̈�̕��B��{�I�ɂ̓N���C�A���g�̈�ƈ�v�AWindow���T�C�Y����ĕ`��܂ňꎞ�I�ɂ������Ԃ��� */
+	/** 描画領域の幅。基本的にはクライアント領域と一致、Windowリサイズから再描画まで一時的にずれる期間あり */
 	property width;
-	/** �`��̈�̍��� */
+	/** 描画領域の高さ */
 	property height;
 
 	/**
-	 * �N���b�s���O�p��`��Rect�N���X
-	 * canvas.clipRect.set( l, t, r, b ); ���ŌĂяo����B
-	 * enableClipRect �ŗL��/�����ݒ��
+	 * クリッピング用矩形のRectクラス
+	 * canvas.clipRect.set( l, t, r, b ); 等で呼び出せる。
+	 * enableClipRect で有効/無効設定可
 	 */
 	property clipRect;
 
 	/**
-	 * ��`�ŃN���b�s���O���邩�ǂ����̐ݒ�
-	 * true �̎��AclipRect�v���p�e�B�ɂ���ăN���b�s���O�����
+	 * 矩形でクリッピングするかどうかの設定
+	 * true の時、clipRectプロパティによってクリッピングされる
 	 */
 	property enableClipRect;
 
 	/**
-	 * �`����t���b�V������B
-	 * �`��𔽉f������renderTarget�����ւ���ꍇ�ȂǂɎg����B
-	 * onDraw����renderTarget�����ւ���ƁA�����I��flush�͌Ă΂��B
+	 * 描画をフラッシュする。
+	 * 描画を反映したいrenderTargetを入れ替える場合などに使われる。
+	 * onDraw中にrenderTargetを入れ替えると、内部的にflushは呼ばれる。
 	 */
 	function flush();
 
 	/**
-	 * �e�L�X�g�`��(������)
-	 * @param font �t�H���g
-	 * @param x X�ʒu
-	 * @param y Y�ʒu
-	 * @param text �e�L�X�g
-	 * @param color �F�w��
+	 * テキスト描画(未実装)
+	 * @param font フォント
+	 * @param x X位置
+	 * @param y Y位置
+	 * @param text テキスト
+	 * @param color 色指定
 	 */
 	function drawText(font:Font, x:int, y:int, text:string, color:int);
 };

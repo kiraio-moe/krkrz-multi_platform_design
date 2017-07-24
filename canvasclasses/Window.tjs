@@ -1,128 +1,150 @@
 /**
- * �E�C���h�E�̃T�C�Y�����Windows�ł̂݉\�BAndroid�ł͉�ʃT�C�Y�Ɉˑ�����B
- * Offscreen�N���X�������_�����O�������T�C�Y�Ő������A�����ɒʏ�̕`����s���B
- * �E�C���h�E(���)�T�C�Y�ɉ������g�哙�̓X�N���v�g�Ő��䂷��B
- * UI�╶���Ȃǂ𓙔{���Y��ɕ\�����邱�Ƃ��X�N���v�g�ŉ\�ƂȂ�B
+ * @description ウインドウのサイズ制御はWindowsでのみ可能。Androidでは画面サイズに依存する。
+ * Offscreenクラスをレンダリングしたいサイズで生成し、そこに通常の描画を行う。
+ * ウインドウ(画面)サイズに応じた拡大等はスクリプトで制御する。
+ * UIや文字などを等倍で綺麗に表示することもスクリプトで可能となる。
  */
 class Window {
 
 	/**
-	 * �R���X�g���N�^
+	 * コンストラクタ
 	 */
 	function Window();
 
 	/**
-	 * �N���C�A���g�T�C�Y�̐ݒ�(Windows�̂�)
-	 * Android�ł͉�ʃT�C�Y = �N���C�A���g�T�C�Y�ƂȂ�B
-	 * Android�ł��̃��\�b�h���Ă�ł������N����Ȃ��B
-	 * @param width  �`��̈�̉���
-	 * @param height �`��̈�̏c��
+	 * クライアントサイズの設定[Windowsのみ]
+	 *
+	 * @description Androidでは画面サイズ = クライアントサイズとなる。
+	 * Androidでこのメソッドを呼んでも何も起こらない。
+	 * @param width  描画領域の横幅
+	 * @param height 描画領域の縦幅
 	 */
 	function setInnerSize(width, height)
 
 	/**
-	 * �t���X�N���[���w��
-	 * Android�ł̓t���X�N���[���Œ�
+	 * フルスクリーン指定
+	 * Androidではフルスクリーン固定
 	 */
 	property fullScreen;
 
 	// ---------------------------------------------------------------
-	// �C�x���g����
+	// イベント処理
 	// ---------------------------------------------------------------
 
 	/**
-	 * ��ʍX�V�R�[���o�b�N�C�x���g
-	 * ��ʍX�V�������ɌĂяo�����
-	 * ���̌Ăяo���̊ԂɓƎ��̕`�揈�����s��
-	 * ���̃��\�b�h�𒼐ڌĂяo���Ȃ����ƁB
+	 * 画面更新コールバックイベント
+	 *
+	 * @description 画面更新処理時に呼び出される
+	 * この呼び出しの間に独自の描画処理を行う
+	 * このメソッドを直接呼び出さないこと。
 	 */
 	function onDraw();
 
 	/**
-	 * �����I�ɕ`����Ăяo���B
-	 * ���̃��\�b�h��onDraw���ԐړI�ɌĂяo���B
-	 * �����ŕ`�悵�����ꍇ�́A���̃��\�b�h���Ăяo���AonDraw���ŕ`�悷��B
+	 * 明示的に描画を呼び出す。
+	 *
+	 * @description このメソッドはonDrawを間接的に呼び出す。
+	 * 自分で描画したい場合は、このメソッドを呼び出し、onDraw内で描画する。
 	 */
 	function startDrawing();
 
 	/**
-	 * �w��T�C�N���ŕ`����s���B
-	 * 60��30�Ȃǂ��w�肷��B
-	 * 0���w�肷���onDraw�͌Ăяo����Ȃ��B
+	 * 指定サイクルで描画を行う。
+	 *
+	 * @description 60や30などを指定する。
+	 * 0を指定するとonDrawは呼び出されない。
 	 */
 	property drawCycle;
 
 	/**
-	 * ����������`�掞�ɑ҂B
-	 * �e�B�A�����O����������ꍇ�ɐݒ肷��B
-	 * �w��ł��Ȃ����ł́A�ݒ肵�Ă����Ӗ�(�펞vsync�҂�������)�B
+	 * 垂直同期を描画時に待つ。
+	 *
+	 * @description ティアリング等発生する場合に設定する。
+	 * 指定できない環境では、設定しても無意味(常時vsync待ちがある)。
 	 */
 	property waitVSync;
 
 	/**
-	 * ���炩�̃|�C���e�B���O�f�o�C�X�ŉ������ꂽ
-	 * @param type �^�b�`�������̓}�E�X�{�^���̎��
-	 * @param x X�ʒu
-	 * @param y Y�ʒu
-	 * @param cx �ڐG��(�s�N�Z����)�A�}�E�X�̎���1
-	 * @param cy �ڐG����(�s�N�Z����)�A�}�E�X�̎���1
-	 * @param shift �C���L�[��ԁA�^�b�`�̎���0
-	 * @param id �^�b�`ID�A�}�E�X�̎��͏��0
+	 * 何らかのポインティングデバイスで押下された
+	 *
+	 * @param type タッチもしくはマウスボタンの種類
+	 * @param x X位置
+	 * @param y Y位置
+	 * @param cx 接触幅(ピクセル数)、マウスの時は1
+	 * @param cy 接触高さ(ピクセル数)、マウスの時は1
+	 * @param shift 修飾キー状態、タッチの時は0
+	 * @param id タッチID、マウスの時は常に0
 	 */
 	function onPointerDown( type, x, y, cx, cy, shift, id );
 
 	/**
-	 * ���炩�̃|�C���e�B���O�f�o�C�X���ړ����ꂽ
-	 * @param type �^�b�`�������̓}�E�X�B�}�E�X�{�^���̎�ނł͂Ȃ��A�}�E�X�Ƃ��Ēʒm�B
-	 * @param x X�ʒu
-	 * @param y Y�ʒu
-	 * @param cx �ڐG��(�s�N�Z����)�A�}�E�X�̎���1
-	 * @param cy �ڐG����(�s�N�Z����)�A�}�E�X�̎���1
-	 * @param shift �C���L�[���(�}�E�X������Ԃ��܂�)�A�^�b�`�̎���0
-	 * @param id �^�b�`ID�A�}�E�X�̎��͏��0
+	 * 何らかのポインティングデバイスが移動された
+	 *
+	 * @param type タッチもしくはマウス。マウスボタンの種類ではなく、マウスとして通知。
+	 * @param x X位置
+	 * @param y Y位置
+	 * @param cx 接触幅(ピクセル数)、マウスの時は1
+	 * @param cy 接触高さ(ピクセル数)、マウスの時は1
+	 * @param shift 修飾キー状態(マウス押下状態を含む)、タッチの時は0
+	 * @param id タッチID、マウスの時は常に0
 	 */
 	function onPointerMove( type, x, y, cx, cy, shift, id );
 
 	/**
-	 * ���炩�̃|�C���e�B���O�f�o�C�X�������ꂽ
-	 * @param type �^�b�`�������̓}�E�X�{�^���̎��
-	 * @param x X�ʒu
-	 * @param y Y�ʒu
-	 * @param cx �ڐG��(�s�N�Z����)�A�}�E�X�̎���1
-	 * @param cy �ڐG����(�s�N�Z����)�A�}�E�X�̎���1
-	 * @param shift �C���L�[��ԁA�^�b�`�̎���0
-	 * @param id �^�b�`ID�A�}�E�X�̎��͏��0
+	 * 何らかのポインティングデバイスが離された
+	 *
+	 * @param type タッチもしくはマウスボタンの種類
+	 * @param x X位置
+	 * @param y Y位置
+	 * @param cx 接触幅(ピクセル数)、マウスの時は1
+	 * @param cy 接触高さ(ピクセル数)、マウスの時は1
+	 * @param shift 修飾キー状態、タッチの時は0
+	 * @param id タッチID、マウスの時は常に0
 	 */
 	function onPointerUp( type, x, y, cx, cy, shift, id );
 
 	/**
-	 * �L�[����n�v����
+	 * キー操作系要検討
 	 */
 	function onKeyXXX();
 
 	/**
-	 * �E�C���h�E���A�N�e�B�u�ɂȂ���
+	 * ウインドウがアクティブになった
 	 */
 	function onActivate();
 
 	/**
-	 * �E�C���h�E����A�N�e�B�u�ɂȂ���
+	 * ウインドウが非アクティブになった
 	 */
 	function onDeactivate();
 
 	/**
-	 * �I���m�F�p�A�]���Ɠ���(Windows�̂�)
-	 * Android�̏ꍇ�A�^�C�g����ʂł̖߂�L�[�Ŏ����ŏI������(onKeyXXX�������Ńn���h�����O)�K�v������B
-	 * �V�X�e���ɒ�~�������鎞�́A�~�߂悤���Ȃ��A�����Ȃ�I���������邱�Ƃ�����B
-	 * �^�X�N���X�g����I����������Ƃ����ⓚ���p�ł���B
-	 * Android�ł�onDeactivate���������ɃI�[�g�Z�[�u���邵���ˑR�I���ɑ΂���΍􂪂Ȃ��B
+	 * 終了確認用、従来と同じ[Windowsのみ]
+	 *
+	 * @description Androidの場合、タイトル画面での戻るキーで自分で終了する(onKeyXXXを自分でハンドリング)必要がある。
+	 * システムに停止させられる時は、止めようがなく、いきなり終了させられることもある。
+	 * タスクリストから終了させられるときも問答無用である。
+	 * AndroidではonDeactivateが来た時にオートセーブするしか突然終了に対する対策がない。
 	 */
 	function onCloseQuery(canclose);
 
 	/**
-	 * �`��p��Canvas�N���X�̃C���X�^���X�𓾂�
-	 * onDraw ����
+	 * 描画用のCanvasクラスのインスタンスを得る
+	 * onDraw 内で
 	 */
 	property canvas;
+
+	/**
+	 * 周囲の辺からタッチされた時、その入力を無視するかどうか、Androidではデフォルトtrue。(未実装)
+	 *
+	 * @description Androidで左からの場合、VK_MENU の KeyDown/Upが飛ぶので、それを契機にメニューを出す? じわじわ出したい？
+	 * onPointerDownのshiftにMenuDraggingとか追加して、それで判定して、左からメニュー出す？
+	 * Android では以下のように画面解像度(密度)に合わせたサイズで定義されている
+	 * int EDGE_SIZE = 20;
+	 * mEdgeSize = (int) (EDGE_SIZE * density + 0.5f);
+	 * https://android.googlesource.com/platform/frameworks/support/+/407e01608ccafe5dc24f82608583f71c34312f9c/v4/java/android/support/v4/widget/DrawerLayout.java
+	 * https://android.googlesource.com/platform/frameworks/support/+/407e01608ccafe5dc24f82608583f71c34312f9c/v4/java/android/support/v4/widget/ViewDragHelper.java
+	 */
+	property ignoreEdgeDrag;
 }
 

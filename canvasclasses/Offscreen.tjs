@@ -1,99 +1,99 @@
 /**
- * �I�t�X�N���[���B
- * �����郌���_�[�^�[�Q�b�g�B�e�N�X�`���Ƃ��Ă����p�\�B
- * OpenGL ES2.0 �ł́AFBO, Renderbuffer, Texture �����������B
- * �����_�[�^�[�Q�b�g�Ƃ��Đݒ肵�Ȃ��̂ł���΁A�킴�킴���̃N���X���g�p����K�v���͂Ȃ��B
- * Texture�N���X���g�p���������ǂ��B
+ * オフスクリーン。
+ * いわゆるレンダーターゲット。テクスチャとしても利用可能。
+ * OpenGL ES2.0 では、FBO, Renderbuffer, Texture が生成される。
+ * レンダーターゲットとして設定しないのであれば、わざわざこのクラスを使用する必要性はない。
+ * Textureクラスを使用した方が良い。
  */
 class Offscreen {
 	/**
-	 * �I�t�X�N���[���𐶐��B�j����invalidate���ɍs����̂ŁA�s�v�ɂȂ����疾���I��invalidate�����B
-	 * @param width �I�t�X�N���[����
-	 * @param height �I�t�X�N���[������
+	 * オフスクリーンを生成。破棄はinvalidate時に行われるので、不要になったら明示的なinvalidate推奨。
+	 * @param width オフスクリーン幅
+	 * @param height オフスクリーン高さ
 	 */
 	function Offscreen( width:int, height:int );
 
 
 	/**
-	 * ��`�R�s�[
-	 * @param dleft �R�s�[�捶�[
-	 * @param dtop �R�s�[���[
-	 * @param src Bitmap�N���X�̃I�u�W�F�N�g
-	 * @param srcRect src�̃R�s�[����`
+	 * 矩形コピー
+	 * @param dleft コピー先左端
+	 * @param dtop コピー先上端
+	 * @param src Bitmapクラスのオブジェクト
+	 * @param srcRect srcのコピー元矩形
 	 */
 	function copyRect( dleft:int, dtop:int, src:Bitmap, srcRect:Rect );
 
 	/**
-	 * ��`�R�s�[
-	 * @param dleft �R�s�[�捶�[
-	 * @param dtop �R�s�[���[
-	 * @param src Bitmap�N���X�̃I�u�W�F�N�g
-	 * @param sleft �R�s�[�����[�ʒu
-	 * @param stop �R�s�[����[�ʒu
-	 * @param swidth �R�s�[����
-	 * @param sheight �R�s�[������
+	 * 矩形コピー
+	 * @param dleft コピー先左端
+	 * @param dtop コピー先上端
+	 * @param src Bitmapクラスのオブジェクト
+	 * @param sleft コピー元左端位置
+	 * @param stop コピー元上端位置
+	 * @param swidth コピー元幅
+	 * @param sheight コピー元高さ
 	 */
 	function copyRect( dleft:int, dtop:int, src:Bitmap, sleft:int, stop:int, swidth:int, sheight:int );
 
     /**
-	 * Bitmap�ɃR�s�[
-	 * @param destBitmap �i�[��r�b�g�}�b�v
-	 * @param dleft �R�s�[�捶�[
-	 * @param dtop �R�s�[���[
-	 * @param sleft �R�s�[�����[
-	 * @param stop �R�s�[����[
-	 * @param width �T�C�Y����
-	 * @param height �T�C�Y�c��
+	 * Bitmapにコピー
+	 * @param destBitmap 格納先ビットマップ
+	 * @param dleft コピー先左端
+	 * @param dtop コピー先上端
+	 * @param sleft コピー元左端
+	 * @param stop コピー元上端
+	 * @param width サイズ横幅
+	 * @param height サイズ縦幅
 	 */
 	function copyTo( destBitmap:Bitmap, dleft:int, dtop:int, sleft:int, stop:int, width:int, height:int );
 
     /**
-	 * Bitmap�ɃR�s�[
-	 * Bitmap��Offscreen�̃T�C�Y�ɍ��킹�Ċg��k�������
-	 * @param destBitmap �i�[��r�b�g�}�b�v
+	 * Bitmapにコピー
+	 * BitmapはOffscreenのサイズに合わせて拡大縮小される
+	 * @param destBitmap 格納先ビットマップ
 	 */
 	function copyTo( destBitmap:Bitmap );
 
     /**
-	 * Bitmap�ɃR�s�[
-	 * @param destBitmap �i�[��r�b�g�}�b�v
-	 * @param dleft �R�s�[�捶�[
-	 * @param dtop �R�s�[���[
-	 * @param srcRect �R�s�[����`
+	 * Bitmapにコピー
+	 * @param destBitmap 格納先ビットマップ
+	 * @param dleft コピー先左端
+	 * @param dtop コピー先上端
+	 * @param srcRect コピー元矩形
 	 */
 	function copyTo( destBitmap:Bitmap, dleft:int, dtop:int, srcRect:Rect );
 
-	// �����_�[�^�[�Q�b�g�ւ�Texture��ݒ肷��(�ė��p�̂���)�̂ŁA�����I��Texture���烁�����ւ̃R�s�[�ɂȂ邪�A
-	// OpenGL ES 2.0/3.0 �ł̓t���[���o�b�t�@���炵���R�s�[�ł��Ȃ��B
-	// ���̂��� copyTo ���\�b�h�́A��x�t���[���o�b�t�@�ɐݒ肵�Ă���R�s�[���A���̌㌳�̃����_�[�^�[�Q�b�g��
-	// �߂��悤�ȏ������s����B
-	// �܂�A���̃��\�b�h�͋ɗ͎g��Ȃ����Ƃ𐄏���������ǂ����ƌ������A������I
-	// ���݃t���[���o�b�t�@�ɐݒ肳��Ă���̂ł���΁A�}�V�ł��邪�B
-	// �������A���ۂɔ�����I���͑��x���v�����Ȃ����Ƃɂ͂킩��Ȃ��B
-	// �������� CPU <-> GPU �Ԃ̓]���͂Ȃ�ׂ������������ǂ��B
+	// レンダーターゲットへはTextureを設定する(再利用のため)ので、実質的にTextureからメモリへのコピーになるが、
+	// OpenGL ES 2.0/3.0 ではフレームバッファからしかコピーできない。
+	// このため copyTo メソッドは、一度フレームバッファに設定してからコピーし、その後元のレンダーターゲットに
+	// 戻すような処理が行われる。
+	// つまり、このメソッドは極力使わないことを推奨する方が良さげと言うか、非効率的
+	// 現在フレームバッファに設定されているのであれば、マシであるが。
+	// ただし、実際に非効率的かは速度を計測しないことにはわからない。
+	// そもそも CPU <-> GPU 間の転送はなるべく避けた方が良い。
 
 
 	/**
-	 * �t���[���o�b�t�@�ɐݒ肳��Ă���e�N�X�`����Texture�N���X���w���e�N�X�`�������ւ���B
-	 * ��������e�N�X�`���̃T�C�Y�͍��킹�Ă����Ȃ��Ɨ�O�ƂȂ�B�J���[�t�H�[�}�b�g��RGBA�Ƃ���K�v������B
-	 * �����_�����O�r���ł̓���ւ����s��Ȃ�����������������Ȃ�(�v�m�F)�B
-	 * �N���X�t�F�[�h�Ȃǂŗ����ɕ`�悷��K�v���Ȃ��ꍇ�A�ȑO�̉摜��Texture�Ƃ��Ď��o���A�V����Texture�ɍ����ւ��邱�ƂŃI�[�o�[�w�b�h�����点��B
-	 * @param texture ��������Texture�N���X�̃C���X�^���X�B
+	 * フレームバッファに設定されているテクスチャとTextureクラスが指すテクスチャを入れ替える。
+	 * 交換するテクスチャのサイズは合わせておかないと例外となる。カラーフォーマットもRGBAとする必要がある。
+	 * レンダリング途中での入れ替えも行わない方がいいかもしれない(要確認)。
+	 * クロスフェードなどで両方に描画する必要がない場合、以前の画像をTextureとして取り出し、新しいTextureに差し替えることでオーバーヘッドを減らせる。
+	 * @param texture 交換するTextureクラスのインスタンス。
 	 */
 	function exchangeTexture( texture );
 
 	/**
-	 * ���A�������Ɏw�肳�ꂽ����(readonly)
+	 * 幅、生成時に指定されたもの(readonly)
 	 */
 	property width;
 	/**
-	 * �����A�������Ɏw�肳�ꂽ����(readonly)
+	 * 高さ、生成時に指定されたもの(readonly)
 	 */
 	property height;
 
 	/**
-	 * ���ˑ��̃n���h��(readonly)
-	 * OpenGL ES���ł�texture id�ƂȂ�B
+	 * 環境依存のハンドル(readonly)
+	 * OpenGL ES下ではtexture idとなる。
 	 */
 	property nativeHandle;
 };

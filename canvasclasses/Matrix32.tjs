@@ -1,127 +1,134 @@
 /**
- * 2ŸŒ³—p‚Ìs—ñ
- * Z’l‚â“¯ŸÀ•W‚ğÈ‚¢‚½Å‰‚Ìs—ñ
- * OpenGL‚Ì‚½‚ß—ñ—Dæs—ñ‚Å‚ ‚é‚±‚Æ‚É’ˆÓ
+ * 2æ¬¡å…ƒç”¨ã®è¡Œåˆ—
+ * Zå€¤ã‚„åŒæ¬¡åº§æ¨™ã‚’çœã„ãŸæœ€åˆã®è¡Œåˆ—
+ * OpenGLã®ãŸã‚åˆ—å„ªå…ˆè¡Œåˆ—ã§ã‚ã‚‹ã“ã¨ã«æ³¨æ„
  */
 class Matrix32 {
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^(’PˆÊs—ñ)
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿(å˜ä½è¡Œåˆ—)
 	 */
 	function Matrix32();
 
 	/**
-	 * ƒRƒ“ƒXƒgƒ‰ƒNƒ^
-	 * ˆø”’l‚ğ“ü‚ê‚Ä‰Šú‰»
+	 * ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
+	 * å¼•æ•°å€¤ã‚’å…¥ã‚Œã¦åˆæœŸåŒ–
 	 */
 	function Matrix32( m11, m12, m21, m22, m31, m32 );
 
 	/**
-	 * ƒ}ƒgƒŠƒbƒNƒXİ’è
+	 * ãƒãƒˆãƒªãƒƒã‚¯ã‚¹è¨­å®š
 	 */
 	function set( m11, m12, m21, m22, m31, m32 );
-	function set( array );	// 1ŸŒ³”z—ñ‚©‚çƒRƒs[
-	function set( matrix );	// matrix‚©‚çƒRƒs[
+	function set( array );	// 1æ¬¡å…ƒé…åˆ—ã‹ã‚‰ã‚³ãƒ”ãƒ¼
+	function set( matrix );	// matrixã‹ã‚‰ã‚³ãƒ”ãƒ¼
 
 	/**
-	 * ’PˆÊs—ñ‰»
+	 * å˜ä½è¡Œåˆ—åŒ–
 	 */
 	function reset();
 
 	/**
-	 * ˆÚ“®s—ñ‚ğİ’è‚·‚é
-	 * @param x İ’è‚·‚éXÀ•W’l
-	 * @param y İ’è‚·‚éYÀ•W’l
+	 * ç§»å‹•è¡Œåˆ—ã‚’è¨­å®šã™ã‚‹
+	 * @param x è¨­å®šã™ã‚‹Xåº§æ¨™å€¤
+	 * @param y è¨­å®šã™ã‚‹Yåº§æ¨™å€¤
 	 */
 	function setTranslate( x:real, y:real );
 
 	/**
-	 * Šg‘ås—ñ‚ğİ’è‚·‚é
-	 * @param x İ’è‚·‚éX²Šg‘å—¦
-	 * @param y İ’è‚·‚éY²Šg‘å—¦
+	 * æ‹¡å¤§è¡Œåˆ—ã‚’è¨­å®šã™ã‚‹
+	 * @param x è¨­å®šã™ã‚‹Xè»¸æ‹¡å¤§ç‡
+	 * @param y è¨­å®šã™ã‚‹Yè»¸æ‹¡å¤§ç‡
 	 */
 	function setScale( x:real, y:real );
 
 	/**
-	 * ‰ñ“]s—ñ‚ğİ’è‚·‚é
-	 * @param degree ‰ñ“]Šp“x
+	 * å›è»¢è¡Œåˆ—ã‚’è¨­å®šã™ã‚‹
+	 * @param degree å›è»¢è§’åº¦
 	 */
 	function setRotate( degree:real );
 
 	/**
-	 * X²ŒXÎs—ñ‚ğİ’è‚·‚é
-	 * @param degree ŒXÎŠp“x
+	 * Xè»¸å‚¾æ–œè¡Œåˆ—ã‚’è¨­å®šã™ã‚‹
+	 * @param degree å‚¾æ–œè§’åº¦
 	 */
 	function setSkewX( degree:real );
 
 	/**
-	 * Y²ŒXÎs—ñ‚ğİ’è‚·‚é
-	 * @param degree ŒXÎŠp“x
+	 * Yè»¸å‚¾æ–œè¡Œåˆ—ã‚’è¨­å®šã™ã‚‹
+	 * @param degree å‚¾æ–œè§’åº¦
 	 */
 	function setSkewY( degree:real );
 
 	/**
-	 * s—ñ‚ğˆÚ“®‚³‚¹‚é
-	 * @param x ˆÚ“®‚·‚éXÀ•W’l
-	 * @param y ˆÚ“®‚·‚éYÀ•W’l
+	 * è¡Œåˆ—ã‚’ç§»å‹•ã•ã›ã‚‹
+	 * @param x ç§»å‹•ã™ã‚‹Xåº§æ¨™å€¤
+	 * @param y ç§»å‹•ã™ã‚‹Yåº§æ¨™å€¤
 	 */
 	function translate( x:real, y:real );
 
 	/**
-	 * s—ñ‚ğ‰ñ“]‚³‚¹‚é
-	 * @param degree ‰ñ“]Šp“x
+	 * è¡Œåˆ—ã‚’å›è»¢ã•ã›ã‚‹
+	 * @param degree å›è»¢è§’åº¦
 	 */
 	function rotate( degree:real );
 
 	/**
-	 * s—ñ‚ğ‰ñ“]‚³‚¹‚é
-	 * @param degree ‰ñ“]Šp“x
-	 * @param px ’†S“_
-	 * @param py ’†S“_
+	 * è¡Œåˆ—ã‚’å›è»¢ã•ã›ã‚‹
+	 * @param degree å›è»¢è§’åº¦
+	 * @param px ä¸­å¿ƒç‚¹
+	 * @param py ä¸­å¿ƒç‚¹
 	 */
 	function rotate( degree:real, px:real, py:real );
 
 	/**
-	 * s—ñ‚ğŠg‘å‚³‚¹‚é
-	 * @param x Šg‘å—¦XÀ•W’l
-	 * @param y Šg‘å—¦YÀ•W’l
+	 * è¡Œåˆ—ã‚’æ‹¡å¤§ã•ã›ã‚‹
+	 * @param x æ‹¡å¤§ç‡Xåº§æ¨™å€¤
+	 * @param y æ‹¡å¤§ç‡Yåº§æ¨™å€¤
 	 */
 	function scale( x:real, y:real );
 
 	/**
-	 * s—ñ‚ğX²ŒXÎ‚³‚¹‚é
-	 * @param degree ŒXÎŠp“x
+	 * è¡Œåˆ—ã‚’æ‹¡å¤§ã•ã›ã‚‹(äº‹å‰æ‹¡å¤§)
+	 * @param x æ‹¡å¤§ç‡Xåº§æ¨™å€¤
+	 * @param y æ‹¡å¤§ç‡Yåº§æ¨™å€¤
+	 */
+	function preScale( x:real, y:real );
+
+	/**
+	 * è¡Œåˆ—ã‚’Xè»¸å‚¾æ–œã•ã›ã‚‹
+	 * @param degree å‚¾æ–œè§’åº¦
 	 */
 	function skewX( degree:real );
 
 	/**
-	 * s—ñ‚ğY²ŒXÎ‚³‚¹‚é
-	 * @param degree ŒXÎŠp“x
+	 * è¡Œåˆ—ã‚’Yè»¸å‚¾æ–œã•ã›ã‚‹
+	 * @param degree å‚¾æ–œè§’åº¦
 	 */
 	function skewY( degree:real );
 
 	/**
-	 * XYÀ•W’l‚ğ‚±‚Ìs—ñ‚É‚©‚¯‡‚í‚¹‚Ä•ÏŠ·‚·‚é
-	 * “ü—Íˆø‚«”‚ª‚»‚Ì‚Ü‚Üo—Í‚Æ‚È‚é
-	 * @param x XÀ•W’l
-	 * @param y YÀ•W’l
+	 * XYåº§æ¨™å€¤ã‚’ã“ã®è¡Œåˆ—ã«ã‹ã‘åˆã‚ã›ã¦å¤‰æ›ã™ã‚‹
+	 * å…¥åŠ›å¼•ãæ•°ãŒãã®ã¾ã¾å‡ºåŠ›ã¨ãªã‚‹
+	 * @param x Xåº§æ¨™å€¤
+	 * @param y Yåº§æ¨™å€¤
 	 */
 	function transform( x:real, y:real );
 
 	/**
-	 * s—ñ‚ğ‚©‚¯‚é(this = this * matrix)
-	 * @param matrix ‚©‚¯‚és—ñ
+	 * è¡Œåˆ—ã‚’ã‹ã‘ã‚‹(this = this * matrix)
+	 * @param matrix ã‹ã‘ã‚‹è¡Œåˆ—
 	 */
 	function multiply( matrix:Matrix32 );
 
 	/**
-	 * s—ñ‚ğŒã‚ë‚É‚©‚¯‚é(this = matrix * this)
-	 * @param matrix ‚©‚¯‚és—ñ
+	 * è¡Œåˆ—ã‚’å¾Œã‚ã«ã‹ã‘ã‚‹(this = matrix * this)
+	 * @param matrix ã‹ã‘ã‚‹è¡Œåˆ—
 	 */
 	function premultiply( matrix:Matrix32 );
 
 
 	/**
-	 * 1ŸŒ³”z—ñ‚Åó‚¯æ‚é(read only)
+	 * 1æ¬¡å…ƒé…åˆ—ã§å—ã‘å–ã‚‹(read only)
 	 */
 	property array;
 

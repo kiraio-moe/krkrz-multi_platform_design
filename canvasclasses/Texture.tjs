@@ -1,110 +1,110 @@
 /**
- * �e�N�X�`���N���X
- * �n�[�h�E�F�A��̃e�N�X�`���ƂقڑΉ��B
+ * テクスチャクラス
+ * ハードウェア上のテクスチャとほぼ対応。
  *
- * �v���O�C���p��lock���ă|�C���^��Ԃ����̂��������Ă�������������Ȃ��B
- * VertexBuffer�ł͎����ς݂����AOpenGL ES 3.0 �ȍ~�p�ƂȂ�B
- * Texture�̏ꍇ��PBO�]���ƂȂ�̂ŁAOpenGL ES 3.0 �ȍ~�p�ƂȂ��ē����B
- * �����A�e�N�X�`���̍X�V��Offscreen�𗘗p���ăV�F�[�_�[���g�������ǂ����B
+ * プラグイン用にlockしてポインタを返すものを実装してもいいかもしれない。
+ * VertexBufferでは実装済みだが、OpenGL ES 3.0 以降用となる。
+ * Textureの場合もPBO転送となるので、OpenGL ES 3.0 以降用となって同じ。
+ * ただ、テクスチャの更新はOffscreenを利用してシェーダーを使う方が良いか。
  */
 class Texture {
 	/**
-	 * �R���X�g���N�^
-	 * @filename �摜�t�@�C����
-	 * @param format �J���[�t�H�[�}�b�g(tcfRGBA or tcfAlpha), tcfAlpha�I�����ɐF���̓O���C�X�P�[���������
-	 * @param p2 �T�C�Y2�̗ݏ扻(�K�{�ł͂Ȃ��������������������A�ꉞ�w��\�ɁA�����ŋz���ł��������c�c obsolate���̉\������)undocument���������H
+	 * コンストラクタ
+	 * @filename 画像ファイル名
+	 * @param format カラーフォーマット(tcfRGBA or tcfAlpha), tcfAlpha選択時に色情報はグレイスケール化される
+	 * @param p2 サイズ2の累乗化(必須ではないが高速化する環境もある、一応指定可能に、内部で吸収でもいいが…… obsolate化の可能性あり)undocumentがいいか？
 	 */
 	function Texture( filename, format=tcfRGBA, p2=false );
 
 	/**
-	 * �R���X�g���N�^
-	 * @param bitmap �e�N�X�`���̌��ƂȂ�Bitmap�N���X�̃C���X�^���X
-	 * @param format �J���[�t�H�[�}�b�g(tcfRGBA or tcfAlpha), tcfAlpha�I�����ɐF���̓O���C�X�P�[���������
-	 * @param p2 �T�C�Y2�̗ݏ扻(�K�{�ł͂Ȃ��������������������A�ꉞ�w��\�ɁA�����ŋz���ł��������c�c obsolate���̉\������)undocument���������H
+	 * コンストラクタ
+	 * @param bitmap テクスチャの元となるBitmapクラスのインスタンス
+	 * @param format カラーフォーマット(tcfRGBA or tcfAlpha), tcfAlpha選択時に色情報はグレイスケール化される
+	 * @param p2 サイズ2の累乗化(必須ではないが高速化する環境もある、一応指定可能に、内部で吸収でもいいが…… obsolate化の可能性あり)undocumentがいいか？
 	 */
 	function Texture( bitmap, format=tcfRGBA, p2=false );
 
 	/**
-	 * �R���X�g���N�^
-	 * �e�N�X�`���̓��e�͖��������Ȃ̂ł��݂������Ă���B
-	 * @param width �e�N�X�`����
-	 * @param height �e�N�X�`������
-	 * @param format �J���[�t�H�[�}�b�g(tcfRGBA or tcfAlpha)
+	 * コンストラクタ
+	 * テクスチャの内容は未初期化なのでごみが入っている。
+	 * @param width テクスチャ幅
+	 * @param height テクスチャ高さ
+	 * @param format カラーフォーマット(tcfRGBA or tcfAlpha)
 	 */
 	function Texture( width, height, format=tcfRGBA );
 
-	// invalidate�Ńe�N�X�`��������
-	// �����I�ɌĂяo�����Ƃ𐄏�
+	// invalidateでテクスチャ無効化
+	// 明示的に呼び出すことを推奨
 
 	/**
-	 * ��`�R�s�[
-	 * @param dleft �R�s�[�捶�[
-	 * @param dtop �R�s�[���[
-	 * @param src Bitmap�N���X�̃I�u�W�F�N�g
-	 * @param srcRect src�̃R�s�[����`
+	 * 矩形コピー
+	 * @param dleft コピー先左端
+	 * @param dtop コピー先上端
+	 * @param src Bitmapクラスのオブジェクト
+	 * @param srcRect srcのコピー元矩形
 	 */
 	function copyRect( dleft, dtop, src, srcRect:Rect );
 	/**
-	 * ��`�R�s�[
-	 * @param dleft �R�s�[�捶�[
-	 * @param dtop �R�s�[���[
-	 * @param src Bitmap�N���X�̃I�u�W�F�N�g
-	 * @param sleft �R�s�[�����[�ʒu
-	 * @param stop �R�s�[����[�ʒu
-	 * @param swidth �R�s�[����
-	 * @param sheight �R�s�[������
+	 * 矩形コピー
+	 * @param dleft コピー先左端
+	 * @param dtop コピー先上端
+	 * @param src Bitmapクラスのオブジェクト
+	 * @param sleft コピー元左端位置
+	 * @param stop コピー元上端位置
+	 * @param swidth コピー元幅
+	 * @param sheight コピー元高さ
 	 */
 	function copyRect( dleft, dtop, src, sleft, stop, swidth, sheight );
 	/**
-	 * ��`�R�s�[
-	 * bitmap�S�̂��R�s�[���܂��B�͂ݏo���ꍇ�̓N���b�s���O����܂��B
-	 * @param src Bitmap�N���X�̃I�u�W�F�N�g
+	 * 矩形コピー
+	 * bitmap全体をコピーします。はみ出す場合はクリッピングされます。
+	 * @param src Bitmapクラスのオブジェクト
 	 */
 	function copyRect( src:Bitmap );
 
-	/* ��(�L���͈�), pot�w�肳��Ă��Ȃ���΁AmemoryWidth�Ɠ��� */
+	/* 幅(有効範囲), pot指定されていなければ、memoryWidthと同一 */
 	property width;
-	/** ����(�L���͈�), pot�w�肳��Ă��Ȃ���΁AmemoryHeight�Ɠ��� */
+	/** 高さ(有効範囲), pot指定されていなければ、memoryHeightと同一 */
 	property height;
 
-	/** ����(�n�[�h�E�F�A��)�̕� */
+	/** 実際(ハードウェア上)の幅 */
 	property memoryWidth;
-	/** ����(�n�[�h�E�F�A��)�̍��� */
+	/** 実際(ハードウェア上)の高さ */
 	property memoryHeight;
 
-	/** 8bit�J���[���ǂ���(�����ł̓A���t�@�e�N�X�`��) */
+	/** 8bitカラーかどうか(内部ではアルファテクスチャ) */
 	property isGray;
 
-	/** �e�N�X�`���T�C�Y��2�̗ݏ�l���ǂ��� */
+	/** テクスチャサイズが2の累乗値かどうか */
 	property isPowerOfTwo;
 
 	/**
-	 * �l�C�e�B�u�n���h��(���ˑ�)
-	 * OpenGL ES2/3 �����ł̓e�N�X�`��ID
+	 * ネイティブハンドル(環境依存)
+	 * OpenGL ES2/3 環境下ではテクスチャID
 	 */
 	property nativeHandle;
 
-	/** �g��k�����̕�ԕ��@ */
+	/** 拡大縮小時の補間方法 */
 	property stretchType;
 
-	/** �����������b�v���[�h */
+	/** 水平方向ラップモード */
 	property wrapModeHorizontal;
-	/** �����������b�v���[�h */
+	/** 垂直方向ラップモード */
 	property wrapModeVertical;
 
 
-	// �ȉ��A�N���X�萔����(static��read only)
-	// stretchType �Ɏw��
-	/** �ŋߖT�_�@ */
+	// 以下、クラス定数扱い(staticでread only)
+	// stretchType に指定
+	/** 最近傍点法 */
 	property stNearest;
-	/** ���`��� */
+	/** 線形補間 */
 	property stLinear;
 
-	// wrapModeHorizontal/wrapModeVertical �Ɏw��
-	/** �J��Ԃ� */
+	// wrapModeHorizontal/wrapModeVertical に指定
+	/** 繰り返し */
 	property wmRepeat;
-	/** �[�F�������΂��B2�̗ݏ�T�C�Y�łȂ��ꍇ�͂��̒萔�łȂ���΂Ȃ�Ȃ� (default) */
+	/** 端色引き延ばし。2の累乗サイズでない場合はこの定数でなければならない (default) */
 	property wmClampToEdge;
-	/** �~���[�J��Ԃ� */
+	/** ミラー繰り返し */
 	property wmMirror;
 };

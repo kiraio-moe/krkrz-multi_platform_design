@@ -38,7 +38,7 @@ class Window {
 	 * この呼び出しの間に独自の描画処理を行う
 	 * このメソッドを直接呼び出さないこと。
 	 */
-	function onDraw();
+	event onDraw();
 
 	/**
 	 * 明示的に描画を呼び出す。
@@ -75,7 +75,7 @@ class Window {
 	 * @param shift 修飾キー状態、タッチの時は0
 	 * @param id タッチID、マウスの時は常に0
 	 */
-	function onPointerDown( type, x, y, cx, cy, shift, id );
+	event onPointerDown( type, x, y, cx, cy, shift, id );
 
 	/**
 	 * 何らかのポインティングデバイスが移動された
@@ -88,7 +88,7 @@ class Window {
 	 * @param shift 修飾キー状態(マウス押下状態を含む)、タッチの時は0
 	 * @param id タッチID、マウスの時は常に0
 	 */
-	function onPointerMove( type, x, y, cx, cy, shift, id );
+	event onPointerMove( type, x, y, cx, cy, shift, id );
 
 	/**
 	 * 何らかのポインティングデバイスが離された
@@ -101,22 +101,22 @@ class Window {
 	 * @param shift 修飾キー状態、タッチの時は0
 	 * @param id タッチID、マウスの時は常に0
 	 */
-	function onPointerUp( type, x, y, cx, cy, shift, id );
+	event onPointerUp( type, x, y, cx, cy, shift, id );
 
 	/**
 	 * キー操作系要検討
 	 */
-	function onKeyXXX();
+	fueventnction onKeyXXX();
 
 	/**
 	 * ウインドウがアクティブになった
 	 */
-	function onActivate();
+	event onActivate();
 
 	/**
 	 * ウインドウが非アクティブになった
 	 */
-	function onDeactivate();
+	event onDeactivate();
 
 	/**
 	 * 終了確認用、従来と同じ[Windowsのみ]
@@ -126,7 +126,7 @@ class Window {
 	 * タスクリストから終了させられるときも問答無用である。
 	 * AndroidではonDeactivateが来た時にオートセーブするしか突然終了に対する対策がない。
 	 */
-	function onCloseQuery(canclose);
+	event onCloseQuery(canclose);
 
 	/**
 	 * 描画用のCanvasクラスのインスタンスを得る

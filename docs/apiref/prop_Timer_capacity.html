@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>capacity - イベントの最大発生許容量</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Timer.capacity</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>イベントの最大発生許容量</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_Timer.html">Timerクラス</a>のプロパティ</dd>
+<dt>説明</dt>
+<dd>どれだけのイベントを、一時期に発生させることができるかを指定します。値を設定することもできます。タイマの周期よりも長い処理が行われた時など、タイマイベントを処理しきれない場合があります。<br />このとき、タイマはイベントをイベントキューには溜めますが、そのイベントキューに溜めるイベントの数には上限があります。<br />このプロパティはその最大数を指定します。イベントを処理する段階になった場合、吉里吉里はキューに溜まった数のイベントを一時期に処理しようとします。1を指定すると、イベントキューには最大1個までしかイベントが溜まりません。0 を指定するとイベントキューに溜まるイベントの数に<br />制限はなくなりますが、あまりにイベントが溜まりすぎると、フリーズしたようになる可能性があるので注意してください。デフォルトは 6 です。</dd>
+</dl>
+</div>
+</body>
+</html>

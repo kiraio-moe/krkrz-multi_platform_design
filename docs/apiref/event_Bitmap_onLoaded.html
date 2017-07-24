@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>onLoaded - 非同期読込みが完了した</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Bitmap.onLoaded</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>非同期読込みが完了した</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_Bitmap.html">Bitmapクラス</a>のイベント</dd>
+<dt>構文</dt>
+<dd><span class="funcdecl">onLoaded(<span class="arg">meta</span>, <span class="arg">async</span>, <span class="arg">error</span>, <span class="arg">message</span>)</span></dd>
+<dt>引数</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="onLoadedの引数">
+<tr><td valign="top"><span class="argname">meta</span></td>
+<td>読み込んだ画像のタグ情報です。</td></tr>
+<tr><td valign="top"><span class="argname">async</span></td>
+<td>非同期で読み込まれたかどうかです。画像データがキャッシュ内にある場合、 Bitmap.loadAsync 実行中に本イベントが発生します。</td></tr>
+<tr><td valign="top"><span class="argname">error</span></td>
+<td>画像読込みでエラーが発生したかどうかです。</td></tr>
+<tr><td valign="top"><span class="argname">message</span></td>
+<td>エラーメッセージです。エラーが発生した場合、エラーメッセージが渡されます。</td></tr>
+</table></dd>
+<dt>戻り値</dt>
+<dd>なし (void)</dd>
+<dt>説明</dt>
+<dd>非同期読込みが完了した時に発生します。読み込んだ画像は Layer.copyFromBitmapToMainImage で Layer にコピーできます。読込み処理は非同期であるため、読込みが完了した時に、その画像を渡す Layer が既に無効化されている可能性があります。本イベントで他のオブジェクトへアクセスする場合は、無効化されていないか確認して下さい。もしくは、本イベントが完了するまで対象オブジェクトが無効化されないようにしてください。</dd>
+</dl>
+</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>saveLayerImage - 画像の保存</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.saveLayerImage</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>画像の保存</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_Layer.html">Layerクラス</a>のメソッド</dd>
+<dt>構文</dt>
+<dd><span class="funcdecl">saveLayerImage(<span class="arg">name</span>, <span class="arg">type</span>)</span></dd>
+<dt>引数</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="saveLayerImageの引数">
+<tr><td valign="top"><span class="argname">name</span></td>
+<td>保存するストレージ名を指定します。</td></tr>
+<tr><td valign="top"><span class="argname">type</span></td>
+<td>保存する画像形式を文字列で指定します。現バージョンでは以下の形式を指定可能です。"bmp" または "bmp32"32bpp の BMP です。アルファチャンネル(マスク)も保存します。"bmp24"24bpp の BMP です。アルファチャンネル(マスク)は保存されません。"bmp8"8bpp の BMP です。アルファチャンネル(マスク)は保存されません。画像は<br />252色の固定パレットによる4×4組織化ディザリングを用いて減色されます。"jpg"JPEG です。アルファチャンネル(マスク)は保存されません。画像は<br />クオリティー90%で保存されます。"jpg###"JPEG です。アルファチャンネル(マスク)は保存されません。画像は<br />###で指定されたクオリティーで保存されます。"jpg010" で 10%、"jpg100" で 100%、"jpg080" で 80%です。"png"32bpp の PNG です。アルファチャンネル(マスク)も保存します。"png24"24bpp の PNG です。アルファチャンネル(マスク)は保存されません。"tlg5"32bpp の TLG5 です。アルファチャンネル(マスク)も保存します。"tlg524"24bpp の TLG5 です。アルファチャンネル(マスク)は保存されません。"tlg6"32bpp の TLG6 です。アルファチャンネル(マスク)も保存します。"tlg624"24bpp の TLG6 です。アルファチャンネル(マスク)は保存されません。</td></tr>
+</table></dd>
+<dt>戻り値</dt>
+<dd>なし (void)</dd>
+<dt>説明</dt>
+<dd>name で指定したストレージ (ファイル) に、type で指定した画像形式でファイルを保存します。保存されるのはレイヤの画像で、領域画像は保存することはできません。</dd>
+</dl>
+</div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>compileStorage - ストレージ上のスクリプトのコンパイル</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Scripts.compileStorage</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>ストレージ上のスクリプトのコンパイル</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_Scripts.html">Scriptsクラス</a>のメソッド</dd>
+<dt>構文</dt>
+<dd><span class="funcdecl">compileStorage(<span class="arg">inputfile</span>, <span class="arg">outputfile</span>, <span class="arg">isresult</span>, <span class="arg">outputdebug</span>, <span class="arg">isexpression</span>)</span></dd>
+<dt>引数</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="compileStorageの引数">
+<tr><td valign="top"><span class="argname">inputfile</span></td>
+<td>コンパイル対象ストレージを指定します。</td></tr>
+<tr><td valign="top"><span class="argname">outputfile</span></td>
+<td>出力バイトコードストレージを指定します。</td></tr>
+<tr><td valign="top"><span class="argname">isresult</span></td>
+<td>戻り値が必要かどうかを指定します。</td></tr>
+<tr><td valign="top"><span class="argname">outputdebug</span></td>
+<td>デバッグ情報を含めるかどうかを指定します。</td></tr>
+<tr><td valign="top"><span class="argname">isexpression</span></td>
+<td>式かどうかを指定します。</td></tr>
+</table></dd>
+<dt>戻り値</dt>
+<dd>なし (void)</dd>
+<dt>説明</dt>
+<dd>指定されたストレージを読み込み、その内容をコンパイルしてバイトコードファイルとして出力します。コンパイルされたバイトコードファイルは execStorage もしくは、evalStorage で通常のスクリプトと同じように実行できます。</dd>
+</dl>
+</div>
+</body>
+</html>

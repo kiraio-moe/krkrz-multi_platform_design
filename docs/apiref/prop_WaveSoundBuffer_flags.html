@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>flags - フラグ</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">WaveSoundBuffer.flags</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>フラグ</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_WaveSoundBuffer.html">WaveSoundBufferクラス</a>のプロパティ</dd>
+<dt>説明</dt>
+<dd>フラグを表すオブジェクトを得ることができます。このオブジェクトには 0 ～ 15 のプロパティがあり、それぞれ各フラグの値を表しています。プロパティには間接メンバ選択演算子 ('[ ]' 演算子) を用いてアクセスすることができます。これらのプロパティには値を設定することもできます。値は 0 ～ 9999 の範囲であり、これを下回ったり、上回ることはできません。このオブジェクトの count プロパティは常に 16 を返します。このオブジェクトには reset メソッドがあり、このメソッドを実行すると、全てのフラグが 0 にリセットされます。メディアを開いていない場合は、このオブジェクトのプロパティに値を設定しても無視されます。このオブジェクトは一見配列オブジェクトにも見えますが、いわゆるTJSの配列オブジェクト('Array' クラスのオブジェクト) ではありません。フラグは WaveSoundBuffer.open メソッドで全て 0 にリセットされます。例: var buf = new WaveSoundBuffer(window);(略)buf.flags.reset(); // 全てのフラグを 0 にリセットvar cnt = buf.flags.count; // cnt には 16 が入るbuf.flags[4] = 34; // 4番のフラグに34を代入</dd>
+</dl>
+</div>
+</body>
+</html>

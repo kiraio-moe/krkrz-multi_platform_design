@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>stretchCopy - 拡大縮小コピー</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.stretchCopy</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>拡大縮小コピー</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_Layer.html">Layerクラス</a>のメソッド</dd>
+<dt>構文</dt>
+<dd><span class="funcdecl">stretchCopy(<span class="arg">dleft</span>, <span class="arg">dtop</span>, <span class="arg">dwidth</span>, <span class="arg">dheight</span>, <span class="arg">src</span>, <span class="arg">sleft</span>, <span class="arg">stop</span>, <span class="arg">swidth</span>, <span class="arg">sheight</span>, <span class="arg">type</span>, <span class="arg">option</span>)</span></dd>
+<dt>引数</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="stretchCopyの引数">
+<tr><td valign="top"><span class="argname">dleft</span></td>
+<td>コピー先の矩形の左端位置を ( コピー先レイヤの画像位置における ) ピクセル単位で指定します。</td></tr>
+<tr><td valign="top"><span class="argname">dtop</span></td>
+<td>コピー先の矩形の上端位置を ( コピー先レイヤの画像位置における ) ピクセル単位で指定します。</td></tr>
+<tr><td valign="top"><span class="argname">dwidth</span></td>
+<td>コピー先の矩形の横幅を ( コピー先レイヤの画像位置における ) ピクセル単位で指定します。</td></tr>
+<tr><td valign="top"><span class="argname">dheight</span></td>
+<td>コピー先の矩形の縦幅を ( コピー先レイヤの画像位置における ) ピクセル単位で指定します。</td></tr>
+<tr><td valign="top"><span class="argname">src</span></td>
+<td>コピー元のレイヤオブジェクトを指定します。Bitmap クラスのオブジェクトも指定可能です。(1.1.0以降)</td></tr>
+<tr><td valign="top"><span class="argname">sleft</span></td>
+<td>コピーする矩形の左端位置を ( コピー元レイヤの画像位置における ) ピクセル単位で指定します。</td></tr>
+<tr><td valign="top"><span class="argname">stop</span></td>
+<td>コピーする矩形の上端位置を ( コピー元レイヤの画像位置における ) ピクセル単位で指定します。</td></tr>
+<tr><td valign="top"><span class="argname">swidth</span></td>
+<td>コピーする矩形の横幅を ( コピー元レイヤの画像位置における ) ピクセル単位で指定します。</td></tr>
+<tr><td valign="top"><span class="argname">sheight</span></td>
+<td>コピーする矩形の縦幅を ( コピー元レイヤの画像位置における ) ピクセル単位で指定します。</td></tr>
+<tr><td valign="top"><span class="argname">type</span></td>
+<td>拡大縮小のタイプを指定します。stNearest           : 最近傍点法が用いられますstFastLinear        : 低精度の線形補間が用いられます(一部実装)stSemiFastLinear    : 固定小数線形補間が用いられます(1.3以降)stLinear            : 線形補間が用いられます(1.3以降実装変更)stFastCubic         : 固定小数３次元補間が用いられます(1.3以降)stCubic             : ３次元補間が用いられます(1.3以降実装変更)stFastLanczos2      : 固定小数Lanczos補間の範囲4x4が用いられます(1.3以降)stLanczos2          : Lanczos補間の範囲4x4が用いられます(1.3以降)stFastLanczos3      : 固定小数Lanczos補間の範囲6x6が用いられます(1.3以降)stLanczos3          : Lanczos補間の範囲6x6が用いられます(1.3以降)stFastSpline16      : 固定小数スプライン補間4x4が用いられます(1.3以降)stSpline16          : スプライン補間4x4が用いられます(1.3以降)stFastSpline36      : 固定小数スプライン補間6x6が用いられます(1.3以降)stSpline36          : スプライン補間6x6が用いられます(1.3以降)stFastAreaAvg       : 固定小数面積平均縮小が用いられます。拡大は出来ません(1.3以降)stAreaAvg           : 面積平均縮小が用いられます。拡大は出来ません(1.3以降)stFastGaussian      : 固定小数ガウス補間4x4が用いられます(1.3以降)stGaussian          : ガウス補間4x4が用いられます(1.3以降)stFastBlackmanSinc  : 固定小数Blackman-Sinc補間8x8が用いられます(1.3以降)stBlackmanSinc      : Blackman-Sinc補間8x8が用いられます(1.3以降)速度は stNearest > stFastLinear > stLinear > stCubic の順に高速ですが、画質は速度が<br />速ければ速いタイプほど低画質になります。stCubic 以降の補間方法は十分高画質で好みの差とも言えます。ただし、ガウス補間についてはぼやけたような画質になります。stFastLinear と他の線形補間(stSemiFastLinear と stLinear)の差は縮小時に大きく出ます。stFastLinear は、常に周囲4画素を参照するのに対して、stSemiFastLinear、stLinear は、縮小時は<br />等倍時の影響範囲が4画素となるような範囲、つまりより広い範囲の画素を参照し補間するためより高画質です<br />(アルゴリズム的には本来の線形補間です)。stFastLinear に対しては、stRefNoClip をビット論理和で追加指定することができ、この場合は、<br />　コピーするビットマップの領域外を参照して色を合成することを許可します。これを指定しない場合は、<br />　転送元ビットマップの周囲に余裕があったとしても、転送元ビットマップの範囲外を参照することは<br />　ありません(範囲外の色はもっとも近い位置にある範囲内のピクセルの色と見なされます)。</td></tr>
+<tr><td valign="top"><span class="argname">option</span></td>
+<td>1.3以降で追加されました。３次元補間時のシャープネスです。他の補間方法では現在のところ意味を持ちません。シャープネスの値をプラス方向に大きくするとぼやけていき、マイナス方向に大きくしていくとシャープになっていきます。</td></tr>
+</table></dd>
+<dt>戻り値</dt>
+<dd>なし (void)</dd>
+<dt>説明</dt>
+<dd>指定されたコピー元レイヤの矩形を、コピー先 ( メソッドを実行するレイヤ ) の矩形に<br />コピーします。コピー元矩形とコピー先矩形のサイズが異なる場合は拡大または縮小が<br />行われます。現バージョンでは stFastLinear の指定で線形補間が効くのは、重ね合わせ先の ( メソッドを実行する ) レイヤの Layer.face プロパティが dfAlpha (または dfBoth) または dfAddAlpha の場合です。また、Layer.face プロパティが dfOpaque で、Layer.holdAlpha プロパティが偽の時も線形補間が可能です。また、現バージョンでは stLinear あるいは stCubic の指定が有効なのは、左右／上下反転を<br />伴わず、コピー先矩形がレイヤをはみ出さない場合のみです。重ね合わせ先の ( メソッドを実行する ) レイヤの Layer.face プロパティが<br />dfAlpha (または dfBoth) または dfAddAlpha の場合は、メイン画像とマスク画像の両方がコピーされます。dfOpaque (または dfMain) の場合は、Layer.holdAlpha プロパティが真の時はメイン画像のみがコピーされ、偽の時はメイン画像とマスク画像の両方がコピーされます。</dd>
+</dl>
+</div>
+</body>
+</html>

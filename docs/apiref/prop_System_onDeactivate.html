@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>onDeactivate - アプリケーションが非アクティブになったとき</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">System.onDeactivate</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>アプリケーションが非アクティブになったとき</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_System.html">Systemクラス</a>のプロパティ</dd>
+<dt>説明</dt>
+<dd>アプリケーションが非アクティブになったときに呼び出されるイベント関数を表します。null を指定すると関数は呼び出されません。通常のイベントハンドラと異なり、このイベントを受け取りたい場合は、呼び出したい関数をこのプロパティに設定してください。Window.onDeactivate は、同じアプリケーション内のそれぞれのウィンドウが非アクティブになったときに発生しますが、このイベントは、メインウィンドウが非アクティブになった場合に発生します。このイベントは、メインウィンドウが既に非アクティブの場合にも発生する可能性があるので注意してください (完全に onActivate → onDeactivate → onActivate → …… の順に発生する保証がない )。</dd>
+</dl>
+</div>
+</body>
+</html>

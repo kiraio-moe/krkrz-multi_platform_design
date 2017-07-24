@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>getTraceString - 呼び出し履歴の取得</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Scripts.getTraceString</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>呼び出し履歴の取得</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_Scripts.html">Scriptsクラス</a>のメソッド</dd>
+<dt>構文</dt>
+<dd><span class="funcdecl">getTraceString(<span class="arg">limit</span>)</span></dd>
+<dt>引数</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="getTraceStringの引数">
+<tr><td valign="top"><span class="argname">limit</span></td>
+<td>履歴を取得する最大呼び出し深さを指定します。この引数を省略するか 0 を指定すると、取得できる限りの履歴を取得します。</td></tr>
+</table></dd>
+<dt>戻り値</dt>
+<dd>呼び出し履歴を文字列化した物</dd>
+<dt>説明</dt>
+<dd>メソッドの呼び出し履歴を文字列として取得します。このメソッドが呼ばれた時点での履歴を取得することができます。このメソッドを使用するには、コマンドラインオプションで -debug (デバッグモード) が有効になっていなければなりません。デバッグモードが無効の場合はこのメソッドは空文字列を返します。返される文字列はたとえば 'messagelayer.tjs(1561)[(function) addButton] <-- mainwindow.tjs(4463)[(function expression) (anonymous)] <-- conductor.tjs(427)[(function) onTag] <-- conductor.tjs(95)[(function) timerCallback]' のような物です。<br /></dd>
+</dl>
+</div>
+</body>
+</html>

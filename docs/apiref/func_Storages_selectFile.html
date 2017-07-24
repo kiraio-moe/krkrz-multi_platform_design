@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>selectFile - ファイル選択ダイアログボックスを表示</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Storages.selectFile</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>ファイル選択ダイアログボックスを表示</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_Storages.html">Storagesクラス</a>のメソッド</dd>
+<dt>構文</dt>
+<dd><span class="funcdecl">selectFile(<span class="arg">params</span>)</span></dd>
+<dt>引数</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="selectFileの引数">
+<tr><td valign="top"><span class="argname">params</span></td>
+<td>データの受け渡しに用いる辞書配列を指定します。このメソッドに渡すとき、以下のメンバを指定することができます。また、<br />いくつかのメンバはこのメソッドが終わると値が変更されます。filterフィルタ文字列を配列で渡します。フィルタ文字列は、フィルタの説明と フィルタを | (半角縦棒) で区切って指定<br />するもので、フィルタにはワイルドカードを指定します。一つのフィルタに複数の<br />拡張子が対応する場合は ; (半角セミコロン) で区切ります。複数のフィルタを指定するには配列で指定します。省略するとフィルタは用いません。例 :["画像ファイル(*.bmp;*.png;*.jpg;*.jpeg;*.eri;*.tlg)|*.bmp;*.png;*.jpg;*.jpeg;*.eri;*.tlg",  "スクリプトファイル(*.tjs;*.ks)|*.tjs;*.ks"]filterIndex選択されているフィルタの番号 ( filter で指定したもの ) を指定します。1 を指定すると、filter で指定された最初のフィルタが初期状態において<br />選択されています。2 を指定すると2番目のフィルタが選択さている状態に<br />なります ( 0 から始まるインデックス番号ではないことに注意してください;<br />先頭は 1 です )。省略すると先頭のフィルタが選択されます。また、ユーザが OK ボタンを押した場合、最後にダイアログボックス上で<br />選ばれていたフィルタのインデックスがこのメンバに設定されます。nameファイル名を指定します。省略したり、空文字列を指定すると初期状態ではなにもファイルを選択<br />されていない状態にすることができます。また、ユーザが OK ボタンを押した場合、選択されたファイルがこのメンバに<br />設定されます。initialDir初期状態で表示するフォルダを指定します。省略するとカレントディレクトリが使用されます。titleダイアログボックスのタイトルを表示します。省略されるとデフォルトの「開く」や「名前を付けて保存」になります<br />( save メンバの設定によります )。<br />saveダイアログボックスの種類を指定します。false(デフォルト) の場合、「開く」のダイアログボックスが使われます。true の場合、「名前を付けて保存」のダイアログボックスが使われます。defaultExtデフォルトの拡張子を指定します。ユーザが拡張子を指定しなかった場合に<br />自動的にこの拡張子を付加します。ここで指定する拡張子には . (ピリオド)を<br />指定しないでください。省略すると、拡張子が付加されることはありません。</td></tr>
+</table></dd>
+<dt>戻り値</dt>
+<dd>ユーザがファイルを選択して OK ボタンを押せば真、キャンセルボタンを押せば偽が戻ります。</dd>
+<dt>説明</dt>
+<dd>ファイル選択ダイアログボックスを開きます。例: var params = %[filter : [ "テキストファイル(*.txt)|*.txt", "バイナリファイル(*.bin)|*.bin" ],filterIndex : 1,name : "",initialDir : System.exePath,title : "ファイルを開く",save : false,];if(Storages.selectFile(params))System.inform("選択したファイルは : " + params.name);</dd>
+</dl>
+</div>
+</body>
+</html>

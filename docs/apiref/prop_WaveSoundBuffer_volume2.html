@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>volume2 - 第２音量</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">WaveSoundBuffer.volume2</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>第２音量</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_WaveSoundBuffer.html">WaveSoundBufferクラス</a>のプロパティ</dd>
+<dt>説明</dt>
+<dd>再生する音量を表します。値を設定することができます。WaveSoundBuffer.volume プロパティと違うのは、このプロパティは<br />WaveSoundBuffer.fade メソッドでも変化しないということです。最終的な音量は、volume プロパティとこのプロパティの積で決定されます。volume プロパティが<br />100000 ( 100% ) で volume2 プロパティも 100000 ( 100% ) ならば 100% × 100% = 100% で<br />100% の音量で再生されます。volume プロパティが 50000 ( 50% ) で volume2 プロパティが 75000 ( 75% ) ならば<br />50% × 75% = 37.5% で 37.5 % の音量で再生されます。</dd>
+</dl>
+</div>
+</body>
+</html>

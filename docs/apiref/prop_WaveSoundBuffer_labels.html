@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>labels - ラベル</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">WaveSoundBuffer.labels</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>ラベル</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_WaveSoundBuffer.html">WaveSoundBufferクラス</a>のプロパティ</dd>
+<dt>説明</dt>
+<dd>ラベルを表すオブジェクトを得ることができます。このオブジェクトは辞書配列で、それぞれ、ループ情報中のラベルの名前をメンバ名とした要素が入っています。それぞれの要素も辞書配列で、name メンバはラベルの名前を表し、position メンバはミリ秒単位でのラベルの位置を表し、samplePosition はサンプル数単位でのラベルの位置を表しています。この辞書配列は読み出し専用であると考えてください。値を代入したり、新しいメンバを作成しても反映されることはありません。例: var buf = new WaveSoundBuffer(window);(略)debug.message(buf.labels['start'].position); // 'start' というラベル名の位置をミリ秒単位でdebug.message(buf.labels['start'].samplePosition); // 'start' というラベル名の位置をサンプル数単位で</dd>
+</dl>
+</div>
+</body>
+</html>

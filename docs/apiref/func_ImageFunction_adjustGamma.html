@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>adjustGamma - ガンマ補正</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">ImageFunction.adjustGamma</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>ガンマ補正</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_ImageFunction.html">ImageFunctionクラス</a>のメソッド</dd>
+<dt>構文</dt>
+<dd><span class="funcdecl">adjustGamma(<span class="arg">bmp</span>, <span class="arg">rgamma</span>, <span class="arg">rfloor</span>, <span class="arg">rceil</span>, <span class="arg">ggamma</span>, <span class="arg">gfloor</span>, <span class="arg">gceil</span>, <span class="arg">bgamma</span>, <span class="arg">bfloor</span>, <span class="arg">bceil</span>, <span class="arg">cliprect</span>, <span class="arg">isaddalpha</span>)</span></dd>
+<dt>引数</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="adjustGammaの引数">
+<tr><td valign="top"><span class="argname">bmp</span></td>
+<td>ガンマ補正する Bitmap オブジェクトを指定します。</td></tr>
+<tr><td valign="top"><span class="argname">rgamma</span></td>
+<td>赤成分のガンマ値 ( 0.0 ～ 1.0 ～ 9.0 ) を指定します。</td></tr>
+<tr><td valign="top"><span class="argname">rfloor</span></td>
+<td>赤成分の出力最低値 ( 0 ～ 255 ) を指定します。</td></tr>
+<tr><td valign="top"><span class="argname">rceil</span></td>
+<td>赤成分の出力最大値 ( 0 ～ 255 ) を指定します。</td></tr>
+<tr><td valign="top"><span class="argname">ggamma</span></td>
+<td>緑成分のガンマ値 ( 0.0 ～ 1.0 ～ 9.0 ) を指定します。</td></tr>
+<tr><td valign="top"><span class="argname">gfloor</span></td>
+<td>緑成分の出力最低値 ( 0 ～ 255 ) を指定します。</td></tr>
+<tr><td valign="top"><span class="argname">gceil</span></td>
+<td>緑成分の出力最大値 ( 0 ～ 255 ) を指定します。</td></tr>
+<tr><td valign="top"><span class="argname">bgamma</span></td>
+<td>青成分のガンマ値 ( 0.0 ～ 1.0 ～ 9.0 ) を指定します。</td></tr>
+<tr><td valign="top"><span class="argname">bfloor</span></td>
+<td>青成分の出力最低値 ( 0 ～ 255 ) を指定します。</td></tr>
+<tr><td valign="top"><span class="argname">bceil</span></td>
+<td>青成分の出力最大値 ( 0 ～ 255 ) を指定します。</td></tr>
+<tr><td valign="top"><span class="argname">cliprect</span></td>
+<td>クリッピング領域を ( Bitmap の画像位置における )  Rect オブジェクトで指定します。未指定時全体が対象となります。</td></tr>
+<tr><td valign="top"><span class="argname">isaddalpha</span></td>
+<td>加算合成アルファ形式かどうかを指定します。</td></tr>
+</table></dd>
+<dt>戻り値</dt>
+<dd>なし (void)</dd>
+<dt>説明</dt>
+<dd>画像に対してガンマ補正を実行します。ガンマ値には 1.0 を指定するとガンマ曲線が直線になります。出力最低値と出力最高値は各成分の輝度の最低値と最高値を指定するものです。最高値に最低値よりも低い値を設定すると画像を反転させることができます。isaddalpha が true の場合、このメソッドは加算アルファ合成用の特別なガンマ補正ルーチンを用います。このルーチンは加算アルファ合成のうち、アルファ合成に相当する成分に対してはガンマ補正を行いますが、加算合成に相当する成分に対してはガンマ補正を行いません。</dd>
+</dl>
+</div>
+</body>
+</html>

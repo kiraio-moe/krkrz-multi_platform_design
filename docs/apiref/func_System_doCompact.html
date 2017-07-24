@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>doCompact - メモリのコンパクト化</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">System.doCompact</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>メモリのコンパクト化</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_System.html">Systemクラス</a>のメソッド</dd>
+<dt>構文</dt>
+<dd><span class="funcdecl">doCompact(<span class="arg">level</span>)</span></dd>
+<dt>引数</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="doCompactの引数">
+<tr><td valign="top"><span class="argname">level</span></td>
+<td>レベルを指定します。clIdle を指定すると、システムがアイドル状態 (システムが比較的動作をしていない状態) に実行されるコンパクト化と同じ処理が行われます。現バージョンでは TJS2 のガベージコレクションが行われます。clDeactivate を指定すると、吉里吉里が非アクティブになったとき (他のアプリケーションがアクティブになったとき) に実行されるコンパクト化と同じ処理が行われます。現バージョンではレイヤの演算用の一時画像バッファ、レイヤキャッシュ、XP3 アーカイブのセグメント(ストレージの断片) キャッシュ、自動検索パスのキャッシュがクリアされます。clMinimize を指定すると、吉里吉里が最小化されたときに実行されるコンパクト化と同じ処理が行われます。現バージョンでは、描画文字のキャッシュ、画像キャッシュがクリアされます。clAll を指定すると、上記のコンパクト化の全てが実行されます。コンパクト化のレベルは、clIdle < clDeactivate < clMinimize < clAll の順に強くなります。より上位のレベルを指定すると、下位のレベルで行われるコンパクト化も行われます。たとえば、clDeactivate を実行すると、clIdle での処理も実行されます。引数を省略すると clAll が指定された物と見なされます。</td></tr>
+</table></dd>
+<dt>戻り値</dt>
+<dd>なし (void)</dd>
+<dt>説明</dt>
+<dd>メモリのコンパクト化を行います。コンパクト化とは、使用していないメモリや各種キャッシュ用メモリを解放して、メモリ使用量を減らす処理です。吉里吉里は自動でこれを行うので通常はあまり気にする必要はありませんが、強制的にプログラム側の処理で行いたい場合にこのメソッドを使用することができます。</dd>
+</dl>
+</div>
+</body>
+</html>

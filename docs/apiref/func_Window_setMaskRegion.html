@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>setMaskRegion - [Windows]ウィンドウリージョンをマスクに従って設定</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Window.setMaskRegion</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>[Windows]ウィンドウリージョンをマスクに従って設定</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_Window.html">Windowクラス</a>のメソッド</dd>
+<dt>構文</dt>
+<dd><span class="funcdecl">setMaskRegion(<span class="arg">threshold</span>)</span></dd>
+<dt>引数</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="setMaskRegionの引数">
+<tr><td valign="top"><span class="argname">threshold</span></td>
+<td>マスクのスレッショルド ( 敷居値 ) を指定します。プライマリレイヤのマスク ( レイヤの不透明度の情報 ) のうち、この値よりも大きい部分の形に<br />ウィンドウが切り取られて表示されます。</td></tr>
+</table></dd>
+<dt>戻り値</dt>
+<dd>なし (void)</dd>
+<dt>説明</dt>
+<dd>ウィンドウリージョンをプライマリレイヤのマスク ( レイヤの不透明度の情報 ) に従って設定します。ウィンドウを不定形にする事ができます。表示されるプライマリレイヤと、ウィンドウの大きさ、位置がずれないようにするには<br />以下のことを行う必要があります。Window.borderStyle は bsNone に設定します。Layer.imageLeft および Layer.imageTop は 0 に設定します。</dd>
+</dl>
+</div>
+</body>
+</html>

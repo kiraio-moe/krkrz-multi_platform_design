@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>postInputEvent - 入力イベントの生成</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Window.postInputEvent</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>入力イベントの生成</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_Window.html">Windowクラス</a>のメソッド</dd>
+<dt>構文</dt>
+<dd><span class="funcdecl">postInputEvent(<span class="arg">eventname</span>, <span class="arg">params</span>)</span></dd>
+<dt>引数</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="postInputEventの引数">
+<tr><td valign="top"><span class="argname">eventname</span></td>
+<td>イベント名称を指定します。以下の文字列で指定します。"onKeyDown" は Window.onKeyDown イベントを生成します。"onKeyPress" は Window.onKeyPress イベントを生成します。"onKeyUp" は Window.onKeyUp イベントを生成します。onKeyDownとonKeyUpは対になるので、onKeyDownを生成したら対応するonKeyUpも生成することを推奨します。</td></tr>
+<tr><td valign="top"><span class="argname">params</span></td>
+<td>イベントのパラメータが格納された辞書配列を指定します。"onKeyDown" イベントや "onKeyUp" イベントでは、"key" に仮想キーコード、"shift" にシフト状態を格納します。"shift" を省略すると 0 であると見なされます。"onKeyPress" イベントでは "key" に文字を指定します。</td></tr>
+</table></dd>
+<dt>戻り値</dt>
+<dd>なし (void)</dd>
+<dt>説明</dt>
+<dd>入力イベントを生成します。現バージョンではキー入力に関する３つのイベントを生成できます。このメソッドは、イベントを非同期イベントとして生成します。つまり、このメソッドは、対応するイベントハンドラの終了を待たずに帰ります。実際にイベントハンドラが呼ばれて処理が行われるのは、いったん吉里吉里に制御が戻った後となります。入力イベントは、Windowクラスのほか、通常の入力イベントと同じく、Layerクラスの該当するイベントとしても発生します。例: postInputEvent('onKeyDown', %[key: VK_UP, shift: ssShift]);postInputEvent('onKeyUp',   %[key: VK_UP, shift: ssShift]);// 左カーソルキーを押す</dd>
+</dl>
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>onHitTest - 当たり判定</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.onHitTest</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>当たり判定</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_Layer.html">Layerクラス</a>のイベント</dd>
+<dt>構文</dt>
+<dd><span class="funcdecl">onHitTest(<span class="arg">x</span>, <span class="arg">y</span>, <span class="arg">hit</span>)</span></dd>
+<dt>引数</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="onHitTestの引数">
+<tr><td valign="top"><span class="argname">x</span></td>
+<td>当たり判定を行う位置の ( レイヤの表示座標内での )  x 座標です。</td></tr>
+<tr><td valign="top"><span class="argname">y</span></td>
+<td>当たり判定を行う位置の ( レイヤの表示座標内での )  y 座標です。</td></tr>
+<tr><td valign="top"><span class="argname">hit</span></td>
+<td>当たり判定の結果、当たっている場合は真, はずれている場合は偽になります。<br />当たり判定の結果は、同名のスーパークラスのイベントのこの引数に渡してください。</td></tr>
+</table></dd>
+<dt>戻り値</dt>
+<dd>なし (void)</dd>
+<dt>説明</dt>
+<dd>レイヤ内のある点に対して、当たり判定 ( ヒットテスト ) が行われる場合に呼び出されます。当たり判定の結果は、スーパークラスのこのイベントの第３引数に当たり判定の結果を<br />渡してください ( 第１引数と<br />第２引数はそのまま渡してください )。当たり判定の結果、当たっていればマウスメッセージは不透過になり、そのレイヤで処理されます。当たっていなければ透過となり、マウスメッセージはより奥にあるレイヤで処理されます。このイベントは、Layer.hitThreshold や Layer.hitType で行われる<br />当たり判定で「当たっている」という判定がされた後に呼び出されます。したがって<br />Layer.hitThreshold や Layer.hitType で「当たってない」と判定されている場合は<br />このイベントは呼び出されません。</dd>
+</dl>
+</div>
+</body>
+</html>

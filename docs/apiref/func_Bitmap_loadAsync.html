@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>loadAsync - 画像の非同期読み込み</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Bitmap.loadAsync</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>画像の非同期読み込み</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_Bitmap.html">Bitmapクラス</a>のメソッド</dd>
+<dt>構文</dt>
+<dd><span class="funcdecl">loadAsync(<span class="arg">image</span>)</span></dd>
+<dt>引数</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="loadAsyncの引数">
+<tr><td valign="top"><span class="argname">image</span></td>
+<td>読み込む画像ストレージを指定します。ここで指定するファイル名は拡張子を含んだものになることに注意してください。拡張子がないとファイルが見つからずエラーとなります。</td></tr>
+</table></dd>
+<dt>戻り値</dt>
+<dd>なし (void)</dd>
+<dt>説明</dt>
+<dd>画像を非同期で読み込みます。読込みの完了は Bitmap.onLoaded で受け取れます。非同期読込み中か否かは Bitmap.loading で確認できます。非同期読込み中は Bitmap.loading 以外のメンバへアクセスすると例外が発生します。Bitmap.onLoaded の説明も確認してください。</dd>
+</dl>
+</div>
+</body>
+</html>

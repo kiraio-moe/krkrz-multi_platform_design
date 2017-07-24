@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>face - 描画方式</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.face</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>描画方式</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_Layer.html">Layerクラス</a>のプロパティ</dd>
+<dt>説明</dt>
+<dd>レイヤへの描画方式を表します。値を設定することもできます。吉里吉里 2.23 beta 1 以前では「描画面」と呼ばれていました。dfAlpha または dfBoth を指定すると、画像はアルファチャンネルつき画像と見なされ、描画されます。dfBoth でも dfAlpha でも同じになります。この描画方法に対応するレイヤタイプは ltTransparent または ltAlpha です。dfAddAlpha を指定すると、画像は加算アルファチャンネルつき画像として見なされ、描画されます。この描画方法に対応するレイヤタイプは ltAddAlpha です。 dfOpaque または dfMain を指定すると、レイヤの画像はすべて完全不透明であると見なされ、描画されます。この描画方法に対応するレイヤタイプは ltOpaque または ltCoverRect、または ltAdditive のような算術/論理演算を行うレイヤタイプです。dfMask を指定すると、マスク画像(アルファチャンネル)を描画の対象にします。dfProvince を指定すると、領域画像を描画の対象にします。dfAuto を指定すると、現在の Layer.type プロパティに従って描画方式が自動的に決定されます。作成された直後のレイヤの描画方式は dfAuto です。このプロパティの値によっては操作できないメソッドがあります。</dd>
+</dl>
+</div>
+</body>
+</html>

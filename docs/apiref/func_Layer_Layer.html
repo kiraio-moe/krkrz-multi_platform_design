@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>Layer - Layer オブジェクトの構築</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.Layer</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>Layer オブジェクトの構築</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_Layer.html">Layerクラス</a>のメソッド</dd>
+<dt>構文</dt>
+<dd><span class="funcdecl">Layer(<span class="arg">window</span>, <span class="arg">parent</span>)</span></dd>
+<dt>引数</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="Layerの引数">
+<tr><td valign="top"><span class="argname">window</span></td>
+<td>このレイヤを保有することになるウィンドウ ( Window クラスの<br />オブジェクト ) を指定します。ウィンドウはいったん決定したら変更することはできません。</td></tr>
+<tr><td valign="top"><span class="argname">parent</span></td>
+<td>このレイヤの親となるレイヤを指定します。null を指定するとプライマリレイヤになります。プライマリレイヤはウィンドウに一つのみ存在することができ、また、レイヤを用いる場合は<br />かならず一つ存在しなければならない、すべてのレイヤの親となるレイヤです。ただし、描画デバイス ( Window.drawDevice で設定可能) によっては、ウィンドウが<br />複数のプライマリレイヤを持つことができる物があります。レイヤの親は、Layer.parent プロパティで変更することができます。</td></tr>
+</table></dd>
+<dt>戻り値</dt>
+<dd>なし (void)</dd>
+<dt>説明</dt>
+<dd>Layer クラスのオブジェクトを構築します。Layer クラスは非表示の状態で構築されます。</dd>
+</dl>
+</div>
+</body>
+</html>

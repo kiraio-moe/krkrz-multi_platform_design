@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>readRegValue - レジストリの読み込み</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">System.readRegValue</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>レジストリの読み込み</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_System.html">Systemクラス</a>のメソッド</dd>
+<dt>構文</dt>
+<dd><span class="funcdecl">readRegValue(<span class="arg">key</span>)</span></dd>
+<dt>引数</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="readRegValueの引数">
+<tr><td valign="top"><span class="argname">key</span></td>
+<td>読み込むレジストリキーを指定します。</td></tr>
+</table></dd>
+<dt>戻り値</dt>
+<dd>実行に成功すればレジストリの値、失敗すれば void が返ります。</dd>
+<dt>説明</dt>
+<dd>key で指定した Windows レジストリを読み込みます。レジストリキーは、以下のルートキー名で始めることができます。HKEY_CLASSES_ROOTHKEY_CURRENT_CONFIGHKEY_CURRENT_USERHKEY_LOCAL_MACHINEHKEY_USERSHKEY_PERFORMANCE_DATAHKEY_DYN_DATAたとえば、以下のような文字列を key に指定することができます。HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\hoeg\installdir数値、単一文字列のみを読み込むことができます。数値の場合は整数型、文字列の場合は文字列型<br />の結果が返ります。</dd>
+</dl>
+</div>
+</body>
+</html>

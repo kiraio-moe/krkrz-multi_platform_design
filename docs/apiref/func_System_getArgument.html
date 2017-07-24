@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>getArgument - コマンドラインオプションの取得</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">System.getArgument</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>コマンドラインオプションの取得</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_System.html">Systemクラス</a>のメソッド</dd>
+<dt>構文</dt>
+<dd><span class="funcdecl">getArgument(<span class="arg">name</span>)</span></dd>
+<dt>引数</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="getArgumentの引数">
+<tr><td valign="top"><span class="argname">name</span></td>
+<td>取得するコマンドラインオプション名を指定します。最初に '-'<br />( ハイフン ) をつけてください ( 例 : '-nosplash' )。</td></tr>
+</table></dd>
+<dt>戻り値</dt>
+<dd>コマンドラインオプションが指定されていればその値、指定されていなければ\nvoid が返ります。</dd>
+<dt>説明</dt>
+<dd>コマンドラインオプションは、-name=valueまたは-nameの形式で吉里吉里に渡されている必要があります。前者の場合は値として value が<br />返り、前者の場合は値として 'yes' が返ります。</dd>
+</dl>
+</div>
+</body>
+</html>

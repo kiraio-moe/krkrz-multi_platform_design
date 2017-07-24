@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>onHintChanged - [Windows]ヒントの状態が変化したとき</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Window.onHintChanged</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>[Windows]ヒントの状態が変化したとき</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_Window.html">Windowクラス</a>のイベント</dd>
+<dt>構文</dt>
+<dd><span class="funcdecl">onHintChanged(<span class="arg">text</span>, <span class="arg">x</span>, <span class="arg">y</span>, <span class="arg">isshow</span>)</span></dd>
+<dt>引数</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="onHintChangedの引数">
+<tr><td valign="top"><span class="argname">text</span></td>
+<td>ヒントに表示する文字列が渡されます。</td></tr>
+<tr><td valign="top"><span class="argname">x</span></td>
+<td>ヒント表示X軸座標値が渡されます。</td></tr>
+<tr><td valign="top"><span class="argname">y</span></td>
+<td>ヒント表示Y軸座標値が渡されます。</td></tr>
+<tr><td valign="top"><span class="argname">isshow</span></td>
+<td>ヒントを表示するか、非表示にするかが渡されます。</td></tr>
+</table></dd>
+<dt>戻り値</dt>
+<dd>なし (void)</dd>
+<dt>説明</dt>
+<dd>ヒントの状態が変化したときに呼び出されるイベント関数を表します。<br />表示/非表示に従いヒントの表示を行います。<br />ヒントをレイヤで表示する場合は、そのレイヤのマウスメッセージが無視されるように Layer.hitThreshold を256に設定します。<br />また、Layer.ignoreHintSensing もtrueを指定します。</dd>
+</dl>
+</div>
+</body>
+</html>

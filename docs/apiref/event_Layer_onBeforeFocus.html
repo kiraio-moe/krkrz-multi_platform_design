@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>onBeforeFocus - フォーカスを受け取る直前</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.onBeforeFocus</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>フォーカスを受け取る直前</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_Layer.html">Layerクラス</a>のイベント</dd>
+<dt>構文</dt>
+<dd><span class="funcdecl">onBeforeFocus(<span class="arg">layer</span>, <span class="arg">blurred</span>, <span class="arg">direction</span>)</span></dd>
+<dt>引数</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="onBeforeFocusの引数">
+<tr><td valign="top"><span class="argname">layer</span></td>
+<td>フォーカスを受け取るレイヤオブジェクトです。通常は this が渡されますが、スーパークラスの同名のイベントを呼ぶときに<br />異なるレイヤオブジェクトを指定すれば、そのレイヤにフォーカスを<br />渡すようにすることができます。</td></tr>
+<tr><td valign="top"><span class="argname">blurred</span></td>
+<td>フォーカスを失うレイヤオブジェクトです。</td></tr>
+<tr><td valign="top"><span class="argname">direction</span></td>
+<td>フォーカスの後方検索によってフォーカスが変更されるときは真、<br />フォーカスの前方検索によって行われる場合は偽になります。</td></tr>
+</table></dd>
+<dt>戻り値</dt>
+<dd>なし (void)</dd>
+<dt>説明</dt>
+<dd>フォーカスを受け取る直前に発生するイベントです。フォーカスを受け取るレイヤを指定するときは、スーパークラスの同名のイベント<br />の第１引数にそのレイヤを指定する事ができます。</dd>
+</dl>
+</div>
+</body>
+</html>

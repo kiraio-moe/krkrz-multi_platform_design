@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>getList - フォント名の列挙</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Font.getList</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>フォント名の列挙</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_Font.html">Fontクラス</a>のメソッド</dd>
+<dt>構文</dt>
+<dd><span class="funcdecl">getList(<span class="arg">flags</span>)</span></dd>
+<dt>引数</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="getListの引数">
+<tr><td valign="top"><span class="argname">flags</span></td>
+<td>フォントをどのように列挙するかを指定します。次の値のビット論理和による組み合わせ指定します。fsfFixedPitch     : 固定ピッチフォントのみ列挙しますfsfSameCharSet    : 同じキャラクタセットのフォントのみ列挙しますfsfNoVertical     : 縦書き用フォントを列挙しませんfsfTrueTypeOnly   : TrueType フォントのみ列挙しますfsfIgnoreSymbol   : シンボルキャラセットを除外しますfsfSameCharSet を指定した場合は、現在選択されているフォントと同じキャラクタセットの<br />フォントが列挙されます。</td></tr>
+</table></dd>
+<dt>戻り値</dt>
+<dd>フォント名(文字列)が各要素として格納されている配列</dd>
+<dt>説明</dt>
+<dd>フォント名を列挙し、配列として返します。<br /></dd>
+</dl>
+</div>
+</body>
+</html>

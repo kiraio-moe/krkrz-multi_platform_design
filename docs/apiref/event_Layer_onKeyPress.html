@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>onKeyPress - 文字が入力された</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.onKeyPress</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>文字が入力された</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_Layer.html">Layerクラス</a>のイベント</dd>
+<dt>構文</dt>
+<dd><span class="funcdecl">onKeyPress(<span class="arg">key</span>, <span class="arg">process</span>)</span></dd>
+<dt>引数</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="onKeyPressの引数">
+<tr><td valign="top"><span class="argname">key</span></td>
+<td>入力された文字です。</td></tr>
+<tr><td valign="top"><span class="argname">process</span></td>
+<td>親クラスのonKeyPressを呼ぶ際、この引数に偽を渡すと、親クラスでは<br />そのキーに対するデフォルトの処理(フォーカスの移動など)を行わなくなります。</td></tr>
+</table></dd>
+<dt>戻り値</dt>
+<dd>なし (void)</dd>
+<dt>説明</dt>
+<dd>文字が入力されたときに発生します。Layer.onKeyDown と異なるのは、onKeyDown が<br />仮想キーコードを扱うのに対し、このイベントは文字そのものを扱います。押されたキーが<br />文字とは関係のないキー (ファンクションキーなど) の場合はこのイベントは発生しません。</dd>
+</dl>
+</div>
+</body>
+</html>

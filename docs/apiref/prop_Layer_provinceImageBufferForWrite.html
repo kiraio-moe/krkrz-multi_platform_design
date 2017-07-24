@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>provinceImageBufferForWrite - 領域画像バッファポインタ(書き込み用)</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.provinceImageBufferForWrite</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>領域画像バッファポインタ(書き込み用)</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_Layer.html">Layerクラス</a>のプロパティ</dd>
+<dt>説明</dt>
+<dd>領域画像 ( 領域の情報を含む 8bpp のビットマップ ) の画像バッファ左上隅へのポインタ<br />を表します。このプロパティは、プラグインなどのために画像バッファへの直接のアクセスの手段を提供する<br />ためにあります。整数型で返されますが、プラグインなどでは適切な型 ( unsigned char * 等 ) にキャストして使って<br />ください。このプロパティで得られたポインタには Layer.provinceImageBuffer と異なり、<br />値を書き込むことができます。吉里吉里内部では全く同じ画像は複数のレイヤ間等で共有しますが、<br />このプロパティを参照するとその共有状態を解除します。レイヤに画像が割り当てられていない場合は自動的にこのプロパティを参照した時点で<br />割り当てられ、全域が領域番号 0 で初期化されます。画像のサイズは Layer.imageWidth と Layer.imageHeight プロパティが<br />表しています。ポインタの計算方法は Layer.provinceImageBufferPitch を参照してください。</dd>
+</dl>
+</div>
+</body>
+</html>

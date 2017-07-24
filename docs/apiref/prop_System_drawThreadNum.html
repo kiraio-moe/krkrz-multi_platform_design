@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>drawThreadNum - 描画に使用するスレッドの数</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">System.drawThreadNum</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>描画に使用するスレッドの数</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_System.html">Systemクラス</a>のプロパティ</dd>
+<dt>説明</dt>
+<dd>　吉里吉里のレイヤシステムが描画時に使用するスレッド数を表します。値を設定することもできます。                　dtnAuto を指定すると、OSの認識するプロセッサ数と同数のスレッドが自動的に割り当てられます。                　描画スレッドを複数設定することで、マルチコア環境での描画パフォーマンスを向上させられる可能性がありますが、逆にパフォーマンスが低下する場合もあります。                　描画面積が大きい処理、Affine系の高負荷な処理、演算の重いレイヤ合成処理などに適用することで、良好な結果を得られる可能性があります。                　マルチスレッドを使用するように設定しても、描画処理の負荷が軽くマルチスレッド化の効果が得られないとシステムが判断した場合は、マルチスレッドで実行されない場合があります。</dd>
+</dl>
+</div>
+</body>
+</html>

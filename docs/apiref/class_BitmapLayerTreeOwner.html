@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>BitmapLayerTreeOwner - </title>
+</head>
+<body>
+<h1><a name="top" id="top">BitmapLayerTreeOwner</a></h1>
+<div class="para">BitmapLayerTreeOwner クラスは、レイヤーツリーを保持し、描画結果を Bitmap クラスで取得できるクラスです。(1.1.0以降)Layer クラスのコンストラクタの第一引数に window の代わりに渡すことで、それら Layer の描画結果を Bitmap クラスとして画像で取得できます。</div>
+<h1>メンバ</h1><div class="para">
+<dl>
+<dt>コンストラクタ</dt>
+<dd><a class="jump" href="func_BitmapLayerTreeOwner_BitmapLayerTreeOwner.html">BitmapLayerTreeOwner</a></dd>
+<dt>メソッド</dt>
+<dd>
+<a class="jump" href="func_BitmapLayerTreeOwner_clearDirtyRect.html">clearDirtyRect</a> (更新矩形情報をクリアする )<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireClick.html">fireClick</a> (クリックをレイヤに通知します(使用非推奨) )<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireDisplayRotate.html">fireDisplayRotate</a> (画面が回転されたことをレイヤに通知します。 )<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireDoubleClick.html">fireDoubleClick</a> (ダブルクリックをレイヤに通知します(使用非推奨) )<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireKeyDown.html">fireKeyDown</a> (キーが押されたことをレイヤに通知します。 )<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireKeyPress.html">fireKeyPress</a> (文字が入力されたことをレイヤに通知します。 )<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireKeyUp.html">fireKeyUp</a> (キーが離されたことをレイヤに通知します。 )<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireMouseDown.html">fireMouseDown</a> (マウス押下をレイヤに通知します。 )<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireMouseMove.html">fireMouseMove</a> (マウス移動をレイヤに通知します。 )<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireMouseOutOfWindow.html">fireMouseOutOfWindow</a> (マウスがWindow外に出たことをレイヤに通知します。 )<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireMouseUp.html">fireMouseUp</a> (マウス押下をレイヤに通知します。 )<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireMouseWheel.html">fireMouseWheel</a> (マウスのホイール回転をレイヤに通知します。 )<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireMultiTouch.html">fireMultiTouch</a> (マルチタッチ状態変化をレイヤに通知します。 )<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireRecheckInputState.html">fireRecheckInputState</a> (必要なら1秒間隔で呼び出します。 現在のレイヤのマウス位置確認とヒントの更新、カーソルタイプ、レイヤEnter/Leaveが再チェックされます。 内部的にはマウスカーソル移動0呼び出しが行われています。 必要かどうかは…？ )<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireReleaseCapture.html">fireReleaseCapture</a> (マウスキャプチャ解除をレイヤに通知します。 )<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireTouchDown.html">fireTouchDown</a> (タッチされたことをレイヤに通知します。 )<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireTouchMove.html">fireTouchMove</a> (タッチが移動されたことをレイヤに通知します。 )<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireTouchRotate.html">fireTouchRotate</a> (回転操作されたことをレイヤに通知します。 )<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireTouchScaling.html">fireTouchScaling</a> (拡大操作されたことをレイヤに通知します。 )<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireTouchUp.html">fireTouchUp</a> (タッチが離されたことをレイヤに通知します。 )<br />
+</dd>
+<dt>プロパティ</dt>
+<dd>
+<a class="jump" href="prop_BitmapLayerTreeOwner_height.html">height</a> (高さ(readonly)  )<br />
+<a class="jump" href="prop_BitmapLayerTreeOwner_layerTreeOwnerInterface.html">layerTreeOwnerInterface</a> (LTOインターフェイス、内部使用(readonly)  )<br />
+<a class="jump" href="prop_BitmapLayerTreeOwner_primaryLayer.html">primaryLayer</a> (プライマリレイヤ(readonly)  )<br />
+<a class="jump" href="prop_BitmapLayerTreeOwner_width.html">width</a> (幅(readonly)  )<br />
+</dd>
+<dt>イベント</dt>
+<dd>
+<a class="jump" href="event_BitmapLayerTreeOwner_onChangeLayerImage.html">onChangeLayerImage</a> ( )<br />
+<a class="jump" href="event_BitmapLayerTreeOwner_onDisableAttentionPoint.html">onDisableAttentionPoint</a> ( )<br />
+<a class="jump" href="event_BitmapLayerTreeOwner_onGetCursorPos.html">onGetCursorPos</a> ( )<br />
+<a class="jump" href="event_BitmapLayerTreeOwner_onReleaseMouseCapture.html">onReleaseMouseCapture</a> ( )<br />
+<a class="jump" href="event_BitmapLayerTreeOwner_onResetImeMode.html">onResetImeMode</a> ( )<br />
+<a class="jump" href="event_BitmapLayerTreeOwner_onResizeLayer.html">onResizeLayer</a> ( )<br />
+<a class="jump" href="event_BitmapLayerTreeOwner_onSetAttentionPoint.html">onSetAttentionPoint</a> ( )<br />
+<a class="jump" href="event_BitmapLayerTreeOwner_onSetCursorPos.html">onSetCursorPos</a> ( )<br />
+<a class="jump" href="event_BitmapLayerTreeOwner_onSetHintText.html">onSetHintText</a> ( )<br />
+<a class="jump" href="event_BitmapLayerTreeOwner_onSetImeMode.html">onSetImeMode</a> ( )<br />
+<a class="jump" href="event_BitmapLayerTreeOwner_onSetMouseCursor.html">onSetMouseCursor</a> (events )<br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

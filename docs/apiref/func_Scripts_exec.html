@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>exec - スクリプトの実行</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Scripts.exec</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>スクリプトの実行</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_Scripts.html">Scriptsクラス</a>のメソッド</dd>
+<dt>構文</dt>
+<dd><span class="funcdecl">exec(<span class="arg">script</span>, <span class="arg">name</span>, <span class="arg">linesof</span>, <span class="arg">context</span>)</span></dd>
+<dt>引数</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="execの引数">
+<tr><td valign="top"><span class="argname">script</span></td>
+<td>実行するスクリプトを文字列で指定します。</td></tr>
+<tr><td valign="top"><span class="argname">name</span></td>
+<td>エラーメッセージ用ファイル名の指定</td></tr>
+<tr><td valign="top"><span class="argname">linesof</span></td>
+<td>エラーメッセージ用行番号の指定</td></tr>
+<tr><td valign="top"><span class="argname">context</span></td>
+<td>実行コンテキストを指定します。</td></tr>
+</table></dd>
+<dt>戻り値</dt>
+<dd>スクリプトを実行した結果が戻ります。</dd>
+<dt>説明</dt>
+<dd>script で指定された文字列を TJS2 スクリプトとして実行します。スクリプトを実行中に発生した例外はこのメソッド内では捕捉されませんので、このメソッドの<br />呼び出し側で捕捉することができます。</dd>
+</dl>
+</div>
+</body>
+</html>

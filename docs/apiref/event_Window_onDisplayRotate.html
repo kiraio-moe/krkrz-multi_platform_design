@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>onDisplayRotate - 画面が回転されたとき(1.1.0以降)</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Window.onDisplayRotate</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>画面が回転されたとき(1.1.0以降)</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_Window.html">Windowクラス</a>のイベント</dd>
+<dt>構文</dt>
+<dd><span class="funcdecl">onDisplayRotate(<span class="arg">orientation</span>, <span class="arg">angle</span>, <span class="arg">bpp</span>, <span class="arg">width</span>, <span class="arg">height</span>)</span></dd>
+<dt>引数</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="onDisplayRotateの引数">
+<tr><td valign="top"><span class="argname">orientation</span></td>
+<td>画面の向き( orientation ) です。以下のいずれかの値になります。oriUnknown (取得失敗/不明), oriPortrait(縦向き), oriLandscape(横向き)</td></tr>
+<tr><td valign="top"><span class="argname">angle</span></td>
+<td>角度です。角度 ( angle ) は、0、90、180、270、-1 のいずれかで、取得できなかった時は-1となります。角度は、そのデバイスデフォルトからの回転角なので、縦向きのデバイスでは縦向きで0となります。通常のデバイスだと、横向きで0が多ようです。縦向きが0になるのは最近の8インチタブレットなどで、縦向きが標準の向きとなっているものです。</td></tr>
+<tr><td valign="top"><span class="argname">bpp</span></td>
+<td>bits per pixel です。</td></tr>
+<tr><td valign="top"><span class="argname">width</span></td>
+<td>画面の幅です。</td></tr>
+<tr><td valign="top"><span class="argname">height</span></td>
+<td>画面の高さです。</td></tr>
+</table></dd>
+<dt>戻り値</dt>
+<dd>なし (void)</dd>
+<dt>説明</dt>
+<dd>画面が回転されたときに呼び出されるイベント関数を表します。</dd>
+</dl>
+</div>
+</body>
+</html>

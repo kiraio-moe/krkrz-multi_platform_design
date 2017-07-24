@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>load - 画像の読み込み</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Bitmap.load</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>画像の読み込み</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_Bitmap.html">Bitmapクラス</a>のメソッド</dd>
+<dt>構文</dt>
+<dd><span class="funcdecl">load(<span class="arg">image</span>, <span class="arg">colorkey</span>)</span></dd>
+<dt>引数</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="loadの引数">
+<tr><td valign="top"><span class="argname">image</span></td>
+<td>読み込む画像ストレージを指定します。</td></tr>
+<tr><td valign="top"><span class="argname">colorkey</span></td>
+<td>読み込む画像のカラーキー ( 透明色 ) を指定します。0xRRGGBB 形式で色を指定すると、その色をカラーキーとします。clPalIdx に 任意のパレットインデックスを加算した数値を指定すると、<br />そのパレットインデックスが透明色になります ( 256 色以下の画像の場合 )。clAdapt を指定すると、画像の一番上のラインにおいて<br />もっとも多く使われている色が自動的に透明色になります。clAlphaMat に 0xRRGGBB<br />形式の色を表す数値を加算したものを指定すると、画像がその色の上に<br />αブレンド(ltAlphaの方式)を用いて重ね合わせられます。<br />たとえば、(clAlphaMat + 0xffffff) を指定すると、<br />読み込まれた画像が白い色の上に重ね合わせられます。<br />画像は全て不透明な画像となります<br />( 画像は全て不透明となりますが、<br />このモードではタグ情報はいっさい変更されないので<br />注意してください )。</td></tr>
+</table></dd>
+<dt>戻り値</dt>
+<dd>タグ情報の辞書配列</dd>
+<dt>説明</dt>
+<dd>画像を読み込みます。戻り値としてタグ情報(その画像のレイヤタイプや表示位置など、画像そのものに対する情報)の辞書配列が返ります。画像がタグ情報を持たない場合は null が返ります。現バージョンでは、タグ情報は PNG, TLG5/6 形式のみが持つことができます。取得可能な情報については、画像フォーマットコンバータ を参照してください。</dd>
+</dl>
+</div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>operateAffine - アフィン変換演算合成</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">ImageFunction.operateAffine</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>アフィン変換演算合成</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_ImageFunction.html">ImageFunctionクラス</a>のメソッド</dd>
+<dt>構文</dt>
+<dd><span class="funcdecl">operateAffine(<span class="arg">dst</span>, <span class="arg">src</span>, <span class="arg">A</span>, <span class="arg">B</span>, <span class="arg">C</span>, <span class="arg">D</span>, <span class="arg">E</span>, <span class="arg">F</span>, <span class="arg">srcrect</span>, <span class="arg">cliprect</span>, <span class="arg">affine</span>, <span class="arg">mode</span>, <span class="arg">face</span>, <span class="arg">opa</span>, <span class="arg">type</span>, <span class="arg">hda</span>)</span></dd>
+<dt>引数</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="operateAffineの引数">
+<tr><td valign="top"><span class="argname">dst</span></td>
+<td>重ね合わせ先の Bitmap オブジェクトを指定します。</td></tr>
+<tr><td valign="top"><span class="argname">src</span></td>
+<td>重ね合わせ元の Bitmap オブジェクトを指定します。</td></tr>
+<tr><td valign="top"><span class="argname">A</span></td>
+<td>A パラメータです。affine 引数によって解釈が変わります。</td></tr>
+<tr><td valign="top"><span class="argname">B</span></td>
+<td>B パラメータです。affine 引数によって解釈が変わります。</td></tr>
+<tr><td valign="top"><span class="argname">C</span></td>
+<td>C パラメータです。affine 引数によって解釈が変わります。</td></tr>
+<tr><td valign="top"><span class="argname">D</span></td>
+<td>D パラメータです。affine 引数によって解釈が変わります。</td></tr>
+<tr><td valign="top"><span class="argname">E</span></td>
+<td>E パラメータです。affine 引数によって解釈が変わります。</td></tr>
+<tr><td valign="top"><span class="argname">F</span></td>
+<td>F パラメータです。affine 引数によって解釈が変わります。</td></tr>
+<tr><td valign="top"><span class="argname">srcrect</span></td>
+<td>重ね合わせる矩形を ( 重ね合わせ元 Bitmap の画像位置における ) ピクセル単位で Rect オブジェクトで指定します。未指定時全体が対象となります。</td></tr>
+<tr><td valign="top"><span class="argname">cliprect</span></td>
+<td>クリッピング矩形を ( 重ね合わせ先 Bitmap の画像位置における )  Rect オブジェクトで指定します。未指定時クリッピングは行われません。</td></tr>
+<tr><td valign="top"><span class="argname">affine</span></td>
+<td>続く６つの引数 (A ～ F パラメータ)をどのように扱うかを指定します。真を指定すると、６つのパラメータはそれぞれ以下のように解釈されます。A   : 2Dアフィン変換行列の aB   : 2Dアフィン変換行列の bC   : 2Dアフィン変換行列の cD   : 2Dアフィン変換行列の dE   : 2Dアフィン変換行列の txF   : 2Dアフィン変換行列の tyアフィン変換により、重ね合わせ元の画像位置 (x, y) ( ただし、重ね合わせ元矩形の左上隅を (0, 0) とする ) は以下の式により、重ね合わせ先の画像位置 (x', y')に変換されます。x' =  a*x + c*y + txy' =  b*x + d*y + ty偽を指定すると、６つのパラメータはそれぞれ以下のように解釈されます。A   : コピー元矩形の左上隅の点の、コピー先での画像位置における X 座標位置(x0)B   : コピー元矩形の左上隅の点の、コピー先での画像位置における Y 座標位置(y0)C   : コピー元矩形の右上隅の点の、コピー先での画像位置における X 座標位置(x1)D   : コピー元矩形の右上隅の点の、コピー先での画像位置における Y 座標位置(y1)E   : コピー元矩形の左下隅の点の、コピー先での画像位置における X 座標位置(x2)F   : コピー元矩形の左下隅の点の、コピー先での画像位置における Y 座標位置(y2)偽を指定した場合、重ね合わせ元の右下隅に対応する、重ね合わせ先位置(x3, y3)は自動的に以下の式によって計算されます。x3 = x1 - x0 + x2y3 = y1 - y0 + y2</td></tr>
+<tr><td valign="top"><span class="argname">mode</span></td>
+<td>演算のモードを指定します。omPsNormal が指定された場合はPhotoshop互換のアルファ合成が行われます(現バージョンでは未実装です)。omPsAdditive が指定された場合はPhotoshop互換の覆い焼き(リニア)合成が行われます(現バージョンでは未実装です)。omPsSubtractive が指定された場合はPhotoshop互換の焼き込み(リニア)合成が行われます(現バージョンでは未実装です)。omPsMultiplicative が指定された場合はPhotoshop互換の乗算合成が行われます(現バージョンでは未実装です)。omPsScreen が指定された場合はPhotoshop互換のスクリーン合成が行われます(現バージョンでは未実装です)。omPsOverlay が指定された場合はPhotoshop互換のオーバーレイ合成が行われます(現バージョンでは未実装です)。omPsHardLight が指定された場合はPhotoshop互換のハードライト合成が行われます(現バージョンでは未実装です)。omPsSoftLight が指定された場合はPhotoshop互換のソフトライト合成が行われます(現バージョンでは未実装です)。omPsColorDodge が指定された場合はPhotoshop互換の覆い焼きカラー合成が行われます(現バージョンでは未実装です)。omPsColorDodge5 が指定された場合はPhotoshopのバージョン5.x 以下と互換の覆い焼きカラー合成が行われます(現バージョンでは未実装です)。omPsColorBurn が指定された場合はPhotoshop互換の焼き込みカラー合成が行われます(現バージョンでは未実装です)。omPsLighten が指定された場合はPhotoshop互換の比較(明)合成が行われます(現バージョンでは未実装です)。omPsDarken が指定された場合はPhotoshop互換の比較(暗)合成が行われます(現バージョンでは未実装です)。omPsDifference が指定された場合はPhotoshop互換の差の絶対値合成が行われます(現バージョンでは未実装です)。omPsDifference5 が指定された場合はPhotoshopのバージョン 5.x 以下と互換の差の絶対値合成が行われます(現バージョンでは未実装です)。omPsExclusion が指定された場合はPhotoshop互換の除外合成が行われます(現バージョンでは未実装です)。omAdditive が指定された場合は加算合成が行われます(現バージョンでは未実装です)。omSubtractive が指定された場合は減算合成が行われます(現バージョンでは未実装です)。omMultiplicative が指定された場合は乗算合成が行われます(現バージョンでは未実装です)。omDodge が指定された場合は覆い焼き合成が行われます(現バージョンでは未実装です)。omDarken が指定された場合は比較(暗)合成が行われます(現バージョンでは未実装です)。omLighten が指定された場合は比較(明)合成が行われます(現バージョンでは未実装です)。omScreen が指定された場合はスクリーン乗算合成が行われます(現バージョンでは未実装です)。omAlpha が指定された場合はアルファ合成が行われます。omAddAlpha が指定された場合は加算アルファ合成が行われます。この場合は、face が dfOpaque かつ hda が偽のとき、type 引数に stFastLinear を指定することにより線形補間が可能です。omOpaque が指定された場合は src のアルファ情報は無視され、src は常に完全不透明であると見なされます。この場合は、face が dfOpaque かつ hda が偽のとき、type 引数に stFastLinear を指定することにより線形補間が可能です。</td></tr>
+<tr><td valign="top"><span class="argname">face</span></td>
+<td>描画方式を指定します。dfAlpha が指定された場合は画像はアルファチャンネルつき画像と見なされ、描画されます。dfAddAlpha が指定された場合は画像は加算アルファチャンネルつき画像として見なされ、描画されます。dfOpaque が指定された場合は画像はすべて完全不透明であると見なされ、描画されます。</td></tr>
+<tr><td valign="top"><span class="argname">opa</span></td>
+<td>重ね合わせの不透明度 ( 0 ～ 255 ) を指定します。</td></tr>
+<tr><td valign="top"><span class="argname">type</span></td>
+<td>アフィン変換のタイプを指定します。stNearest     : 最近傍点法が用いられますstFastLinear  : 低精度の線形補間が用いられます(一部実装)stLinear      : 線形補間が用いられます(未実装)stCubic       : ３次元補間が用いられます(未実装)速度は stNearest > stFastLinear > stLinear > stCubic の順に高速ですが、画質は速度が<br />速ければ速いモードほど低画質になります。stFastLinear や stLinear, stCubic に対しては、stRefNoClip をビット論理和で追加指定<br />することができ、この場合は、コピーするビットマップの領域外を参照して色を合成することを<br />許可します。これを指定しない場合は、転送元ビットマップの周囲に余裕があったとしても、<br />転送元ビットマップの範囲外を参照することはありません(範囲外の色はもっとも近い位置にある<br />範囲内のピクセルの色と見なされます)。</td></tr>
+<tr><td valign="top"><span class="argname">hda</span></td>
+<td>アルファチャンネルを保護するかどうかを指定します。</td></tr>
+</table></dd>
+<dt>戻り値</dt>
+<dd>なし (void)</dd>
+<dt>説明</dt>
+<dd>指定された重ね合わせ元 Bitmap の矩形を、重ね合わせ先にアフィン変換を行いながら演算合成します。</dd>
+</dl>
+</div>
+</body>
+</html>

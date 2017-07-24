@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>VertexBuffer - 頂点情報を保持するクラス  位置の指定やUV座標などを細かく設定したい場合に使用する。  プラグインで頂点の配列を直接変更できるようにポインタアクセスも可能とする(ただしOpenGLES3.0以降)。 シェーダー+TJS2スクリプト+プラグインでの頂点操作で従来のようなLayer拡張性を確保できると考えられる。 従来のプラグイン内でほぼ完結していたものに比べるとやや複雑になるかもしれない。</title>
+</head>
+<body>
+<h1><a name="top" id="top">VertexBuffer</a></h1>
+<div class="para"></div>
+<h1>メンバ</h1><div class="para">
+<dl>
+<dt>コンストラクタ</dt>
+<dd><a class="jump" href="func_VertexBuffer_VertexBuffer.html">VertexBuffer</a></dd>
+<dt>メソッド</dt>
+<dd>
+<a class="jump" href="func_VertexBuffer_lock.html">lock</a> (頂点データをロックし、データへのポインタ(read/write指定)を返す プラグイン用( OpenGL ES 3.0以降でないと使えない ) )<br />
+<a class="jump" href="func_VertexBuffer_setVertex.html">setVertex</a> (頂点データを設定/更新 Staticの時は失敗する(例外) )<br />
+<a class="jump" href="func_VertexBuffer_unlock.html">unlock</a> (頂点データのロックを解除する プラグイン用( OpenGL ES 3.0以降でないと使えない ) データの受け渡しが終わったら、バッファが使用される前に呼び出す。 lockを維持せず、更新したら即座にunlockするのが好ましい。 )<br />
+</dd>
+<dt>プロパティ</dt>
+<dd>
+<a class="jump" href="prop_VertexBuffer_dataType.html">dataType</a> (頂点データの型(readonly) )<br />
+<a class="jump" href="prop_VertexBuffer_dtByte.html">dtByte</a> (データ型定数  )<br />
+<a class="jump" href="prop_VertexBuffer_dtFixed.html">dtFixed</a> (ES3.0 )<br />
+<a class="jump" href="prop_VertexBuffer_dtFloat.html">dtFloat</a> ( )<br />
+<a class="jump" href="prop_VertexBuffer_dtInt.html">dtInt</a> ( )<br />
+<a class="jump" href="prop_VertexBuffer_dtShort.html">dtShort</a> ( )<br />
+<a class="jump" href="prop_VertexBuffer_dtUByte.html">dtUByte</a> ( )<br />
+<a class="jump" href="prop_VertexBuffer_dtUInt.html">dtUInt</a> (ES3.0 )<br />
+<a class="jump" href="prop_VertexBuffer_dtUShort.html">dtUShort</a> ( )<br />
+<a class="jump" href="prop_VertexBuffer_isIndex.html">isIndex</a> (インデックスバッファかどうか(readonly) )<br />
+<a class="jump" href="prop_VertexBuffer_nativeHandle.html">nativeHandle</a> (ネイティブハンドル )<br />
+<a class="jump" href="prop_VertexBuffer_ptLineLoop.html">ptLineLoop</a> ( )<br />
+<a class="jump" href="prop_VertexBuffer_ptLines.html">ptLines</a> ( )<br />
+<a class="jump" href="prop_VertexBuffer_ptLineStrip.html">ptLineStrip</a> ( )<br />
+<a class="jump" href="prop_VertexBuffer_ptPoints.html">ptPoints</a> (プリミティブ型定数  )<br />
+<a class="jump" href="prop_VertexBuffer_ptTriangleFan.html">ptTriangleFan</a> ( )<br />
+<a class="jump" href="prop_VertexBuffer_ptTriangles.html">ptTriangles</a> ( )<br />
+<a class="jump" href="prop_VertexBuffer_ptTriangleStrip.html">ptTriangleStrip</a> ( )<br />
+<a class="jump" href="prop_VertexBuffer_size.html">size</a> (バッファサイズ(readonly) )<br />
+<a class="jump" href="prop_VertexBuffer_updateType.html">updateType</a> (データ更新頻度(readonly) )<br />
+<a class="jump" href="prop_VertexBuffer_utDynamic.html">utDynamic</a> (頻繁に更新される  )<br />
+<a class="jump" href="prop_VertexBuffer_utStatic.html">utStatic</a> (変更なし  )<br />
+<a class="jump" href="prop_VertexBuffer_utStream.html">utStream</a> (毎フレーム更新  )<br />
+</dd>
+<dt>イベント</dt>
+<dd>
+</dd>
+</dl>
+</div>
+</body>
+</html>

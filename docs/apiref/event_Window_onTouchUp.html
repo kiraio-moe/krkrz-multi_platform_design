@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>onTouchUp - 画面から指が離された</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Window.onTouchUp</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>画面から指が離された</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_Window.html">Windowクラス</a>のイベント</dd>
+<dt>構文</dt>
+<dd><span class="funcdecl">onTouchUp(<span class="arg">x</span>, <span class="arg">y</span>, <span class="arg">cx</span>, <span class="arg">cy</span>, <span class="arg">id</span>)</span></dd>
+<dt>引数</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="onTouchUpの引数">
+<tr><td valign="top"><span class="argname">x</span></td>
+<td>離された位置の x 座標 ( クライアント座標での ) の値です。</td></tr>
+<tr><td valign="top"><span class="argname">y</span></td>
+<td>離された位置の y 座標 ( クライアント座標での ) の値です。</td></tr>
+<tr><td valign="top"><span class="argname">cx</span></td>
+<td>指が接触している横方向ピクセル数です。デバイスが対応していない場合は常に1です。</td></tr>
+<tr><td valign="top"><span class="argname">cy</span></td>
+<td>指が接触している縦方向ピクセル数です。デバイスが対応していない場合は常に1です。</td></tr>
+<tr><td valign="top"><span class="argname">id</span></td>
+<td>タッチIDです。マルチタッチ時、各位置ごとに固有の値が設定され、このIDによって位置を識別できます。</td></tr>
+</table></dd>
+<dt>戻り値</dt>
+<dd>なし (void)</dd>
+<dt>説明</dt>
+<dd>タッチパネルから指が離された時に発生します。</dd>
+</dl>
+</div>
+</body>
+</html>

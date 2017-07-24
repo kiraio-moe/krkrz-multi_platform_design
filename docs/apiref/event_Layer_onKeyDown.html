@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>onKeyDown - キーが押された</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.onKeyDown</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>キーが押された</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_Layer.html">Layerクラス</a>のイベント</dd>
+<dt>構文</dt>
+<dd><span class="funcdecl">onKeyDown(<span class="arg">key</span>, <span class="arg">shift</span>, <span class="arg">process</span>)</span></dd>
+<dt>引数</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="onKeyDownの引数">
+<tr><td valign="top"><span class="argname">key</span></td>
+<td>押されたキーの仮想キーコードの値です。</td></tr>
+<tr><td valign="top"><span class="argname">shift</span></td>
+<td>キーが押された時に同時に押されていたシフト系のキーやマウスのボタンの状態です。<br />以下の値のビット OR による組み合わせになります。ssAlt     : ALT キーが押されていたssShift   : SHIFT キーが押されていたssCtrl    : CTRL キーが押されていたssLeft    : マウスの左ボタンが押されていたssMiddle  : マウスの中ボタンが押されていたssRight   : マウスの右ボタンが押されていたまた、キーボードが長時間押され、キーリピートが発生している場合は<br />以下の値も組み合わされます。ssRepeat  : キーリピートが発生した</td></tr>
+<tr><td valign="top"><span class="argname">process</span></td>
+<td>親クラスのonKeyDownを呼ぶ際、この引数に偽を渡すと、親クラスでは<br />そのキーに対するデフォルトの処理(フォーカスの移動など)を行わなくなります。</td></tr>
+</table></dd>
+<dt>戻り値</dt>
+<dd>なし (void)</dd>
+<dt>説明</dt>
+<dd>キーが押された時に発生します。</dd>
+</dl>
+</div>
+</body>
+</html>

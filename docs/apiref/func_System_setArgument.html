@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>setArgument - コマンドラインオプションの設定</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">System.setArgument</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd>コマンドラインオプションの設定</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_System.html">Systemクラス</a>のメソッド</dd>
+<dt>構文</dt>
+<dd><span class="funcdecl">setArgument(<span class="arg">name</span>, <span class="arg">value</span>)</span></dd>
+<dt>引数</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="setArgumentの引数">
+<tr><td valign="top"><span class="argname">name</span></td>
+<td>設定するコマンドラインオプション名を指定します。最初に '-'<br />( ハイフン ) をつけてください ( 例 : '-contfreq' )。</td></tr>
+<tr><td valign="top"><span class="argname">value</span></td>
+<td>設定する値を指定します。 ( 例 : '60' )。</td></tr>
+</table></dd>
+<dt>戻り値</dt>
+<dd>なし (void)</dd>
+<dt>説明</dt>
+<dd>動的にコマンドラインオプションを設定します。すべてのコマンドラインオプションが設定可能な訳ではありません。設定可能なコマンドラインオプションについては コマンドラインオプション を参照してください。ここで動的に変更可能という表記のないオプションについては変更を行わないでください。このメソッドは、そのオプションが動的に変更可能かどうかやオプションの存在、値の有効性などをチェックしません。値の設定には十分気をつけてください。</dd>
+</dl>
+</div>
+</body>
+</html>

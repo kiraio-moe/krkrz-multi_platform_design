@@ -2,13 +2,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>exchangeTexture - フレームバッファに設定されているテクスチャとTextureクラスが指すテクスチャを入れ替える。 交換するテクスチャのサイズは合わせておかないと例外となる。カラーフォーマットもRGBAとする必要がある。 レンダリング途中での入れ替えも行わない方がいいかもしれない(要確認)。 クロスフェードなどで両方に描画する必要がない場合、以前の画像をTextureとして取り出し、新しいTextureに差し替えることでオーバーヘッドを減らせる。</title>
+<title>exchangeTexture - フレームバッファに設定されているテクスチャとTextureクラスが指すテクスチャを入れ替える。</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">Offscreen.exchangeTexture</a></span></h1><div class="para">
 <dl>
 <dt>機能/意味</dt>
-<dd>フレームバッファに設定されているテクスチャとTextureクラスが指すテクスチャを入れ替える。 交換するテクスチャのサイズは合わせておかないと例外となる。カラーフォーマットもRGBAとする必要がある。 レンダリング途中での入れ替えも行わない方がいいかもしれない(要確認)。 クロスフェードなどで両方に描画する必要がない場合、以前の画像をTextureとして取り出し、新しいTextureに差し替えることでオーバーヘッドを減らせる。</dd>
+<dd>フレームバッファに設定されているテクスチャとTextureクラスが指すテクスチャを入れ替える。</dd>
 <dt>タイプ</dt>
 <dd><a class="jump" href="class_Offscreen.html">Offscreenクラス</a>のメソッド</dd>
 <dt>構文</dt>
@@ -21,7 +21,7 @@
 <dt>戻り値</dt>
 <dd>なし (void)</dd>
 <dt>説明</dt>
-<dd></dd>
+<dd>交換するテクスチャのサイズは合わせておかないと例外となる。カラーフォーマットもRGBAとする必要がある。<br />レンダリング途中での入れ替えも行わない方がいいかもしれない(要確認)。<br />クロスフェードなどで両方に描画する必要がない場合、以前の画像をTextureとして取り出し、新しいTextureに差し替えることでオーバーヘッドを減らせる。</dd>
 </dl>
 </div>
 </body>

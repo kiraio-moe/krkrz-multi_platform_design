@@ -7,6 +7,8 @@ Androidではなるべくハードウェア(GPU)を使用し快適に動作す�
 当然、Windowsでもハードウェア(GPU)が使われるようになるので、従来よりも低CPU負荷でより複雑で多彩な演出も可能になります。  
 従来のスクリプトそのままを移行することはまだ出来ませんが、GPUを利用する描画への書き換えを行う方が、Android/Windows共に快適に動作するため、GPU描画への移行を推奨します。
 
+## マルチプラットフォーム版APIリファレンス
+* [APIリファレンス](https://krkrz.github.io/multi_platform_design/apiref/)
 
 ## Android 版に関する各種説明
 

@@ -1,12 +1,14 @@
 /**
- * Canvasは描画機能を提供するクラスです。
+ * @description Canvasは描画機能を提供するクラスです。
  * Windowを生成すると、プロパティcanvasが自動的に作られます。
  * 使用する時は、このcanvasプロパティを使用します。
  */
 class Canvas {
-	function Canvas( window? )
+	// function Canvas()
 
-    //< クリア色指定・描画処理前の画面クリア色
+	/**
+     * クリア色指定・描画処理前の画面クリア色
+     */
 	property clearColor;
 
 	
@@ -18,7 +20,7 @@ class Canvas {
 
 	/**
 	 * 現在の描画内容全体をBitmap/Texture/Offscreenにキャプチャ
-	 * ビットマップのサイズはスクリーンサイズに補正
+	 * @description ビットマップのサイズはスクリーンサイズに補正
 	 * Texture/Offscreenの場合は変更されない
 	 * @param dest キャプチャ先Bitmap/Texture/Offscreen
 	 * @param front front bufferからのキャプチャかback bufferからのキャプチャかの指定。trueでfront、falseでback
@@ -27,18 +29,20 @@ class Canvas {
 
 	/**
 	 * 描画ターゲット指定
-	 * Offscreenクラスを指定可能。null/void指定で直接描画に。
+	 * @description Offscreenクラスを指定可能。null/void指定で直接描画に。
 	 */
 	property renderTarget;
 
 	/**
 	 * 描画の合成モード指定
-	 * bmDisable, bmOpaque, bmAlpha, bmAdd, bmAddWithAlpha が指定可能
+	 * @description bmDisable, bmOpaque, bmAlpha, bmAdd, bmAddWithAlpha が指定可能。
 	 * ここにないブレンド方法が必要であればシェーダーを記述する。
 	 */
 	property blendMode;
 
-	/** 描画マトリックス指定(Matrix44 クラス) */
+	/** 描画マトリックス指定
+	 * @description (Matrix32 クラス)
+	 */
 	property matrix;
 
 	/**
@@ -51,11 +55,9 @@ class Canvas {
 	 */
 	function restore();
 
-	// ---------------------------------------------------------------
-	// 2D系描画処理
 	/**
 	 * 色での塗りつぶし
-	 * XY座標はmatrixで指定する。
+	 * @description XY座標はmatrixで指定する。
 	 * @param width 塗りつぶし範囲幅
 	 * @param height 塗りつぶし範囲高さ
 	 * @param colors 4頂点の頂点カラーARGB。単独数値なら単色、配列なら4頂点個別指定
@@ -65,7 +67,7 @@ class Canvas {
 
 	/**
 	 * メッシュ描画
-	 * メッシュ(VertexBinder:頂点情報)は、呼び出し前にshaderに関連付け(プロパティで設定)しておく。
+	 * @description メッシュ(VertexBinder:頂点情報)は、呼び出し前にshaderに関連付け(プロパティで設定)しておく。
 	 * テクスチャ情報も同様に関連付けしておく。
 	 * 呼出し後shaderに関連付けた情報は解除(=void)する。
 	 * @param shader テクスチャや頂点情報まで関連付けられたシェーダーを指定する
@@ -77,7 +79,7 @@ class Canvas {
 
  	/**
  	 * メッシュ描画のインデックスバッファ使用版
-	 * メッシュ(VertexBinder:頂点情報)は、呼び出し前にshaderに関連付け(プロパティで設定)しておく。
+	 * @description メッシュ(VertexBinder:頂点情報)は、呼び出し前にshaderに関連付け(プロパティで設定)しておく。
 	 * テクスチャ情報も同様に関連付けしておく。
 	 * 呼出し後shaderに関連付けた情報は解除(=void)する。
 	 * @param shader テクスチャや頂点情報まで関連付けられたシェーダーを指定する
@@ -89,7 +91,7 @@ class Canvas {
 
 	/**
 	 * テクスチャを描画する。
-	 * テクスチャのみを指定した場合はdefaultShaderで描画される。
+	 * @description テクスチャのみを指定した場合はdefaultShaderで描画される。
 	 * 位置や拡大縮小、回転は matrix で指定する。
 	 * テクスチャはTextureクラスだけでなく、Offscreenクラスを指定しても問題ない。
 	 * Offscreenクラスを指定する場合は、renderTargetからそのOffscreenクラスは外されていることが前提(循環しないように)。
@@ -98,7 +100,7 @@ class Canvas {
 	 * @param texture3 描画に使用する3枚目のテクスチャを指定する
 	 * @param shader 描画に使用するシェーダーを指定する
 	 *
-	 * OpenGL ES 2.0の場合はテクスチャ最大8枚、3.0は頂点側最大16枚，フラグメント側最大16枚なので、まだ追加できるが、
+	 * @description OpenGL ES 2.0の場合はテクスチャ最大8枚、3.0は頂点側最大16枚，フラグメント側最大16枚なので、まだ追加できるが、
 	 * とりあえずは3枚まで定義しておく。
 	 * 将来的にはテクスチャを配列で渡すバージョンを作り、4枚以上はそちらで対応する。
 	 */
@@ -118,39 +120,41 @@ class Canvas {
 
 	/**
 	 * テクスチャの描画に使用されるデフォルトのシェーダー(drawTextureでtexture1枚のみ渡した時のシェーダー)
-	 * 設定もできるが、基本的に変更する必要はない。
+	 * @description 設定もできるが、基本的に変更する必要はない。
 	 * voidを入れると組み込みの初期デフォルトシェーダーに戻る。
 	 */
 	property defaultShader;
 	
 	/**
 	 * fill時に使用されるデフォルトのシェーダー
-	 * 設定もできるが、基本的に変更する必要はない
+	 * @description 設定もできるが、基本的に変更する必要はない
 	 * voidを入れると組み込みの初期デフォルトシェーダーに戻る。
 	 */
 	property defaultFillShader;
 
-	/** 描画領域の幅。基本的にはクライアント領域と一致、Windowリサイズから再描画まで一時的にずれる期間あり */
+	/** 描画領域の幅。
+	 * @description 基本的にはクライアント領域と一致、Windowリサイズから再描画まで一時的にずれる期間あり
+	 */
 	property width;
 	/** 描画領域の高さ */
 	property height;
 
 	/**
 	 * クリッピング用矩形のRectクラス
-	 * canvas.clipRect.set( l, t, r, b ); 等で呼び出せる。
+	 * @description canvas.clipRect.set( l, t, r, b ); 等で呼び出せる。
 	 * enableClipRect で有効/無効設定可
 	 */
 	property clipRect;
 
 	/**
 	 * 矩形でクリッピングするかどうかの設定
-	 * true の時、clipRectプロパティによってクリッピングされる
+	 * @description true の時、clipRectプロパティによってクリッピングされる
 	 */
 	property enableClipRect;
 
 	/**
 	 * 描画をフラッシュする。
-	 * 描画を反映したいrenderTargetを入れ替える場合などに使われる。
+	 * @description 描画を反映したいrenderTargetを入れ替える場合などに使われる。
 	 * onDraw中にrenderTargetを入れ替えると、内部的にflushは呼ばれる。
 	 */
 	function flush();

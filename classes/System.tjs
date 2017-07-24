@@ -198,6 +198,20 @@ class System {
 	function touchImages( storages, limitbytes=0, timeout=0);
 
 	/**
+	 * aboutダイアログの表示(1.1.0以降)
+	 *
+	 * @description aboutダイアログを表示します。
+	 */
+	function showVersion( );
+
+	/**
+	 * ヒープ情報ダンプ(1.1.0以降)
+	 *
+	 * @description ヒープの情報をコンソールに出力します。
+	 */
+	function dumpHeap( );
+
+	/**
 	 * バージョン文字列
 	 *
 	 * @description 吉里吉里本体のバージョン文字列を得ることができます。バージョン文字列は以下のような形式です。1.0.0.1
@@ -238,7 +252,7 @@ class System {
 	/**
 	 * プラットフォーム名
 	 *
-	 * @description 吉里吉里が動作しているプラットフォーム名を表します。Windows の場合は 'Win32' となります。
+	 * @description 吉里吉里が動作しているプラットフォーム名を表します。Windows の場合は OS が 32bit 版の時 'Win32' 、64bit 版の時  'Win64' となります。1.3.0 以前の場合は、常に 'Win32' となります。
 	 */
 	 property platformName {
 		 getter() { return value; }
@@ -446,7 +460,34 @@ class System {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
-	
+	/**
+	 * 保存したゲームのパス(1.1.0以降)
+	 *
+	 * @description 保存したゲームのパスを表します。これは、通常、以下の通りになります。C:\Users\<ユーザ名>\Saved Games    
+	 */
+	 property savedGamesPath {
+		 getter() { return value; }
+	}
+	/**
+	 * 吉里吉里本体が 32bit 版か 64bit 版か(1.3.0以降)
+	 *
+	 * @description 実行バイナリが 32bit 版か 64bit 版かを整数の 32 か 64 で表します。
+	 * @see System.osBits
+	 * @see System.platformName
+	 */
+	 property exeBits {
+		 getter() { return value; }
+	}
+	/**
+	 * OS が 32bit 版か 64bit 版か(1.3.0以降)
+	 *
+	 * @description OS が 32bit 版か 64bit 版かを整数の 32 か 64 で表します。
+	 * @see System.exeBits
+	 * @see System.platformName
+	 */
+	 property osBits {
+		 getter() { return value; }
+	}
 	/**
 	 * システムがWindowsかどうか判定(readonly)。
 	 */

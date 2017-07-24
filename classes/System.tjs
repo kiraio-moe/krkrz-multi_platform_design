@@ -1,0 +1,15 @@
+/**
+ * System クラスは 吉里吉里本体や、吉里吉里が実行されている環境に関する情報を取得したり、設定したりするためのクラスです。
+ * このクラスからオブジェクトを作成することはできません。
+ */
+class System {
+	/**
+	 * システムがWindowsかどうか判定(readonly)。
+	 */
+	static property isWindows;
+
+	/**
+	 * システムがAndroidかどうか判定(readonly)。
+	 */
+	static property isAndroid;
+};

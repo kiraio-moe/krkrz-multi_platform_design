@@ -1,87 +1,87 @@
 
 class BitmapLayerTreeOwner {
 	/**
-	 * �N���b�N�����C���ɒʒm���܂�(�g�p�񐄏�)
+	 * クリックをレイヤに通知します(使用非推奨)
 	 */
 	function fireClick( x, y );
 	/**
-	 * �_�u���N���b�N�����C���ɒʒm���܂�(�g�p�񐄏�)
+	 * ダブルクリックをレイヤに通知します(使用非推奨)
 	 */
 	function fireDoubleClick( x, y );
 	/**
-	 * �}�E�X���������C���ɒʒm���܂��B
+	 * マウス押下をレイヤに通知します。
 	 */
 	function fireMouseDown( x, y, mb, flags );
 	/**
-	 * �}�E�X���������C���ɒʒm���܂��B
+	 * マウス押下をレイヤに通知します。
 	 */
 	function fireMouseUp( x, y, mb, flags );
 	/**
-	 * �}�E�X�ړ������C���ɒʒm���܂��B
+	 * マウス移動をレイヤに通知します。
 	 */
 	function fireMouseMove( x, y, flags );
 	/**
-	 * �}�E�X�̃z�C�[����]�����C���ɒʒm���܂��B
+	 * マウスのホイール回転をレイヤに通知します。
 	 */
 	function fireMouseWheel( shift, delta, x, y );
 	/**
-	 * �}�E�X�L���v�`�����������C���ɒʒm���܂��B
+	 * マウスキャプチャ解除をレイヤに通知します。
 	 */
 	function fireReleaseCapture();
 	/**
-	 * �}�E�X��Window�O�ɏo�����Ƃ����C���ɒʒm���܂��B
+	 * マウスがWindow外に出たことをレイヤに通知します。
 	 */
 	function fireMouseOutOfWindow();
 	/**
-	 * �^�b�`���ꂽ���Ƃ����C���ɒʒm���܂��B
+	 * タッチされたことをレイヤに通知します。
 	 */
 	function fireTouchDown( x, y, cx, cy, id );
 	/**
-	 * �^�b�`�������ꂽ���Ƃ����C���ɒʒm���܂��B
+	 * タッチが離されたことをレイヤに通知します。
 	 */
 	function fireTouchUp( x, y, cx, cy, id );
 	/**
-	 * �^�b�`���ړ����ꂽ���Ƃ����C���ɒʒm���܂��B
+	 * タッチが移動されたことをレイヤに通知します。
 	 */
 	function fireTouchMove( x, y, cx, cy, id );
 	/**
-	 * �g�呀�삳�ꂽ���Ƃ����C���ɒʒm���܂��B
+	 * 拡大操作されたことをレイヤに通知します。
 	 */
 	function fireTouchScaling( startdist, curdist, cx, cy, flag );
 	/**
-	 * ��]���삳�ꂽ���Ƃ����C���ɒʒm���܂��B
+	 * 回転操作されたことをレイヤに通知します。
 	 */
 	function fireTouchRotate( startangle, curangle, dist, cx, cy, flag );
 	/**
-	 * �}���`�^�b�`��ԕω������C���ɒʒm���܂��B
+	 * マルチタッチ状態変化をレイヤに通知します。
 	 */
 	function fireMultiTouch();
 	/**
-	 * �L�[�������ꂽ���Ƃ����C���ɒʒm���܂��B
+	 * キーが押されたことをレイヤに通知します。
 	 */
 	function fireKeyDown( key, shift );
 	/**
-	 * �L�[�������ꂽ���Ƃ����C���ɒʒm���܂��B
+	 * キーが離されたことをレイヤに通知します。
 	 */
 	function fireKeyUp( key, shift );
 	/**
-	 * ���������͂��ꂽ���Ƃ����C���ɒʒm���܂��B
+	 * 文字が入力されたことをレイヤに通知します。
 	 */
 	function fireKeyPress( key);
 	/**
-	 * ��ʂ���]���ꂽ���Ƃ����C���ɒʒm���܂��B
+	 * 画面が回転されたことをレイヤに通知します。
 	 */
 	function fireDisplayRotate( orientation, rotate, bpp, hresolution, vresolution );
 	/**
-	 * �K�v�Ȃ�1�b�Ԋu�ŌĂяo���܂��B
-	 * ���݂̃��C���̃}�E�X�ʒu�m�F�ƃq���g�̍X�V�A�J�[�\���^�C�v�A���C��Enter/Leave���ă`�F�b�N����܂��B
-	 * �����I�ɂ̓}�E�X�J�[�\���ړ�0�Ăяo�����s���Ă��܂��B
-	 * �K�v���ǂ����́c�H
+	 * 必要なら1秒間隔で呼び出します。
+	 * 現在のレイヤのマウス位置確認とヒントの更新、カーソルタイプ、レイヤEnter/Leaveが再チェックされます。
+	 * 内部的にはマウスカーソル移動0呼び出しが行われています。
+	 * 必要かどうかは…？
 	 */
 	function fireRecheckInputState();
 
 	/**
-	 * �X�V��`�����N���A����
+	 * 更新矩形情報をクリアする
 	 */
 	function clearDirtyRect();
 
@@ -99,23 +99,23 @@ class BitmapLayerTreeOwner {
 	function onSetImeMode( mode );
 	function onResetImeMode();
 
-	/** ��(readonly) */
+	/** 幅(readonly) */
 	property width;
-	/** ����(readonly) */
+	/** 高さ(readonly) */
 	property height;
-	/** �`�悳��Ă���Bitmap�N���X�̃C���X�^���X(readonly) */
+	/** 描画されているBitmapクラスのインスタンス(readonly) */
 	proporty bitmap;
-	/** �X�V�̈�ARect�N���X�BisUpdated��true�̎��̂ݓ��e�L��(readonly) */
+	/** 更新領域、Rectクラス。isUpdatedがtrueの時のみ内容有効(readonly) */
 	proporty dirtyRect;
-	/** �X�V�̗L��(readonly) */
+	/** 更新の有無(readonly) */
 	proporty isUpdated;
 
-	/** LTO�C���^�[�t�F�C�X�A�����g�p(readonly) */
+	/** LTOインターフェイス、内部使用(readonly) */
 	property layerTreeOwnerInterface;
 
-	/** �t�H�[�J�X�̂��郌�C�� */
+	/** フォーカスのあるレイヤ */
 	propoerty focusedLayer;
 
-	/** �v���C�}�����C��(readonly) */
+	/** プライマリレイヤ(readonly) */
 	property primaryLayer;
 };

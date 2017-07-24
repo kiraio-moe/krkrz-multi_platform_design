@@ -1,13 +1,13 @@
 
 class Rect {
 	/**
-	 * ‹éŒ`“à•ï”»’è
+	 * çŸ©å½¢å†…åŒ…åˆ¤å®š
 	 *
-	 * right, bottom ‚ÍŠÜ‚Ü‚È‚¢(-1‚³‚ê‚½)”ÍˆÍ‚Å”»’è‚³‚ê‚Ü‚·B
-	 * @param x XÀ•W’l
-	 * @param y YÀ•W’l
-	 * @param matrix •ÏŠ·s—ñ
-	 * @return true : “à•ï‚·‚é / false : “à•ï‚µ‚È‚¢
+	 * right, bottom ã¯å«ã¾ãªã„(-1ã•ã‚ŒãŸ)ç¯„å›²ã§åˆ¤å®šã•ã‚Œã¾ã™ã€‚
+	 * @param x Xåº§æ¨™å€¤
+	 * @param y Yåº§æ¨™å€¤
+	 * @param matrix å¤‰æ›è¡Œåˆ—
+	 * @return true : å†…åŒ…ã™ã‚‹ / false : å†…åŒ…ã—ãªã„
 	 */
 	function includedPos( x:real, y:real, matrix:Matrix32 ):boolean;
 };

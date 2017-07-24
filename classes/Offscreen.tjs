@@ -1,5 +1,5 @@
 /**
- * オフスクリーン。
+ * @description オフスクリーン。
  * いわゆるレンダーターゲット。テクスチャとしても利用可能。
  * OpenGL ES2.0 では、FBO, Renderbuffer, Texture が生成される。
  * レンダーターゲットとして設定しないのであれば、わざわざこのクラスを使用する必要性はない。
@@ -75,7 +75,7 @@ class Offscreen {
 
 	/**
 	 * フレームバッファに設定されているテクスチャとTextureクラスが指すテクスチャを入れ替える。
-	 * 交換するテクスチャのサイズは合わせておかないと例外となる。カラーフォーマットもRGBAとする必要がある。
+	 * @description 交換するテクスチャのサイズは合わせておかないと例外となる。カラーフォーマットもRGBAとする必要がある。
 	 * レンダリング途中での入れ替えも行わない方がいいかもしれない(要確認)。
 	 * クロスフェードなどで両方に描画する必要がない場合、以前の画像をTextureとして取り出し、新しいTextureに差し替えることでオーバーヘッドを減らせる。
 	 * @param texture 交換するTextureクラスのインスタンス。
@@ -93,7 +93,7 @@ class Offscreen {
 
 	/**
 	 * 環境依存のハンドル(readonly)
-	 * OpenGL ES下ではtexture idとなる。
+	 * @description OpenGL ES下ではtexture idとなる。
 	 */
 	property nativeHandle;
 };

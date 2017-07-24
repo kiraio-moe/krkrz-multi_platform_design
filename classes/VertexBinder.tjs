@@ -1,5 +1,5 @@
 /**
- * VertexBufferとシェーダーに入力する頂点情報を関連付けるためのクラス。
+ * @description VertexBufferとシェーダーに入力する頂点情報を関連付けるためのクラス。
  * ShaderProgramのプロパティにはこのクラスのインスタンスを設定する。
  * ShaderProgramに設定されたVertexBinderは、シェーダーへ頂点情報として渡される。
  */
@@ -18,25 +18,25 @@ class VertexBinder {
 
 	/**
 	 * 頂点ごとのストライド(バイト数)
-	 * デフォルトは0
+	 * @description デフォルトは0
 	 */
 	property stride;
 
 	/**
 	 * 頂点要素数 (1～4)
-	 * デフォルトは4
+	 * @description デフォルトは4
 	 */
 	property componentCount;
 
 	/**
 	 * 頂点バッファオフセット(バイト数)
-	 * デフォルトは0
+	 * @description デフォルトは0
 	 */
 	property offset;
 
 	/**
 	 * 正規化するかどうか。trueの場合、非float型の時[-1.0～0.0～1.0]の間に正規化されシェーダーに送られる
-	 * デフォルトはfalse
+	 * @description デフォルトはfalse
 	 */
 	property normalize;
 };

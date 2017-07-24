@@ -1,5 +1,5 @@
 /**
- * 4x4行列
+ * @description 4x4行列
  * OpenGLのため列優先行列であることに注意(列優先の方が演算量的に有利)。
  * DirectXなどから見ると転置されているように感じる(シェーダのHLSLでは列優先で同じ)。
  */
@@ -12,8 +12,16 @@ class Matrix44 {
 	 * マトリックス設定
 	 */
 	function set(m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44);
-	function set(array);	// 1次元配列からコピー
-	function set(matrix);	// matrixからコピー
+	/**
+	 * マトリックス設定
+	 * @description 1次元配列からコピー
+	 */
+	function set(array:Array);
+	/**
+	 * マトリックス設定
+	 * @description matrixからコピー
+	 */
+	function set(matrix:Matrix44);
 
 	// 単位行列化
 	function reset();

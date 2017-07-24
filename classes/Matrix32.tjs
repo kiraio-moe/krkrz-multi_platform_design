@@ -1,5 +1,5 @@
 /**
- * 2次元用の行列
+ * @description 2次元用の行列
  * Z値や同次座標を省いた最初の行列
  * OpenGLのため列優先行列であることに注意
  */
@@ -19,8 +19,16 @@ class Matrix32 {
 	 * マトリックス設定
 	 */
 	function set( m11, m12, m21, m22, m31, m32 );
-	function set( array );	// 1次元配列からコピー
-	function set( matrix );	// matrixからコピー
+	/**
+	 * マトリックス設定
+	 * @description 1次元配列からコピー
+	 */
+	function set( array );
+	/**
+	 * マトリックス設定
+	 * @description matrixからコピー
+	 */
+	function set( matrix );
 
 	/**
 	 * 単位行列化
@@ -108,7 +116,7 @@ class Matrix32 {
 
 	/**
 	 * XY座標値をこの行列にかけ合わせて変換する
-	 * 入力引き数がそのまま出力となる
+	 * @description 入力引き数がそのまま出力となる
 	 * @param x X座標値
 	 * @param y Y座標値
 	 */

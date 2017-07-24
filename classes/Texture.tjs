@@ -1,5 +1,5 @@
 /**
- * テクスチャクラス
+ * @description テクスチャクラス
  * ハードウェア上のテクスチャとほぼ対応。
  *
  * プラグイン用にlockしてポインタを返すものを実装してもいいかもしれない。
@@ -26,7 +26,7 @@ class Texture {
 
 	/**
 	 * コンストラクタ
-	 * テクスチャの内容は未初期化なのでごみが入っている。
+	 * @description テクスチャの内容は未初期化なのでごみが入っている。
 	 * @param width テクスチャ幅
 	 * @param height テクスチャ高さ
 	 * @param format カラーフォーマット(tcfRGBA or tcfAlpha)
@@ -57,7 +57,7 @@ class Texture {
 	function copyRect( dleft, dtop, src, sleft, stop, swidth, sheight );
 	/**
 	 * 矩形コピー
-	 * bitmap全体をコピーします。はみ出す場合はクリッピングされます。
+	 * @description bitmap全体をコピーします。はみ出す場合はクリッピングされます。
 	 * @param src Bitmapクラスのオブジェクト
 	 */
 	function copyRect( src:Bitmap );

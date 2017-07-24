@@ -87,17 +87,17 @@ class BitmapLayerTreeOwner {
 
 	// ---------
 	// events
-	function onSetMouseCursor( cursor );
-	function onGetCursorPos( x, y );
-	function onSetCursorPos( x, y );
-	function onReleaseMouseCapture();
-	function onSetHintText( sender, hint );
-	function onResizeLayer( w, h );
-	function onChangeLayerImage();
-	function onSetAttentionPoint( layer, x, y );
-	function onDisableAttentionPoint();
-	function onSetImeMode( mode );
-	function onResetImeMode();
+	event onSetMouseCursor( cursor );
+	event onGetCursorPos( x, y );
+	event onSetCursorPos( x, y );
+	event onReleaseMouseCapture();
+	event onSetHintText( sender, hint );
+	event onResizeLayer( w, h );
+	event onChangeLayerImage();
+	event onSetAttentionPoint( layer, x, y );
+	event onDisableAttentionPoint();
+	event onSetImeMode( mode );
+	event onResetImeMode();
 
 	/** 幅(readonly) */
 	property width;

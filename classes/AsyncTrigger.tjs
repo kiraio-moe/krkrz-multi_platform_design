@@ -1,0 +1,58 @@
+/**
+ * @description AsyncTrigger クラスは、いったん吉里吉里に制御が戻った直後のイベント配信のタイミングにイベントを発生させるためのクラスです。この機能を非同期トリガ ( asynchronous trigger ) と呼びます。吉里吉里のようにイベント駆動型のプログラミングモデルをとるスクリプトにおいて、イベントハンドラ内では実行できないような処理 ( たとえばイベントの発生元のオブジェクトをそのイベントハンドラ内で無効化しようとするなど ) を、そのイベントハンドラ外で行いたい時に便利です。
+ */
+class AsyncTrigger {
+	/**
+	 * AsyncTriger オブジェクトの構築
+	 *
+	 * @param owner イベントの発生先を指定します。
+	 * @param actionname owner で指定したイベントの発生先オブジェクトで、イベントを受け取るメソッド名を
+	 * 				指定します。空文字列を指定すると owner はメソッドとみなされ、イベントの発生ごとに
+	 * 				owner が直接呼ばれます。
+	 * @description AsyncTrigger クラスのオブジェクトを構築します。
+	 */
+	function AsyncTrigger( owner, actionname="action");
+
+	/**
+	 * 発砲するとき
+	 *
+	 * @description AsyncTrigger.trigger メソッドでトリガを引いた後に発生します。
+	 */
+	event onFire( );
+
+	/**
+	 * トリガを引く
+	 *
+	 * @description イベントを発生させます。このメソッドを呼んだ後、吉里吉里本体に制御が戻り、吉里吉里本体がたまった非同期イベントを配信する
+	 * 		段階になると AsyncTrigger.onFire イベントが発生します。
+	 */
+	function trigger( );
+
+	/**
+	 * トリガのキャンセル
+	 *
+	 * @description AsyncTrigger.trigger メソッドで引いたトリガをキャンセルします。発砲前であればいつでもキャンセルできます。
+	 */
+	function cancel( );
+
+	/**
+	 * イベントをキャッシュするかどうか
+	 *
+	 * @description イベントをキャッシュするかどうかを表します。値を設定することもできます。真を指定すると、発砲までに何度 AsyncTrigger.trigger メソッドを呼んでも
+	 * 		発砲は１回だけとなります。偽を指定すると、発砲までに呼んだ回数分、発砲されます。
+	 */
+	 property cached {
+		 getter() { return value; }
+		 setter( value ) {}
+	}
+	/**
+	 * モード
+	 *
+	 * @description 動作のモードを表します。値を設定することもできます。以下の値のいずれかを指定します。atmNormal    :  通常のイベント配信の段階で発砲されます。atmExclusive :  他の非同期イベントよりも優先されて発砲されますatmAtIdle    :  アイドル状態 ( 他に配信するイベントが無くなったとき ) に発砲されます。同時にトリガを引いたときに発砲される順序は atmExclusive, atmNormal, atmIdle の順になります。同じモードのトリガが複数引かれている場合は、トリガが引かれた順に発砲します。
+	 * @see Timer.mode
+	 */
+	 property mode {
+		 getter() { return value; }
+		 setter( value ) {}
+	}
+};

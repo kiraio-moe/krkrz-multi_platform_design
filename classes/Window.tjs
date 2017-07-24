@@ -1,0 +1,831 @@
+/**
+ * @description Window クラスは、ウィンドウを管理するためのクラスです。
+ */
+class Window {
+	/**
+	 * Window オブジェクトの構築
+	 *
+	 * @param parent 親ウィンドウを指定します。親ウィンドウを指定すると、その子ウィンドウとして生成されます。指定しない場合は省略します。
+	 * @description Window クラスのオブジェクトを構築します。ウィンドウは非表示の状態で作成され、位置やサイズは未定義 ( どこかにの位置に適当なサイズ ) です。
+	 */
+	function Window( parent);
+
+	/**
+	 * マウスが入ってきた
+	 *
+	 * @description マウスがウィンドウのクライアント領域内に入ってきたときに発生します。
+	 * @see Window.onMouseLeave
+	 */
+	event onMouseEnter( );
+
+	/**
+	 * マウスが出ていった
+	 *
+	 * @description マウスがウィンドウのクライアント領域内から出ていったときに発生します。
+	 * @see Window.onMouseEnter
+	 */
+	event onMouseLeave( );
+
+	/**
+	 * ウィンドウがクリックされた
+	 *
+	 * @param x ウィンドウがクリックされた位置の x 座標 ( クライアント座標での ) の値です。
+	 * @param y ウィンドウがクリックされた位置の y 座標 ( クライアント座標での ) の値です。
+	 * @description ウィンドウがクリックされた時に発生します。
+	 * @see Window.onMouseDown
+	 * @see Window.onDoubleClick
+	 */
+	event onClick( x, y);
+
+	/**
+	 * ウィンドウがダブルクリックされた
+	 *
+	 * @param x ウィンドウがダブルクリックされた位置の x 座標 ( クライアント座標での ) の値です。
+	 * @param y ウィンドウがダブルクリックされた位置の y 座標 ( クライアント座標での ) の値です。
+	 * @description ウィンドウがダブルクリックされた時に発生します。
+	 * @see Window.onClick
+	 */
+	event onDoubleClick( x, y);
+
+	/**
+	 * マウスのボタンが押された
+	 *
+	 * @param x マウスのボタンが押された位置の x 座標 ( クライアント座標での ) の値です。
+	 * @param y マウスのボタンが押された位置の y 座標 ( クライアント座標での ) の値です。
+	 * @param button 押されたマウスボタンです。以下のいずれかの値になります。mbLeft    : マウスの左ボタンが押されたmbMiddle  : マウスの中ボタンが押されたmbRight   : マウスの右ボタンが押されたmbX1      : マウスのサイドキー第1ボタンが押されたmbX2      : マウスのサイドキー第2ボタンが押された
+	 * @param shift マウスボタンが押されたときに同時に押されていたシフト系のキーの状態です。
+	 * 				以下の値のビット OR による組み合わせになります。ssAlt     : ALT キーが押されていたssShift   : SHIFT キーが押されていたssCtrl    : CTRL キーが押されていた
+	 * @description マウスボタンが押された時に発生します。
+	 * @see Window.onClick
+	 */
+	event onMouseDown( x, y, button, shift);
+
+	/**
+	 * マウスのボタンが離された
+	 *
+	 * @param x マウスのボタンが離された位置の x 座標 ( クライアント座標での ) の値です。
+	 * @param y マウスのボタンが離された位置の y 座標 ( クライアント座標での ) の値です。
+	 * @param button 離されたマウスボタンです。以下のいずれかの値になります。mbLeft    : マウスの左ボタンが離されたmbMiddle  : マウスの中ボタンが離されたmbRight   : マウスの右ボタンが離されたmbX1      : マウスのサイドキー第1ボタンが離されたmbX2      : マウスのサイドキー第2ボタンが離された
+	 * @param shift マウスボタンが離された時に同時に押されていたシフト系のキーの状態です。
+	 * 				以下の値のビット OR による組み合わせになります。ssAlt     : ALT キーが押されていたssShift   : SHIFT キーが押されていたssCtrl    : CTRL キーが押されていた
+	 * @description マウスボタンが離された時に発生します。
+	 */
+	event onMouseUp( x, y, button, shift);
+
+	/**
+	 * マウスが移動した
+	 *
+	 * @param x マウスが移動した位置の x 座標 ( クライアント座標での ) の値です。
+	 * @param y マウスが移動した位置の y 座標 ( クライアント座標での ) の値です。
+	 * @param shift マウスが移動していた時に同時に押されていたシフト系のキーやマウスのボタンの状態です。
+	 * 				以下の値のビット OR による組み合わせになります。ssAlt     : ALT キーが押されていたssShift   : SHIFT キーが押されていたssCtrl    : CTRL キーが押されていたssLeft    : マウスの左ボタンが押されていたssMiddle  : マウスの中ボタンが押されていたssRight   : マウスの右ボタンが押されていた
+	 * @description マウスが移動した時に発生します。
+	 */
+	event onMouseMove( x, y, shift);
+
+	/**
+	 * マウスホイールが回転した
+	 *
+	 * @param shift マウスが移動していた時に同時に押されていたシフト系のキーやマウスのボタンの状態です。
+	 * 				以下の値のビット OR による組み合わせになります。ssAlt     : ALT キーが押されていたssShift   : SHIFT キーが押されていたssCtrl    : CTRL キーが押されていたssLeft    : マウスの左ボタンが押されていたssMiddle  : マウスの中ボタンが押されていたssRight   : マウスの右ボタンが押されていた
+	 * @param delta ホイールの回転角です。上方向(ユーザの反対側の方向)に回された場合は正、
+	 * 				下方向(ユーザ側の方向)に回された場合は負の値になります。通常、最小量は 120
+	 * 				となります。
+	 * @param x ホイールが回転した位置の x 座標 ( クライアント座標での ) の値です。
+	 * @param y ホイールが回転した位置の y 座標 ( クライアント座標での ) の値です。
+	 * @description マウスホイールが回転した時に発生します。
+	 */
+	event onMouseWheel( shift, delta, x, y);
+
+	/**
+	 * 画面がタッチされた
+	 *
+	 * @param x タッチされた位置の x 座標 ( クライアント座標での ) の値です。
+	 * @param y タッチされた位置の y 座標 ( クライアント座標での ) の値です。
+	 * @param cx 指が接触している横方向ピクセル数です。デバイスが対応していない場合は常に1です。
+	 * @param cy 指が接触している縦方向ピクセル数です。デバイスが対応していない場合は常に1です。
+	 * @param id タッチIDです。マルチタッチ時、各位置ごとに固有の値が設定され、このIDによって位置を識別できます。
+	 * @description タッチパネルにタッチされた時に発生します。
+	 */
+	event onTouchDown( x, y, cx, cy, id);
+
+	/**
+	 * 画面から指が離された
+	 *
+	 * @param x 離された位置の x 座標 ( クライアント座標での ) の値です。
+	 * @param y 離された位置の y 座標 ( クライアント座標での ) の値です。
+	 * @param cx 指が接触している横方向ピクセル数です。デバイスが対応していない場合は常に1です。
+	 * @param cy 指が接触している縦方向ピクセル数です。デバイスが対応していない場合は常に1です。
+	 * @param id タッチIDです。マルチタッチ時、各位置ごとに固有の値が設定され、このIDによって位置を識別できます。
+	 * @description タッチパネルから指が離された時に発生します。
+	 */
+	event onTouchUp( x, y, cx, cy, id);
+
+	/**
+	 * 指が移動した
+	 *
+	 * @param x タッチ位置の x 座標 ( クライアント座標での ) の値です。
+	 * @param y タッチ位置の y 座標 ( クライアント座標での ) の値です。
+	 * @param cx 指が接触している横方向ピクセル数です。デバイスが対応していない場合は常に1です。
+	 * @param cy 指が接触している縦方向ピクセル数です。デバイスが対応していない場合は常に1です。
+	 * @param id タッチIDです。マルチタッチ時、各位置ごとに固有の値が設定され、このIDによって位置を識別できます。
+	 * @description タッチパネル上で触れている指が移動した時に発生します。
+	 */
+	event onTouchMove( x, y, cx, cy, id);
+
+	/**
+	 * 拡大操作した
+	 *
+	 * @param startdistance マルチタッチが開始された時のピクセル距離です。
+	 * @param currentdistance イベント発生時のタッチのピクセル距離です。
+	 * @param cx 中心位置の x 座標 ( クライアント座標での ) の値です。
+	 * @param cy 中心位置の y 座標 ( クライアント座標での ) の値です。
+	 * @param flag マルチタッチ状態フラグです。0x01     : マルチタッチが開始された最初のイベントに設定されています。
+	 * @description タッチパネル上でマルチタッチによって拡大操作した時に発生します。
+	 */
+	event onTouchScaling( startdistance, currentdistance, cx, cy, flag);
+
+	/**
+	 * 回転操作した
+	 *
+	 * @param startangle マルチタッチが開始された時のラジアン角度です。
+	 * @param currentangle イベント発生時のタッチのラジアン角度です。
+	 * @param distance イベント発生時のタッチのピクセル距離です。
+	 * @param cx 中心位置の x 座標 ( クライアント座標での ) の値です。
+	 * @param cy 中心位置の y 座標 ( クライアント座標での ) の値です。
+	 * @param flag マルチタッチ状態フラグです。0x01     : マルチタッチが開始された最初のイベントに設定されています。
+	 * @description タッチパネル上でマルチタッチによって回転操作した時に発生します。
+	 */
+	event onTouchRotate( startangle, currentangle, distance, cx, cy, flag);
+
+	/**
+	 * マルチタッチ状態が変化した
+	 *
+	 * @description マルチタッチ状態が開始されたり、移動したり、離れた時に発生します。座標情報は Window.touchPointCount プロパティと Window.getTouchPoint メソッドで取得できます。
+	 * @see Window.getTouchPoint
+	 * @see Window.touchPointCount
+	 */
+	event onMultiTouch( );
+
+	/**
+	 * キーが押された
+	 *
+	 * @param key 押されたキーの仮想キーコードの値です。
+	 * @param shift キーが押された時に同時に押されていたシフト系のキーやマウスのボタンの状態です。
+	 * 				以下の値のビット OR による組み合わせになります。ssAlt     : ALT キーが押されていたssShift   : SHIFT キーが押されていたssCtrl    : CTRL キーが押されていたssLeft    : マウスの左ボタンが押されていたssMiddle  : マウスの中ボタンが押されていたssRight   : マウスの右ボタンが押されていたまた、キーボードが長時間押され、キーリピートが発生している場合は
+	 * 				以下の値も組み合わされます。ssRepeat  : キーリピートが発生した
+	 * @description キーが押された時に発生します。
+	 */
+	event onKeyDown( key, shift);
+
+	/**
+	 * キーが離された
+	 *
+	 * @param key 離されたキーの仮想キーコードの値です。
+	 * @param shift キーが離された時に同時に押されていたシフト系のキーやマウスのボタンの状態です。
+	 * 				以下の値のビット OR による組み合わせになります。ssAlt     : ALT キーが押されていたssShift   : SHIFT キーが押されていたssCtrl    : CTRL キーが押されていたssLeft    : マウスの左ボタンが押されていたssMiddle  : マウスの中ボタンが押されていたssRight   : マウスの右ボタンが押されていた
+	 * @description キーが離された時に発生します。
+	 */
+	event onKeyUp( key, shift);
+
+	/**
+	 * 文字が入力された
+	 *
+	 * @param key 入力された文字です。
+	 * @description 文字が入力されたときに発生します。Window.onKeyDown と異なるのは、onKeyDown が
+	 * 		仮想キーコードを扱うのに対し、このイベントは文字そのものを扱います。押されたキーが
+	 * 		文字とは関係のないキー (ファンクションキーなど) の場合はこのイベントは発生しません。Ctrlキーと同時に押された場合は、以下に示すようなコントロールコードが送られてきます。0x00 : Ctrl+@0x01 : Ctrl+A0x02 : Ctrl+B0x03 : Ctrl+C0x04 : Ctrl+D0x05 : Ctrl+E0x06 : Ctrl+F0x07 : Ctrl+G0x08 : Ctrl+H0x09 : Ctrl+I0x0A : Ctrl+J0x0B : Ctrl+K0x0C : Ctrl+L0x0D : Ctrl+M0x0E : Ctrl+N0x0F : Ctrl+O0x10 : Ctrl+P0x11 : Ctrl+Q0x12 : Ctrl+R0x13 : Ctrl+S0x14 : Ctrl+T0x15 : Ctrl+U0x16 : Ctrl+V0x17 : Ctrl+W0x18 : Ctrl+X0x19 : Ctrl+Y0x1A : Ctrl+Z0x1B : Ctrl+[0x1C : Ctrl+\0x1D : Ctrl+]0x1E : Ctrl+^0x1F : Ctrl+_
+	 */
+	event onKeyPress( key);
+
+	/**
+	 * ウィンドウのサイズが変化した
+	 *
+	 * @description ウィンドウのサイズが変化した時に発生します。実際のサイズは Window.width プロパティや Window.height プロパティなどで取得してください。
+	 */
+	event onResize( );
+
+	/**
+	 * ファイルがドロップされた
+	 *
+	 * @param files ドロップされたファイル名が格納された配列(Array)オブジェクトです。
+	 * @description ファイルがエクスプローラなどからウィンドウにドロップされたときに発生します。単一のファイルがドロップされた場合でも引数には配列オブジェクトが渡されます (最初の要素が
+	 * 		そのファイルになります )。
+	 */
+	event onFileDrop( files);
+
+	/**
+	 * ウィンドウを閉じる確認
+	 *
+	 * @param canclose ウィンドウを閉じることができるかどうかが渡されます。下位クラスから上位クラスのイベントハンドラが
+	 * 				呼ばれる課程で、下位クラスが決定した「ウィンドウを閉じることができるか」が渡されます。
+	 * 			
+	 * @description ウィンドウを閉じることができるかどうかを確認するためのイベントです。ウィンドウを閉じることが
+	 * 		できない場合、上位クラスの同メソッドに引数として false を渡してください。
+	 */
+	event onCloseQuery( canclose);
+
+	/**
+	 * ポップアップウィンドウを閉じる
+	 *
+	 * @description ポップアップウィンドウが閉じるべき時に発生するイベントです。このイベントは、Window.stayOnTop プロパティが真で、かつ、Window.focusable プロパティが偽の場合、「他のウィンドウがクリックされた」あるいは「他のアプリケーションがアクティブになった」時に発生します。通常は、ここでウィンドウを閉じたり、非表示にする処理を行ってください。
+	 * @see Window.focusable
+	 * @see Window.stayOnTop
+	 */
+	event onPopupHide( );
+
+	/**
+	 * ウィンドウがアクティブになったとき
+	 *
+	 * @description ウィンドウがアクティブになったときに呼び出されるイベント関数を表します。このイベントは、ウィンドウが既にアクティブの場合にも発生する可能性があるので注意してください (完全に onActivate → onDeactivate → onActivate → …… の順に発生する保証がない )。
+	 * @see Window.onDeactivate
+	 * @see System.onActivate
+	 * @see System.onDeactivate
+	 */
+	event onActivate( );
+
+	/**
+	 * ウィンドウが非アクティブになったとき
+	 *
+	 * @description ウィンドウが非アクティブになったときに呼び出されるイベント関数を表します。このイベントは、ウィンドウが既に非アクティブの場合にも発生する可能性があるので注意してください (完全に onActivate → onDeactivate → onActivate → …… の順に発生する保証がない )。
+	 * @see Window.onActivate
+	 * @see System.onActivate
+	 * @see System.onDeactivate
+	 */
+	event onDeactivate( );
+
+	/**
+	 * ヒントの状態が変化したとき
+	 *
+	 * @param text ヒントに表示する文字列が渡されます。
+	 * @param x ヒント表示X軸座標値が渡されます。
+	 * @param y ヒント表示Y軸座標値が渡されます。
+	 * @param isshow ヒントを表示するか、非表示にするかが渡されます。
+	 * @description ヒントの状態が変化したときに呼び出されるイベント関数を表します。表示/非表示に従いヒントの表示を行います。ヒントをレイヤで表示する場合は、そのレイヤのマウスメッセージが無視されるように Layer.hitThreshold を256に設定します。また、Layer.ignoreHintSensing もtrueを指定します。
+	 * @see Window.hintDelay
+	 * @see Layer.ignoreHintSensing
+	 * @see Layer.hitThreshold
+	 */
+	event onHintChanged( text, x, y, isshow);
+
+	/**
+	 * ウィンドウを閉じる
+	 *
+	 * @description Window.showModal メソッドで表示されたウィンドウを閉じます。ウィンドウを閉じる前に Window.onCloseQuery イベントが発生し、ウィンドウを閉じることができるかどうかを確認することができます。
+	 * @see Window.showModal
+	 * @see Window.onCloseQuery
+	 */
+	function close( );
+
+	/**
+	 * ウィンドウを最前面に移動
+	 *
+	 * @description ウィンドウを最前面に移動します。アプリケーションが非アクティブの場合はアプリケーション
+	 * 		自体もアクティブにします。
+	 */
+	function bringToFront( );
+
+	/**
+	 * ウィンドウ内容の強制的な描画
+	 *
+	 * @param type ウィンドウ描画のタイプを指定します。tutNormal を指定すると通常の描画 ( 差分描画 )、
+	 * 				tutEntire を指定するとウィンドウ内容全体を描画します。
+	 * @description 引数は現バージョンでは無視されます。tutNormal や tutEntire は実装されていません。
+	 */
+	function update( type=tutNormal);
+
+	/**
+	 * モーダルでウィンドウを表示
+	 *
+	 * @description ウィンドウをモーダル ( モード付き ) で表示します。
+	 * 		このメソッドはウィンドウを表示状態に
+	 * 		し、かつ、他のウィンドウを一時的に無効にします。そのためユーザはこのウィンドウのみに
+	 * 		アクセスできる状態になります ( これをモード付きの状態と呼びます )。ウィンドウが閉じられると
+	 * 		モード付きの状態は解除されます。このメソッドを呼び出す時点ではウィンドウは非表示でなくてはなりません。
+	 */
+	function showModal( );
+
+	/**
+	 * ウィンドウリージョンをマスクに従って設定
+	 *
+	 * @param threshold マスクのスレッショルド ( 敷居値 ) を指定します。プライマリレイヤのマスク ( レイヤの不透明度の情報 ) のうち、この値よりも大きい部分の形に
+	 * 				ウィンドウが切り取られて表示されます。
+	 * @description ウィンドウリージョンをプライマリレイヤのマスク ( レイヤの不透明度の情報 ) に従って設定します。ウィンドウを不定形にする事ができます。表示されるプライマリレイヤと、ウィンドウの大きさ、位置がずれないようにするには
+	 * 		以下のことを行う必要があります。Window.borderStyle は bsNone に設定します。Layer.imageLeft および Layer.imageTop は 0 に設定します。
+	 * @see Window.removeMaskRegion
+	 */
+	function setMaskRegion( threshold=1);
+
+	/**
+	 * ウィンドウリージョンの解除
+	 *
+	 * @description Window.setMaskRegionで設定したウィンドウリージョンを解除し、ウィンドウを矩形に戻します。
+	 * @see Window.setMaskRegion
+	 */
+	function removeMaskRegion( );
+
+	/**
+	 * 管理オブジェクトの追加
+	 *
+	 * @param object 管理されるオブジェクトを指定します。
+	 * @description 管理オブジェクトを追加します。ここで指定されたオブジェクトは、ウィンドウが無効化
+	 * 		されるときに自動的に無効化されるようになります。
+	 * @see Window.remove
+	 */
+	function add( object);
+
+	/**
+	 * 管理オブジェクトの削除
+	 *
+	 * @param object 管理オブジェクトのリストから削除するオブジェクトを指定します。
+	 * @description 管理オブジェクトのリストから指定されたオブジェクトを削除します。
+	 * @see Window.add
+	 */
+	function remove( object);
+
+	/**
+	 * ウィンドウサイズの設定
+	 *
+	 * @param width ウィンドウの横幅を指定します。
+	 * @param height ウィンドウの縦幅を指定します。
+	 * @description ウィンドウのサイズを指定します。ウィンドウのサイズを指定するときには、Window.width や
+	 * 		Window.height プロパティを個々に設定するよりも
+	 * 		このメソッドで一気に指定した方が効率的です。
+	 * @see Window.width
+	 * @see Window.height
+	 * @see Window.setPos
+	 * @see Window.setInnerSize
+	 * @see Window.setMinSize
+	 * @see Window.setMaxSize
+	 */
+	function setSize( width, height);
+
+	/**
+	 * ウィンドウの最小サイズの設定
+	 *
+	 * @param width ウィンドウの最小の横幅を指定します。0を指定すると制限は無くなります。
+	 * @param height ウィンドウの最小の縦幅を指定します。0を指定すると制限は無くなります。
+	 * @description ウィンドウの最小サイズを指定します。ウィンドウはこのメソッドで指定したサイズより小さくなることはできません。
+	 * 	
+	 * @see Window.setMaxSize
+	 * @see Window.setSize
+	 * @see Window.minWidth
+	 * @see Window.minHeight
+	 */
+	function setMinSize( width, height);
+
+	/**
+	 * ウィンドウの最大サイズの設定
+	 *
+	 * @param width ウィンドウの最大の横幅を指定します。0を指定すると制限は無くなります。
+	 * @param height ウィンドウの最大の縦幅を指定します。0を指定すると制限は無くなります。
+	 * @description ウィンドウの最大サイズを指定します。ウィンドウはこのメソッドで指定したサイズより大きくなることはできません。
+	 * 	
+	 * @see Window.setMixSize
+	 * @see Window.setSize
+	 * @see Window.maxWidth
+	 * @see Window.maxHeight
+	 */
+	function setMaxSize( width, height);
+
+	/**
+	 * ウィンドウ位置の設定
+	 *
+	 * @param left ウィンドウの左端位置を指定します。
+	 * @param top ウィンドウの上端位置を指定します。
+	 * @description ウィンドウの位置を指定します。ウィンドウの位置を指定するときには、Window.left や
+	 * 		Window.top プロパティを個々に設定するよりも
+	 * 		このメソッドで一気に指定した方が効率的です。
+	 * @see Window.left
+	 * @see Window.top
+	 * @see Window.setSize
+	 */
+	function setPos( left, top);
+
+	/**
+	 * クライアントサイズの設定
+	 *
+	 * @param width クライアントの横幅を指定します。
+	 * @param height クライアントの縦幅を指定します。
+	 * @description ウィンドウのクライアントサイズを指定します。クライアントは、レイヤを表示可能なウィンドウ内の領域です。このサイズを設定するとウィンドウのサイズもそれに応じて変化します。クライアントのサイズを指定するときには、Window.innerWidth や
+	 * 		Window.innerHeight プロパティを個々に設定するよりも
+	 * 		このメソッドで一気に指定した方が効率的です。
+	 * @see Window.innerWidth
+	 * @see Window.innerHeight
+	 */
+	function setInnerSize( width, height);
+
+	/**
+	 * レイヤ拡大倍率の設定
+	 *
+	 * @param numer 倍率の分子を整数で指定します。
+	 * @param denom 倍率の分母を整数で指定します。
+	 * @description レイヤの拡大倍率を指定します。分子/分母で指定したサイズで画像が拡大、あるいは縮小されて表示されます。分子・分母が公約数を持つ場合は自動的に約分されるため、Window.zoomNumer プロパティや Window.zoomDenom プロパティで読み出される値は、このメソッドで指定した値とは異なる場合があります。現バージョンの吉里吉里では、拡大・縮小時に補間がかかるかどうかはグラフィックカードのハードウェアやドライバに影響されます。補間がかからないハードウェアやドライバの場合は、画質が荒くなります。オプションによっては、吉里吉里は拡大・縮小に使用可能なハードウェアを、倍率が変更されるたびに調査するため、このメソッドは拡大率を連続的に変化させて演出を行うような用途には適していません。
+	 * @see Window.zoomNumer
+	 * @see Window.zoomDenom
+	 */
+	function setZoom( numer, denom);
+
+	/**
+	 * 入力イベントの生成
+	 *
+	 * @param eventname イベント名称を指定します。以下の文字列で指定します。"onKeyDown" は Window.onKeyDown イベントを生成します。"onKeyPress" は Window.onKeyPress イベントを生成します。"onKeyUp" は Window.onKeyUp イベントを生成します。onKeyDownとonKeyUpは対になるので、onKeyDownを生成したら対応するonKeyUpも生成することを推奨します。
+	 * @param params イベントのパラメータが格納された辞書配列を指定します。"onKeyDown" イベントや "onKeyUp" イベントでは、"key" に仮想キーコード、"shift" にシフト状態を格納します。"shift" を省略すると 0 であると見なされます。"onKeyPress" イベントでは "key" に文字を指定します。
+	 * @description 入力イベントを生成します。現バージョンではキー入力に関する３つのイベントを生成できます。このメソッドは、イベントを非同期イベントとして生成します。つまり、このメソッドは、対応するイベントハンドラの終了を待たずに帰ります。実際にイベントハンドラが呼ばれて処理が行われるのは、いったん吉里吉里に制御が戻った後となります。入力イベントは、Windowクラスのほか、通常の入力イベントと同じく、Layerクラスの該当するイベントとしても発生します。例: postInputEvent('onKeyDown', %[key: VK_UP, shift: ssShift]);postInputEvent('onKeyUp',   %[key: VK_UP, shift: ssShift]);// 左カーソルキーを押す
+	 */
+	function postInputEvent( eventname, params=null);
+
+	/**
+	 * マウスカーソルを一時的に隠す
+	 *
+	 * @description マウスカーソルを一時的に隠します。マウスを少しでも動かすと
+	 * 		マウスカーソルは再び表示されるようになります。このメソッドは、Window.mouseCursorStateをmcsTempHiddenに設定するのと同じ効果を持ちます。
+	 */
+	function hideMouseCursor( );
+
+	/**
+	 * メッセージ受信関数の登録/登録削除
+	 *
+	 * @param mode 登録するか、登録削除するかどうかを指定します。wrmRegister を指定すると登録になります。wrmUnregister を
+	 * 				指定すると登録削除になります。wrm で始まる定数は tp_stub.h に定義されています。
+	 * @param func メッセージ受信関数を指定します。メッセージ受信関数は bool __stdcall func(void *userdata, tTVPWindowMessage *Message)
+	 * 				の形式である必要があり、このメソッドに渡す際にその関数ポインタを整数型にキャストして渡す
+	 * 				必要があります。構造体 tTVPWindowMessage は tp_stub.h に定義されています。この関数が true を返すと吉里吉里本体側はそのウィンドウメッセージに関知しなくなります。
+	 * @param userdata func 引数で指定された受信関数の userdata 引数に渡すためのデータポインタを指定します。このメソッドに渡す際にはそのポインタを整数型にキャストして渡す必要があります。この引数は mode 引数が wrmRegister でないときは無視されます。
+	 * @description このメソッドは C++ 等で記述されたプラグインから利用されることを想定しているメソッドです。TJS2
+	 * 		からは正常に利用できません。このメソッドでは、このウィンドウを通過するメッセージをトラップするためのメッセージ受信関数を
+	 * 		登録することができます。メッセージ受信関数では通常のウィンドウメッセージの他、
+	 * 		TVP_WM_DETACH と TVP_WM_ATTACH という２つの重要なメッセージもトラップすることができ、
+	 * 		ウィンドウが再構築や破棄されるタイミングにおいて、子ウィンドウを取り外すというような
+	 * 		用途に使用できます。吉里吉里ソース配布パッケージ中の src/plugins/win32/wmrdump に簡単な使用法の説明があります。
+	 * @see Window.HWND
+	 */
+	function registerMessageReceiver( mode, func, userdata);
+
+	/**
+	 * タッチ座標の取得
+	 *
+	 * @param index タッチ座標配列のインデックスを指定します。
+	 * @description 現在のタッチ座標配列から指定インデックスの座標情報を取得します。座標数は Window.touchPointCount プロパティで取得できます。座標情報は以下の要素を含む辞書で返されます。startX     : このタッチの開始座標の x 座標値 ( クライアント座標系 ) ですstartY   : このタッチの開始座標の y 座標値 ( クライアント座標系 ) ですx    : このタッチの現在座標の x 座標値 ( クライアント座標系 ) ですy    : このタッチの現在座標の y 座標値 ( クライアント座標系 ) ですID    : このタッチの識別用 IDです
+	 * @see Window.touchPointCount
+	 */
+	function getTouchPoint( index);
+
+	/**
+	 * ウィンドウが表示されているかどうか
+	 *
+	 * @description ウィンドウが表示されているかどうかを表します。値を設定することもできます。真ならばウィンドウが表示されていて、偽ならばウィンドウは非表示の状態です。
+	 */
+	 property visible {
+		 getter() { return value; }
+		 setter( value ) {}
+	}
+	/**
+	 * ウィンドウのキャプション
+	 *
+	 * @description ウィンドウのキャプション ( タイトルバーのタイトル ) を表します。
+	 * 		値を設定することもできます。
+	 */
+	 property caption {
+		 getter() { return value; }
+		 setter( value ) {}
+	}
+	/**
+	 * ウィンドウの横幅
+	 *
+	 * @description ウィンドウの横幅を表します。値を設定することもできます。
+	 * @see Window.height
+	 * @see Window.setSize
+	 */
+	 property width {
+		 getter() { return value; }
+		 setter( value ) {}
+	}
+	/**
+	 * ウィンドウの縦幅
+	 *
+	 * @description ウィンドウの縦幅を表します。値を設定することもできます。
+	 * @see Window.width
+	 * @see Window.setSize
+	 */
+	 property height {
+		 getter() { return value; }
+		 setter( value ) {}
+	}
+	/**
+	 * ウィンドウの最小の横幅
+	 *
+	 * @description ウィンドウの最小の横幅を表します。値を設定することもできます。0を指定すると制限は無くなります。
+	 * @see Window.width
+	 * @see Window.minHeight
+	 * @see Window.maxWidth
+	 * @see Window.maxHeight
+	 * @see Window.setMinSize
+	 * @see Window.setMaxSize
+	 * @see Window.setSize
+	 */
+	 property minWidth {
+		 getter() { return value; }
+		 setter( value ) {}
+	}
+	/**
+	 * ウィンドウの最小の縦幅
+	 *
+	 * @description ウィンドウの最小の縦幅を表します。値を設定することもできます。0を指定すると制限は無くなります。
+	 * @see Window.height
+	 * @see Window.minWidth
+	 * @see Window.maxWidth
+	 * @see Window.maxHeight
+	 * @see Window.setMinSize
+	 * @see Window.setMaxSize
+	 * @see Window.setSize
+	 */
+	 property minHeight {
+		 getter() { return value; }
+		 setter( value ) {}
+	}
+	/**
+	 * ウィンドウの最大の横幅
+	 *
+	 * @description ウィンドウの最大の横幅を表します。値を設定することもできます。0を指定すると制限は無くなります。
+	 * @see Window.width
+	 * @see Window.maxHeight
+	 * @see Window.minWidth
+	 * @see Window.minHeight
+	 * @see Window.setMinSize
+	 * @see Window.setMaxSize
+	 * @see Window.setSize
+	 */
+	 property maxWidth {
+		 getter() { return value; }
+		 setter( value ) {}
+	}
+	/**
+	 * ウィンドウの最大の縦幅
+	 *
+	 * @description ウィンドウの最大の縦幅を表します。値を設定することもできます。0を指定すると制限は無くなります。
+	 * @see Window.height
+	 * @see Window.maxWidth
+	 * @see Window.minWidth
+	 * @see Window.minHeight
+	 * @see Window.setMinSize
+	 * @see Window.setMaxSize
+	 * @see Window.setSize
+	 */
+	 property maxHeight {
+		 getter() { return value; }
+		 setter( value ) {}
+	}
+	/**
+	 * ウィンドウの左端位置
+	 *
+	 * @description ウィンドウの左端位置を表します。値を設定することもできます。左端位置はスクリーンの原点 ( 左上隅 ) からの x 座標です。
+	 * @see Window.top
+	 * @see Window.setPos
+	 */
+	 property left {
+		 getter() { return value; }
+		 setter( value ) {}
+	}
+	/**
+	 * ウィンドウの上端位置
+	 *
+	 * @description ウィンドウの上端位置を表します。値を設定することもできます。上端位置はスクリーンの原点 ( 左上隅 ) からの y 座標です。
+	 * @see Window.left
+	 * @see Window.setPos
+	 */
+	 property top {
+		 getter() { return value; }
+		 setter( value ) {}
+	}
+	/**
+	 * フォーカスを取得可能か
+	 *
+	 * @description フォーカスを取得可能かどうかを表します。値を設定することもできます。偽に設定すると、フォーカスを取得できなくなる、つまり、ウィンドウがアクティブにならなくなります。副作用として、タイトルバーをつかんでのウィンドウの移動やウィンドウのリサイズ、「×」ボタンを押してウィンドウを閉じる操作もできなくなります。キーボード入力を得たいときは Window.trapKey プロパティを使用することができます。通常、これは、ポップアップメニューのように、もっとも手前に表示されるが、それ自身はフォーカスを得ないウィンドウの実装に用います。現バージョンでは、ウィンドウがフルスクリーン化するとき、あるいはフルスクリーンから復帰するときに、このプロパティの設定内容が失われる可能性があります。
+	 * @see Window.trapKey
+	 * @see Window.onPopupHide
+	 */
+	 property focusable {
+		 getter() { return value; }
+		 setter( value ) {}
+	}
+	/**
+	 * キー入力をトラップするか
+	 *
+	 * @description キー入力をトラップするかどうかを表します。値を設定することもできます。真に設定すると、他のウィンドウで発生したキー入力イベントを横取りし、このウィンドウ上で発生させることができます。複数のウィンドウのこのプロパティが真に設定されている場合は、もっとも最後に作成したウィンドウに対してキー入力イベントが発生します。
+	 * @see Window.focusable
+	 */
+	 property trapKey {
+		 getter() { return value; }
+		 setter( value ) {}
+	}
+	/**
+	 * クライアント領域の横幅
+	 *
+	 * @description クライアント領域の横幅を表します。
+	 * 		値を設定することもできます。
+	 * @see Window.innerHeight
+	 * @see Window.setInnerSize
+	 */
+	 property innerWidth {
+		 getter() { return value; }
+		 setter( value ) {}
+	}
+	/**
+	 * クライアント領域の縦幅
+	 *
+	 * @description クライアント領域の縦幅を表します。
+	 * 		値を設定することもできます。
+	 * @see Window.innerWidth
+	 * @see Window.setInnerSize
+	 */
+	 property innerHeight {
+		 getter() { return value; }
+		 setter( value ) {}
+	}
+	/**
+	 * レイヤ拡大倍率(分子)
+	 *
+	 * @description レイヤの拡大倍率の分子を表します。
+	 * 		一応、値を設定することもできますが、値を設定する場合は Window.setZoom メソッドを使用してください。分母は Window.zoomDenom プロパティが表します。詳しくは Window.setZoom メソッドを参照してください。
+	 * @see Window.setZoom
+	 * @see Window.zoomDenom
+	 */
+	 property zoomNumer {
+		 getter() { return value; }
+		 setter( value ) {}
+	}
+	/**
+	 * レイヤ拡大倍率(分母)
+	 *
+	 * @description レイヤの拡大倍率の分母を表します。
+	 * 		一応、値を設定することもできますが、値を設定する場合は Window.setZoom メソッドを使用してください。分子は Window.zoomNumer プロパティが表します。詳しくは Window.setZoom メソッドを参照してください。
+	 * @see Window.setZoom
+	 * @see Window.zoomNumer
+	 */
+	 property zoomDenom {
+		 getter() { return value; }
+		 setter( value ) {}
+	}
+	/**
+	 * 描画デバイス
+	 *
+	 * @description 描画デバイスオブジェクトを表します。値を設定することもできます。値を設定すると、以前このウィンドウに指定されていた描画デバイスは自動的に
+	 * 		無効になります (invalidateされます)。デフォルトでは、Window.BasicDrawDevice というクラスのインスタンスが指定されています。Window.BasicDrawDevice の詳細については、吉里吉里ソースの core/visual/win32/BasicDrawDevice.cpp 内の説明も参照してください。独自の描画デバイス (プラグインで提供される物) を指定する場合は、そのプラグインのドキュメントに
+	 * 		従ってください。
+	 */
+	 property drawDevice {
+		 getter() { return value; }
+		 setter( value ) {}
+	}
+	/**
+	 * ウィンドウ外見
+	 *
+	 * @description ウィンドウの外見を表します。値を設定することもできます。以下の値を設定することができます。bsDialog      : サイズ変更不可の、ダイアログボックスと同様の外見を持ちます。bsSingle      : サイズ変更不可のウィンドウです。bsNone        : ボーダーのないウィンドウです。bsSizeable    : サイズ変更可の一般的なウィンドウです。デフォルトです。bsToolWindow  : サイズ変更不可のツールウィンドウ(キャプションの小さいウィンドウ) です。bsSizeToolWin : bsToolWindow と似ていますが、サイズ変更が可能です。
+	 */
+	 property borderStyle {
+		 getter() { return value; }
+		 setter( value ) {}
+	}
+	/**
+	 * 常に最上位に表示するかどうか
+	 *
+	 * @description ウィンドウを常に最上位 ( 一番手前 ) に表示するかどうかを表します。値を設定することもできます。真ならばウィンドウは常に最上位に表示されます。現バージョンでは、ウィンドウがフルスクリーン化するとき、あるいはフルスクリーンから復帰するときに、このプロパティの設定内容が失われる可能性があります。
+	 */
+	 property stayOnTop {
+		 getter() { return value; }
+		 setter( value ) {}
+	}
+	/**
+	 * デフォルトのIMEモード
+	 *
+	 * @description デフォルトのIMEモードを表します。ここで指定したモードは、どのレイヤにもフォーカスが無い状態に設定されるモードです。未指定の場合は imDisableで、これはどのレイヤにもフォーカスが無い状態では IME は無効状態であるということになります。指定可能な値については Layer.imeMode を参照してください。
+	 */
+	 property imeMode {
+		 getter() { return value; }
+	}
+	/**
+	 * マウスカーソル表示状態
+	 *
+	 * @description マウスカーソルの表示状態を表します。値を設定することもできます。mcsVisibleを指定すると、マウスカーソルは表示状態になります。これはデフォルトの状態です。mcsTempHiddenを指定すると、マウスカーソルは非表示状態になりますが、少しでもマウスを動かすとmcsVisibleに変わり、表示状態になります。Window.hideMouseCursorメソッドを呼び出すとこの状態になります。mcsHiddenを指定すると、マウスカーソルは非表示状態になります。マウスを動かしても表示状態にはなりません。
+	 */
+	 property mouseCursorState {
+		 getter() { return value; }
+		 setter( value ) {}
+	}
+	/**
+	 * マウスキーを使用するかどうか
+	 *
+	 * @description マウスキーを使用するかどうかを表します。値を設定することもできます。真ならばマウスキーを使用することができます。マウスキーが有効になると、カーソルキーを使ってマウスカーソルを移動させることが
+	 * 		できますが、キー入力系のイベントはいっさい発生しなくなります。
+	 */
+	 property useMouseKey {
+		 getter() { return value; }
+		 setter( value ) {}
+	}
+	/**
+	 * フルスクリーンかどうか
+	 *
+	 * @description フルスクリーンかどうかを表します。値を設定することもできます。真を指定すると現在のウィンドウのクライアント領域がフルスクリーンになります。フルスクリーン
+	 * 		時の画面解像度はクライアント領域のサイズになります。偽を指定するとウィンドウ表示になります。
+	 */
+	 property fullScreen {
+		 getter() { return value; }
+		 setter( value ) {}
+	}
+	/**
+	 * メインウィンドウ
+	 *
+	 * @description メインウィンドウ ( 最初に作成されたウィンドウ ) を表します。
+	 */
+	 property mainWindow {
+		 getter() { return value; }
+	}
+	/**
+	 * フォーカスを持っているレイヤオブジェクト
+	 *
+	 * @description 現在 フォーカス を持っているレイヤオブジェクトを表します。
+	 * 		値を設定することもできます。null の場合はどのレイヤもフォーカスを持っていません。レイヤオブジェクトを
+	 * 		設定するとそのレイヤにフォーカスが移ります。
+	 */
+	 property focusedLayer {
+		 getter() { return value; }
+		 setter( value ) {}
+	}
+	/**
+	 * プライマリレイヤオブジェクト
+	 *
+	 * @description プライマリレイヤオブジェクトを表します。
+	 */
+	 property primaryLayer {
+		 getter() { return value; }
+	}
+	/**
+	 * ウィンドウハンドル
+	 *
+	 * @description ウィンドウハンドルを表します。ここで得られるのは整数ですが、プラグインなどでこの数値を使う場合は HWND 型に
+	 * 		キャストして使ってください。
+	 * @see Window.registerMessageReceiver
+	 */
+	 property HWND {
+		 getter() { return value; }
+	}
+	/**
+	 * マルチタッチ拡大閾値
+	 *
+	 * @description マルチタッチで拡大を開始する閾値です。2つのタッチ位置の距離がこの値以上変化した時に拡大イベントが発生します。一度閾値を超えるといったん指が離されるまで拡大イベントは有効になります。
+	 * @see Window.onTouchScaling
+	 */
+	 property touchScaleThreshold {
+		 getter() { return value; }
+		 setter( value ) {}
+	}
+	/**
+	 * マルチタッチ回転閾値
+	 *
+	 * @description マルチタッチで回転を開始する閾値です。各タッチ位置の移動距離がこの値以上変化した時に回転イベントが発生します。一度閾値を超えるといったん指が離されるまで回転イベントは有効になります。
+	 * @see Window.onTouchRotate
+	 */
+	 property touchRotateThreshold {
+		 getter() { return value; }
+		 setter( value ) {}
+	}
+	/**
+	 * タッチ数
+	 *
+	 * @description タッチパネルにタッチされている数です。
+	 * @see Window.getTouchPoint
+	 */
+	 property touchPointCount {
+		 getter() { return value; }
+	}
+	/**
+	 * タッチイベント有効/無効
+	 *
+	 * @description タッチイベントが有効かどうかを表します。値を設定することもできます。真を指定するとWindow.onTouchDown等のイベントが有効になり、タッチ操作ではWindow.onMouseDownなどが発生しなくなります。タッチデバイスがありマルチタッチが有効な環境では、デフォルトが true になります。
+	 */
+	 property enableTouch {
+		 getter() { return value; }
+		 setter( value ) {}
+	}
+	/**
+	 * 垂直同期待ち
+	 *
+	 * @description トランジション(画面切り替え)などでディスプレイの垂直同期を待ってから描画するかどうかの設定です。設定を変えると、画面のちらつきを抑えられる場合がありますが、描画のパフォーマンスが低下する場合もあります。
+	 */
+	 property waitVSync {
+		 getter() { return value; }
+		 setter( value ) {}
+	}
+	/**
+	 * ヒント表示待ち時間
+	 *
+	 * @description ヒントの表示待ち時間をミリ秒単位で表します。値を設定することもできます。デフォルトは500ミリ秒です。0を設定すると即座に Window.onHintChanged が呼び出されます(常時表示状態)。-1を設定するとヒントが表示されることはありません。
+	 * @see Window.onHintChanged
+	 */
+	 property hintDelay {
+		 getter() { return value; }
+		 setter( value ) {}
+	}
+
+};

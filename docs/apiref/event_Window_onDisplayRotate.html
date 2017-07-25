@@ -18,13 +18,13 @@
 <tr><td valign="top"><span class="argname">orientation</span></td>
 <td>画面の向き( orientation ) です。以下のいずれかの値になります。oriUnknown (取得失敗/不明), oriPortrait(縦向き), oriLandscape(横向き)</td></tr>
 <tr><td valign="top"><span class="argname">angle</span></td>
-<td>角度です。角度 ( angle ) は、0、90、180、270、-1 のいずれかで、取得できなかった時は-1となります。角度は、そのデバイスデフォルトからの回転角なので、縦向きのデバイスでは縦向きで0となります。通常のデバイスだと、横向きで0が多ようです。縦向きが0になるのは最近の8インチタブレットなどで、縦向きが標準の向きとなっているものです。</td></tr>
+<td>角度です。角度 ( angle ) は、0、90、180、270、-1 のいずれかで、取得できなかった時は-1となります。<br />角度は、そのデバイスデフォルトからの回転角なので、縦向きのデバイスでは縦向きで0となります。<br />通常のデバイスだと、横向きで0が多ようです。<br />縦向きが0になるのは最近の8インチタブレットなどで、縦向きが標準の向きとなっているものです。<br />Androidでは常に-1が返ります。<br />必要であれば別途Windows.displayRotateで取得します。</td></tr>
 <tr><td valign="top"><span class="argname">bpp</span></td>
-<td>bits per pixel です。</td></tr>
+<td>bits per pixel です。Androidではdpi値が返ります。</td></tr>
 <tr><td valign="top"><span class="argname">width</span></td>
-<td>画面の幅です。</td></tr>
+<td>画面の幅です。<br />Androidでは常に0が返ります。<br />必要であれば別途取得します。</td></tr>
 <tr><td valign="top"><span class="argname">height</span></td>
-<td>画面の高さです。</td></tr>
+<td>画面の高さです。<br />Androidでは常に0が返ります。<br />必要であれば別途取得します。</td></tr>
 </table></dd>
 <dt>戻り値</dt>
 <dd>なし (void)</dd>

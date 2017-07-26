@@ -1,0 +1,152 @@
+/**
+ * @description TJS2 では、文字列は擬似的に String クラスのオブジェクトということになっていますが、String クラスは存在していませんし、実際に String クラスのオブジェクトというわけではありません ( ただし 文字列に対して typeof 演算子を使うと "String" を返します )。
+ * しかし 文字列をオブジェクトと見立てて、いくつかのメソッドやプロパティが使用可能になっています。
+ */
+class String {
+	/**
+	 * 文字列の長さを返します
+	 * @description メソッドではなくてプロパティですので注意してください。
+	 * ただし、このプロパティへの値の代入はできません。
+	 * 内部的に文字をすべて UNICODE で扱っていますので、全角文字も 1 文字、半角文字も 1 文字と数えられます。
+	 */
+	property length;
+
+	/**
+	 * '数値' プロパティ
+	 * @description 数値をプロパティとして間接指定すると、その文字位置にある文字にアクセスできます。
+	 * たとえば、str が文字列あるいは文字列を表す式だとすると、str[0] は先頭の一文字を表す文字列になります。
+	 * 数値が文字列よりも長い位置や、負の場合は例外が発生します ( ただし文字列の最後の文字は 空文字 が返されます )。
+	 *
+	 * 代入式を生成することはできません。
+	 */
+	property ［］;
+
+	/**
+	 * 文字列の指定位置で指定された位置の文字を返します
+	 * @description 文字列の指定位置で指定された位置の文字を返します。
+	 * '数値' プロパティと同様の動作をしますが、範囲外の場合は常に空文字を返します (例外を出しません)。
+	 * @param index 位置
+	 * @return 文字
+	 */
+	function charAt( index:int ):int;
+
+	/**
+	 * 部分文字列の位置を返します
+	 * @description 文字列から、textをoffsetから検索し、最初に見つかった位置を返します。
+	 * offsetを省略すると、文字列の先頭からの検索になります。
+	 * @param text 部分文字列
+	 * @param offset 検索開始位置
+	 * @return 0 が返されれば文字列の先頭です、-1 が返されたときは見つからなかったときです。
+	 */
+	function indexOf( text:string, offset:int=void ):int;
+
+	/**
+	 * 文字列のアルファベットを小文字にした文字列を返します
+	 * @description 文字列のアルファベットを小文字にした文字列を返します。
+	 * 全角文字は変換されません。
+	 * これらのメソッドは、もとの文字列には影響を与えません。
+	 * 現バージョンでは 文字コード 0x80 未満の文字に対してのみ変換を行います。
+	 * @return 変換後文字列
+	 * @return 
+	 */
+	 
+	function toLowerCase():string;
+
+	/**
+	 * 小文字のアルファベットを大文字にした文字列を返します
+	 * @description 小文字のアルファベットを大文字にした文字列を返します。
+	 * 全角文字は変換されません。
+	 * これらのメソッドは、もとの文字列には影響を与えません。
+	 * 現バージョンでは 文字コード 0x80 未満の文字に対してのみ変換を行います。
+	 * @return 変換後文字列
+	 */
+	function toUpperCase():string;
+
+	/**
+	 * 文字列の部分文字列を返します
+	 * @description 文字列の、offsetからcountの部分文字列を返します。
+	 * 元の文字列に影響は与えません。
+	 * countを省略すると、offset以降の文字列がすべて返されます。
+	 * JavaScript の同メソッドとは引数の意味が違うので注意してください。
+	 * @param offset 開始文字位置
+	 * @param count 文字数、省略可能。
+	 * @return 部分文字列
+	 */
+	function substring( offset:int, count:int=void ):string;
+
+	/**
+	 * 文字列の部分文字列を返します
+	 * @description 文字列の、offsetからcountの部分文字列を返します。
+	 * 元の文字列に影響は与えません。
+	 * countを省略すると、offset以降の文字列がすべて返されます。
+	 * JavaScript の同メソッドとは引数の意味が違うので注意してください。
+	 * @param offset 開始文字位置
+	 * @param count 文字数、省略可能。
+	 * @return 部分文字列
+	 */
+	function substr( offset:int, count:int=void ):string;
+
+	/**
+	 * 文字列を書式化します
+	 * @description 文字列を書式文字列と見なし、C言語における sprintf 同様のテキストのフォーマッティングを行った文字列を返します。
+	 * 元の文字列には影響を与えません。
+	 * @param arg 置き換え変数
+	 * @return 書式化文字列
+	 */
+	function sprintf( arg, ... ):string;
+
+	/**
+	 * 文字列の置き換えを行います
+	 * @description 正規表現パターンに従って文字列の置き換えを行い、置き換えを行ったあとの文字列を返します。
+	 * 元の文字列には影響を与えません。
+	 * @param pattern 正規表現
+	 * @param replaced 置き換え後文字列
+	 * @return 置き換えられた文字列
+	 * @see RegExp.replace
+	 */
+	function replace( pattern:string, replaced:string ):string;
+
+	/**
+	 * 文字列を分割します
+	 * @description 文字列を分割します
+	 * @param pattern 区切り文字か正規表現
+	 * @param reserve 予約
+	 * @param ignore 空の要素を無視するか
+	 * @return 文字列を分割した結果が格納された配列オブジェクトを返します。
+	 * @see Array.split
+	 */
+	function split( pattern:string, reserve, ignore=false ):Array;
+
+	/**
+	 * 文字列を、TJSの文字列即値内で表現可能な形式に変換します
+	 * @description \ や " などの記号はすべて \ 記号を用いて特殊な用途として解釈されなくされます (エスケープされます)。
+	 * @return エスケープされた文字列を返します。
+	 */
+	function escape():string;
+
+	/**
+	 * 文字列の先頭と最後の空白を取り除いた文字列を返します
+	 * @description 元の文字列には影響を与えません。
+	 * 先頭と最後の空白とは、文字コードがU+0001～+0020の文字を指します。
+	 * つまり、ASCII制御文字なども含まれますが、いわゆる全角の空白は含みません。
+	 * 連続して先頭または最後にこれらの空白があった場合は、すべて取り除かれます。
+	 * @return 先頭と末尾の空白文字が削除された文字列を返します。
+	 */
+	function trim():string;
+
+	/**
+	 * 文字の並びを逆転した文字列を返します
+	 * @description 元の文字列には影響を与えません。
+	 * 現バージョンでは、UTF-16のうちサロゲートペアを含む文字列の動作は保証しません。
+	 * @return 文字の並びを逆転した文字列を返します。
+	 */
+	function reverse():string;
+
+	/**
+	 * 指定した回数だけ文字列を繰り返した文字列を返します
+	 * @description 元の文字列には影響を与えません。
+	 * @param count 繰り返す回数
+	 * @return count個、この文字列を繰り返した文字列を返します。
+	 */
+	function repeat(count):string;
+};

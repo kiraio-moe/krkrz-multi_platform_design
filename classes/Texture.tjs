@@ -6,18 +6,20 @@
  * VertexBufferでは実装済みだが、OpenGL ES 3.0 以降用となる。
  * Textureの場合もPBO転送となるので、OpenGL ES 3.0 以降用となって同じ。
  * ただ、テクスチャの更新はOffscreenを利用してシェーダーを使う方が良いか。
+ *
+ * invalidateすることでテクスチャは無効化されるため、必要なくなったら明示的にinvalidate呼び出すことを推奨します。
  */
 class Texture {
 	/**
-	 * コンストラクタ
-	 * @filename 画像ファイル名
+	 * ファイル読み込み版コンストラクタ
+	 * @param filename 画像ファイル名
 	 * @param format カラーフォーマット(tcfRGBA or tcfAlpha), tcfAlpha選択時に色情報はグレイスケール化される
 	 * @param p2 サイズ2の累乗化(必須ではないが高速化する環境もある、一応指定可能に、内部で吸収でもいいが…… obsolate化の可能性あり)undocumentがいいか？
 	 */
 	function Texture( filename, format=tcfRGBA, p2=false );
 
 	/**
-	 * コンストラクタ
+	 * Bitmapコピー版コンストラクタ
 	 * @param bitmap テクスチャの元となるBitmapクラスのインスタンス
 	 * @param format カラーフォーマット(tcfRGBA or tcfAlpha), tcfAlpha選択時に色情報はグレイスケール化される
 	 * @param p2 サイズ2の累乗化(必須ではないが高速化する環境もある、一応指定可能に、内部で吸収でもいいが…… obsolate化の可能性あり)undocumentがいいか？
@@ -25,16 +27,13 @@ class Texture {
 	function Texture( bitmap, format=tcfRGBA, p2=false );
 
 	/**
-	 * コンストラクタ
+	 * サイズ指定版コンストラクタ
 	 * @description テクスチャの内容は未初期化なのでごみが入っている。
 	 * @param width テクスチャ幅
 	 * @param height テクスチャ高さ
 	 * @param format カラーフォーマット(tcfRGBA or tcfAlpha)
 	 */
 	function Texture( width, height, format=tcfRGBA );
-
-	// invalidateでテクスチャ無効化
-	// 明示的に呼び出すことを推奨
 
 	/**
 	 * 矩形コピー
@@ -111,30 +110,30 @@ class Texture {
 	property wrapModeVertical;
 
 	/**
-	 * 最近傍点法(定数)
+	 * 最近傍点法
 	 * @description stretchType プロパティに設定します。
 	 */
-	property stNearest;
+	const stNearest;
 	/**
-	 * 線形補間(定数)
+	 * 線形補間
 	 * @description stretchType プロパティに設定します。
 	 */
-	property stLinear;
+	const stLinear;
 
 	/**
-	 * 繰り返し(定数)
+	 * 繰り返し
 	 * @description wrapModeHorizontal/wrapModeVertical プロパティに設定します。
 	 */
-	property wmRepeat;
+	const wmRepeat;
 	/**
-	 * 端色引き延ばし。(定数)
+	 * 端色引き延ばし。
 	 * @description wrapModeHorizontal/wrapModeVertical プロパティに設定します。
 	 * 2の累乗サイズでない場合はこの定数でなければならない (default)。
 	 */
-	property wmClampToEdge;
+	const wmClampToEdge;
 	/**
-	 * ミラー繰り返し(定数)
+	 * ミラー繰り返し
 	 * @description wrapModeHorizontal/wrapModeVertical プロパティに設定します。
 	 */
-	property wmMirror;
+	const wmMirror;
 };

@@ -3,14 +3,14 @@
  */
 class Bitmap {
 	/**
-	 * Bitmap オブジェクトの構築
+	 * デフォルトBitmapオブジェクトの構築
 	 *
 	 * @description Bitmap クラスのオブジェクトを構築します。初期状態では 幅と高さは32ピクセルになっています。
 	 */
-	function Bitmap( );
+	function Bitmap();
 
 	/**
-	 * Bitmap オブジェクトの構築
+	 * 大きさを指定したBitmapオブジェクトの構築
 	 *
 	 * @param width 画像の幅を指定します。
 	 * @param height 画像の高さを指定します。
@@ -20,7 +20,7 @@ class Bitmap {
 	function Bitmap( width, height, bpp=32);
 
 	/**
-	 * Bitmap オブジェクトの構築
+	 * ファイルを指定したBitmapオブジェクトの構築
 	 *
 	 * @param filename 画像のファイル名を指定します。
 	 * @param colorkey カラーキーを指定します。値は Layer.loadImages と同じです。

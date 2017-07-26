@@ -79,76 +79,76 @@ class VertexBuffer {
 	/**
 	 * データ型定数(byte)
 	 */
-	property dtByte;
+	const dtByte;
 	/**
 	 * データ型定数(unsigned byte)
 	 */
-	property dtUByte;
+	const dtUByte;
 	/**
 	 * データ型定数(short)
 	 */
-	property dtShort;
+	const dtShort;
 	/**
 	 * データ型定数(unsigned short)
 	 */
-	property dtUShort;
+	const dtUShort;
 	/**
 	 * データ型定数(int) ES3.0以降必要
 	 */
-	property dtInt;
+	const dtInt;
 	/**
 	 * データ型定数(unsinged int) ES3.0以降必要
 	 */
-	property dtUInt;
+	const dtUInt;
 	/**
 	 * データ型定数(fixed:固定少数点)
 	 */
-	property dtFixed;
+	const dtFixed;
 	/**
 	 * データ型定数(float)
 	 */
-	property dtFloat;
+	const dtFloat;
 
 	/**
 	 * 更新頻度定数:毎フレーム更新
 	 */
-	property utStream;
+	const utStream;
 	/**
 	 * 更新頻度定数:変更なし
 	 */
 	/**  */
-	property utStatic;
+	const utStatic;
 	/**
 	 * 更新頻度定数:頻繁に更新される
 	 */
-	property utDynamic;
+	const utDynamic;
 
 	/**
 	 * プリミティブ型定数(ポイントリスト)
 	 */
-	property ptPoints;
+	const ptPoints;
 	/**
 	 * プリミティブ型定数(ラインストリップ)
 	 */
-	property ptLineStrip;
+	const ptLineStrip;
 	/**
 	 * プリミティブ型定数(ラインループ)
 	 */
-	property ptLineLoop;
+	const ptLineLoop;
 	/**
 	 * プリミティブ型定数(ラインリスト)
 	 */
-	property ptLines;
+	const ptLines;
 	/**
 	 * プリミティブ型定数(トライアングルストラップ)
 	 */
-	property ptTriangleStrip;
+	const ptTriangleStrip;
 	/**
 	 * プリミティブ型定数(トライアングルファン)
 	 */
-	property ptTriangleFan;
+	const ptTriangleFan;
 	/**
 	 * プリミティブ型定数(トライアングルリスト)
 	 */
-	property ptTriangles;
+	const ptTriangles;
 };

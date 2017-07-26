@@ -2,21 +2,23 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>Texture - コンストラクタ @filename 画像ファイル名</title>
+<title>Texture - ファイル読み込み版コンストラクタ</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">Texture.Texture</a></span></h1><div class="para">
 <dl>
 <dt>機能/意味</dt>
-<dd><p>コンストラクタ<br />
-@filename 画像ファイル名</p>
+<dd><p>ファイル読み込み版コンストラクタ</p>
 </dd>
 <dt>タイプ</dt>
 <dd><a class="jump" href="class_Texture.html">Textureクラス</a>のメソッド</dd>
 <dt>構文</dt>
-<dd><span class="funcdecl">Texture(<span class="arg">filename</span>, <span class="arg">format</span>, <span class="arg">p2</span>)</span></dd>
+<dd><span class="funcdecl">Texture(<span class="arg">filename</span>, <span class="arg">format</span><span class="defarg">=<span class="defargval">tcfRGBA</span></span>, <span class="arg">p2</span><span class="defarg">=<span class="defargval">0</span></span>)</span></dd>
 <dt>引数</dt>
 <dd><table rules="all" frame="box" cellpadding="3" summary="Textureの引数">
+<tr><td valign="top"><span class="argname">filename</span></td>
+<td><p>画像ファイル名</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">format</span></td>
 <td><p>カラーフォーマット(tcfRGBA or tcfAlpha), tcfAlpha選択時に色情報はグレイスケール化される</p>
 </td></tr>

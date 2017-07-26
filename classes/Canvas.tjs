@@ -1,10 +1,9 @@
 /**
  * @description Canvasは描画機能を提供するクラスです。
  * Windowを生成すると、プロパティcanvasが自動的に作られます。
- * 使用する時は、このcanvasプロパティを使用します。
+ * 使用する時は、このWindowのcanvasプロパティを使用します。
  */
 class Canvas {
-	// function Canvas()
 
 	/**
      * クリア色指定・描画処理前の画面クリア色
@@ -29,7 +28,8 @@ class Canvas {
 
 	/**
 	 * 描画ターゲット指定
-	 * @description Offscreenクラスを指定可能。null/void指定で直接描画に。
+	 * @description Offscreenクラスを指定可能。
+	 * null/void指定で直接描画に。
 	 */
 	property renderTarget;
 

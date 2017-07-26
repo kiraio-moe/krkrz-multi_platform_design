@@ -31,8 +31,10 @@ class Rect {
 	/**
 	 * 矩形サイズの設定
 	 *
-	 * @param width 矩形の横幅を指定します。この値は Rect.width プロパティでも取得や設定ができます。
-	 * @param height 矩形の縦幅を指定します。この値は Rect.height プロパティでも取得や設定ができます。
+	 * @param width 矩形の横幅を指定します。
+	 * この値は Rect.width プロパティでも取得や設定ができます。
+	 * @param height 矩形の縦幅を指定します。
+	 * この値は Rect.height プロパティでも取得や設定ができます。
 	 * @description 矩形サイズを指定します。
 	 */
 	function setSize( width, height);
@@ -40,8 +42,10 @@ class Rect {
 	/**
 	 * 矩形位置の設定
 	 *
-	 * @param x 矩形の X 座標値を指定します。この値は Rect.left プロパティでも取得や設定ができます。
-	 * @param y 矩形の Y 座標値を指定します。この値は Rect.topt プロパティでも取得や設定ができます。
+	 * @param x 矩形の X 座標値を指定します。
+	 * この値は Rect.left プロパティでも取得や設定ができます。
+	 * @param y 矩形の Y 座標値を指定します。
+	 * この値は Rect.topt プロパティでも取得や設定ができます。
 	 * @description 矩形位置の設定を行います。
 	 */
 	function setOffset( x, y);
@@ -51,7 +55,8 @@ class Rect {
 	 *
 	 * @param x 矩形の横移動量を指定します。
 	 * @param y 矩形の縦移動量を指定します。
-	 * @description 矩形位置を移動します。指定された x, y 値分矩形が移動します。
+	 * @description 矩形位置を移動します。
+	 * 指定された x, y 値分矩形が移動します。
 	 */
 	function addOffset( x, y);
 
@@ -77,7 +82,8 @@ class Rect {
 	 * 矩形内部があるかどうか
 	 *
 	 * @return 領域の有無
-	 * @description 矩形が幅と高さを持っているかどうか確認します。どちらか一方でも0以下の場合 true が返ります。
+	 * @description 矩形が幅と高さを持っているかどうか確認します。
+	 * どちらか一方でも0以下の場合 true が返ります。
 	 */
 	function isEmpty( );
 
@@ -86,7 +92,9 @@ class Rect {
 	 *
 	 * @param r クリッピングする矩形オブジェクトを指定します。
 	 * @return クリッピング実施有無
-	 * @description 矩形のクリッピングを指定の矩形で行います。矩形が空にならない場合のみクリッピングは行われます。空になってしまう場合は false が返り、クリッピングは行われません。
+	 * @description 矩形のクリッピングを指定の矩形で行います。
+	 * 矩形が空にならない場合のみクリッピングは行われます。
+	 * 空になってしまう場合は false が返り、クリッピングは行われません。
 	 * @see Rect.isEmpty
 	 */
 	function clip( r);
@@ -96,7 +104,9 @@ class Rect {
 	 *
 	 * @param r 合成する矩形オブジェクトを指定します。
 	 * @return 合成実施有無
-	 * @description 指定の矩形オブジェクトで矩形を拡張します。指定の矩形オブジェクトの 4辺値で矩形サイズが広がる方向で大きい値が対象矩形の値となります。対象矩形が空でない場合のみ実行され、空の場合は行われず、false を返します。
+	 * @description 指定の矩形オブジェクトで矩形を拡張します。
+	 * 指定の矩形オブジェクトの 4辺値で矩形サイズが広がる方向で大きい値が対象矩形の値となります。
+	 * 対象矩形が空でない場合のみ実行され、空の場合は行われず、false を返します。
 	 * @see Rect.isEmpty
 	 */
 	function union( r);
@@ -106,7 +116,8 @@ class Rect {
 	 *
 	 * @param r 交差判定する矩形オブジェクトを指定します。
 	 * @return 交差有無
-	 * @description 指定の矩形オブジェクトと交差するか判定します。交差する場合 true が返ります。
+	 * @description 指定の矩形オブジェクトと交差するか判定します。
+	 * 交差する場合 true が返ります。
 	 */
 	function intersects( r);
 
@@ -115,7 +126,9 @@ class Rect {
 	 *
 	 * @param r 内包判定する矩形オブジェクトを指定します。
 	 * @return 内包有無
-	 * @description 指定の矩形オブジェクトを内包するか判定します。内包する場合 true が返ります。1辺でも外に出ていると内包していないと判定されます。
+	 * @description 指定の矩形オブジェクトを内包するか判定します。
+	 * 内包する場合 true が返ります。
+	 * 1辺でも外に出ていると内包していないと判定されます。
 	 */
 	function included( r);
 
@@ -125,7 +138,9 @@ class Rect {
 	 * @param x 判定するX軸座標値を指定します。
 	 * @param y 判定するY軸座標値を指定します。
 	 * @return 内包有無
-	 * @description 指定の位置を内包するか判定します。内包する場合 true が返ります。right, bottom は含まない範囲で判定されます。
+	 * @description 指定の位置を内包するか判定します。
+	 * 内包する場合 true が返ります。
+	 * right, bottom は含まない範囲で判定されます。
 	 */
 	function includedPos( x, y);
 
@@ -134,7 +149,9 @@ class Rect {
 	 *
 	 * @param r 判定する矩形オブジェクトを指定します。
 	 * @return 同じかどうか
-	 * @description 矩形が同じかどうか判定します。同じ場合 true が返ります。比較は4辺の値で行われます。
+	 * @description 矩形が同じかどうか判定します。
+	 * 同じ場合 true が返ります。
+	 * 比較は4辺の値で行われます。
 	 */
 	function equal( r);
 
@@ -152,7 +169,8 @@ class Rect {
 	/**
 	 * 矩形横幅
 	 *
-	 * @description 矩形の横幅を指定します。値を設定することもできます。
+	 * @description 矩形の横幅を指定します。
+	 * 値を設定することもできます。
 	 * @see Rect.setSize
 	 */
 	 property width {
@@ -162,7 +180,8 @@ class Rect {
 	/**
 	 * 矩形縦幅
 	 *
-	 * @description 矩形の縦幅を指定します。値を設定することもできます。
+	 * @description 矩形の縦幅を指定します。
+	 * 値を設定することもできます。
 	 * @see Rect.setSize
 	 */
 	 property height {
@@ -172,7 +191,8 @@ class Rect {
 	/**
 	 * 矩形左端
 	 *
-	 * @description 矩形の左端を指定します。値を設定することもできます。
+	 * @description 矩形の左端を指定します。
+	 * 値を設定することもできます。
 	 * @see Rect.setOffset
 	 */
 	 property left {
@@ -182,7 +202,8 @@ class Rect {
 	/**
 	 * 矩形上端
 	 *
-	 * @description 矩形の上端を指定します。値を設定することもできます。
+	 * @description 矩形の上端を指定します。
+	 * 値を設定することもできます。
 	 * @see Rect.setOffset
 	 */
 	 property top {
@@ -192,7 +213,8 @@ class Rect {
 	/**
 	 * 矩形右端
 	 *
-	 * @description 矩形の右端を指定します。値を設定することもできます。
+	 * @description 矩形の右端を指定します。
+	 * 値を設定することもできます。
 	 */
 	 property right {
 		 getter() { return value; }
@@ -201,7 +223,8 @@ class Rect {
 	/**
 	 * 矩形下端
 	 *
-	 * @description 矩形の下端を指定します。値を設定することもできます。
+	 * @description 矩形の下端を指定します。
+	 * 値を設定することもできます。
 	 */
 	 property bottom {
 		 getter() { return value; }
@@ -210,9 +233,9 @@ class Rect {
 	/**
 	 * 矩形バッファポインタ
 	 *
-	 * @description 矩形の座標配列へのポインタを表します。このプロパティは、プラグインなどのために座標配列バッファへの直接のアクセスの手段を提供する
-	 * 		ためにあります。整数型で返されますが、プラグインなどでは適切な型 ( int[4] 等 ) にキャストして使って
-	 * 		ください。
+	 * @description 矩形の座標配列へのポインタを表します。
+	 * このプロパティは、プラグインなどのために座標配列バッファへの直接のアクセスの手段を提供するためにあります。
+	 * 整数型で返されますが、プラグインなどでは適切な型 ( int[4] 等 ) にキャストして使ってください。
 	 */
 	 property nativeArray {
 		 getter() { return value; }

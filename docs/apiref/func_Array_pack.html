@@ -8,7 +8,8 @@
 <h1><span class="fheader"><a name="top" id="top">Array.pack</a></span></h1><div class="para">
 <dl>
 <dt>機能/意味</dt>
-<dd>引数で指定された文字列に従い、配列要素をバイナリ(Octet)化して返します。</dd>
+<dd><p>引数で指定された文字列に従い、配列要素をバイナリ(Octet)化して返します。</p>
+</dd>
 <dt>タイプ</dt>
 <dd><a class="jump" href="class_Array.html">Arrayクラス</a>のメソッド</dd>
 <dt>構文</dt>
@@ -16,12 +17,44 @@
 <dt>引数</dt>
 <dd><table rules="all" frame="box" cellpadding="3" summary="packの引数">
 <tr><td valign="top"><span class="argname">template</span></td>
-<td>テンプレート文字列には以下の文字が使用可能です。<br />a : ASCII 文字列(ヌル文字が補完される)<br />A : ASCII 文字列(スペースが補完される)<br />b : 2進数文字列(下位ビットから上位ビットの順)<br />B : 2進数文字列(上位ビットから下位ビットの順)<br />c : 符号付き1バイト数値(-128 ～ 127)<br />C : 符号無し1バイト数値(0 ～ 255)<br />d : 倍精度浮動小数点値<br />f : 単精度浮動小数点値<br />h : 16進数文字列(low nybble first)<br />H : 16進数文字列(high nybble first)<br />i : 符号付きint数値(通常4バイト)<br />I : 符号無しint数値(通常4バイト)<br />l : 符号付きlong数値(通常4バイト)<br />L : 符号無しlong数値(通常4バイト)<br />n : 符号無しshort数値(ネットワークバイトオーダ)<br />N : 符号無しlong数値(ネットワークバイトオーダ)<br />s : 符号付きshort数値(通常2バイト)<br />S : 符号無しshort数値(通常2バイト)<br />v : 符号無しshort値(リトルエンディアン)<br />V : 符号無しlong値(リトルエンディアン)<br />x : ヌル文字<br />X : 1バイト後退<br />@ : 絶対位置までヌル文字を埋める<br />m : Base64 decode</td></tr>
+<td><p>テンプレート文字列には以下の文字が使用可能です。</p>
+
+<ul>
+<li>a : ASCII 文字列(ヌル文字が補完される)</li>
+<li>A : ASCII 文字列(スペースが補完される)</li>
+<li>b : 2進数文字列(下位ビットから上位ビットの順)</li>
+<li>B : 2進数文字列(上位ビットから下位ビットの順)</li>
+<li>c : 符号付き1バイト数値(-128 ～ 127)</li>
+<li>C : 符号無し1バイト数値(0 ～ 255)</li>
+<li>d : 倍精度浮動小数点値</li>
+<li>f : 単精度浮動小数点値</li>
+<li>h : 16進数文字列(low nybble first)</li>
+<li>H : 16進数文字列(high nybble first)</li>
+<li>i : 符号付きint数値(通常4バイト)</li>
+<li>I : 符号無しint数値(通常4バイト)</li>
+<li>l : 符号付きlong数値(通常4バイト)</li>
+<li>L : 符号無しlong数値(通常4バイト)</li>
+<li>n : 符号無しshort数値(ネットワークバイトオーダ)</li>
+<li>N : 符号無しlong数値(ネットワークバイトオーダ)</li>
+<li>s : 符号付きshort数値(通常2バイト)</li>
+<li>S : 符号無しshort数値(通常2バイト)</li>
+<li>v : 符号無しshort値(リトルエンディアン)</li>
+<li>V : 符号無しlong値(リトルエンディアン)</li>
+<li>x : ヌル文字</li>
+<li>X : 1バイト後退</li>
+<li>@ : 絶対位置までヌル文字を埋める</li>
+<li>m : Base64 decode</li>
+</ul>
+</td></tr>
 </table></dd>
 <dt>戻り値</dt>
 <dd>なし (void)</dd>
 <dt>説明</dt>
-<dd>指定の文字列はテンプレートと呼びます。<br />テンプレートは、型指定文字とその長さを並べたものです。<br />長さとして * が指定された時は残り全ての長さを表します。<br />長さが省略された場合は1として扱います。</dd>
+<dd><p>指定の文字列はテンプレートと呼びます。<br />
+テンプレートは、型指定文字とその長さを並べたものです。<br />
+長さとして * が指定された時は残り全ての長さを表します。<br />
+長さが省略された場合は1として扱います。</p>
+</dd>
 </dl>
 </div>
 </body>

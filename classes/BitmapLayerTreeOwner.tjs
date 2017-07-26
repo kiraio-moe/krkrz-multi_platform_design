@@ -1,5 +1,6 @@
 /**
- * @description BitmapLayerTreeOwner クラスは、レイヤーツリーを保持し、描画結果を Bitmap クラスで取得できるクラスです。(1.1.0以降)Layer クラスのコンストラクタの第一引数に window の代わりに渡すことで、それら Layer の描画結果を Bitmap クラスとして画像で取得できます。
+ * @description BitmapLayerTreeOwner クラスは、レイヤーツリーを保持し、描画結果を Bitmap クラスで取得できるクラスです。(1.1.0以降)
+ * Layer クラスのコンストラクタの第一引数に window の代わりに渡すことで、それら Layer の描画結果を Bitmap クラスとして画像で取得できます。
  */
 class BitmapLayerTreeOwner {
 	/**
@@ -82,7 +83,7 @@ class BitmapLayerTreeOwner {
 	function fireDisplayRotate( orientation, rotate, bpp, hresolution, vresolution );
 	/**
 	 * 必要なら1秒間隔で呼び出します。
-	 * 現在のレイヤのマウス位置確認とヒントの更新、カーソルタイプ、レイヤEnter/Leaveが再チェックされます。
+	 * @description 現在のレイヤのマウス位置確認とヒントの更新、カーソルタイプ、レイヤEnter/Leaveが再チェックされます。
 	 * 内部的にはマウスカーソル移動0呼び出しが行われています。
 	 * 必要かどうかは…？
 	 */
@@ -113,7 +114,9 @@ class BitmapLayerTreeOwner {
 	property height;
 	/** 描画されているBitmapクラスのインスタンス(readonly) */
 	proporty bitmap;
-	/** 更新領域、Rectクラス。isUpdatedがtrueの時のみ内容有効(readonly) */
+	/** 更新領域、Rectクラス。
+	 * @description isUpdatedがtrueの時のみ内容有効(readonly)
+	 */
 	proporty dirtyRect;
 	/** 更新の有無(readonly) */
 	proporty isUpdated;

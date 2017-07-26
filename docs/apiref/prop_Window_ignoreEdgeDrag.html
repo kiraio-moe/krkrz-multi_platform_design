@@ -12,7 +12,14 @@
 <dt>タイプ</dt>
 <dd><a class="jump" href="class_Window.html">Windowクラス</a>のプロパティ</dd>
 <dt>説明</dt>
-<dd>Androidで左からの場合、VK_MENU の KeyDown/Upが飛ぶので、それを契機にメニューを出す? じわじわ出したい？<br />onPointerDownのshiftにMenuDraggingとか追加して、それで判定して、左からメニュー出す？<br />Android では以下のように画面解像度(密度)に合わせたサイズで定義されている<br />int EDGE_SIZE = 20;<br />mEdgeSize = (int) (EDGE_SIZE * density + 0.5f);<br />https://android.googlesource.com/platform/frameworks/support/+/407e01608ccafe5dc24f82608583f71c34312f9c/v4/java/android/support/v4/widget/DrawerLayout.java<br />https://android.googlesource.com/platform/frameworks/support/+/407e01608ccafe5dc24f82608583f71c34312f9c/v4/java/android/support/v4/widget/ViewDragHelper.java</dd>
+<dd><p>Androidで左からの場合、VK<em>MENU の KeyDown/Upが飛ぶので、それを契機にメニューを出す? じわじわ出したい？<br />
+onPointerDownのshiftにMenuDraggingとか追加して、それで判定して、左からメニュー出す？<br />
+Android では以下のように画面解像度(密度)に合わせたサイズで定義されている<br />
+int EDGE</em>SIZE = 20;<br />
+mEdgeSize = (int) (EDGE_SIZE * density + 0.5f);<br />
+<a href="https://android.googlesource.com/platform/frameworks/support/+/407e01608ccafe5dc24f82608583f71c34312f9c/v4/java/android/support/v4/widget/DrawerLayout.java">https://android.googlesource.com/platform/frameworks/support/+/407e01608ccafe5dc24f82608583f71c34312f9c/v4/java/android/support/v4/widget/DrawerLayout.java</a><br />
+https://android.googlesource.com/platform/frameworks/support/+/407e01608ccafe5dc24f82608583f71c34312f9c/v4/java/android/support/v4/widget/ViewDragHelper.java</p>
+</dd>
 </dl>
 </div>
 </body>

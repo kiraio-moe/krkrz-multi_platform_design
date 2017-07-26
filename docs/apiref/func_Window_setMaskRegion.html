@@ -8,7 +8,8 @@
 <h1><span class="fheader"><a name="top" id="top">Window.setMaskRegion</a></span></h1><div class="para">
 <dl>
 <dt>機能/意味</dt>
-<dd>[Windows]ウィンドウリージョンをマスクに従って設定</dd>
+<dd><p>[Windows]ウィンドウリージョンをマスクに従って設定</p>
+</dd>
 <dt>タイプ</dt>
 <dd><a class="jump" href="class_Window.html">Windowクラス</a>のメソッド</dd>
 <dt>構文</dt>
@@ -16,12 +17,22 @@
 <dt>引数</dt>
 <dd><table rules="all" frame="box" cellpadding="3" summary="setMaskRegionの引数">
 <tr><td valign="top"><span class="argname">threshold</span></td>
-<td>マスクのスレッショルド ( 敷居値 ) を指定します。プライマリレイヤのマスク ( レイヤの不透明度の情報 ) のうち、この値よりも大きい部分の形に<br />ウィンドウが切り取られて表示されます。</td></tr>
+<td><p>マスクのスレッショルド ( 敷居値 ) を指定します。<br />
+プライマリレイヤのマスク ( レイヤの不透明度の情報 ) のうち、この値よりも大きい部分の形にウィンドウが切り取られて表示されます。</p>
+</td></tr>
 </table></dd>
 <dt>戻り値</dt>
 <dd>なし (void)</dd>
 <dt>説明</dt>
-<dd>ウィンドウリージョンをプライマリレイヤのマスク ( レイヤの不透明度の情報 ) に従って設定します。ウィンドウを不定形にする事ができます。表示されるプライマリレイヤと、ウィンドウの大きさ、位置がずれないようにするには<br />以下のことを行う必要があります。Window.borderStyle は bsNone に設定します。Layer.imageLeft および Layer.imageTop は 0 に設定します。</dd>
+<dd><p>ウィンドウリージョンをプライマリレイヤのマスク ( レイヤの不透明度の情報 ) に従って設定します。<br />
+ウィンドウを不定形にする事ができます。<br />
+表示されるプライマリレイヤと、ウィンドウの大きさ、位置がずれないようにするには以下のことを行う必要があります。<br />
+Window.borderStyle は bsNone に設定します。<br />
+Layer.imageLeft および Layer.imageTop は 0 に設定します。</p>
+</dd>
+<dt>参照</dt>
+<dd><p>Window.removeMaskRegion</p>
+</dd>
 </dl>
 </div>
 </body>

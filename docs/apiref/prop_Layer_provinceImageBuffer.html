@@ -12,7 +12,14 @@
 <dt>タイプ</dt>
 <dd><a class="jump" href="class_Layer.html">Layerクラス</a>のプロパティ</dd>
 <dt>説明</dt>
-<dd>領域画像 ( 領域の情報を含む 8bpp のビットマップ ) の画像バッファ左上隅へのポインタ<br />を表します。このプロパティは、プラグインなどのために画像バッファへの直接のアクセスの手段を提供する<br />ためにあります。整数型で返されますが、プラグインなどでは適切な型 ( const unsigned char * 等 ) にキャストして使って<br />ください。このプロパティで得られたポインタには値を書き込まないでください。<br />Layer.provinceImageBufferForWrite で得られたポインタならば書き込むことができます。画像が割り当てられていない場合は NULL (0) が返ります。画像が割り当てられていない場合は<br />全域が領域番号 0 であると見なす必要があります。画像のサイズは Layer.imageWidth と Layer.imageHeight プロパティが<br />表しています。ポインタの計算方法は Layer.provinceImageBufferPitch を参照してください。</dd>
+<dd><p>領域画像 ( 領域の情報を含む 8bpp のビットマップ ) の画像バッファ左上隅へのポインタ<br />
+を表します。このプロパティは、プラグインなどのために画像バッファへの直接のアクセスの手段を提供する<br />
+ためにあります。整数型で返されますが、プラグインなどでは適切な型 ( const unsigned char * 等 ) にキャストして使って<br />
+ください。このプロパティで得られたポインタには値を書き込まないでください。<br />
+Layer.provinceImageBufferForWrite で得られたポインタならば書き込むことができます。画像が割り当てられていない場合は NULL (0) が返ります。画像が割り当てられていない場合は<br />
+全域が領域番号 0 であると見なす必要があります。画像のサイズは Layer.imageWidth と Layer.imageHeight プロパティが<br />
+表しています。ポインタの計算方法は Layer.provinceImageBufferPitch を参照してください。</p>
+</dd>
 </dl>
 </div>
 </body>

@@ -12,7 +12,22 @@
 <dt>タイプ</dt>
 <dd><a class="jump" href="class_WaveSoundBuffer.html">WaveSoundBufferクラス</a>のプロパティ</dd>
 <dt>説明</dt>
-<dd>インサーションフィルタオブジェクトを保持している配列(Arrayクラスのインスタンス)です。この配列にフィルタオブジェクトを登録することにより、再生中にリアルタイムで音声に対して<br />様々な効果をかけることができます。フィルタ配列への変更が反映されるのは、WaveSoundBuffer.openメソッドが実行された<br />時だけです。それまでは、この配列への変更を行っても反映はされません。例: var buf = new WaveSoundBuffer(window);(略)buf.filters.clear(); // フィルタ配列をクリアbuf.filters.add(new WaveSoundBuffer.PhaseVocoder()); // PhaseVocoderフィルタを追加buf.filters[0].time = 0.5; // 倍速再生</dd>
+<dd><p>インサーションフィルタオブジェクトを保持している配列(Arrayクラスのインスタンス)です。<br />
+この配列にフィルタオブジェクトを登録することにより、再生中にリアルタイムで音声に対して様々な効果をかけることができます。<br />
+フィルタ配列への変更が反映されるのは、WaveSoundBuffer.openメソッドが実行された時だけです。<br />
+それまでは、この配列への変更を行っても反映はされません。<br />
+例:<br />
+<code><br />
+var buf = new WaveSoundBuffer(window);<br />
+(略)<br />
+buf.filters.clear();<br />
+// フィルタ配列をクリア<br />
+buf.filters.add(new WaveSoundBuffer.PhaseVocoder());<br />
+// PhaseVocoderフィルタを追加<br />
+buf.filters[0].time = 0.5;<br />
+// 倍速再生<br />
+</code></p>
+</dd>
 </dl>
 </div>
 </body>

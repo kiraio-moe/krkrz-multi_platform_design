@@ -6,11 +6,19 @@
 </head>
 <body>
 <h1><a name="top" id="top">VertexBuffer</a></h1>
-<div class="para">頂点情報を保持するクラス<br /><br />位置の指定やUV座標などを細かく設定したい場合に使用する。<br /><br />プラグインで頂点の配列を直接変更できるようにポインタアクセスも可能とする(ただしOpenGLES3.0以降)。<br />シェーダー+TJS2スクリプト+プラグインでの頂点操作で従来のようなLayer拡張性を確保できると考えられる。<br />従来のプラグイン内でほぼ完結していたものに比べるとやや複雑になるかもしれない。</div>
+<div class="para"><p>頂点情報を保持するクラス</p>
+
+<p>位置の指定やUV座標などを細かく設定したい場合に使用する。</p>
+
+<p>プラグインで頂点の配列を直接変更できるようにポインタアクセスも可能とする(ただしOpenGLES3.0以降)。<br />
+シェーダー+TJS2スクリプト+プラグインでの頂点操作で従来のようなLayer拡張性を確保できると考えられる。<br />
+従来のプラグイン内でほぼ完結していたものに比べるとやや複雑になるかもしれない。</p>
+</div>
 <h1>メンバ</h1><div class="para">
 <dl>
 <dt>コンストラクタ</dt>
 <dd><a class="jump" href="func_VertexBuffer_VertexBuffer.html">VertexBuffer</a></dd>
+<dd><a class="jump" href="func_VertexBuffer_VertexBuffer_1.html">VertexBuffer</a></dd>
 <dt>メソッド</dt>
 <dd>
 <a class="jump" href="func_VertexBuffer_lock.html">lock</a> (頂点データをロックし、データへのポインタ(read/write指定)を返す )<br />
@@ -20,28 +28,28 @@
 <dt>プロパティ</dt>
 <dd>
 <a class="jump" href="prop_VertexBuffer_dataType.html">dataType</a> (頂点データの型(readonly) )<br />
-<a class="jump" href="prop_VertexBuffer_dtByte.html">dtByte</a> (データ型定数  )<br />
-<a class="jump" href="prop_VertexBuffer_dtFixed.html">dtFixed</a> (ES3.0 )<br />
-<a class="jump" href="prop_VertexBuffer_dtFloat.html">dtFloat</a> ( )<br />
-<a class="jump" href="prop_VertexBuffer_dtInt.html">dtInt</a> ( )<br />
-<a class="jump" href="prop_VertexBuffer_dtShort.html">dtShort</a> ( )<br />
-<a class="jump" href="prop_VertexBuffer_dtUByte.html">dtUByte</a> ( )<br />
-<a class="jump" href="prop_VertexBuffer_dtUInt.html">dtUInt</a> (ES3.0 )<br />
-<a class="jump" href="prop_VertexBuffer_dtUShort.html">dtUShort</a> ( )<br />
+<a class="jump" href="prop_VertexBuffer_dtByte.html">dtByte</a> (データ型定数(byte) )<br />
+<a class="jump" href="prop_VertexBuffer_dtFixed.html">dtFixed</a> (データ型定数(fixed:固定少数点) )<br />
+<a class="jump" href="prop_VertexBuffer_dtFloat.html">dtFloat</a> (データ型定数(float) )<br />
+<a class="jump" href="prop_VertexBuffer_dtInt.html">dtInt</a> (データ型定数(int) ES3.0以降必要 )<br />
+<a class="jump" href="prop_VertexBuffer_dtShort.html">dtShort</a> (データ型定数(short) )<br />
+<a class="jump" href="prop_VertexBuffer_dtUByte.html">dtUByte</a> (データ型定数(unsigned byte) )<br />
+<a class="jump" href="prop_VertexBuffer_dtUInt.html">dtUInt</a> (データ型定数(unsinged int) ES3.0以降必要 )<br />
+<a class="jump" href="prop_VertexBuffer_dtUShort.html">dtUShort</a> (データ型定数(unsigned short) )<br />
 <a class="jump" href="prop_VertexBuffer_isIndex.html">isIndex</a> (インデックスバッファかどうか(readonly) )<br />
 <a class="jump" href="prop_VertexBuffer_nativeHandle.html">nativeHandle</a> (ネイティブハンドル )<br />
-<a class="jump" href="prop_VertexBuffer_ptLineLoop.html">ptLineLoop</a> ( )<br />
-<a class="jump" href="prop_VertexBuffer_ptLines.html">ptLines</a> ( )<br />
-<a class="jump" href="prop_VertexBuffer_ptLineStrip.html">ptLineStrip</a> ( )<br />
-<a class="jump" href="prop_VertexBuffer_ptPoints.html">ptPoints</a> (プリミティブ型定数  )<br />
-<a class="jump" href="prop_VertexBuffer_ptTriangleFan.html">ptTriangleFan</a> ( )<br />
-<a class="jump" href="prop_VertexBuffer_ptTriangles.html">ptTriangles</a> ( )<br />
-<a class="jump" href="prop_VertexBuffer_ptTriangleStrip.html">ptTriangleStrip</a> ( )<br />
+<a class="jump" href="prop_VertexBuffer_ptLineLoop.html">ptLineLoop</a> (プリミティブ型定数(ラインループ) )<br />
+<a class="jump" href="prop_VertexBuffer_ptLines.html">ptLines</a> (プリミティブ型定数(ラインリスト) )<br />
+<a class="jump" href="prop_VertexBuffer_ptLineStrip.html">ptLineStrip</a> (プリミティブ型定数(ラインストリップ) )<br />
+<a class="jump" href="prop_VertexBuffer_ptPoints.html">ptPoints</a> (プリミティブ型定数(ポイントリスト) )<br />
+<a class="jump" href="prop_VertexBuffer_ptTriangleFan.html">ptTriangleFan</a> (プリミティブ型定数(トライアングルファン) )<br />
+<a class="jump" href="prop_VertexBuffer_ptTriangles.html">ptTriangles</a> (プリミティブ型定数(トライアングルリスト) )<br />
+<a class="jump" href="prop_VertexBuffer_ptTriangleStrip.html">ptTriangleStrip</a> (プリミティブ型定数(トライアングルストラップ) )<br />
 <a class="jump" href="prop_VertexBuffer_size.html">size</a> (バッファサイズ(readonly) )<br />
 <a class="jump" href="prop_VertexBuffer_updateType.html">updateType</a> (データ更新頻度(readonly) )<br />
-<a class="jump" href="prop_VertexBuffer_utDynamic.html">utDynamic</a> (頻繁に更新される  )<br />
-<a class="jump" href="prop_VertexBuffer_utStatic.html">utStatic</a> (変更なし  )<br />
-<a class="jump" href="prop_VertexBuffer_utStream.html">utStream</a> (毎フレーム更新  )<br />
+<a class="jump" href="prop_VertexBuffer_utDynamic.html">utDynamic</a> (更新頻度定数:頻繁に更新される )<br />
+<a class="jump" href="prop_VertexBuffer_utStatic.html">utStatic</a> ( )<br />
+<a class="jump" href="prop_VertexBuffer_utStream.html">utStream</a> (更新頻度定数:毎フレーム更新 )<br />
 </dd>
 <dt>イベント</dt>
 <dd>

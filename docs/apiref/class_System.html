@@ -6,14 +6,16 @@
 </head>
 <body>
 <h1><a name="top" id="top">System</a></h1>
-<div class="para">System クラスは 吉里吉里本体や、吉里吉里が実行されている環境に関する情報を取得したり、設定したりするためのクラスです。このクラスからオブジェクトを作成することはできません。</div>
+<div class="para"><p>System クラスは 吉里吉里本体や、吉里吉里が実行されている環境に関する情報を取得したり、設定したりするためのクラスです。<br />
+このクラスからオブジェクトを作成することはできません。</p>
+</div>
 <h1>メンバ</h1><div class="para">
 <dl>
 <dt>メソッド</dt>
 <dd>
 <a class="jump" href="func_System_addContinuousHandler.html">addContinuousHandler</a> (Continuous ハンドラの追加 )<br />
 <a class="jump" href="func_System_assignMessage.html">assignMessage</a> (メッセージ割り当ての変更 )<br />
-<a class="jump" href="func_System_createAppLock.html">createAppLock</a> (二重起動のチェック )<br />
+<a class="jump" href="func_System_createAppLock.html">createAppLock</a> ([Windows]二重起動のチェック )<br />
 <a class="jump" href="func_System_createUUID.html">createUUID</a> (UUID 文字列の生成 )<br />
 <a class="jump" href="func_System_doCompact.html">doCompact</a> (メモリのコンパクト化 )<br />
 <a class="jump" href="func_System_dumpHeap.html">dumpHeap</a> (ヒープ情報ダンプ(1.1.0以降) )<br />
@@ -22,11 +24,11 @@
 <a class="jump" href="func_System_getKeyState.html">getKeyState</a> (キー状態の取得 )<br />
 <a class="jump" href="func_System_getTickCount.html">getTickCount</a> (ティックカウントの取得 )<br />
 <a class="jump" href="func_System_inform.html">inform</a> (メッセージの表示 )<br />
-<a class="jump" href="func_System_readRegValue.html">readRegValue</a> (レジストリの読み込み )<br />
+<a class="jump" href="func_System_readRegValue.html">readRegValue</a> ([Windows]レジストリの読み込み )<br />
 <a class="jump" href="func_System_removeContinuousHandler.html">removeContinuousHandler</a> (Continuous ハンドラの削除 )<br />
 <a class="jump" href="func_System_setArgument.html">setArgument</a> (コマンドラインオプションの設定 )<br />
-<a class="jump" href="func_System_shellExecute.html">shellExecute</a> (ファイル/プログラムの実行 )<br />
-<a class="jump" href="func_System_showVersion.html">showVersion</a> (aboutダイアログの表示(1.1.0以降) )<br />
+<a class="jump" href="func_System_shellExecute.html">shellExecute</a> ([Windows]ファイル/プログラムの実行 )<br />
+<a class="jump" href="func_System_showVersion.html">showVersion</a> ([Windows]aboutダイアログの表示(1.1.0以降) )<br />
 <a class="jump" href="func_System_terminate.html">terminate</a> (吉里吉里の非同期終了 )<br />
 <a class="jump" href="func_System_toActualColor.html">toActualColor</a> (色定数の実際の色の取得 )<br />
 <a class="jump" href="func_System_touchImages.html">touchImages</a> (画像のキャッシュへの読み込み )<br />
@@ -45,10 +47,10 @@
 <a class="jump" href="prop_System_exeBits.html">exeBits</a> (吉里吉里本体が 32bit 版か 64bit 版か(1.3.0以降) )<br />
 <a class="jump" href="prop_System_exeName.html">exeName</a> (吉里吉里本体のパス )<br />
 <a class="jump" href="prop_System_exePath.html">exePath</a> (吉里吉里本体のあるフォルダのパス )<br />
-<a class="jump" href="prop_System_exitOnWindowClose.html">exitOnWindowClose</a> (メインウィンドウが閉じたときに終了するかどうか )<br />
+<a class="jump" href="prop_System_exitOnWindowClose.html">exitOnWindowClose</a> ([Windows]メインウィンドウが閉じたときに終了するかどうか )<br />
 <a class="jump" href="prop_System_graphicCacheLimit.html">graphicCacheLimit</a> (画像キャッシュ制限 )<br />
-<a class="jump" href="prop_System_isAndroid.html">isAndroid</a> (システムがAndroidかどうか判定(readonly)。 )<br />
-<a class="jump" href="prop_System_isWindows.html">isWindows</a> (システムがWindowsかどうか判定(readonly)。 )<br />
+<a class="jump" href="prop_System_isAndroid.html">isAndroid</a> (システムがAndroidかどうか判定[r] )<br />
+<a class="jump" href="prop_System_isWindows.html">isWindows</a> (システムがWindowsかどうか判定[r] )<br />
 <a class="jump" href="prop_System_onActivate.html">onActivate</a> (アプリケーションがアクティブになったとき )<br />
 <a class="jump" href="prop_System_onDeactivate.html">onDeactivate</a> (アプリケーションが非アクティブになったとき )<br />
 <a class="jump" href="prop_System_osBits.html">osBits</a> (OS が 32bit 版か 64bit 版か(1.3.0以降) )<br />

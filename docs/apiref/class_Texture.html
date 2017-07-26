@@ -6,34 +6,43 @@
 </head>
 <body>
 <h1><a name="top" id="top">Texture</a></h1>
-<div class="para">テクスチャクラス<br />ハードウェア上のテクスチャとほぼ対応。<br /><br />プラグイン用にlockしてポインタを返すものを実装してもいいかもしれない。<br />VertexBufferでは実装済みだが、OpenGL ES 3.0 以降用となる。<br />Textureの場合もPBO転送となるので、OpenGL ES 3.0 以降用となって同じ。<br />ただ、テクスチャの更新はOffscreenを利用してシェーダーを使う方が良いか。</div>
+<div class="para"><p>テクスチャクラス。<br />
+ハードウェア上のテクスチャとほぼ対応しています。</p>
+
+<p>プラグイン用にlockしてポインタを返すものを実装してもいいかもしれない。<br />
+VertexBufferでは実装済みだが、OpenGL ES 3.0 以降用となる。<br />
+Textureの場合もPBO転送となるので、OpenGL ES 3.0 以降用となって同じ。<br />
+ただ、テクスチャの更新はOffscreenを利用してシェーダーを使う方が良いか。</p>
+</div>
 <h1>メンバ</h1><div class="para">
 <dl>
 <dt>コンストラクタ</dt>
 <dd><a class="jump" href="func_Texture_Texture.html">Texture</a></dd>
+<dd><a class="jump" href="func_Texture_Texture_1.html">Texture</a></dd>
+<dd><a class="jump" href="func_Texture_Texture_2.html">Texture</a></dd>
 <dt>メソッド</dt>
 <dd>
 <a class="jump" href="func_Texture_copyRect.html">copyRect</a> (矩形コピー )<br />
-<a class="jump" href="func_Texture_copyRect.html">copyRect</a> (矩形コピー )<br />
-<a class="jump" href="func_Texture_copyRect.html">copyRect</a> (矩形コピー )<br />
+<a class="jump" href="func_Texture_copyRect_1.html">copyRect</a> (矩形コピー )<br />
+<a class="jump" href="func_Texture_copyRect_2.html">copyRect</a> (矩形コピー )<br />
 </dd>
 <dt>プロパティ</dt>
 <dd>
-<a class="jump" href="prop_Texture_height.html">height</a> (高さ(有効範囲), pot指定されていなければ、memoryHeightと同一  )<br />
-<a class="jump" href="prop_Texture_isGray.html">isGray</a> (8bitカラーかどうか(内部ではアルファテクスチャ)  )<br />
-<a class="jump" href="prop_Texture_isPowerOfTwo.html">isPowerOfTwo</a> (テクスチャサイズが2の累乗値かどうか  )<br />
-<a class="jump" href="prop_Texture_memoryHeight.html">memoryHeight</a> (実際(ハードウェア上)の高さ  )<br />
-<a class="jump" href="prop_Texture_memoryWidth.html">memoryWidth</a> (実際(ハードウェア上)の幅  )<br />
-<a class="jump" href="prop_Texture_nativeHandle.html">nativeHandle</a> (ネイティブハンドル(環境依存) OpenGL ES2/3 環境下ではテクスチャID )<br />
-<a class="jump" href="prop_Texture_stLinear.html">stLinear</a> (線形補間  )<br />
-<a class="jump" href="prop_Texture_stNearest.html">stNearest</a> (最近傍点法  )<br />
-<a class="jump" href="prop_Texture_stretchType.html">stretchType</a> (拡大縮小時の補間方法  )<br />
-<a class="jump" href="prop_Texture_width.html">width</a> (幅(有効範囲), pot指定されていなければ、memoryWidthと同一  )<br />
-<a class="jump" href="prop_Texture_wmClampToEdge.html">wmClampToEdge</a> (端色引き延ばし。2の累乗サイズでない場合はこの定数でなければならない (default)  )<br />
-<a class="jump" href="prop_Texture_wmMirror.html">wmMirror</a> (ミラー繰り返し  )<br />
-<a class="jump" href="prop_Texture_wmRepeat.html">wmRepeat</a> (繰り返し  )<br />
-<a class="jump" href="prop_Texture_wrapModeHorizontal.html">wrapModeHorizontal</a> (水平方向ラップモード  )<br />
-<a class="jump" href="prop_Texture_wrapModeVertical.html">wrapModeVertical</a> (垂直方向ラップモード  )<br />
+<a class="jump" href="prop_Texture_height.html">height</a> (高さ(有効範囲), pot指定されていなければ、memoryHeightと同一 )<br />
+<a class="jump" href="prop_Texture_isGray.html">isGray</a> (8bitカラーかどうか(内部ではアルファテクスチャ) )<br />
+<a class="jump" href="prop_Texture_isPowerOfTwo.html">isPowerOfTwo</a> (テクスチャサイズが2の累乗値かどうか )<br />
+<a class="jump" href="prop_Texture_memoryHeight.html">memoryHeight</a> (実際(ハードウェア上)の高さ )<br />
+<a class="jump" href="prop_Texture_memoryWidth.html">memoryWidth</a> (実際(ハードウェア上)の幅 )<br />
+<a class="jump" href="prop_Texture_nativeHandle.html">nativeHandle</a> (ネイティブハンドル(環境依存) )<br />
+<a class="jump" href="prop_Texture_stLinear.html">stLinear</a> (線形補間(定数) )<br />
+<a class="jump" href="prop_Texture_stNearest.html">stNearest</a> (最近傍点法(定数) )<br />
+<a class="jump" href="prop_Texture_stretchType.html">stretchType</a> (拡大縮小時の補間方法 )<br />
+<a class="jump" href="prop_Texture_width.html">width</a> (幅(有効範囲), pot指定されていなければ、memoryWidthと同一 )<br />
+<a class="jump" href="prop_Texture_wmClampToEdge.html">wmClampToEdge</a> (端色引き延ばし。(定数) )<br />
+<a class="jump" href="prop_Texture_wmMirror.html">wmMirror</a> (ミラー繰り返し(定数) )<br />
+<a class="jump" href="prop_Texture_wmRepeat.html">wmRepeat</a> (繰り返し(定数) )<br />
+<a class="jump" href="prop_Texture_wrapModeHorizontal.html">wrapModeHorizontal</a> (水平方向ラップモード )<br />
+<a class="jump" href="prop_Texture_wrapModeVertical.html">wrapModeVertical</a> (垂直方向ラップモード )<br />
 </dd>
 <dt>イベント</dt>
 <dd>

@@ -6,11 +6,14 @@
 </head>
 <body>
 <h1><a name="top" id="top">Matrix32</a></h1>
-<div class="para">2次元用の行列<br />Z値や同次座標を省いた最初の行列<br />OpenGLのため列優先行列であることに注意</div>
+<div class="para"><p>2次元用の3x2行列です。<br />
+OpenGLのため列優先行列であることに注意してください。</p>
+</div>
 <h1>メンバ</h1><div class="para">
 <dl>
 <dt>コンストラクタ</dt>
 <dd><a class="jump" href="func_Matrix32_Matrix32.html">Matrix32</a></dd>
+<dd><a class="jump" href="func_Matrix32_Matrix32_1.html">Matrix32</a></dd>
 <dt>メソッド</dt>
 <dd>
 <a class="jump" href="func_Matrix32_multiply.html">multiply</a> (行列をかける(this = this * matrix) )<br />
@@ -18,11 +21,11 @@
 <a class="jump" href="func_Matrix32_preScale.html">preScale</a> (行列を拡大させる(事前拡大) )<br />
 <a class="jump" href="func_Matrix32_reset.html">reset</a> (単位行列化 )<br />
 <a class="jump" href="func_Matrix32_rotate.html">rotate</a> (行列を回転させる )<br />
-<a class="jump" href="func_Matrix32_rotate.html">rotate</a> (行列を回転させる )<br />
+<a class="jump" href="func_Matrix32_rotate_1.html">rotate</a> (行列を回転させる )<br />
 <a class="jump" href="func_Matrix32_scale.html">scale</a> (行列を拡大させる )<br />
 <a class="jump" href="func_Matrix32_set.html">set</a> (マトリックス設定 )<br />
-<a class="jump" href="func_Matrix32_set.html">set</a> (マトリックス設定 )<br />
-<a class="jump" href="func_Matrix32_set.html">set</a> (マトリックス設定 )<br />
+<a class="jump" href="func_Matrix32_set_1.html">set</a> (マトリックス設定 )<br />
+<a class="jump" href="func_Matrix32_set_2.html">set</a> (マトリックス設定 )<br />
 <a class="jump" href="func_Matrix32_setRotate.html">setRotate</a> (回転行列を設定する )<br />
 <a class="jump" href="func_Matrix32_setScale.html">setScale</a> (拡大行列を設定する )<br />
 <a class="jump" href="func_Matrix32_setSkewX.html">setSkewX</a> (X軸傾斜行列を設定する )<br />
@@ -35,13 +38,13 @@
 </dd>
 <dt>プロパティ</dt>
 <dd>
-<a class="jump" href="prop_Matrix32_array.html">array</a> (1次元配列で受け取る(read only) )<br />
-<a class="jump" href="prop_Matrix32_m11.html">m11</a> ( )<br />
-<a class="jump" href="prop_Matrix32_m12.html">m12</a> ( )<br />
-<a class="jump" href="prop_Matrix32_m21.html">m21</a> ( )<br />
-<a class="jump" href="prop_Matrix32_m22.html">m22</a> ( )<br />
-<a class="jump" href="prop_Matrix32_m31.html">m31</a> ( )<br />
-<a class="jump" href="prop_Matrix32_m32.html">m32</a> ( )<br />
+<a class="jump" href="prop_Matrix32_array.html">array</a> (1次元配列で受け取る[r] )<br />
+<a class="jump" href="prop_Matrix32_m11.html">m11</a> ([1][1]位置の値です。[r/w] )<br />
+<a class="jump" href="prop_Matrix32_m12.html">m12</a> ([1][2]位置の値です。[r/w] )<br />
+<a class="jump" href="prop_Matrix32_m21.html">m21</a> ([2][1]位置の値です。[r/w] )<br />
+<a class="jump" href="prop_Matrix32_m22.html">m22</a> ([2][2]位置の値です。[r/w] )<br />
+<a class="jump" href="prop_Matrix32_m31.html">m31</a> ([3][1]位置の値です。[r/w] )<br />
+<a class="jump" href="prop_Matrix32_m32.html">m32</a> ([3][2]位置の値です。[r/w] )<br />
 </dd>
 <dt>イベント</dt>
 <dd>

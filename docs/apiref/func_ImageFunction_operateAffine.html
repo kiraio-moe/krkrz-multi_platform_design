@@ -8,7 +8,8 @@
 <h1><span class="fheader"><a name="top" id="top">ImageFunction.operateAffine</a></span></h1><div class="para">
 <dl>
 <dt>機能/意味</dt>
-<dd>アフィン変換演算合成</dd>
+<dd><p>アフィン変換演算合成</p>
+</dd>
 <dt>タイプ</dt>
 <dd><a class="jump" href="class_ImageFunction.html">ImageFunctionクラス</a>のメソッド</dd>
 <dt>構文</dt>
@@ -16,42 +17,125 @@
 <dt>引数</dt>
 <dd><table rules="all" frame="box" cellpadding="3" summary="operateAffineの引数">
 <tr><td valign="top"><span class="argname">dst</span></td>
-<td>重ね合わせ先の Bitmap オブジェクトを指定します。</td></tr>
+<td><p>重ね合わせ先の Bitmap オブジェクトを指定します。</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">src</span></td>
-<td>重ね合わせ元の Bitmap オブジェクトを指定します。</td></tr>
+<td><p>重ね合わせ元の Bitmap オブジェクトを指定します。</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">A</span></td>
-<td>A パラメータです。affine 引数によって解釈が変わります。</td></tr>
+<td><p>A パラメータです。affine 引数によって解釈が変わります。</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">B</span></td>
-<td>B パラメータです。affine 引数によって解釈が変わります。</td></tr>
+<td><p>B パラメータです。affine 引数によって解釈が変わります。</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">C</span></td>
-<td>C パラメータです。affine 引数によって解釈が変わります。</td></tr>
+<td><p>C パラメータです。affine 引数によって解釈が変わります。</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">D</span></td>
-<td>D パラメータです。affine 引数によって解釈が変わります。</td></tr>
+<td><p>D パラメータです。affine 引数によって解釈が変わります。</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">E</span></td>
-<td>E パラメータです。affine 引数によって解釈が変わります。</td></tr>
+<td><p>E パラメータです。affine 引数によって解釈が変わります。</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">F</span></td>
-<td>F パラメータです。affine 引数によって解釈が変わります。</td></tr>
+<td><p>F パラメータです。affine 引数によって解釈が変わります。</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">srcrect</span></td>
-<td>重ね合わせる矩形を ( 重ね合わせ元 Bitmap の画像位置における ) ピクセル単位で Rect オブジェクトで指定します。未指定時全体が対象となります。</td></tr>
+<td><p>重ね合わせる矩形を ( 重ね合わせ元 Bitmap の画像位置における ) ピクセル単位で Rect オブジェクトで指定します。<br />
+未指定時全体が対象となります。</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">cliprect</span></td>
-<td>クリッピング矩形を ( 重ね合わせ先 Bitmap の画像位置における )  Rect オブジェクトで指定します。未指定時クリッピングは行われません。</td></tr>
+<td><p>クリッピング矩形を ( 重ね合わせ先 Bitmap の画像位置における )  Rect オブジェクトで指定します。<br />
+未指定時クリッピングは行われません。</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">affine</span></td>
-<td>続く６つの引数 (A ～ F パラメータ)をどのように扱うかを指定します。真を指定すると、６つのパラメータはそれぞれ以下のように解釈されます。A   : 2Dアフィン変換行列の aB   : 2Dアフィン変換行列の bC   : 2Dアフィン変換行列の cD   : 2Dアフィン変換行列の dE   : 2Dアフィン変換行列の txF   : 2Dアフィン変換行列の tyアフィン変換により、重ね合わせ元の画像位置 (x, y) ( ただし、重ね合わせ元矩形の左上隅を (0, 0) とする ) は以下の式により、重ね合わせ先の画像位置 (x', y')に変換されます。x' =  a*x + c*y + txy' =  b*x + d*y + ty偽を指定すると、６つのパラメータはそれぞれ以下のように解釈されます。A   : コピー元矩形の左上隅の点の、コピー先での画像位置における X 座標位置(x0)B   : コピー元矩形の左上隅の点の、コピー先での画像位置における Y 座標位置(y0)C   : コピー元矩形の右上隅の点の、コピー先での画像位置における X 座標位置(x1)D   : コピー元矩形の右上隅の点の、コピー先での画像位置における Y 座標位置(y1)E   : コピー元矩形の左下隅の点の、コピー先での画像位置における X 座標位置(x2)F   : コピー元矩形の左下隅の点の、コピー先での画像位置における Y 座標位置(y2)偽を指定した場合、重ね合わせ元の右下隅に対応する、重ね合わせ先位置(x3, y3)は自動的に以下の式によって計算されます。x3 = x1 - x0 + x2y3 = y1 - y0 + y2</td></tr>
+<td><p>続く６つの引数 (A ～ F パラメータ)をどのように扱うかを指定します。<br />
+真を指定すると、６つのパラメータはそれぞれ以下のように解釈されます。<br />
+A   : 2Dアフィン変換行列の a<br />
+B   : 2Dアフィン変換行列の b<br />
+C   : 2Dアフィン変換行列の c<br />
+D   : 2Dアフィン変換行列の d<br />
+E   : 2Dアフィン変換行列の tx<br />
+F   : 2Dアフィン変換行列の ty<br />
+アフィン変換により、重ね合わせ元の画像位置 (x, y) ( ただし、重ね合わせ元矩形の左上隅を (0, 0) とする ) は以下の式により、重ね合わせ先の画像位置 (x', y')に変換されます。<br />
+x' =  a<em>x + c</em>y + txy' =  b<em>x + d</em>y + ty<br />
+偽を指定すると、６つのパラメータはそれぞれ以下のように解釈されます。<br />
+A   : コピー元矩形の左上隅の点の、コピー先での画像位置における X 座標位置(x0)<br />
+B   : コピー元矩形の左上隅の点の、コピー先での画像位置における Y 座標位置(y0)<br />
+C   : コピー元矩形の右上隅の点の、コピー先での画像位置における X 座標位置(x1)<br />
+D   : コピー元矩形の右上隅の点の、コピー先での画像位置における Y 座標位置(y1)<br />
+E   : コピー元矩形の左下隅の点の、コピー先での画像位置における X 座標位置(x2)<br />
+F   : コピー元矩形の左下隅の点の、コピー先での画像位置における Y 座標位置(y2)<br />
+偽を指定した場合、重ね合わせ元の右下隅に対応する、重ね合わせ先位置(x3, y3)は自動的に以下の式によって計算されます。<br />
+x3 = x1 - x0 + x2y3 = y1 - y0 + y2</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">mode</span></td>
-<td>演算のモードを指定します。omPsNormal が指定された場合はPhotoshop互換のアルファ合成が行われます(現バージョンでは未実装です)。omPsAdditive が指定された場合はPhotoshop互換の覆い焼き(リニア)合成が行われます(現バージョンでは未実装です)。omPsSubtractive が指定された場合はPhotoshop互換の焼き込み(リニア)合成が行われます(現バージョンでは未実装です)。omPsMultiplicative が指定された場合はPhotoshop互換の乗算合成が行われます(現バージョンでは未実装です)。omPsScreen が指定された場合はPhotoshop互換のスクリーン合成が行われます(現バージョンでは未実装です)。omPsOverlay が指定された場合はPhotoshop互換のオーバーレイ合成が行われます(現バージョンでは未実装です)。omPsHardLight が指定された場合はPhotoshop互換のハードライト合成が行われます(現バージョンでは未実装です)。omPsSoftLight が指定された場合はPhotoshop互換のソフトライト合成が行われます(現バージョンでは未実装です)。omPsColorDodge が指定された場合はPhotoshop互換の覆い焼きカラー合成が行われます(現バージョンでは未実装です)。omPsColorDodge5 が指定された場合はPhotoshopのバージョン5.x 以下と互換の覆い焼きカラー合成が行われます(現バージョンでは未実装です)。omPsColorBurn が指定された場合はPhotoshop互換の焼き込みカラー合成が行われます(現バージョンでは未実装です)。omPsLighten が指定された場合はPhotoshop互換の比較(明)合成が行われます(現バージョンでは未実装です)。omPsDarken が指定された場合はPhotoshop互換の比較(暗)合成が行われます(現バージョンでは未実装です)。omPsDifference が指定された場合はPhotoshop互換の差の絶対値合成が行われます(現バージョンでは未実装です)。omPsDifference5 が指定された場合はPhotoshopのバージョン 5.x 以下と互換の差の絶対値合成が行われます(現バージョンでは未実装です)。omPsExclusion が指定された場合はPhotoshop互換の除外合成が行われます(現バージョンでは未実装です)。omAdditive が指定された場合は加算合成が行われます(現バージョンでは未実装です)。omSubtractive が指定された場合は減算合成が行われます(現バージョンでは未実装です)。omMultiplicative が指定された場合は乗算合成が行われます(現バージョンでは未実装です)。omDodge が指定された場合は覆い焼き合成が行われます(現バージョンでは未実装です)。omDarken が指定された場合は比較(暗)合成が行われます(現バージョンでは未実装です)。omLighten が指定された場合は比較(明)合成が行われます(現バージョンでは未実装です)。omScreen が指定された場合はスクリーン乗算合成が行われます(現バージョンでは未実装です)。omAlpha が指定された場合はアルファ合成が行われます。omAddAlpha が指定された場合は加算アルファ合成が行われます。この場合は、face が dfOpaque かつ hda が偽のとき、type 引数に stFastLinear を指定することにより線形補間が可能です。omOpaque が指定された場合は src のアルファ情報は無視され、src は常に完全不透明であると見なされます。この場合は、face が dfOpaque かつ hda が偽のとき、type 引数に stFastLinear を指定することにより線形補間が可能です。</td></tr>
+<td><p>演算のモードを指定します。</p>
+
+<ul>
+<li>omPsNormal が指定された場合はPhotoshop互換のアルファ合成が行われます(現バージョンでは未実装です)。</li>
+<li>omPsAdditive が指定された場合はPhotoshop互換の覆い焼き(リニア)合成が行われます(現バージョンでは未実装です)。</li>
+<li>omPsSubtractive が指定された場合はPhotoshop互換の焼き込み(リニア)合成が行われます(現バージョンでは未実装です)。</li>
+<li>omPsMultiplicative が指定された場合はPhotoshop互換の乗算合成が行われます(現バージョンでは未実装です)。</li>
+<li>omPsScreen が指定された場合はPhotoshop互換のスクリーン合成が行われます(現バージョンでは未実装です)。</li>
+<li>omPsOverlay が指定された場合はPhotoshop互換のオーバーレイ合成が行われます(現バージョンでは未実装です)。</li>
+<li>omPsHardLight が指定された場合はPhotoshop互換のハードライト合成が行われます(現バージョンでは未実装です)。</li>
+<li>omPsSoftLight が指定された場合はPhotoshop互換のソフトライト合成が行われます(現バージョンでは未実装です)。</li>
+<li>omPsColorDodge が指定された場合はPhotoshop互換の覆い焼きカラー合成が行われます(現バージョンでは未実装です)。</li>
+<li>omPsColorDodge5 が指定された場合はPhotoshopのバージョン5.x 以下と互換の覆い焼きカラー合成が行われます(現バージョンでは未実装です)。</li>
+<li>omPsColorBurn が指定された場合はPhotoshop互換の焼き込みカラー合成が行われます(現バージョンでは未実装です)。</li>
+<li>omPsLighten が指定された場合はPhotoshop互換の比較(明)合成が行われます(現バージョンでは未実装です)。</li>
+<li>omPsDarken が指定された場合はPhotoshop互換の比較(暗)合成が行われます(現バージョンでは未実装です)。</li>
+<li>omPsDifference が指定された場合はPhotoshop互換の差の絶対値合成が行われます(現バージョンでは未実装です)。</li>
+<li>omPsDifference5 が指定された場合はPhotoshopのバージョン 5.x 以下と互換の差の絶対値合成が行われます(現バージョンでは未実装です)。</li>
+<li>omPsExclusion が指定された場合はPhotoshop互換の除外合成が行われます(現バージョンでは未実装です)。</li>
+<li>omAdditive が指定された場合は加算合成が行われます(現バージョンでは未実装です)。</li>
+<li>omSubtractive が指定された場合は減算合成が行われます(現バージョンでは未実装です)。</li>
+<li>omMultiplicative が指定された場合は乗算合成が行われます(現バージョンでは未実装です)。</li>
+<li>omDodge が指定された場合は覆い焼き合成が行われます(現バージョンでは未実装です)。</li>
+<li>omDarken が指定された場合は比較(暗)合成が行われます(現バージョンでは未実装です)。</li>
+<li>omLighten が指定された場合は比較(明)合成が行われます(現バージョンでは未実装です)。</li>
+<li>omScreen が指定された場合はスクリーン乗算合成が行われます(現バージョンでは未実装です)。</li>
+<li>omAlpha が指定された場合はアルファ合成が行われます。</li>
+<li>omAddAlpha が指定された場合は加算アルファ合成が行われます。この場合は、face が dfOpaque かつ hda が偽のとき、type 引数に stFastLinear を指定することにより線形補間が可能です。</li>
+<li>omOpaque が指定された場合は src のアルファ情報は無視され、src は常に完全不透明であると見なされます。この場合は、face が dfOpaque かつ hda が偽のとき、type 引数に stFastLinear を指定することにより線形補間が可能です。</li>
+</ul>
+</td></tr>
 <tr><td valign="top"><span class="argname">face</span></td>
-<td>描画方式を指定します。dfAlpha が指定された場合は画像はアルファチャンネルつき画像と見なされ、描画されます。dfAddAlpha が指定された場合は画像は加算アルファチャンネルつき画像として見なされ、描画されます。dfOpaque が指定された場合は画像はすべて完全不透明であると見なされ、描画されます。</td></tr>
+<td><p>描画方式を指定します。</p>
+
+<ul>
+<li>dfAlpha が指定された場合は画像はアルファチャンネルつき画像と見なされ、描画されます。</li>
+<li>dfAddAlpha が指定された場合は画像は加算アルファチャンネルつき画像として見なされ、描画されます。</li>
+<li>dfOpaque が指定された場合は画像はすべて完全不透明であると見なされ、描画されます。</li>
+</ul>
+</td></tr>
 <tr><td valign="top"><span class="argname">opa</span></td>
-<td>重ね合わせの不透明度 ( 0 ～ 255 ) を指定します。</td></tr>
+<td><p>重ね合わせの不透明度 ( 0 ～ 255 ) を指定します。</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">type</span></td>
-<td>アフィン変換のタイプを指定します。stNearest     : 最近傍点法が用いられますstFastLinear  : 低精度の線形補間が用いられます(一部実装)stLinear      : 線形補間が用いられます(未実装)stCubic       : ３次元補間が用いられます(未実装)速度は stNearest > stFastLinear > stLinear > stCubic の順に高速ですが、画質は速度が<br />速ければ速いモードほど低画質になります。stFastLinear や stLinear, stCubic に対しては、stRefNoClip をビット論理和で追加指定<br />することができ、この場合は、コピーするビットマップの領域外を参照して色を合成することを<br />許可します。これを指定しない場合は、転送元ビットマップの周囲に余裕があったとしても、<br />転送元ビットマップの範囲外を参照することはありません(範囲外の色はもっとも近い位置にある<br />範囲内のピクセルの色と見なされます)。</td></tr>
+<td><p>アフィン変換のタイプを指定します。</p>
+
+<ul>
+<li>stNearest     : 最近傍点法が用いられます</li>
+<li>stFastLinear  : 低精度の線形補間が用いられます(一部実装)</li>
+<li>stLinear      : 線形補間が用いられます(未実装)</li>
+<li>stCubic       : ３次元補間が用いられます(未実装)</li>
+</ul>
+
+<p>速度は stNearest > stFastLinear > stLinear > stCubic の順に高速ですが、画質は速度が速ければ速いモードほど低画質になります。<br />
+stFastLinear や stLinear, stCubic に対しては、stRefNoClip をビット論理和で追加指定することができ、この場合は、コピーするビットマップの領域外を参照して色を合成することを許可します。<br />
+これを指定しない場合は、転送元ビットマップの周囲に余裕があったとしても、転送元ビットマップの範囲外を参照することはありません(範囲外の色はもっとも近い位置にある範囲内のピクセルの色と見なされます)。</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">hda</span></td>
-<td>アルファチャンネルを保護するかどうかを指定します。</td></tr>
+<td><p>アルファチャンネルを保護するかどうかを指定します。</p>
+</td></tr>
 </table></dd>
 <dt>戻り値</dt>
 <dd>なし (void)</dd>
 <dt>説明</dt>
-<dd>指定された重ね合わせ元 Bitmap の矩形を、重ね合わせ先にアフィン変換を行いながら演算合成します。</dd>
+<dd><p>指定された重ね合わせ元 Bitmap の矩形を、重ね合わせ先にアフィン変換を行いながら演算合成します。</p>
+</dd>
 </dl>
 </div>
 </body>

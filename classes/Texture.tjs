@@ -1,6 +1,6 @@
 /**
- * @description テクスチャクラス
- * ハードウェア上のテクスチャとほぼ対応。
+ * @description テクスチャクラス。
+ * ハードウェア上のテクスチャとほぼ対応しています。
  *
  * プラグイン用にlockしてポインタを返すものを実装してもいいかもしれない。
  * VertexBufferでは実装済みだが、OpenGL ES 3.0 以降用となる。
@@ -62,49 +62,79 @@ class Texture {
 	 */
 	function copyRect( src:Bitmap );
 
-	/* 幅(有効範囲), pot指定されていなければ、memoryWidthと同一 */
+	/**
+	 * 幅(有効範囲), pot指定されていなければ、memoryWidthと同一
+	 */
 	property width;
-	/** 高さ(有効範囲), pot指定されていなければ、memoryHeightと同一 */
+	/**
+	 * 高さ(有効範囲), pot指定されていなければ、memoryHeightと同一
+	 */
 	property height;
 
-	/** 実際(ハードウェア上)の幅 */
+	/**
+	 * 実際(ハードウェア上)の幅
+	 */
 	property memoryWidth;
-	/** 実際(ハードウェア上)の高さ */
+	/**
+	 * 実際(ハードウェア上)の高さ
+	 */
 	property memoryHeight;
 
-	/** 8bitカラーかどうか(内部ではアルファテクスチャ) */
+	/**
+	 * 8bitカラーかどうか(内部ではアルファテクスチャ)
+	 */
 	property isGray;
 
-	/** テクスチャサイズが2の累乗値かどうか */
+	/**
+	 * テクスチャサイズが2の累乗値かどうか
+	 */
 	property isPowerOfTwo;
 
 	/**
 	 * ネイティブハンドル(環境依存)
-	 * OpenGL ES2/3 環境下ではテクスチャID
+	 * @description OpenGL ES2/3 環境下ではテクスチャID
 	 */
 	property nativeHandle;
 
-	/** 拡大縮小時の補間方法 */
+	/**
+	 * 拡大縮小時の補間方法
+	 */
 	property stretchType;
 
-	/** 水平方向ラップモード */
+	/**
+	 * 水平方向ラップモード
+	 */
 	property wrapModeHorizontal;
-	/** 垂直方向ラップモード */
+	/**
+	 * 垂直方向ラップモード
+	 */
 	property wrapModeVertical;
 
-
-	// 以下、クラス定数扱い(staticでread only)
-	// stretchType に指定
-	/** 最近傍点法 */
+	/**
+	 * 最近傍点法(定数)
+	 * @description stretchType プロパティに設定します。
+	 */
 	property stNearest;
-	/** 線形補間 */
+	/**
+	 * 線形補間(定数)
+	 * @description stretchType プロパティに設定します。
+	 */
 	property stLinear;
 
-	// wrapModeHorizontal/wrapModeVertical に指定
-	/** 繰り返し */
+	/**
+	 * 繰り返し(定数)
+	 * @description wrapModeHorizontal/wrapModeVertical プロパティに設定します。
+	 */
 	property wmRepeat;
-	/** 端色引き延ばし。2の累乗サイズでない場合はこの定数でなければならない (default) */
+	/**
+	 * 端色引き延ばし。(定数)
+	 * @description wrapModeHorizontal/wrapModeVertical プロパティに設定します。
+	 * 2の累乗サイズでない場合はこの定数でなければならない (default)。
+	 */
 	property wmClampToEdge;
-	/** ミラー繰り返し */
+	/**
+	 * ミラー繰り返し(定数)
+	 * @description wrapModeHorizontal/wrapModeVertical プロパティに設定します。
+	 */
 	property wmMirror;
 };

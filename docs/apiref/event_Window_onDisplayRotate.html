@@ -8,7 +8,8 @@
 <h1><span class="fheader"><a name="top" id="top">Window.onDisplayRotate</a></span></h1><div class="para">
 <dl>
 <dt>機能/意味</dt>
-<dd>画面が回転されたとき(1.1.0以降)</dd>
+<dd><p>画面が回転されたとき(1.1.0以降)</p>
+</dd>
 <dt>タイプ</dt>
 <dd><a class="jump" href="class_Window.html">Windowクラス</a>のイベント</dd>
 <dt>構文</dt>
@@ -16,20 +17,38 @@
 <dt>引数</dt>
 <dd><table rules="all" frame="box" cellpadding="3" summary="onDisplayRotateの引数">
 <tr><td valign="top"><span class="argname">orientation</span></td>
-<td>画面の向き( orientation ) です。以下のいずれかの値になります。oriUnknown (取得失敗/不明), oriPortrait(縦向き), oriLandscape(横向き)</td></tr>
+<td><p>画面の向き( orientation ) です。以下のいずれかの値になります。oriUnknown (取得失敗/不明), oriPortrait(縦向き), oriLandscape(横向き)</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">angle</span></td>
-<td>角度です。角度 ( angle ) は、0、90、180、270、-1 のいずれかで、取得できなかった時は-1となります。<br />角度は、そのデバイスデフォルトからの回転角なので、縦向きのデバイスでは縦向きで0となります。<br />通常のデバイスだと、横向きで0が多ようです。<br />縦向きが0になるのは最近の8インチタブレットなどで、縦向きが標準の向きとなっているものです。<br />Androidでは常に-1が返ります。<br />必要であれば別途Windows.displayRotateで取得します。</td></tr>
+<td><p>角度です。角度 ( angle ) は、0、90、180、270、-1 のいずれかで、取得できなかった時は-1となります。<br />
+角度は、そのデバイスデフォルトからの回転角なので、縦向きのデバイスでは縦向きで0となります。<br />
+通常のデバイスだと、横向きで0が多ようです。<br />
+縦向きが0になるのは最近の8インチタブレットなどで、縦向きが標準の向きとなっているものです。<br />
+Androidでは常に-1が返ります。<br />
+必要であれば別途Windows.displayRotateで取得します。</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">bpp</span></td>
-<td>bits per pixel です。Androidではdpi値が返ります。</td></tr>
+<td><p>bits per pixel です。Androidではdpi値が返ります。</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">width</span></td>
-<td>画面の幅です。<br />Androidでは常に0が返ります。<br />必要であれば別途取得します。</td></tr>
+<td><p>画面の幅です。<br />
+Androidでは常に0が返ります。<br />
+必要であれば別途取得します。</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">height</span></td>
-<td>画面の高さです。<br />Androidでは常に0が返ります。<br />必要であれば別途取得します。</td></tr>
+<td><p>画面の高さです。<br />
+Androidでは常に0が返ります。<br />
+必要であれば別途取得します。</p>
+</td></tr>
 </table></dd>
 <dt>戻り値</dt>
 <dd>なし (void)</dd>
 <dt>説明</dt>
-<dd>画面が回転されたときに呼び出されるイベント関数を表します。</dd>
+<dd><p>画面が回転されたときに呼び出されるイベント関数を表します。</p>
+</dd>
+<dt>参照</dt>
+<dd><p>Window.displayRotate</p>
+</dd>
 </dl>
 </div>
 </body>

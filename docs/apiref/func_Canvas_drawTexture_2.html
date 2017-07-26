@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>drawTexture - テクスチャを描画する。</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Canvas.drawTexture</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd><p>テクスチャを描画する。</p>
+</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_Canvas.html">Canvasクラス</a>のメソッド</dd>
+<dt>構文</dt>
+<dd><span class="funcdecl">drawTexture(<span class="arg">texture</span>)</span></dd>
+<dt>引数</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="drawTextureの引数">
+<tr><td valign="top"><span class="argname">texture</span></td>
+<td><p>描画に使用するテクスチャを指定する</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">texture2</span></td>
+<td><p>描画に使用する2枚目のテクスチャを指定する</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">texture3</span></td>
+<td><p>描画に使用する3枚目のテクスチャを指定する</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">shader</span></td>
+<td><p>描画に使用するシェーダーを指定する</p>
+</td></tr>
+</table></dd>
+<dt>戻り値</dt>
+<dd>なし (void)</dd>
+<dt>説明</dt>
+<dd><p>OpenGL ES 2.0の場合はテクスチャ最大8枚、3.0は頂点側最大16枚，フラグメント側最大16枚なので、まだ追加できるが、<br />
+とりあえずは3枚まで定義しておく。<br />
+将来的にはテクスチャを配列で渡すバージョンを作り、4枚以上はそちらで対応する。</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

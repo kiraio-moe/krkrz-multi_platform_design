@@ -2,13 +2,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>createAppLock - 二重起動のチェック</title>
+<title>createAppLock - [Windows]二重起動のチェック</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">System.createAppLock</a></span></h1><div class="para">
 <dl>
 <dt>機能/意味</dt>
-<dd>二重起動のチェック</dd>
+<dd><p>[Windows]二重起動のチェック</p>
+</dd>
 <dt>タイプ</dt>
 <dd><a class="jump" href="class_System.html">Systemクラス</a>のメソッド</dd>
 <dt>構文</dt>
@@ -16,12 +17,18 @@
 <dt>引数</dt>
 <dd><table rules="all" frame="box" cellpadding="3" summary="createAppLockの引数">
 <tr><td valign="top"><span class="argname">key</span></td>
-<td>チェックを行うためのキー文字列を指定します。同じキー文字列をほかの<br />実行中の吉里吉里がこのメソッドに指定していた場合、false が戻ります。キー文字列には基本的には TJS の変数の命名規則と同じ文字のみが使えると<br />考えてください。キー文字列は十分にユニークな物である必要があります。</td></tr>
+<td><p>チェックを行うためのキー文字列を指定します。同じキー文字列をほかの実行中の吉里吉里がこのメソッドに指定していた場合、false が戻ります。<br />
+キー文字列には基本的には TJS の変数の命名規則と同じ文字のみが使えると考えてください。<br />
+キー文字列は十分にユニークな物である必要があります。</p>
+</td></tr>
 </table></dd>
 <dt>戻り値</dt>
-<dd>すでに同じキー文字列が指定された吉里吉里が実行中の場合は false、そうでなければ true が戻ります。</dd>
+<dd><p>すでに同じキー文字列が指定された吉里吉里が実行中の場合は false、そうでなければ true が戻ります。</p>
+</dd>
 <dt>説明</dt>
-<dd>他に同じキー文字列を指定された吉里吉里が実行中ならば false、そうでなければ true が戻ります。二重起動の防止に用います。</dd>
+<dd><p>他に同じキー文字列を指定された吉里吉里が実行中ならば false、そうでなければ true が戻ります。<br />
+二重起動の防止に用います。</p>
+</dd>
 </dl>
 </div>
 </body>

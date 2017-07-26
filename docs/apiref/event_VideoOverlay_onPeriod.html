@@ -2,13 +2,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>onPeriod - Periodイベントが発生した</title>
+<title>onPeriod - [Windows]Periodイベントが発生した</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">VideoOverlay.onPeriod</a></span></h1><div class="para">
 <dl>
 <dt>機能/意味</dt>
-<dd>Periodイベントが発生した</dd>
+<dd><p>[Windows]Periodイベントが発生した</p>
+</dd>
 <dt>タイプ</dt>
 <dd><a class="jump" href="class_VideoOverlay.html">VideoOverlayクラス</a>のイベント</dd>
 <dt>構文</dt>
@@ -16,12 +17,27 @@
 <dt>引数</dt>
 <dd><table rules="all" frame="box" cellpadding="3" summary="onPeriodの引数">
 <tr><td valign="top"><span class="argname">type</span></td>
-<td>Periodイベントのタイプを表します。以下のいずれかです。perLoop    :  (通常の)ループの終端に達したperSegLoop :  セグメントループの終端に達したperPeriod  :  setPeriodEvent メソッドで指定されたフレームに達したperPrepare :  prepare メソッドによる再生準備が完了した</td></tr>
+<td><p>Periodイベントのタイプを表します。<br />
+以下のいずれかです。</p>
+
+<ul>
+<li>perLoop    :  (通常の)ループの終端に達した</li>
+<li>perSegLoop :  セグメントループの終端に達した</li>
+<li>perPeriod  :  setPeriodEvent メソッドで指定されたフレームに達した</li>
+<li>perPrepare :  prepare メソッドによる再生準備が完了した</li>
+</ul>
+</td></tr>
 </table></dd>
 <dt>戻り値</dt>
 <dd>なし (void)</dd>
 <dt>説明</dt>
-<dd>ループの終端や、 setPeriodEventによって指定されたフレームに達した場合、または prepare メソッドにより再生準備が完了した場合に呼び出されるメソッドです。ループの終端や、 setPeriodEvent によって指定されたフレームに達した場合にこのイベントが呼ばれる時点では、再生状況によっては、すでに再生位置が指定された位置を超えている場合があります。現在の実際の再生位置を取得するには frame プロパティを参照してください。</dd>
+<dd><p>ループの終端や、 setPeriodEventによって指定されたフレームに達した場合、または prepare メソッドにより再生準備が完了した場合に呼び出されるメソッドです。<br />
+ループの終端や、setPeriodEvent によって指定されたフレームに達した場合にこのイベントが呼ばれる時点では、再生状況によっては、すでに再生位置が指定された位置を超えている場合があります。<br />
+現在の実際の再生位置を取得するには frame プロパティを参照してください。</p>
+</dd>
+<dt>参照</dt>
+<dd><p>VideoOverlay.frame</p>
+</dd>
 </dl>
 </div>
 </body>

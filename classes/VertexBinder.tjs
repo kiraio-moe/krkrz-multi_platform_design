@@ -1,7 +1,7 @@
 /**
- * @description VertexBufferとシェーダーに入力する頂点情報を関連付けるためのクラス。
- * ShaderProgramのプロパティにはこのクラスのインスタンスを設定する。
- * ShaderProgramに設定されたVertexBinderは、シェーダーへ頂点情報として渡される。
+ * @description VertexBufferとシェーダーに入力する頂点情報を関連付けるためのクラスです。
+ * ShaderProgramのプロパティにはこのクラスのインスタンスを設定します。
+ * ShaderProgramに設定されたVertexBinderは、シェーダーへ頂点情報として渡されます。
  */
 class VertexBinder {
 

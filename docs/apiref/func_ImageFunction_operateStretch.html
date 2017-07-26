@@ -8,7 +8,8 @@
 <h1><span class="fheader"><a name="top" id="top">ImageFunction.operateStretch</a></span></h1><div class="para">
 <dl>
 <dt>機能/意味</dt>
-<dd>拡大縮小演算合成</dd>
+<dd><p>拡大縮小演算合成</p>
+</dd>
 <dt>タイプ</dt>
 <dd><a class="jump" href="class_ImageFunction.html">ImageFunctionクラス</a>のメソッド</dd>
 <dt>構文</dt>
@@ -16,32 +17,115 @@
 <dt>引数</dt>
 <dd><table rules="all" frame="box" cellpadding="3" summary="operateStretchの引数">
 <tr><td valign="top"><span class="argname">dst</span></td>
-<td>重ね合わせ先の Bitmap オブジェクトを指定します。</td></tr>
+<td><p>重ね合わせ先の Bitmap オブジェクトを指定します。</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">src</span></td>
-<td>重ね合わせ元の Bitmap オブジェクトを指定します。</td></tr>
+<td><p>重ね合わせ元の Bitmap オブジェクトを指定します。</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">dstrect</span></td>
-<td>重ね合わせ先の矩形を ( 重ね合わせ先 Bitmap の画像位置における ) ピクセル単位で Rect オブジェクトで指定します。未指定時全体が対象となります。</td></tr>
+<td><p>重ね合わせ先の矩形を ( 重ね合わせ先 Bitmap の画像位置における ) ピクセル単位で Rect オブジェクトで指定します。<br />
+未指定時全体が対象となります。</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">srcrect</span></td>
-<td>重ね合わせる矩形を ( 重ね合わる Bitmap の画像位置における ) ピクセル単位で Rect オブジェクトで指定します。未指定時全体が対象となります。</td></tr>
+<td><p>重ね合わせる矩形を ( 重ね合わる Bitmap の画像位置における ) ピクセル単位で Rect オブジェクトで指定します。<br />
+未指定時全体が対象となります。</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">cliprect</span></td>
-<td>クリッピング矩形を ( 重ね合わせ先 Bitmap の画像位置における )  Rect オブジェクトで指定します。未指定時クリッピングは行われません。</td></tr>
+<td><p>クリッピング矩形を ( 重ね合わせ先 Bitmap の画像位置における )  Rect オブジェクトで指定します。<br />
+未指定時クリッピングは行われません。</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">mode</span></td>
-<td>演算のモードを指定します。omPsNormal が指定された場合はPhotoshop互換のアルファ合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。omPsAdditive が指定された場合はPhotoshop互換の覆い焼き(リニア)合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。omPsSubtractive が指定された場合はPhotoshop互換の焼き込み(リニア)合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。omPsMultiplicative が指定された場合はPhotoshop互換の乗算合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。omPsScreen が指定された場合はPhotoshop互換のスクリーン合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。omPsOverlay が指定された場合はPhotoshop互換のオーバーレイ合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。omPsHardLight が指定された場合はPhotoshop互換のハードライト合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。omPsSoftLight が指定された場合はPhotoshop互換のソフトライト合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。omPsColorDodge が指定された場合はPhotoshop互換の覆い焼きカラー合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。omPsColorDodge5 が指定された場合はPhotoshopのバージョン5.x 以下と互換の覆い焼きカラー合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。omPsColorBurn が指定された場合はPhotoshop互換の焼き込みカラー合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。omPsLighten が指定された場合はPhotoshop互換の比較(明)合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。omPsDarken が指定された場合はPhotoshop互換の比較(暗)合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。omPsDifference が指定された場合はPhotoshop互換の差の絶対値合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。omPsDifference5 が指定された場合はPhotoshopのバージョン 5.x 以下と互換の差の絶対値合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。omPsExclusion が指定された場合はPhotoshop互換の除外合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。omAdditive が指定された場合は加算合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。omSubtractive が指定された場合は減算合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。omMultiplicative が指定された場合は乗算合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。omDodge が指定された場合は覆い焼き合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。omDarken が指定された場合は比較(暗)合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。omLighten が指定された場合は比較(明)合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。omScreen が指定された場合はスクリーン乗算合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。omAlpha が指定された場合はアルファ合成が行われます。omAddAlpha が指定された場合は加算アルファ合成が行われます。この場合は、face が dfOpaque かつ hda が偽のとき、type 引数に stFastLinear を指定することにより線形補間が可能です。omOpaque が指定された場合は src のアルファ情報は無視され、src は常に完全不透明であると見なされます。この場合は、face が dfOpaque かつ hda が偽のとき、type 引数に stFastLinear を指定することにより線形補間が可能です。</td></tr>
+<td><p>演算のモードを指定します。</p>
+
+<ul>
+<li>omPsNormal が指定された場合はPhotoshop互換のアルファ合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。</li>
+<li>omPsAdditive が指定された場合はPhotoshop互換の覆い焼き(リニア)合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。</li>
+<li>omPsSubtractive が指定された場合はPhotoshop互換の焼き込み(リニア)合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。</li>
+<li>omPsMultiplicative が指定された場合はPhotoshop互換の乗算合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。</li>
+<li>omPsScreen が指定された場合はPhotoshop互換のスクリーン合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。</li>
+<li>omPsOverlay が指定された場合はPhotoshop互換のオーバーレイ合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。</li>
+<li>omPsHardLight が指定された場合はPhotoshop互換のハードライト合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。</li>
+<li>omPsSoftLight が指定された場合はPhotoshop互換のソフトライト合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。</li>
+<li>omPsColorDodge が指定された場合はPhotoshop互換の覆い焼きカラー合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。</li>
+<li>omPsColorDodge5 が指定された場合はPhotoshopのバージョン5.x 以下と互換の覆い焼きカラー合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。</li>
+<li>omPsColorBurn が指定された場合はPhotoshop互換の焼き込みカラー合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。</li>
+<li>omPsLighten が指定された場合はPhotoshop互換の比較(明)合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。</li>
+<li>omPsDarken が指定された場合はPhotoshop互換の比較(暗)合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。</li>
+<li>omPsDifference が指定された場合はPhotoshop互換の差の絶対値合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。</li>
+<li>omPsDifference5 が指定された場合はPhotoshopのバージョン 5.x 以下と互換の差の絶対値合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。</li>
+<li>omPsExclusion が指定された場合はPhotoshop互換の除外合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。</li>
+<li>omAdditive が指定された場合は加算合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。</li>
+<li>omSubtractive が指定された場合は減算合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。</li>
+<li>omMultiplicative が指定された場合は乗算合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。</li>
+<li>omDodge が指定された場合は覆い焼き合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。</li>
+<li>omDarken が指定された場合は比較(暗)合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。</li>
+<li>omLighten が指定された場合は比較(明)合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。</li>
+<li>omScreen が指定された場合はスクリーン乗算合成が行われます(1.3以降ではstNearestとstFastLinear以外で実装)。</li>
+<li>omAlpha が指定された場合はアルファ合成が行われます。omAddAlpha が指定された場合は加算アルファ合成が行われます。この場合は、face が dfOpaque かつ hda が偽のとき、type 引数に stFastLinear を指定することにより線形補間が可能です。</li>
+<li>omOpaque が指定された場合は src のアルファ情報は無視され、src は常に完全不透明であると見なされます。この場合は、face が dfOpaque かつ hda が偽のとき、type 引数に stFastLinear を指定することにより線形補間が可能です。</li>
+</ul>
+</td></tr>
 <tr><td valign="top"><span class="argname">face</span></td>
-<td>描画方式を指定します。dfAlpha が指定された場合は画像はアルファチャンネルつき画像と見なされ、描画されます。dfAddAlpha が指定された場合は画像は加算アルファチャンネルつき画像として見なされ、描画されます。dfOpaque が指定された場合は画像はすべて完全不透明であると見なされ、描画されます。</td></tr>
+<td><p>描画方式を指定します。</p>
+
+<ul>
+<li>dfAlpha が指定された場合は画像はアルファチャンネルつき画像と見なされ、描画されます。</li>
+<li>dfAddAlpha が指定された場合は画像は加算アルファチャンネルつき画像として見なされ、描画されます。</li>
+<li>dfOpaque が指定された場合は画像はすべて完全不透明であると見なされ、描画されます。</li>
+</ul>
+</td></tr>
 <tr><td valign="top"><span class="argname">opa</span></td>
-<td>演算の強度 ( 0 ～ 255 ) を指定します。</td></tr>
+<td><p>演算の強度 ( 0 ～ 255 ) を指定します。</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">type</span></td>
-<td>拡大縮小のタイプを指定します。stNearest           : 最近傍点法が用いられますstFastLinear        : 低精度の線形補間が用いられます(一部実装)stSemiFastLinear    : 固定小数線形補間が用いられます(1.3以降)stLinear            : 線形補間が用いられます(1.3以降実装変更)stFastCubic         : 固定小数３次元補間が用いられます(1.3以降)stCubic             : ３次元補間が用いられます(1.3以降実装変更)stFastLanczos2      : 固定小数Lanczos補間の範囲4x4が用いられます(1.3以降)stLanczos2          : Lanczos補間の範囲4x4が用いられます(1.3以降)stFastLanczos3      : 固定小数Lanczos補間の範囲6x6が用いられます(1.3以降)stLanczos3          : Lanczos補間の範囲6x6が用いられます(1.3以降)stFastSpline16      : 固定小数スプライン補間4x4が用いられます(1.3以降)stSpline16          : スプライン補間4x4が用いられます(1.3以降)stFastSpline36      : 固定小数スプライン補間6x6が用いられます(1.3以降)stSpline36          : スプライン補間6x6が用いられます(1.3以降)stFastAreaAvg       : 固定小数面積平均縮小が用いられます。拡大は出来ません(1.3以降)stAreaAvg           : 面積平均縮小が用いられます。拡大は出来ません(1.3以降)stFastGaussian      : 固定小数ガウス補間4x4が用いられます(1.3以降)stGaussian          : ガウス補間4x4が用いられます(1.3以降)stFastBlackmanSinc  : 固定小数Blackman-Sinc補間8x8が用いられます(1.3以降)stBlackmanSinc      : Blackman-Sinc補間8x8が用いられます(1.3以降)速度は stNearest > stFastLinear > stLinear > stCubic の順に高速ですが、画質は速度が<br />速ければ速いタイプほど低画質になります。stCubic 以降の補間方法は十分高画質で好みの差とも言えます。ただし、ガウス補間についてはぼやけたような画質になります。stFastLinear と他の線形補間(stSemiFastLinear と stLinear)の差は縮小時に大きく出ます。stFastLinear は、常に周囲4画素を参照するのに対して、stSemiFastLinear、stLinear は、縮小時は<br />等倍時の影響範囲が4画素となるような範囲、つまりより広い範囲の画素を参照し補間するためより高画質です<br />(アルゴリズム的には本来の線形補間です)。stFastLinear に対しては、stRefNoClip をビット論理和で追加指定することができ、この場合は、<br />　コピーするビットマップの領域外を参照して色を合成することを許可します。これを指定しない場合は、<br />　転送元ビットマップの周囲に余裕があったとしても、転送元ビットマップの範囲外を参照することは<br />　ありません(範囲外の色はもっとも近い位置にある範囲内のピクセルの色と見なされます)。</td></tr>
+<td><p>拡大縮小のタイプを指定します。</p>
+
+<ul>
+<li>stNearest           : 最近傍点法が用いられます</li>
+<li>stFastLinear        : 低精度の線形補間が用いられます(一部実装)</li>
+<li>stSemiFastLinear    : 固定小数線形補間が用いられます(1.3以降)</li>
+<li>stLinear            : 線形補間が用いられます(1.3以降実装変更)</li>
+<li>stFastCubic         : 固定小数３次元補間が用いられます(1.3以降)</li>
+<li>stCubic             : ３次元補間が用いられます(1.3以降実装変更)</li>
+<li>stFastLanczos2      : 固定小数Lanczos補間の範囲4x4が用いられます(1.3以降)</li>
+<li>stLanczos2          : Lanczos補間の範囲4x4が用いられます(1.3以降)</li>
+<li>stFastLanczos3      : 固定小数Lanczos補間の範囲6x6が用いられます(1.3以降)</li>
+<li>stLanczos3          : Lanczos補間の範囲6x6が用いられます(1.3以降)</li>
+<li>stFastSpline16      : 固定小数スプライン補間4x4が用いられます(1.3以降)</li>
+<li>stSpline16          : スプライン補間4x4が用いられます(1.3以降)</li>
+<li>stFastSpline36      : 固定小数スプライン補間6x6が用いられます(1.3以降)</li>
+<li>stSpline36          : スプライン補間6x6が用いられます(1.3以降)</li>
+<li>stFastAreaAvg       : 固定小数面積平均縮小が用いられます。拡大は出来ません(1.3以降)</li>
+<li>stAreaAvg           : 面積平均縮小が用いられます。拡大は出来ません(1.3以降)</li>
+<li>stFastGaussian      : 固定小数ガウス補間4x4が用いられます(1.3以降)</li>
+<li>stGaussian          : ガウス補間4x4が用いられます(1.3以降)</li>
+<li>stFastBlackmanSinc  : 固定小数Blackman-Sinc補間8x8が用いられます(1.3以降)</li>
+<li>stBlackmanSinc      : Blackman-Sinc補間8x8が用いられます(1.3以降)</li>
+</ul>
+
+<p>速度は stNearest > stFastLinear > stLinear > stCubic の順に高速ですが、画質は速度が速ければ速いタイプほど低画質になります。<br />
+stCubic 以降の補間方法は十分高画質で好みの差とも言えます。<br />
+ただし、ガウス補間についてはぼやけたような画質になります。<br />
+stFastLinear と他の線形補間(stSemiFastLinear と stLinear)の差は縮小時に大きく出ます。<br />
+stFastLinear は、常に周囲4画素を参照するのに対して、stSemiFastLinear、stLinear は、縮小時は等倍時の影響範囲が4画素となるような範囲、つまりより広い範囲の画素を参照し補間するためより高画質です(アルゴリズム的には本来の線形補間です)。<br />
+stFastLinear に対しては、stRefNoClip をビット論理和で追加指定することができ、この場合は、コピーするビットマップの領域外を参照して色を合成することを許可します。<br />
+これを指定しない場合は、転送元ビットマップの周囲に余裕があったとしても、転送元ビットマップの範囲外を参照することはありません(範囲外の色はもっとも近い位置にある範囲内のピクセルの色と見なされます)。</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">hda</span></td>
-<td>アルファチャンネルを保護するかどうかを指定します。</td></tr>
+<td><p>アルファチャンネルを保護するかどうかを指定します。</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">option</span></td>
-<td>1.3以降で追加されました。３次元補間時のシャープネスです。他の補間方法では現在のところ意味を持ちません。シャープネスの値をプラス方向に大きくするとぼやけていき、マイナス方向に大きくしていくとシャープになっていきます。</td></tr>
+<td><p>1.3以降で追加されました。３次元補間時のシャープネスです。<br />
+他の補間方法では現在のところ意味を持ちません。<br />
+シャープネスの値をプラス方向に大きくするとぼやけていき、マイナス方向に大きくしていくとシャープになっていきます。</p>
+</td></tr>
 </table></dd>
 <dt>戻り値</dt>
 <dd>なし (void)</dd>
 <dt>説明</dt>
-<dd>指定された重ね合わせ元 Bitmap の矩形を、重ね合わせ先 Bitmap の矩形に演算合成します。重ね合わせ元矩形と重ね合わせ先矩形のサイズが異なる場合は拡大または縮小が行われます。</dd>
+<dd><p>指定された重ね合わせ元 Bitmap の矩形を、重ね合わせ先 Bitmap の矩形に演算合成します。<br />
+重ね合わせ元矩形と重ね合わせ先矩形のサイズが異なる場合は拡大または縮小が行われます。</p>
+</dd>
 </dl>
 </div>
 </body>

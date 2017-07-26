@@ -1,13 +1,14 @@
 /**
  * @description オフスクリーン。
- * いわゆるレンダーターゲット。テクスチャとしても利用可能。
- * OpenGL ES2.0 では、FBO, Renderbuffer, Texture が生成される。
- * レンダーターゲットとして設定しないのであれば、わざわざこのクラスを使用する必要性はない。
- * Textureクラスを使用した方が良い。
+ * いわゆるレンダーターゲット。テクスチャとしても利用可能です。
+ * OpenGL ES2.0 では、FBO, Renderbuffer, Texture が生成されます。
+ * レンダーターゲットとして設定しないのであれば、わざわざこのクラスを使用する必要性はありません。
+ * Textureクラスを使用した方が良いです。
  */
 class Offscreen {
 	/**
-	 * オフスクリーンを生成。破棄はinvalidate時に行われるので、不要になったら明示的なinvalidate推奨。
+	 * オフスクリーンを生成。
+	 * @description 破棄はinvalidate時に行われるので、不要になったら明示的なinvalidate推奨します。
 	 * @param width オフスクリーン幅
 	 * @param height オフスクリーン高さ
 	 */
@@ -49,7 +50,7 @@ class Offscreen {
 
     /**
 	 * Bitmapにコピー
-	 * BitmapはOffscreenのサイズに合わせて拡大縮小される
+	 * @description BitmapはOffscreenのサイズに合わせて拡大縮小されます。
 	 * @param destBitmap 格納先ビットマップ
 	 */
 	function copyTo( destBitmap:Bitmap );
@@ -75,7 +76,8 @@ class Offscreen {
 
 	/**
 	 * フレームバッファに設定されているテクスチャとTextureクラスが指すテクスチャを入れ替える。
-	 * @description 交換するテクスチャのサイズは合わせておかないと例外となる。カラーフォーマットもRGBAとする必要がある。
+	 * @description 交換するテクスチャのサイズは合わせておかないと例外となる。
+	 * カラーフォーマットもRGBAとする必要がある。
 	 * レンダリング途中での入れ替えも行わない方がいいかもしれない(要確認)。
 	 * クロスフェードなどで両方に描画する必要がない場合、以前の画像をTextureとして取り出し、新しいTextureに差し替えることでオーバーヘッドを減らせる。
 	 * @param texture 交換するTextureクラスのインスタンス。
@@ -83,16 +85,16 @@ class Offscreen {
 	function exchangeTexture( texture );
 
 	/**
-	 * 幅、生成時に指定されたもの(readonly)
+	 * 幅、生成時に指定されたもの[r]
 	 */
 	property width;
 	/**
-	 * 高さ、生成時に指定されたもの(readonly)
+	 * 高さ、生成時に指定されたもの[r]
 	 */
 	property height;
 
 	/**
-	 * 環境依存のハンドル(readonly)
+	 * 環境依存のハンドル[r]
 	 * @description OpenGL ES下ではtexture idとなる。
 	 */
 	property nativeHandle;

@@ -2,27 +2,32 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>VertexBuffer - コンストラクタ 未初期化の頂点バッファを作る。</title>
+<title>VertexBuffer - コンストラクタ</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">VertexBuffer.VertexBuffer</a></span></h1><div class="para">
 <dl>
 <dt>機能/意味</dt>
-<dd>コンストラクタ 未初期化の頂点バッファを作る。</dd>
+<dd><p>コンストラクタ</p>
+</dd>
 <dt>タイプ</dt>
 <dd><a class="jump" href="class_VertexBuffer.html">VertexBufferクラス</a>のメソッド</dd>
 <dt>構文</dt>
-<dd><span class="funcdecl">VertexBuffer(<span class="arg">size</span>, <span class="arg">dataType</span>, <span class="arg">updateType</span>, <span class="arg">isIndex</span>)</span></dd>
+<dd><span class="funcdecl">VertexBuffer(<span class="arg">data</span>, <span class="arg">dataType</span>, <span class="arg">updateType</span>, <span class="arg">isIndex</span>)</span></dd>
 <dt>引数</dt>
 <dd><table rules="all" frame="box" cellpadding="3" summary="VertexBufferの引数">
-<tr><td valign="top"><span class="argname">size</span></td>
-<td>バッファのバイト数</td></tr>
+<tr><td valign="top"><span class="argname">data</span></td>
+<td><p>頂点配列。バッファサイズはこの配列の要素数×データ型サイズ。</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">dataType</span></td>
-<td>データの型。dtByte/dtUByte/dtShort/dtUShort/dtInt/dtFloat</td></tr>
+<td><p>byte/ubyte/short/ushort/int/float データの型</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">updateType</span></td>
-<td>データ更新頻度。utStream/utStatic/utDynamic </td></tr>
+<td><p>Stream/Static/Dynamic データ更新頻度</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">isIndex</span></td>
-<td>インデックスバッファかどうか。頂点バッファならfalse</td></tr>
+<td><p>インデックスバッファかどうか。頂点バッファならfalse</p>
+</td></tr>
 </table></dd>
 <dt>戻り値</dt>
 <dd>なし (void)</dd>

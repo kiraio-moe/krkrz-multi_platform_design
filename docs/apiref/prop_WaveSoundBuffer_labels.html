@@ -12,7 +12,22 @@
 <dt>タイプ</dt>
 <dd><a class="jump" href="class_WaveSoundBuffer.html">WaveSoundBufferクラス</a>のプロパティ</dd>
 <dt>説明</dt>
-<dd>ラベルを表すオブジェクトを得ることができます。このオブジェクトは辞書配列で、それぞれ、ループ情報中のラベルの名前をメンバ名とした要素が入っています。それぞれの要素も辞書配列で、name メンバはラベルの名前を表し、position メンバはミリ秒単位でのラベルの位置を表し、samplePosition はサンプル数単位でのラベルの位置を表しています。この辞書配列は読み出し専用であると考えてください。値を代入したり、新しいメンバを作成しても反映されることはありません。例: var buf = new WaveSoundBuffer(window);(略)debug.message(buf.labels['start'].position); // 'start' というラベル名の位置をミリ秒単位でdebug.message(buf.labels['start'].samplePosition); // 'start' というラベル名の位置をサンプル数単位で</dd>
+<dd><p>ラベルを表すオブジェクトを得ることができます。<br />
+このオブジェクトは辞書配列で、それぞれ、ループ情報中のラベルの名前をメンバ名とした要素が入っています。<br />
+それぞれの要素も辞書配列で、name メンバはラベルの名前を表し、position メンバはミリ秒単位でのラベルの位置を表し、samplePosition はサンプル数単位でのラベルの位置を表しています。<br />
+この辞書配列は読み出し専用であると考えてください。<br />
+値を代入したり、新しいメンバを作成しても反映されることはありません。<br />
+例:</p>
+
+<p><code><br />
+var buf = new WaveSoundBuffer(window);<br />
+(略)<br />
+debug.message(buf.labels['start'].position);<br />
+// 'start' というラベル名の位置をミリ秒単位で<br />
+debug.message(buf.labels['start'].samplePosition);<br />
+// 'start' というラベル名の位置をサンプル数単位で<br />
+</code></p>
+</dd>
 </dl>
 </div>
 </body>

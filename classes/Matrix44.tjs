@@ -1,34 +1,79 @@
 /**
- * @description 4x4行列
- * OpenGLのため列優先行列であることに注意(列優先の方が演算量的に有利)。
- * DirectXなどから見ると転置されているように感じる(シェーダのHLSLでは列優先で同じ)。
+ * @description 4x4行列です。
+ * OpenGLのため列優先行列であることに注意してください(列優先の方が演算量的に有利です)。
+ * DirectXなどから見ると転置されているように感じます(シェーダのHLSLでは列優先で同じです)。
  */
 class Matrix44 {
 
-	functiont Matrix44();  単位行列で生成
+	/**
+	 * 単位行列で生成
+	 */
+	functiont Matrix44();
+
+	/**
+	 * コンストラクタ
+	 * @param m11 [1][1]位置の値です。
+	 * @param m12 [1][2]位置の値です。
+	 * @param m13 [1][3]位置の値です。
+	 * @param m14 [1][4]位置の値です。
+	 * @param m21 [2][1]位置の値です。
+	 * @param m22 [2][2]位置の値です。
+	 * @param m23 [2][3]位置の値です。
+	 * @param m24 [2][4]位置の値です。
+	 * @param m31 [3][1]位置の値です。
+	 * @param m32 [3][2]位置の値です。
+	 * @param m33 [3][3]位置の値です。
+	 * @param m34 [3][4]位置の値です。
+	 * @param m41 [4][1]位置の値です。
+	 * @param m42 [4][2]位置の値です。
+	 * @param m43 [4][3]位置の値です。
+	 * @param m44 [4][4]位置の値です。
+	 */
 	functiont Matrix44(m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44);
 
 	/**
 	 * マトリックス設定
+	 * @param m11 [1][1]位置の値です。
+	 * @param m12 [1][2]位置の値です。
+	 * @param m13 [1][3]位置の値です。
+	 * @param m14 [1][4]位置の値です。
+	 * @param m21 [2][1]位置の値です。
+	 * @param m22 [2][2]位置の値です。
+	 * @param m23 [2][3]位置の値です。
+	 * @param m24 [2][4]位置の値です。
+	 * @param m31 [3][1]位置の値です。
+	 * @param m32 [3][2]位置の値です。
+	 * @param m33 [3][3]位置の値です。
+	 * @param m34 [3][4]位置の値です。
+	 * @param m41 [4][1]位置の値です。
+	 * @param m42 [4][2]位置の値です。
+	 * @param m43 [4][3]位置の値です。
+	 * @param m44 [4][4]位置の値です。
 	 */
 	function set(m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44);
+
 	/**
 	 * マトリックス設定
 	 * @description 1次元配列からコピー
+	 * @param array 16要素の配列を指定します。
 	 */
+
 	function set(array:Array);
+
 	/**
 	 * マトリックス設定
 	 * @description matrixからコピー
 	 */
 	function set(matrix:Matrix44);
 
-	// 単位行列化
+	/**
+	 * 単位行列化
+	 */
 	function reset();
 
 	/**
 	 * 移動量設定
-	 * 行列のXYZ移動位置に値を設定します。
+	 * @description 行列のXYZ移動位置に値を設定します。
 	 * 設定のみで現在の行列との演算などは行われません。
 	 * @param x 設定するX座標値
 	 * @param y 設定するY座標値
@@ -38,7 +83,7 @@ class Matrix44 {
 
 	/**
 	 * 拡大率設定
-	 * 行列のXYZ拡大位置に値を設定します。
+	 * @description 行列のXYZ拡大位置に値を設定します。
 	 * 設定のみで現在の行列との演算などは行われません。
 	 * @param x 設定するX軸拡大率
 	 * @param y 設定するY軸拡大率
@@ -48,7 +93,7 @@ class Matrix44 {
 
 	/**
 	 * 回転量設定
-	 * Z軸回転を設定します。
+	 * @description Z軸回転を設定します。
 	 * 設定のみで現在の行列との演算などは行われません。
 	 * @param degree 回転角度
 	 */
@@ -56,7 +101,7 @@ class Matrix44 {
 
 	/**
 	 * 回転量設定
-	 * 設定のみで現在の行列との演算などは行われません。
+	 * @description 設定のみで現在の行列との演算などは行われません。
 	 * 回転軸は正規化推奨
 	 * @param degree 回転角度
 	 * @param x 回転軸X
@@ -166,6 +211,7 @@ class Matrix44 {
 
 	/**
 	 * 各種行列を用いた座標変換
+	 * @description クラスメソッドです。
 	 * @param model モデル行列
 	 * @param proj プロジェクション行列
 	 * @param viewport ビューポート
@@ -173,24 +219,74 @@ class Matrix44 {
 	 * @param y Y座標値(in/out)
 	 * @param z Z座標値(in/out)
 	 */
-	static function project( model:Matrix44, proj:Matrix44, viewport:Rect, x, y, z );
+	function project( model:Matrix44, proj:Matrix44, viewport:Rect, x, y, z );
 
-	property array;	// 1次元配列で受け取る(r)
-
+	/**
+	 * 1次元配列で受け取る[r]。
+	 */
+	property array;
+	/**
+	 * m11 [1][1]位置の値です。
+	 */
 	property m11;
+	/**
+	 * m12 [1][2]位置の値です。
+	 */
 	property m12;
+	/**
+	 * m13 [1][3]位置の値です。
+	 */
 	property m13;
+	/**
+	 * m14 [1][4]位置の値です。
+	 */
 	property m14;
+	/**
+	 * m21 [2][1]位置の値です。
+	 */
 	property m21;
+	/**
+	 * m22 [2][2]位置の値です。
+	 */
 	property m22;
+	/**
+	 * m23 [2][3]位置の値です。
+	 */
 	property m23;
+	/**
+	 * m24 [2][4]位置の値です。
+	 */
 	property m24;
+	/**
+	 * m31 [3][1]位置の値です。
+	 */
 	property m31;
+	/**
+	 * m32 [3][2]位置の値です。
+	 */
 	property m32;
+	/**
+	 * m33 [3][3]位置の値です。
+	 */
 	property m33;
+	/**
+	 * m34 [3][4]位置の値です。
+	 */
 	property m34;
+	/**
+	 * m41 [4][1]位置の値です。
+	 */
 	property m41;
+	/**
+	 * m42 [4][2]位置の値です。
+	 */
 	property m42;
+	/**
+	 * m43 [4][3]位置の値です。
+	 */
 	property m43;
+	/**
+	 * m44 [4][4]位置の値です。
+	 */
 	property m44;
 };

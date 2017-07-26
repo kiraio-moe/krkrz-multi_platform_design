@@ -8,7 +8,8 @@
 <h1><span class="fheader"><a name="top" id="top">Layer.copyRect</a></span></h1><div class="para">
 <dl>
 <dt>機能/意味</dt>
-<dd>矩形コピー</dd>
+<dd><p>矩形コピー</p>
+</dd>
 <dt>タイプ</dt>
 <dd><a class="jump" href="class_Layer.html">Layerクラス</a>のメソッド</dd>
 <dt>構文</dt>
@@ -16,24 +17,33 @@
 <dt>引数</dt>
 <dd><table rules="all" frame="box" cellpadding="3" summary="copyRectの引数">
 <tr><td valign="top"><span class="argname">dleft</span></td>
-<td>コピー先の矩形の左端位置を ( コピー先レイヤの画像位置における ) ピクセル単位で指定します。</td></tr>
+<td><p>コピー先の矩形の左端位置を ( コピー先レイヤの画像位置における ) ピクセル単位で指定します。</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">dtop</span></td>
-<td>コピー先の矩形の上端位置を ( コピー先レイヤの画像位置における ) ピクセル単位で指定します。</td></tr>
+<td><p>コピー先の矩形の上端位置を ( コピー先レイヤの画像位置における ) ピクセル単位で指定します。</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">src</span></td>
-<td>コピー元のレイヤオブジェクトを指定します。Bitmap クラスのオブジェクトも指定可能です。(1.1.0以降)</td></tr>
+<td><p>コピー元のレイヤオブジェクトを指定します。Bitmap クラスのオブジェクトも指定可能です。(1.1.0以降)</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">sleft</span></td>
-<td>コピーする矩形の左端位置を ( コピー元レイヤの画像位置における ) ピクセル単位で指定します。</td></tr>
+<td><p>コピーする矩形の左端位置を ( コピー元レイヤの画像位置における ) ピクセル単位で指定します。</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">stop</span></td>
-<td>コピーする矩形の上端位置を ( コピー元レイヤの画像位置における ) ピクセル単位で指定します。</td></tr>
+<td><p>コピーする矩形の上端位置を ( コピー元レイヤの画像位置における ) ピクセル単位で指定します。</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">swidth</span></td>
-<td>コピーする矩形の横幅を ( コピー元レイヤの画像位置における ) ピクセル単位で指定します。</td></tr>
+<td><p>コピーする矩形の横幅を ( コピー元レイヤの画像位置における ) ピクセル単位で指定します。</p>
+</td></tr>
 <tr><td valign="top"><span class="argname">sheight</span></td>
-<td>コピーする矩形の縦幅を ( コピー元レイヤの画像位置における ) ピクセル単位で指定します。</td></tr>
+<td><p>コピーする矩形の縦幅を ( コピー元レイヤの画像位置における ) ピクセル単位で指定します。</p>
+</td></tr>
 </table></dd>
 <dt>戻り値</dt>
 <dd>なし (void)</dd>
 <dt>説明</dt>
-<dd>指定されたコピー元レイヤの矩形部分を自分のレイヤの指定位置にコピーします。コピーされる画像は、コピー先レイヤ ( メソッドを実行するレイヤ  ) の<br />Layer.face プロパティの値によって変わります。dfAlpha (または dfBoth)     : メイン画像とマスク画像がコピーされますdfAddAlpha              : メイン画像とマスク画像がコピーされますdfOpaque (または dfMain)    : Layer.holdAlpha プロパティが真の場合は、メイン画像のみがコピーされます ( マスク画像はコピーされません )。偽の場合はメイン画像とマスク画像がコピーされますdfMask                  : マスク画像のみがコピーされます ( メイン画像はコピーされません )dfProvince              : 領域画像のみがコピーされます ( マスク画像やメイン画像はコピーされません )コピー元のレイヤの Layer.face プロパティは無視されます。このメソッドは、Layer.holdAlpha の影響は受けません (dfAlpha や dfAddAlpha の場合は holdAlpha に関わらずマスク画像もコピーされます)</dd>
+<dd><p>指定されたコピー元レイヤの矩形部分を自分のレイヤの指定位置にコピーします。コピーされる画像は、コピー先レイヤ ( メソッドを実行するレイヤ  ) の<br />
+Layer.face プロパティの値によって変わります。dfAlpha (または dfBoth)     : メイン画像とマスク画像がコピーされますdfAddAlpha              : メイン画像とマスク画像がコピーされますdfOpaque (または dfMain)    : Layer.holdAlpha プロパティが真の場合は、メイン画像のみがコピーされます ( マスク画像はコピーされません )。偽の場合はメイン画像とマスク画像がコピーされますdfMask                  : マスク画像のみがコピーされます ( メイン画像はコピーされません )dfProvince              : 領域画像のみがコピーされます ( マスク画像やメイン画像はコピーされません )コピー元のレイヤの Layer.face プロパティは無視されます。このメソッドは、Layer.holdAlpha の影響は受けません (dfAlpha や dfAddAlpha の場合は holdAlpha に関わらずマスク画像もコピーされます)</p>
+</dd>
 </dl>
 </div>
 </body>

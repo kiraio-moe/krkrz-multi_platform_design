@@ -12,7 +12,13 @@
 <dt>タイプ</dt>
 <dd><a class="jump" href="class_System.html">Systemクラス</a>のプロパティ</dd>
 <dt>説明</dt>
-<dd>ユーザのホームディレクトリのパスを表します。Windows の場合、レジストリの<br />HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders の<br />AppData で表されるフォルダが返されます。このフォルダがない場合は System.exePath と同じ<br />フォルダを返します。これは、通常、以下の通りになります。<br />XP の場合C:\Documents and Settings\<ユーザ名>\Application Data\ ( C: の部分は環境によって異なります )Vista, 7, 8 の場合C:\Users\<ユーザ名>\AppData\Roaming ( C: の部分は環境によって異なります )何らかの理由で レジストリキー ( 上記参照 ) を読み出せなかった場合吉里吉里の実行可能ファイルのあるフォルダ (System.exePath)になります</dd>
+<dd><p>ユーザのホームディレクトリのパスを表します。<br />
+Windows の場合、レジストリのHKEY<em>CURRENT</em>USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders のAppData で表されるフォルダが返されます。<br />
+このフォルダがない場合は System.exePath と同じフォルダを返します。<br />
+これは、通常、以下の通りになります。<br />
+XP の場合C:\Documents and Settings\&lt;ユーザ名>\Application Data\ ( C: の部分は環境によって異なります )<br />
+Vista, 7, 8 の場合C:\Users\&lt;ユーザ名>\AppData\Roaming ( C: の部分は環境によって異なります )何らかの理由で レジストリキー ( 上記参照 ) を読み出せなかった場合吉里吉里の実行可能ファイルのあるフォルダ (System.exePath)になります</p>
+</dd>
 </dl>
 </div>
 </body>

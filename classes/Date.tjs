@@ -1,0 +1,114 @@
+/**
+ * @description 文字列 から Date オブジェクトを作る機能とオブジェクトから 文字列を作る機能が未実装ですが、他は JavaScript の Date とほぼ互換です。
+ */
+class Date {
+	/**
+	 * 現在日時コンストラクタ
+	 * @description このコンストラクタが実行された時点での現在の日付時間を保持します。
+	 */
+	function Date();
+
+	/**
+	 * 日付文字列コンストラクタ
+	 * @description 日付文字列は ANSI C の asctime() 書式のもの、RFC1123 で定義されているもの、RFC1036 で定義されているもの、"年/月/日 時:分:秒" の形式のいずれかを指定する必要があります。
+	 * 日付文字列の認識は自動で行われ、ある程度の書式の変形には対応しますが、あまりに想定している書式と異なる場合は認識できない場合があります。
+	 * @param date 日付文字列
+	 */
+	function Date( date:string );
+
+	/**
+	 * 年月日時分秒を指定コンストラクタ
+	 * @description 年月日時分秒を指定して生成
+	 * @param year 年
+	 * @param month 月(0～
+	 * @param date 日
+	 * @param hour 時間
+	 * @param min 分
+	 * @param sec 秒
+	 */
+	function Date( year:int, month:int=0, date:int=1, hour:int=0, min:int=0, sec:int=0 );
+
+	/**
+	 * 地域時間による4桁の西暦年の設定
+	 * @param year 年
+	 */
+	function setYear( year:int );
+	/**
+	 * 地域時間による4桁の西暦年の取得
+	 * @return 4桁の西暦年
+	 */
+	function getYear():int;
+	/**
+	 * 地域時間による月の設定
+	 * @param month 月
+	 */
+	function setMonth( month:int );
+	/**
+	 * 地域時間による月の取得
+	 * @return 月
+	 */
+	function getMonth():int;
+	/**
+	 * 地域時間による日の設定
+	 * @param date 日
+	 */
+	function setDate( date:int );
+	/**
+	 * 地域時間による日の取得
+	 * @return 日
+	 */
+	function getDate():int;
+	/**
+	 * 地域時間による時の設定
+	 * @param hour 時間
+	 */
+	function setHours( hour:int );
+	/**
+	 * 地域時間による時の取得
+	 * @return 時間
+	 */
+	function getHours():int;
+	/**
+	 * 地域時間による分の設定
+	 * @param min 分
+	 */
+	function setMinutes( min:int );
+	/**
+	 * 地域時間による分の取得
+	 * @return 分
+	 */
+	function getMinutes():int;
+	/**
+	 * 地域時間による秒の設定
+	 * @param sec 秒
+	 */
+	function setSeconds( sec:int );
+	/**
+	 * 地域時間による秒の取得
+	 * @return 秒
+	 */
+	function getSeconds():int;
+	/**
+	 * 1970年1月1日0:00からの経過ミリ秒の設定
+	 * @param time 経過ミリ秒
+	 */
+	function setTime( time:int );
+	/**
+	 * 1970年1月1日0:00からの経過ミリ秒の設定
+	 * @description マルチプラットフォーム版前まではミリ秒単位の取得は出来なかったが、マルチプラットフォーム版でミリ秒まで対応した。
+	 * @return 経過ミリ秒
+	 */
+	function getTime():int;
+
+	/**
+	 * 曜日の取得
+	 * @return 曜日
+	 */
+	function getDay():int;
+
+	/**
+	 * 日付文字列の解釈
+	 * @param daytime 日付文字列
+	 */
+	function parse( daytime:string );
+};

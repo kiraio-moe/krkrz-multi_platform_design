@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>match - 引数に指定した文字列に正規表現パターンマッチングを行い、マッチした結果を含む配列を返します</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">RegExp.match</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd><p>引数に指定した文字列に正規表現パターンマッチングを行い、マッチした結果を含む配列を返します</p>
+</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_RegExp.html">RegExpクラス</a>のメソッド</dd>
+<dt>構文</dt>
+<dd><span class="funcdecl">match(<span class="arg">text</span>:string) :Array</span></dd>
+<dt>引数</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="matchの引数">
+<tr><td valign="top"><span class="argname">text</span></td>
+<td><p>文字列</p>
+</td></tr>
+</table></dd>
+<dt>戻り値</dt>
+<dd><p>パターンにマッチしない場合、配列の要素数は 0 になります。<br />
+マッチした場合、要素 0 (最初の要素) はマッチした部分全体、それ以降の要素は各マッチ部分 ( 正規表現パターン中の ( ) で指定した部分 ) が入っています。</p>
+</dd>
+<dt>説明</dt>
+<dd><p>このオブジェクトのプロパティの値を更新しない以外は、exec メソッドと同一です。</p>
+</dd>
+<dt>参照</dt>
+<dd><p>RegExt.exec</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

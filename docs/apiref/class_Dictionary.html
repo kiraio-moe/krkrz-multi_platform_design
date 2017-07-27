@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>Dictionary - </title>
+</head>
+<body>
+<h1><a name="top" id="top">Dictionary</a></h1>
+<div class="para"><p>Dictionary クラスは辞書配列を扱うクラスです。</p>
+
+<p>辞書配列は連想配列とも呼ばれ、名前と、それに結びつけられた値を一つのペアとして、それを複数保持するオブジェクトです。<br />
+配列と同じように [ ] (間接参照) 演算子でアクセスしますが、添え字の代わりに文字列を使い、それが名前となります。<br />
+名前が識別子として有効なものであれば、 . (直接参照) 演算子も使うことができます。<br />
+また、存在しない名前を参照すると void になります。<br />
+要素を削除するには delete 演算子を使います。</p>
+
+<h1>式中辞書配列</h1>
+
+<p>%[ ] を使って、式中に Dictionary クラスのオブジェクトをその場で記述することができます。<br />
+要素名 => 要素の値、をカンマで区切り、初期要素となる式を列挙します。たとえば、</p>
+
+<p><code><br />
+var dic = %["a" =&gt; 1, "b" =&gt; 2, "c" =&gt; 3];<br />
+</code></p>
+
+<p>と記述すれば、dic に、要素名と要素の組がそれぞれ "a":1、 "b":2、 "c":3 となる Dictionary クラスのオブジェクトへの参照が代入されます。<br />
+内部的には、=> はカンマと全く同じものですが、読みやすさを考え、=> を使用できるようになっています ( perl と同じです )。</p>
+
+<h1>Dictionary クラスのメソッドへのアクセス</h1>
+
+<p>Dictionary クラスのオブジェクトは、作成された状態ではメンバを何一つ持っていません。<br />
+たとえば、assign メソッドを使おうと思って、Dictionary クラスのオブジェクト dict に対してdict.assign(src) のように記述しても、dict が assign というメソッドを持っていないためにエラーになります。<br />
+したがって、incontextof 演算子を使って、Dictionary クラスに直接属しているメソッドを、対象となる Dictionary クラスのオブジェクトをコンテキストとして実行させます。</p>
+
+<p>例:<br />
+<code><br />
+var a = %[];<br />
+var b = %[];<br />
+(Dictionary.assign incontextof a)(b); // b を a にコピー<br />
+(Dictionary.clear incontextof b)(); // b の内容をクリア<br />
+</code></p>
+</div>
+<h1>メンバ</h1><div class="para">
+<dl>
+<dt>メソッド</dt>
+<dd>
+<a class="jump" href="func_Dictionary_assign.html">assign</a> (辞書配列をコピーします )<br />
+<a class="jump" href="func_Dictionary_assignStruct.html">assignStruct</a> (辞書配列をコピーします )<br />
+<a class="jump" href="func_Dictionary_clear.html">clear</a> (辞書配列の内容をすべて消去します )<br />
+<a class="jump" href="func_Dictionary_saveStruct.html">saveStruct</a> (ファイルへ構造化されたデータの出力を行います )<br />
+</dd>
+<dt>プロパティ</dt>
+<dd>
+</dd>
+<dt>イベント</dt>
+<dd>
+</dd>
+</dl>
+</div>
+</body>
+</html>

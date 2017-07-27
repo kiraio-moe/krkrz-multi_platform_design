@@ -1,0 +1,155 @@
+/**
+ * @description JavaScript の Math とほぼ互換です。
+ * 数学関数を提供します。
+ */
+class Math {
+	/**
+	 * 絶対値の取得
+	 * @param val 実数
+	 * @return 絶対値
+	 */
+	function abs( val:real ):real;
+	/**
+	 * アーク コサイン
+	 * @param val 実数
+	 * @return アーク コサイン
+	 */
+	function acos( val:real ):real;
+	/**
+	 * アーク サイン
+	 * @param val 実数
+	 * @return アーク サイン
+	 */
+	function asin( val:real ):real;
+	/**
+	 * アーク タンジェント
+	 * @param val 実数
+	 * @return アーク タンジェント
+	 */
+	function atan( val:real ):real;
+	/**
+	 * 2変数のアーク タンジェント
+	 * @description y / x の逆正接を [-π, π] の範囲で返す。
+	 * @param y 辺y
+	 * @param x 辺x
+	 * @return アーク タンジェント
+	 */
+	function atan2( y:real, x:real ):real; ()
+	/**
+	 * 切り上げ
+	 * @param val 実数
+	 * @return 切り上げ
+	 */
+	function ceil( val:real ):real;
+	/**
+	 * 切り捨て
+	 * @param val 実数
+	 * @return 切り捨て
+	 */
+	function floor( val:real ):real;
+	/**
+	 * eのn乗
+	 * @param val 実数
+	 * @return eのn乗
+	 */
+	function exp( val:real ):real;
+	/**
+	 * 自然対数
+	 * @param val 実数
+	 * @return 自然対数
+	 */
+	function log( val:real ):real;
+	/**
+	 * 二つ以上の値の大きい方
+	 * @param a 実数
+	 * @param b 実数
+	 * @return 一番大きい値
+	 */
+	function max( a:real, b:real, ... ):real;
+	/**
+	 * 二つ以上の値の小さい方
+	 * @param a 実数
+	 * @param b 実数
+	 * @return 一番小さい値
+	 */
+	function min( a:real, b:real, ... ):real;
+	/**
+	 * 0以上1未満の乱数
+	 * @description xorshiftによる実装
+	 * @return 0以上1未満の乱数
+	 */
+	function random():real;
+	/**
+	 * 乗数
+	 * @description aのb乗を返す。
+	 * @param a 実数
+	 * @param b 実数
+	 * @return aのb乗
+	 */
+	function pow( a:real, a:real ):real; ()
+	/**
+	 * 整数へのまるめ
+	 * @param val 実数
+	 * @return 丸められた値
+	 */
+	function round( val:real ):real;
+	/**
+	 * サイン
+	 * @param val 実数
+	 * @return サイン
+	 */
+	function sin( val:real ):real;
+	/**
+	 * コサイン
+	 * @param val 実数
+	 * @return コサイン
+	 */
+	function cos( val:real ):real;
+	/**
+	 * タンジェント
+	 * @param val 実数
+	 * @return タンジェント
+	 */
+	function tan( val:real ):real;
+	/**
+	 * 平方根
+	 * @param val 実数
+	 * @return 平方根
+	 */
+	function sqrt( val:real ):real;
+
+
+	/**
+	 * e 自然対数の底(ネイピア数)
+	 */
+	const E;
+	/**
+	 * log(10)
+	 */
+	const LN10;
+	/**
+	 * log(2)
+	 */
+	const LN2;
+	/**
+	 * 10を底としたeの対数
+	 */
+	const LOG10E;
+	/**
+	 * 2を底としたeの対数
+	 */
+	const LOG2E;
+	/**
+	 * π
+	 */
+	const PI;
+	/**
+	 * sqrt(1/2)
+	 */
+	const SQRT1_2;
+	/**
+	 * sqrt(2)
+	 */
+	const SQRT2;
+};
+

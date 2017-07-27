@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>trim - 文字列の先頭と最後の空白を取り除いた文字列を返します</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">String.trim</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd><p>文字列の先頭と最後の空白を取り除いた文字列を返します</p>
+</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_String.html">Stringクラス</a>のメソッド</dd>
+<dt>構文</dt>
+<dd><span class="funcdecl">trim() :string</span></dd>
+<dt>引数</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="trimの引数">
+</table></dd>
+<dt>戻り値</dt>
+<dd><p>先頭と末尾の空白文字が削除された文字列を返します。</p>
+</dd>
+<dt>説明</dt>
+<dd><p>元の文字列には影響を与えません。<br />
+先頭と最後の空白とは、文字コードがU+0001～+0020の文字を指します。<br />
+つまり、ASCII制御文字なども含まれますが、いわゆる全角の空白は含みません。<br />
+連続して先頭または最後にこれらの空白があった場合は、すべて取り除かれます。</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

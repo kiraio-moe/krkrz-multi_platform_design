@@ -7,7 +7,7 @@ class VertexBinder {
 
 	/**
 	 * コンストラクタ
-	 * @param 関連付けるVertexBuffer
+	 * @param vertex 関連付けるVertexBuffer
 	 */
 	function VertexBinder( vertex:VertexBuffer );
 

@@ -3,6 +3,11 @@
  */
 
 
+/** RGBAテクスチャカラー */
+const tcfRGBA = 0;
+/** アルファテクスチャカラー */
+const tcfAlpha = 1;
+
 /** 不透明合成 */
 const bmOpaque = 0;
 /** アルファ合成 */

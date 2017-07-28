@@ -13,17 +13,17 @@
 <dt>タイプ</dt>
 <dd><a class="jump" href="class_VertexBuffer.html">VertexBufferクラス</a>のメソッド</dd>
 <dt>構文</dt>
-<dd><span class="funcdecl">VertexBuffer(<span class="arg">data</span>:Array, <span class="arg">dataType</span>:int, <span class="arg">updateType</span>:int, <span class="arg">isIndex</span>:bool<span class="defarg">=<span class="defargval">0</span></span>)</span></dd>
+<dd><span class="funcdecl">VertexBuffer(<span class="arg">data</span>:Array, <span class="arg">dataType</span>:int, <span class="arg">updateType</span>:int, <span class="arg">isIndex</span>:bool<span class="defarg">=<span class="defargval">false</span></span>)</span></dd>
 <dt>引数</dt>
 <dd><table rules="all" frame="box" cellpadding="3" summary="VertexBufferの引数">
 <tr><td valign="top"><span class="argname">data</span></td>
 <td><p>頂点配列。バッファサイズはこの配列の要素数×データ型サイズ。</p>
 </td></tr>
 <tr><td valign="top"><span class="argname">dataType</span></td>
-<td><p>byte/ubyte/short/ushort/int/float データの型</p>
+<td><p>データの型。dtByte/dtUByte/dtShort/dtUShort/dtInt/dtFloat </p>
 </td></tr>
 <tr><td valign="top"><span class="argname">updateType</span></td>
-<td><p>Stream/Static/Dynamic データ更新頻度</p>
+<td><p>データ更新頻度。utStream/utStatic/utDynamic</p>
 </td></tr>
 <tr><td valign="top"><span class="argname">isIndex</span></td>
 <td><p>インデックスバッファかどうか。頂点バッファならfalse</p>

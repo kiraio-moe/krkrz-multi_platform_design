@@ -22,11 +22,11 @@ class VertexBuffer {
 	/**
 	 * コンストラクタ
 	 * @param data 頂点配列。バッファサイズはこの配列の要素数×データ型サイズ。
-	 * @param dataType byte/ubyte/short/ushort/int/float データの型
-	 * @param updateType Stream/Static/Dynamic データ更新頻度
+	 * @param dataType データの型。dtByte/dtUByte/dtShort/dtUShort/dtInt/dtFloat 
+	 * @param updateType データ更新頻度。utStream/utStatic/utDynamic
 	 * @param isIndex インデックスバッファかどうか。頂点バッファならfalse
 	 */
-	function VertexBuffer( data:Array, dataType:int, updateType:int, isIndex:bool = false, );
+	function VertexBuffer( data:Array, dataType:int, updateType:int, isIndex:bool = false );
 
 	/**
 	 * 頂点データを設定/更新
@@ -116,7 +116,6 @@ class VertexBuffer {
 	/**
 	 * 更新頻度定数:変更なし
 	 */
-	/**  */
 	const utStatic;
 	/**
 	 * 更新頻度定数:頻繁に更新される

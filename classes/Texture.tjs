@@ -14,17 +14,17 @@ class Texture {
 	 * ファイル読み込み版コンストラクタ
 	 * @param filename 画像ファイル名
 	 * @param format カラーフォーマット(tcfRGBA or tcfAlpha), tcfAlpha選択時に色情報はグレイスケール化される
-	 * @param p2 サイズ2の累乗化(必須ではないが高速化する環境もある、一応指定可能に、内部で吸収でもいいが…… obsolate化の可能性あり)undocumentがいいか？
+	 * @param is9patch 9patch情報を読み込み、9patch描画用として使用するかどうか
 	 */
-	function Texture( filename, format=tcfRGBA, p2=false );
+	function Texture( filename:string, format:int=tcfRGBA, is9patch:bool=false );
 
 	/**
 	 * Bitmapコピー版コンストラクタ
 	 * @param bitmap テクスチャの元となるBitmapクラスのインスタンス
 	 * @param format カラーフォーマット(tcfRGBA or tcfAlpha), tcfAlpha選択時に色情報はグレイスケール化される
-	 * @param p2 サイズ2の累乗化(必須ではないが高速化する環境もある、一応指定可能に、内部で吸収でもいいが…… obsolate化の可能性あり)undocumentがいいか？
+	 * @param is9patch 9patch情報を読み込み、9patch描画用として使用するかどうか
 	 */
-	function Texture( bitmap, format=tcfRGBA, p2=false );
+	function Texture( bitmap:Bitmap, format:int=tcfRGBA, is9patch:bool=false );
 
 	/**
 	 * サイズ指定版コンストラクタ
@@ -36,15 +36,16 @@ class Texture {
 	function Texture( width, height, format=tcfRGBA );
 
 	/**
-	 * 矩形コピー
+	 * 矩形コピー(位置指定Rect版)
 	 * @param dleft コピー先左端
 	 * @param dtop コピー先上端
 	 * @param src Bitmapクラスのオブジェクト
 	 * @param srcRect srcのコピー元矩形
 	 */
 	function copyRect( dleft, dtop, src, srcRect:Rect );
+
 	/**
-	 * 矩形コピー
+	 * 矩形コピー(位置指定)
 	 * @param dleft コピー先左端
 	 * @param dtop コピー先上端
 	 * @param src Bitmapクラスのオブジェクト
@@ -54,19 +55,22 @@ class Texture {
 	 * @param sheight コピー元高さ
 	 */
 	function copyRect( dleft, dtop, src, sleft, stop, swidth, sheight );
+
 	/**
-	 * 矩形コピー
+	 * 矩形コピー(全コピー)
 	 * @description bitmap全体をコピーします。はみ出す場合はクリッピングされます。
 	 * @param src Bitmapクラスのオブジェクト
 	 */
 	function copyRect( src:Bitmap );
 
 	/**
-	 * 幅(有効範囲), pot指定されていなければ、memoryWidthと同一
+	 * 幅(有効範囲)
+	 * @description pot指定されていなければ、memoryWidthと同一
 	 */
 	property width;
 	/**
-	 * 高さ(有効範囲), pot指定されていなければ、memoryHeightと同一
+	 * 高さ(有効範囲)
+	 * @description pot指定されていなければ、memoryHeightと同一
 	 */
 	property height;
 
@@ -110,30 +114,31 @@ class Texture {
 	property wrapModeVertical;
 
 	/**
-	 * 最近傍点法
-	 * @description stretchType プロパティに設定します。
+	 * 9patchマージン
+	 * @description is9patchを指定して読み込んだ場合Rectクラスのオブジェクトが読み取り専用でアクセスできます。
+	 * 指定されていなかったり、読み取りできなかった場合はvoidです。
+	 */
+	property margin9Patch;
+
+	/**
+	 * 最近傍点法。stretchTypeプロパティに設定します。
 	 */
 	const stNearest;
 	/**
-	 * 線形補間
-	 * @description stretchType プロパティに設定します。
+	 * 線形補間。stretchTypeプロパティに設定します。
 	 */
 	const stLinear;
 
 	/**
-	 * 繰り返し
-	 * @description wrapModeHorizontal/wrapModeVertical プロパティに設定します。
+	 * 繰り返し。wrapModeHorizontal/wrapModeVerticalプロパティに設定します。
 	 */
 	const wmRepeat;
 	/**
-	 * 端色引き延ばし。
-	 * @description wrapModeHorizontal/wrapModeVertical プロパティに設定します。
-	 * 2の累乗サイズでない場合はこの定数でなければならない (default)。
+	 * 端色引き延ばし。wrapModeHorizontal/wrapModeVerticalプロパティに設定します。2の累乗サイズでない場合はこの定数でなければならない(default)。
 	 */
 	const wmClampToEdge;
 	/**
-	 * ミラー繰り返し
-	 * @description wrapModeHorizontal/wrapModeVertical プロパティに設定します。
+	 * ミラー繰り返し。wrapModeHorizontal/wrapModeVerticalプロパティに設定します。
 	 */
 	const wmMirror;
 };

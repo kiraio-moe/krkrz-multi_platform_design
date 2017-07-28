@@ -90,33 +90,81 @@ class Canvas {
  	function drawMesh( shader:ShaderProgram, index:VertexBinder, count:int, primitiveType:int=VertexBuffer.ptTriangles );
 
 	/**
-	 * テクスチャを描画する。
-	 * @description テクスチャのみを指定した場合はdefaultShaderで描画される。
-	 * 位置や拡大縮小、回転は matrix で指定する。
-	 * テクスチャはTextureクラスだけでなく、Offscreenクラスを指定しても問題ない。
-	 * Offscreenクラスを指定する場合は、renderTargetからそのOffscreenクラスは外されていることが前提(循環しないように)。
-	 * @param texture 描画に使用するテクスチャを指定する
-	 * @param texture2 描画に使用する2枚目のテクスチャを指定する
-	 * @param texture3 描画に使用する3枚目のテクスチャを指定する
-	 * @param shader 描画に使用するシェーダーを指定する
-	 *
-	 * @description OpenGL ES 2.0の場合はテクスチャ最大8枚、3.0は頂点側最大16枚，フラグメント側最大16枚なので、まだ追加できるが、
-	 * とりあえずは3枚まで定義しておく。
-	 * 将来的にはテクスチャを配列で渡すバージョンを作り、4枚以上はそちらで対応する。
+	 * 1枚のテクスチャを描画する
+	 * @description defaultShaderで描画されます。
+	 * 位置や拡大縮小、回転は matrix で指定します。
+	 * テクスチャはTextureクラスだけでなく、Offscreenクラスを指定しても問題ありません。
+	 * Offscreenクラスを指定する場合は、renderTargetからそのOffscreenクラスは外されていることが前提(循環しないように)です。
+	 * @param texture 描画に使用するテクスチャを指定します
 	 */
 	function drawTexture( texture:Texture );
+
+	/**
+	 * 1枚のテクスチャをシェーダー指定して描画する
+	 * @description 位置や拡大縮小、回転は matrix で指定します。
+	 * テクスチャはTextureクラスだけでなく、Offscreenクラスを指定しても問題ありません。
+	 * Offscreenクラスを指定する場合は、renderTargetからそのOffscreenクラスは外されていることが前提(循環しないように)です。
+	 * @param texture 描画に使用するテクスチャを指定します
+	 * @param texture2 描画に使用する2枚目のテクスチャを指定します
+	 * @param texture3 描画に使用する3枚目のテクスチャを指定します
+	 * @param shader 描画に使用するシェーダーを指定します
+	 */
 	function drawTexture( texture:Texture, shader:ShaderProgram );
+
+	/**
+	 * 2枚のテクスチャをシェーダー指定して描画する
+	 * @description 位置や拡大縮小、回転は matrix で指定します。
+	 * テクスチャはTextureクラスだけでなく、Offscreenクラスを指定しても問題ありません。
+	 * Offscreenクラスを指定する場合は、renderTargetからそのOffscreenクラスは外されていることが前提(循環しないように)です。
+	 * @param texture 描画に使用するテクスチャを指定します
+	 * @param texture2 描画に使用する2枚目のテクスチャを指定します
+	 * @param texture3 描画に使用する3枚目のテクスチャを指定します
+	 * @param shader 描画に使用するシェーダーを指定します
+	 */
 	function drawTexture( texture:Texture, texture2:Texture, shader:ShaderProgram );
+
+	/**
+	 * 3枚のテクスチャをシェーダー指定して描画する
+	 * @description 位置や拡大縮小、回転は matrix で指定します。
+	 * テクスチャはTextureクラスだけでなく、Offscreenクラスを指定しても問題ありません。
+	 * Offscreenクラスを指定する場合は、renderTargetからそのOffscreenクラスは外されていることが前提(循環しないように)です。
+	 * @param texture 描画に使用するテクスチャを指定します
+	 * @param texture2 描画に使用する2枚目のテクスチャを指定します
+	 * @param texture3 描画に使用する3枚目のテクスチャを指定します
+	 * @param shader 描画に使用するシェーダーを指定します
+	 *
+	 * @description OpenGL ES 2.0の場合はテクスチャ最大8枚、3.0は頂点側最大16枚，フラグメント側最大16枚なので、まだ追加できますが、とりあえずは3枚まで定義しています。
+	 * 将来的にはテクスチャを配列で渡すバージョンを作り、4枚以上はそちらで対応も検討します。
+	 */
 	function drawTexture( texture:Texture, texture2:Texture, texture3:Texture, shader:ShaderProgram );
 
 	/**
-	 * テクスチャの一部分を描画する
+	 * テクスチャの一部分を描画します
+	 * @param rect テクスチャ内で描画する矩形領域
+	 * @param texture 描画するテクスチャ
+	 * @description defaultShaderで描画されます。
+	 */
+	function drawTextureAtlas( rect:Rect, texture:Texture );
+
+	/**
+	 * テクスチャの一部分を描画します(シェーダー指定あり)
 	 * @param rect テクスチャ内で描画する矩形領域
 	 * @param texture 描画するテクスチャ
 	 * @param shader 描画に使用するシェーダー
 	 */
-	function drawTextureAtlas( rect:Rect, texture:Texture );
 	function drawTextureAtlas( rect:Rect, texture:Texture, shader:ShaderProgram );
+
+	/**
+	 * 9patchを利用して描画を行います。
+	 * @description 描画に使用するTextureは9patch情報が読み込まれている必要があります。
+	 * 指定できるのはTextureクラスのみです。
+	 * @param texture 描画するテクスチャ
+	 * @param width 描画する幅
+	 * @param height 描画する高さ
+	 * @param shader 描画に使用するシェーダー。省略可能。
+	 * @return マージン情報を返します。
+	 */
+	function draw9Patch( txture:Texture, width:int, height:int, shader:ShaderProgram=null ):Rect;
 
 	/**
 	 * テクスチャの描画に使用されるデフォルトのシェーダー(drawTextureでtexture1枚のみ渡した時のシェーダー)

@@ -13,7 +13,7 @@
 <dt>タイプ</dt>
 <dd><a class="jump" href="class_Texture.html">Textureクラス</a>のメソッド</dd>
 <dt>構文</dt>
-<dd><span class="funcdecl">Texture(<span class="arg">filename</span>, <span class="arg">format</span><span class="defarg">=<span class="defargval">tcfRGBA</span></span>, <span class="arg">p2</span><span class="defarg">=<span class="defargval">0</span></span>)</span></dd>
+<dd><span class="funcdecl">Texture(<span class="arg">filename</span>:string, <span class="arg">format</span>:int<span class="defarg">=<span class="defargval">tcfRGBA</span></span>, <span class="arg">is9patch</span>:bool<span class="defarg">=<span class="defargval">false</span></span>)</span></dd>
 <dt>引数</dt>
 <dd><table rules="all" frame="box" cellpadding="3" summary="Textureの引数">
 <tr><td valign="top"><span class="argname">filename</span></td>
@@ -22,8 +22,8 @@
 <tr><td valign="top"><span class="argname">format</span></td>
 <td><p>カラーフォーマット(tcfRGBA or tcfAlpha), tcfAlpha選択時に色情報はグレイスケール化される</p>
 </td></tr>
-<tr><td valign="top"><span class="argname">p2</span></td>
-<td><p>サイズ2の累乗化(必須ではないが高速化する環境もある、一応指定可能に、内部で吸収でもいいが…… obsolate化の可能性あり)undocumentがいいか？</p>
+<tr><td valign="top"><span class="argname">is9patch</span></td>
+<td><p>9patch情報を読み込み、9patch描画用として使用するかどうか</p>
 </td></tr>
 </table></dd>
 <dt>戻り値</dt>

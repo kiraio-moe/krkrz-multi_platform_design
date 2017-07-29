@@ -50,6 +50,8 @@ class System {
 	 * @param caption ウィンドウのキャプションとなる文字列を指定します。
 	 * @description ユーザにメッセージを示すためのウィンドウを表示します。
 	 * ウィンドウはモーダルで表示されます ( つまり、表示中は他のウィンドウは操作できない )。
+	 * Androidではトーストとして表示され、即座に制御が返ります。
+	 * またcaptionは意味を持ちません。
 	 */
 	function inform( text, caption="");
 
@@ -591,5 +593,145 @@ class System {
 	 * システムがAndroidかどうか判定[r]
 	 */
 	property isAndroid;
+
+	/**
+	 * [Android+]外部キャッシュ領域のパス[r]
+	 * @description Context.getExternalCacheDir()で取得されるもの。
+	 */
+	property externalCacheDir;
+	/**
+	 * [Android+]内部キャッシュ領域[r]
+	 * @description Context.getCacheDir()で取得されるもの。
+	 */
+	property cacheDir;
+	/**
+	 * [Android+]内部データ領域[r]
+	 * @description Context.getFilesDir()で取得されるもの。
+	 */
+	property filesDir;
+	/**
+	 * [Android+]外部データ領域[r]
+	 * @description Context.getExternalFilesDir()で取得されるもの。
+	 */
+	property externalFilesDir;
+	/**
+	 * [Android+]拡張ファイル(OBB形式)保存領域[r]
+	 * @description Context.getObbDir()で取得されるもの。
+	 */
+	property obbDir;
+	/**
+	 * [Android+]アプリのShared Object(*.so)ファイル保存領域[r]
+	 */
+	property sharedObjectPath;
+	/**
+	 * [Android+]アプリパッケージ名[r]
+	 */
+	property packageName;
+	/**
+	 * [Android+]アプリパッケージのコードパス[r]
+	 */
+	property packageCodePath;
+	/**
+	 * [Android+]アプリパッケージのリソースパス[r]
+	 */
+	property packageResourcePath;
+	/**
+	 * [Android+]データ領域[r]
+	 * @description Environment.getDataDirectory()で取得されるもの。
+	 */
+	property dataDirectory;
+	/**
+	 * [Android+]ダウンロードキャッシュパス[r]
+	 * @description Environment.getDownloadCacheDirectory()で取得されるもの。
+	 */
+	property downloadCacheDirectory;
+	/**
+	 * [Android+]外部共有領域[r]
+	 * @description Environment.getExternalStorageDirectory()で取得されるもの。
+	 */
+	property externalStorageDirectory;
+	/**
+	 * [Android+]音楽データパス[r]
+	 * @description Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)で取得されるもの。
+	 */
+	property externalPublicMusicPath;
+	/**
+	 * [Android+]ポッドキャストデータパス[r]
+	 * @description Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PODCASTS)で取得されるもの。
+	 */
+	property externalPublicPodcastsPath;
+	/**
+	 * [Android+]呼び出し音データパス[r]
+	 * @description Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_RINGTONES)で取得されるもの。
+	 */
+	property externalPublicRingtonesPath;
+	/**
+	 * [Android+]アラーム音データパス[r]
+	 * @description Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_ALARMS)で取得されるもの。
+	 */
+	property property externalPublicAlaramsPath;
+	/**
+	 * [Android+]通知音データパス[r]
+	 * @description Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_NOTIFICATIONS)で取得されるもの。
+	 */
+	property externalPublicNotificationsPath;
+	/**
+	 * [Android+]写真データパス[r]
+	 * @description Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)で取得されるもの。
+	 */
+	property externalPublicPicturesPath;
+	/**
+	 * [Android+]動画データパス[r]
+	 * @description Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES)で取得されるもの。
+	 */
+	property externalPublicMoviesPath;
+	/**
+	 * [Android+]ダウンロードパス[r]
+	 * @description Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)で取得されるもの。
+	 */
+	property externalPublicDownloadsPath;
+	/**
+	 * [Android+]DCIM(カメラ)データパス[r]
+	 * @description Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM)で取得されるもの。
+	 */
+	property externalPublicDCIMPath;
+	/**
+	 * [Android+]ドキュメントデータパス[r]
+	 * @description Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)で取得されるもの。
+	 */
+	property externalPublicDocumentsPath;
+	/**
+	 * [Android+]ルートディレクトリ[r]
+	 * @description Environment.getRootDirectory()で取得されるもの。
+	 */
+	property rootDirectory;
+	/**
+	 * [Android+]外部ストレージの状態[r]
+	 * @description Environment.getExternalStorageState()で取得されるもの。
+	 * 以下のいずれか
+	 *
+	 * + "unknown" 不明な状態
+	 * + "removed" 取り外されている状態
+	 * + "unmounted" マウントされていない状態
+	 * + "checking" ディスクチェック中
+	 * + "nofs" 未フォーマットかサポートされていないファイルシステム
+	 * + "mounted" マウントされていて読み書き可能
+	 * + "mounted_ro" 読み取り専用でマウントされている
+	 * + "shared" マウントされていない、USBマスストレージなど
+	 * + "bad_removal" アンマウントされる前に取り外された
+	 * + "unmountable" マウントできない
+	 *
+	 */
+	property externalStorageState;
+	/**
+	 * [Android+]エミュレートされた外部ストレージかどうか[r]
+	 * @description Environment.isExternalStorageEmulated()で取得されるもの。
+	 */
+	property isExternalStorageEmulated;
+	/**
+	 * [Android+]外部ストレージが取り外し可能かどうか[r]
+	 * @description Environment.isExternalStorageRemovable()で取得されるもの。
+	 */
+	property isExternalStorageRemovable;
 };
 

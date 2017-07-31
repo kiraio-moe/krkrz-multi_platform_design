@@ -12,14 +12,18 @@
 <dt>タイプ</dt>
 <dd><a class="jump" href="class_Layer.html">Layerクラス</a>のプロパティ</dd>
 <dt>説明</dt>
-<dd><p>メイン画像 ( 色とマスク(不透明度)の情報を含む 32bpp のビットマップ ) の画像バッファのピッチ<br />
-( 一つ下のスキャンラインまでのバイト数 ) を表します。このプロパティは、プラグインなどのために画像バッファへの直接のアクセスの手段を提供する<br />
-ためにあります。tjs<em>uint32 が 32bit の整数型、tjs</em>uint8 が 8bit (1byte) の整数型として、画像位置 (x, y) への<br />
-ポインタは C 言語で書くと以下のように計算することができます。( (tjs<em>uint32*)( (tjs</em>uint8<em>)mainImageBuffer + y</em>mainImageBufferPitch )) + xこのプロパティは、次のスキャンラインまでのピクセル数ではなく、バイト数を返すことに<br />
-注意してください。この数値は画像横幅ぴったりに必要なバイト数よりも若干大きい場合があります。このプロパティは値が負になり得ますので注意してください。</p>
+<dd><p>メイン画像 ( 色とマスク(不透明度)の情報を含む 32bpp のビットマップ ) の画像バッファのピッチ( 一つ下のスキャンラインまでのバイト数 ) を表します。<br />
+このプロパティは、プラグインなどのために画像バッファへの直接のアクセスの手段を提供するためにあります。<br />
+tjs<em>uint32 が 32bit の整数型、tjs</em>uint8 が 8bit (1byte) の整数型として、画像位置 (x, y) へのポインタは C 言語で書くと以下のように計算することができます。<br />
+( (tjs<em>uint32*)( (tjs</em>uint8<em>)mainImageBuffer + y</em>mainImageBufferPitch )) + x<br />
+このプロパティは、次のスキャンラインまでのピクセル数ではなく、バイト数を返すことに注意してください。<br />
+この数値は画像横幅ぴったりに必要なバイト数よりも若干大きい場合があります。<br />
+このプロパティは値が負になり得ますので注意してください。</p>
 </dd>
 <dt>参照</dt>
-<dd><p>Layer.mainImageBufferForWrite</p>
+<dd>
+<a class="jump" href="prop_Layer_mainImageBuffer.html">Layer.mainImageBuffer</a><br />
+<a class="jump" href="prop_Layer_mainImageBufferForWrite.html">Layer.mainImageBufferForWrite</a><br />
 </dd>
 </dl>
 </div>

@@ -236,6 +236,7 @@ class Font {
 	 * その他は未対応です。
 	 * このプロパティはスタティックです。
 	 * Font.rasterizer を用いて値を設定してください。
+	 * マルチプラットフォーム版からデフォルトがFreeTypeになりました。
 	 */
 	 property rasterizer {
 		 getter() { return value; }

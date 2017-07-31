@@ -28,14 +28,18 @@ class VideoOverlay {
 	 * + "play"     :  メディアは再生中である
 	 * + "stop"     :  メディアは停止中である
 	 * + "pause"    :  メディアは一時停止中である
+	 * + "idle"     :  [Android+]メディアはアイドル中。
+	 * + "buffering" :  [Android+]メディアはバッファリング中。
+	 * + "load error" :  [Android+]メディアの読み込みエラー。
+	 * + "player error" :  [Android+]メディアプレイヤーエラー。
 	 *
 	 * @description このオブジェクトのステータスが変更されたときに発生します。
-	 * ready は、vomMFEVR モードの時のみ発生します。
+	 * ready は、vomMFEVR モード/Androidの時のみ発生します。
 	 */
 	event onStatusChanged( status);
 
 	/**
-	 * [Windows]Periodイベントが発生した
+	 * [Windows*]Periodイベントが発生した
 	 *
 	 * @param type Periodイベントのタイプを表します。
 	 * 以下のいずれかです。
@@ -48,6 +52,7 @@ class VideoOverlay {
 	 * @description ループの終端や、 setPeriodEventによって指定されたフレームに達した場合、または prepare メソッドにより再生準備が完了した場合に呼び出されるメソッドです。
 	 * ループの終端や、setPeriodEvent によって指定されたフレームに達した場合にこのイベントが呼ばれる時点では、再生状況によっては、すでに再生位置が指定された位置を超えている場合があります。
 	 * 現在の実際の再生位置を取得するには frame プロパティを参照してください。
+	 * Androidでは発生しません。
 	 * @see VideoOverlay.setPeriodEvent
 	 * @see VideoOverlay.prepare
 	 * @see VideoOverlay.frame
@@ -55,12 +60,13 @@ class VideoOverlay {
 	event onPeriod( type);
 
 	/**
-	 * [Windows]ビデオフレームが更新された
+	 * [Windows*]ビデオフレームが更新された
 	 *
 	 * @param frame ビデオのフレーム番号
 	 * @description ビデオフレームが更新された後に呼び出されるメソッドです。
 	 * 引数であるframeは現在表示されているビデオフレームと完全に一致しているとは限りません。
 	 * レイヤ描画モード、ミキサーモード時のみ利用可能です。
+	 * Androidでは発生しません。
 	 */
 	event onFrameUpdate( frame);
 
@@ -101,7 +107,7 @@ class VideoOverlay {
 	function rewind();
 
 	/**
-	 * [Windows]再生準備
+	 * [Windows*]再生準備
 	 *
 	 * @description メディアの1フレーム目を指定されているレイヤーに描画し、描画終了時にonPeriodイベントを発生させます。
 	 * prepareメソッド コール後の再生は、onPeriodイベントを待機してから行ってください。
@@ -110,7 +116,7 @@ class VideoOverlay {
 	function prepare();
 
 	/**
-	 * [Windows]フレーム間ループの設定
+	 * [Windows*]フレーム間ループの設定
 	 *
 	 * @param comeFrame ループ移動先フレーム(ループの始端フレーム)。
 	 * 再生がgoFrameに達したとき、再生ヘッドはこのフレームに移動します。
@@ -128,7 +134,7 @@ class VideoOverlay {
 	function setSegmentLoop( comeFrame, goFrame);
 
 	/**
-	 * [Windows]フレーム間ループの解除
+	 * [Windows*]フレーム間ループの解除
 	 *
 	 * @description setSegmentLoopメソッドで指定したセグメント間ループを解除します。
 	 * @see VideoOverlay.setSegmentLoop
@@ -145,7 +151,7 @@ class VideoOverlay {
 	function close();
 
 	/**
-	 * [Windows]指定フレームでのイベント発生の指定
+	 * [Windows*]指定フレームでのイベント発生の指定
 	 *
 	 * @param eventFrame onPeriodイベントを発生させるフレームを指定します。
 	 * @description 指定したフレームでonPeriodイベントを発生させます。
@@ -157,7 +163,7 @@ class VideoOverlay {
 	function setPeriodEvent( eventFrame);
 
 	/**
-	 * [Windows]指定フレームでのイベント発生の解除
+	 * [Windows*]指定フレームでのイベント発生の解除
 	 *
 	 * @description setPeriodEventメソッドで設定したイベント発生を解除します。
 	 * @see VideoOverlay.setPeriodEvent
@@ -165,7 +171,7 @@ class VideoOverlay {
 	function cancelPeriodEvent();
 
 	/**
-	 * [Windows]再生矩形の左上位置を指定
+	 * [Windows*]再生矩形の左上位置を指定
 	 *
 	 * @param left メディアを再生するための矩形領域の左端位置を指定します。
 	 * @param top メディアを再生するための矩形領域の上端位置を指定します。
@@ -175,7 +181,7 @@ class VideoOverlay {
 	function setPos( left, top);
 
 	/**
-	 * [Windows]再生矩形のサイズを指定
+	 * [Windows*]再生矩形のサイズを指定
 	 *
 	 * @param width メディアを再生するための矩形領域の横幅を指定します。
 	 * @param height メディアを再生するための矩形領域の縦幅を指定します。
@@ -185,7 +191,7 @@ class VideoOverlay {
 	function setSize( width, height);
 
 	/**
-	 * [Windows]再生矩形の位置とサイズを指定
+	 * [Windows*]再生矩形の位置とサイズを指定
 	 *
 	 * @param left メディアを再生するための矩形領域の左端位置を指定します。
 	 * @param top メディアを再生するための矩形領域の上端位置を指定します。
@@ -198,11 +204,12 @@ class VideoOverlay {
 	function setBounds( left, top, width, height);
 
 	/**
-	 * [Windows]音声ストリームの選択
+	 * [Windows*]音声ストリームの選択
 	 *
 	 * @param streamNumber 音声ストリーム番号を指定します。
 	 * @description 指定した音声ストリーム番号を有効にします。
 	 * 音声ストリームを複数含まないビデオでは使用できません。
+	 * Androidでは常に0を返し、設定しても意味はありません。
 	 * 	
 	 * @see VideoOverlay.numberOfAudioStream
 	 * @see VideoOverlay.enabledAudioStream
@@ -210,7 +217,7 @@ class VideoOverlay {
 	function selectAudioStream( streamNumber);
 
 	/**
-	 * [Windows]ミキシング対象レイヤの設定
+	 * [Windows+]ミキシング対象レイヤの設定
 	 *
 	 * @param layer レイヤー
 	 * @description 指定したレイヤーとビデオのミキシングを行います。
@@ -223,7 +230,7 @@ class VideoOverlay {
 	function setMixingLayer( layer);
 
 	/**
-	 * [Windows]ミキシング対象レイヤの設定解除
+	 * [Windows+]ミキシング対象レイヤの設定解除
 	 *
 	 * @description ビデオとレイヤーのミキシングを解除します。
 	 * ミキサーモードでのみ利用可能です。
@@ -247,6 +254,7 @@ class VideoOverlay {
 	 *
 	 * @description メディアの再生位置をフレーム単位で表します。
 	 * 値を設定することもできます。
+	 * Androidでは常に0を返し、設定しても意味はありません。
 	 * @see VideoOverlay.position
 	 * @see VideoOverlay.numberOfFrame
 	 */
@@ -255,22 +263,24 @@ class VideoOverlay {
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]ループ再生をするかどうか
+	 * [Windows*]ループ再生をするかどうか
 	 *
 	 * @description ループ再生の有効無効を表します。
 	 * 値を設定することもできます。
 	 * 真ならばループ、偽ならば非ループです。
+	 * Androidでは常に偽を返し、設定しても意味はありません。
 	 */
 	 property loop {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]再生矩形の横幅
+	 * [Windows*]再生矩形の横幅
 	 *
 	 * @description 再生矩形の横幅を表します。
 	 * 値を設定することもできます。
 	 * このプロパティは、現バージョンではレイヤ再生時は使用できません(常にサイズはビデオのサイズと同じになります)。
+	 * Androidでは常に0を返し、設定しても意味はありません。
 	 * @see VideoOverlay.height
 	 * @see VideoOverlay.setSize
 	 */
@@ -279,11 +289,12 @@ class VideoOverlay {
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]再生矩形の縦幅
+	 * [Windows*]再生矩形の縦幅
 	 *
 	 * @description 再生矩形の縦幅を表します。
 	 * 値を設定することもできます。
 	 * このプロパティは、現バージョンではレイヤ再生時は使用できません(常にサイズはビデオのサイズと同じになります)。
+	 * Androidでは常に0を返し、設定しても意味はありません。
 	 * @see VideoOverlay.width
 	 * @see VideoOverlay.setSize
 	 */
@@ -292,10 +303,11 @@ class VideoOverlay {
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]再生矩形の左端位置
+	 * [Windows*]再生矩形の左端位置
 	 *
 	 * @description 再生矩形の左端位置を表します。
 	 * 値を設定することもできます。
+	 * Androidでは常に0を返し、設定しても意味はありません。
 	 * @see VideoOverlay.top
 	 * @see VideoOverlay.setPos
 	 */
@@ -304,10 +316,11 @@ class VideoOverlay {
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]再生矩形の上端位置
+	 * [Windows*]再生矩形の上端位置
 	 *
 	 * @description 再生矩形の上端位置を表します。
 	 * 値を設定することもできます。
+	 * Androidでは常に0を返し、設定しても意味はありません。
 	 * @see VideoOverlay.left
 	 * @see VideoOverlay.setPos
 	 */
@@ -327,17 +340,19 @@ class VideoOverlay {
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]フレームレート
+	 * [Windows*]フレームレート
 	 *
 	 * @description フレームレート(フレーム/秒)を表します。
+	 * Androidでは常に0を返します。
 	 */
 	 property fps {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows]全フレーム数
+	 * [Windows*]全フレーム数
 	 *
 	 * @description 全フレーム数を表します。
+	 * Androidでは常に0を返します。
 	 */
 	 property numberOfFrame {
 		 getter() { return value; }
@@ -351,7 +366,7 @@ class VideoOverlay {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows]描画レイヤ指定1
+	 * [Windows*]描画レイヤ指定1
 	 *
 	 * @description レイヤ描画モード時、描画するレイヤを表します。
 	 * 値を設定することもできます。
@@ -362,7 +377,7 @@ class VideoOverlay {
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]描画レイヤ指定2
+	 * [Windows*]描画レイヤ指定2
 	 *
 	 * @description レイヤ描画モード時、描画するレイヤを表します。
 	 * 値を設定することもできます。
@@ -372,34 +387,36 @@ class VideoOverlay {
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]オーバーレイorレイヤ描画の指定
+	 * [Windows*]オーバーレイorレイヤ描画の指定
 	 *
 	 * @description オーバーレイモードであるか、レイヤ描画モードであるか、ミキサーモードであるかを表します。
 	 * 値を設定することもできます。
 	 * オーバーレイモードの場合は vomOverlay、レイヤ描画モードの場合は vomLayer 、ミキサーモードの場合は vomMixer、Media Foundation モードの場合は vomMFEVR となります。
-	 * vomMFEVR モードは 1.2.0 以降でのみ使用できます。
+	 * Androidでは再生モードはありません。
 	 */
 	 property mode {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]再生速度
+	 * [Windows*]再生速度
 	 *
 	 * @description メディアの再生速度を設定します。
 	 * 1.0 を指定すると通常の再生速度、0.5 では半分の再生速度、2では2倍の再生速度となります。
 	 * 設定可能値はDirectShowのフィルタによって決まります。
 	 * 参考 : 音声付のMPEGファイルの場合、0.0より大きい値から2.0までの値が設定可能です。
 	 * 音声なしのMPEGファイルの場合、0.0より大きい値からdoubleの範囲内(たぶん)で設定可能ですが、実際の再生速度は処理速度によって上限が決まります。
+	 * Androidでは常に0を返します。設定しても何も起こりません。
 	 */
 	 property playRate {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]セグメントループの開始フレーム
+	 * [Windows*]セグメントループの開始フレーム
 	 *
 	 * @description セグメントループの始端フレームです。
+	 * Androidでは何も起こりません。
 	 * @see VideoOverlay.setSegmentLoop
 	 * @see VideoOverlay.cancelSegmentLoop
 	 */
@@ -407,33 +424,35 @@ class VideoOverlay {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows]セグメントループの開始フレーム
+	 * [Windows*]セグメントループの開始フレーム
 	 *
 	 * @description セグメントループの始端フレームです。
-	 * 	
+	 * Androidでは何も起こりません。
 	 * @see VideoOverlay.setSegmentLoop
 	 */
 	 property segmentLoopEndFrame {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows]ピリオドイベントフレーム
+	 * [Windows*]ピリオドイベントフレーム
 	 *
 	 * @description periodイベントを発生させるフレームです。
 	 * 未設定の場合は負の値となります。
+	 * Androidでは何も起こりません。
 	 */
 	 property periodEventFrame {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]音声バランス(パニング)
+	 * [Windows*]音声バランス(パニング)
 	 *
 	 * @description パン (音像位置) を表します。
 	 * 値を設定することもできます。
 	 * 音の聞こえる左右の位置を指定することができます。
 	 * -100000 ～ 0 ～ 100000 の数値で指定し、 -100000 が 完全に左、0 が中央、100000 が完全に右になります。
 	 * ステレオのソースを再生する場合は、パンは、左右どちらかのチャンネルを減衰させることで実現されます(0を指定すると両チャンネルが出力され、-100000を指定すると左チャンネルのみが出力される)。
+	 * Androidでは常に0を返す。設定しても意味はない。
 	 */
 	 property audioBalance {
 		 getter() { return value; }
@@ -450,10 +469,11 @@ class VideoOverlay {
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]音声ストリーム数
+	 * [Windows*]音声ストリーム数
 	 *
 	 * @description MPEGファイルのみで利用可能です。
 	 * オーディオストリーム数を取得できます。
+	 * Androidでは常に0を返す。
 	 * @see VideoOverlay.selectAudioStream
 	 * @see VideoOverlay.enabledAudioStream
 	 */
@@ -461,11 +481,12 @@ class VideoOverlay {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows]再生対象音声ストリーム番号
+	 * [Windows*]再生対象音声ストリーム番号
 	 *
 	 * @description MPEGファイルのみで利用可能です。
 	 * 再生対象のオーディオストリーム番号を取得できます。
 	 * オーディオストリームが見付からない場合は-1を返します。
+	 * Androidでは常に0を返す。
 	 * @see VideoOverlay.selectAudioStream
 	 * @see VideoOverlay.numberOfAudioStream
 	 */
@@ -473,7 +494,7 @@ class VideoOverlay {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows]ビデオの透明度
+	 * [Windows+]ビデオの透明度
 	 *
 	 * @description 0.0(完全に透明)～1.0(完全に不透明)の範囲でビデオの透明度を表します。
 	 * ミキサーモードでのみ利用可能です。
@@ -484,7 +505,7 @@ class VideoOverlay {
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]ビデオの背景色
+	 * [Windows+]ビデオの背景色
 	 *
 	 * @description ビデオの背景色を表します。
 	 * ミキサーモードでのみ利用可能です。
@@ -494,7 +515,7 @@ class VideoOverlay {
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]ビデオのコントラストレンジ最小値
+	 * [Windows+]ビデオのコントラストレンジ最小値
 	 *
 	 * @description コントラストの幅の最小値を表します。
 	 * ミキサーモードでのみ利用可能です。
@@ -503,7 +524,7 @@ class VideoOverlay {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows]ビデオのコントラストレンジ最大値
+	 * [Windows+]ビデオのコントラストレンジ最大値
 	 *
 	 * @description コントラストの幅の最大値を表します。
 	 * ミキサーモードでのみ利用可能です。
@@ -512,7 +533,7 @@ class VideoOverlay {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows]ビデオのコントラスト既定値
+	 * [Windows+]ビデオのコントラスト既定値
 	 *
 	 * @description コントラストの既定値を表します。
 	 * ミキサーモードでのみ利用可能です。
@@ -521,7 +542,7 @@ class VideoOverlay {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows]ビデオのコントラスト増減ステップ値
+	 * [Windows+]ビデオのコントラスト増減ステップ値
 	 *
 	 * @description contrastRangeMin から contrastRangeMax への有効な増分を表します。
 	 * この値の単位でコントラストを変更できます。
@@ -531,7 +552,7 @@ class VideoOverlay {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows]ビデオのコントラスト
+	 * [Windows+]ビデオのコントラスト
 	 *
 	 * @description ビデオのコントラストを表します。
 	 * ミキサーモードでのみ利用可能です。
@@ -541,7 +562,7 @@ class VideoOverlay {
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]ビデオの輝度レンジ最小値
+	 * [Windows+]ビデオの輝度レンジ最小値
 	 *
 	 * @description 輝度の幅の最小値を表します。
 	 * ミキサーモードでのみ利用可能です。
@@ -550,7 +571,7 @@ class VideoOverlay {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows]ビデオの輝度レンジ最大値
+	 * [Windows+]ビデオの輝度レンジ最大値
 	 *
 	 * @description 輝度の幅の最大値を表します。
 	 * ミキサーモードでのみ利用可能です。
@@ -559,7 +580,7 @@ class VideoOverlay {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows]ビデオの輝度既定値
+	 * [Windows+]ビデオの輝度既定値
 	 *
 	 * @description 輝度の既定値を表します。
 	 * ミキサーモードでのみ利用可能です。
@@ -568,7 +589,7 @@ class VideoOverlay {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows]ビデオの輝度増減ステップ値
+	 * [Windows+]ビデオの輝度増減ステップ値
 	 *
 	 * @description brightnessRangeMin から brightnessRangeMax への有効な増分を表します。
 	 * この値の単位で輝度を変更できます。
@@ -578,7 +599,7 @@ class VideoOverlay {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows]ビデオの輝度
+	 * [Windows+]ビデオの輝度
 	 *
 	 * @description ビデオの輝度を表します。
 	 * ミキサーモードでのみ利用可能です。
@@ -588,7 +609,7 @@ class VideoOverlay {
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]ビデオの色相レンジ最小値
+	 * [Windows+]ビデオの色相レンジ最小値
 	 *
 	 * @description 色相の幅の最小値を表します。
 	 * ミキサーモードでのみ利用可能です。
@@ -597,7 +618,7 @@ class VideoOverlay {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows]ビデオの色相レンジ最大値
+	 * [Windows+]ビデオの色相レンジ最大値
 	 *
 	 * @description 色相の幅の最大値を表します。
 	 * ミキサーモードでのみ利用可能です。
@@ -606,7 +627,7 @@ class VideoOverlay {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows]ビデオの色相既定値
+	 * [Windows+]ビデオの色相既定値
 	 *
 	 * @description 色相の既定値を表します。
 	 * ミキサーモードでのみ利用可能です。
@@ -615,7 +636,7 @@ class VideoOverlay {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows]ビデオの色相増減ステップ値
+	 * [Windows+]ビデオの色相増減ステップ値
 	 *
 	 * @description hueRangeMin から hueRangeMax への有効な増分を表します。
 	 * この値の単位で色相を変更できます。
@@ -625,7 +646,7 @@ class VideoOverlay {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows]ビデオの色相
+	 * [Windows+]ビデオの色相
 	 *
 	 * @description ビデオの色相を表します。
 	 * ミキサーモードでのみ利用可能です。
@@ -635,7 +656,7 @@ class VideoOverlay {
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]ビデオの彩度レンジ最小値
+	 * [Windows+]ビデオの彩度レンジ最小値
 	 *
 	 * @description 彩度の幅の最小値を表します。
 	 * ミキサーモードでのみ利用可能です。
@@ -644,7 +665,7 @@ class VideoOverlay {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows]ビデオの彩度レンジ最大値
+	 * [Windows+]ビデオの彩度レンジ最大値
 	 *
 	 * @description 彩度の幅の最大値を表します。
 	 * ミキサーモードでのみ利用可能です。
@@ -653,7 +674,7 @@ class VideoOverlay {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows]ビデオの彩度既定値
+	 * [Windows+]ビデオの彩度既定値
 	 *
 	 * @description 彩度の既定値を表します。
 	 * ミキサーモードでのみ利用可能です。
@@ -662,7 +683,7 @@ class VideoOverlay {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows]ビデオの彩度増減ステップ値
+	 * [Windows+]ビデオの彩度増減ステップ値
 	 *
 	 * @description saturationRangeMin から saturationRangeMax への有効な増分を表します。
 	 * この値の単位で彩度を変更できます。
@@ -672,7 +693,7 @@ class VideoOverlay {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows]ビデオの彩度
+	 * [Windows+]ビデオの彩度
 	 *
 	 * @description ビデオの彩度を表します。
 	 * ミキサーモードでのみ利用可能です。
@@ -682,17 +703,19 @@ class VideoOverlay {
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]ビデオの実際の幅
+	 * [Windows*]ビデオの実際の幅
 	 *
 	 * @description 格納されているビデオの幅です。
+	 * Androidでは常にです。
 	 */
 	 property originalWidth {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows]ビデオの実際の高さ
+	 * [Windows*]ビデオの実際の高さ
 	 *
 	 * @description 格納されているビデオの高さです。
+	 * Androidでは常に0です。
 	 */
 	 property originalHeight {
 		 getter() { return value; }

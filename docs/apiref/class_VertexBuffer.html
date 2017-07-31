@@ -6,26 +6,27 @@
 </head>
 <body>
 <h1><a name="top" id="top">VertexBuffer</a></h1>
-<div class="para"><p>頂点情報を保持するクラス</p>
+<div class="para"><p>VertexBufferは頂点情報を保持するクラスです。</p>
 
-<p>位置の指定やUV座標などを細かく設定したい場合に使用する。</p>
+<p>位置の指定やUV座標、頂点カラーなどを細かく設定したい場合に使用します。<br />
+単純な矩形ではなくメッシュ変形などを行いたい場合やポイントスプライトを使用したい場合などにも使用します。</p>
 
-<p>プラグインで頂点の配列を直接変更できるようにポインタアクセスも可能とする(ただしOpenGLES3.0以降)。<br />
-シェーダー+TJS2スクリプト+プラグインでの頂点操作で従来のようなLayer拡張性を確保できると考えられる。<br />
-従来のプラグイン内でほぼ完結していたものに比べるとやや複雑になるかもしれない。</p>
+<p>プラグインで頂点の配列を直接変更できるようにポインタアクセスも可能です(ただしOpenGLES3.0以降)。<br />
+シェーダー+TJS2スクリプト+プラグインでの頂点操作で従来のようなLayer拡張性を確保できます。<br />
+従来のプラグイン内でほぼ完結していたものに比べるとやや複雑にはなります。</p>
 </div>
 <h1>メンバ</h1><div class="para">
 <dl>
 <dt>コンストラクタ</dt>
 <dd>
-<a class="jump" href="func_VertexBuffer_VertexBuffer.html">VertexBuffer</a> (コンストラクタ )<br />
-<a class="jump" href="func_VertexBuffer_VertexBuffer_1.html">VertexBuffer</a> (コンストラクタ 未初期化の頂点バッファを作る。 )<br />
+<a class="jump" href="func_VertexBuffer_VertexBuffer.html">VertexBuffer</a> (頂点配列を指定して頂点バッファを作ります )<br />
+<a class="jump" href="func_VertexBuffer_VertexBuffer_1.html">VertexBuffer</a> (未初期化の頂点バッファを作ります )<br />
 </dd>
 <dt>メソッド</dt>
 <dd>
-<a class="jump" href="func_VertexBuffer_lock.html">lock</a> (頂点データをロックし、データへのポインタ(read/write指定)を返す )<br />
-<a class="jump" href="func_VertexBuffer_setVertex.html">setVertex</a> (頂点データを設定/更新 Staticの時は失敗する(例外) )<br />
-<a class="jump" href="func_VertexBuffer_unlock.html">unlock</a> (頂点データのロックを解除する )<br />
+<a class="jump" href="func_VertexBuffer_lock.html">lock</a> (頂点データをロックし、データへのポインタ(read/write指定)を返します )<br />
+<a class="jump" href="func_VertexBuffer_setVertex.html">setVertex</a> (頂点データを設定/更新 )<br />
+<a class="jump" href="func_VertexBuffer_unlock.html">unlock</a> (頂点データのロックを解除します )<br />
 </dd>
 <dt>プロパティ</dt>
 <dd>

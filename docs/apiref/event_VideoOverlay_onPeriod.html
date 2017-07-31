@@ -2,13 +2,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>onPeriod - [Windows]Periodイベントが発生した</title>
+<title>onPeriod - [Windows*]Periodイベントが発生した</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">VideoOverlay.onPeriod</a></span></h1><div class="para">
 <dl>
 <dt>機能/意味</dt>
-<dd><p>[Windows]Periodイベントが発生した</p>
+<dd><p>[Windows*]Periodイベントが発生した</p>
 </dd>
 <dt>タイプ</dt>
 <dd><a class="jump" href="class_VideoOverlay.html">VideoOverlayクラス</a>のイベント</dd>
@@ -33,10 +33,14 @@
 <dt>説明</dt>
 <dd><p>ループの終端や、 setPeriodEventによって指定されたフレームに達した場合、または prepare メソッドにより再生準備が完了した場合に呼び出されるメソッドです。<br />
 ループの終端や、setPeriodEvent によって指定されたフレームに達した場合にこのイベントが呼ばれる時点では、再生状況によっては、すでに再生位置が指定された位置を超えている場合があります。<br />
-現在の実際の再生位置を取得するには frame プロパティを参照してください。</p>
+現在の実際の再生位置を取得するには frame プロパティを参照してください。<br />
+Androidでは発生しません。</p>
 </dd>
 <dt>参照</dt>
-<dd><p>VideoOverlay.frame</p>
+<dd>
+<a class="jump" href="func_VideoOverlay_setPeriodEvent.html">VideoOverlay.setPeriodEvent</a><br />
+<a class="jump" href="func_VideoOverlay_prepare.html">VideoOverlay.prepare</a><br />
+<a class="jump" href="prop_VideoOverlay_frame.html">VideoOverlay.frame</a><br />
 </dd>
 </dl>
 </div>

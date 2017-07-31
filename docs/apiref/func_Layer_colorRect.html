@@ -29,19 +29,28 @@
 <td><p>塗りつぶす矩形の縦幅を ( 画像位置における ) ピクセル単位で指定します。</p>
 </td></tr>
 <tr><td valign="top"><span class="argname">value</span></td>
-<td><p>塗りつぶす色や値を指定します。この値は、Layer.face プロパティの値によって意味が変わります。dfAlpha (またはdfBoth)    : 0xRRGGBB 形式で色を指定してくださいdfAddAlpha                    : 0xRRGGBB 形式で色を指定してくださいdfOpaque (またはdfMain)   : 0xRRGGBB 形式で色を指定してくださいdfMask                        : マスク(不透明度)の値 ( 0 ～ 255 ) を指定してくださいdfProvince                    : 領域の値 ( 0 ～ 255 ) を指定してくださいdfOpaque を指定した場合は、マスク情報は無視されます(マスク情報が保持されるか破壊されるかは Layer.holdAlpha プロパティによります)。また、dfMask を指定した場合は、色の情報はそのままになります。dfAlpha の場合でかつ opa が負の場合はこの引数は無視されます。</p>
+<td><p>塗りつぶす色や値を指定します。<br />
+この値は、Layer.face プロパティの値によって意味が変わります。</p>
+
+<ul>
+<li>dfAlpha (またはdfBoth)    : 0xRRGGBB 形式で色を指定してください</li>
+<li>dfAddAlpha                    : 0xRRGGBB 形式で色を指定してください</li>
+<li>dfOpaque (またはdfMain)   : 0xRRGGBB 形式で色を指定してください</li>
+<li>dfMask                        : マスク(不透明度)の値 ( 0 ～ 255 ) を指定してください</li>
+<li>dfProvince                    : 領域の値 ( 0 ～ 255 ) を指定してくださいdfOpaque を指定した場合は、マスク情報は無視されます(マスク情報が保持されるか破壊されるかは Layer.holdAlpha プロパティによります)。また、dfMask を指定した場合は、色の情報はそのままになります。dfAlpha の場合でかつ opa が負の場合はこの引数は無視されます。</li>
+</ul>
 </td></tr>
 <tr><td valign="top"><span class="argname">opa</span></td>
-<td><p>塗りつぶす不透明度 ( -255 ～ 0 ～ 255 ) を指定します。この引数は、Layer.face プロパティの値が dfMask や<br />
-dfProvince の場合は無視されます ( 常に完全不透明 )。負の数の指定は Layer.face が dfAlpha の場合のみに有効で、<br />
-この場合は value 引数は無視され、画像から不透明度が取り除かれます (<br />
--255 を指定すると矩形は完全に透明になります )。</p>
+<td><p>塗りつぶす不透明度 ( -255 ～ 0 ～ 255 ) を指定します。<br />
+この引数は、Layer.face プロパティの値が dfMask や dfProvince の場合は無視されます ( 常に完全不透明 )。<br />
+負の数の指定は Layer.face が dfAlpha の場合のみに有効で、この場合は value 引数は無視され、画像から不透明度が取り除かれます (-255 を指定すると矩形は完全に透明になります )。</p>
 </td></tr>
 </table></dd>
 <dt>戻り値</dt>
 <dd>なし (void)</dd>
 <dt>説明</dt>
-<dd><p>指定されたレイヤ画像の矩形を指定された方法で塗りつぶします。Layer.fillRect と異なり、透明度を指定して半透明で塗りつぶすことができます。</p>
+<dd><p>指定されたレイヤ画像の矩形を指定された方法で塗りつぶします。<br />
+Layer.fillRect と異なり、透明度を指定して半透明で塗りつぶすことができます。</p>
 </dd>
 </dl>
 </div>

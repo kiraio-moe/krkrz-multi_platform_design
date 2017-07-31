@@ -2,13 +2,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>selectAudioStream - [Windows]音声ストリームの選択</title>
+<title>selectAudioStream - [Windows*]音声ストリームの選択</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">VideoOverlay.selectAudioStream</a></span></h1><div class="para">
 <dl>
 <dt>機能/意味</dt>
-<dd><p>[Windows]音声ストリームの選択</p>
+<dd><p>[Windows*]音声ストリームの選択</p>
 </dd>
 <dt>タイプ</dt>
 <dd><a class="jump" href="class_VideoOverlay.html">VideoOverlayクラス</a>のメソッド</dd>
@@ -24,10 +24,13 @@
 <dd>なし (void)</dd>
 <dt>説明</dt>
 <dd><p>指定した音声ストリーム番号を有効にします。<br />
-音声ストリームを複数含まないビデオでは使用できません。</p>
+音声ストリームを複数含まないビデオでは使用できません。<br />
+Androidでは常に0を返し、設定しても意味はありません。</p>
 </dd>
 <dt>参照</dt>
-<dd><p>VideoOverlay.enabledAudioStream</p>
+<dd>
+<a class="jump" href="prop_VideoOverlay_numberOfAudioStream.html">VideoOverlay.numberOfAudioStream</a><br />
+<a class="jump" href="prop_VideoOverlay_enabledAudioStream.html">VideoOverlay.enabledAudioStream</a><br />
 </dd>
 </dl>
 </div>

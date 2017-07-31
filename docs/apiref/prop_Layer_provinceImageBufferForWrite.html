@@ -12,17 +12,19 @@
 <dt>タイプ</dt>
 <dd><a class="jump" href="class_Layer.html">Layerクラス</a>のプロパティ</dd>
 <dt>説明</dt>
-<dd><p>領域画像 ( 領域の情報を含む 8bpp のビットマップ ) の画像バッファ左上隅へのポインタ<br />
-を表します。このプロパティは、プラグインなどのために画像バッファへの直接のアクセスの手段を提供する<br />
-ためにあります。整数型で返されますが、プラグインなどでは適切な型 ( unsigned char * 等 ) にキャストして使って<br />
-ください。このプロパティで得られたポインタには Layer.provinceImageBuffer と異なり、<br />
-値を書き込むことができます。吉里吉里内部では全く同じ画像は複数のレイヤ間等で共有しますが、<br />
-このプロパティを参照するとその共有状態を解除します。レイヤに画像が割り当てられていない場合は自動的にこのプロパティを参照した時点で<br />
-割り当てられ、全域が領域番号 0 で初期化されます。画像のサイズは Layer.imageWidth と Layer.imageHeight プロパティが<br />
-表しています。ポインタの計算方法は Layer.provinceImageBufferPitch を参照してください。</p>
+<dd><p>領域画像 ( 領域の情報を含む 8bpp のビットマップ ) の画像バッファ左上隅へのポインタを表します。<br />
+このプロパティは、プラグインなどのために画像バッファへの直接のアクセスの手段を提供するためにあります。<br />
+整数型で返されますが、プラグインなどでは適切な型 ( unsigned char * 等 ) にキャストして使ってください。<br />
+このプロパティで得られたポインタには Layer.provinceImageBuffer と異なり、値を書き込むことができます。<br />
+吉里吉里内部では全く同じ画像は複数のレイヤ間等で共有しますが、このプロパティを参照するとその共有状態を解除します。<br />
+レイヤに画像が割り当てられていない場合は自動的にこのプロパティを参照した時点で割り当てられ、全域が領域番号 0 で初期化されます。<br />
+画像のサイズは Layer.imageWidth と Layer.imageHeight プロパティが表しています。<br />
+ポインタの計算方法は Layer.provinceImageBufferPitch を参照してください。</p>
 </dd>
 <dt>参照</dt>
-<dd><p>Layer.provinceImageBufferPitch</p>
+<dd>
+<a class="jump" href="prop_Layer_provinceImageBuffer.html">Layer.provinceImageBuffer</a><br />
+<a class="jump" href="prop_Layer_provinceImageBufferPitch.html">Layer.provinceImageBufferPitch</a><br />
 </dd>
 </dl>
 </div>

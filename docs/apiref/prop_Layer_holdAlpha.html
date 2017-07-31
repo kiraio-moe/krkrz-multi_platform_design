@@ -12,7 +12,41 @@
 <dt>タイプ</dt>
 <dd><a class="jump" href="class_Layer.html">Layerクラス</a>のプロパティ</dd>
 <dt>説明</dt>
-<dd><p>描画においてアルファチャンネルを保護するかどうかを指定します。値を設定することもできます。デフォルトでは偽です。吉里吉里 2.23 beta 1 以前では、各描画メソッドに hda というパラメータがあり、それがこのプロパティと同じ動作をしていましたが、2.23 beta 2 よりプロパティとして分離されました。いくつかの描画演算では、Layer.face プロパティが dfOpaque のとき、画像のアルファチャンネル(マスク画像)を保持するかどうかをこのプロパティで指定できます。多くのメソッドでは、このプロパティを偽にした方が高速な描画が可能です。Layer.type が ltAlpha でも ltAddAlpha でも無い場合は、画像のアルファチャンネルは使用されないので、このプロパティを偽に設定しても問題有りません。ただし、このプロパティが偽だとアルファチャンネルは破壊されます。以下のメソッドはこのプロパティの影響を受けません。Layer.loadImagesLayer.loadProvinceImageLayer.setMainPixelLayer.setMaskPixelLayer.setProvincePixelLayer.piledCopyLayer.adjustGamma(常にアルファチャンネルは保護されます)Layer.doGrayScale(常にアルファチャンネルは保護されます)Layer.flipLRLayer.flipUDLayer.assignImages以下のメソッドはこのプロパティの影響を受けます。Layer.copyRectLayer.stretchCopyLayer.affineCopyLayer.fillRectLayer.colorRectLayer.drawTextLayer.operateRectLayer.operateStretchLayer.operateAffine</p>
+<dd><p>描画においてアルファチャンネルを保護するかどうかを指定します。<br />
+値を設定することもできます。デフォルトでは偽です。<br />
+いくつかの描画演算では、Layer.face プロパティが dfOpaque のとき、画像のアルファチャンネル(マスク画像)を保持するかどうかをこのプロパティで指定できます。<br />
+多くのメソッドでは、このプロパティを偽にした方が高速な描画が可能です。<br />
+Layer.type が ltAlpha でも ltAddAlpha でも無い場合は、画像のアルファチャンネルは使用されないので、このプロパティを偽に設定しても問題有りません。<br />
+ただし、このプロパティが偽だとアルファチャンネルは破壊されます。<br />
+以下のメソッドはこのプロパティの影響を受けません。</p>
+
+<ul>
+<li>Layer.loadImages</li>
+<li>Layer.loadProvinceImage</li>
+<li>Layer.setMainPixel</li>
+<li>Layer.setMaskPixel</li>
+<li>Layer.setProvincePixel</li>
+<li>Layer.piledCopy</li>
+<li>Layer.adjustGamma(常にアルファチャンネルは保護されます)</li>
+<li>Layer.doGrayScale(常にアルファチャンネルは保護されます)</li>
+<li>Layer.flipLR</li>
+<li>Layer.flipUD</li>
+<li>Layer.assignImages</li>
+</ul>
+
+<p>以下のメソッドはこのプロパティの影響を受けます。</p>
+
+<ul>
+<li>Layer.copyRect</li>
+<li>Layer.stretchCopy</li>
+<li>Layer.affineCopy</li>
+<li>Layer.fillRect</li>
+<li>Layer.colorRect</li>
+<li>Layer.drawText</li>
+<li>Layer.operateRect</li>
+<li>Layer.operateStretch</li>
+<li>Layer.operateAffine</li>
+</ul>
 </dd>
 </dl>
 </div>

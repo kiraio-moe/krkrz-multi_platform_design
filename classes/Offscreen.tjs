@@ -1,9 +1,9 @@
 /**
  * @description オフスクリーン。
  * いわゆるレンダーターゲット。テクスチャとしても利用可能です。
- * OpenGL ES2.0 では、FBO, Renderbuffer, Texture が生成されます。
+ * 内部的に FBO, Renderbuffer, Texture が生成されます。
  * レンダーターゲットとして設定しないのであれば、わざわざこのクラスを使用する必要性はありません。
- * Textureクラスを使用した方が良いです。
+ * Textureクラスを使用した方がメモリ効率が良いです。
  */
 class Offscreen {
 	/**
@@ -82,7 +82,7 @@ class Offscreen {
 	 * クロスフェードなどで両方に描画する必要がない場合、以前の画像をTextureとして取り出し、新しいTextureに差し替えることでオーバーヘッドを減らせる。
 	 * @param texture 交換するTextureクラスのインスタンス。
 	 */
-	function exchangeTexture( texture );
+	function exchangeTexture( texture:Texture );
 
 	/**
 	 * 幅、生成時に指定されたもの[r]

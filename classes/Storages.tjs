@@ -111,7 +111,7 @@ class Storages {
 	function chopStorageExt( storage);
 
 	/**
-	 * [Windows]CD の検索
+	 * [Windows+]CD の検索
 	 *
 	 * @param volume 検索するCDのボリュームラベルを指定します。
 	 * @return 見つかった CD-ROM ドライブのドライブ文字が返ります。
@@ -131,7 +131,7 @@ class Storages {
 	function getLocalName( path);
 
 	/**
-	 * [Windows]ファイル選択ダイアログボックスを表示
+	 * [Windows+]ファイル選択ダイアログボックスを表示
 	 *
 	 * @param params データの受け渡しに用いる辞書配列を指定します。
 	 * このメソッドに渡すとき、以下のメンバを指定することができます。

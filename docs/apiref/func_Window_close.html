@@ -21,10 +21,13 @@
 <dd>なし (void)</dd>
 <dt>説明</dt>
 <dd><p>Window.showModal メソッドで表示されたウィンドウを閉じます。<br />
-ウィンドウを閉じる前に Window.onCloseQuery イベントが発生し、ウィンドウを閉じることができるかどうかを確認することができます。</p>
+ウィンドウを閉じる前に Window.onCloseQuery イベントが発生し、ウィンドウを閉じることができるかどうかを確認することができます。<br />
+Androidでは Window.onCloseQuery イベントは発生せず、Activity.finish() がコールされて終了します。</p>
 </dd>
 <dt>参照</dt>
-<dd><p>Window.onCloseQuery</p>
+<dd>
+<a class="jump" href="func_Window_showModal.html">Window.showModal</a><br />
+<a class="jump" href="event_Window_onCloseQuery.html">Window.onCloseQuery</a><br />
 </dd>
 </dl>
 </div>

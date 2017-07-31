@@ -18,7 +18,7 @@ class Matrix32 {
 	 * @param m31 [3][1]位置の値です。
 	 * @param m32 [3][2]位置の値です。
 	 */
-	function Matrix32( m11, m12, m21, m22, m31, m32 );
+	function Matrix32( m11:real, m12:real, m21:real, m22:real, m31:real, m32:real );
 
 	/**
 	 * マトリックス設定
@@ -29,21 +29,21 @@ class Matrix32 {
 	 * @param m31 [3][1]位置の値です。
 	 * @param m32 [3][2]位置の値です。
 	 */
-	function set( m11, m12, m21, m22, m31, m32 );
+	function set( m11:real, m12:real, m21:real, m22:real, m31:real, m32:real );
 
 	/**
 	 * マトリックス設定
 	 * @description 1次元配列からコピー
 	 * @param array 6要素の配列を渡します。
 	 */
-	function set( array );
+	function set( array:Array );
 
 	/**
 	 * マトリックス設定
 	 * @description matrixからコピー
 	 * @param matrix Matrix32クラスのインスタンスを渡します。
 	 */
-	function set( matrix );
+	function set( matrix:Matrix32 );
 
 	/**
 	 * 単位行列化
@@ -156,27 +156,27 @@ class Matrix32 {
 	property array;
 
 	/**
-	 * [1][1]位置の値です。[r/w]
+	 * [1][1]位置の値[r/w]
 	 */
 	property m11;
 	/**
-	 * [1][2]位置の値です。[r/w]
+	 * [1][2]位置の値[r/w]
 	 */
 	property m12;
 	/**
-	 * [2][1]位置の値です。[r/w]
+	 * [2][1]位置の値[r/w]
 	 */
 	property m21;
 	/**
-	 * [2][2]位置の値です。[r/w]
+	 * [2][2]位置の値[r/w]
 	 */
 	property m22;
 	/**
-	 * [3][1]位置の値です。[r/w]
+	 * [3][1]位置の値[r/w]
 	 */
 	property m31;
 	/**
-	 * [3][2]位置の値です。[r/w]
+	 * [3][2]位置の値[r/w]
 	 */
 	property m32;
 };

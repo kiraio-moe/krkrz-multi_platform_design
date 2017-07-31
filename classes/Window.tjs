@@ -5,6 +5,8 @@
  * Offscreenクラスをレンダリングしたいサイズで生成し、そこに通常の描画を行います。
  * ウインドウ(画面)サイズに応じた拡大等はスクリプトで制御します。
  * UIや文字などを等倍で綺麗に表示することもスクリプトで可能となります。
+ *
+ * AndroidがサポートしていないイベントはAndroidでは発生しません。
  */
 class Window {
 	/**
@@ -16,27 +18,28 @@ class Window {
 	 * Android では一つのWindowのみ生成可能なので、このパラメータは使えません。
 	 * @description Window クラスのオブジェクトを構築します。
 	 * ウィンドウは非表示の状態で作成され、位置やサイズは未定義 ( どこかにの位置に適当なサイズ ) です。
+	 * Androidでは1つのみ生成可能で、フルスクリーン動作となり、位置やサイズは設定しても無視されます。
 	 */
 	function Window( parent);
 
 	/**
-	 * [Windows]マウスが入ってきた
+	 * [Windows*]マウスが入ってきた
 	 *
 	 * @description マウスがウィンドウのクライアント領域内に入ってきたときに発生します。
 	 * @see Window.onMouseLeave
 	 */
-	event onMouseEnter( );
+	event onMouseEnter();
 
 	/**
-	 * [Windows]マウスが出ていった
+	 * [Windows*]マウスが出ていった
 	 *
 	 * @description マウスがウィンドウのクライアント領域内から出ていったときに発生します。
 	 * @see Window.onMouseEnter
 	 */
-	event onMouseLeave( );
+	event onMouseLeave();
 
 	/**
-	 * [Windows]ウィンドウがクリックされた
+	 * [Windows*]ウィンドウがクリックされた
 	 *
 	 * @param x ウィンドウがクリックされた位置の x 座標 ( クライアント座標での ) の値です。
 	 * @param y ウィンドウがクリックされた位置の y 座標 ( クライアント座標での ) の値です。
@@ -44,20 +47,20 @@ class Window {
 	 * @see Window.onMouseDown
 	 * @see Window.onDoubleClick
 	 */
-	event onClick( x, y);
+	event onClick( x, y );
 
 	/**
-	 * [Windows]ウィンドウがダブルクリックされた
+	 * [Windows*]ウィンドウがダブルクリックされた
 	 *
 	 * @param x ウィンドウがダブルクリックされた位置の x 座標 ( クライアント座標での ) の値です。
 	 * @param y ウィンドウがダブルクリックされた位置の y 座標 ( クライアント座標での ) の値です。
 	 * @description ウィンドウがダブルクリックされた時に発生します。
 	 * @see Window.onClick
 	 */
-	event onDoubleClick( x, y);
+	event onDoubleClick( x, y );
 
 	/**
-	 * [Windows]マウスのボタンが押された
+	 * [Windows*]マウスのボタンが押された
 	 *
 	 * @param x マウスのボタンが押された位置の x 座標 ( クライアント座標での ) の値です。
 	 * @param y マウスのボタンが押された位置の y 座標 ( クライアント座標での ) の値です。
@@ -80,10 +83,10 @@ class Window {
 	 * @description マウスボタンが押された時に発生します。
 	 * @see Window.onClick
 	 */
-	event onMouseDown( x, y, button, shift);
+	event onMouseDown( x, y, button, shift );
 
 	/**
-	 * [Windows]マウスのボタンが離された
+	 * [Windows*]マウスのボタンが離された
 	 *
 	 * @param x マウスのボタンが離された位置の x 座標 ( クライアント座標での ) の値です。
 	 * @param y マウスのボタンが離された位置の y 座標 ( クライアント座標での ) の値です。
@@ -105,10 +108,10 @@ class Window {
 	 *
 	 * @description マウスボタンが離された時に発生します。
 	 */
-	event onMouseUp( x, y, button, shift);
+	event onMouseUp( x, y, button, shift );
 
 	/**
-	 * [Windows]マウスが移動した
+	 * [Windows*]マウスが移動した
 	 *
 	 * @param x マウスが移動した位置の x 座標 ( クライアント座標での ) の値です。
 	 * @param y マウスが移動した位置の y 座標 ( クライアント座標での ) の値です。
@@ -127,7 +130,7 @@ class Window {
 	event onMouseMove( x, y, shift);
 
 	/**
-	 * [Windows]マウスホイールが回転した
+	 * [Windows*]マウスホイールが回転した
 	 *
 	 * @param shift マウスが移動していた時に同時に押されていたシフト系のキーやマウスのボタンの状態です。
 	 * 以下の値のビット OR による組み合わせになります。
@@ -311,7 +314,7 @@ class Window {
 	event onKeyUp( key, shift);
 
 	/**
-	 * 文字が入力された
+	 * [Windows*]文字が入力された
 	 *
 	 * @param key 入力された文字です。
 	 * @description 文字が入力されたときに発生します。
@@ -352,10 +355,10 @@ class Window {
 	 * + 0x1E : Ctrl+^
 	 * + 0x1F : Ctrl+_
 	 */
-	event onKeyPress( key);
+	event onKeyPress( key );
 
 	/**
-	 * ウィンドウのサイズが変化した
+	 * [Windows*]ウィンドウのサイズが変化した
 	 *
 	 * @description ウィンドウのサイズが変化した時に発生します。
 	 * 実際のサイズは Window.width プロパティや Window.height プロパティなどで取得してください。
@@ -363,7 +366,7 @@ class Window {
 	event onResize( );
 
 	/**
-	 * [Windows]ファイルがドロップされた
+	 * [Windows*]ファイルがドロップされた
 	 *
 	 * @param files ドロップされたファイル名が格納された配列(Array)オブジェクトです。
 	 * @description ファイルがエクスプローラなどからウィンドウにドロップされたときに発生します。
@@ -372,7 +375,7 @@ class Window {
 	event onFileDrop( files);
 
 	/**
-	 * [Windows]ウィンドウを閉じる確認
+	 * [Windows*]ウィンドウを閉じる確認
 	 *
 	 * @param canclose ウィンドウを閉じることができるかどうかが渡されます。
 	 * 下位クラスから上位クラスのイベントハンドラが呼ばれる課程で、下位クラスが決定した「ウィンドウを閉じることができるか」が渡されます。
@@ -386,7 +389,7 @@ class Window {
 	event onCloseQuery( canclose);
 
 	/**
-	 * [Windows]ポップアップウィンドウを閉じる
+	 * [Windows*]ポップアップウィンドウを閉じる
 	 *
 	 * @description ポップアップウィンドウが閉じるべき時に発生するイベントです。
 	 * このイベントは、Window.stayOnTop プロパティが真で、かつ、Window.focusable プロパティが偽の場合、「他のウィンドウがクリックされた」あるいは「他のアプリケーションがアクティブになった」時に発生します。
@@ -420,7 +423,7 @@ class Window {
 	event onDeactivate( );
 
 	/**
-	 * [Windows]ヒントの状態が変化したとき
+	 * [Windows*]ヒントの状態が変化したとき
 	 *
 	 * @param text ヒントに表示する文字列が渡されます。
 	 * @param x ヒント表示X軸座標値が渡されます。
@@ -437,7 +440,7 @@ class Window {
 	event onHintChanged( text, x, y, isshow);
 
 	/**
-	 * 画面が回転されたとき(1.1.0以降)
+	 * 画面が回転されたとき
 	 *
 	 * @param orientation 画面の向き( orientation ) です。以下のいずれかの値になります。oriUnknown (取得失敗/不明), oriPortrait(縦向き), oriLandscape(横向き)
 	 * @param angle 角度です。角度 ( angle ) は、0、90、180、270、-1 のいずれかで、取得できなかった時は-1となります。
@@ -473,13 +476,14 @@ class Window {
 	 *
 	 * @description Window.showModal メソッドで表示されたウィンドウを閉じます。
 	 * ウィンドウを閉じる前に Window.onCloseQuery イベントが発生し、ウィンドウを閉じることができるかどうかを確認することができます。
+	 * Androidでは Window.onCloseQuery イベントは発生せず、Activity.finish() がコールされて終了します。
 	 * @see Window.showModal
 	 * @see Window.onCloseQuery
 	 */
-	function close( );
+	function close();
 
 	/**
-	 * [Windows]ウィンドウを最前面に移動
+	 * [Windows*]ウィンドウを最前面に移動
 	 *
 	 * @description ウィンドウを最前面に移動します。
 	 * アプリケーションが非アクティブの場合はアプリケーション自体もアクティブにします。
@@ -487,7 +491,7 @@ class Window {
 	function bringToFront( );
 
 	/**
-	 * [Windows]ウィンドウ内容の強制的な描画
+	 * [Windows*]ウィンドウ内容の強制的な描画
 	 *
 	 * @param type ウィンドウ描画のタイプを指定します。
 	 *
@@ -500,7 +504,7 @@ class Window {
 	function update( type=tutNormal);
 
 	/**
-	 * [Windows]モーダルでウィンドウを表示
+	 * [Windows+]モーダルでウィンドウを表示
 	 *
 	 * @description ウィンドウをモーダル ( モード付き ) で表示します。
 	 * このメソッドはウィンドウを表示状態にし、かつ、他のウィンドウを一時的に無効にします。
@@ -511,7 +515,7 @@ class Window {
 	function showModal( );
 
 	/**
-	 * [Windows]ウィンドウリージョンをマスクに従って設定
+	 * [Windows+]ウィンドウリージョンをマスクに従って設定
 	 *
 	 * @param threshold マスクのスレッショルド ( 敷居値 ) を指定します。
 	 * プライマリレイヤのマスク ( レイヤの不透明度の情報 ) のうち、この値よりも大きい部分の形にウィンドウが切り取られて表示されます。
@@ -525,7 +529,7 @@ class Window {
 	function setMaskRegion( threshold=1);
 
 	/**
-	 * [Windows]ウィンドウリージョンの解除
+	 * [Windows+]ウィンドウリージョンの解除
 	 *
 	 * @description Window.setMaskRegionで設定したウィンドウリージョンを解除し、ウィンドウを矩形に戻します。
 	 * @see Window.setMaskRegion
@@ -552,7 +556,7 @@ class Window {
 	function remove( object);
 
 	/**
-	 * [Windows]ウィンドウサイズの設定
+	 * [Windows*]ウィンドウサイズの設定
 	 *
 	 * @param width ウィンドウの横幅を指定します。
 	 * @param height ウィンドウの縦幅を指定します。
@@ -568,7 +572,7 @@ class Window {
 	function setSize( width, height);
 
 	/**
-	 * [Windows]ウィンドウの最小サイズの設定
+	 * [Windows*]ウィンドウの最小サイズの設定
 	 *
 	 * @param width ウィンドウの最小の横幅を指定します。
 	 * 0を指定すると制限は無くなります。
@@ -585,7 +589,7 @@ class Window {
 	function setMinSize( width, height);
 
 	/**
-	 * [Windows]ウィンドウの最大サイズの設定
+	 * [Windows*]ウィンドウの最大サイズの設定
 	 *
 	 * @param width ウィンドウの最大の横幅を指定します。
 	 * 0を指定すると制限は無くなります。
@@ -602,7 +606,7 @@ class Window {
 	function setMaxSize( width, height);
 
 	/**
-	 * [Windows]ウィンドウ位置の設定
+	 * [Windows*]ウィンドウ位置の設定
 	 *
 	 * @param left ウィンドウの左端位置を指定します。
 	 * @param top ウィンドウの上端位置を指定します。
@@ -615,7 +619,7 @@ class Window {
 	function setPos( left, top);
 
 	/**
-	 * [Windows]クライアントサイズの設定
+	 * [Windows*]クライアントサイズの設定
 	 *
 	 * @param width クライアントの横幅を指定します。
 	 * @param height クライアントの縦幅を指定します。
@@ -629,7 +633,7 @@ class Window {
 	function setInnerSize( width, height);
 
 	/**
-	 * [Windows]レイヤ拡大倍率の設定
+	 * [Windows*]レイヤ拡大倍率の設定
 	 *
 	 * @param numer 倍率の分子を整数で指定します。
 	 * @param denom 倍率の分母を整数で指定します。
@@ -639,6 +643,7 @@ class Window {
 	 * 現バージョンの吉里吉里では、拡大・縮小時に補間がかかるかどうかはグラフィックカードのハードウェアやドライバに影響されます。
 	 * 補間がかからないハードウェアやドライバの場合は、画質が荒くなります。
 	 * オプションによっては、吉里吉里は拡大・縮小に使用可能なハードウェアを、倍率が変更されるたびに調査するため、このメソッドは拡大率を連続的に変化させて演出を行うような用途には適していません。
+	 * Canvas 描画時には意味を持ちません
 	 * @see Window.zoomNumer
 	 * @see Window.zoomDenom
 	 */
@@ -677,7 +682,7 @@ class Window {
 	function postInputEvent( eventname, params=null);
 
 	/**
-	 * [Windows]マウスカーソルを一時的に隠す
+	 * [Windows*]マウスカーソルを一時的に隠す
 	 *
 	 * @description マウスカーソルを一時的に隠します。
 	 * マウスを少しでも動かすとマウスカーソルは再び表示されるようになります。
@@ -686,7 +691,7 @@ class Window {
 	function hideMouseCursor( );
 
 	/**
-	 * [Windows]メッセージ受信関数の登録/登録削除
+	 * [Windows+]メッセージ受信関数の登録/登録削除
 	 *
 	 * @param mode 登録するか、登録削除するかどうかを指定します。
 	 * wrmRegister を指定すると登録になります。
@@ -727,7 +732,7 @@ class Window {
 	function getTouchPoint( index);
 
 	/**
-	 * [Windows]マウス座標移動速度の取得(1.1.0以降)
+	 * [Windows*]マウス座標移動速度の取得
 	 *
 	 * @param x X軸方向のマウス座標移動速度が返ります。
 	 * @param y Y軸方向のマウス座標移動速度が返ります。
@@ -742,7 +747,7 @@ class Window {
 	function getMouseVelocity( x, y, speed);
 
 	/**
-	 * タッチ座標移動速度の取得(1.1.0以降)
+	 * タッチ座標移動速度の取得
 	 *
 	 * @param id タッチIDを指定します。
 	 * @param x X軸方向のマウス座標移動速度が返ります。
@@ -758,7 +763,7 @@ class Window {
 	function getTouchVelocity( id, x, y, speed);
 
 	/**
-	 * [Windows]マウス座標移動速度計測のリセット(1.1.0以降)
+	 * [Windows*]マウス座標移動速度計測のリセット
 	 *
 	 * @description マウスの座標移動速度計測をリセットします。
 	 * リセットすることで任意のタイミングから速度計測を開始することが出来ます。
@@ -769,13 +774,15 @@ class Window {
 	/**
 	 * 明示的に描画を呼び出す。
 	 *
-	 * @description このメソッドはonDrawを間接的に呼び出す。
-	 * 自分で描画したい場合は、このメソッドを呼び出し、onDraw内で描画する。
+	 * @description このメソッドはonDrawを間接的に呼び出しますす。
+	 * 自分で描画したい場合は、このメソッドを呼び出し、onDraw内で描画します。
+	 * Window.drawCycle を指定して定期的に描画するようにし、このメソッドで明示的に描画することは出来るだけ避けてください。
+	 * 将来的に他のプラットフォームでサポートできない可能性があります。
 	 */
 	function startDrawing();
 
 	/**
-	 * [Windows]ウィンドウが表示されているかどうか
+	 * [Windows*]ウィンドウが表示されているかどうか
 	 *
 	 * @description ウィンドウが表示されているかどうかを表します。
 	 * 値を設定することもできます。
@@ -790,6 +797,7 @@ class Window {
 	 *
 	 * @description ウィンドウのキャプション ( タイトルバーのタイトル ) を表します。
 	 * 値を設定することもできます。
+	 * Androidではアクティビティのタイトルとなりますが、フルスクリーンでは表示されないので設定にあまり意味はありません。
 	 */
 	 property caption {
 		 getter() { return value; }
@@ -822,7 +830,7 @@ class Window {
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]ウィンドウの最小の横幅
+	 * [Windows*]ウィンドウの最小の横幅
 	 *
 	 * @description ウィンドウの最小の横幅を表します。
 	 * 値を設定することもできます。
@@ -840,7 +848,7 @@ class Window {
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]ウィンドウの最小の縦幅
+	 * [Windows*]ウィンドウの最小の縦幅
 	 *
 	 * @description ウィンドウの最小の縦幅を表します。
 	 * 値を設定することもできます。
@@ -858,7 +866,7 @@ class Window {
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]ウィンドウの最大の横幅
+	 * [Windows*]ウィンドウの最大の横幅
 	 *
 	 * @description ウィンドウの最大の横幅を表します。
 	 * 値を設定することもできます。
@@ -876,7 +884,7 @@ class Window {
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]ウィンドウの最大の縦幅
+	 * [Windows*]ウィンドウの最大の縦幅
 	 *
 	 * @description ウィンドウの最大の縦幅を表します。
 	 * 値を設定することもできます。
@@ -894,7 +902,7 @@ class Window {
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]ウィンドウの左端位置
+	 * [Windows*]ウィンドウの左端位置
 	 *
 	 * @description ウィンドウの左端位置を表します。
 	 * 値を設定することもできます。
@@ -907,7 +915,7 @@ class Window {
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]ウィンドウの上端位置
+	 * [Windows*]ウィンドウの上端位置
 	 *
 	 * @description ウィンドウの上端位置を表します。
 	 * 値を設定することもできます。
@@ -920,7 +928,7 @@ class Window {
 		 setter( value ) {}
 	}
 	/**
-	 * フォーカスを取得可能か
+	 * [Windows*]フォーカスを取得可能か
 	 *
 	 * @description フォーカスを取得可能かどうかを表します。
 	 * 値を設定することもできます。
@@ -938,12 +946,13 @@ class Window {
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]キー入力をトラップするか
+	 * [Windows*]キー入力をトラップするか
 	 *
 	 * @description キー入力をトラップするかどうかを表します。
 	 * 値を設定することもできます。
 	 * 真に設定すると、他のウィンドウで発生したキー入力イベントを横取りし、このウィンドウ上で発生させることができます。
 	 * 複数のウィンドウのこのプロパティが真に設定されている場合は、もっとも最後に作成したウィンドウに対してキー入力イベントが発生します。
+	 * Androidでは常にfalseです。
 	 * @see Window.focusable
 	 */
 	 property trapKey {
@@ -977,7 +986,7 @@ class Window {
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]レイヤ拡大倍率(分子)
+	 * [Windows*]レイヤ拡大倍率(分子)
 	 *
 	 * @description レイヤの拡大倍率の分子を表します。
 	 * 一応、値を設定することもできますが、値を設定する場合は Window.setZoom メソッドを使用してください。
@@ -991,7 +1000,7 @@ class Window {
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]レイヤ拡大倍率(分母)
+	 * [Windows*]レイヤ拡大倍率(分母)
 	 *
 	 * @description レイヤの拡大倍率の分母を表します。
 	 * 一応、値を設定することもできますが、値を設定する場合は Window.setZoom メソッドを使用してください。
@@ -1005,9 +1014,11 @@ class Window {
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]描画デバイス
+	 * [Windows+]描画デバイス
 	 *
 	 * @description 描画デバイスオブジェクトを表します。
+	 * 描画デバイスは非推奨になりました。
+	 * Canvas を使用した描画を推奨します。
 	 * 値を設定することもできます。
 	 * 値を設定すると、以前このウィンドウに指定されていた描画デバイスは自動的に無効になります (invalidateされます)。
 	 * デフォルトでは、Window.BasicDrawDevice というクラスのインスタンスが指定されています。
@@ -1019,9 +1030,10 @@ class Window {
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]ウィンドウ外見
+	 * [Windows*]ウィンドウ外見
 	 *
 	 * @description ウィンドウの外見を表します。値を設定することもできます。
+	 * Androidでは常にbsNoneです。
 	 * 以下の値を設定することができます。
 	 *
 	 * + bsDialog      : サイズ変更不可の、ダイアログボックスと同様の外見を持ちます。
@@ -1037,19 +1049,20 @@ class Window {
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]常に最上位に表示するかどうか
+	 * [Windows*]常に最上位に表示するかどうか
 	 *
 	 * @description ウィンドウを常に最上位 ( 一番手前 ) に表示するかどうかを表します。
 	 * 値を設定することもできます。
 	 * 真ならばウィンドウは常に最上位に表示されます。
 	 * 現バージョンでは、ウィンドウがフルスクリーン化するとき、あるいはフルスクリーンから復帰するときに、このプロパティの設定内容が失われる可能性があります。
+	 * Androidでは常にtrueです。
 	 */
 	 property stayOnTop {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]デフォルトのIMEモード
+	 * [Windows*]デフォルトのIMEモード
 	 *
 	 * @description デフォルトのIMEモードを表します。
 	 * ここで指定したモードは、どのレイヤにもフォーカスが無い状態に設定されるモードです。
@@ -1060,7 +1073,7 @@ class Window {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows]マウスカーソル表示状態
+	 * [Windows*]マウスカーソル表示状態
 	 *
 	 * @description マウスカーソルの表示状態を表します。
 	 * 値を設定することもできます。
@@ -1070,25 +1083,27 @@ class Window {
 	 * Window.hideMouseCursorメソッドを呼び出すとこの状態になります。
 	 * mcsHiddenを指定すると、マウスカーソルは非表示状態になります。
 	 * マウスを動かしても表示状態にはなりません。
+	 * Androidでは常にmcsHiddenです。
 	 */
 	 property mouseCursorState {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]マウスキーを使用するかどうか
+	 * [Windows*]マウスキーを使用するかどうか
 	 *
 	 * @description マウスキーを使用するかどうかを表します。
 	 * 値を設定することもできます。
 	 * 真ならばマウスキーを使用することができます。
 	 * マウスキーが有効になると、カーソルキーを使ってマウスカーソルを移動させることができますが、キー入力系のイベントはいっさい発生しなくなります。
+	 * Androidでは常にfalseです。
 	 */
 	 property useMouseKey {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]フルスクリーンかどうか
+	 * [Windows*]フルスクリーンかどうか
 	 *
 	 * @description フルスクリーンかどうかを表します。値を設定することもできます。
 	 * 真を指定すると現在のウィンドウのクライアント領域がフルスクリーンになります。
@@ -1109,27 +1124,31 @@ class Window {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows]フォーカスを持っているレイヤオブジェクト
+	 * [Windows+]フォーカスを持っているレイヤオブジェクト
 	 *
 	 * @description 現在 フォーカス を持っているレイヤオブジェクトを表します。
 	 * 値を設定することもできます。
 	 * null の場合はどのレイヤもフォーカスを持っていません。
 	 * レイヤオブジェクトを設定するとそのレイヤにフォーカスが移ります。
+	 * 非推奨になりました。
+	 * Canvas 描画時には使用できません。
 	 */
 	 property focusedLayer {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]プライマリレイヤオブジェクト
+	 * [Windows+]プライマリレイヤオブジェクト
 	 *
 	 * @description プライマリレイヤオブジェクトを表します。
+	 * 非推奨になりました。
+	 * Canvas 描画時には使用できません。
 	 */
 	 property primaryLayer {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows]ウィンドウハンドル
+	 * [Windows+]ウィンドウハンドル
 	 *
 	 * @description ウィンドウハンドルを表します。
 	 * ここで得られるのは整数ですが、プラグインなどでこの数値を使う場合は HWND 型にキャストして使ってください。
@@ -1187,14 +1206,14 @@ class Window {
 	 *
 	 * @description トランジション(画面切り替え)などでディスプレイの垂直同期を待ってから描画するかどうかの設定です。
 	 * 設定を変えると、画面のちらつきを抑えられる場合がありますが、描画のパフォーマンスが低下する場合もあります。
-	 * Canvas描画の場合指定できない環境では、設定しても無意味(常時vsync待ちがある)。
+	 * Canvas描画の場合指定できない環境では、設定しても無意味(常時vsync待ち)です。
 	 */
 	 property waitVSync {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]ヒント表示待ち時間
+	 * [Windows*]ヒント表示待ち時間
 	 *
 	 * @description ヒントの表示待ち時間をミリ秒単位で表します。
 	 * 値を設定することもできます。
@@ -1208,7 +1227,7 @@ class Window {
 		 setter( value ) {}
 	}
 	/**
-	 * ディスプレイの向き(1.1.0以降)
+	 * ディスプレイの向き
 	 *
 	 * @description ディスプレイの向きを表します。
 	 *
@@ -1223,7 +1242,7 @@ class Window {
 		 getter() { return value; }
 	}
 	/**
-	 * ディスプレイの回転角度(1.1.0以降)
+	 * ディスプレイの回転角度
 	 *
 	 * @description ディスプレイの回転角度を表します。
 	 * 0、90、180、270、-1 のいずれかで、取得できなかった時は-1です。
@@ -1239,11 +1258,12 @@ class Window {
 	 *
 	 * @description 60や30などを指定します。
 	 * 0を指定するとonDrawは呼び出されません。
+	 * Canvas 描画時に有効です。
 	 */
 	property drawCycle;
 
 	/**
-	 * 描画用のCanvasクラスのインスタンスを得る
+	 * 描画用の Canvas クラスのインスタンスを得る
 	 * @description onDraw 内で使用します。
 	 */
 	property canvas;

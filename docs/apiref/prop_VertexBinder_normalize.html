@@ -2,17 +2,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>normalize - 正規化するかどうか。trueの場合、非float型の時[-1.0～0.0～1.0]の間に正規化されシェーダーに送られる</title>
+<title>normalize - 正規化するかどうか</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">VertexBinder.normalize</a></span></h1><div class="para">
 <dl>
 <dt>機能/意味</dt>
-<dd>正規化するかどうか。trueの場合、非float型の時[-1.0～0.0～1.0]の間に正規化されシェーダーに送られる</dd>
+<dd>正規化するかどうか</dd>
 <dt>タイプ</dt>
 <dd><a class="jump" href="class_VertexBinder.html">VertexBinderクラス</a>のプロパティ</dd>
 <dt>説明</dt>
-<dd><p>デフォルトはfalse</p>
+<dd><p>デフォルトはfalse。<br />
+trueの場合、非float型の時[-1.0～0.0～1.0]の間に正規化されシェーダーに送られます。<br />
+色情報などubyte形で0～255で色を指定し、その色を0.0～1.0に正規化してシェーダーで使う等するときに指定します。</p>
 </dd>
 </dl>
 </div>

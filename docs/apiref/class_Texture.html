@@ -9,11 +9,6 @@
 <div class="para"><p>テクスチャクラス。<br />
 ハードウェア上のテクスチャとほぼ対応しています。</p>
 
-<p>プラグイン用にlockしてポインタを返すものを実装してもいいかもしれない。<br />
-VertexBufferでは実装済みだが、OpenGL ES 3.0 以降用となる。<br />
-Textureの場合もPBO転送となるので、OpenGL ES 3.0 以降用となって同じ。<br />
-ただ、テクスチャの更新はOffscreenを利用してシェーダーを使う方が良いか。</p>
-
 <p>invalidateすることでテクスチャは無効化されるため、必要なくなったら明示的にinvalidate呼び出すことを推奨します。</p>
 </div>
 <h1>メンバ</h1><div class="para">
@@ -51,7 +46,7 @@ Textureの場合もPBO転送となるので、OpenGL ES 3.0 以降用となっ�
 <dd>
 stLinear (線形補間。stretchTypeプロパティに設定します。 )<br />
 stNearest (最近傍点法。stretchTypeプロパティに設定します。 )<br />
-wmClampToEdge (端色引き延ばし。wrapModeHorizontal/wrapModeVerticalプロパティに設定します。2の累乗サイズでない場合はこの定数でなければならない(default)。 )<br />
+wmClampToEdge (端色引き延ばし。wrapModeHorizontal/wrapModeVerticalプロパティに設定します。2の累乗サイズでない場合はこの定数でなければなりません(default)。 )<br />
 wmMirror (ミラー繰り返し。wrapModeHorizontal/wrapModeVerticalプロパティに設定します。 )<br />
 wmRepeat (繰り返し。wrapModeHorizontal/wrapModeVerticalプロパティに設定します。 )<br />
 </dd>

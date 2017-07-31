@@ -6,9 +6,9 @@
 </head>
 <body>
 <h1><a name="top" id="top">VertexBinder</a></h1>
-<div class="para"><p>VertexBufferとシェーダーに入力する頂点情報を関連付けるためのクラスです。<br />
+<div class="para"><p>VertexBinderはVertexBufferとシェーダーに入力する頂点情報を関連付けるためのクラスです。<br />
 ShaderProgramのプロパティにはこのクラスのインスタンスを設定します。<br />
-ShaderProgramに設定されたVertexBinderは、シェーダーへ頂点情報として渡されます。</p>
+ShaderProgramに設定されたVertexBinderは、Canvs.drawMeshで呼び出された時シェーダーへ頂点情報として渡されます。</p>
 </div>
 <h1>メンバ</h1><div class="para">
 <dl>
@@ -22,7 +22,7 @@ ShaderProgramに設定されたVertexBinderは、シェーダーへ頂点情報�
 <dt>プロパティ</dt>
 <dd>
 <a class="jump" href="prop_VertexBinder_componentCount.html">componentCount</a> (頂点要素数 (1～4) )<br />
-<a class="jump" href="prop_VertexBinder_normalize.html">normalize</a> (正規化するかどうか。trueの場合、非float型の時[-1.0～0.0～1.0]の間に正規化されシェーダーに送られる )<br />
+<a class="jump" href="prop_VertexBinder_normalize.html">normalize</a> (正規化するかどうか )<br />
 <a class="jump" href="prop_VertexBinder_offset.html">offset</a> (頂点バッファオフセット(バイト数) )<br />
 <a class="jump" href="prop_VertexBinder_stride.html">stride</a> (頂点ごとのストライド(バイト数) )<br />
 <a class="jump" href="prop_VertexBinder_vertexBuffer.html">vertexBuffer</a> (頂点バッファ(VertexBufferクラス readonly) )<br />

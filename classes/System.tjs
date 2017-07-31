@@ -65,16 +65,17 @@ class System {
 	function getTickCount( );
 
 	/**
-	 * キー状態の取得
+	 * [Windows*]キー状態の取得
 	 *
 	 * @param code 状態を取得する仮想キーコード  を指定します。
 	 * @return キーが押されていれば真、押されていなければ偽になります。
 	 * @description code で指定したキーコードに対応するキーが、このメソッドを呼んだ時点で押されているかどうかを取得します。
+	 * Android場合常にfalseが返ります。
 	 */
 	function getKeyState( code);
 
 	/**
-	 * [Windows]ファイル/プログラムの実行
+	 * [Windows*]ファイル/プログラムの実行
 	 *
 	 * @param target 実行するファイルやソフトウェアを指定します。
 	 * ファイルを指定された場合は、それに関連づけられたプログラムが起動します。
@@ -82,11 +83,12 @@ class System {
 	 * target 引数にファイルを指定した場合はこの引数を省略するか、あるいは空文字列を指定してください。
 	 * @return 実行に成功すれば真、失敗すれば偽が返ります。
 	 * @description target で指定したファイルやソフトウェアを実行します。
+	 * Androidでは何も起こりません。
 	 */
 	function shellExecute( target, param="");
 
 	/**
-	 * [Windows]レジストリの読み込み
+	 * [Windows+]レジストリの読み込み
 	 *
 	 * @param key 読み込むレジストリキーを指定します。
 	 * @return 実行に成功すればレジストリの値、失敗すれば void が返ります。
@@ -125,7 +127,7 @@ class System {
 	 * 値の設定には十分気をつけてください。
 	 * @see System.getArgument
 	 */
-	function setArgument( name, value);
+	function setArgument( name, value );
 
 	/**
 	 * 色定数の実際の色の取得
@@ -135,10 +137,10 @@ class System {
 	 * @return 指定された色定数が表す実際の色が 0xRRGGBB 形式で返ります。
 	 * @description 色定数を実際の色に変換し、0xRRGGBB 形式で返します。
 	 */
-	function toActualColor( color);
+	function toActualColor( color );
 
 	/**
-	 * [Windows]二重起動のチェック
+	 * [Windows+]二重起動のチェック
 	 *
 	 * @param key チェックを行うためのキー文字列を指定します。同じキー文字列をほかの実行中の吉里吉里がこのメソッドに指定していた場合、false が戻ります。
 	 * キー文字列には基本的には TJS の変数の命名規則と同じ文字のみが使えると考えてください。
@@ -147,7 +149,7 @@ class System {
 	 * @description 他に同じキー文字列を指定された吉里吉里が実行中ならば false、そうでなければ true が戻ります。
 	 * 二重起動の防止に用います。
 	 */
-	function createAppLock( key);
+	function createAppLock( key );
 
 	/**
 	 * UUID 文字列の生成
@@ -157,7 +159,7 @@ class System {
 	 * 吉里吉里に実装されている UUID 生成アルゴリズムは、ある程度、環境ノイズを拾ってランダムビット列を生成しますが、高度なセキュリティが要求されるような用途に使用することはおすすめしません。
 	 * しかし、他の UUID とは「非常に非常に高い確率で重ならない」と考えられます。
 	 */
-	function createUUID( );
+	function createUUID();
 
 	/**
 	 * メッセージ割り当ての変更
@@ -219,19 +221,24 @@ class System {
 	function touchImages( storages, limitbytes=0, timeout=0);
 
 	/**
-	 * [Windows]aboutダイアログの表示(1.1.0以降)
+	 * [Windows+]aboutダイアログの表示
 	 *
 	 * @description aboutダイアログを表示します。
 	 */
-	function showVersion( );
+	function showVersion();
 
 	/**
-	 * ヒープ情報ダンプ(1.1.0以降)
+	 * [Windows+]ヒープ情報ダンプ
 	 *
 	 * @description ヒープの情報をコンソールに出力します。
 	 */
-	function dumpHeap( );
+	function dumpHeap();
 
+	/**
+	 * nullポインターアクセスを発生させます
+	 * @description 呼ばないでください。
+	 */
+	function nullpo();
 	/**
 	 * バージョン文字列
 	 *
@@ -280,7 +287,7 @@ class System {
 	 *
 	 * @description 吉里吉里が動作しているプラットフォーム名を表します。
 	 * Windows の場合は OS が 32bit 版の時 'Win32' 、64bit 版の時  'Win64' となります。
-	 * 1.3.0 以前の場合は、常に 'Win32' となります。
+	 * Android の場合は Android となります。
 	 */
 	 property platformName {
 		 getter() { return value; }
@@ -298,8 +305,10 @@ class System {
 	 *
 	 * @description 吉里吉里本体が設置してあるパスを表します。
 	 * パス名は統一ストレージ名で表現されます。
+	 * AndroidではpackageCodePathのフォルダ名です。
 	 * @see System.appDataPath
 	 * @see System.personalPath
+	 * @see System.packageCodePath
 	 */
 	 property exePath {
 		 getter() { return value; }
@@ -326,8 +335,10 @@ class System {
 	 * これは、通常、以下の通りになります。
 	 * XP の場合C:\Documents and Settings\<ユーザ名>\Application Data\ ( C: の部分は環境によって異なります )
 	 * Vista, 7, 8 の場合C:\Users\<ユーザ名>\AppData\Roaming ( C: の部分は環境によって異なります )何らかの理由で レジストリキー ( 上記参照 ) を読み出せなかった場合吉里吉里の実行可能ファイルのあるフォルダ (System.exePath)になります
+	 * AndroidではfilesDirと同じです。
 	 * @see System.exePath
 	 * @see System.personalPath
+	 * @see System.filesDir
 	 */
 	 property appDataPath {
 		 getter() { return value; }
@@ -338,6 +349,8 @@ class System {
 	 * @description コマンドラインオプションの -datapath で指定したディレクトリを表します。
 	 * 標準では、ログなどがすべてここに出力されます。
 	 * ユーザスクリプトがデータを保存する場合は、ここに保存することを推奨します。
+	 * AndroidではexternalFilesDirが設定されています。
+	 * @see System.externalFilesDir
 	 */
 	 property dataPath {
 		 getter() { return value; }
@@ -347,6 +360,8 @@ class System {
 	 *
 	 * @description 吉里吉里本体へのパス名を表します。
 	 * パス名は統一ストレージ名で表現されます。
+	 * AndroidではpackageCodePathと同じです。
+	 * @see System.packageCodePath
 	 */
 	 property exeName {
 		 getter() { return value; }
@@ -357,6 +372,7 @@ class System {
 	 * @description メインウィンドウのタイトルを文字列で表します。
 	 * 値を設定することもできます。
 	 * @see Window.caption
+	 * AndroidではActivityのタイトルに設定されますが、フルスクリーン状態では非表示のため表示されません。
 	 */
 	 property title {
 		 getter() { return value; }
@@ -398,6 +414,7 @@ class System {
 	 * @description デスクトップ ( ウィンドウを表示可能な領域 ) の左端位置をピクセル単位で表します。
 	 * 値はメインウィンドウのあるディスプレイを対象としたものです。
 	 * メインウィンドウがない場合はプライマリーディスプレイが対象となります。
+	 * Androidでは常に0です。
 	 * @see System.screenWidth
 	 * @see System.screenHeight
 	 * @see System.desktopTop
@@ -413,6 +430,7 @@ class System {
 	 * @description デスクトップ ( ウィンドウを表示可能な領域 ) の上端位置をピクセル単位で表します。
 	 * 値はメインウィンドウのあるディスプレイを対象としたものです。
 	 * メインウィンドウがない場合はプライマリーディスプレイが対象となります。
+	 * Androidでは常に0です。
 	 * @see System.screenWidth
 	 * @see System.screenHeight
 	 * @see System.desktopLeft
@@ -428,6 +446,7 @@ class System {
 	 * @description デスクトップ ( ウィンドウを表示可能な領域 ) の幅をピクセル単位で表します。
 	 * 値はメインウィンドウのあるディスプレイを対象としたものです。
 	 * メインウィンドウがない場合はプライマリーディスプレイが対象となります。
+	 * Androidでは画面幅です。
 	 * @see System.screenWidth
 	 * @see System.screenHeight
 	 * @see System.desktopLeft
@@ -443,6 +462,7 @@ class System {
 	 * @description デスクトップ ( ウィンドウを表示可能な領域 ) の高さをピクセル単位で表します。
 	 * 値はメインウィンドウのあるディスプレイを対象としたものです。
 	 * メインウィンドウがない場合はプライマリーディスプレイが対象となります。
+	 * Androidでは画面幅高さ。
 	 * @see System.screenWidth
 	 * @see System.screenHeight
 	 * @see System.desktopLeft

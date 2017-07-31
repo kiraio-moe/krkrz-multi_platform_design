@@ -6,7 +6,15 @@
 </head>
 <body>
 <h1><a name="top" id="top">Window</a></h1>
-<div class="para"></div>
+<div class="para"><p>Window クラスは、ウィンドウを管理するためのクラスです。<br />
+ウインドウのサイズ制御はWindowsでのみ可能です。<br />
+Androidでは画面サイズに依存します。<br />
+Offscreenクラスをレンダリングしたいサイズで生成し、そこに通常の描画を行います。<br />
+ウインドウ(画面)サイズに応じた拡大等はスクリプトで制御します。<br />
+UIや文字などを等倍で綺麗に表示することもスクリプトで可能となります。</p>
+
+<p>AndroidがサポートしていないイベントはAndroidでは発生しません。</p>
+</div>
 <h1>メンバ</h1><div class="para">
 <dl>
 <dt>コンストラクタ</dt>
@@ -16,94 +24,94 @@
 <dt>メソッド</dt>
 <dd>
 <a class="jump" href="func_Window_add.html">add</a> (管理オブジェクトの追加 )<br />
-<a class="jump" href="func_Window_bringToFront.html">bringToFront</a> ([Windows]ウィンドウを最前面に移動 )<br />
+<a class="jump" href="func_Window_bringToFront.html">bringToFront</a> ([Windows*]ウィンドウを最前面に移動 )<br />
 <a class="jump" href="func_Window_close.html">close</a> (ウィンドウを閉じる )<br />
-<a class="jump" href="func_Window_getMouseVelocity.html">getMouseVelocity</a> ([Windows]マウス座標移動速度の取得(1.1.0以降) )<br />
+<a class="jump" href="func_Window_getMouseVelocity.html">getMouseVelocity</a> ([Windows*]マウス座標移動速度の取得 )<br />
 <a class="jump" href="func_Window_getTouchPoint.html">getTouchPoint</a> (タッチ座標の取得 )<br />
-<a class="jump" href="func_Window_getTouchVelocity.html">getTouchVelocity</a> (タッチ座標移動速度の取得(1.1.0以降) )<br />
-<a class="jump" href="func_Window_hideMouseCursor.html">hideMouseCursor</a> ([Windows]マウスカーソルを一時的に隠す )<br />
+<a class="jump" href="func_Window_getTouchVelocity.html">getTouchVelocity</a> (タッチ座標移動速度の取得 )<br />
+<a class="jump" href="func_Window_hideMouseCursor.html">hideMouseCursor</a> ([Windows*]マウスカーソルを一時的に隠す )<br />
 <a class="jump" href="func_Window_postInputEvent.html">postInputEvent</a> (入力イベントの生成 )<br />
-<a class="jump" href="func_Window_registerMessageReceiver.html">registerMessageReceiver</a> ([Windows]メッセージ受信関数の登録/登録削除 )<br />
+<a class="jump" href="func_Window_registerMessageReceiver.html">registerMessageReceiver</a> ([Windows+]メッセージ受信関数の登録/登録削除 )<br />
 <a class="jump" href="func_Window_remove.html">remove</a> (管理オブジェクトの削除 )<br />
-<a class="jump" href="func_Window_removeMaskRegion.html">removeMaskRegion</a> ([Windows]ウィンドウリージョンの解除 )<br />
-<a class="jump" href="func_Window_resetMouseVelocity.html">resetMouseVelocity</a> ([Windows]マウス座標移動速度計測のリセット(1.1.0以降) )<br />
-<a class="jump" href="func_Window_setInnerSize.html">setInnerSize</a> ([Windows]クライアントサイズの設定 )<br />
-<a class="jump" href="func_Window_setMaskRegion.html">setMaskRegion</a> ([Windows]ウィンドウリージョンをマスクに従って設定 )<br />
-<a class="jump" href="func_Window_setMaxSize.html">setMaxSize</a> ([Windows]ウィンドウの最大サイズの設定 )<br />
-<a class="jump" href="func_Window_setMinSize.html">setMinSize</a> ([Windows]ウィンドウの最小サイズの設定 )<br />
-<a class="jump" href="func_Window_setPos.html">setPos</a> ([Windows]ウィンドウ位置の設定 )<br />
-<a class="jump" href="func_Window_setSize.html">setSize</a> ([Windows]ウィンドウサイズの設定 )<br />
-<a class="jump" href="func_Window_setZoom.html">setZoom</a> ([Windows]レイヤ拡大倍率の設定 )<br />
-<a class="jump" href="func_Window_showModal.html">showModal</a> ([Windows]モーダルでウィンドウを表示 )<br />
+<a class="jump" href="func_Window_removeMaskRegion.html">removeMaskRegion</a> ([Windows+]ウィンドウリージョンの解除 )<br />
+<a class="jump" href="func_Window_resetMouseVelocity.html">resetMouseVelocity</a> ([Windows*]マウス座標移動速度計測のリセット )<br />
+<a class="jump" href="func_Window_setInnerSize.html">setInnerSize</a> ([Windows*]クライアントサイズの設定 )<br />
+<a class="jump" href="func_Window_setMaskRegion.html">setMaskRegion</a> ([Windows+]ウィンドウリージョンをマスクに従って設定 )<br />
+<a class="jump" href="func_Window_setMaxSize.html">setMaxSize</a> ([Windows*]ウィンドウの最大サイズの設定 )<br />
+<a class="jump" href="func_Window_setMinSize.html">setMinSize</a> ([Windows*]ウィンドウの最小サイズの設定 )<br />
+<a class="jump" href="func_Window_setPos.html">setPos</a> ([Windows*]ウィンドウ位置の設定 )<br />
+<a class="jump" href="func_Window_setSize.html">setSize</a> ([Windows*]ウィンドウサイズの設定 )<br />
+<a class="jump" href="func_Window_setZoom.html">setZoom</a> ([Windows*]レイヤ拡大倍率の設定 )<br />
+<a class="jump" href="func_Window_showModal.html">showModal</a> ([Windows+]モーダルでウィンドウを表示 )<br />
 <a class="jump" href="func_Window_startDrawing.html">startDrawing</a> (明示的に描画を呼び出す。 )<br />
-<a class="jump" href="func_Window_update.html">update</a> ([Windows]ウィンドウ内容の強制的な描画 )<br />
+<a class="jump" href="func_Window_update.html">update</a> ([Windows*]ウィンドウ内容の強制的な描画 )<br />
 </dd>
 <dt>プロパティ</dt>
 <dd>
-<a class="jump" href="prop_Window_borderStyle.html">borderStyle</a> ([Windows]ウィンドウ外見 )<br />
-<a class="jump" href="prop_Window_canvas.html">canvas</a> (描画用のCanvasクラスのインスタンスを得る )<br />
+<a class="jump" href="prop_Window_borderStyle.html">borderStyle</a> ([Windows*]ウィンドウ外見 )<br />
+<a class="jump" href="prop_Window_canvas.html">canvas</a> (描画用の Canvas クラスのインスタンスを得る )<br />
 <a class="jump" href="prop_Window_caption.html">caption</a> (ウィンドウのキャプション )<br />
-<a class="jump" href="prop_Window_displayOrientation.html">displayOrientation</a> (ディスプレイの向き(1.1.0以降) )<br />
-<a class="jump" href="prop_Window_displayRotate.html">displayRotate</a> (ディスプレイの回転角度(1.1.0以降) )<br />
+<a class="jump" href="prop_Window_displayOrientation.html">displayOrientation</a> (ディスプレイの向き )<br />
+<a class="jump" href="prop_Window_displayRotate.html">displayRotate</a> (ディスプレイの回転角度 )<br />
 <a class="jump" href="prop_Window_drawCycle.html">drawCycle</a> (指定サイクルで描画を行う )<br />
-<a class="jump" href="prop_Window_drawDevice.html">drawDevice</a> ([Windows]描画デバイス )<br />
+<a class="jump" href="prop_Window_drawDevice.html">drawDevice</a> ([Windows+]描画デバイス )<br />
 <a class="jump" href="prop_Window_enableTouch.html">enableTouch</a> (タッチイベント有効/無効 )<br />
-<a class="jump" href="prop_Window_focusable.html">focusable</a> (フォーカスを取得可能か )<br />
-<a class="jump" href="prop_Window_focusedLayer.html">focusedLayer</a> ([Windows]フォーカスを持っているレイヤオブジェクト )<br />
-<a class="jump" href="prop_Window_fullScreen.html">fullScreen</a> ([Windows]フルスクリーンかどうか )<br />
+<a class="jump" href="prop_Window_focusable.html">focusable</a> ([Windows*]フォーカスを取得可能か )<br />
+<a class="jump" href="prop_Window_focusedLayer.html">focusedLayer</a> ([Windows+]フォーカスを持っているレイヤオブジェクト )<br />
+<a class="jump" href="prop_Window_fullScreen.html">fullScreen</a> ([Windows*]フルスクリーンかどうか )<br />
 <a class="jump" href="prop_Window_height.html">height</a> (ウィンドウの縦幅 )<br />
-<a class="jump" href="prop_Window_hintDelay.html">hintDelay</a> ([Windows]ヒント表示待ち時間 )<br />
-<a class="jump" href="prop_Window_HWND.html">HWND</a> ([Windows]ウィンドウハンドル )<br />
-<a class="jump" href="prop_Window_imeMode.html">imeMode</a> ([Windows]デフォルトのIMEモード )<br />
+<a class="jump" href="prop_Window_hintDelay.html">hintDelay</a> ([Windows*]ヒント表示待ち時間 )<br />
+<a class="jump" href="prop_Window_HWND.html">HWND</a> ([Windows+]ウィンドウハンドル )<br />
+<a class="jump" href="prop_Window_imeMode.html">imeMode</a> ([Windows*]デフォルトのIMEモード )<br />
 <a class="jump" href="prop_Window_innerHeight.html">innerHeight</a> (クライアント領域の縦幅 )<br />
 <a class="jump" href="prop_Window_innerWidth.html">innerWidth</a> (クライアント領域の横幅 )<br />
-<a class="jump" href="prop_Window_left.html">left</a> ([Windows]ウィンドウの左端位置 )<br />
+<a class="jump" href="prop_Window_left.html">left</a> ([Windows*]ウィンドウの左端位置 )<br />
 <a class="jump" href="prop_Window_mainWindow.html">mainWindow</a> (メインウィンドウ )<br />
-<a class="jump" href="prop_Window_maxHeight.html">maxHeight</a> ([Windows]ウィンドウの最大の縦幅 )<br />
-<a class="jump" href="prop_Window_maxWidth.html">maxWidth</a> ([Windows]ウィンドウの最大の横幅 )<br />
-<a class="jump" href="prop_Window_minHeight.html">minHeight</a> ([Windows]ウィンドウの最小の縦幅 )<br />
-<a class="jump" href="prop_Window_minWidth.html">minWidth</a> ([Windows]ウィンドウの最小の横幅 )<br />
-<a class="jump" href="prop_Window_mouseCursorState.html">mouseCursorState</a> ([Windows]マウスカーソル表示状態 )<br />
-<a class="jump" href="prop_Window_primaryLayer.html">primaryLayer</a> ([Windows]プライマリレイヤオブジェクト )<br />
-<a class="jump" href="prop_Window_stayOnTop.html">stayOnTop</a> ([Windows]常に最上位に表示するかどうか )<br />
-<a class="jump" href="prop_Window_top.html">top</a> ([Windows]ウィンドウの上端位置 )<br />
+<a class="jump" href="prop_Window_maxHeight.html">maxHeight</a> ([Windows*]ウィンドウの最大の縦幅 )<br />
+<a class="jump" href="prop_Window_maxWidth.html">maxWidth</a> ([Windows*]ウィンドウの最大の横幅 )<br />
+<a class="jump" href="prop_Window_minHeight.html">minHeight</a> ([Windows*]ウィンドウの最小の縦幅 )<br />
+<a class="jump" href="prop_Window_minWidth.html">minWidth</a> ([Windows*]ウィンドウの最小の横幅 )<br />
+<a class="jump" href="prop_Window_mouseCursorState.html">mouseCursorState</a> ([Windows*]マウスカーソル表示状態 )<br />
+<a class="jump" href="prop_Window_primaryLayer.html">primaryLayer</a> ([Windows+]プライマリレイヤオブジェクト )<br />
+<a class="jump" href="prop_Window_stayOnTop.html">stayOnTop</a> ([Windows*]常に最上位に表示するかどうか )<br />
+<a class="jump" href="prop_Window_top.html">top</a> ([Windows*]ウィンドウの上端位置 )<br />
 <a class="jump" href="prop_Window_touchPointCount.html">touchPointCount</a> (タッチ数 )<br />
 <a class="jump" href="prop_Window_touchRotateThreshold.html">touchRotateThreshold</a> (マルチタッチ回転閾値 )<br />
 <a class="jump" href="prop_Window_touchScaleThreshold.html">touchScaleThreshold</a> (マルチタッチ拡大閾値 )<br />
-<a class="jump" href="prop_Window_trapKey.html">trapKey</a> ([Windows]キー入力をトラップするか )<br />
-<a class="jump" href="prop_Window_useMouseKey.html">useMouseKey</a> ([Windows]マウスキーを使用するかどうか )<br />
-<a class="jump" href="prop_Window_visible.html">visible</a> ([Windows]ウィンドウが表示されているかどうか )<br />
+<a class="jump" href="prop_Window_trapKey.html">trapKey</a> ([Windows*]キー入力をトラップするか )<br />
+<a class="jump" href="prop_Window_useMouseKey.html">useMouseKey</a> ([Windows*]マウスキーを使用するかどうか )<br />
+<a class="jump" href="prop_Window_visible.html">visible</a> ([Windows*]ウィンドウが表示されているかどうか )<br />
 <a class="jump" href="prop_Window_waitVSync.html">waitVSync</a> (垂直同期待ち )<br />
 <a class="jump" href="prop_Window_width.html">width</a> (ウィンドウの横幅 )<br />
-<a class="jump" href="prop_Window_zoomDenom.html">zoomDenom</a> ([Windows]レイヤ拡大倍率(分母) )<br />
-<a class="jump" href="prop_Window_zoomNumer.html">zoomNumer</a> ([Windows]レイヤ拡大倍率(分子) )<br />
+<a class="jump" href="prop_Window_zoomDenom.html">zoomDenom</a> ([Windows*]レイヤ拡大倍率(分母) )<br />
+<a class="jump" href="prop_Window_zoomNumer.html">zoomNumer</a> ([Windows*]レイヤ拡大倍率(分子) )<br />
 </dd>
 <dt>イベント</dt>
 <dd>
 <a class="jump" href="event_Window_onActivate.html">onActivate</a> (ウィンドウがアクティブになったとき )<br />
-<a class="jump" href="event_Window_onClick.html">onClick</a> ([Windows]ウィンドウがクリックされた )<br />
-<a class="jump" href="event_Window_onCloseQuery.html">onCloseQuery</a> ([Windows]ウィンドウを閉じる確認 )<br />
+<a class="jump" href="event_Window_onClick.html">onClick</a> ([Windows*]ウィンドウがクリックされた )<br />
+<a class="jump" href="event_Window_onCloseQuery.html">onCloseQuery</a> ([Windows*]ウィンドウを閉じる確認 )<br />
 <a class="jump" href="event_Window_onDeactivate.html">onDeactivate</a> (ウィンドウが非アクティブになったとき )<br />
-<a class="jump" href="event_Window_onDisplayRotate.html">onDisplayRotate</a> (画面が回転されたとき(1.1.0以降) )<br />
-<a class="jump" href="event_Window_onDoubleClick.html">onDoubleClick</a> ([Windows]ウィンドウがダブルクリックされた )<br />
+<a class="jump" href="event_Window_onDisplayRotate.html">onDisplayRotate</a> (画面が回転されたとき )<br />
+<a class="jump" href="event_Window_onDoubleClick.html">onDoubleClick</a> ([Windows*]ウィンドウがダブルクリックされた )<br />
 <a class="jump" href="event_Window_onDraw.html">onDraw</a> (画面更新コールバックイベント )<br />
-<a class="jump" href="event_Window_onFileDrop.html">onFileDrop</a> ([Windows]ファイルがドロップされた )<br />
-<a class="jump" href="event_Window_onHintChanged.html">onHintChanged</a> ([Windows]ヒントの状態が変化したとき )<br />
+<a class="jump" href="event_Window_onFileDrop.html">onFileDrop</a> ([Windows*]ファイルがドロップされた )<br />
+<a class="jump" href="event_Window_onHintChanged.html">onHintChanged</a> ([Windows*]ヒントの状態が変化したとき )<br />
 <a class="jump" href="event_Window_onKeyDown.html">onKeyDown</a> (キーが押された )<br />
-<a class="jump" href="event_Window_onKeyPress.html">onKeyPress</a> (文字が入力された )<br />
+<a class="jump" href="event_Window_onKeyPress.html">onKeyPress</a> ([Windows*]文字が入力された )<br />
 <a class="jump" href="event_Window_onKeyUp.html">onKeyUp</a> (キーが離された )<br />
-<a class="jump" href="event_Window_onMouseDown.html">onMouseDown</a> ([Windows]マウスのボタンが押された )<br />
-<a class="jump" href="event_Window_onMouseEnter.html">onMouseEnter</a> ([Windows]マウスが入ってきた )<br />
-<a class="jump" href="event_Window_onMouseLeave.html">onMouseLeave</a> ([Windows]マウスが出ていった )<br />
-<a class="jump" href="event_Window_onMouseMove.html">onMouseMove</a> ([Windows]マウスが移動した )<br />
-<a class="jump" href="event_Window_onMouseUp.html">onMouseUp</a> ([Windows]マウスのボタンが離された )<br />
-<a class="jump" href="event_Window_onMouseWheel.html">onMouseWheel</a> ([Windows]マウスホイールが回転した )<br />
+<a class="jump" href="event_Window_onMouseDown.html">onMouseDown</a> ([Windows*]マウスのボタンが押された )<br />
+<a class="jump" href="event_Window_onMouseEnter.html">onMouseEnter</a> ([Windows*]マウスが入ってきた )<br />
+<a class="jump" href="event_Window_onMouseLeave.html">onMouseLeave</a> ([Windows*]マウスが出ていった )<br />
+<a class="jump" href="event_Window_onMouseMove.html">onMouseMove</a> ([Windows*]マウスが移動した )<br />
+<a class="jump" href="event_Window_onMouseUp.html">onMouseUp</a> ([Windows*]マウスのボタンが離された )<br />
+<a class="jump" href="event_Window_onMouseWheel.html">onMouseWheel</a> ([Windows*]マウスホイールが回転した )<br />
 <a class="jump" href="event_Window_onMultiTouch.html">onMultiTouch</a> (マルチタッチ状態が変化した )<br />
 <a class="jump" href="event_Window_onPointerDown.html">onPointerDown</a> (何らかのポインティングデバイスで押下された )<br />
 <a class="jump" href="event_Window_onPointerMove.html">onPointerMove</a> (何らかのポインティングデバイスが移動された )<br />
 <a class="jump" href="event_Window_onPointerUp.html">onPointerUp</a> (何らかのポインティングデバイスが離された )<br />
-<a class="jump" href="event_Window_onPopupHide.html">onPopupHide</a> ([Windows]ポップアップウィンドウを閉じる )<br />
-<a class="jump" href="event_Window_onResize.html">onResize</a> (ウィンドウのサイズが変化した )<br />
+<a class="jump" href="event_Window_onPopupHide.html">onPopupHide</a> ([Windows*]ポップアップウィンドウを閉じる )<br />
+<a class="jump" href="event_Window_onResize.html">onResize</a> ([Windows*]ウィンドウのサイズが変化した )<br />
 <a class="jump" href="event_Window_onTouchDown.html">onTouchDown</a> (画面がタッチされた )<br />
 <a class="jump" href="event_Window_onTouchMove.html">onTouchMove</a> (指が移動した )<br />
 <a class="jump" href="event_Window_onTouchRotate.html">onTouchRotate</a> (回転操作した )<br />

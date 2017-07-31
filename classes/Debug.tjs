@@ -49,7 +49,7 @@ class Debug {
 	 * @see Debug.logToFileOnError
 	 * @see Debug.clearLogFileOnError
 	 */
-	function logAsError( );
+	function logAsError();
 
 	/**
 	 * ログハンドラを追加します

@@ -2,13 +2,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>setSegmentLoop - [Windows]フレーム間ループの設定</title>
+<title>setSegmentLoop - [Windows*]フレーム間ループの設定</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">VideoOverlay.setSegmentLoop</a></span></h1><div class="para">
 <dl>
 <dt>機能/意味</dt>
-<dd><p>[Windows]フレーム間ループの設定</p>
+<dd><p>[Windows*]フレーム間ループの設定</p>
 </dd>
 <dt>タイプ</dt>
 <dd><a class="jump" href="class_VideoOverlay.html">VideoOverlayクラス</a>のメソッド</dd>
@@ -34,7 +34,11 @@ comeFrameのフレームにはムービーファイルにキーフレームを�
 設定されていない場合は、ループ終点から始点へ移動時に指定されたフレームに最も近いキーフレームへ再生位置が移動することになります。</p>
 </dd>
 <dt>参照</dt>
-<dd><p>VideoOverlay.segmentLoopEndFrame</p>
+<dd>
+<a class="jump" href="func_VideoOverlay_cancelSegmentLoop.html">VideoOverlay.cancelSegmentLoop</a><br />
+<a class="jump" href="event_VideoOverlay_onPeriod.html">VideoOverlay.onPeriod</a><br />
+<a class="jump" href="prop_VideoOverlay_segmentLoopStartFrame.html">VideoOverlay.segmentLoopStartFrame</a><br />
+<a class="jump" href="prop_VideoOverlay_segmentLoopEndFrame.html">VideoOverlay.segmentLoopEndFrame</a><br />
 </dd>
 </dl>
 </div>

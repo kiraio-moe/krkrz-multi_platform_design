@@ -12,13 +12,17 @@
 <dt>タイプ</dt>
 <dd><a class="jump" href="class_Layer.html">Layerクラス</a>のプロパティ</dd>
 <dt>説明</dt>
-<dd><p>領域画像 ( 領域の情報を含む 8bpp のビットマップ ) の画像バッファのピッチ<br />
-( 一つ下のスキャンラインまでのバイト数 ) を表します。このプロパティは、プラグインなどのために画像バッファへの直接のアクセスの手段を提供する<br />
-ためにあります。tjs<em>uint8 が 8bit (1byte) の整数型として、画像位置 (x, y) への<br />
-ポインタは C 言語で書くと以下のように計算することができます。(tjs</em>uint8<em>)provinceImageBuffer + y</em>provinceImageBufferPitch + xこのプロパティの数値は画像横幅ぴったりに必要なバイト数よりも若干大きい場合があります。このプロパティは値が負になり得ますので注意してください。</p>
+<dd><p>領域画像 ( 領域の情報を含む 8bpp のビットマップ ) の画像バッファのピッチ( 一つ下のスキャンラインまでのバイト数 )を表します。<br />
+このプロパティは、プラグインなどのために画像バッファへの直接のアクセスの手段を提供するためにあります。<br />
+tjs<em>uint8 が 8bit (1byte) の整数型として、画像位置 (x, y) へのポインタは C 言語で書くと以下のように計算することができます。<br />
+(tjs</em>uint8<em>)provinceImageBuffer + y</em>provinceImageBufferPitch + x<br />
+このプロパティの数値は画像横幅ぴったりに必要なバイト数よりも若干大きい場合があります。<br />
+このプロパティは値が負になり得ますので注意してください。</p>
 </dd>
 <dt>参照</dt>
-<dd><p>Layer.provinceImageBufferForWrite</p>
+<dd>
+<a class="jump" href="prop_Layer_provinceImageBuffer.html">Layer.provinceImageBuffer</a><br />
+<a class="jump" href="prop_Layer_provinceImageBufferForWrite.html">Layer.provinceImageBufferForWrite</a><br />
 </dd>
 </dl>
 </div>

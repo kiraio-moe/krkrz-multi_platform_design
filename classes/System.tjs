@@ -753,5 +753,11 @@ class System {
 	 * @description Environment.isExternalStorageRemovable()で取得されるもの。
 	 */
 	property isExternalStorageRemovable;
+
+	/**
+	 * OpenGL ES のバージョン
+	 * @description 実際の値を100倍した数、つまり2.0なら200、3.0なら300が返ります。
+	 */
+	property openGLESVersion;
 };
 

@@ -1267,4 +1267,16 @@ class Window {
 	 * @description onDraw 内で使用します。
 	 */
 	property canvas;
+
+	/**
+	 * 画面密度(dpi)
+	 * @description dpi値を返します。
+	 * 読み取りのみ可能です。
+	 * Windowsの場合はGetDeviceCapsで得られる値です。
+	 * Androidはコンフィグの値で、画面サイズから何種類かの値が返されます。
+	 * 画面横からのスワイプインなどでの入力を除外する際、Androidでは(int)(20 * displayDensity + 0.5)を画面隅の範囲として認識しているため、同じようにtouchDownがこの範囲にある時はスワイプインとみなす必要があります。
+	 * Androidではフルスクリーン時右から以外のスワイプインは機能が割り当てられているため、スワイプインと判定された時は無視することを推奨します。
+	 * メニューを表示したい時は、右からのスワイプインをメニュー表示とするのがAndroidでは一般的です。
+	 */
+	property displayDensity;
 };

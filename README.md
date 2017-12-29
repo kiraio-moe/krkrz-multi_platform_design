@@ -33,7 +33,7 @@ Android Studioでビルド。
 [開発の進め方](development_plan.md)
 
 ### マルチプラットフォーム版への対応
-[吉里吉里Z マルチプラットフォーム版開発/移植時の注意点](cautionary_note.md)
+[吉里吉里Z マルチプラットフォーム版開発/移植時の注意点](https://krkrz.github.io/multi_platform_design/cautionary_note.html)
 
 ### その他マルチプラットフォーム化に関して
 プラットフォーム依存部分のスタブ作成と各種ライブラリでの実装(置き換え)で行うとPC上である程度開発できるので効率的に進められる。  

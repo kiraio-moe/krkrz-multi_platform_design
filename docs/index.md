@@ -13,7 +13,7 @@ Androidではなるべくハードウェア(GPU)を使用し快適に動作す�
 何も書かれていない場合は全プラットフォームで利用可能です。  
 [Windows+] : Windowsでのみ使用可能です。他の環境ではエラーとなります。  
 [Windows*] : Windowsでのみ使用可能ですが、他の環境で実行しても何も起こりません。  
-[Android+] : Androidでのみ使用可能です。他の環境ではエラーとなります。
+[Android+] : Androidでのみ使用可能です。他の環境ではエラーとなります。  
 [Android*] : Androidでのみ使用可能ですが、他の環境で実行しても何も起こりません。
 
 ## 対応プラットフォーム
@@ -34,3 +34,4 @@ Androidではなるべくハードウェア(GPU)を使用し快適に動作す�
 * [サウンド](https://krkrz.github.io/multi_platform_design/audio.html)
 * [シェーダーの使い方](https://krkrz.github.io/multi_platform_design/shader_program.html)
 * [KAGΣ(新描画APIサンプル実装)](https://github.com/krkrz/KAGSigma)
+* [移植時の注意点](https://krkrz.github.io/multi_platform_design/cautionary_note.html)

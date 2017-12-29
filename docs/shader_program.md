@@ -1,4 +1,7 @@
-# ShaderProgramクラス
+---
+layout: default
+title: ShaderProgramクラス
+---
 
 マルチプラットフォーム版ではShaderProgramクラスが追加される。  
 Android版では、OpenGL ES2.0/3.0で描画が行われ、Windows版ではDirectX11をバックエンドとしたANGLEで OpenGL ES3.0で描画される。  

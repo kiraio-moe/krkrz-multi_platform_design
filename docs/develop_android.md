@@ -1,4 +1,8 @@
-# 吉里吉里Z Android版のリリース
+---
+layout: default
+title: 吉里吉里Z Android版のリリース
+---
+
 Android版は開発用とパッケージ化用で分離しています。  
 開発用はAndroid5.0以降用で、起動時にフォルダを選択してそこにあるstartup.tjsから起動できます。  
 それに対してパッケージ化用のものはAsset内のstartup.tjsかdata.xp3から起動します。  

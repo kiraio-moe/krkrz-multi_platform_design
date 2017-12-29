@@ -48,10 +48,25 @@ class Dictionary {
 	 * + "o" に続いてオフセットを10進で指定するとファイルのそのバイト位置からの書き込みになります。
 	 * + "b"を指定するとバイナリ形式で保存されます(他のモード指定と併用は出来ません; これもそのまま load メソッドで読み込むことができます)。
 	 *
-	 * @return この Dictionary クラスのオブジェクト自身を返します。
+	 * @return 出力した Dictionary クラスのオブジェクトを返します。
 	 * @see Array.saveStruct
 	 */
 	function saveStruct( storage:string, mode:string=null ):Dictionary;
+
+	/**
+	 * ファイルから構造化されたデータの入力を行います
+	 * @description 構造化されたデータをファイルから辞書配列、もしくは配列として読み込みます。
+	 * テキスト形式、バイナリ形式の両方で読み込めます。
+	 * クラスメソッドです。
+	 * @param storage 読み込むファイル名
+	 * @param mode ファイルを読み込む際のモード文字列を指定します。
+	 *
+	 * + "o" に続いてオフセットを10進で指定するとファイルのそのバイト位置からの書き込みになります。
+	 *
+	 * @return 読み込んだ Dictionary か Array クラスのオブジェクトを返します。
+	 * @see Array.loadStruct
+	 */
+	function loadStruct( storage:string, mode:string=null ):Dictionary;
 
 	/**
 	 * 辞書配列をコピーします

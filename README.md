@@ -27,7 +27,7 @@ OSの違いによる避けがたい仕様を除く。
 
 ### 開発環境
 Visual Studioで完結するのが理想であるが、現状は困難との見通し。  
-Android Studioやコマンドライン(make)併用。
+Android Studioでビルド。
 
 ### 開発の進め方
 [開発の進め方](development_plan.md)

@@ -123,6 +123,19 @@ class Array {
 	function saveStruct( storage:string, mode:string=null ):Array;
 
 	/**
+	 * ファイルから構造化されたデータの入力を行います
+	 * @description 構造化されたデータをファイルから配列として読み込みます。
+	 * バイナリ形式で書き出されたファイルのみ対応しています。
+	 * @param storage 読み込むファイル名
+	 * @param mode ファイルを読み込む際のモード文字列を指定します。
+	 *
+	 * + "o" に続いてオフセットを10進で指定するとファイルのそのバイト位置からの書き込みになります。
+	 *
+	 * @return 読み込みに成功した場合、この Array クラスのオブジェクト自身を返します。
+	 */
+	function loadStruct( storage:string, mode:string=null ):Array;
+
+	/**
 	 * 配列をコピーします。
 	 * @description 引数で指定された他の配列の内容を、そっくりコピーします。
 	 * 辞書配列 (Dictionaryクラスのオブジェクト) をコピー元配列に指定した場合は、その辞書配列の各メンバが、名前、値の順に交互に現れる配列となります。

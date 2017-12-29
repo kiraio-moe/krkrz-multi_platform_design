@@ -19,7 +19,7 @@ Windowsに加えてAndroidでも動作するようにしたバージョンです
 * [Windows] Windowsで使用可能、その他環境では動作不定。
 * [Android+] Androidで使用可能、その他環境では例外や動作不定などがあるので使用禁止。
 * [Android*] Androidで使用可能、その他環境では何も起こらない。
-* [Android] Windowsで使用可能、その他環境では動作不定。
+* [Android] Androidで使用可能、その他環境では動作不定。
 
 System.isWindowsやSystem.isAndroidプロパティを用いることで動的にどちらの環境か判定することができます。
 静的に判定する場合は、プリプロセッサを用います。

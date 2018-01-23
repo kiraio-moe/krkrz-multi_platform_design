@@ -205,6 +205,12 @@ class Canvas {
 	property enableClipRect;
 
 	/**
+	 * 表裏カリングを行うかどうかの設定
+	 * @description true の時は行う、false の時は行わない、デフォルトはfalse。
+	 */
+	property enableCulling;
+
+	/**
 	 * 描画をフラッシュする
 	 * @description 描画を反映したいrenderTargetを入れ替える場合などに使われます。
 	 * onDraw中にrenderTargetを入れ替えると、内部的にflushは呼ばれるので、明示的な呼び出しは不要です。

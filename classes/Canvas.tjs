@@ -105,8 +105,6 @@ class Canvas {
 	 * テクスチャはTextureクラスだけでなく、Offscreenクラスを指定しても問題ありません。
 	 * Offscreenクラスを指定する場合は、renderTargetからそのOffscreenクラスは外されていることが前提(循環しないように)です。
 	 * @param texture 描画に使用するテクスチャを指定します
-	 * @param texture2 描画に使用する2枚目のテクスチャを指定します
-	 * @param texture3 描画に使用する3枚目のテクスチャを指定します
 	 * @param shader 描画に使用するシェーダーを指定します
 	 */
 	function drawTexture( texture:Texture, shader:ShaderProgram );
@@ -118,7 +116,6 @@ class Canvas {
 	 * Offscreenクラスを指定する場合は、renderTargetからそのOffscreenクラスは外されていることが前提(循環しないように)です。
 	 * @param texture 描画に使用するテクスチャを指定します
 	 * @param texture2 描画に使用する2枚目のテクスチャを指定します
-	 * @param texture3 描画に使用する3枚目のテクスチャを指定します
 	 * @param shader 描画に使用するシェーダーを指定します
 	 */
 	function drawTexture( texture:Texture, texture2:Texture, shader:ShaderProgram );

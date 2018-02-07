@@ -51,6 +51,20 @@ class Storages {
 	function getPlacedPath( storage);
 
 	/**
+	 * ストレージの検索、拡張子指定版
+	 *
+	 * @param storage 検索したいストレージ名を指定します。
+	 * @param extlist 拡張子リスト。"|"で区切って拡張子を列挙する。例.".tlg|.png|.jpg|.bmp"
+	 * @return 発見された場所が統一ストレージ名で返ります。
+	 * 見つからなかった場合は空文字列が返ります。
+	 * @description storage で指定されたストレージを自動検索パスから検索します。
+	 * storageに拡張子が付いている場合は、拡張子を取り除いてからリストの拡張子が付与されます。
+	 * @see Storages.getFullPath
+	 * @see Storages.isExistentStorage
+	 */
+	function getPlacedPath( storage, extlist );
+
+	/**
 	 * ストレージの存在確認
 	 *
 	 * @param storage 存在を確認したいストレージ名を指定します。

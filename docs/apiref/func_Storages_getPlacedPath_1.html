@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>getPlacedPath - ストレージの検索、拡張子指定版</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Storages.getPlacedPath</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd><p>ストレージの検索、拡張子指定版</p>
+</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_Storages.html">Storagesクラス</a>のメソッド</dd>
+<dt>構文</dt>
+<dd><span class="funcdecl">getPlacedPath(<span class="arg">storage</span>, <span class="arg">extlist</span>)</span></dd>
+<dt>引数</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="getPlacedPathの引数">
+<tr><td valign="top"><span class="argname">storage</span></td>
+<td><p>検索したいストレージ名を指定します。</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">extlist</span></td>
+<td><p>拡張子リスト。"|"で区切って拡張子を列挙する。例.".tlg|.png|.jpg|.bmp"</p>
+</td></tr>
+</table></dd>
+<dt>戻り値</dt>
+<dd><p>発見された場所が統一ストレージ名で返ります。<br />
+見つからなかった場合は空文字列が返ります。</p>
+</dd>
+<dt>説明</dt>
+<dd><p>storage で指定されたストレージを自動検索パスから検索します。<br />
+storageに拡張子が付いている場合は、拡張子を取り除いてからリストの拡張子が付与されます。</p>
+</dd>
+<dt>参照</dt>
+<dd>
+<a class="jump" href="func_Storages_getFullPath.html">Storages.getFullPath</a><br />
+<a class="jump" href="func_Storages_isExistentStorage.html">Storages.isExistentStorage</a><br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

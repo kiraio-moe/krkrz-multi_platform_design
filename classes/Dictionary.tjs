@@ -92,4 +92,12 @@ class Dictionary {
 	 * @description 辞書配列の内容をすべて消去します。
 	 */
 	function clear();
+
+	/**
+	 * オブジェクトのメンバの数を返します。
+	 * @description オブジェクトのメンバの数を返します。対象は辞書配列以外でも機能します。
+	 * @param target メンバ数をカウントするオブジェクト
+	 * @return メンバの数
+	 */
+	function getCount( target:Dictionary ):int;
 };

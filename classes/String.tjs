@@ -149,4 +149,20 @@ class String {
 	 * @return count個、この文字列を繰り返した文字列を返します。
 	 */
 	function repeat(count):string;
+
+	/**
+	 * 文字列が指定された部分文字列で開始されているかどうかを返します
+	 * @description textで指定された部分文字列と文字列を先頭から比較して、部分文字列分の長さの範囲で一致しているかどうか判定します。
+	 * @param text 部分文字列
+	 * @return 指定文字列で始まっているかどうか
+	 */
+	function startsWith( text:string ):int;
+
+	/**
+	 * 文字列が指定された部分文字列で終了しているかどうかを返します
+	 * @description textで指定された部分文字列と文字列を末尾から比較して、部分文字列分の長さの範囲で一致しているかどうか判定します。
+	 * @param text 部分文字列
+	 * @return 指定文字列で始まっているかどうか
+	 */
+	function endsWith( text:string ):int;
 };

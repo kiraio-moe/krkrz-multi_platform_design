@@ -100,4 +100,21 @@ class Dictionary {
 	 * @return メンバの数
 	 */
 	function getCount( target:Dictionary ):int;
+
+	/**
+	 * オブジェクトのキーの配列を返します。
+	 * @description オブジェクトのキーの配列を返します。対象は辞書配列以外でも機能します。
+	 * 返された配列の順序はArray.assginと同じでソートはされていません。
+	 * @param target メンバ数をカウントするオブジェクト
+	 * @return キーの配列
+	 */
+	function keys( target:Dictionary ):Array;
+
+	/**
+	 * オブジェクトの値の配列を返します。
+	 * @description オブジェクトの値の配列を返します。対象は辞書配列以外でも機能します。
+	 * @param target メンバ数をカウントするオブジェクト
+	 * @return 値の配列
+	 */
+	function values( target:Dictionary ):Array;
 };

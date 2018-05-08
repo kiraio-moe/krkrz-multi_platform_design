@@ -22,7 +22,12 @@ count プロパティに値を代入しても配列のサイズを変えるこ�
 [ ] にはカンマで区切り、初期要素となる式を列挙します。<br />
 たとえば、<br />
 <code>var ar = ["a", "b", "c"];</code><br />
-と記述すれば、ar に、 "a" "b" "c" の要素が入った Array クラスのオブジェクトへの参照が代入されます。</p>
+と記述すれば、ar に、 "a" "b" "c" の要素が入った Array クラスのオブジェクトへの参照が代入されます。<br />
+また、Array クラスを生成する場合も [ ] を使うことができます。<br />
+<code>var ar = [];</code><br />
+と<br />
+<code>var ar = new Array();</code><br />
+は同じです。</p>
 </div>
 <h1>メンバ</h1><div class="para">
 <dl>
@@ -34,6 +39,7 @@ count プロパティに値を代入しても配列のサイズを変えるこ�
 <a class="jump" href="func_Array_clear.html">clear</a> (配列の要素をすべて削除します。 )<br />
 <a class="jump" href="func_Array_erase.html">erase</a> (指定された添え字の要素を削除します。 )<br />
 <a class="jump" href="func_Array_find.html">find</a> (指定された値が最初に現れる添え字を返します。 )<br />
+<a class="jump" href="func_Array_forEach.html">forEach</a> (引数の関数を、配列の各要素に対して実行します。 )<br />
 <a class="jump" href="func_Array_insert.html">insert</a> (指定された値を指定された位置に挿入します。 )<br />
 <a class="jump" href="func_Array_join.html">join</a> (配列を結合し、一つの文字列にします。 )<br />
 <a class="jump" href="func_Array_load.html">load</a> (配列をファイルから読み込みます。 )<br />
@@ -53,6 +59,7 @@ count プロパティに値を代入しても配列のサイズを変えるこ�
 <dt>プロパティ</dt>
 <dd>
 <a class="jump" href="prop_Array_count.html">count</a> (配列の大きさを表します。 )<br />
+<a class="jump" href="prop_Array_length.html">length</a> (配列の大きさを表します。countと同じです。 )<br />
 </dd>
 <dt>イベント</dt>
 <dd>

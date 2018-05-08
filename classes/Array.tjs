@@ -16,6 +16,11 @@
  * たとえば、
  * `var ar = ["a", "b", "c"];`
  * と記述すれば、ar に、 "a" "b" "c" の要素が入った Array クラスのオブジェクトへの参照が代入されます。
+ * また、Array クラスを生成する場合も [ ] を使うことができます。
+ * `var ar = [];`
+ * と
+ * `var ar = new Array();`
+ * は同じです。
  */
 class Array {
 
@@ -23,6 +28,11 @@ class Array {
 	 * 配列の大きさを表します。
 	 */
 	property count;
+
+	/**
+	 * 配列の大きさを表します。countと同じです。
+	 */
+	property length;
 
 	/**
 	 * 配列をファイルから読み込みます。
@@ -269,4 +279,15 @@ class Array {
 	 * + m : Base64 decode
 	 */
 	function pack(template:string);
+
+	/**
+	 * 引数の関数を、配列の各要素に対して実行します。
+	 * @description 配列の各要素に対して1回ずつ指定された関数を呼び出します。
+	 * 無名関数などコンテキストが null の場合は配列のコンテキストで呼び出されます。
+	 * 関数が値を返すと処理が中断され、その値をこの関数の返り値にします。
+	 * @param func 文字列の場合は配列要素のそのメソッドを、関数の場合は function( value, index, args* ) の形で呼び出されます。
+	 * @param args 呼び出す関数に渡す引数を任意の数指定します。なくても構いません。
+	 * @return 呼び出した関数が返した値
+	 */
+	function forEach( func, args ):variant;
 };

@@ -117,4 +117,15 @@ class Dictionary {
 	 * @return 値の配列
 	 */
 	function values( target:Dictionary ):Array;
+
+	/**
+	 * 辞書配列に指定された key が存在するか判定します。
+	 * @description 辞書に指定されたkey存在する場合はtrue、しない場合はfalseを返します。
+	 * コンテキストがある場合は target を省略できます。
+	 * in 演算子でも判定可能です。
+	 * @param target 存在を確認する辞書配列
+	 * @param key 存在を確認するキー
+	 * @return キーの有無
+	 */
+	function contains( target:Dictionary, key:string ):bool;
 };

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
+<title>forEach - 引数の関数を、引数の辞書配列の各要素に対して実行します。</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Dictionary.forEach</a></span></h1><div class="para">
+<dl>
+<dt>機能/意味</dt>
+<dd><p>引数の関数を、引数の辞書配列の各要素に対して実行します。</p>
+</dd>
+<dt>タイプ</dt>
+<dd><a class="jump" href="class_Dictionary.html">Dictionaryクラス</a>のメソッド</dd>
+<dt>構文</dt>
+<dd><span class="funcdecl">forEach(<span class="arg">target</span>:Dictionary, <span class="arg">func</span>, <span class="arg">args</span>) :variant</span></dd>
+<dt>引数</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="forEachの引数">
+<tr><td valign="top"><span class="argname">target</span></td>
+<td><p>辞書配列</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">func</span></td>
+<td><p>文字列の場合は配列要素のそのメソッドを、関数の場合は function( value, key, args* ) の形で呼び出されます。</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">args</span></td>
+<td><p>呼び出す関数に渡す引数を任意の数指定します。なくても構いません。</p>
+</td></tr>
+</table></dd>
+<dt>戻り値</dt>
+<dd><p>呼び出した関数が返した値</p>
+</dd>
+<dt>説明</dt>
+<dd><p>辞書配列の各要素に対して1回ずつ指定された関数を呼び出します。<br />
+無名関数などコンテキストが null の場合は辞書配列のコンテキストで呼び出されます。<br />
+関数が値を返すと処理が中断され、その値をこの関数の返り値にします。</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

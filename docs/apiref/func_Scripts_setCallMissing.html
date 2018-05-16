@@ -2,28 +2,36 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>setCallMissing - メンバが見つからない時に呼び出されるハンドラの登録</title>
+<title>setCallMissing - missingメソッドの呼び出し設定</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">Scripts.setCallMissing</a></span></h1><div class="para">
 <dl>
 <dt>機能/意味</dt>
-<dd><p>メンバが見つからない時に呼び出されるハンドラの登録</p>
+<dd><p>missingメソッドの呼び出し設定</p>
 </dd>
 <dt>タイプ</dt>
 <dd><a class="jump" href="class_Scripts.html">Scriptsクラス</a>のメソッド</dd>
 <dt>構文</dt>
-<dd><span class="funcdecl">setCallMissing(<span class="arg">missing</span>)</span></dd>
+<dd><span class="funcdecl">setCallMissing(<span class="arg">obj</span>)</span></dd>
 <dt>引数</dt>
 <dd><table rules="all" frame="box" cellpadding="3" summary="setCallMissingの引数">
-<tr><td valign="top"><span class="argname">missing</span></td>
-<td><p>メンバが見つからない時に呼び出されるハンドラ。</p>
+<tr><td valign="top"><span class="argname">obj</span></td>
+<td><p>メンバが見つからない時にmissingメソッドが呼び出されるようにするオブジェクト。</p>
 </td></tr>
 </table></dd>
 <dt>戻り値</dt>
 <dd>なし (void)</dd>
 <dt>説明</dt>
-<dd><p>メンバが見つからない時に呼び出されるハンドラを登録します。</p>
+<dd><p>メンバが見つからない時にmissingメソッドが呼び出されるように設定します。<br />
+このメソッドで登録したオブジェクトでメンバが見つからない場合、function missing( isset, name, prop ) の形式でメソッドが呼び出されます。<br />
+isset は、true なら設定、false なら取得です。<br />
+name は見付からなかったメンバの名前です。<br />
+prop は設定時は代入される値、取得時は返す値の代入先です。<br />
+nameメンバがmissingメソッドでも見付からない場合は、0以外の値を返します。<br />
+0以外を返すとメンバが見付からないという例外が発生します。<br />
+関数が見付からない場合でも、getで呼び出されます。<br />
+finalize関数も対象なので、この設定をするクラスにはfinalize関数を定義しておいた方が良いです。</p>
 </dd>
 </dl>
 </div>

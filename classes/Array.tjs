@@ -211,7 +211,7 @@ class Array {
 	 * @param offset 開始位置
 	 * @return 見付かった位置。見付からない時は-1。
 	 */
-	function find( value, offset:int ):int;
+	function find( value, offset:int=0 ):int;
 
 	/**
 	 * 指定された要素を配列の最後に追加します。
@@ -290,4 +290,14 @@ class Array {
 	 * @return 呼び出した関数が返した値
 	 */
 	function forEach( func, args ):variant;
+
+	/**
+	 * 指定された値を含んでいるかどうか判定します。
+	 * @description 指定された値を、検索開始位置の添え字から順に見ていき、指定された値が存在するかどうかを返します。
+	 * 比較には識別比較 ( === 演算子の動作 ) が用いられます。
+	 * @param value 検索値
+	 * @param offset 開始位置
+	 * @return 見付かった時は true, 見付からない時は false。
+	 */
+	function includes( value, offset:int=0 ):int;
 };

@@ -59,6 +59,16 @@ class Texture {
 	function copyRect( src:Bitmap );
 
 	/**
+	 * 描画基準サイズの設定
+	 * @description Canvas.drawTextureで等倍描画した時、何も指定しないとテクスチャのサイズで描画されますが、このメソッドで幅と高さを設定すると、このテクスチャインスタンスを使って描画した時設定したサイズで描画されるようになります。
+	 * 拡大縮小などもこのサイズが基準となり描画されます。
+	 * 内部画像データのサイズと普段描画するサイズが異なる場合に設定しておくと、拡大率を表示したいサイズ基準で指定できるようになります。
+	 * @param width 表示基準幅
+	 * @param height 表示基準高さ
+	 */
+	function setDrawSize( width:int, height:int );
+
+	/**
 	 * 幅(有効範囲)
 	 * @description pot指定されていなければ、memoryWidthと同一です。
 	 */

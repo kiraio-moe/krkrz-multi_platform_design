@@ -31,6 +31,15 @@ class Texture {
 	function Texture( width:int, height:int, format:int=tcfRGBA );
 
 	/**
+	 * ミップマップ生成版コンストラクタ
+	 * @param sizelist ミップマップを生成するサイズを配列で幅、高さの組み合わせで指定します。
+	 * @param filename 画像ファイル名
+	 * @param type 縮小アルゴリズムを指定します。ImageFunction.operateStretch の type か Layer.operateStretch の type 引数と同じです。
+	 * @param typeopt ３次元補間時のシャープネスです。他の補間方法では現在のところ意味を持ちません。
+	 */
+	function Texture( sizelist:Array, filename:string, type=stFastAreaAvg, typeopt:real=-1.0 );
+
+	/**
 	 * 矩形コピー(位置指定Rect版)
 	 * @param dleft コピー先左端
 	 * @param dtop コピー先上端

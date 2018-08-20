@@ -2,35 +2,34 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="api.css" type="text/css" rel="stylesheet" title="APIリファレンス用標準スタイル" />
-<title>Texture - サイズ指定版コンストラクタ</title>
+<title>Texture - Bitmapコピー版コンストラクタ</title>
 </head>
 <body>
 <h1><span class="fheader"><a name="top" id="top">Texture.Texture</a></span></h1><div class="para">
 <dl>
 <dt>機能/意味</dt>
-<dd><p>サイズ指定版コンストラクタ</p>
+<dd><p>Bitmapコピー版コンストラクタ</p>
 </dd>
 <dt>タイプ</dt>
 <dd><a class="jump" href="class_Texture.html">Textureクラス</a>のメソッド</dd>
 <dt>構文</dt>
-<dd><span class="funcdecl">Texture(<span class="arg">width</span>:int, <span class="arg">height</span>:int, <span class="arg">format</span>:int<span class="defarg">=<span class="defargval">tcfRGBA</span></span>)</span></dd>
+<dd><span class="funcdecl">Texture(<span class="arg">bitmap</span>:Bitmap, <span class="arg">format</span>:int<span class="defarg">=<span class="defargval">tcfRGBA</span></span>, <span class="arg">is9patch</span>:bool<span class="defarg">=<span class="defargval">false</span></span>)</span></dd>
 <dt>引数</dt>
 <dd><table rules="all" frame="box" cellpadding="3" summary="Textureの引数">
-<tr><td valign="top"><span class="argname">width</span></td>
-<td><p>テクスチャ幅</p>
-</td></tr>
-<tr><td valign="top"><span class="argname">height</span></td>
-<td><p>テクスチャ高さ</p>
+<tr><td valign="top"><span class="argname">bitmap</span></td>
+<td><p>テクスチャの元となるBitmapクラスのインスタンス</p>
 </td></tr>
 <tr><td valign="top"><span class="argname">format</span></td>
-<td><p>カラーフォーマット(tcfRGBA or tcfAlpha)</p>
+<td><p>カラーフォーマット(tcfRGBA or tcfAlpha), tcfAlpha選択時に色情報はグレイスケール化されます</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">is9patch</span></td>
+<td><p>9patch情報を読み込み、9patch描画用として使用するかどうか</p>
 </td></tr>
 </table></dd>
 <dt>戻り値</dt>
 <dd>なし (void)</dd>
 <dt>説明</dt>
-<dd><p>テクスチャの内容は未初期化なのでごみが入っています。</p>
-</dd>
+<dd></dd>
 </dl>
 </div>
 </body>

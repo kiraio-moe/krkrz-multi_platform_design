@@ -3,7 +3,7 @@ KiriKiri Z Multi-platform API reference.
 
 # About the multi-platform version
 It is a version that works on Android in addition to Windows.  
-GPU drawing is the main so that drawing speed can be obtained even in a weak environment.  
+GPU drawing is the main draw so that drawing speed can be obtained even in a weak environment.  
 Currently it is not partially compatible with older versions.  
 
 # Environment-dependent functions

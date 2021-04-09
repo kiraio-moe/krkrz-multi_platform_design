@@ -1,50 +1,50 @@
 /**
- * @description Debug クラスは 吉里吉里のデバッグに関する機能を提供するクラスです。
- * このクラスからオブジェクトを作成することはできません。
- * 吉里吉里のコンソールのログの名前は krkr.console.log になります。
- * また、ハードウェア例外が発生したときに作成されるファイルは hwexcept.log となります。
- * これらのログファイルは、デフォルトではプロジェクトディレクトリになります。
- * ただし、プロジェクトディレクトリがアーカイブなど、書き込みができないディレクトリの場合は出力されません。
- * ログファイルの出力先は logLocation プロパティで変更することができます (KAGの場合は栞データの保存先に設定されます)。
- * Windowsではコンソールはコマンドプロンプト、AndroidではlogCatへの出力となります。
+ * @description The Debug class is a class that provides functions related to debugging KiriKiri.
+ * You cannot create objects from this class.
+ * The name of the Kirikiri console log will be krkr.console.log.
+ * Also, the file created when a hardware exception occurs is her hwexcept.log.
+ * These log files default to the project directory.
+ * However, if the project directory is a non-writable directory such as an archive, it will not be output.
+ * The output destination of the log file can be changed with the logLocation property (in the case of KAG, it is set as the save destination of bookmark data).
+ * On Windows, the console is the command prompt, and on Android, the output is to logCat.
  */
 class Debug {
 	/**
-	 * コンソールへメッセージを出力
+	 * Output message to console
 	 *
-	 * @param message 出力するメッセージを指定します。
-	 * @description コンソールへメッセージを出力します。
+	 * @param message Specify the message to be output.
+	 * @description Outputs a message to the console.
 	 */
 	function message( message);
 
 	/**
-	 * コンソールへ重要なメッセージを出力
+	 * Output important messages to the console
 	 *
-	 * @param message 出力するメッセージを指定します。
-	 * @description コンソールへメッセージを出力します。
-	 * Debug.message と違い、ここで出力したメッセージは ログファイルへの書き出しを途中から開始したとしても、必ずログファイルに書き出されます ( Debug.message で出力したメッセージは、ある程度さかのぼってまでしか書き込まれません )。
-	 * ログファイルを回収したときに有用になるような重要な情報を出力するために使います。
+	 * @param message Specify the message to be output.
+	 * @description Outputs a message to the console.
+	 * Unlike Debug.message, the message output here is always written to the log file even if you start writing to his log file in the middle (the message output by Debug.message can only be traced back to some extent. Will not be written).
+	 * It is used to output important information that will be useful when collecting log files.
 	 */
 	function notice( message);
 
 	/**
-	 * コンソールのログの出力開始
+	 * Start output of console log
 	 *
-	 * @param clear 真を指定するとログファイルはクリアされます。
-	 * 偽を指定すると既存のファイルに追加されます。
-	 * @description コンソールのログのファイルへの出力を開始します。
+	 * @param clear If you specify true, the log file will be cleared.
+	 * If you specify false, it will be added to the existing file.
+	 * @description Starts outputting the console log to a file.
 	 * @see Debug.logToFileOnError
 	 * @see Debug.clearLogFileOnError
 	 */
 	function startLogToFile( clear=false);
 
 	/**
-	 * エラー時と同じようにログをファイルに出力開始する
+	 * Start outputting the log to a file as in the case of an error
 	 *
-	 * @description エラーログファイルに関し、吉里吉里がエラーが発生したときと同じ動作をさせます。
-	 * つまり、Debug.logToFileOnError が真ならばファイルにコンソールのログの出力を開始します。
-	 * その際、Debug.clearLogFileOnError が真ならばファイルをクリアします。
-	 * これに対し、Debug.startLogToFile は無条件でコンソールのログのファイルへの出力を開始します。
+	 * @description Regarding the error log file, Kirikiri makes the same operation as when the error occurred.
+	 * That is, if Debug.logToFileOnError is true, it will start outputting console logs to a file.
+	 * At that time, if Debug.clearLogFileOnError is true, the file is cleared.
+	 * In contrast, Debug.startLogToFile unconditionally starts outputting the console log to a file.
 	 * @see Debug.startLogToFile
 	 * @see Debug.logToFileOnError
 	 * @see Debug.clearLogFileOnError
@@ -52,47 +52,47 @@ class Debug {
 	function logAsError();
 
 	/**
-	 * ログハンドラを追加します
+	 * Add a log handler
 	 *
-	 * @param handler ログハンドラを指定します。
-	 * @description エラーログが出力されるごとに呼び出されるハンドラを登録します。
-	 * ハンドラはログメッセージを引数に与えられて呼び出されます。
-	 * 登録メソッド内でログを出力しても、再帰的な呼び出しは行われず無視されます。
+	 * @param handler Specify the log handler.
+	 * @description Register a handler that will be called each time an error log is output.
+	 * The handler is called with a log message as an argument.
+	 * Even if you output the log in the registration method, the recursive call is not made and it is ignored.
 	 */
 	function addLoggingHandler( handler);
 
 	/**
-	 * ログハンドラを削除します
+	 * Delete the log handler
 	 *
-	 * @param handler ログハンドラを指定します。
-	 * @description 登録したログハンドラを削除します。
+	 * @param handler Specify the log handler.
+	 * @description Delete the registered log handler.
 	 */
 	function removeLoggingHandler( handler);
 
 	/**
-	 * 未出力のログを取得します
+	 * Get unoutput logs
 	 *
-	 * @description 出力していないログを取得します。
+	 * @description Get the log that is not output.
 	 */
 	function getLastLog( );
 
 	/**
-	 * ログファイルの出力先
+	 * Log file output destination
 	 *
-	 * @description ログファイルの出力先ディレクトリを表します。
-	 * 値を書き込むこともできます。
-	 * デフォルトではデータ保存場所 (コマンドラインオプションの -datapath) に設定されています。
-	 * この値を変更すると、以降のログはそのディレクトリ下の *.console.log として出力されるようになります。
+	 * @description Represents the output directory of the log file.
+	 * You can also write a value.
+	 * By default, it is set to the data storage location (command line option -datapath).
+	 * If you change this value, subsequent logs will be output as * .console.log under that directory.
 	 */
 	 property logLocation {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * エラー発生時にコンソールのログをファイルに出力するか
+	 * Whether to output the console log to a file when an error occurs
 	 *
-	 * @description 真の場合、エラーが発生したときにコンソールのログのファイルへの出力を開始するようになります。
-	 * 偽の場合はエラーが発生してもログのファイルへの出力は開始されません。
+	 * @description If true, it will start outputting the console log to a file when an error occurs.
+	 * If false, the log will not be output to a file even if an error occurs.
 	 * @see Debug.startLogToFile
 	 * @see Debug.clearLogFileOnError
 	 */
@@ -101,10 +101,10 @@ class Debug {
 		 setter( value ) {}
 	}
 	/**
-	 * エラー発生時にコンソールのログファイルをクリアするかどうか
+	 * Whether to clear the console log file when an error occurs
 	 *
-	 * @description 真の場合、エラーが発生したときにコンソールのログを自動的にクリアするようになります。
-	 * 偽の場合はクリアはされず、既存のログファイルに追加されます。
+	 * @description If true, it will automatically clear the console log when an error occurs.
+	 * If false, it will not be cleared and will be added to the existing log file.
 	 * @see Debug.startLogToFile
 	 * @see Debug.logToFileOnError
 	 */

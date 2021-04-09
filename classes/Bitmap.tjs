@@ -1,177 +1,177 @@
 /**
- * @description Bitmap クラスは、画像情報を保持するクラスです。
+ * @description The Bitmap class is a class that holds image information.
  */
 class Bitmap {
 	/**
-	 * デフォルトBitmapオブジェクトの構築
+	 * Build default Bitmap object
 	 *
-	 * @description Bitmap クラスのオブジェクトを構築します。初期状態では 幅と高さは32ピクセルになっています。
+	 * @description Build an object of class Bitmap. Initially, the width and height are 32 pixels.
 	 */
 	function Bitmap();
 
 	/**
-	 * 大きさを指定したBitmapオブジェクトの構築
+	 * Building a sized Bitmap object
 	 *
-	 * @param width 画像の幅を指定します。
-	 * @param height 画像の高さを指定します。
-	 * @param bpp 画像の各ピクセルのビット数を指定します。32 か 8 のいずれかを指定してください。
-	 * @description Bitmap クラスのオブジェクトを指定の大きさで構築します。
+	 * @param width Specifies the width of the image.
+	 * @param height Specifies the height of the image.
+	 * @param bpp Specifies the number of bits for each pixel in the image. Specify either 32 or 8.
+	 * @description Builds an object of class Bitmap with the specified size.
 	 */
 	function Bitmap( width, height, bpp=32);
 
 	/**
-	 * ファイルを指定したBitmapオブジェクトの構築
+	 * Building a Bitmap object with a specified file
 	 *
-	 * @param filename 画像のファイル名を指定します。
-	 * @param colorkey カラーキーを指定します。値は Layer.loadImages と同じです。
-	 * @description Bitmap クラスのオブジェクトをファイルから構築します。
+	 * @param filename Specify the file name of the image.
+	 * @param colorkey Specify the color key. The value is the same as Layer.loadImages.
+	 * @description Build an object of class Bitmap from a file.
 	 */
 	function Bitmap( filename, colorkey=clNone);
 
 	/**
-	 * 非同期読込みが完了した
+	 * Asynchronous read completed
 	 *
-	 * @param meta 読み込んだ画像のタグ情報です。
-	 * @param async 非同期で読み込まれたかどうかです。画像データがキャッシュ内にある場合、 Bitmap.loadAsync 実行中に本イベントが発生します。
-	 * @param error 画像読込みでエラーが発生したかどうかです。
-	 * @param message エラーメッセージです。エラーが発生した場合、エラーメッセージが渡されます。
-	 * @description 非同期読込みが完了した時に発生します。
-	 * 読み込んだ画像は Layer.copyFromBitmapToMainImage で Layer にコピーできます。
-	 * 読込み処理は非同期であるため、読込みが完了した時に、その画像を渡す Layer が既に無効化されている可能性があります。
-	 * 本イベントで他のオブジェクトへアクセスする場合は、無効化されていないか確認して下さい。
-	 * もしくは、本イベントが完了するまで対象オブジェクトが無効化されないようにしてください。
+	 * @param meta This is the tag information of the loaded image.
+	 * @param async Whether it was loaded asynchronously. If the image data is in the cache, this event will occur during Bitmap.loadAsync execution.
+	 * @param error Whether or not an error occurred when reading the image.
+	 * @param message This is an error message. If an error occurs, an error message will be passed.
+	 * @description Occurs when asynchronous reading is complete.
+	 * The imported image can be copied to the Layer with Layer.copyFromBitmapToMainImage.
+	 * Since the reading process is asynchronous, the layer that passes the image may already be disabled when the reading is complete.
+	 * If you want to access other objects in this event, please check if they are disabled.
+	 * Alternatively, please do not invalidate the target object until this event is completed.
 	 * @see Bitmap.loadAsync
 	 * @see Layer.copyFromBitmapToMainImage
 	 */
 	event onLoaded( meta, async, error, message);
 
 	/**
-	 * ピクセル値の取得
+	 * Get pixel value
 	 *
-	 * @param x 取得する x 座標値をピクセル単位で指定します。
-	 * @param y 取得する y 座標値をピクセル単位で指定します。
-	 * @return ピクセル値
-	 * @description 画像のピクセル値を取得します。
+	 * @param x Specifies the x-coordinate value to get, in pixels.
+	 * @param y Specifies the y coordinate value to get, in pixels.
+	 * @return Pixel value
+	 * @description Gets the pixel value of the image.
 	 * @see Bitmap.setPixel
 	 */
 	function getPixel( x, y);
 
 	/**
-	 * ピクセル値の設定
+	 * Pixel value setting
 	 *
-	 * @param x 設定する x 座標値をピクセル単位で指定します。
-	 * @param y 設定する y 座標値をピクセル単位で指定します。
-	 * @param value 設定するピクセル値を指定します。
-	 * @description 画像のピクセル値を設定します。
+	 * @param x Specifies the x-coordinate value to set in pixels.
+	 * @param y Specifies the y coordinate value to set in pixels.
+	 * @param value Specify the pixel value to set.
+	 * @description Sets the pixel value of the image.
 	 * @see Bitmap.getPixel
 	 */
 	function setPixel( x, y, value);
 
 	/**
-	 * ピクセルのアルファ値の取得
+	 * Get the alpha value of a pixel
 	 *
-	 * @param x 取得する x 座標値をピクセル単位で指定します。
-	 * @param y 取得する y 座標値をピクセル単位で指定します。
-	 * @return ピクセルのアルファ値
-	 * @description 画像のピクセルのアルファ値を取得します。
+	 * @param x Specifies the x-coordinate value to get, in pixels.
+	 * @param y Specifies the y coordinate value to get, in pixels.
+	 * @return Pixel alpha value
+	 * @description Gets the alpha value of the pixels in the image.
 	 * @see Bitmap.setMaskPixel
 	 */
 	function getMaskPixel( x, y);
 
 	/**
-	 * ピクセルのアルファ値の取得
+	 * Get the alpha value of a pixel
 	 *
-	 * @param x 設定する x 座標値をピクセル単位で指定します。
-	 * @param y 設定する y 座標値をピクセル単位で指定します。
-	 * @param value 設定するピクセルのアルファ値を指定します。
-	 * @description 画像のピクセルのアルファ値を設定します。
+	 * @param x Specifies the x-coordinate value to set in pixels.
+	 * @param y Specifies the y coordinate value to set in pixels.
+	 * @param value Specifies the alpha value of the pixel to set.
+	 * @description Sets the alpha value of the pixels in the image.
 	 * @see Bitmap.getMaskPixel
 	 */
 	function setMaskPixel( x, y, value);
 
 	/**
-	 * 画像の共有の解除
+	 * Unshare images
 	 *
-	 * @param copy 共有状態を解除する際、元の画像をコピーするかどうかを指定します。真を指定すると元の画像をコピーします。偽を指定すると元の画像はコピーされず、画像の
-	 * 				内容は不定となります。
-	 * 			
-	 * @description 画像の共有状態を強制的に解除します。
-	 * 吉里吉里は、assignImages などで画像をまるごとコピーした場合、実際には画像バッファのコピーを行わず、同一の画像を共有するようになります。
-	 * 通常、画像に変更を加えようとする直前でこの共有状態は自動的に解除されますが、このメソッドで強制的に解除することができます。
-	 * copy 引数に false を指定した場合は、画像の共有は解除されますが、元の画像を引き継ぐことは保証されません ( 画像の内容は不定になります ) が、共有の解除をより高速に行うことができます。
-	 * 画像全部を書き換える場合は元の画像を引き継ぐ必要はありませんので、描画を行う前にあらかじめこのメソッドに false を指定して呼び出すと効率が良くなる場合があります。
-	 * このメソッドは、画像が共有されていない場合は何もしません。
+	 * @param copy Specifies whether to copy the original image when unsharing. If true is specified, the original image will be copied. If you specify false, the original image is not copied and the image
+	 * The content is undefined.
+	 * .
+	 * @description Forcibly cancels the shared state of the image.
+	 * Kirikiri When you copy an entire image with assignImages etc., it will share the same image without actually copying the image buffer.
+	 * Normally, this sharing state is automatically released just before you try to make changes to the image, but you can force it to be released with this method.
+	 * If you specify false for the copy argument, the image is unshared, but the original image is not guaranteed to be inherited (the content of the image is undefined), but the unsharing is done faster. can do.
+	 * When rewriting the entire image, it is not necessary to inherit the original image, so it may be more efficient to call this method with false specified in advance before drawing.
+	 * This method does nothing if the image is not shared.
 	 */
 	function independ( copy=true);
 
 	/**
-	 * 画像サイズの設定
+	 * Image size setting
 	 *
-	 * @param width 画像の横幅をピクセル単位で指定します。この値は Bitmap.width プロパティでも取得や設定ができます。
-	 * @param height 画像の縦幅をピクセル単位で指定します。この値は Bitmap.height プロパティでも取得や設定ができます。
-	 * @description 画像サイズを指定します。
+	 * @param width Specifies the width of the image in pixels. This value can also be obtained and set with the Bitmap.width property.
+	 * @param height Specifies the vertical width of the image in pixels. This value can also be obtained and set with the Bitmap.height property.
+	 * @description Specify the image size.
 	 */
 	function setSize( width, height);
 
 	/**
-	 * 画像のコピー
+	 * Copy of image
 	 *
-	 * @param src コピー元の Bitmap オブジェクトを指定します。
-	 * @description 画像のコピーを行います。
-	 * コピーといっても、実際は「同じ画像を二つ以上のオブジェクトで共有している」という状態になるだけなのでこのメソッドはほとんど実行時間がかかりません。
+	 * @param src Specifies the Bitmap object to copy from.
+	 * @description Make a copy of the image.
+	 * This method takes almost no execution time because copying is actually just a state where "the same image is shared by two or more objects".
 	 */
 	function copyFrom( src);
 
 	/**
-	 * 画像の保存
+	 * Save image
 	 *
-	 * @param name 保存するストレージ名を指定します。
-	 * @param type 保存する画像形式を文字列で指定します。
-	 * 現バージョンでは以下の形式を指定可能です。 
-	 * "bmp" または "bmp32"32bpp の BMP です。アルファチャンネル(マスク)も保存します。
-	 * "bmp24"24bpp の BMP です。アルファチャンネル(マスク)は保存されません。
-	 * "bmp8"8bpp の BMP です。アルファチャンネル(マスク)は保存されません。画像は252色の固定パレットによる4×4組織化ディザリングを用いて減色されます。
-	 * "jpg"JPEG です。アルファチャンネル(マスク)は保存されません。画像はクオリティー90%で保存されます。
-	 * "jpg###"JPEG です。アルファチャンネル(マスク)は保存されません。画像は###で指定されたクオリティーで保存されます。"jpg010" で 10%、"jpg100" で 100%、"jpg080" で 80%です。
-	 * "png"32bpp の PNG です。アルファチャンネル(マスク)も保存します。
-	 * "png24"24bpp の PNG です。アルファチャンネル(マスク)は保存されません。
-	 * "tlg5"32bpp の TLG5 です。アルファチャンネル(マスク)も保存します。
-	 * "tlg524"24bpp の TLG5 です。アルファチャンネル(マスク)は保存されません。
-	 * "tlg6"32bpp の TLG6 です。アルファチャンネル(マスク)も保存します。
-	 * "tlg624"24bpp の TLG6 です。アルファチャンネル(マスク)は保存されません。
-	 * @param meta TLG 形式の場合、保存するタグ情報を辞書形式で指定します。その他の形式の場合は追加オプションを指定します(1.3.0以降)。指定可能なオプションはgetSaveOptionで取得可能です。
-	 * @description name で指定したストレージ (ファイル) に、type で指定した画像形式でファイルを保存します。
+	 * @param name Specify the storage name to save.
+	 * @param type Specify the image format to save as a character string.
+	 * The following formats can be specified in the current version.
+	 * Her BMP of "bmp" or "bmp32" 32bpp. It also saves the alpha channel (mask).
+	 * "bmp24" 24bpp BMP. The alpha channel (mask) is not saved.
+	 * "bmp8" 8bpp BMP. The alpha channel (mask) is not saved. The image is reduced in color using 4x4 organized dithering with a fixed palette of 252 colors.
+	 * "jpg" JPEG. The alpha channel (mask) is not saved. Images are saved with 90% quality.
+	 * "jpg ###" JPEG. The alpha channel (mask) is not saved. The image will be saved with the quality specified by ###. "jpg010" is 10%, "jpg100" is 100%, and "jpg080" is 80%.
+	 * "png" 32bpp PNG. It also saves the alpha channel (mask).
+	 * "png24" 24bpp PNG. The alpha channel (mask) is not saved.
+	 * "tlg5" 32bpp TLG5. It also saves the alpha channel (mask).
+	 * "tlg524" 24bpp TLG5. The alpha channel (mask) is not saved.
+	 * "tlg6" 32bpp TLG6. It also saves the alpha channel (mask).
+	 * "tlg624" 24bpp TLG6. The alpha channel (mask) is not saved.
+	 * @param meta For TLG format, specify the tag information to be saved in dictionary format. For other formats, specify additional options (1.3.0 or later). The options that can be specified can be obtained with getSaveOption.
+	 * @description Saves the file in the storage (file) specified by name in the image format specified by type.
 	 * @see Bitmap.getSaveOption
 	 */
 	function save( name, type="bmp", meta=null);
 
 	/**
-	 * 画像の読み込み
+	 * Image loading
 	 *
-	 * @param image 読み込む画像ストレージを指定します。
-	 * @param colorkey 読み込む画像のカラーキー ( 透明色 ) を指定します。
-	 * 0xRRGGBB 形式で色を指定すると、その色をカラーキーとします。
-	 * clPalIdx に 任意のパレットインデックスを加算した数値を指定すると、そのパレットインデックスが透明色になります ( 256 色以下の画像の場合 )。
-	 * clAdapt を指定すると、画像の一番上のラインにおいてもっとも多く使われている色が自動的に透明色になります。
-	 * clAlphaMat に 0xRRGGBB形式の色を表す数値を加算したものを指定すると、画像がその色の上にαブレンド(ltAlphaの方式)を用いて重ね合わせられます。
-	 * たとえば、(clAlphaMat + 0xffffff) を指定すると、読み込まれた画像が白い色の上に重ね合わせられます。
-	 * 画像は全て不透明な画像となります( 画像は全て不透明となりますが、このモードではタグ情報はいっさい変更されないので注意してください )。
-	 * @return タグ情報の辞書配列
-	 * @description 画像を読み込みます。戻り値としてタグ情報(その画像のレイヤタイプや表示位置など、画像そのものに対する情報)の辞書配列が返ります。画像がタグ情報を持たない場合は null が返ります。現バージョンでは、タグ情報は PNG, TLG5/6 形式のみが持つことができます。取得可能な情報については、画像フォーマットコンバータ を参照してください。
+	 * @param image Specify the image storage to read.
+	 * @param colorkey Specify the color key (transparent color) of the image to be imported.
+	 * If you specify a color in the 0xRRGGBB format, that color is used as the color key.
+	 * If you specify clPalIdx plus an arbitrary palette index, the palette index becomes transparent (for images of 256 colors or less).
+	 * If you specify clAdapt, the most used color in the top line of the image is automatically made transparent.
+	 * If you specify clAlphaMat plus a number that represents a color in the 0xRRGGBB format, the image is overlaid on top of that color using an alpha blend (ltAlpha method).
+	 * For example, (clAlphaMat + 0xffffff) will overlay the imported image on top of the white color.
+	 * All images will be opaque (note that all images will be opaque, but no tag information will be changed in this mode).
+	 * @return Dictionary array of tag information
+	 * @description Load the image. As a return value, a dictionary array of tag information (information about the image itself, such as the layer type and display position of the image) is returned. If the image has no tag information, null will be returned. In the current version, tag information can only be in PNG, TLG5 / 6 format. See Image Format Converter for the information available.
 	 */
 	function load( image, colorkey=clNone);
 
 	/**
-	 * 画像の非同期読み込み
+	 * Asynchronous loading of images
 	 *
-	 * @param image 読み込む画像ストレージを指定します。
-	 * ここで指定するファイル名は拡張子を含んだものになることに注意してください。
-	 * 拡張子がないとファイルが見つからずエラーとなります。
-	 * @description 画像を非同期で読み込みます。
-	 * 読込みの完了は Bitmap.onLoaded で受け取れます。
-	 * 非同期読込み中か否かは Bitmap.loading で確認できます。
-	 * 非同期読込み中は Bitmap.loading 以外のメンバへアクセスすると例外が発生します。
-	 * Bitmap.onLoaded の説明も確認してください。
+	 * @param image Specify the image storage to read.
+	 * Please note that the file name specified here will include the extension.
+	 * If there is no extension, the file cannot be found and an error will occur.
+	 * @description Load images asynchronously.
+	 * You can receive the completion of loading at Bitmap.onLoaded.
+	 * You can check whether it is being read asynchronously with Bitmap.loading.
+	 * During asynchronous loading, an exception will be thrown if you access a member other than Bitmap.loading.
+	 * Also check the description of Bitmap.onLoaded.
 	 * @see Bitmap.onLoaded
 	 * @see Bitmap.loading
 	 * @see Layer.copyFromBitmapToMainImage
@@ -179,33 +179,33 @@ class Bitmap {
 	function loadAsync( image);
 
 	/**
-	 * 画像情報の読み込み(1.3.0以降)
+	 * Reading image information (1.3.0 or later)
 	 *
-	 * @param image 読み込む画像ストレージを指定します。
-	 * ここで指定するファイル名は拡張子を含んだものになることに注意してください。
-	 * 拡張子がないとファイルが見つからずエラーとなります。
-	 * @return 情報の辞書配列
-	 * @description 画像情報のみを読み込みます。
-	 * 画像の読み込みは行われないため、情報のみを得たい時は高速に読み込めます。
-	 * 返される辞書のwidth, heightは必須で、その他の情報は画像形式に依存します。
+	 * @param image Specify the image storage to read.
+	 * Please note that the file name specified here will include the extension.
+	 * If there is no extension, the file cannot be found and an error will occur.
+	 * @return Dictionary array of information
+	 * @description Reads only image information.
+	 * Since the image is not read, it can be read at high speed when you want to get only the information.
+	 * The width and height of the returned dictionary are mandatory, and other information depends on the image format.
 	 */
 	function loadHeader( image);
 
 	/**
-	 * 画像保存追加情報取得(1.3.0以降)
+	 * Image save Additional information acquisition (1.3.0 or later)
 	 *
-	 * @param type 画像形式を指定します。指定方法はsaveメソッドと同じ形式です。
-	 * @return 追加情報の辞書配列
-	 * @description 画像保存時に指定可能な追加情報を取得します。
+	 * @param type Specify the image format. The specification method is the same format as the save method.
+	 * @return Dictionary array of additional information
+	 * @description Gets additional information that can be specified when saving an image.
 	 * @see Bitmap.save
 	 */
 	function getSaveOption( type);
 
 	/**
-	 * 画像横幅
+	 * Image width
 	 *
-	 * @description 画像の横幅をピクセル単位で指定します。
-	 * 値を設定することもできます。
+	 * @description Specifies the width of the image in pixels.
+	 * You can also set the value.
 	 * @see Bitmap.setSize
 	 */
 	 property width {
@@ -213,10 +213,10 @@ class Bitmap {
 		 setter( value ) {}
 	}
 	/**
-	 * 画像縦幅
+	 * Image height
 	 *
-	 * @description 画像の縦幅をピクセル単位で指定します。
-	 * 値を設定することもできます。
+	 * @description Specifies the vertical width of the image in pixels.
+	 * You can also set the value.
 	 * @see Bitmap.setSize
 	 */
 	 property height {
@@ -224,15 +224,15 @@ class Bitmap {
 		 setter( value ) {}
 	}
 	/**
-	 * 画像バッファポインタ
+	 * Image buffer pointer
 	 *
-	 * @description 画像 ( 色とマスク(不透明度)の情報を含む 32bpp のビットマップ ) の画像バッファ左上隅へのポインタを表します。
-	 * このプロパティは、プラグインなどのために画像バッファへの直接のアクセスの手段を提供するためにあります。
-	 * 整数型で返されますが、プラグインなどでは適切な型 ( const unsigned long * 等 ) にキャストして使ってください。
-	 * このプロパティで得られたポインタには値を書き込まないでください。
-	 * Bitmap.bufferForWrite で得られたポインタならば書き込むことができます。
-	 * 画像のサイズは Bitmap.width と Bitmap.height プロパティが表しています。
-	 * ポインタの計算方法は Bitmap.bufferPitch を参照してください。
+	 * @description Represents a pointer to the upper left corner of the image buffer for an image (a 32bpp bitmap containing color and mask (opacity) information).
+	 * This property is there to provide a means of direct access to the image buffer for plugins etc.
+	 * It is returned as an integer type, but for plugins etc., cast it to an appropriate type (const unsigned long * etc.) and use it.
+	 * Do not write a value to the pointer obtained by this property.
+	 * Any pointer obtained by Bitmap.bufferForWrite can be written.
+	 * The size of the image is represented by the Bitmap.width and Bitmap.height properties.
+	 * See Bitmap.bufferPitch for how to calculate pointers.
 	 * @see Bitmap.bufferForWrite
 	 * @see Bitmap.bufferPitch
 	 */
@@ -240,15 +240,15 @@ class Bitmap {
 		 getter() { return value; }
 	}
 	/**
-	 * 画像バッファポインタ(書き込み用)
+	 * Image buffer pointer (for writing)
 	 *
-	 * @description 画像 ( 色とマスク(不透明度)の情報を含む 32bpp のビットマップ ) の画像バッファ左上隅へのポインタを表します。
-	 * このプロパティは、プラグインなどのために画像バッファへの直接のアクセスの手段を提供するためにあります。
-	 * 整数型で返されますが、プラグインなどでは適切な型 ( unsigned long * 等 ) にキャストして使ってください。
-	 * このプロパティで得られたポインタには Bitmap.buffer と異なり、値を書き込むことができます。
-	 * 吉里吉里内部では全く同じ画像は複数のオブジェト間で共有しますが、このプロパティを参照するとその共有状態を解除します。
-	 * 画像のサイズは Bitmap.width と Bitmap.height プロパティが表しています。
-	 * ポインタの計算方法は Bitmap.bufferPitch を参照してください。
+	 * @description Represents a pointer to the upper left corner of the image buffer for an image (a 32bpp bitmap containing color and mask (opacity) information).
+	 * This property is there to provide a means of direct access to the image buffer for plugins etc.
+	 * It is returned as an integer type, but for plugins etc., cast it to an appropriate type (unsigned long * etc.) and use it.
+	 * Unlike Bitmap.buffer, you can write a value to the pointer obtained by this property.
+	 * Inside Kirikiri, the exact same image is shared among multiple objects, but if you refer to this property, the shared state will be canceled.
+	 * The size of the image is represented by the Bitmap.width and Bitmap.height properties.
+	 * See Bitmap.bufferPitch for how to calculate pointers.
 	 * @see Bitmap.buffer
 	 * @see Bitmap.bufferPitch
 	 */
@@ -256,15 +256,15 @@ class Bitmap {
 		 getter() { return value; }
 	}
 	/**
-	 * 画像バッファピッチ
+	 * Image buffer pitch
 	 *
-	 * @description 画像 ( 色とマスク(不透明度)の情報を含む 32bpp のビットマップ ) の画像バッファのピッチ( 一つ下のスキャンラインまでのバイト数 ) を表します。
-	 * このプロパティは、プラグインなどのために画像バッファへの直接のアクセスの手段を提供するためにあります。
-	 * tjs_uint32 が 32bit の整数型、tjs_uint8 が 8bit (1byte) の整数型として、画像位置 (x, y) へのポインタは C 言語で書くと以下のように計算することができます。
-	 * ( (tjs_uint32*)( (tjs_uint8*)buffer + y*bufferPitch )) + x
-	 * このプロパティは、次のスキャンラインまでのピクセル数ではなく、バイト数を返すことに注意してください。
-	 * この数値は画像横幅ぴったりに必要なバイト数よりも若干大きい場合があります。
-	 * このプロパティは値が負になり得ますので注意してください。
+	 * @description Represents the pitch (in bytes down to the next scanline) of the image buffer of an image (a 32-bpp bitmap containing color and mask (opacity) information).
+	 * This property is there to provide a means of direct access to the image buffer for plugins etc.
+	 * Assuming that tjs_uint32 is a 32-bit integer type and tjs_uint8 is an 8-bit (1byte) integer type, the pointer to the image position (x, y) can be calculated as follows when written in C language.
+	 * ((tjs_uint32 *) ((tjs_uint8 *) buffer + y * bufferPitch)) + x
+	 * Note that this property returns the number of bytes, not the number of pixels until the next scanline.
+	 * This number may be slightly larger than the exact number of bytes required for the width of the image.
+	 * Note that this property can have a negative value.
 	 * @see Bitmap.buffer
 	 * @see Bitmap.bufferForWrite
 	 */
@@ -272,11 +272,11 @@ class Bitmap {
 		 getter() { return value; }
 	}
 	/**
-	 * 非同期読込み中確認
+	 * Confirmation during asynchronous reading
 	 *
-	 * @description 非同期読込み中かどうかを表します。
-	 * この値が真の時非同期読込み中です。
-	 * 非同期読込み中に他のメンバにアクセスすると例外が発生するので注意してください。
+	 * @description Indicates whether asynchronous reading is in progress.
+	 * When this value is true, asynchronous reading is in progress.
+	 * Note that an exception will be thrown if you access another member during asynchronous read.
 	 * @see Bitmap.buffer
 	 * @see Bitmap.bufferPitch
 	 */

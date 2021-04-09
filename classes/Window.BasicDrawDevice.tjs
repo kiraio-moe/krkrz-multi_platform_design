@@ -1,47 +1,47 @@
 class Window {
 /**
- * @description Window.BasicDrawDevice クラスは、このインスタンスを Window.drawDevice に登録して使用するための DrawDevice で、標準的な描画機能を提供します。
- * Windows でのみ利用できます。
- * マルチプラットフォーム版では、非推奨となりました。
- * デフォルトで Canvas を使用した描画となり、DrawDevice はオプションで -graphicsystem=drawdevice を指定しなければ DrawDevice は使えません。
- * その場合 Canvas での描画は出来なくなります。
+ * @description The Window.BasicDrawDevice class is a DrawDevice for registering and using this instance in Window.drawDevice and provides standard drawing functionality.
+ * Only available on Windows.
+ * Deprecated in the multi-platform version.
+ * By default, Canvas is used for drawing, and DrawDevice cannot be used unless -graphicsystem=drawdevice is specified as an option.
+ * In that case, you will not be able to draw with Canvas.
  */
 	class BasicDrawDevice {
 	/**
-	 * [Windows+]BasicDrawDevice オブジェクトの構築
+	 * [Windows +] Building a BasicDrawDevice object
 	 *
-	 * @description Window.BasicDrawDevice クラスのオブジェクトを構築します。
-	 * 初期状態で Window.drawDevice にはこのクラスのインスタンスが登録されているので、新たに登録する必要はありません。
+	 * @description Build an object of the Window.BasicDrawDevice class.
+	 * By default, an instance of this class is registered in Window.drawDevice, so there is no need to register a new one.
 	 */
 	function BasicDrawDevice();
 
 	/**
-	 * [Windows+]内部デバイス再生成
+	 * [Windows +] Internal device regeneration
 	 *
-	 * @description 内部デバイスの再生成を行います。
-	 * 通常使用することはありません。
+	 * @description Regenerates the internal device.
+	 * It is not normally used.
 	 */
 	function recreate( );
 
 	/**
-	 * [Windows+]画面が回転されたとき
+	 * [Windows +] When the screen is rotated
 	 *
-	 * @param orientation 画面の向き( orientation ) です。
-	 * 以下のいずれかの値になります。
+	 * @param orientation The orientation of the screen.
+	 * It can be one of the following values:
 	 *
-	 * + oriUnknown (取得失敗/不明)
-	 * + oriPortrait(縦向き)
-	 * + oriLandscape(横向き)
+	 * + oriUnknown (Acquisition failure / unknown)
+	 * + oriPortrait(Vertical)
+	 * + oriLandscape(Landscape)
 	 *
-	 * @param angle 角度です。
-	 * 角度 ( angle ) は、0、90、180、270、-1 のいずれかで、取得できなかった時は-1となります。
-	 * 角度は、そのデバイスデフォルトからの回転角なので、縦向きのデバイスでは縦向きで0となります。
-	 * 通常のデバイスだと、横向きで0が多ようです。
-	 * 縦向きが0になるのは最近の8インチタブレットなどで、縦向きが標準の向きとなっているものです。
-	 * @param bpp  bits per pixel です。
-	 * @param width 画面の幅です。
-	 * @param height 画面の高さです。
-	 * @description 画面が回転されたときに呼び出されるイベント関数を表します。
+	 * @param angle The angle.
+	 * The angle is 0, 90, 180, 270, or -1, and if it cannot be obtained, it will be -1.
+	 * The angle is the rotation angle from the device default, so it will be 0 in portrait orientation for portrait devices.
+	 * On a normal device, it seems that there are many 0s in landscape orientation.
+	 * The portrait orientation is 0 for recent 8-inch tablets, etc., and the portrait orientation is the standard orientation.
+	 * @param bpp   bits per pixel.
+	 * @param width The width of the screen.
+	 * @param height The height of the screen.
+	 * @description Represents an event function that is called when the screen is rotated.
 	 * @see Window.onDisplayRotate
 	 * @see Window.displayOrientation
 	 * @see Window.displayRotate
@@ -49,9 +49,9 @@ class Window {
 	event onDisplayRotate( orientation, angle, bpp, width, height);
 
 	/**
-	 * [Windows+]インターフェースオブジェクトを取得
+	 * [Windows +] Get interface object
 	 *
-	 * @description プラグインなどで DrawDevice オブジェクトを利用するためにあります。
+	 * @description It is there to use the DrawDevice object in plugins.
 	 */
 	 property interface {
 		 getter() { return value; }

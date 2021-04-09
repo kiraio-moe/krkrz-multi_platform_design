@@ -4,16 +4,16 @@ while( glob("*.tjs") ) {
 	my $inname = $_;
 	my $outname = $inname;
 	$outname =~ s/\.tjs/\.json/;
-	print "tjs2json $inname $outname\n";
-	system( "tjs2json $inname $outname" );
+	print "mono tjs2json.exe $inname $outname\n";
+	system( "mono tjs2json.exe $inname $outname" );
 }
 
-print "apijsontohtml *.json\n";
-system( "apijsontohtml *.json 吉里吉里Zマルチプラットフォーム版APIリファレンス" );
+print "mono apijsontohtml.exe *.json\n";
+system( "mono apijsontohtml.exe '*'.json 'KiriKiri Z Multi-Platform API Reference'" );
 
 while( glob("*.html") ) {
 	my $inname = $_;
-	my $outname = "..\\docs\\apiref";
+	my $outname = "../docs/apiref";
 	move $inname, $outname;
 }
 

@@ -1,311 +1,311 @@
 /**
- * @description System クラスは 吉里吉里本体や、吉里吉里が実行されている環境に関する情報を取得したり、設定したりするためのクラスです。
- * このクラスからオブジェクトを作成することはできません。
+ * @description The System class is a class for acquiring and setting information about KiriKiri itself and the environment in which KiriKiri is running.
+ * You cannot create objects from this class.
  */
 class System {
 	/**
-	 * 吉里吉里の非同期終了
+	 * Asynchronous termination of Kirikiri
 	 *
-	 * @param code プロセスの終了コードを指定します
-	 * @description 吉里吉里を終了させます。
-	 * このメソッドを呼び出してもすぐには吉里吉里は終了しません。
-	 * すべてのイベントハンドラから吉里吉里に制御が戻った際に終了します。
+	 * @param code Specifies the exit code of the process
+	 * @description Kirikiri is finished.
+	 * Calling this method does not immediately terminate KiriKiri.
+	 * It ends when control returns from all event handlers to Kirikiri.
 	 */
 	function terminate( code=0);
 
 	/**
-	 * 吉里吉里の同期終了
+	 * Kirikiri's synchronization ends
 	 *
-	 * @param code プロセスの終了コードを指定します
-	 * @description 吉里吉里を終了させます。
-	 * このメソッドは System.terminate と異なり、呼び出した時点で終了します。
-	 * そのため、このメソッドは戻ることはありません。
+	 * @param code Specifies the exit code of the process
+	 * @description Kirikiri is finished.
+	 * This method, unlike System.terminate, terminates when called.
+	 * Therefore, this method never returns.
 	 */
 	function exit( code=0);
 
 	/**
-	 * Continuous ハンドラの追加
+	 * Add Continuous Handler
 	 *
-	 * @param callback ハンドラとなる関数を指定します。
-	 * @description Continuous ハンドラを登録します。
-	 * Continuous ハンドラは、「できる限り頻繁に」呼び出されるイベントハンドラです。
-	 * 他にする処理がない場合、吉里吉里は Continuous ハンドラを呼び出し続けます。
-	 * 他にイベントなどが起きた場合はそちらが優先されます。
-	 * ただし、コマンドラインオプションの -contfreq で呼び出しの頻度が指定されている場合はそれに従います。
+	 * @param callback Specify the function to be the handler.
+	 * @description Register a Continuous Handler.
+	 * Continuous handlers are event handlers that are called "as often as possible".
+	 * If there is nothing else to do, Kirikiri keeps calling her Continuous Handler.
+	 * If another event occurs, that will be given priority.
+	 * However, if the command line option -contfreq specifies the frequency of calls, it follows.
 	 */
 	function addContinuousHandler( callback);
 
 	/**
-	 * Continuous ハンドラの削除
+	 * Delete Continuous Handler
 	 *
-	 * @param callback ハンド関数を指定します。
-	 * @description Continuous ハンドラを削除します。
+	 * @param callback Specify the hand function.
+	 * @description Delete the Continuous handler.
 	 */
 	function removeContinuousHandler( callback);
 
 	/**
-	 * メッセージの表示
+	 * Display message
 	 *
-	 * @param text 表示するメッセージを指定します。
-	 * @param caption ウィンドウのキャプションとなる文字列を指定します。
-	 * @description ユーザにメッセージを示すためのウィンドウを表示します。
-	 * ウィンドウはモーダルで表示されます ( つまり、表示中は他のウィンドウは操作できない )。
-	 * Androidではトーストとして表示され、即座に制御が返ります。
-	 * またcaptionは意味を持ちません。
+	 * @param text Specify the message to display.
+	 * @param caption Specifies the string that will be the caption for the window.
+	 * @description Displays a window to show the message to the user.
+	 * Windows are displayed modally (that is, no other window can be manipulated while they are displayed).
+	 * It appears as a toast on Android and returns immediate control.
+	 * Also, caption has no meaning.
 	 */
 	function inform( text, caption="");
 
 	/**
-	 * ティックカウントの取得
+	 * Get tick count
 	 *
-	 * @return ティックカウント(64bitの整数)が戻ります。
-	 * @description ティックカウントは 1/1000 秒ごとにカウントアップする数値です。
-	 * 二つの時点でこのメソッドを用いてティックカウントを取得し、その差をとれば、二つの時点の時間差を知ることができます。
+	 * @return The tick count (64-bit integer) is returned.
+	 * @description The tick count is a number that counts up every 1/1000 second.
+	 * You can use this method to get the tick count at two time points and take the difference to know the time difference between the two time points.
 	 */
 	function getTickCount( );
 
 	/**
-	 * [Windows*]キー状態の取得
+	 * [Windows *] Get key status
 	 *
-	 * @param code 状態を取得する仮想キーコード  を指定します。
-	 * @return キーが押されていれば真、押されていなければ偽になります。
-	 * @description code で指定したキーコードに対応するキーが、このメソッドを呼んだ時点で押されているかどうかを取得します。
-	 * Android場合常にfalseが返ります。
+	 * @param code Specifies the virtual keycode for which you want to get the state.
+	 * @return True if the key is pressed, false if not pressed.
+	 * @description Gets whether the key corresponding to the key code specified by code is pressed when this method is called.
+	 * For Android, false is always returned.
 	 */
 	function getKeyState( code);
 
 	/**
-	 * [Windows*]ファイル/プログラムの実行
+	 * [Windows *] Run files / programs
 	 *
-	 * @param target 実行するファイルやソフトウェアを指定します。
-	 * ファイルを指定された場合は、それに関連づけられたプログラムが起動します。
-	 * @param param 実行するソフトウェアに渡すパラメータを指定します。
-	 * target 引数にファイルを指定した場合はこの引数を省略するか、あるいは空文字列を指定してください。
-	 * @return 実行に成功すれば真、失敗すれば偽が返ります。
-	 * @description target で指定したファイルやソフトウェアを実行します。
-	 * Androidでは何も起こりません。
+	 * @param target Specify the file or software to execute.
+	 * If a file is specified, the program associated with it will be launched.
+	 * @param param Specifies the parameters to pass to the software to run.
+	 * If you specify a file in the target argument, omit this argument or specify an empty string.
+	 * @return If the execution succeeds, it returns true, and if it fails, it returns false.
+	 * @description Executes the file or software specified by target.
+	 * Nothing happens on Android.
 	 */
 	function shellExecute( target, param="");
 
 	/**
-	 * [Windows+]レジストリの読み込み
+	 * [Windows +] Loading the registry
 	 *
-	 * @param key 読み込むレジストリキーを指定します。
-	 * @return 実行に成功すればレジストリの値、失敗すれば void が返ります。
-	 * @description key で指定した Windows レジストリを読み込みます。
-	 * レジストリキーは、以下のルートキー名で始めることができます。
-	 * HKEY_CLASSES_ROOTHKEY_CURRENT_CONFIGHKEY_CURRENT_USERHKEY_LOCAL_MACHINEHKEY_USERSHKEY_PERFORMANCE_DATAHKEY_DYN_DATA
-	 * たとえば、以下のような文字列を key に指定することができます。
-	 * HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\hoeg\installdir
-	 * 数値、単一文字列のみを読み込むことができます。
-	 * 数値の場合は整数型、文字列の場合は文字列型の結果が返ります。
+	 * @param key Specifies the registry key to load.
+	 * @return If the execution succeeds, the registry value is returned, and if it fails, void is returned.
+	 * @description Reads the Windows registry specified by key.
+	 * The registry key can start with the following root key name:
+	 * HKEY_CLASSES_ROOTHKEY_CURRENT_CONFIGHKEY_CURRENT_USERHKEY_LOCAL_MACHINEHKEY_USERSHKEY_PERFORMANCE_DATA HKEY_DYN_DATA
+	 * For example, you can specify the following string for key.
+	 * HKEY_LOCAL_MACHINE \ SOFTWARE \ Microsoft \ Windows \ CurrentVersion \ Uninstall \ hoeg \ installdir
+	 * Only numbers and single strings can be read.
+	 * If it is a number, it returns an integer type result, and if it is a character string, it returns a character string type result.
 	 */
 	function readRegValue( key);
 
 	/**
-	 * コマンドラインオプションの取得
+	 * Get command line options
 	 *
-	 * @param name 取得するコマンドラインオプション名を指定します。
-	 * 最初に '-'( ハイフン ) をつけてください ( 例 : '-nosplash' )。
-	 * @return コマンドラインオプションが指定されていればその値、指定されていなければvoid が返ります。
-	 * @description コマンドラインオプションは、-name=valueまたは-nameの形式で吉里吉里に渡されている必要があります。
-	 * 前者の場合は値として value が返り、前者の場合は値として 'yes' が返ります。
+	 * @param name Specify the command line option name to get.
+	 * Add a'-'(hyphen) first (eg'-nosplash').
+	 * @return If a command line option is specified, its value is returned, otherwise void is returned.
+	 * @description Command line options must be passed to Kirikiri in the form -name = value or -name.
+	 * In the former case, value is returned as the value, and in the former case,'yes' is returned as the value.
 	 * @see System.setArgument
 	 */
 	function getArgument( name);
 
 	/**
-	 * コマンドラインオプションの設定
+	 * Setting command line options
 	 *
-	 * @param name 設定するコマンドラインオプション名を指定します。最初に '-'( ハイフン ) をつけてください ( 例 : '-contfreq' )。
-	 * @param value 設定する値を指定します。 ( 例 : '60' )。
-	 * @description 動的にコマンドラインオプションを設定します。
-	 * すべてのコマンドラインオプションが設定可能な訳ではありません。
-	 * 設定可能なコマンドラインオプションについては コマンドラインオプション を参照してください。
-	 * ここで動的に変更可能という表記のないオプションについては変更を行わないでください。
-	 * このメソッドは、そのオプションが動的に変更可能かどうかやオプションの存在、値の有効性などをチェックしません。
-	 * 値の設定には十分気をつけてください。
+	 * @param name Specify the command line option name to be set. Start with a'-' (hyphen) (eg'-contfreq').
+	 * @param value Specify the value to be set. (Example: '60').
+	 * @description Dynamically set command line options.
+	 * Not all command line options are configurable.
+	 * See Command Line Options for configurable command line options.
+	 * Do not change options that are not marked as dynamically changeable here.
+	 * This method does not check whether the option can be changed dynamically, the existence of the option, the validity of the value, etc.
+	 * Be careful when setting the value.
 	 * @see System.getArgument
 	 */
 	function setArgument( name, value );
 
 	/**
-	 * 色定数の実際の色の取得
+	 * Getting the actual color of a color constant
 	 *
-	 * @param color 色定数を指定します ( 色定数一覧 を参照 )。
-	 * 通常の 0xRRGGBB 形式の色を指定した場合はそのままの値が返ります。
-	 * @return 指定された色定数が表す実際の色が 0xRRGGBB 形式で返ります。
-	 * @description 色定数を実際の色に変換し、0xRRGGBB 形式で返します。
+	 * @param color Specify a color constant (see List of Color Constants).
+	 * If you specify a color in the normal 0xRRGGBB format, the value is returned as is.
+	 * @return Returns the actual color represented by the specified color constant in 0xRRGGBB format.
+	 * @description Converts a color constant to the actual color and returns it in 0xRRGGBB format.
 	 */
 	function toActualColor( color );
 
 	/**
-	 * [Windows+]二重起動のチェック
+	 * [Windows +] Double boot check
 	 *
-	 * @param key チェックを行うためのキー文字列を指定します。同じキー文字列をほかの実行中の吉里吉里がこのメソッドに指定していた場合、false が戻ります。
-	 * キー文字列には基本的には TJS の変数の命名規則と同じ文字のみが使えると考えてください。
-	 * キー文字列は十分にユニークな物である必要があります。
-	 * @return すでに同じキー文字列が指定された吉里吉里が実行中の場合は false、そうでなければ true が戻ります。
-	 * @description 他に同じキー文字列を指定された吉里吉里が実行中ならば false、そうでなければ true が戻ります。
-	 * 二重起動の防止に用います。
+	 * @param key Specify the key string to perform the check. If the same key string was specified for this method by another running Kirikiri, false is returned.
+	 * Consider that you can basically use only the same characters in the key string as the TJS variable naming convention.
+	 * The key string must be unique enough.
+	 * @return If Kirikiri, which already has the same key string, is running, false is returned, otherwise true is returned.
+	 * @description If another Kirikiri with the same key string is running, false is returned, otherwise true is returned.
+	 * It is used to prevent double startup.
 	 */
 	function createAppLock( key );
 
 	/**
-	 * UUID 文字列の生成
+	 * UUID string generation
 	 *
-	 * @return 生成された UUID 文字列が "e8b2a2b5-5ceb-4f75-a08b-1f1bdfdca4f1" の形式(ハイフンを除く各英数字は16進数の数字) で戻ります。
-	 * @description UUID 文字列を生成して返します。このメソッドはランダムビット列を元に生成された128bitの UUID (universal unique identifier) を生成します。
-	 * 吉里吉里に実装されている UUID 生成アルゴリズムは、ある程度、環境ノイズを拾ってランダムビット列を生成しますが、高度なセキュリティが要求されるような用途に使用することはおすすめしません。
-	 * しかし、他の UUID とは「非常に非常に高い確率で重ならない」と考えられます。
+	 * @return The generated UUID string is returned in the format "e8b2a2b5-5ceb-4f75-a08b-1f1bdfdca4f1" (each alphanumeric character except hyphen is a hexadecimal digit).
+	 * @description Generates and returns a UUID string. This method generates a 128-bit UUID (universal unique identifier) generated based on a random bit string.
+	 * The UUID generation algorithm implemented in Kirikiri picks up environmental noise to some extent and generates a random bit string, but it is not recommended to use it for applications that require a high degree of security.
+	 * However, it is considered "very very likely not to overlap" with his other UUIDs.
 	 */
 	function createUUID();
 
 	/**
-	 * メッセージ割り当ての変更
+	 * Change message assignment
 	 *
-	 * @param id 割り当てるメッセージ ID を指定します。
-	 * @param msg id で指定された ID に割り当てるメッセージを指定します。
-	 * @return ID が存在し、メッセージの割り当てが成功すれば真、そうでなければ偽が戻ります。
-	 * @description メッセージ割り当てを変更します。吉里吉里が内蔵しているメッセージをこのメソッドで別のメッセージに変更することができます。
-	 * 通常、メッセージマップファイル内に記述します ( 起動の仕方 参照 )。
-	 * 設定可能な ID と、それに現在割り当てられているメッセージの一覧を取得するには  から「メッセージマップファイルの作成」を実行してください。
+	 * @param id Specifies the message ID to assign.
+	 * @param msg Specifies the message to assign to the ID specified by id.
+	 * @return Returns true if the ID exists and the message assignment is successful, false otherwise.
+	 * @description Change the message assignment. Kirikiri You can change the built-in message to another message with this method.
+	 * Usually, it is described in the message map file (see How to start).
+	 * To get a list of configurable IDs and the messages currently assigned to them, run "Create Message Map File".
 	 */
 	function assignMessage( id, msg);
 
 	/**
-	 * メモリのコンパクト化
+	 * Compact memory
 	 *
-	 * @param level レベルを指定します。clIdle を指定すると、システムがアイドル状態 (システムが比較的動作をしていない状態) に実行されるコンパクト化と同じ処理が行われます。
-	 * 現バージョンでは TJS2 のガベージコレクションが行われます。
+	 * @param level Specify the level. Specifying clIdle does the same thing as compactification, which occurs when the system is idle (the system is relatively inactive).
+	 * The current version features his TJS2 garbage collection.
 	 *
-	 * + clDeactivate を指定すると、吉里吉里が非アクティブになったとき (他のアプリケーションがアクティブになったとき) に実行されるコンパクト化と同じ処理が行われます。現バージョンではレイヤの演算用の一時画像バッファ、レイヤキャッシュ、XP3 アーカイブのセグメント(ストレージの断片) キャッシュ、自動検索パスのキャッシュがクリアされます。
-	 * + clMinimize を指定すると、吉里吉里が最小化されたときに実行されるコンパクト化と同じ処理が行われます。現バージョンでは、描画文字のキャッシュ、画像キャッシュがクリアされます。
-	 * + clAll を指定すると、上記のコンパクト化の全てが実行されます。
+	 * + If you specify clDeactivate, it does the same compactification that occurs when Kirikiri becomes inactive (when other applications become active). The current version clears the temporary image buffer for layer operations, the layer cache, the XP3 archive segment (storage fragment) cache, and the automatic search path cache.
+	 * + If you specify clMinimize, it does the same compactification that occurs when Kirikiri is minimized. In the current version, the drawing character cache and image cache are cleared.
+	 * + If clAll is specified, all of the above compactifications will be performed.
 	 *
-	 * コンパクト化のレベルは、clIdle < clDeactivate < clMinimize < clAll の順に強くなります。
-	 * より上位のレベルを指定すると、下位のレベルで行われるコンパクト化も行われます。
-	 * たとえば、clDeactivate を実行すると、clIdle での処理も実行されます。
-	 * 引数を省略すると clAll が指定された物と見なされます。
-	 * @description メモリのコンパクト化を行います。
-	 * コンパクト化とは、使用していないメモリや各種キャッシュ用メモリを解放して、メモリ使用量を減らす処理です。
-	 * 吉里吉里は自動でこれを行うので通常はあまり気にする必要はありませんが、強制的にプログラム側の処理で行いたい場合にこのメソッドを使用することができます。
+	 * The level of compactification increases in the order of clIdle <clDeactivate <clMinimize <clAll.
+	 * Specifying a higher level also results in the compactification that is done at the lower levels.
+	 * For example, running clDeactivate also does what clIdle does.
+	 * If the argument is omitted, clAll is assumed to be specified.
+	 * @description Makes the memory compact.
+	 * Compactification is the process of reducing memory usage by releasing unused memory and memory for various caches.
+	 * Kirikiri does this automatically, so you don't usually have to worry too much, but you can use this method if you want to force it to be done on the program side.
 	 */
 	function doCompact( level=clAll);
 
 	/**
-	 * 画像のキャッシュへの読み込み
+	 * Loading images into cache
 	 *
-	 * @param storages キャッシュに入れたい画像ストレージ名を配列(Arrayクラスのオブジェクト)で渡します。
-	 * 先に書いた物ほど優先されます。
-	 * 吉里吉里は、Layer.loadImages の第１引数に指定された文字列をそのままキーにしてキャッシュを管理するため、キャッシュを意味のある物にするには、ここで指定する画像ストレージ名は Layer.loadImages の第１引数に指定するものと同一である必要があります。
-	 * @param limitbytes このメソッドの呼び出しで使用するキャッシュ容量の制限値をバイト単位で指定します。
-	 * 0 を指定すると、キャッシュをすべて使用します。正の数を指定すると、そのバイト数までキャッシュを使用しようとします。
-	 * 負の数を指定すると、現在のキャッシュの制限値 ( System.graphicCacheLimit ) からその数値が加算された数 ( ただし「負の数」を加算するので実際は減算 ) が制限値として使用されます。
-	 * その結果制限値が0 または負になってしまった場合は、このメソッドは何もせずに終了します。
-	 * たとえば、-2*1024*1024 を指定すれば、現在のキャッシュ制限値から 2MB が引かれた数値が指定されたとみなされます。
-	 * これは、キャッシュの残り容量に余裕を残したい場合に便利です。
-	 * @param timeout タイムアウト ( 時間制限 ) を ms 単位で指定します。0 を指定すると無制限となります。
-	 * このメソッドはこの引数で指定された時間が経過すると、以降の画像の読み込みを中止し、戻ります。
-	 * ただし、ある画像の読み込み中にタイムアウトになっても、その画像の読み込みが終了するまでは戻りません。
-	 * @description このメソッドは、指定された画像をキャッシュに入れようと試行します。
-	 * ただし、このメソッドはキャッシュに画像を入れようと努力はしますが、実際に画像がキャッシュにはいる保証はありません。
-	 * 画像キャッシュの制限値をすぎたり、タイムアウトすると画像読み込みを中断します。
-	 * 画像は、storages引数に指定した物のうち、最初に書いた物ほどキャッシュに入る可能性が大きくなります ( 優先されます )。
-	 * すでに指定された画像がキャッシュに入っていた場合は、キャッシュ中での生存の順位を引き上げるだけの動作をします。
-	 * このメソッドは、画像読み込み中のエラーはすべて無視します。
-	 * 現バージョンでは、このメソッドでキャッシュに入れることのできる画像は、通常Layer.loadImages で読み込み可能な画像で、かつカラーキーを指定しない画像です ( アルファチャンネル付き画像は問題ありません )。
-	 * ユニバーサルトランジションのルール画像や、領域画像は読み込む動作はしますが、キャッシュとして有効なデータにはなりません ( 読み込んだデータは無駄になります ) ので、指定しないようにしてください。
-	 * 画像がキャッシュで使用するバイト数については System.graphicCacheLimit を参照してください。
+	 * @param storages Pass the image storage name you want to cache as an array (Object of Array class).
+	 * The one written earlier has priority.
+	 * Kirikiri manages the cache using the character string specified in the first argument of Layer.loadImages as a key, so to make the cache meaningful, the image storage name specified here is Layer.loadImages. Must be the same as the one specified in the first argument of.
+	 * @param limitbytes Specifies the cache capacity limit to use in calling this method, in bytes.
+	 * Specify 0 to use all cache. If you specify a positive number, it will try to use the cache up to that number of bytes.
+	 * If you specify a negative number, the current cache limit (System.graphicCacheLimit) plus that number (but actually subtracted because it adds a "negative number") is used as the limit.
+	 * If the result is a limit of 0 or negative, this method exits without doing anything.
+	 * For example, if you specify -2 * 1024 * 1024, he is considered to have specified the current cache limit minus 2MB.
+	 * This is useful if you want to leave some room in the cache.
+	 * @param timeout Specifies the timeout (time limit) in ms. If you specify 0, there is no limit.
+	 * This method will stop loading subsequent images and return after the time specified by this argument has elapsed.
+	 * However, if a timeout occurs while loading an image, it will not return until the image has finished loading.
+	 * @description This method attempts to cache the specified image.
+	 * However, while this method attempts to cache the image, there is no guarantee that the image will actually be cached.
+	 * If the image cache limit is exceeded or a timeout occurs, image loading will be interrupted.
+	 * The image specified in the storages argument is more likely to be cached (priority is given) as it is written first.
+	 * If the specified image is already in the cache, it just raises the rank of survival in the cache.
+	 * This method ignores any errors during image loading.
+	 * In the current version, the images that can be cached with this method are usually images that can be loaded by Layer.loadImages and do not specify a color key (images with an alpha channel are fine).
+	 * Universal transition rule images and area images will be read, but they will not be valid data as a cache (the read data will be wasted), so do not specify them.
+	 * See System.graphicCacheLimit for the number of bytes an image uses in the cache.
 	 */
 	function touchImages( storages, limitbytes=0, timeout=0);
 
 	/**
-	 * [Windows+]aboutダイアログの表示
+	 * Displaying the [Windows +] about dialog
 	 *
-	 * @description aboutダイアログを表示します。
+	 * @description Display the about dialog.
 	 */
 	function showVersion();
 
 	/**
-	 * [Windows+]ヒープ情報ダンプ
+	 * [Windows +] Heap information dump
 	 *
-	 * @description ヒープの情報をコンソールに出力します。
+	 * @description Outputs heap information to the console.
 	 */
 	function dumpHeap();
 
 	/**
-	 * nullポインターアクセスを発生させます
-	 * @description 呼ばないでください。
+	 * Raise null pointer access
+	 * @description Please do not call.
 	 */
 	function nullpo();
 	/**
-	 * バージョン文字列
+	 * Version string
 	 *
-	 * @description 吉里吉里本体のバージョン文字列を得ることができます。
-	 * バージョン文字列は以下のような形式です。1.0.0.1
+	 * @description You can get the version string of Kirikiri itself.
+	 * The version string has the following format. 1.0.0.1
 	 */
 	 property versionString {
 		 getter() { return value; }
 	}
 	/**
-	 * バージョン情報文字列
+	 * Version information string
 	 *
-	 * @description 吉里吉里本体のバージョン情報文字列を得ることができます。
-	 * バージョン情報文字列は System.versionString よりも長い形式で、以下のようになります。
-	 * 吉里吉里[きりきり] Z 実行コア/1.0.0.0 (Compiled on Dec 16 2013 23:15:27) TJS2/2.4.28 Copyright (C) 1997-2013 W.Dee and contributors All rights reserved.
+	 * @description You can get the version information string of Kirikiri itself.
+	 * The version information string is longer than System.versionString and looks like this:
+	 * KiriKiri [Kirikiri] Z Execution Core /1.0.0.0 (Compiled on Dec 16 2013 23:15:27) TJS2 / 2.4.28 Copyright (C) 1997-2013 W.Dee and contributors All rights reserved.
 	 */
 	 property versionInformation {
 		 getter() { return value; }
 	}
 	/**
-	 * イベント配信が停止されているかどうか
+	 * Whether event delivery is stopped
 	 *
-	 * @description 吉里吉里のイベント配信が停止されている場合に true になります。
-	 * 値を設定することもできます。
-	 * イベント配信が停止されると、吉里吉里上のイベントは発生しなくなるか、発生が延期されます ( イベントの種類によって挙動は異なります )。
+	 * @description This is true if the event delivery of Kirikiri is stopped.
+	 * You can also set the value.
+	 * When the event delivery is stopped, the event on Kirikiri will not occur or will be postponed (behavior depends on the type of event).
 	 */
 	 property eventDisabled {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * 画像キャッシュ制限
+	 * Image cache limit
 	 *
-	 * @description 吉里吉里の画像キャッシュ制限をバイト単位で表します。
-	 * 値を設定することもできます。
-	 * gcsAuto を指定すると、マシンに搭載されているメモリ量に応じて自動的に値が設定されます。
-	 * ルール画像や領域画像は、幅×高さ で表されるバイト数を消費します。
-	 * それ以外の画像は幅×高さ×４ で表されるバイト数を消費します。
+	 * @description Kirikiri Represents the image cache limit in bytes.
+	 * You can also set the value.
+	 * If you specify gcsAuto, the value is automatically set according to the amount of memory installed in the machine.
+	 * Rule images and area images consume the number of bytes expressed as width x height.
+	 * Other images consume the number of bytes represented by width x height x 4.
 	 */
 	 property graphicCacheLimit {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * プラットフォーム名
+	 * Platform name
 	 *
-	 * @description 吉里吉里が動作しているプラットフォーム名を表します。
-	 * Windows の場合は OS が 32bit 版の時 'Win32' 、64bit 版の時  'Win64' となります。
-	 * Android の場合は Android となります。
+	 * @description Kiriki Represents the name of the platform on which Kiriki is running.
+	 * For Windows, it will be'Win32' when the OS is his 32-bit version and'Win64' when the OS is the 64-bit version.
+	 * For Android, it will be Android.
 	 */
 	 property platformName {
 		 getter() { return value; }
 	}
 	/**
-	 * OS 名
+	 * OS name
 	 *
-	 * @description 吉里吉里が動作している OS の名前を表します。
+	 * @description Kiriki Represents the name of her OS on which Kiriki is running.
 	 */
 	 property osName {
 		 getter() { return value; }
 	}
 	/**
-	 * 吉里吉里本体のあるフォルダのパス
+	 * Kirikiri The path of the folder containing the main body
 	 *
-	 * @description 吉里吉里本体が設置してあるパスを表します。
-	 * パス名は統一ストレージ名で表現されます。
-	 * AndroidではpackageCodePathのフォルダ名です。
+	 * @description Kiriki Represents the path where the main body is installed.
+	 * The path name is represented by a unified storage name.
+	 * On Android it is the folder name of packageCodePath.
 	 * @see System.appDataPath
 	 * @see System.personalPath
 	 * @see System.packageCodePath
@@ -314,12 +314,12 @@ class System {
 		 getter() { return value; }
 	}
 	/**
-	 * マイドキュメントのパス
+	 * My document path
 	 *
-	 * @description ユーザのマイドキュメントのパスを表します。
-	 * Windows の場合、レジストリのHKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders のPersonal で表されるフォルダが返されます。
-	 * 通常これは「マイドキュメント」フォルダを指します。
-	 * このフォルダがない場合は System.exePath と同じフォルダを返します。
+	 * @description Represents the path of the user's My Documents.
+	 * For Windows, the folder represented by Personal in HKEY_CURRENT_USER \ Software \ Microsoft \ Windows \ CurrentVersion \ Explorer \ Shell Folders in the registry is returned.
+	 * This usually refers to the "My Documents" folder.
+	 * If this folder does not exist, it returns the same folder as System.exePath.
 	 * @see System.appDataPath
 	 * @see System.exePath
 	 */
@@ -327,15 +327,15 @@ class System {
 		 getter() { return value; }
 	}
 	/**
-	 * ユーザのホームディレクトリのパス
+	 * The path of the user's home directory
 	 *
-	 * @description ユーザのホームディレクトリのパスを表します。
-	 * Windows の場合、レジストリのHKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders のAppData で表されるフォルダが返されます。
-	 * このフォルダがない場合は System.exePath と同じフォルダを返します。
-	 * これは、通常、以下の通りになります。
-	 * XP の場合C:\Documents and Settings\<ユーザ名>\Application Data\ ( C: の部分は環境によって異なります )
-	 * Vista, 7, 8 の場合C:\Users\<ユーザ名>\AppData\Roaming ( C: の部分は環境によって異なります )何らかの理由で レジストリキー ( 上記参照 ) を読み出せなかった場合吉里吉里の実行可能ファイルのあるフォルダ (System.exePath)になります
-	 * AndroidではfilesDirと同じです。
+	 * @description Represents the path of the user's home directory.
+	 * For Windows, the folder represented by AppData in HKEY_CURRENT_USER \ Software \ Microsoft \ Windows \ CurrentVersion \ Explorer \ Shell Folders in the registry is returned.
+	 * If this folder does not exist, it returns the same folder as System.exePath.
+	 * This is typically:
+	 * For XP C: \ Documents and Settings \ <username> \ Application Data \ (C: part depends on the environment)
+	 * For Vista, 7 and 8 C: \ Users \ <username> \ AppData \ Roaming (C: part depends on the environment) If for some reason his registry key (see above) could not be read Kirikiri Will be the folder (System.exePath) containing the executable files of
+	 * Same as filesDir on Android.
 	 * @see System.exePath
 	 * @see System.personalPath
 	 * @see System.filesDir
@@ -344,46 +344,46 @@ class System {
 		 getter() { return value; }
 	}
 	/**
-	 * データ保存場所のパス
+	 * Data storage path
 	 *
-	 * @description コマンドラインオプションの -datapath で指定したディレクトリを表します。
-	 * 標準では、ログなどがすべてここに出力されます。
-	 * ユーザスクリプトがデータを保存する場合は、ここに保存することを推奨します。
-	 * AndroidではexternalFilesDirが設定されています。
+	 * @description Represents the directory specified by the command line option -datapath.
+	 * By default, all logs etc. are output here.
+	 * If the user script saves the data, we recommend that you save it here.
+	 * ExternalFilesDir is set on Android.
 	 * @see System.externalFilesDir
 	 */
 	 property dataPath {
 		 getter() { return value; }
 	}
 	/**
-	 * 吉里吉里本体のパス
+	 * Kirikiri body pass
 	 *
-	 * @description 吉里吉里本体へのパス名を表します。
-	 * パス名は統一ストレージ名で表現されます。
-	 * AndroidではpackageCodePathと同じです。
+	 * @description Kiriki Indicates the path name to the main body.
+	 * The path name is represented by a unified storage name.
+	 * Same as packageCodePath on Android.
 	 * @see System.packageCodePath
 	 */
 	 property exeName {
 		 getter() { return value; }
 	}
 	/**
-	 * タイトル
+	 * title
 	 *
-	 * @description メインウィンドウのタイトルを文字列で表します。
-	 * 値を設定することもできます。
+	 * @description The title of the main window is represented by a character string.
+	 * You can also set the value.
 	 * @see Window.caption
-	 * AndroidではActivityのタイトルに設定されますが、フルスクリーン状態では非表示のため表示されません。
+	 * On Android, it is set as the title of Activity, but it is not displayed because it is hidden in the full screen state.
 	 */
 	 property title {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * 画面幅
+	 * Screen width
 	 *
-	 * @description 画面サイズ ( 画面解像度 ) の横サイズをピクセル単位で表します。
-	 * 値はメインウィンドウのあるディスプレイを対象としたものです。
-	 * メインウィンドウがない場合はプライマリーディスプレイが対象となります。
+	 * @description Represents the horizontal size of the screen size (screen resolution) in pixels.
+	 * The value is for a display with a main window.
+	 * If there is no main window, the primary display is the target.
 	 * @see System.screenHeight
 	 * @see System.desktopLeft
 	 * @see System.desktopTop
@@ -394,11 +394,11 @@ class System {
 		 getter() { return value; }
 	}
 	/**
-	 * 画面高さ
+	 * Screen height
 	 *
-	 * @description 画面サイズ ( 画面解像度 ) の縦サイズをピクセル単位で表します。
-	 * 値はメインウィンドウのあるディスプレイを対象としたものです。
-	 * メインウィンドウがない場合はプライマリーディスプレイが対象となります。
+	 * @description Represents the vertical size of the screen size (screen resolution) in pixels.
+	 * The value is for a display with a main window.
+	 * If there is no main window, the primary display is the target.
 	 * @see System.screenWidth
 	 * @see System.desktopLeft
 	 * @see System.desktopTop
@@ -409,12 +409,12 @@ class System {
 		 getter() { return value; }
 	}
 	/**
-	 * デスクトップ左端位置
+	 * Desktop left edge position
 	 *
-	 * @description デスクトップ ( ウィンドウを表示可能な領域 ) の左端位置をピクセル単位で表します。
-	 * 値はメインウィンドウのあるディスプレイを対象としたものです。
-	 * メインウィンドウがない場合はプライマリーディスプレイが対象となります。
-	 * Androidでは常に0です。
+	 * @description Represents the left edge position of the desktop (the area where the window can be displayed) in pixels.
+	 * The value is for a display with a main window.
+	 * If there is no main window, the primary display is the target.
+	 * Always 0 on Android.
 	 * @see System.screenWidth
 	 * @see System.screenHeight
 	 * @see System.desktopTop
@@ -425,12 +425,12 @@ class System {
 		 getter() { return value; }
 	}
 	/**
-	 * デスクトップ上端位置
+	 * Desktop top position
 	 *
-	 * @description デスクトップ ( ウィンドウを表示可能な領域 ) の上端位置をピクセル単位で表します。
-	 * 値はメインウィンドウのあるディスプレイを対象としたものです。
-	 * メインウィンドウがない場合はプライマリーディスプレイが対象となります。
-	 * Androidでは常に0です。
+	 * @description Represents the top edge of the desktop (the area in which the window can be displayed) in pixels.
+	 * The value is for a display with a main window.
+	 * If there is no main window, the primary display is the target.
+	 * Always 0 on Android.
 	 * @see System.screenWidth
 	 * @see System.screenHeight
 	 * @see System.desktopLeft
@@ -441,12 +441,12 @@ class System {
 		 getter() { return value; }
 	}
 	/**
-	 * デスクトップ幅
+	 * Desktop width
 	 *
-	 * @description デスクトップ ( ウィンドウを表示可能な領域 ) の幅をピクセル単位で表します。
-	 * 値はメインウィンドウのあるディスプレイを対象としたものです。
-	 * メインウィンドウがない場合はプライマリーディスプレイが対象となります。
-	 * Androidでは画面幅です。
+	 * @description Represents the width of the desktop (the area in which the window can be displayed) in pixels.
+	 * The value is for a display with a main window.
+	 * If there is no main window, the primary display is the target.
+	 * Screen width on Android.
 	 * @see System.screenWidth
 	 * @see System.screenHeight
 	 * @see System.desktopLeft
@@ -457,12 +457,12 @@ class System {
 		 getter() { return value; }
 	}
 	/**
-	 * デスクトップ高さ
+	 * Desktop height
 	 *
-	 * @description デスクトップ ( ウィンドウを表示可能な領域 ) の高さをピクセル単位で表します。
-	 * 値はメインウィンドウのあるディスプレイを対象としたものです。
-	 * メインウィンドウがない場合はプライマリーディスプレイが対象となります。
-	 * Androidでは画面幅高さ。
+	 * @description Represents the height of the desktop (the area in which the window can be displayed) in pixels.
+	 * The value is for a display with a main window.
+	 * If there is no main window, the primary display is the target.
+	 * Screen width height on Android.
 	 * @see System.screenWidth
 	 * @see System.screenHeight
 	 * @see System.desktopLeft
@@ -473,51 +473,49 @@ class System {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows]メインウィンドウが閉じたときに終了するかどうか
+	 * [Windows] Whether to exit when the main window is closed
 	 *
-	 * @description メインウィンドウ(一番最初に作成したWindowクラスのインスタンス)が閉じたときに終了するかどうかを表します。
-	 * 値を設定することもできます。
-	 * デフォルトは真です。
-	 * メインウィンドウが閉じ、ほかのデバッグ関連ウィンドウも表示していない場合は吉里吉里は終了すること無くシステムに残り、制御不能に陥る可能性がありますので注意してください(タスクマネージャからプロセスを終了させるしか無くなる可能性があります)。
-	 * 	
+	 * @description Indicates whether to exit when the main window (the first instance of the Window class created) is closed.
+	 * You can also set the value.
+	 * The default is true.
+	 * Please note that if the main window is closed and no other debug related windows are displayed, KiriKiri will remain on the system without terminating and may get out of control (only terminating the process from the task manager). It may disappear).
+	 * .
 	 */
 	 property exitOnWindowClose {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * 捕捉されなかった例外のためのハンドラ関数
+	 * Handler function for uncaught exception
 	 *
-	 * @description 捕捉されなかった例外 (どこにも捕捉されずに吉里吉里本体に渡された例外) を処理する関数を表します。
-	 * null を指定すると、デフォルトの動作になります。
-	 * デフォルトの動作とは、非同期イベントの配信を停止する (System.eventDisabled を 真 に設定)ログをファイルに出力開始する (Debug.logAsError を呼ぶ)エラーを通知するダイアログボックスを表示し、スクリプトエディタでその箇所を示すです。
-	 * ハンドラ関数は引数を一つ取り、それが例外オブジェクトになります。
-	 * ハンドラ関数が指定されないか、あるいはハンドラ関数が null であるか、あるいはハンドラ関数が偽を返すと、デフォルトの動作が行われます。
-	 * ハンドラ関数が真を返すと上記のデフォルトの動作は行われません。
-	 * ハンドラ関数を実行中に非同期イベントが発生する可能性を考慮してください。
-	 * 吉里吉里本体が非同期イベントを処理できてしまうと、例外ハンドラを実行中に再び予期せぬ例外が発生する可能性があります。
-	 * これを避けるため、通常、ハンドラ関数内でなにかを待つような処理をする場合 (吉里吉里が非同期イベントを処理する機会がある場合 )、非同期イベントの発生を停止させます。
-	 * 例:
+	 * @description Represents a function that handles uncaught exceptions (exceptions passed to Kirikiri itself without being caught anywhere).
+	 * Specifying null is the default behavior.
+	 * The default behavior is to stop the delivery of asynchronous events (set System.eventDisabled to true) and start outputting logs to a file (call Debug.logAsError) to display a dialog box informing you of the error and in the script editor. It shows the place.
+	 * The handler function takes one argument, which becomes the exception object.
+	 * If no handler function is specified, the handler function is null, or the handler function returns false, the default behavior is taken.
+	 * If the handler function returns true, the above default behavior will not occur.
+	 * Consider the possibility of an asynchronous event occurring while executing a handler function.
+	 * If Kirikiri itself can handle asynchronous events, an unexpected exception may occur again while executing the exception handler.
+	 * To avoid this, normally, if you want to wait for something in the handler function (when Kirikiri has a chance to handle the asynchronous event), stop the occurrence of the asynchronous event.
+	 * Example:
 	 *
 	 * ```
 	 * System.exceptionHandler = function (e){
-	 *    // どこにも捕捉されない例外がシステム側で捕捉された場合、この関数が
-	 *    // 呼ばれる。e は例外オブジェクト。
+	 *    // This function is called when an exception that is not caught anywhere is caught on the system side. e is an exception object.
 	 *    if(e instanceof "ConductorException"){
-	 *        // コンダクタの投げた例外の場合
+	 *        // In the case of a conductor thrown exception
 	 *        Debug.logAsError();
-	 *        // ログのファイルへの書き出し動作の開始など
+	 *        // Start of writing log to file, etc.
 	 *        var event_disabled = System.eventDisabled;System.eventDisabled = true;
-	 *        // エラーの理由を表示させている間にイベントが発生すると
-	 *        // やっかいなのでいったんイベント発生を停止させる
+	 *        // It is troublesome if an event occurs while displaying the reason for the error, so stop the event occurrence once
 	 *        System.inform(e.message);
 	 *        System.eventDisabled = event_disabled;
-	 *        // イベントを発生するかどうかを元の状態に
+	 *        // Whether to raise an event or not to the original state
 	 *        return true;
-	 *        // true を返すと本体側で例外の処理は行わなくなる
+	 *        // If true is returned, exception handling will not be performed on the main unit side.
 	 *    }else{
 	 *        return false;
-	 *        // false を返すと通常の例外処理
+	 *        // Normal exception handling if false is returned
 	 *    }
 	 * };
 	 * ```
@@ -529,13 +527,13 @@ class System {
 		 setter( value ) {}
 	}
 	/**
-	 * アプリケーションがアクティブになったとき
+	 * When the application becomes active
 	 *
-	 * @description アプリケーションがアクティブになったときに呼び出されるイベント関数を表します。
-	 * null を指定すると関数は呼び出されません。
-	 * 通常のイベントハンドラと異なり、このイベントを受け取りたい場合は、呼び出したい関数をこのプロパティに設定してください。
-	 * Window.onActivate は、同じアプリケーション内のそれぞれのウィンドウがアクティブになったときに発生しますが、このイベントは、メインウィンドウがアクティブになった場合に発生します。
-	 * このイベントは、メインウィンドウが既にアクティブの場合にも発生する可能性があるので注意してください (完全に onActivate → onDeactivate → onActivate → …… の順に発生する保証がない )。
+	 * @description Represents an event function that is called when the application becomes active.
+	 * If null is specified, the function will not be called.
+	 * Unlike regular event handlers, if you want to receive this event, set this property to the function you want to call.
+	 * Window.onActivate is fired when each window in the same application is activated, but this event is fired when the main window is activated.
+	 * Note that this event can also occur if the main window is already active (there is no guarantee that it will occur completely onActivate → onDeactivate → onActivate → ……).
 	 * @see System.onDeactivate
 	 * @see Window.onActivate
 	 * @see Window.onDeactivate
@@ -545,13 +543,13 @@ class System {
 		 setter( value ) {}
 	}
 	/**
-	 * アプリケーションが非アクティブになったとき
+	 * When the application becomes inactive
 	 *
-	 * @description アプリケーションが非アクティブになったときに呼び出されるイベント関数を表します。
-	 * null を指定すると関数は呼び出されません。
-	 * 通常のイベントハンドラと異なり、このイベントを受け取りたい場合は、呼び出したい関数をこのプロパティに設定してください。
-	 * Window.onDeactivate は、同じアプリケーション内のそれぞれのウィンドウが非アクティブになったときに発生しますが、このイベントは、メインウィンドウが非アクティブになった場合に発生します。
-	 * このイベントは、メインウィンドウが既に非アクティブの場合にも発生する可能性があるので注意してください (完全に onActivate → onDeactivate → onActivate → …… の順に発生する保証がない )。
+	 * @description Represents an event function that is called when the application becomes inactive.
+	 * If null is specified, the function will not be called.
+	 * Unlike regular event handlers, if you want to receive this event, set this property to the function you want to call.
+	 * Window.onDeactivate is fired when each window in the same application is deactivated, but this event is fired when the main window is deactivated.
+	 * Note that this event can also occur if the main window is already inactive (there is no guarantee that it will occur completely onActivate → onDeactivate → onActivate → ……).
 	 * @see System.onActivate
 	 * @see Window.onActivate
 	 * @see Window.onDeactivate
@@ -561,33 +559,33 @@ class System {
 		 setter( value ) {}
 	}
 	/**
-	 * 描画に使用するスレッドの数
+	 * Number of threads used for drawing
 	 *
-	 * @description 吉里吉里のレイヤシステムが描画時に使用するスレッド数を表します。
-	 * 値を設定することもできます。
-	 * dtnAuto を指定すると、OSの認識するプロセッサ数と同数のスレッドが自動的に割り当てられます。
-	 * 描画スレッドを複数設定することで、マルチコア環境での描画パフォーマンスを向上させられる可能性がありますが、逆にパフォーマンスが低下する場合もあります。
-	 * 描画面積が大きい処理、Affine系の高負荷な処理、演算の重いレイヤ合成処理などに適用することで、良好な結果を得られる可能性があります。
-	 * マルチスレッドを使用するように設定しても、描画処理の負荷が軽くマルチスレッド化の効果が得られないとシステムが判断した場合は、マルチスレッドで実行されない場合があります。
+	 * @description Kiriki Represents the number of threads used by Kiriki's layer system when drawing.
+	 * You can also set the value.
+	 * If you specify dtnAuto, the same number of threads as the OS recognizes is automatically allocated.
+	 * Setting multiple drawing threads may improve drawing performance in a multi-core environment, but it may also reduce performance.
+	 * Good results may be obtained by applying it to processing with a large drawing area, high-load processing of Affine series, and layer composition processing with heavy calculation.
+	 * Even if you set to use multithreading, if the system determines that the drawing process load is light and the effect of multithreading cannot be obtained, it may not be executed in multithreading.
 	 */
 	 property drawThreadNum {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * 保存したゲームのパス(1.1.0以降)
+	 * Saved game path (1.1.0 or later)
 	 *
-	 * @description 保存したゲームのパスを表します。
-	 * これは、通常、以下の通りになります。
-	 * C:\Users\<ユーザ名>\Saved Games
+	 * @description Represents the saved game path.
+	 * This is typically:
+	 * C: \ Users \ <username> \ Saved Games
 	 */
 	 property savedGamesPath {
 		 getter() { return value; }
 	}
 	/**
-	 * 吉里吉里本体が 32bit 版か 64bit 版か(1.3.0以降)
+	 * Kirikiri Whether the main body is his 32-bit version or 64-bit version (1.3.0 or later)
 	 *
-	 * @description 実行バイナリが 32bit 版か 64bit 版かを整数の 32 か 64 で表します。
+	 * @description The integer 32 or 64 indicates whether the executable binary is his 32-bit or 64-bit version.
 	 * @see System.osBits
 	 * @see System.platformName
 	 */
@@ -595,9 +593,9 @@ class System {
 		 getter() { return value; }
 	}
 	/**
-	 * OS が 32bit 版か 64bit 版か(1.3.0以降)
+	 * Whether the OS is his 32-bit version or 64-bit version (1.3.0 or later)
 	 *
-	 * @description OS が 32bit 版か 64bit 版かを整数の 32 か 64 で表します。
+	 * @description The 32 or 64 integer indicates whether the OS is a 32-bit version or a 64-bit version.
 	 * @see System.exeBits
 	 * @see System.platformName
 	 */
@@ -605,158 +603,158 @@ class System {
 		 getter() { return value; }
 	}
 	/**
-	 * システムがWindowsかどうか判定[r]
+	 * Determine if the system is Windows [r]
 	 */
 	property isWindows;
 
 	/**
-	 * システムがAndroidかどうか判定[r]
+	 * Determine if the system is Android [r]
 	 */
 	property isAndroid;
 
 	/**
-	 * [Android+]外部キャッシュ領域のパス[r]
-	 * @description Context.getExternalCacheDir()で取得されるもの。
+	 * [Android +] External cache area path [r]
+	 * @description What is obtained by Context.getExternalCacheDir ().
 	 */
 	property externalCacheDir;
 	/**
-	 * [Android+]内部キャッシュ領域[r]
-	 * @description Context.getCacheDir()で取得されるもの。
+	 * [Android +] Internal cache area [r]
+	 * @description What is obtained by Context.getCacheDir ().
 	 */
 	property cacheDir;
 	/**
-	 * [Android+]内部データ領域[r]
-	 * @description Context.getFilesDir()で取得されるもの。
+	 * [Android +] Internal data area [r]
+	 * @description What is obtained by Context.getFilesDir ().
 	 */
 	property filesDir;
 	/**
-	 * [Android+]外部データ領域[r]
-	 * @description Context.getExternalFilesDir()で取得されるもの。
+	 * [Android +] External data area [r]
+	 * @description What is obtained by Context.getExternalFilesDir ().
 	 */
 	property externalFilesDir;
 	/**
-	 * [Android+]拡張ファイル(OBB形式)保存領域[r]
-	 * @description Context.getObbDir()で取得されるもの。
+	 * [Android +] Extended file (OBB format) storage area [r]
+	 * @description What is obtained by Context.getObbDir ().
 	 */
 	property obbDir;
 	/**
-	 * [Android+]アプリのShared Object(*.so)ファイル保存領域[r]
+	 * [Android +] Shared Object (* .so) file storage area of the application [r]
 	 */
 	property sharedObjectPath;
 	/**
-	 * [Android+]アプリパッケージ名[r]
+	 * [Android +] App package name [r]
 	 */
 	property packageName;
 	/**
-	 * [Android+]アプリパッケージのコードパス[r]
+	 * [Android +] App package code path [r]
 	 */
 	property packageCodePath;
 	/**
-	 * [Android+]アプリパッケージのリソースパス[r]
+	 * [Android +] App package resource path [r]
 	 */
 	property packageResourcePath;
 	/**
-	 * [Android+]データ領域[r]
-	 * @description Environment.getDataDirectory()で取得されるもの。
+	 * [Android +] Data area [r]
+	 * @description What is obtained by Environment.getDataDirectory ().
 	 */
 	property dataDirectory;
 	/**
-	 * [Android+]ダウンロードキャッシュパス[r]
-	 * @description Environment.getDownloadCacheDirectory()で取得されるもの。
+	 * [Android +] Download cache path [r]
+	 * @description What is obtained by Environment.getDownloadCacheDirectory ().
 	 */
 	property downloadCacheDirectory;
 	/**
-	 * [Android+]外部共有領域[r]
-	 * @description Environment.getExternalStorageDirectory()で取得されるもの。
+	 * [Android +] External shared area [r]
+	 * @description What is obtained by Environment.getExternalStorageDirectory ().
 	 */
 	property externalStorageDirectory;
 	/**
-	 * [Android+]音楽データパス[r]
-	 * @description Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)で取得されるもの。
+	 * [Android +] Music data path [r]
+	 * @description What is obtained from Environment.getExternalStoragePublicDirectory (Environment.DIRECTORY_MUSIC).
 	 */
 	property externalPublicMusicPath;
 	/**
-	 * [Android+]ポッドキャストデータパス[r]
-	 * @description Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PODCASTS)で取得されるもの。
+	 * [Android +] Podcast Data Path [r]
+	 * @description What you get from Environment.getExternalStoragePublicDirectory (Environment.DIRECTORY_PODCASTS).
 	 */
 	property externalPublicPodcastsPath;
 	/**
-	 * [Android+]呼び出し音データパス[r]
-	 * @description Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_RINGTONES)で取得されるもの。
+	 * [Android +] Ring data path [r]
+	 * @description What is obtained from Environment.getExternalStoragePublicDirectory (Environment.DIRECTORY_RINGTONES).
 	 */
 	property externalPublicRingtonesPath;
 	/**
-	 * [Android+]アラーム音データパス[r]
-	 * @description Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_ALARMS)で取得されるもの。
+	 * [Android +] Alarm sound data path [r]
+	 * @description What is obtained by Environment.getExternalStoragePublicDirectory (Environment.DIRECTORY_ALARMS).
 	 */
 	property property externalPublicAlaramsPath;
 	/**
-	 * [Android+]通知音データパス[r]
-	 * @description Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_NOTIFICATIONS)で取得されるもの。
+	 * [Android +] Notification sound data path [r]
+	 * @description What is obtained by Environment.getExternalStoragePublicDirectory (Environment.DIRECTORY_NOTIFICATIONS).
 	 */
 	property externalPublicNotificationsPath;
 	/**
-	 * [Android+]写真データパス[r]
-	 * @description Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)で取得されるもの。
+	 * [Android +] Photo data path [r]
+	 * @description What is obtained by Environment.getExternalStoragePublicDirectory (Environment.DIRECTORY_PICTURES).
 	 */
 	property externalPublicPicturesPath;
 	/**
-	 * [Android+]動画データパス[r]
-	 * @description Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MOVIES)で取得されるもの。
+	 * [Android +] Video data path [r]
+	 * @description What is obtained from Environment.getExternalStoragePublicDirectory (Environment.DIRECTORY_MOVIES).
 	 */
 	property externalPublicMoviesPath;
 	/**
-	 * [Android+]ダウンロードパス[r]
-	 * @description Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)で取得されるもの。
+	 * [Android +] Download path [r]
+	 * @description What is obtained by Environment.getExternalStoragePublicDirectory (Environment.DIRECTORY_DOWNLOADS).
 	 */
 	property externalPublicDownloadsPath;
 	/**
-	 * [Android+]DCIM(カメラ)データパス[r]
-	 * @description Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM)で取得されるもの。
+	 * [Android +] DCIM (camera) data path [r]
+	 * @description What is obtained by Environment.getExternalStoragePublicDirectory (Environment.DIRECTORY_DCIM).
 	 */
 	property externalPublicDCIMPath;
 	/**
-	 * [Android+]ドキュメントデータパス[r]
-	 * @description Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)で取得されるもの。
+	 * [Android +] Document data path [r]
+	 * @description What is obtained by Environment.getExternalStoragePublicDirectory (Environment.DIRECTORY_DOCUMENTS).
 	 */
 	property externalPublicDocumentsPath;
 	/**
-	 * [Android+]ルートディレクトリ[r]
-	 * @description Environment.getRootDirectory()で取得されるもの。
+	 * [Android +] Root directory [r]
+	 * @description What is obtained by Environment.getRootDirectory ().
 	 */
 	property rootDirectory;
 	/**
-	 * [Android+]外部ストレージの状態[r]
-	 * @description Environment.getExternalStorageState()で取得されるもの。
-	 * 以下のいずれか
+	 * [Android +] External storage status [r]
+	 * @description What is obtained by Environment.getExternalStorageState ().
+	 * One of the following
 	 *
-	 * + "unknown" 不明な状態
-	 * + "removed" 取り外されている状態
-	 * + "unmounted" マウントされていない状態
-	 * + "checking" ディスクチェック中
-	 * + "nofs" 未フォーマットかサポートされていないファイルシステム
-	 * + "mounted" マウントされていて読み書き可能
-	 * + "mounted_ro" 読み取り専用でマウントされている
-	 * + "shared" マウントされていない、USBマスストレージなど
-	 * + "bad_removal" アンマウントされる前に取り外された
-	 * + "unmountable" マウントできない
+	 * + "unknown" unknown state
+	 * + "removed" removed
+	 * + "unmounted" Unmounted
+	 * + "checking" Disk checking
+	 * + "nofs" unformatted or unsupported filesystem
+	 * + "mounted" Mounted and readable and writable
+	 * + "mounted_ro" is mounted read-only
+	 * + "shared" unmounted, USB mass storage, etc.
+	 * + "bad_removal" was removed before being unmounted
+	 * + "unmountable" cannot be mounted
 	 *
 	 */
 	property externalStorageState;
 	/**
-	 * [Android+]エミュレートされた外部ストレージかどうか[r]
-	 * @description Environment.isExternalStorageEmulated()で取得されるもの。
+	 * [Android +] Whether it is emulated external storage [r]
+	 * @description What is obtained by Environment.isExternalStorageEmulated ().
 	 */
 	property isExternalStorageEmulated;
 	/**
-	 * [Android+]外部ストレージが取り外し可能かどうか[r]
-	 * @description Environment.isExternalStorageRemovable()で取得されるもの。
+	 * [Android +] Whether external storage is removable [r]
+	 * @description What is obtained by Environment.isExternalStorageRemovable ().
 	 */
 	property isExternalStorageRemovable;
 
 	/**
-	 * OpenGL ES のバージョン
-	 * @description 実際の値を100倍した数、つまり2.0なら200、3.0なら300が返ります。
+	 * OpenGL ES version
+	 * @description The number obtained by multiplying the actual value by 100, that is, 200 for 2.0 and 300 for 3.0 is returned.
 	 */
 	property openGLESVersion;
 };

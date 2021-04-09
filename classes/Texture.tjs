@@ -1,158 +1,158 @@
 /**
- * @description テクスチャクラス。
- * ハードウェア上のテクスチャとほぼ対応しています。
+ * @description Texture class.
+ * It almost corresponds to the texture on the hardware.
  *
- * invalidateすることでテクスチャは無効化されるため、必要なくなったら明示的にinvalidate呼び出すことを推奨します。
+ * Since the texture is invalidated by invalidating, it is recommended to explicitly call invalidate when it is no longer needed.
  */
 class Texture {
 	/**
-	 * ファイル読み込み版コンストラクタ
-	 * @param filename 画像ファイル名
-	 * @param format カラーフォーマット(tcfRGBA or tcfAlpha), tcfAlpha選択時に色情報はグレイスケール化されます
-	 * @param is9patch 9patch情報を読み込み、9patch描画用として使用するかどうか
+	 * File read version constructor
+	 * @param filename Image file name
+	 * @param format Color information is grayscaled when color format (tcfRGBA or tcfAlpha), tcfAlpha is selected
+	 * @param is9patch Whether to read 9patch information and use it for 9patch drawing
 	 */
 	function Texture( filename:string, format:int=tcfRGBA, is9patch:bool=false );
 
 	/**
-	 * Bitmapコピー版コンストラクタ
-	 * @param bitmap テクスチャの元となるBitmapクラスのインスタンス
-	 * @param format カラーフォーマット(tcfRGBA or tcfAlpha), tcfAlpha選択時に色情報はグレイスケール化されます
-	 * @param is9patch 9patch情報を読み込み、9patch描画用として使用するかどうか
+	 * Bitmap copy version constructor
+	 * @param bitmap An instance of the Bitmap class that is the source of the texture
+	 * @param format Color information is grayscaled when color format (tcfRGBA or tcfAlpha), tcfAlpha is selected
+	 * @param is9patch Whether to read 9patch information and use it for 9patch drawing
 	 */
 	function Texture( bitmap:Bitmap, format:int=tcfRGBA, is9patch:bool=false );
 
 	/**
-	 * サイズ指定版コンストラクタ
-	 * @description テクスチャの内容は未初期化なのでごみが入っています。
-	 * @param width テクスチャ幅
-	 * @param height テクスチャ高さ
-	 * @param format カラーフォーマット(tcfRGBA or tcfAlpha)
+	 * Sized constructor
+	 * @description The content of the texture is uninitialized, so it contains dust.
+	 * @param width Texture width
+	 * @param height Texture height
+	 * @param format Color format (tcfRGBA or tcfAlpha)
 	 */
 	function Texture( width:int, height:int, format:int=tcfRGBA );
 
 	/**
-	 * ミップマップ生成版コンストラクタ
-	 * @param sizelist ミップマップを生成するサイズを配列で幅、高さの組み合わせで指定します。
-	 * @param filename 画像ファイル名
-	 * @param type 縮小アルゴリズムを指定します。ImageFunction.operateStretch の type か Layer.operateStretch の type 引数と同じです。
-	 * @param typeopt ３次元補間時のシャープネスです。他の補間方法では現在のところ意味を持ちません。
+	 * Mipmap generated constructor
+	 * @param sizelist Specify the size to generate the mipmap by the combination of width and height in the array.
+	 * @param filename Image file name
+	 * @param type Specifies the reduction algorithm. Same as the type argument for ImageFunction.operateStretch or the type argument for Layer.operateStretch.
+	 * @param typeopt Sharpness during 3D interpolation. It currently has no meaning with other interpolation methods.
 	 */
 	function Texture( sizelist:Array, filename:string, type=stFastAreaAvg, typeopt:real=-1.0 );
 
 	/**
-	 * 矩形コピー(位置指定Rect版)
-	 * @param dleft コピー先左端
-	 * @param dtop コピー先上端
-	 * @param src Bitmapクラスのオブジェクト
-	 * @param srcRect srcのコピー元矩形
+	 * Rectangle copy (position specified Rect version)
+	 * @param dleft Copy destination left end
+	 * @param dtop Top edge of copy destination
+	 * @param src Bitmap class object
+	 * @param srcRect src copy source rectangle
 	 */
 	function copyRect( dleft:int, dtop:int, src:Bitmap, srcRect:Rect );
 
 	/**
-	 * 矩形コピー(位置指定)
-	 * @param dleft コピー先左端
-	 * @param dtop コピー先上端
-	 * @param src Bitmapクラスのオブジェクト
-	 * @param sleft コピー元左端位置
-	 * @param stop コピー元上端位置
-	 * @param swidth コピー元幅
-	 * @param sheight コピー元高さ
+	 * Rectangle copy (position designation)
+	 * @param dleft Copy destination left end
+	 * @param dtop Top edge of copy destination
+	 * @param src Bitmap class object
+	 * @param sleft Copy source left edge position
+	 * @param stop Copy source top position
+	 * @param swidth Copy source width
+	 * @param sheight Copy source height
 	 */
 	function copyRect( dleft:int, dtop:int, src:Bitmap, sleft:int, stop:int, swidth:int, sheight:int );
 
 	/**
-	 * 矩形コピー(全コピー)
-	 * @description bitmap全体をコピーします。はみ出す場合はクリッピングされます。
-	 * @param src Bitmapクラスのオブジェクト
+	 * Rectangle copy (all copy)
+	 * @description Copy the entire bitmap. If it sticks out, it will be clipped.
+	 * @param src Bitmap class object
 	 */
 	function copyRect( src:Bitmap );
 
 	/**
-	 * 描画基準サイズの設定
-	 * @description Canvas.drawTextureで等倍描画した時、何も指定しないとテクスチャのサイズで描画されますが、このメソッドで幅と高さを設定すると、このテクスチャインスタンスを使って描画した時設定したサイズで描画されるようになります。
-	 * 拡大縮小などもこのサイズが基準となり描画されます。
-	 * 内部画像データのサイズと普段描画するサイズが異なる場合に設定しておくと、拡大率を表示したいサイズ基準で指定できるようになります。
-	 * @param width 表示基準幅
-	 * @param height 表示基準高さ
+	 * Setting drawing standard size
+	 * @description When drawing at the same size with Canvas.drawTexture, if nothing is specified, it will be drawn with the texture size, but if you set the width and height with this method, it will be drawn with the size set when drawing with this texture instance. It will be so.
+	 * Enlargement / reduction etc. are also drawn based on this size.
+	 * If you set it when the size of the internal image data and the size you normally draw are different, you can specify the enlargement ratio based on the size you want to display.
+	 * @param width Display reference width
+	 * @param height Display standard height
 	 */
 	function setDrawSize( width:int, height:int );
 
 	/**
-	 * 幅(有効範囲)
-	 * @description pot指定されていなければ、memoryWidthと同一です。
+	 * Width (effective range)
+	 * @description If pot is not specified, it is the same as memoryWidth.
 	 */
 	property width;
 	/**
-	 * 高さ(有効範囲)
-	 * @description pot指定されていなければ、memoryHeightと同一です。
+	 * Height (effective range)
+	 * @description If pot is not specified, it is the same as memoryHeight.
 	 */
 	property height;
 
 	/**
-	 * 実際(ハードウェア上)の幅
+	 * Actual (on hardware) width
 	 */
 	property memoryWidth;
 	/**
-	 * 実際(ハードウェア上)の高さ
+	 * Actual (on hardware) height
 	 */
 	property memoryHeight;
 
 	/**
-	 * 8bitカラーかどうか(内部ではアルファテクスチャ)
+	 * Whether it is 8-bit color (alpha texture inside)
 	 */
 	property isGray;
 
 	/**
-	 * テクスチャサイズが2の累乗値かどうか
+	 * Whether the texture size is a power of 2
 	 */
 	property isPowerOfTwo;
 
 	/**
-	 * ネイティブハンドル(環境依存)
-	 * @description OpenGL ES2/3 環境下ではテクスチャID
+	 * Native handle (environment dependent)
+	 * @description Texture ID under OpenGL ES2 / 3 environment
 	 */
 	property nativeHandle;
 
 	/**
-	 * 拡大縮小時の補間方法
+	 * Interpolation method when scaling
 	 */
 	property stretchType;
 
 	/**
-	 * 水平方向ラップモード
+	 * Horizontal lap mode
 	 */
 	property wrapModeHorizontal;
 	/**
-	 * 垂直方向ラップモード
+	 * Vertical lap mode
 	 */
 	property wrapModeVertical;
 
 	/**
-	 * 9patchマージン
-	 * @description is9patchを指定して読み込んだ場合Rectクラスのオブジェクトが読み取り専用でアクセスできます。
-	 * 指定されていなかったり、読み取りできなかった場合はvoidです。
+	 * 9patch margin
+	 * @description When reading with is9patch, objects of Rect class can be accessed read-only.
+	 * It is void if it is not specified or cannot be read.
 	 */
 	property margin9Patch;
 
 	/**
-	 * 最近傍点法。stretchTypeプロパティに設定します。
+	 * Nearest point method. Set to the stretchType property.
 	 */
 	const stNearest;
 	/**
-	 * 線形補間。stretchTypeプロパティに設定します。
+	 * Linear interpolation. Set to the stretchType property.
 	 */
 	const stLinear;
 
 	/**
-	 * 繰り返し。wrapModeHorizontal/wrapModeVerticalプロパティに設定します。
+	 * repetition. Set to the wrapModeHorizontal / wrapModeVertical property.
 	 */
 	const wmRepeat;
 	/**
-	 * 端色引き延ばし。wrapModeHorizontal/wrapModeVerticalプロパティに設定します。2の累乗サイズでない場合はこの定数でなければなりません(default)。
+	 * Stretching the edge color. Set to the wrapModeHorizontal / wrapModeVertical property. Must be this constant if it is not a power of 2 size (default).
 	 */
 	const wmClampToEdge;
 	/**
-	 * ミラー繰り返し。wrapModeHorizontal/wrapModeVerticalプロパティに設定します。
+	 * Mirror repeat. Set to the wrapModeHorizontal / wrapModeVertical property.
 	 */
 	const wmMirror;
 };

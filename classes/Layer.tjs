@@ -1,421 +1,421 @@
 /**
- * @description Layer クラスは、レイヤを管理するためのクラスです。
+ * @description The Layer class is a class for managing layers.
  */
 class Layer {
 	/**
-	 * Layer オブジェクトの構築
+	 * Building a Layer object
 	 *
-	 * @param window このレイヤを保有することになるウィンドウ ( Window クラスのオブジェクト ) を指定します。
-	 * ウィンドウはいったん決定したら変更することはできません。
-	 * @param parent このレイヤの親となるレイヤを指定します。null を指定するとプライマリレイヤになります。
-	 * プライマリレイヤはウィンドウに一つのみ存在することができ、また、レイヤを用いる場合はかならず一つ存在しなければならない、すべてのレイヤの親となるレイヤです。
-	 * ただし、描画デバイス ( Window.drawDevice で設定可能) によっては、ウィンドウが複数のプライマリレイヤを持つことができる物があります。
-	 * レイヤの親は、Layer.parent プロパティで変更することができます。
-	 * @description Layer クラスのオブジェクトを構築します。Layer クラスは非表示の状態で構築されます。
+	 * @param window Specifies the window (an object of the Window class) that will own this layer.
+	 * Once the window is determined, it cannot be changed.
+	 * @param parent Specifies the layer that will be the parent of this layer. If null is specified, it will be the primary layer.
+	 * There can only be one primary layer in a window, and it is the parent layer of all layers that must exist when using layers.
+	 * However, some drawing devices (configurable in Window.drawDevice) allow windows to have multiple primary layers.
+	 * The parent of the layer can be changed with the Layer.parent property.
+	 * @description Build an object of Layer class. The Layer class is built in a hidden state.
 	 */
 	function Layer( window, parent);
 
 	/**
-	 * レイヤがクリックされた
+	 * The layer was clicked
 	 *
-	 * @param x レイヤがクリックされた位置の x 座標 ( レイヤの表示座標での ) の値です。
-	 * @param y レイヤがクリックされた位置の y 座標 ( レイヤの表示座標での ) の値です。
-	 * @description レイヤがクリックされた時に発生します。
+	 * @param x The x-coordinate value (in the layer's display coordinates) where the layer was clicked.
+	 * @param y The y-coordinate value (in the layer's display coordinates) where the layer was clicked.
+	 * @description Occurs when a layer is clicked.
 	 * @see Layer.onMouseDown
 	 * @see Layer.onDoubleClick
 	 */
 	event onClick( x, y);
 
 	/**
-	 * レイヤがダブルクリックされた
+	 * The layer was double-clicked
 	 *
-	 * @param x レイヤがダブルクリックされた位置の x 座標 ( レイヤの表示座標での ) の値です。
-	 * @param y レイヤがダブルクリックされた位置の y 座標 ( レイヤの表示座標での ) の値です。
-	 * @description レイヤがダブルクリックされた時に発生します。
+	 * @param x The x-coordinate value (in the layer's display coordinates) where the layer was double-clicked.
+	 * @param y The y-coordinate value (in the layer's display coordinates) where the layer was double-clicked.
+	 * @description Occurs when a layer is double-clicked.
 	 * @see Layer.onClick
 	 */
 	event onDoubleClick( x, y);
 
 	/**
-	 * マウスのボタンが押された
+	 * Mouse button pressed
 	 *
-	 * @param x マウスのボタンが押された位置の x 座標 ( レイヤの表示座標での ) の値です。
-	 * @param y マウスのボタンが押された位置の y 座標 ( レイヤの表示座標での ) の値です。
-	 * @param button 押されたマウスボタンです。
-	 * 以下のいずれかの値になります。
+	 * @param x The x-coordinate value (in the layer's display coordinates) where the mouse button was pressed.
+	 * @param y The value of the y coordinate (in the layer's display coordinates) where the mouse button was pressed.
+	 * @param button The pressed mouse button.
+	 * It can be one of the following values:
 	 *
-	 * + mbLeft    : マウスの左ボタンが押された
-	 * + mbMiddle  : マウスの中ボタンが押された
-	 * + mbRight   : マウスの右ボタンが押された
-	 * + mbX1      : マウスのサイドキー第1ボタンが押された
-	 * + mbX2      : マウスのサイドキー第2ボタンが押された
+	 * + mbLeft    : The left mouse button was pressed
+	 * + mbMiddle  : The middle mouse button was pressed
+	 * + mbRight   : Right mouse button pressed
+	 * + mbX1      : Mouse side key 1st button pressed
+	 * + mbX2      : Mouse side key 2nd button pressed
 	 *
-	 * @param shift マウスボタンが押されたときに同時に押されていたシフト系のキーの状態です。
-	 * 以下の値のビット OR による組み合わせになります。
+	 * @param shift This is the state of the shift key that was pressed at the same time when the mouse button was pressed.
+	 * It is a combination of the following values by bit OR.
 	 *
-	 * + ssAlt     : ALT キーが押されていた
-	 * + ssShift   : SHIFT キーが押されていた
-	 * + ssCtrl    : CTRL キーが押されていた
+	 * + ssAlt     : The ALT key was pressed
+	 * + ssShift   : The SHIFT key was pressed
+	 * + ssCtrl    : CTRL key was pressed
 	 *
-	 * @description マウスボタンが押された時に発生します。
+	 * @description Occurs when the mouse button is pressed.
 	 * @see Layer.onClick
 	 */
 	event onMouseDown( x, y, button, shift);
 
 	/**
-	 * マウスのボタンが離された
+	 * Mouse button released
 	 *
-	 * @param x マウスのボタンが離された位置の x 座標 ( レイヤの表示座標での ) の値です。
-	 * @param y マウスのボタンが離された位置の y 座標 ( レイヤの表示座標での ) の値です。
-	 * @param button 離されたマウスボタンです。
-	 * 以下のいずれかの値になります。
+	 * @param x The x-coordinate value (in the layer's display coordinates) where the mouse button is released.
+	 * @param y The y-coordinate value (in the layer's display coordinates) where the mouse button is released.
+	 * @param button The released mouse button.
+	 * It can be one of the following values:
 	 *
-	 * + mbLeft    : マウスの左ボタンが離された
-	 * + mbMiddle  : マウスの中ボタンが離された
-	 * + mbRight   : マウスの右ボタンが離された
-	 * + mbX1      : マウスのサイドキー第1ボタンが離された
-	 * + mbX2      : マウスのサイドキー第2ボタンが離された
+	 * + mbLeft    : Left mouse button released
+	 * + mbMiddle  : The middle mouse button was released
+	 * + mbRight   : The right mouse button was released
+	 * + mbX1      : Mouse side key 1st button released
+	 * + mbX2      : Mouse side key 2nd button released
 	 *
-	 * @param shift マウスボタンが離された時に同時に押されていたシフト系のキーの状態です。
-	 * 以下の値のビット OR による組み合わせになります。
+	 * @param shift This is the state of the shift key that was pressed at the same time when the mouse button was released.
+	 * It is a combination of the following values by bit OR.
 	 *
-	 * + ssAlt     : ALT キーが押されていた
-	 * + ssShift   : SHIFT キーが押されていた
-	 * + ssCtrl    : CTRL キーが押されていた
+	 * + ssAlt     : The ALT key was pressed
+	 * + ssShift   : The SHIFT key was pressed
+	 * + ssCtrl    : CTRL key was pressed
 	 *
-	 * @description マウスボタンが離された時に発生します。
+	 * @description Occurs when the mouse button is released.
 	 */
 	event onMouseUp( x, y, button, shift);
 
 	/**
-	 * マウスが移動した
+	 * The mouse has moved
 	 *
-	 * @param x マウスが移動した位置の x 座標 ( レイヤの表示座標での ) の値です。
-	 * @param y マウスが移動した位置の y 座標 ( レイヤの表示座標での ) の値です。
-	 * @param shift マウスが移動していた時に同時に押されていたシフト系のキーやマウスのボタンの状態です。
-	 * 以下の値のビット OR による組み合わせになります。
+	 * @param x The x-coordinate (in the layer's display coordinates) value of where the mouse was moved.
+	 * @param y The y-coordinate value (in the layer's display coordinates) where the mouse was moved.
+	 * @param shift This is the state of shift keys and mouse buttons that were pressed at the same time when the mouse was moving.
+	 * It is a combination of the following values by bit OR.
 	 *
-	 * + ssAlt     : ALT キーが押されていた
-	 * + ssShift   : SHIFT キーが押されていた
-	 * + ssCtrl    : CTRL キーが押されていた
-	 * + ssLeft    : マウスの左ボタンが押されていた
-	 * + ssMiddle  : マウスの中ボタンが押されていた
-	 * + ssRight   : マウスの右ボタンが押されていた
+	 * + ssAlt     : The ALT key was pressed
+	 * + ssShift   : The SHIFT key was pressed
+	 * + ssCtrl    : CTRL key was pressed
+	 * + ssLeft    : The left mouse button was pressed
+	 * + ssMiddle  : The middle mouse button was pressed
+	 * + ssRight   : The right mouse button was pressed
 	 *
-	 * @description マウスが移動した時に発生します。
+	 * @description Occurs when the mouse moves.
 	 */
 	event onMouseMove( x, y, shift);
 
 	/**
-	 * マウスが入ってきた
+	 * The mouse came in
 	 *
-	 * @description マウスがレイヤの領域内に入ってきたときに発生します。
+	 * @description Occurs when the mouse enters the area of the layer.
 	 * @see Layer.onMouseLeave
 	 */
 	event onMouseEnter( );
 
 	/**
-	 * マウスが出ていった
+	 * The mouse came out
 	 *
-	 * @description マウスがレイヤの領域内から出ていったときに発生します。
+	 * @description Occurs when the mouse exits the area of the layer.
 	 * @see Layer.onMouseEnter
 	 */
 	event onMouseLeave( );
 
 	/**
-	 * マウスホイールが回転した
+	 * Mouse wheel rotated
 	 *
-	 * @param shift マウスが移動していた時に同時に押されていたシフト系のキーやマウスのボタンの状態です。
-	 * 以下の値のビット OR による組み合わせになります。
+	 * @param shift This is the state of shift keys and mouse buttons that were pressed at the same time when the mouse was moving.
+	 * It is a combination of the following values by bit OR.
 	 *
-	 * + ssAlt     : ALT キーが押されていた
-	 * + ssShift   : SHIFT キーが押されていた
-	 * + ssCtrl    : CTRL キーが押されていた
-	 * + ssLeft    : マウスの左ボタンが押されていた
-	 * + ssMiddle  : マウスの中ボタンが押されていた
-	 * + ssRight   : マウスの右ボタンが押されていた
+	 * + ssAlt     : The ALT key was pressed
+	 * + ssShift   : The SHIFT key was pressed
+	 * + ssCtrl    : CTRL key was pressed
+	 * + ssLeft    : The left mouse button was pressed
+	 * + ssMiddle  : The middle mouse button was pressed
+	 * + ssRight   : The right mouse button was pressed
 	 *
-	 * @param delta ホイールの回転角です。
-	 * 上方向(ユーザの反対側の方向)に回された場合は正、下方向(ユーザ側の方向)に回された場合は負の値になります。
-	 * 通常、最小量は 120となります。
-	 * @param x ホイールが回転した位置の x 座標 ( レイヤの表示座標での ) の値です。
-	 * @param y ホイールが回転した位置の y 座標 ( レイヤの表示座標での ) の値です。
-	 * @description マウスホイールが回転した時に発生します。
-	 * このイベントは、キーボードイベントと同じく、フォーカスを持っているレイヤにのみ発生します。
+	 * @param delta The angle of rotation of the wheel.
+	 * If it is turned upward (the direction opposite to the user), it will be a positive value, and if it is turned downward (the direction toward the user), it will be a negative value.
+	 * The minimum amount is usually 120.
+	 * @param x The x-coordinate (in the layer's display coordinates) value of where the wheel was rotated.
+	 * @param y The y-coordinate value (in the layer's display coordinates) where the wheel was rotated.
+	 * @description Occurs when the mouse wheel rotates.
+	 * This event, like the keyboard event, only fires on the layer that has focus.
 	 */
 	event onMouseWheel( shift, delta, x, y);
 
 	/**
-	 * キーが押された
+	 * The key was pressed
 	 *
-	 * @param key 押されたキーの仮想キーコードの値です。
-	 * @param shift キーが押された時に同時に押されていたシフト系のキーやマウスのボタンの状態です。
-	 * 以下の値のビット OR による組み合わせになります。
+	 * @param key The value of the virtual key code of the pressed key.
+	 * @param shift This is the state of shift-type keys and mouse buttons that were pressed at the same time when the keys were pressed.
+	 * It is a combination of the following values by bit OR.
 	 *
-	 * + ssAlt     : ALT キーが押されていた
-	 * + ssShift   : SHIFT キーが押されていた
-	 * + ssCtrl    : CTRL キーが押されていた
-	 * + ssLeft    : マウスの左ボタンが押されていた
-	 * + ssMiddle  : マウスの中ボタンが押されていた
-	 * + ssRight   : マウスの右ボタンが押されていた
+	 * + ssAlt     : The ALT key was pressed
+	 * + ssShift   : The SHIFT key was pressed
+	 * + ssCtrl    : CTRL key was pressed
+	 * + ssLeft    : The left mouse button was pressed
+	 * + ssMiddle  : The middle mouse button was pressed
+	 * + ssRight   : The right mouse button was pressed
 	 *
-	 * また、キーボードが長時間押され、キーリピートが発生している場合は以下の値も組み合わされます。
+	 * Also, if the keyboard is pressed for a long time and key repeat occurs, the following values are also combined.
 	 *
-	 * + ssRepeat  : キーリピートが発生した
+	 * + ssRepeat  : Key repeat occurred
 	 *
-	 * @param process 親クラスのonKeyDownを呼ぶ際、この引数に偽を渡すと、親クラスではそのキーに対するデフォルトの処理(フォーカスの移動など)を行わなくなります。
-	 * @description キーが押された時に発生します。
+	 * @param process If you pass false to this argument when calling onKeyDown of the parent class, the parent class will not do the default processing for that key (such as moving focus).
+	 * @description Occurs when a key is pressed.
 	 */
 	event onKeyDown( key, shift, process=true);
 
 	/**
-	 * キーが離された
+	 * The key was released
 	 *
-	 * @param key 離されたキーの仮想キーコードの値です。
-	 * @param shift キーが離された時に同時に押されていたシフト系のキーやマウスのボタンの状態です。
-	 * 以下の値のビット OR による組み合わせになります。
+	 * @param key The value of the virtual key code for the released key.
+	 * @param shift This is the state of shift keys and mouse buttons that were pressed at the same time when the keys were released.
+	 * It is a combination of the following values by bit OR.
 	 *
-	 * + ssAlt     : ALT キーが押されていた
-	 * + ssShift   : SHIFT キーが押されていた
-	 * + ssCtrl    : CTRL キーが押されていた
-	 * + ssLeft    : マウスの左ボタンが押されていた
-	 * + ssMiddle  : マウスの中ボタンが押されていた
-	 * + ssRight   : マウスの右ボタンが押されていた
+	 * + ssAlt     : The ALT key was pressed
+	 * + ssShift   : The SHIFT key was pressed
+	 * + ssCtrl    : CTRL key was pressed
+	 * + ssLeft    : The left mouse button was pressed
+	 * + ssMiddle  : The middle mouse button was pressed
+	 * + ssRight   : The right mouse button was pressed
 	 *
-	 * @param process 親クラスのonKeyUpを呼ぶ際、この引数に偽を渡すと、親クラスではそのキーに対するデフォルトの処理(フォーカスの移動など)を行わなくなります。
-	 * @description キーが離された時に発生します。
+	 * @param process If you pass false to this argument when calling onKeyUp of the parent class, the parent class will not do the default processing for that key (such as moving focus).
+	 * @description Occurs when the key is released.
 	 */
 	event onKeyUp( key, shift, process=true);
 
 	/**
-	 * 文字が入力された
+	 * Characters have been entered
 	 *
-	 * @param key 入力された文字です。
-	 * @param process 親クラスのonKeyPressを呼ぶ際、この引数に偽を渡すと、親クラスではそのキーに対するデフォルトの処理(フォーカスの移動など)を行わなくなります。
-	 * @description 文字が入力されたときに発生します。
-	 * Layer.onKeyDown と異なるのは、onKeyDown が仮想キーコードを扱うのに対し、このイベントは文字そのものを扱います。
-	 * 押されたキーが文字とは関係のないキー (ファンクションキーなど) の場合はこのイベントは発生しません。
+	 * @param key The entered character.
+	 * @param process If you pass false to this argument when calling onKeyPress of the parent class, the parent class will not do the default processing for that key (such as moving focus).
+	 * @description Occurs when characters are entered.
+	 * Unlike Layer.onKeyDown, onKeyDown handles virtual keycodes, whereas this event handles the characters themselves.
+	 * This event does not occur if the key pressed is a key that has nothing to do with the character (such as a function key).
 	 */
 	event onKeyPress( key, process=true);
 
 	/**
-	 * 当たり判定
+	 * collision detection
 	 *
-	 * @param x 当たり判定を行う位置の ( レイヤの表示座標内での )  x 座標です。
-	 * @param y 当たり判定を行う位置の ( レイヤの表示座標内での )  y 座標です。
-	 * @param hit 当たり判定の結果、当たっている場合は真, はずれている場合は偽になります。
-	 * 当たり判定の結果は、同名のスーパークラスのイベントのこの引数に渡してください。
-	 * @description レイヤ内のある点に対して、当たり判定 ( ヒットテスト ) が行われる場合に呼び出されます。
-	 * 当たり判定の結果は、スーパークラスのこのイベントの第３引数に当たり判定の結果を渡してください ( 第１引数と２引数はそのまま渡してください )。
-	 * 当たり判定の結果、当たっていればマウスメッセージは不透過になり、そのレイヤで処理されます。
-	 * 当たっていなければ透過となり、マウスメッセージはより奥にあるレイヤで処理されます。
-	 * このイベントは、Layer.hitThreshold や Layer.hitType で行われる当たり判定で「当たっている」という判定がされた後に呼び出されます。
-	 * したがってLayer.hitThreshold や Layer.hitType で「当たってない」と判定されている場合はこのイベントは呼び出されません。
+	 * @param x The x coordinate (within the display coordinates of the layer) of the position where collision detection is performed.
+	 * @param y The y coordinate (within the display coordinates of the layer) at the position where collision detection is performed.
+	 * @param hit As a result of the hit judgment, if it is hit, it will be true, and if it is not, it will be false.
+	 * Pass the collision result to this argument of the superclass event of the same name.
+	 * @description Called when a collision detection (hit test) is performed on a point in the layer.
+	 * For the result of the collision detection, pass the result of the collision detection to the third argument of this event of the superclass (pass the first argument and the second argument as they are).
+	 * As a result of collision detection, if it hits, the mouse message becomes opaque and processed in that layer.
+	 * If not hit, it will be transparent and the mouse message will be processed in a deeper layer.
+	 * This event is called after the collision detection performed by Layer.hitThreshold and Layer.hitType determines that it is "hit".
+	 * Therefore, this event will not be called if the Layer.hitThreshold or Layer.hitType determines that it is "not hit".
 	 */
 	event onHitTest( x, y, hit);
 
 	/**
-	 * フォーカスを失った
+	 * Lost focus
 	 *
-	 * @param focused あらたにフォーカスを得たレイヤオブジェクトです。
-	 * @description レイヤがフォーカスを失った際に呼ばれます。
+	 * @param focused A layer object with a new focus.
+	 * @description Called when a layer loses focus.
 	 */
 	event onBlur( focused);
 
 	/**
-	 * フォーカスを得た
+	 * Got focus
 	 *
-	 * @param focused フォーカスを失ったレイヤオブジェクトです。
-	 * @param direction フォーカスの後方検索によってフォーカスが変更されるときは真、フォーカスの前方検索によって行われる場合は偽になります。
-	 * @description レイヤがフォーカスを得た際に呼ばれます。
+	 * @param focused A layer object that has lost focus.
+	 * @param direction True if the focus is changed by a backward search of the focus, false if it is done by a forward search of the focus.
+	 * @description Called when the layer gets focus.
 	 */
 	event onFocus( focused, direction);
 
 	/**
-	 * ノードが操作不能になった
+	 * Node becomes inoperable
 	 *
-	 * @description そのレイヤや、そのレイヤの ( 親子関係的に ) 上位のレイヤの Layer.enabled プロパティが変更されたために、そのレイヤが操作不能になったときに呼ばれます。
+	 * @description Called when a layer becomes inoperable because the Layer.enabled property of that layer or a layer above it (parent-child relationship) has changed.
 	 */
 	event onNodeDisabled( );
 
 	/**
-	 * ノードが操作可能になった
+	 * The node is now operational
 	 *
-	 * @description そのレイヤや、そのレイヤの ( 親子関係的に ) 上位のレイヤの Layer.enabled プロパティが変更されたために、そのレイヤが操作可能になったときに呼ばれます。
+	 * @description Called when a layer becomes operational because the Layer.enabled property of that layer or a layer above it (parent-child relationship) has changed.
 	 */
 	event onNodeEnabled( );
 
 	/**
-	 * フォーカス可能なレイヤの前方検索
+	 * Search forward for focusable layers
 	 *
-	 * @param layer フォーカスを受け取るレイヤオブジェクトです。親クラスの同名のメソッドを呼ぶときに引数として指定します。
-	 * null を渡すと、フォーカス可能なレイヤは無いとして処理されます。
-	 * @description フォーカス可能なレイヤの前方検索を行うときに発生するイベントです。
-	 * フォーカスを受け取るレイヤを指定するときは、スーパークラスの同名のイベントの引数にそのレイヤを指定してください。
+	 * @param layer A layer object that receives focus. Specify as an argument when calling the method with the same name in the parent class.
+	 * If you pass null, it will be treated as no focusable layer.
+	 * @description This event occurs when performing a forward search for a focusable layer.
+	 * When specifying the layer that receives focus, specify that layer in the argument of the event with the same name in the superclass.
 	 */
 	event onSearchPrevFocusable( layer);
 
 	/**
-	 * フォーカス可能なレイヤの後方検索
+	 * Search backwards for focusable layers
 	 *
-	 * @param layer フォーカスを受け取るレイヤオブジェクトです。
-	 * 親クラスの同名のメソッドを呼ぶときに引数として指定します。
-	 * null を渡すと、フォーカス可能なレイヤは無いとして処理されます。
-	 * @description フォーカス可能なレイヤの後方検索を行うときに発生するイベントです。
-	 * フォーカスを受け取るレイヤを指定するときは、スーパークラスの同名のイベントの引数にそのレイヤを指定してください。
+	 * @param layer A layer object that receives focus.
+	 * Specify as an argument when calling the method with the same name in the parent class.
+	 * If you pass null, it will be treated as no focusable layer.
+	 * @description This event occurs when performing a backward search for a focusable layer.
+	 * When specifying the layer that receives focus, specify that layer in the argument of the event with the same name in the superclass.
 	 */
 	event onSearchNextFocusable( layer);
 
 	/**
-	 * フォーカスを受け取る直前
+	 * Immediately before receiving focus
 	 *
-	 * @param layer フォーカスを受け取るレイヤオブジェクトです。
-	 * 通常は this が渡されますが、スーパークラスの同名のイベントを呼ぶときに異なるレイヤオブジェクトを指定すれば、そのレイヤにフォーカスを渡すようにすることができます。
-	 * @param blurred フォーカスを失うレイヤオブジェクトです。
-	 * @param direction フォーカスの後方検索によってフォーカスが変更されるときは真、フォーカスの前方検索によって行われる場合は偽になります。
-	 * @description フォーカスを受け取る直前に発生するイベントです。
-	 * フォーカスを受け取るレイヤを指定するときは、スーパークラスの同名のイベントの第１引数にそのレイヤを指定する事ができます。
+	 * @param layer A layer object that receives focus.
+	 * Normally this is passed, but you can have the focus passed to that layer by specifying a different layer object when calling the event of the same name in the superclass.
+	 * @param blurred A layer object that loses focus.
+	 * @param direction True if the focus is changed by a backward search of the focus, false if it is done by a forward search of the focus.
+	 * @description This event occurs just before receiving focus.
+	 * When specifying the layer that receives the focus, that layer can be specified in the first argument of the event with the same name in the superclass.
 	 */
 	event onBeforeFocus( layer, blurred, direction);
 
 	/**
-	 * 描画されるとき
+	 * When drawn
 	 *
-	 * @description レイヤが実際にウィンドウに描画される直前に呼ばれます。
-	 * このイベントは Layer.callOnPaint プロパティが真の時のみに呼ばれ、Layer.callOnPaint はこのイベントが実行し終わった後自動的に偽に設定されます。
+	 * @description Called just before the layer is actually drawn in the window.
+	 * This event is only called when the Layer.callOnPaint property is true, and Layer.callOnPaint is automatically set to false after the event has finished executing.
 	 * @see Layer.update
 	 */
 	event onPaint( );
 
 	/**
-	 * トランジションが終了した
+	 * The transition is over
 	 *
-	 * @param dest トランジション先のレイヤオブジェクト ( 通常は this ) が渡されます。
-	 * @param src トランジション元のレイヤオブジェクトが渡されます。
-	 * トランジションの種類によっては null になり得ます。
-	 * @description トランジションが終了した時に呼ばれます。
+	 * @param dest The layer object to transition to (usually this) is passed.
+	 * @param src The layer object from which the transition is made is passed.
+	 * It can be null depending on the type of transition.
+	 * @description Called when the transition is over.
 	 */
 	event onTransitionCompleted( dest, src);
 
 	/**
-	 * 画面がタッチされた
+	 * The screen was touched
 	 *
-	 * @param x タッチされた位置の x 座標 ( クライアント座標での ) の値です。
-	 * @param y タッチされた位置の y 座標 ( クライアント座標での ) の値です。
-	 * @param cx 指が接触している横方向ピクセル数です。
-	 * デバイスが対応していない場合は常に1です。
-	 * @param cy 指が接触している縦方向ピクセル数です。
-	 * デバイスが対応していない場合は常に1です。
-	 * @param id タッチIDです。
-	 * マルチタッチ時、各位置ごとに固有の値が設定され、このIDによって位置を識別できます。
-	 * @description タッチパネルにタッチされた時に発生します。
-	 * このイベントが発生するのはX,Y座標がこのレイヤ内にある場合です。
+	 * @param x The x-coordinate (in client coordinates) value of the touched position.
+	 * @param y The y-coordinate (in client coordinates) value of the touched position.
+	 * @param cx The number of horizontal pixels that the finger is in contact with.
+	 * Always 1 if the device does not support it.
+	 * @param cy The number of vertical pixels that the finger is in contact with.
+	 * Always 1 if the device does not support it.
+	 * @param id Touch ID.
+	 * At the time of multi-touch, a unique value is set for each position, and the position can be identified by this ID.
+	 * @description Occurs when the touch panel is touched.
+	 * This event occurs when the X, Y coordinates are in this layer.
 	 */
 	event onTouchDown( x, y, cx, cy, id);
 
 	/**
-	 * 画面から指が離された
+	 * Your finger was released from the screen
 	 *
-	 * @param x 離された位置の x 座標 ( クライアント座標での ) の値です。
-	 * @param y 離された位置の y 座標 ( クライアント座標での ) の値です。
-	 * @param cx 指が接触している横方向ピクセル数です。
-	 * デバイスが対応していない場合は常に1です。
-	 * @param cy 指が接触している縦方向ピクセル数です。
-	 * デバイスが対応していない場合は常に1です。
-	 * @param id タッチIDです。
-	 * マルチタッチ時、各位置ごとに固有の値が設定され、このIDによって位置を識別できます。
-	 * @description タッチパネルから指が離された時に発生します。
-	 * このイベントが発生するのはX,Y座標がこのレイヤ内にある場合です。
-	 * ただし、マウスとは異なり、現在の座標で判定されるのでonTouchDownが発生したレイヤと同一ではない可能性があります。
+	 * @param x The x-coordinate (in client coordinates) value of the separated position.
+	 * @param y The y-coordinate (in client coordinates) value of the separated position.
+	 * @param cx The number of horizontal pixels that the finger is in contact with.
+	 * Always 1 if the device does not support it.
+	 * @param cy The number of vertical pixels that the finger is in contact with.
+	 * Always 1 if the device does not support it.
+	 * @param id Touch ID.
+	 * At the time of multi-touch, a unique value is set for each position, and the position can be identified by this ID.
+	 * @description Occurs when the finger is released from the touch panel.
+	 * This event occurs when the X, Y coordinates are in this layer.
+	 * However, unlike the mouse, it is determined by the current coordinates, so it may not be the same as the layer where onTouchDown occurred.
 	 */
 	event onTouchUp( x, y, cx, cy, id);
 
 	/**
-	 * 指が移動した
+	 * The finger has moved
 	 *
-	 * @param x タッチ位置の x 座標 ( クライアント座標での ) の値です。
-	 * @param y タッチ位置の y 座標 ( クライアント座標での ) の値です。
-	 * @param cx 指が接触している横方向ピクセル数です。
-	 * デバイスが対応していない場合は常に1です。
-	 * @param cy 指が接触している縦方向ピクセル数です。
-	 * デバイスが対応していない場合は常に1です。
-	 * @param id タッチIDです。
-	 * マルチタッチ時、各位置ごとに固有の値が設定され、このIDによって位置を識別できます。
-	 * @description タッチパネル上で触れている指が移動した時に発生します。
-	 * このイベントが発生するのはX,Y座標がこのレイヤ内にある場合です。
-	 * ただし、マウスとは異なり、現在の座標で判定されるのでonTouchDownが発生したレイヤと同一ではない可能性があります。
+	 * @param x The x-coordinate (in client coordinates) value of the touch position.
+	 * @param y The y-coordinate (in client coordinates) value of the touch position.
+	 * @param cx The number of horizontal pixels that the finger is in contact with.
+	 * Always 1 if the device does not support it.
+	 * @param cy The number of vertical pixels that the finger is in contact with.
+	 * Always 1 if the device does not support it.
+	 * @param id Touch ID.
+	 * At the time of multi-touch, a unique value is set for each position, and the position can be identified by this ID.
+	 * @description It occurs when the finger touching on the touch panel moves.
+	 * This event occurs when the X, Y coordinates are in this layer.
+	 * However, unlike the mouse, it is determined by the current coordinates, so it may not be the same as the layer where onTouchDown occurred.
 	 */
 	event onTouchMove( x, y, cx, cy, id);
 
 	/**
-	 * 拡大操作した
+	 * Enlarged operation
 	 *
-	 * @param startdistance マルチタッチが開始された時のピクセル距離です。
-	 * @param currentdistance イベント発生時のタッチのピクセル距離です。
-	 * @param cx 中心位置の x 座標 ( クライアント座標での ) の値です。
-	 * @param cy 中心位置の y 座標 ( クライアント座標での ) の値です。
-	 * @param flag マルチタッチ状態フラグです。
+	 * @param startdistance The pixel distance when multi-touch is started.
+	 * @param currentdistance The pixel distance of the touch when the event occurs.
+	 * @param cx The x-coordinate (in client coordinates) value of the center position.
+	 * @param cy The y-coordinate (in client coordinates) value of the center position.
+	 * @param flag Multi-touch status flag.
 	 *
-	 * + 0x01     : マルチタッチが開始された最初のイベントに設定されています。
+	 * + 0x01     : It is set to the first event when multi-touch is started.
 	 *
-	 * @description タッチパネル上でマルチタッチによって拡大操作した時に発生します。
-	 * このイベントが発生するのは、フォーカスのあるレイヤです。
+	 * @description It occurs when the enlargement operation is performed by multi-touch on the touch panel.
+	 * This event occurs on the layer with focus.
 	 */
 	event onTouchScaling( startdistance, currentdistance, cx, cy, flag);
 
 	/**
-	 * 回転操作した
+	 * Rotated
 	 *
-	 * @param startangle マルチタッチが開始された時のラジアン角度です。
-	 * @param currentangle イベント発生時のタッチのラジアン角度です。
-	 * @param distance イベント発生時のタッチのピクセル距離です。
-	 * @param cx 中心位置の x 座標 ( クライアント座標での ) の値です。
-	 * @param cy 中心位置の y 座標 ( クライアント座標での ) の値です。
-	 * @param flag マルチタッチ状態フラグです。
+	 * @param startangle The radian angle when multi-touch is started.
+	 * @param currentangle The radian angle of the touch when an event occurs.
+	 * @param distance The pixel distance of the touch when the event occurs.
+	 * @param cx The x-coordinate (in client coordinates) value of the center position.
+	 * @param cy The y-coordinate (in client coordinates) value of the center position.
+	 * @param flag Multi-touch status flag.
 	 *
-	 * + 0x01     : マルチタッチが開始された最初のイベントに設定されています。
+	 * + 0x01     : It is set to the first event when multi-touch is started.
 	 *
-	 * @description タッチパネル上でマルチタッチによって回転操作した時に発生します。
-	 * このイベントが発生するのは、フォーカスのあるレイヤです。
+	 * @description Occurs when rotating on the touch panel by multi-touch.
+	 * This event occurs on the layer with focus.
 	 */
 	event onTouchRotate( startangle, currentangle, distance, cx, cy, flag);
 
 	/**
-	 * マルチタッチ状態が変化した
+	 * Multi-touch state changed
 	 *
-	 * @description マルチタッチ状態が開始されたり、移動したり、離れた時に発生します。
-	 * 座標情報は Window.touchPointCount プロパティと Window.getTouchPoint メソッドで取得できます。
-	 * このイベントが発生するのは、フォーカスのあるレイヤです。
+	 * @description Occurs when the multi-touch state starts, moves, or moves away.
+	 * Coordinate information can be obtained with the Window.touchPointCount property and the Window.getTouchPoint method.
+	 * This event occurs on the layer with focus.
 	 * @see Window.getTouchPoint
 	 * @see Window.touchPointCount
 	 */
 	event onMultiTouch( );
 
 	/**
-	 * 指定レイヤの手前に移動
+	 * Move to the front of the specified layer
 	 *
-	 * @param layer ここで指定したレイヤの手前に移動します。
-	 * 兄弟レイヤ ( 同じ親を持つレイヤ ) のみを指定できます。
-	 * @description 重ね合わせ順において、指定されたレイヤの手前に移動します。
-	 * このメソッドは Layer.absoluteOrderMode プロパティを false に設定します。
+	 * @param layer Moves to the front of the layer specified here.
+	 * Only sibling layers (layers with the same parent) can be specified.
+	 * @description Moves to the front of the specified layer in the overlay order.
+	 * This method sets the Layer.absoluteOrderMode property to false.
 	 */
 	function moveBefore( layer);
 
 	/**
-	 * 指定レイヤの奥に移動
+	 * Move to the back of the specified layer
 	 *
-	 * @param layer ここで指定したレイヤの奥に移動します。
-	 * 兄弟レイヤ ( 同じ親を持つレイヤ ) のみを指定できます。
-	 * @description 重ね合わせ順において、指定されたレイヤの奥に移動します。
-	 * このメソッドは Layer.absoluteOrderMode プロパティを false に設定します。
+	 * @param layer Moves to the back of the layer specified here.
+	 * Only sibling layers (layers with the same parent) can be specified.
+	 * @description Moves to the back of the specified layer in the overlay order.
+	 * This method sets the Layer.absoluteOrderMode property to false.
 	 */
 	function moveBehind( layer);
 
 	/**
-	 * 一番奥に移動
+	 * Move to the back
 	 *
-	 * @description 重ね合わせ順において、兄弟レイヤ ( 同じ親を持つレイヤ ) の中でもっとも奥に移動します。
-	 * このメソッドを実行すると親レイヤの Layer.absoluteOrderMode プロパティが偽に設定されます。
+	 * @description In the stacking order, it moves to the back of the sibling layers (layers with the same parent).
+	 * Executing this method sets the Layer.absoluteOrderMode property of the parent layer to false.
 	 * @see Layer.order
 	 * @see Layer.absolute
 	 * @see Layer.absoluteOrderMode
@@ -424,10 +424,10 @@ class Layer {
 	function bringToBack( );
 
 	/**
-	 * 一番手前に移動
+	 * Move to the front
 	 *
-	 * @description 重ね合わせ順において、兄弟レイヤ ( 同じ親を持つレイヤ ) の中でもっとも手前に移動します。
-	 * このメソッドを実行すると親レイヤの Layer.absoluteOrderMode プロパティが偽に設定されます。
+	 * @description In the stacking order, it moves to the front of the sibling layers (layers with the same parent).
+	 * Executing this method sets the Layer.absoluteOrderMode property of the parent layer to false.
 	 * @see Layer.order
 	 * @see Layer.absolute
 	 * @see Layer.absoluteOrderMode
@@ -436,124 +436,124 @@ class Layer {
 	function bringToFront( );
 
 	/**
-	 * 画像の読み込み
+	 * Image loading
 	 *
-	 * @param image 読み込む画像ストレージを指定します。
-	 * ここで指定したストレージ名(拡張子を除く) に _m を付加した画像ストレージが存在すれば、マスク(不透明度)画像として読み込まれます。
-	 * ここで指定したストレージ名(拡張子を除く) に _p を付加した画像ストレージが存在すれば、領域画像として読み込まれます。
-	 * @param colorkey 読み込む画像のカラーキー ( 透明色 ) を指定します。
-	 * 0xRRGGBB 形式で色を指定すると、その色をカラーキーとします。clPalIdx に 任意のパレットインデックスを加算した数値を指定すると、そのパレットインデックスが透明色になります ( 256 色以下の画像の場合 )。
-	 * clAdapt を指定すると、画像の一番上のラインにおいてもっとも多く使われている色が自動的に透明色になります。
-	 * clAlphaMat に 0xRRGGBB形式の色を表す数値を加算したものを指定すると、画像がその色の上にαブレンド(ltAlphaの方式)を用いて重ね合わせられます。
-	 * たとえば、(clAlphaMat + 0xffffff) を指定すると、読み込まれた画像が白い色の上に重ね合わせられます。
-	 * 画像は全て不透明な画像となります( 画像は全て不透明となりますが、このモードではタグ情報はいっさい変更されないので注意してください )。
-	 * @return タグ情報の辞書配列
-	 * @description レイヤに画像を読み込みます。
-	 * このメソッドはレイヤの画像サイズは変更しますが、画像サイズがレイヤの表示サイズより小さかった場合を除いて、レイヤの表示サイズは変更しません。
-	 * 戻り値としてタグ情報(その画像のレイヤタイプや表示位置など、画像そのものに対する情報)の辞書配列が返ります。
-	 * KAG の「タグ」の意味と混同しないように注意してください。
-	 * 画像がタグ情報を持たない場合は null が返ります。現バージョンでは、タグ情報は PNG, TLG5/6 形式のみが持つことができます。
-	 * 取得可能な情報については、画像フォーマットコンバータ を参照してください。
+	 * @param image Specify the image storage to read.
+	 * If there is an image storage with _m added to the storage name (excluding the extension) specified here, it will be read as a mask (opacity) image.
+	 * If there is an image storage with _p added to the storage name (excluding the extension) specified here, it will be read as an area image.
+	 * @param colorkey Specify the color key (transparent color) of the image to be imported.
+	 * If you specify a color in the 0xRRGGBB format, that color is used as the color key. If you specify clPalIdx plus an arbitrary palette index, the palette index becomes transparent (for images of 256 colors or less).
+	 * If you specify clAdapt, the most used color in the top line of the image is automatically made transparent.
+	 * If you specify clAlphaMat plus a number that represents a color in the 0xRRGGBB format, the image is overlaid on top of that color using an alpha blend (ltAlpha method).
+	 * For example, (clAlphaMat + 0xffffff) will overlay the imported image on top of the white color.
+	 * All images will be opaque (note that all images will be opaque, but no tag information will be changed in this mode).
+	 * @return Dictionary array of tag information
+	 * @description Load the image into the layer.
+	 * This method changes the image size of the layer, but does not change the display size of the layer unless the image size is smaller than the display size of the layer.
+	 * As a return value, a dictionary array of tag information (information about the image itself, such as the layer type and display position of the image) is returned.
+	 * Be careful not to confuse it with the meaning of "tag" in KAG.
+	 * If the image has no tag information, null will be returned. In the current version, tag information can only be in PNG, TLG5 / 6 format.
+	 * See Image Format Converter for the information available.
 	 */
 	function loadImages( image, colorkey=clNone);
 
 	/**
-	 * 領域画像の読み込み
+	 * Loading area image
 	 *
-	 * @param image 領域画像として読み込む画像ストレージを指定します。
-	 * @description レイヤの領域画像を読み込みます。
-	 * それ以外の画像はそのままとなります。
-	 * 読み込もうとした画像がレイヤの画像サイズと異なる場合は例外が発生します。
+	 * @param image Specifies the image storage to read as an area image.
+	 * @description Load the area image of the layer.
+	 * Other images will remain as they are.
+	 * An exception will be thrown if the image you are trying to load is different from the image size of the layer.
 	 */
 	function loadProvinceImage( image);
 
 	/**
-	 * メイン画像の色の取得
+	 * Get the color of the main image
 	 *
-	 * @param x 色を取得する ( レイヤの画像座標での ) x 座標を指定します。
-	 * @param y 色を取得する ( レイヤの画像座標での ) y 座標を指定します。
-	 * @return 0xRRGGBB 形式の色番号
-	 * @description レイヤメイン画像 ( 色を保持している画像 ) の任意の位置の色を取得します。
-	 * 画像座標として無効な ( 範囲外の ) 位置を指定すると例外が発生します。
+	 * @param x Specifies the x coordinate (in the image coordinates of the layer) to get the color.
+	 * @param y Specifies the y coordinate (in the image coordinates of the layer) to get the color.
+	 * @return 0xRRGGBB format color number
+	 * @description Layer Gets the color at any position in the main image (the image that retains the color).
+	 * An exception is thrown if you specify an invalid (out of range) position as the image coordinates.
 	 */
 	function getMainPixel( x, y);
 
 	/**
-	 * メイン画像の色の設定
+	 * Main image color settings
 	 *
-	 * @param x 色を設定する ( レイヤの画像座標での ) x 座標を指定します。
-	 * @param y 色を設定する ( レイヤの画像座標での ) y 座標を指定します。
-	 * @param color 設定する色を 0xRRGGBB 形式で指定します。
-	 * @description レイヤメイン画像 ( 色を保持している画像 ) の任意の位置の色を設定します。
-	 * 画像座標として無効な ( 範囲外の ) 位置を指定すると例外が発生します。
+	 * @param x Specifies the x coordinate (in the image coordinates of the layer) for which you want to set the color.
+	 * @param y Specifies the y coordinate (in the image coordinates of the layer) to set the color.
+	 * @param color Specify the color to be set in the 0xRRGGBB format.
+	 * @description Layer Sets the color at any position on the main image (the image that retains the color).
+	 * An exception is thrown if you specify an invalid (out of range) position as the image coordinates.
 	 */
 	function setMainPixel( x, y, color);
 
 	/**
-	 * マスク画像の値の取得
+	 * Get the value of the mask image
 	 *
-	 * @param x 値を取得する ( レイヤの画像座標での ) x 座標を指定します。
-	 * @param y 値を取得する ( レイヤの画像座標での ) y 座標を指定します。
-	 * @return マスク画像の値 ( 0 ～ 255 )
-	 * @description レイヤマスク画像 ( 不透明度を保持している画像 ) の任意の位置の値 ( 0 ～ 255 ) を取得します。
-	 * 画像座標として無効な ( 範囲外の ) 位置を指定すると例外が発生します。
+	 * @param x Specifies the x coordinate (in the image coordinates of the layer) for which you want to get the value.
+	 * @param y Specifies the y coordinate (in the image coordinates of the layer) for which you want to get the value.
+	 * @return Mask image value (0 to 255)
+	 * @description Gets the value (0 to 255) at any position in the layer mask image (the image that retains opacity).
+	 * An exception is thrown if you specify an invalid (out of range) position as the image coordinates.
 	 */
 	function getMaskPixel( x, y);
 
 	/**
-	 * マスク画像の値の設定
+	 * Setting the value of the mask image
 	 *
-	 * @param x 値を設定する ( レイヤの画像座標での ) x 座標を指定します。
-	 * @param y 値を設定する ( レイヤの画像座標での ) y 座標を指定します。
-	 * @param value 設定する値 ( 0 ～ 255 ) を指定します。
-	 * @description レイヤマスク画像 ( 不透明度を保持している画像 ) の任意の位置の値 ( 0 ～ 255 ) を設定します。
-	 * 画像座標として無効な ( 範囲外の ) 位置を指定すると例外が発生します。
+	 * @param x Specifies the x coordinate (in the image coordinates of the layer) for which you want to set the value.
+	 * @param y Specify the y coordinate (in the image coordinates of the layer) for which you want to set the value.
+	 * @param value Specify the value to be set (0 to 255).
+	 * @description Set a value (0 to 255) at any position on the layer mask image (the image that retains opacity).
+	 * An exception is thrown if you specify an invalid (out of range) position as the image coordinates.
 	 */
 	function setMaskPixel( x, y, value);
 
 	/**
-	 * 領域画像の値の取得
+	 * Get the value of the area image
 	 *
-	 * @param x 値を取得する ( レイヤの画像座標での ) x 座標を指定します。
-	 * @param y 値を取得する ( レイヤの画像座標での ) y 座標を指定します。
-	 * @return 領域画像の値 ( 0 ～ 255 )
-	 * @description レイヤ領域画像の任意の位置の値 ( 0 ～ 255 ) を取得します。
-	 * 画像座標として無効な ( 範囲外の ) 位置を指定すると例外が発生します。
+	 * @param x Specifies the x coordinate (in the image coordinates of the layer) for which you want to get the value.
+	 * @param y Specifies the y coordinate (in the image coordinates of the layer) for which you want to get the value.
+	 * @return Area image value (0 to 255)
+	 * @description Layer Area Gets the value (0 to 255) at any position in the image.
+	 * An exception is thrown if you specify an invalid (out of range) position as the image coordinates.
 	 */
 	function getProvincePixel( x, y);
 
 	/**
-	 * 領域画像の値の設定
+	 * Setting the value of the area image
 	 *
-	 * @param x 値を設定する ( レイヤの画像座標での ) x 座標を指定します。
-	 * @param y 値を設定する ( レイヤの画像座標での ) y 座標を指定します。
-	 * @param value 設定する値 ( 0 ～ 255 ) を指定します。
-	 * @description レイヤ領域画像の任意の位置の値 ( 0 ～ 255 ) を設定します。
-	 * 画像座標として無効な ( 範囲外の ) 位置を指定すると例外が発生します。
+	 * @param x Specifies the x coordinate (in the image coordinates of the layer) for which you want to set the value.
+	 * @param y Specify the y coordinate (in the image coordinates of the layer) for which you want to set the value.
+	 * @param value Specify the value to be set (0 to 255).
+	 * @description Layer Area Set a value (0 to 255) at any position in the image.
+	 * An exception is thrown if you specify an invalid (out of range) position as the image coordinates.
 	 */
 	function setProvincePixel( x, y, value);
 
 	/**
-	 * 指定位置のレイヤを取得
+	 * Get the layer at the specified position
 	 *
-	 * @param x 取得したいレイヤの位置の x 座標を表示座標上でピクセル単位で指定します。
-	 * このメソッドを実行するレイヤの表示座標が用いられます ( プライマリレイヤ上の表示座標ではありません )
-	 * @param y 取得したいレイヤの位置の y 座標を表示座標上でピクセル単位で指定します。
-	 * このメソッドを実行するレイヤの表示座標が用いられます ( プライマリレイヤ上の表示座標ではありません )
-	 * @param exclude_self レイヤの検索から自分自身を除外するかどうかを指定します。
-	 * 偽を指定すると、自分自身のレイヤも検索に含まれます。
-	 * 真を指定すると、自分自身のレイヤは検索から除外され、あたかも存在しないかのように扱われます。
-	 * この引数を省略すると偽が指定されたと見なされます。
-	 * @param get_disabled 無効になっているレイヤのオブジェクトを得るかどうかを指定します。
-	 * 偽を指定すると、無効 (Layer.enabled プロパティが偽など) になっているレイヤが指定位置にあった場合、null が返ります。
-	 * 真を指定すると、無効になっているレイヤが指定位置にあった場合は、そのレイヤオブジェクトを返します。
-	 * この引数を省略すると偽が指定されたと見なされます。
-	 * @return 指定位置にあったレイヤオブジェクト。
-	 * 指定位置にレイヤが無かった場合などは null が戻ります。
-	 * @description x,y で示された位置にあるレイヤオブジェクトを返します。
-	 * 当たり判定は通常のマウスイベントの当たり判定と同じ機構が用いられます。
-	 * つまり、指定位置を、レイヤの重ね順において一番手前から見ていき、最初に当たり判定に該当したレイヤが返されます。
-	 * exclude_self 引数で真を指定すると、このメソッドを実行するレイヤを検索の対象から除外することができます。
+	 * @param x Specify the x-coordinate of the position of the layer you want to acquire in pixels on the display coordinates.
+	 * The display coordinates of the layer that executes this method are used (not the display coordinates on the primary layer).
+	 * @param y Specify the y coordinate of the position of the layer you want to acquire in pixel units on the display coordinates.
+	 * The display coordinates of the layer that executes this method are used (not the display coordinates on the primary layer).
+	 * @param exclude_self Specifies whether to exclude itself from the layer search.
+	 * If you specify false, your own layer is also included in the search.
+	 * If you specify true, your own layer is excluded from the search and treated as if it did not exist.
+	 * If this argument is omitted, false is assumed.
+	 * @param get_disabled Specifies whether to get objects for layers that are disabled.
+	 * If false is specified, null is returned if a layer that is disabled (for example, the Layer.enabled property is false) is in the specified position.
+	 * If true is specified, if an invalid layer is in the specified position, that layer object is returned.
+	 * If this argument is omitted, false is assumed.
+	 * @return The layer object that was in the specified position.
+	 * Null is returned if there is no layer at the specified position.
+	 * @description Returns the layer object at the position indicated by x, y.
+	 * The collision detection uses the same mechanism as the normal mouse event collision detection.
+	 * In other words, the specified position is viewed from the front in the layer stacking order, and the layer corresponding to the hit judgment is returned first.
+	 * You can exclude the layer that executes this method from the search by specifying true with the exclude_self argument.
 	 * @see Layer.hitType
 	 * @see Layer.hitThreshold
 	 * @see Layer.onHitTest
@@ -561,907 +561,907 @@ class Layer {
 	function getLayerAt( x, y, exclude_self=false, get_disabled=false);
 
 	/**
-	 * マウスイベントキャプチャの解除
+	 * Cancel mouse event capture
 	 *
-	 * @description マウスイベントキャプチャを解除します。
-	 * マウスイベントキャプチャとは、最初にマウスボタンを押下した位置にあったレイヤのみに、マウスボタンを放すまでずっとマウスイベントが占有的に送られる機能です。
-	 * このメソッドは、この機能を解除し、通常のマウスイベントの処理状態に戻します。
-	 * このメソッドを実行すると、同じウィンドウに属しているレイヤのマウスキャプチャは、たとえメソッドを実行するレイヤとキャプチャの対象となっているレイヤが異なっていても解除されます。
-	 * このメソッドはキャプチャ状態でない場合は何もしません。
+	 * @description Cancels mouse event capture.
+	 * Mouse event capture is a function that exclusively sends mouse events to the layer where the mouse button was first pressed until the mouse button is released.
+	 * This method removes this feature and returns you to normal mouse event processing.
+	 * When you execute this method, mouse capture of layers belonging to the same window is canceled even if the layer that executes the method and the layer that is being captured are different.
+	 * This method does nothing if it is not in the capture state.
 	 */
 	function releaseCapture( );
 
 	/**
-	 * レイヤ表示位置の設定
+	 * Layer display position setting
 	 *
-	 * @param left レイヤの ( 親レイヤの表示座標での ) 左端位置をピクセル単位で指定します。
-	 * この値は Layer.left プロパティでも取得や設定ができます。
-	 * @param top レイヤの ( 親レイヤの表示座標での ) 上端位置をピクセル単位で指定します。
-	 * この値は Layer.top プロパティでも取得や設定ができます。
-	 * @param width レイヤの横幅をピクセル単位で指定します。
-	 * この値は Layer.width プロパティでも取得や設定ができます。
-	 * この引数と height 引数が省略された場合は left 引数と top 引数による位置の変更のみとなります。
-	 * @param height レイヤの縦幅をピクセル単位で指定します。
-	 * この値は Layer.height プロパティでも取得や設定ができます。
-	 * この引数と width 引数が省略された場合は left 引数と top 引数による位置の変更のみとなります。
-	 * @description レイヤの表示位置を設定します。
+	 * @param left Specifies the leftmost position of the layer (in display coordinates of the parent layer) in pixels.
+	 * This value can also be obtained and set with the Layer.left property.
+	 * @param top Specifies the top position of the layer (in display coordinates of the parent layer) in pixels.
+	 * This value can also be obtained and set with the Layer.top property.
+	 * @param width Specifies the width of the layer in pixels.
+	 * This value can also be obtained and set with the Layer.width property.
+	 * If this argument and height argument are omitted, the position can only be changed by the left and top arguments.
+	 * @param height Specifies the height of the layer in pixels.
+	 * This value can also be obtained and set with the Layer.height property.
+	 * If this argument and width argument are omitted, the position can only be changed by the left and top arguments.
+	 * @description Set the display position of the layer.
 	 */
 	function setPos( left, top, width=void, height=void);
 
 	/**
-	 * 描画クリップ矩形の設定
+	 * Drawing clip rectangle settings
 	 *
-	 * @param left 描画クリップ矩形の ( レイヤの画像座標での ) 左端位置をピクセル単位で指定します。
-	 * この値は Layer.clipLeft プロパティでも取得や設定ができます。
-	 * @param top 描画クリップ矩形の ( レイヤの画像座標での ) 上端位置をピクセル単位で指定します。
-	 * この値は Layer.clipTop プロパティでも取得や設定ができます。
-	 * @param width 描画クリップ矩形の横幅をピクセル単位で指定します。
-	 * この値は Layer.clipWidth プロパティでも取得や設定ができます。
-	 * @param height 描画クリップ矩形の縦幅をピクセル単位で指定します。
-	 * この値は Layer.clipHeight プロパティでも取得や設定ができます。
-	 * @description レイヤの描画クリップ矩形を設定します。レイヤに対する描画は、この描画クリップ矩形内に制限されます ( 矩形外にはみ出た部分は描画されません )。
-	 * ただし、Layer.flipLR や Layer.flipUD のように描画クリップ矩形の影響を受けないメソッドもあります。
-	 * 初期値は、クリップ矩形はレイヤ画像領域全体に設定されています ( レイヤ全面に描画する事ができます )。
-	 * 描画クリップ矩形は、画像読み込みや画像サイズが変更されたり、レイヤの表示タイプが変更されると初期値に戻ります。
-	 * また、このメソッドを引数なしで呼び出すと、描画クリップ矩形を初期値に戻すことができます。
+	 * @param left Specifies the left edge position (in image coordinates of the layer) of the drawing clip rectangle in pixels.
+	 * This value can also be obtained and set with the Layer.clipLeft property.
+	 * @param top Specifies the top position of the drawing clip rectangle (in the image coordinates of the layer) in pixels.
+	 * This value can also be obtained and set with the Layer.clipTop property.
+	 * @param width Specifies the width of the drawing clip rectangle in pixels.
+	 * This value can also be obtained and set with the Layer.clipWidth property.
+	 * @param height Specifies the vertical width of the drawing clip rectangle in pixels.
+	 * This value can also be obtained and set with the Layer.clipHeight property.
+	 * @description Sets the drawing clip rectangle for the layer. Drawing on the layer is restricted to the inside of this drawing clip rectangle (the part outside the rectangle is not drawn).
+	 * However, some methods, such as Layer.flipLR and Layer.flipUD, are not affected by the drawing clip rectangle.
+	 * By default, the clip rectangle is set to the entire layer image area (it can be drawn on the entire layer).
+	 * The drawing clip rectangle returns to its default value when the image is loaded, the image size is changed, or the display type of the layer is changed.
+	 * You can also call this method with no arguments to restore the drawing clip rectangle to its default value.
 	 */
 	function setClip( left, top, width=void, height=void);
 
 	/**
-	 * レイヤ表示サイズの設定
+	 * Layer display size setting
 	 *
-	 * @param width レイヤの表示の横幅をピクセル単位で指定します。
-	 * この値は Layer.width プロパティでも取得や設定ができます。
-	 * @param height レイヤの表示の縦幅をピクセル単位で指定します。
-	 * この値は Layer.height プロパティでも取得や設定ができます。
-	 * @description レイヤの表示サイズを設定します。
+	 * @param width Specifies the display width of the layer in pixels.
+	 * This value can also be obtained and set with the Layer.width property.
+	 * @param height Specifies the vertical width of the layer display in pixels.
+	 * This value can also be obtained and set with the Layer.height property.
+	 * @description Sets the display size of the layer.
 	 */
 	function setSize( width, height);
 
 	/**
-	 * レイヤ表示サイズを画像サイズに合わせる
+	 * Match the layer display size to the image size
 	 *
-	 * @description レイヤの表示サイズを画像サイズと同じにします。
-	 * 画像サイズを変更する多くの操作では表示サイズまでは変更しませんが、このメソッドを使うと表示サイズを画像サイズと同じにすることができます。
+	 * @description Make the display size of the layer the same as the image size.
+	 * Resizing the image Many operations do not change the display size, but you can use this method to make the display size the same as the image size.
 	 */
 	function setSizeToImageSize( );
 
 	/**
-	 * レイヤ画像オフセットの設定
+	 * Layer image offset setting
 	 *
-	 * @param left レイヤに表示する画像の左端位置 ( x オフセット ) をピクセル単位で指定します。
-	 * この値は Layer.imageLeft プロパティでも取得や設定ができます。
-	 * @param top レイヤに表示する画像の上端位置 ( y オフセット ) をピクセル単位で指定します。
-	 * この値は Layer.imageTop プロパティでも取得や設定ができます。
-	 * @description レイヤ画像オフセットを指定します。
-	 * レイヤ画像サイズはレイヤ表示サイズより大きくすることができますが、すべてを表示することはできませんので、このメソッドや Layer.imageLeft や Layer.imageTopプロパティで表示オフセットを指定することになります。
-	 * オフセットは、 0 か、負の数値になります。
+	 * @param left Specifies the left edge position (x offset) of the image to display on the layer, in pixels.
+	 * This value can also be obtained and set with the Layer.imageLeft property.
+	 * @param top Specifies the top edge position (y offset) of the image to display on the layer, in pixels.
+	 * This value can also be obtained and set with the Layer.imageTop property.
+	 * @description Specifies the layer image offset.
+	 * The layer image size can be larger than the layer display size, but not all can be displayed, so you will have to specify the display offset with this method and the Layer.imageLeft and Layer.imageTop properties.
+	 * The offset can be 0 or a negative number.
 	 */
 	function setImagePos( left, top);
 
 	/**
-	 * レイヤ画像サイズの設定
+	 * Layer image size setting
 	 *
-	 * @param width レイヤ画像の横幅をピクセル単位で指定します。
-	 * この値は Layer.imageWidth プロパティでも取得や設定ができます。
-	 * @param height レイヤ画像の縦幅をピクセル単位で指定します。
-	 * この値は Layer.imageHeight プロパティでも取得や設定ができます。
-	 * @description レイヤ画像サイズを指定します。
-	 * サイズが拡張される場合は、レイヤの表示サイズは変更されませんが、サイズが縮小される場合はレイヤの表示サイズも縮小されます。
+	 * @param width Specifies the width of the layer image in pixels.
+	 * This value can also be obtained and set with the Layer.imageWidth property.
+	 * @param height Specifies the vertical width of the layer image in pixels.
+	 * This value can also be obtained and set with the Layer.imageHeight property.
+	 * @description Specifies the layer image size.
+	 * When the size is increased, the display size of the layer is not changed, but when the size is reduced, the display size of the layer is also reduced.
 	 */
 	function setImageSize( width, height);
 
 	/**
-	 * メイン画像の共有の解除
+	 * Unsharing the main image
 	 *
-	 * @param copy 共有状態を解除する際、元の画像をコピーするかどうかを指定します。
-	 * 真を指定すると元の画像をコピーします。偽を指定すると元の画像はコピーされず、画像の内容は不定となります。
-	 * @description レイヤ画像の共有状態を強制的に解除します。
-	 * 吉里吉里は、assignImages などで画像をまるごと他のレイヤにコピーした場合、実際には画像バッファのコピーを行わず、同一の画像を共有するようになります。
-	 * 通常、画像に変更を加えようとする直前でこの共有状態は自動的に解除されますが、このメソッドで強制的に解除することができます。
-	 * copy 引数に false を指定した場合は、画像の共有は解除されますが、元の画像を引き継ぐことは保証されません ( 画像の内容は不定になります ) が、共有の解除をより高速に行うことができます。
-	 * レイヤの画像全部を書き換える場合は元の画像を引き継ぐ必要はありませんので、描画を行う前にあらかじめこのメソッドに false を指定して呼び出すと効率が良くなる場合があります。
-	 * このメソッドは、画像が共有されていない場合は何もしません。
+	 * @param copy Specifies whether to copy the original image when unsharing.
+	 * If true is specified, the original image will be copied. If false is specified, the original image will not be copied and the content of the image will be undefined.
+	 * @description Forcibly cancels the sharing state of the layer image.
+	 * Kirikiri When you copy an entire image to another layer with assignImages etc., the same image will be shared without actually copying the image buffer.
+	 * Normally, this sharing state is automatically released just before you try to make changes to the image, but you can force it to be released with this method.
+	 * If you specify false for the copy argument, the image is unshared, but the original image is not guaranteed to be inherited (the content of the image is undefined), but the unsharing is done faster. can do.
+	 * Since it is not necessary to inherit the original image when rewriting the entire image of the layer, it may be more efficient to call this method with false specified in advance before drawing.
+	 * This method does nothing if the image is not shared.
 	 */
 	function independMainImage( copy=true);
 
 	/**
-	 * 領域画像の共有の解除
+	 * Canceling sharing of area images
 	 *
-	 * @param copy 共有状態を解除する際、元の画像をコピーするかどうかを指定します。
-	 * 真を指定すると元の画像をコピーします。
-	 * 偽を指定すると元の画像はコピーされず、画像の内容は不定となります。
-	 * @description 領域画像の共有状態を強制的に解除します。
-	 * 吉里吉里は、assignImages などで画像をまるごと他のレイヤにコピーした場合、実際には画像バッファのコピーを行わず、同一の画像を共有するようになります。
-	 * 通常、画像に変更を加えようとする直前でこの共有状態は自動的に解除されますが、このメソッドで強制的に解除することができます。
-	 * copy 引数に false を指定した場合は、画像の共有は解除されますが、元の画像を引き継ぐことは保証されません ( 画像の内容は不定になります ) が、共有の解除をより高速に行うことができます。
-	 * レイヤの画像全部を書き換える場合は元の画像を引き継ぐ必要はありませんので、描画を行う前にあらかじめこのメソッドに false を指定して呼び出すと効率が良くなる場合があります。
-	 * このメソッドは、画像が共有されていない場合は何もしません。
+	 * @param copy Specifies whether to copy the original image when unsharing.
+	 * If true is specified, the original image will be copied.
+	 * If false is specified, the original image will not be copied and the content of the image will be undefined.
+	 * @description Forcibly cancels the sharing state of the area image.
+	 * Kirikiri When you copy an entire image to another layer with assignImages etc., the same image will be shared without actually copying the image buffer.
+	 * Normally, this sharing state is automatically released just before you try to make changes to the image, but you can force it to be released with this method.
+	 * If you specify false for the copy argument, the image is unshared, but the original image is not guaranteed to be inherited (the content of the image is undefined), but the unsharing is done faster. can do.
+	 * Since it is not necessary to inherit the original image when rewriting the entire image of the layer, it may be more efficient to call this method with false specified in advance before drawing.
+	 * This method does nothing if the image is not shared.
 	 */
 	function independProvinceImage( copy=true);
 
 	/**
-	 * 矩形塗りつぶし
+	 * Rectangle fill
 	 *
-	 * @param left 塗りつぶす矩形の左端位置を ( 画像位置における ) ピクセル単位で指定します。
-	 * @param top 塗りつぶす矩形の上端位置を ( 画像位置における ) ピクセル単位で指定します。
-	 * @param width 塗りつぶす矩形の横幅を ( 画像位置における ) ピクセル単位で指定します。
-	 * @param height 塗りつぶす矩形の縦幅を ( 画像位置における ) ピクセル単位で指定します。
-	 * @param value 塗りつぶす色や値を指定します。
-	 * この値は、Layer.face プロパティの値によって意味が変わります。
+	 * @param left Specifies the left edge position of the fill rectangle in pixels (at the image position).
+	 * @param top Specifies the top position of the rectangle to fill in pixels (at the image position).
+	 * @param width Specifies the width of the rectangle to fill in pixels (at the image position).
+	 * @param height Specifies the height of the rectangle to fill, in pixels (at the image position).
+	 * @param value Specify the fill color and value.
+	 * This value depends on the value of the Layer.face property.
 	 *
-	 * + dfAlpha (またはdfBoth)   : 0xAARRGGBB 形式で不透明度と色を指定してください。メインとマスクの両方が塗りつぶされます。
-	 * + dfAddAlpha               : 0xAARRGGBB 形式で不透明度と色を指定してください。メインとマスクの両方が塗りつぶされます。
-	 * + dfOpaque (またはdfMain)  : 0xRRGGBB 形式で色を指定してください。Layer.holdAlpha プロパティが真の時は、メインのみが塗りつぶされ、マスクはそのままになります。偽の時は dfAlpha や dfAddAlpha の時と同じく、0xAARRGGBB 形式での不透明度と色の指定を受け付け、メインとマスクの両方が塗りつぶされます。
-	 * + dfMask                   : マスク(不透明度)の値 ( 0 ～ 255 ) を指定してください。マスクのみが塗りつぶされ、メインはそのままになります。
-	 * + dfProvince               : 領域の値 ( 0 ～ 255 ) を指定してください。領域のみが塗りつぶされます。
+	 * + dfAlpha (Or dfBoth)      : Specify the opacity and color in the 0xAARRGGBB format. Both the main and the mask are filled.
+	 * + dfAddAlpha               : Specify the opacity and color in the 0xAARRGGBB format. Both the main and the mask are filled.
+	 * + dfOpaque (Or dfMain)     : Specify the color in 0xRRGGBB format. When the Layer.holdAlpha property is true, only the main is filled and the mask remains. When false, it accepts opacity and color specifications in 0xAARRGGBB format, as with dfAlpha and dfAddAlpha, and fills both the main and mask.
+	 * + dfMask                   : Specify a mask (opacity) value (0 to 255). Only the mask is filled and the main remains.
+	 * + dfProvince               : Specify a region value (0 to 255). Only the area is filled.
 	 *
-	 * @description 指定されたレイヤ画像の矩形を指定された方法で塗りつぶします。
+	 * @description Fills the rectangle of the specified layer image in the specified way.
 	 */
 	function fillRect( left, top, width, height, value);
 
 	/**
-	 * 矩形半透明塗りつぶし
+	 * Rectangle translucent fill
 	 *
-	 * @param left 塗りつぶす矩形の左端位置を ( 画像位置における ) ピクセル単位で指定します。
-	 * @param top 塗りつぶす矩形の上端位置を ( 画像位置における ) ピクセル単位で指定します。
-	 * @param width 塗りつぶす矩形の横幅を ( 画像位置における ) ピクセル単位で指定します。
-	 * @param height 塗りつぶす矩形の縦幅を ( 画像位置における ) ピクセル単位で指定します。
-	 * @param value 塗りつぶす色や値を指定します。
-	 * この値は、Layer.face プロパティの値によって意味が変わります。
+	 * @param left Specifies the left edge position of the fill rectangle in pixels (at the image position).
+	 * @param top Specifies the top position of the rectangle to fill in pixels (at the image position).
+	 * @param width Specifies the width of the rectangle to fill in pixels (at the image position).
+	 * @param height Specifies the height of the rectangle to fill, in pixels (at the image position).
+	 * @param value Specify the fill color and value.
+	 * This value depends on the value of the Layer.face property.
 	 *
-	 * + dfAlpha (またはdfBoth)    : 0xRRGGBB 形式で色を指定してください
-	 * + dfAddAlpha                    : 0xRRGGBB 形式で色を指定してください
-	 * + dfOpaque (またはdfMain)   : 0xRRGGBB 形式で色を指定してください
-	 * + dfMask                        : マスク(不透明度)の値 ( 0 ～ 255 ) を指定してください
-	 * + dfProvince                    : 領域の値 ( 0 ～ 255 ) を指定してくださいdfOpaque を指定した場合は、マスク情報は無視されます(マスク情報が保持されるか破壊されるかは Layer.holdAlpha プロパティによります)。また、dfMask を指定した場合は、色の情報はそのままになります。dfAlpha の場合でかつ opa が負の場合はこの引数は無視されます。
+	 * + dfAlpha (Or dfBoth)           : Specify the color in 0xRRGGBB format
+	 * + dfAddAlpha                    : Specify the color in 0xRRGGBB format
+	 * + dfOpaque (Or dfMain)          : Specify the color in 0xRRGGBB format
+	 * + dfMask                        : Specify a mask (opacity) value (0 to 255)
+	 * + dfProvince                    : Specify a region value (0 to 255) If you specify dfOpaque, the mask information is ignored (whether the mask information is retained or destroyed depends on the Layer.holdAlpha property). Also, if you specify dfMask, the color information remains the same. This argument is ignored for dfAlpha and if opa is negative.
 	 *
-	 * @param opa 塗りつぶす不透明度 ( -255 ～ 0 ～ 255 ) を指定します。
-	 * この引数は、Layer.face プロパティの値が dfMask や dfProvince の場合は無視されます ( 常に完全不透明 )。
-	 * 負の数の指定は Layer.face が dfAlpha の場合のみに有効で、この場合は value 引数は無視され、画像から不透明度が取り除かれます (-255 を指定すると矩形は完全に透明になります )。
-	 * @description 指定されたレイヤ画像の矩形を指定された方法で塗りつぶします。
-	 * Layer.fillRect と異なり、透明度を指定して半透明で塗りつぶすことができます。
+	 * @param opa Specifies the opacity to fill (-255 to 0 to 255).
+	 * This argument is ignored if the value of the Layer.face property is dfMask or dfProvince (always completely opaque).
+	 * Negative numbers are valid only if Layer.face is dfAlpha, in which case the value argument is ignored and the image is stripped of opacity (-255 makes the rectangle completely transparent). ..
+	 * @description Fills the rectangle of the specified layer image in the specified way.
+	 * Unlike Layer.fillRect, you can specify transparency to fill with translucency.
 	 */
 	function colorRect( left, top, width, height, value, opa=255);
 
 	/**
-	 * 文字描画
+	 * Character drawing
 	 *
-	 * @param x 文字描画を開始する原点の ( 画像位置における ) x 座標をピクセル単位で指定します。
-	 * @param y 文字描画を開始する原点の ( 画像位置における ) y 座標をピクセル単位で指定します。
-	 * @param text 描画する文字を指定します。
-	 * @param color 描画する文字の色を 0xRRGGBB 形式で指定します。
-	 * @param opa 描画する文字の不透明度 ( -255 ～ 0 ～ 255 ) を指定します。
-	 * 負の数の指定は Layer.face が dfAlpha の場合のみに有効で、この場合は文字の形に不透明度が取り除かれる事になります ( 値が小さいほど効果が大きくなります )。
-	 * @param aa アンチエイリアスを行うかどうかを指定します。
-	 * 真を指定するとアンチエイリアスが行われます。
-	 * 偽を指定すると行われません。
-	 * @param shadowlevel 影の不透明度を指定します。
-	 * shadowwidth 引数の値によって適切な値は変動します。
-	 * 0 を指定すると影は描画されません。
-	 * @param shadowcolor 影の色を 0xRRGGBB 形式で指定します。
-	 * @param shadowwidth 影の幅 ( ぼけ ) を指定します。
-	 * 0 がもっともシャープ ( ぼけない ) で、値を大きくすると影をぼかすことができます。
-	 * @param shadowofsx 影の位置の x 座標の値をピクセル単位で指定します。
-	 * 0 を指定すると影は真下に描画されます。
-	 * @param shadowofsy 影の位置の y 座標の値をピクセル単位で指定します。
-	 * 0 を指定すると影は真下に描画されます。
-	 * @description レイヤに文字を描画します。
-	 * Layer.face が dfAlpha (または dfBoth) か dfAddAlpha か dfOpaque (または dfMain)の場合のみ描画することができます。
-	 * dfOpaque (またはdfMain) を指定した場合、描画先のマスクが破壊されるか保護されるかは Layer.holdAlpha プロパティによります。
-	 * フォントは Layer.font で指定したものが用いられます。
+	 * @param x Specifies the x-coordinate (at the image position) of the origin where the character drawing starts, in pixels.
+	 * @param y Specifies the y coordinate (at the image position) of the origin where the character drawing starts, in pixels.
+	 * @param text Specify the character to draw.
+	 * @param color Specifies the color of the characters to draw in the 0xRRGGBB format.
+	 * @param opa Specifies the opacity (-255 to 0 to 255) of the characters to draw.
+	 * Negative numbers are only valid if Layer.face is dfAlpha, which removes the opacity of the character shape (the smaller the value, the greater the effect).
+	 * @param aa Specifies whether to perform antialiasing.
+	 * If true is specified, antialiasing will be performed.
+	 * If you specify false, it will not be done.
+	 * @param shadowlevel Specifies the opacity of the shadow.
+	 * The appropriate value will vary depending on the value of the shadowwidth argument.
+	 * If you specify 0, no shadow is drawn.
+	 * @param shadowcolor Specifies the shadow color in 0xRRGGBB format.
+	 * @param shadowwidth Specifies the shadow width (blurring).
+	 * 0 is the sharpest (no blur), and increasing the value will blur the shadow.
+	 * @param shadowofsx Specifies the x-coordinate value of the shadow position, in pixels.
+	 * If you specify 0, the shadow is drawn directly below.
+	 * @param shadowofsy Specifies the y-coordinate value of the shadow position, in pixels.
+	 * If you specify 0, the shadow is drawn directly below.
+	 * @description Draws characters on the layer.
+	 * It can only be drawn if the Layer.face is dfAlpha (or dfBoth), dfAddAlpha, or dfOpaque (or dfMain).
+	 * If you specify dfOpaque (or dfMain), it depends on the Layer.holdAlpha property whether the mask to which it is drawn is destroyed or protected.
+	 * The font specified in Layer.font is used.
 	 */
 	function drawText( x, y, text, color, opa=255, aa=true, shadowlevel=0, shadowcolor=0x000000, shadowwidth=0, shadowofsx=0, shadowofsy=0);
 
 	/**
-	 * 文字描画
+	 * Character drawing
 	 *
-	 * @param x 文字描画を開始する原点の ( 画像位置における ) x 座標をピクセル単位で指定します。
-	 * @param y 文字描画を開始する原点の ( 画像位置における ) y 座標をピクセル単位で指定します。
-	 * @param glyph 描画するグリフを指定します。
-	 * @param color 描画する文字の色を 0xRRGGBB 形式で指定します。
-	 * @param opa 描画する文字の不透明度 ( -255 ～ 0 ～ 255 ) を指定します。
-	 * 負の数の指定は face が dfAlpha の場合のみに有効で、この場合は文字の形に不透明度が取り除かれる事になります ( 値が小さいほど効果が大きくなります )。
-	 * @param aa アンチエイリアスを行うかどうかを指定します。
-	 * 真を指定するとアンチエイリアスが行われます。
-	 * 偽を指定すると行われません。
-	 * @param shadowlevel 影の不透明度を指定します。
-	 * shadowwidth 引数の値によって適切な値は変動します。
-	 * 0 を指定すると影は描画されません。
-	 * @param shadowcolor 影の色を 0xRRGGBB 形式で指定します。
-	 * @param shadowwidth 影の幅 ( ぼけ ) を指定します。
-	 * 0 がもっともシャープ ( ぼけない ) で、値を大きくすると影をぼかすことができます。
-	 * @param shadowofsx 影の位置の x 座標の値をピクセル単位で指定します。
-	 * 0 を指定すると影は真下に描画されます。
-	 * @param shadowofsy 影の位置の y 座標の値をピクセル単位で指定します
-	 * 0 を指定すると影は真下に描画されます。
-	 * @description レイヤ にグリフを描画します。
-	 グリフは、glyph : Array[9] = [ width, height, originx, originy, incx, incy, inc, bitmap(Octet), colors ] の様な形式の配列を指定します。
-	 * グリフの colors が省略された場合は、256階調であると判断されます。
+	 * @param x Specifies the x-coordinate (at the image position) of the origin where the character drawing starts, in pixels.
+	 * @param y Specifies the y coordinate (at the image position) of the origin where the character drawing starts, in pixels.
+	 * @param glyph Specifies the glyph to draw.
+	 * @param color Specifies the color of the characters to draw in the 0xRRGGBB format.
+	 * @param opa Specifies the opacity (-255 to 0 to 255) of the characters to draw.
+	 * Negative numbers are only valid if face is dfAlpha, in which case the opacity of the character shape will be removed (the smaller the value, the greater the effect).
+	 * @param aa Specifies whether to perform antialiasing.
+	 * If true is specified, antialiasing will be performed.
+	 * If you specify false, it will not be done.
+	 * @param shadowlevel Specifies the opacity of the shadow.
+	 * The appropriate value will vary depending on the value of the shadowwidth argument.
+	 * If you specify 0, no shadow is drawn.
+	 * @param shadowcolor Specifies the shadow color in 0xRRGGBB format.
+	 * @param shadowwidth Specifies the shadow width (blurring).
+	 * 0 is the sharpest (no blur), and increasing the value will blur the shadow.
+	 * @param shadowofsx Specifies the x-coordinate value of the shadow position, in pixels.
+	 * If you specify 0, the shadow is drawn directly below.
+	 * @param shadowofsy Specifies the y-coordinate value of the shadow position, in pixels.
+	 * If you specify 0, the shadow is drawn directly below.
+	 * @description Draw a glyph on the layer.
+	 * A glyph specifies an array of the form glyph: Array [9] = [width, height, originx, originy, incx, incy, inc, bitmap (Octet), colors].
+	 * If the glyph colors are omitted, it is considered to be 256 gradations.
 	 */
 	function drawGlyph( x, y, glyph, color, opa=255, aa=true, shadowlevel=0, shadowcolor=0x000000, shadowwidth=0, shadowofsx=0, shadowofsy=0);
 
 	/**
-	 * 矩形コピー
+	 * Rectangle copy
 	 *
-	 * @param dleft コピー先の矩形の左端位置を ( コピー先レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param dtop コピー先の矩形の上端位置を ( コピー先レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param src コピー元のレイヤオブジェクトを指定します。
-	 * Bitmap クラスのオブジェクトも指定可能です。
-	 * @param sleft コピーする矩形の左端位置を ( コピー元レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param stop コピーする矩形の上端位置を ( コピー元レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param swidth コピーする矩形の横幅を ( コピー元レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param sheight コピーする矩形の縦幅を ( コピー元レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @description 指定されたコピー元レイヤの矩形部分を自分のレイヤの指定位置にコピーします。
-	 * コピーされる画像は、コピー先レイヤ ( メソッドを実行するレイヤ  ) のLayer.face プロパティの値によって変わります。
+	 * @param dleft Specifies the left edge position of the destination rectangle in pixels (at the image position of the destination layer).
+	 * @param dtop Specifies the top position of the destination rectangle in pixels (at the image position of the destination layer).
+	 * @param src Specifies the layer object to copy from.
+	 * You can also specify an object of the Bitmap class.
+	 * @param sleft Specifies the left edge position of the rectangle to copy, in pixels (at the image position of the source layer).
+	 * @param stop Specifies the top position of the rectangle to copy, in pixels (at the image position of the source layer).
+	 * @param swidth Specifies the width of the rectangle to copy, in pixels (at the image position of the source layer).
+	 * @param sheight Specifies the height of the rectangle to copy, in pixels (at the image position of the source layer).
+	 * @description Copies the rectangular part of the specified copy source layer to the specified position of your layer.
+	 * The image that is copied depends on the value of the Layer.face property of the destination layer (the layer that executes the method).
 	 *
-	 * + dfAlpha (または dfBoth)     : メイン画像とマスク画像がコピーされます
-	 * + dfAddAlpha              : メイン画像とマスク画像がコピーされます
-	 * + dfOpaque (または dfMain)    : Layer.holdAlpha プロパティが真の場合は、メイン画像のみがコピーされます ( マスク画像はコピーされません )。偽の場合はメイン画像とマスク画像がコピーされます
-	 * + dfMask                  : マスク画像のみがコピーされます ( メイン画像はコピーされません )
-	 * + dfProvince              : 領域画像のみがコピーされます ( マスク画像やメイン画像はコピーされません )コピー元のレイヤの Layer.face プロパティは無視されます。このメソッドは、Layer.holdAlpha の影響は受けません (dfAlpha や dfAddAlpha の場合は holdAlpha に関わらずマスク画像もコピーされます)
+	 * + dfAlpha (Or dfBoth)     : The main image and mask image are copied
+	 * + dfAddAlpha              : The main image and mask image are copied
+	 * + dfOpaque (Or dfMain)    : If the Layer.holdAlpha property is true, only the main image will be copied (the mask image will not be copied). If false, the main image and mask image will be copied
+	 * + dfMask                  : Only the mask image is copied (the main image is not copied)
+	 * + dfProvince              : Only the area image is copied (mask image and main image are not copied) The Layer.face property of the source layer is ignored. This method is not affected by Layer.holdAlpha (in the case of dfAlpha and dfAddAlpha, the mask image is also copied regardless of holdAlpha).
 	 */
 	function copyRect( dleft, dtop, src, sleft, stop, swidth, sheight);
 
 	/**
-	 * 9 path を利用した画像コピー
+	 * Image copy using 9 path
 	 *
-	 * @param src コピー元のレイヤオブジェクトを指定します。
-	 * Bitmapクラスのオブジェクトも指定可能です。
-	 * @return マージン情報
-	 * @description 9 path ( slice ) を利用した画像コピーを行います。
-	 * 返されるマージン情報はRectクラスのオブジェクトです。
+	 * @param src Specifies the layer object to copy from.
+	 * You can also specify an object of Bitmap class.
+	 * @return Margin information
+	 * @description 9 Make an image copy using path (slice).
+	 * The margin information returned is an object of class Rect.
 	 */
 	function copy9Patch( src);
 
 	/**
-	 * レイヤを重ね合わせた画像をコピー
+	 * Copy the image with the layers superimposed
 	 *
-	 * @param dleft コピー先の矩形の左端位置を ( コピー先レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param dtop コピー先の矩形の上端位置を ( コピー先レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param src コピー元のレイヤオブジェクトを指定します。
-	 * @param sleft コピーする矩形の左端位置を ( コピー元レイヤの表示位置における ) ピクセル単位で指定します。
-	 * @param stop コピーする矩形の上端位置を ( コピー元レイヤの表示位置における ) ピクセル単位で指定します。
-	 * @param swidth コピーする矩形の横幅を ( コピー元レイヤの表示位置における ) ピクセル単位で指定します。
-	 * @param sheight コピーする矩形の縦幅を ( コピー元レイヤの表示位置における ) ピクセル単位で指定します。
-	 * @description 指定されたコピー元レイヤの指定された矩形部分を、子レイヤも含めて重ね合わせ、その結果の画像を、自分のレイヤの指定位置にコピーします。
-	 * このメソッドは、コピー元レイヤやコピー先レイヤの Layer.face プロパティには影響されません。
-	 * 	
+	 * @param dleft Specifies the left edge position of the destination rectangle in pixels (at the image position of the destination layer).
+	 * @param dtop Specifies the top position of the destination rectangle in pixels (at the image position of the destination layer).
+	 * @param src Specifies the layer object to copy from.
+	 * @param sleft Specifies the left edge position of the rectangle to copy, in pixels (at the display position of the source layer).
+	 * @param stop Specifies the top position of the rectangle to copy, in pixels (at the display position of the source layer).
+	 * @param swidth Specifies the width of the rectangle to copy, in pixels (at the display position of the source layer).
+	 * @param sheight Specifies the vertical width of the rectangle to copy, in pixels (at the display position of the source layer).
+	 * @description Superimposes the specified rectangular part of the specified copy source layer including the child layer, and copies the resulting image to the specified position of your own layer.
+	 * This method is not affected by the Layer.face property of the source or destination layer.
+	 * .
 	 */
 	function piledCopy( dleft, dtop, src, sleft, stop, swidth, sheight);
 
 	/**
-	 * 矩形演算合成
+	 * Rectangle arithmetic composition
 	 *
-	 * @param dleft 演算先の矩形の左端位置を ( 演算先レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param dtop 演算先の矩形の上端位置を ( 演算先レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param src 演算元のレイヤオブジェクトを指定します。
-	 * Bitmap クラスのオブジェクトも指定可能です。
-	 * @param sleft 演算する矩形の左端位置を ( 演算元レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param stop 演算する矩形の上端位置を ( 演算元レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param swidth 演算する矩形の横幅を ( 演算元レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param sheight 演算する矩形の縦幅を ( 演算元レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param mode 演算のモードを指定します。
+	 * @param dleft Specifies the left edge position of the calculation destination rectangle in pixels (at the image position of the calculation destination layer).
+	 * @param dtop Specifies the top position of the calculation destination rectangle in pixels (at the image position of the calculation destination layer).
+	 * @param src Specify the layer object from which the operation is performed.
+	 * You can also specify an object of the Bitmap class.
+	 * @param sleft Specifies the left edge position of the rectangle to be calculated, in pixels (at the image position of the calculation source layer).
+	 * @param stop Specifies the top position of the rectangle to be calculated, in pixels (at the image position of the calculation source layer).
+	 * @param swidth Specifies the width of the rectangle to be calculated, in pixels (at the image position of the calculation source layer).
+	 * @param sheight Specifies the vertical width of the rectangle to be calculated, in pixels (at the image position of the calculation source layer).
+	 * @param mode Specifies the operation mode.
 	 *
-	 * + omAuto が指定された場合は演算元レイヤのLayer.typeプロパティに従って演算の種類が自動的に決定されます。
-	 * + omPsNormal が指定された場合はPhotoshop互換のアルファ合成が行われます。
-	 * + omPsAdditive が指定された場合はPhotoshop互換の覆い焼き(リニア)合成が行われます。
-	 * + omPsSubtractive が指定された場合はPhotoshop互換の焼き込み(リニア)合成が行われます。
-	 * + omPsMultiplicative が指定された場合はPhotoshop互換の乗算合成が行われます。
-	 * + omPsScreen が指定された場合はPhotoshop互換のスクリーン合成が行われます。
-	 * + omPsOverlay が指定された場合はPhotoshop互換のオーバーレイ合成が行われます。
-	 * + omPsHardLight が指定された場合はPhotoshop互換のハードライト合成が行われます。
-	 * + omPsSoftLight が指定された場合はPhotoshop互換のソフトライト合成が行われます。
-	 * + omPsColorDodge が指定された場合はPhotoshop互換の覆い焼きカラー合成が行われます。
-	 * + omPsColorDodge5 が指定された場合はPhotoshopのバージョン5.x 以下と互換の覆い焼きカラー合成が行われます。
-	 * + omPsColorBurn が指定された場合はPhotoshop互換の焼き込みカラー合成が行われます。
-	 * + omPsLighten が指定された場合はPhotoshop互換の比較(明)合成が行われます。
-	 * + omPsDarken が指定された場合はPhotoshop互換の比較(暗)合成が行われます。
-	 * + omPsDifference が指定された場合はPhotoshop互換の差の絶対値合成が行われます。
-	 * + omPsDifference5 が指定された場合はPhotoshopのバージョン 5.x 以下と互換の差の絶対値合成が行われます。
-	 * + omPsExclusion が指定された場合はPhotoshop互換の除外合成が行われます。
-	 * + omAdditive が指定された場合は加算合成が行われます。
-	 * + omSubtractive が指定された場合は減算合成が行われます。
-	 * + omMultiplicative が指定された場合は乗算合成が行われます。
-	 * + omDodge が指定された場合は覆い焼き合成が行われます。
-	 * + omDarken が指定された場合は比較(暗)合成が行われます。
-	 * + omLighten が指定された場合は比較(明)合成が行われます。
-	 * + omScreen が指定された場合はスクリーン乗算合成が行われます。
-	 * + omAlpha が指定された場合はアルファ合成が行われます。
-	 * + omAddAlpha が指定された場合は加算アルファ合成が行われます。
-	 * + omOpaque が指定された場合は src のアルファ情報は無視され、src は常に完全不透明であると見なされます。
+	 * + If omAuto is specified, the operation type is automatically determined according to the Layer.type property of the operation source layer.
+	 * + If omPsNormal is specified, Photoshop compatible alpha compositing is done.
+	 * + If omPsAdditive is specified, Photoshop compatible dodging (linear) compositing is done.
+	 * + If omPsSubtractive is specified, Photoshop compatible burn (linear) compositing is performed.
+	 * + If omPsMultiplicative is specified, Photoshop compatible multiplication and composition will be performed.
+	 * + If omPsScreen is specified, Photoshop compatible screen composition will be performed.
+	 * + If omPsOverlay is specified, Photoshop compatible overlay compositing is done.
+	 * + If omPsHardLight is specified, Photoshop compatible hard light composition will be performed.
+	 * + If omPsSoftLight is specified, Photoshop compatible softlight compositing will be performed.
+	 * + If omPsColorDodge is specified, Photoshop compatible dodge color composition will be performed.
+	 * + If omPsColorDodge5 is specified, dodge color composition compatible with Photoshop version 5.x and below will be performed.
+	 * + If omPsColorBurn is specified, Photoshop compatible burn-in color composition will be performed.
+	 * + If omPsLighten is specified, Photoshop compatible comparison (bright) compositing is performed.
+	 * + If omPsDarken is specified, Photoshop compatible comparison (dark) compositing is done.
+	 * + If omPsDifference is specified, Photoshop compatible absolute difference composition is performed.
+	 * + If omPsDifference5 is specified, absolute value composition of the difference compatible with Photoshop version 5.x and below is performed.
+	 * + If omPsExclusion is specified, Photoshop compatible exclusion composition is performed.
+	 * + If omAdditive is specified, additive synthesis is performed.
+	 * + If omSubtractive is specified, subtractive synthesis will be performed.
+	 * + If omMultiplicative is specified, multiplication synthesis is performed.
+	 * + If omDodge is specified, dodging synthesis will be performed.
+	 * + If omDarken is specified, comparative (dark) compositing is done.
+	 * + If omLighten is specified, comparison (bright) composition will be performed.
+	 * + If omScreen is specified, screen multiplication composition is performed.
+	 * + If omAlpha is specified, alpha synthesis will occur.
+	 * + If omAddAlpha is specified, additive alpha composition is done.
+	 * + If omOpaque is specified, the alpha information in src is ignored and src is always considered completely opaque.
 	 *
-	 * @param opa 演算の強度 ( 0 ～ 255 ) を指定します。
-	 * @description 指定された演算元レイヤの矩形部分を自分のレイヤの指定位置に指定のモードで演算合成します。
-	 * 演算先の ( メソッドを実行する ) レイヤや演算元のレイヤの Layer.face プロパティの値は無視されます。
-	 * mode に omAuto を指定した場合は、演算元レイヤのLayer.typeプロパティに従って演算の種類が自動的に決定されます。
+	 * @param opa Specifies the intensity of the operation (0 to 255).
+	 * @description Computes the rectangular part of the specified calculation source layer at the specified position of your layer in the specified mode.
+	 * The value of the Layer.face property of the calculation destination layer (which executes the method) and the calculation source layer is ignored.
+	 * If omAuto is specified for mode, the operation type is automatically determined according to the Layer.type property of the operation source layer.
 	 */
 	function operateRect( dleft, dtop, src, sleft, stop, swidth, sheight, mode=omAuto, opa=255);
 
 	/**
-	 * 拡大縮小コピー
+	 * Enlargement / reduction copy
 	 *
-	 * @param dleft コピー先の矩形の左端位置を ( コピー先レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param dtop コピー先の矩形の上端位置を ( コピー先レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param dwidth コピー先の矩形の横幅を ( コピー先レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param dheight コピー先の矩形の縦幅を ( コピー先レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param src コピー元のレイヤオブジェクトを指定します。
-	 * Bitmap クラスのオブジェクトも指定可能です。
-	 * @param sleft コピーする矩形の左端位置を ( コピー元レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param stop コピーする矩形の上端位置を ( コピー元レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param swidth コピーする矩形の横幅を ( コピー元レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param sheight コピーする矩形の縦幅を ( コピー元レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param type 拡大縮小のタイプを指定します。
+	 * @param dleft Specifies the left edge position of the destination rectangle in pixels (at the image position of the destination layer).
+	 * @param dtop Specifies the top position of the destination rectangle in pixels (at the image position of the destination layer).
+	 * @param dwidth Specifies the width of the destination rectangle in pixels (at the image position of the destination layer).
+	 * @param dheight Specifies the height of the destination rectangle in pixels (at the image position of the destination layer).
+	 * @param src Specifies the layer object to copy from.
+	 * You can also specify an object of the Bitmap class.
+	 * @param sleft Specifies the left edge position of the rectangle to copy, in pixels (at the image position of the source layer).
+	 * @param stop Specifies the top position of the rectangle to copy, in pixels (at the image position of the source layer).
+	 * @param swidth Specifies the width of the rectangle to copy, in pixels (at the image position of the source layer).
+	 * @param sheight Specifies the height of the rectangle to copy, in pixels (at the image position of the source layer).
+	 * @param type Specifies the scale type.
 	 *
-	 * + stNearest           : 最近傍点法が用いられます
-	 * + stFastLinear        : 低精度の線形補間が用いられます(一部実装)
-	 * + stSemiFastLinear    : 固定小数線形補間が用いられます
-	 * + stLinear            : 線形補間が用いられます
-	 * + stFastCubic         : 固定小数３次元補間が用いられます
-	 * + stCubic             : ３次元補間が用いられます
-	 * + stFastLanczos2      : 固定小数Lanczos補間の範囲4x4が用いられます
-	 * + stLanczos2          : Lanczos補間の範囲4x4が用いられます
-	 * + stFastLanczos3      : 固定小数Lanczos補間の範囲6x6が用いられます
-	 * + stLanczos3          : Lanczos補間の範囲6x6が用いられます
-	 * + stFastSpline16      : 固定小数スプライン補間4x4が用いられます
-	 * + stSpline16          : スプライン補間4x4が用いられます
-	 * + stFastSpline36      : 固定小数スプライン補間6x6が用いられます
-	 * + stSpline36          : スプライン補間6x6が用いられます
-	 * + stFastAreaAvg       : 固定小数面積平均縮小が用いられます。拡大は出来ません
-	 * + stAreaAvg           : 面積平均縮小が用いられます。拡大は出来ません
-	 * + stFastGaussian      : 固定小数ガウス補間4x4が用いられます
-	 * + stGaussian          : ガウス補間4x4が用いられます
-	 * + stFastBlackmanSinc  : 固定小数Blackman-Sinc補間8x8が用いられます
-	 * + stBlackmanSinc      : Blackman-Sinc補間8x8が用いられます
+	 * + stNearest           : Nearest point method is used
+	 * + stFastLinear        : Low precision linear interpolation is used (partially implemented)
+	 * + stSemiFastLinear    : Fixed decimal linear interpolation is used
+	 * + stLinear            : Linear interpolation is used
+	 * + stFastCubic         : Fixed decimal 3D interpolation is used
+	 * + stCubic             : 3D interpolation is used
+	 * + stFastLanczos2      : Fixed decimal Lanczos interpolation range 4x4 is used
+	 * + stLanczos2          : Lanczos interpolation range 4x4 is used
+	 * + stFastLanczos3      : Fixed decimal Lanczos interpolation range 6x6 is used
+	 * + stLanczos3          : Lanczos interpolation range 6x6 is used
+	 * + stFastSpline16      : Fixed decimal spline interpolation 4x4 is used
+	 * + stSpline16          : Spline interpolation 4x4 is used
+	 * + stFastSpline36      : Fixed decimal spline interpolation 6x6 is used
+	 * + stSpline36          : Spline interpolation 6x6 is used
+	 * + stFastAreaAvg       : Fixed decimal area mean reduction is used. Cannot be expanded
+	 * + stAreaAvg           : Area average reduction is used. Cannot be expanded
+	 * + stFastGaussian      : Fixed decimal Gaussian interpolation 4x4 is used
+	 * + stGaussian          : Gaussian interpolation 4x4 is used
+	 * + stFastBlackmanSinc  : Fixed decimal Blackman-Sinc interpolation 8x8 is used
+	 * + stBlackmanSinc      : Blackman-Sinc interpolation 8x8 is used
 	 *
-	 * 速度は stNearest > stFastLinear > stLinear > stCubic の順に高速ですが、画質は速度が速ければ速いタイプほど低画質になります。
-	 * stCubic 以降の補間方法は十分高画質で好みの差とも言えます。
-	 * ただし、ガウス補間についてはぼやけたような画質になります。
-	 * stFastLinear と他の線形補間(stSemiFastLinear と stLinear)の差は縮小時に大きく出ます。
-	 * stFastLinear は、常に周囲4画素を参照するのに対して、stSemiFastLinear、stLinear は、縮小時は等倍時の影響範囲が4画素となるような範囲、つまりより広い範囲の画素を参照し補間するためより高画質です(アルゴリズム的には本来の線形補間です)。
-	 * stFastLinear に対しては、stRefNoClip をビット論理和で追加指定することができ、この場合は、コピーするビットマップの領域外を参照して色を合成することを許可します。
-	 * これを指定しない場合は、転送元ビットマップの周囲に余裕があったとしても、転送元ビットマップの範囲外を参照することはありません(範囲外の色はもっとも近い位置にある範囲内のピクセルの色と見なされます)。
-	 * @param option ３次元補間時のシャープネスです。
-	 * 他の補間方法では現在のところ意味を持ちません。
-	 * シャープネスの値をプラス方向に大きくするとぼやけていき、マイナス方向に大きくしていくとシャープになっていきます。
-	 * @description 指定されたコピー元レイヤの矩形を、コピー先 ( メソッドを実行するレイヤ ) の矩形にコピーします。
-	 * コピー元矩形とコピー先矩形のサイズが異なる場合は拡大または縮小が行われます。
-	 * 現バージョンでは stFastLinear の指定で線形補間が効くのは、重ね合わせ先の ( メソッドを実行する ) レイヤの Layer.face プロパティが dfAlpha (または dfBoth) または dfAddAlpha の場合です。
-	 * また、Layer.face プロパティが dfOpaque で、Layer.holdAlpha プロパティが偽の時も線形補間が可能です。
-	 * また、現バージョンでは stLinear あるいは stCubic の指定が有効なのは、左右／上下反転を伴わず、コピー先矩形がレイヤをはみ出さない場合のみです。
-	 * 重ね合わせ先の ( メソッドを実行する ) レイヤの Layer.face プロパティがdfAlpha (または dfBoth) または dfAddAlpha の場合は、メイン画像とマスク画像の両方がコピーされます。
-	 * dfOpaque (または dfMain) の場合は、Layer.holdAlpha プロパティが真の時はメイン画像のみがコピーされ、偽の時はメイン画像とマスク画像の両方がコピーされます。
+	 * The speed is faster in the order of stNearest> stFastLinear> stLinear> stCubic, but the faster the speed, the lower the image quality.
+	 * The interpolation method after stCubic has sufficiently high image quality and can be said to be a difference in taste.
+	 * However, the image quality will be blurry for Gaussian interpolation.
+	 * The difference between stFastLinear and other linear interpolations (stSemiFastLinear and stLinear) is large when shrinking.
+	 * While stFastLinear always refers to the surrounding 4 pixels, stSemiFastLinear and stLinear refer to and interpolate a range in which the influence range at 1x magnification is 4 pixels at the time of reduction, that is, a wider range of pixels. Higher image quality (algorithm is the original linear interpolation).
+	 * For stFastLinear, stRefNoClip can be additionally specified by bitwise OR, in which case it is allowed to refer to the outside of the area of the bitmap to be copied and synthesize the color.
+	 * If this is not specified, the out-of-range color will not refer to the closest pixel in the range, even if there is room around the source bitmap. It is considered a color).
+	 * @param option Sharpness during 3D interpolation.
+	 * It currently has no meaning with other interpolation methods.
+	 * Increasing the sharpness value in the positive direction will make it blurry, and increasing it in the negative direction will make it sharper.
+	 * @description Copies the rectangle of the specified source layer to the rectangle of the destination (layer that executes the method).
+	 * If the copy source rectangle and the copy destination rectangle are different in size, they will be enlarged or reduced.
+	 * In the current version, linear interpolation is effective when stFastLinear is specified when the Layer.face property of the layer to be overlaid (which executes the method) is dfAlpha (or dfBoth) or dfAddAlpha.
+	 * Linear interpolation is also possible when the Layer.face property is dfOpaque and the Layer.holdAlpha property is false.
+	 * Also, in the current version, the specification of stLinear or stCubic is valid only when the destination rectangle does not extend beyond the layer without horizontal / vertical inversion.
+	 * If the Layer.face property of the layer to which you want to overlay (execute the method) is dfAlpha (or dfBoth) or dfAddAlpha, both the main image and the mask image are copied.
+	 * For dfOpaque (or dfMain), only the main image is copied when the Layer.holdAlpha property is true, and both the main image and the mask image are copied when false.
 	 */
 	function stretchCopy( dleft, dtop, dwidth, dheight, src, sleft, stop, swidth, sheight, type=stNearest, option=-1.0);
 
 	/**
-	 * 拡大縮小演算合成
+	 * Enlargement / reduction operation composition
 	 *
-	 * @param dleft 重ね合わせ先の矩形の左端位置を ( 重ね合わせ先レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param dtop 重ね合わせ先の矩形の上端位置を ( 重ね合わせ先レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param dwidth 重ね合わせ先の矩形の横幅を ( 重ね合わせ先レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param dheight 重ね合わせ先の矩形の縦幅を ( 重ね合わせ先レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param src 重ね合わせ元のレイヤオブジェクトを指定します。
-	 * Bitmap クラスのオブジェクトも指定可能です。
-	 * @param sleft 重ね合わせる矩形の左端位置を ( 重ね合わせ元レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param stop 重ね合わせる矩形の上端位置を ( 重ね合わせ元レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param swidth 重ね合わせる矩形の横幅を ( 重ね合わせ元レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param sheight 重ね合わせる矩形の縦幅を ( 重ね合わせ元レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param mode 演算のモードを指定します。
+	 * @param dleft Specifies the left edge position of the overlay destination rectangle in pixels (at the image position of the overlay destination layer).
+	 * @param dtop Specifies the top position of the overlay rectangle in pixels (at the image position of the overlay layer).
+	 * @param dwidth Specifies the width of the overlay rectangle in pixels (at the image position of the overlay layer).
+	 * @param dheight Specifies the vertical width of the overlay destination rectangle in pixels (at the image position of the overlay destination layer).
+	 * @param src Specifies the layer object to overlay.
+	 * You can also specify an object of the Bitmap class.
+	 * @param sleft Specifies the left edge position of the overlay rectangle in pixels (at the image position of the overlay source layer).
+	 * @param stop Specifies the top position of the overlay rectangle in pixels (at the image position of the overlay source layer).
+	 * @param swidth Specifies the width of the overlay rectangle in pixels (at the image position of the overlay source layer).
+	 * @param sheight Specifies the vertical width of the overlay rectangle in pixels (at the image position of the overlay source layer).
+	 * @param mode Specifies the operation mode.
 	 *
-	 * + omAuto が指定された場合は演算元レイヤのLayer.typeプロパティに従って演算の種類が自動的に決定されます。
-	 * + omPsNormal が指定された場合はPhotoshop互換のアルファ合成が行われます(stNearestとstFastLinear以外で実装)。
-	 * + omPsAdditive が指定された場合はPhotoshop互換の覆い焼き(リニア)合成が行われます(stNearestとstFastLinear以外で実装)。
-	 * + omPsSubtractive が指定された場合はPhotoshop互換の焼き込み(リニア)合成が行われます(stNearestとstFastLinear以外で実装)。
-	 * + omPsMultiplicative が指定された場合はPhotoshop互換の乗算合成が行われます(stNearestとstFastLinear以外で実装)。
-	 * + omPsScreen が指定された場合はPhotoshop互換のスクリーン合成が行われます(stNearestとstFastLinear以外で実装)。
-	 * + omPsOverlay が指定された場合はPhotoshop互換のオーバーレイ合成が行われます(stNearestとstFastLinear以外で実装)。
-	 * + omPsHardLight が指定された場合はPhotoshop互換のハードライト合成が行われます(stNearestとstFastLinear以外で実装)。
-	 * + omPsSoftLight が指定された場合はPhotoshop互換のソフトライト合成が行われます(stNearestとstFastLinear以外で実装)。
-	 * + omPsColorDodge が指定された場合はPhotoshop互換の覆い焼きカラー合成が行われます(stNearestとstFastLinear以外で実装)。
-	 * + omPsColorDodge5 が指定された場合はPhotoshopのバージョン5.x 以下と互換の覆い焼きカラー合成が行われます(stNearestとstFastLinear以外で実装)。
-	 * + somPsColorBurn が指定された場合はPhotoshop互換の焼き込みカラー合成が行われます(stNearestとstFastLinear以外で実装)。
-	 * + omPsLighten が指定された場合はPhotoshop互換の比較(明)合成が行われます(stNearestとstFastLinear以外で実装)。
-	 * + omPsDarken が指定された場合はPhotoshop互換の比較(暗)合成が行われます(stNearestとstFastLinear以外で実装)。
-	 * + omPsDifference が指定された場合はPhotoshop互換の差の絶対値合成が行われます(stNearestとstFastLinear以外で実装)。
-	 * + omPsDifference5 が指定された場合はPhotoshopのバージョン 5.x 以下と互換の差の絶対値合成が行われます(stNearestとstFastLinear以外で実装)。
-	 * + omPsExclusion が指定された場合はPhotoshop互換の除外合成が行われます(stNearestとstFastLinear以外で実装)。
-	 * + omAdditive が指定された場合は加算合成が行われます(stNearestとstFastLinear以外で実装)。
-	 * + omSubtractive が指定された場合は減算合成が行われます(stNearestとstFastLinear以外で実装)。
-	 * + omMultiplicative が指定された場合は乗算合成が行われます(stNearestとstFastLinear以外で実装)。
-	 * + omDodge が指定された場合は覆い焼き合成が行われます(stNearestとstFastLinear以外で実装)。
-	 * + omDarken が指定された場合は比較(暗)合成が行われます(stNearestとstFastLinear以外で実装)。
-	 * + omLighten が指定された場合は比較(明)合成が行われます(stNearestとstFastLinear以外で実装)。
-	 * + omScreen が指定された場合はスクリーン乗算合成が行われます(stNearestとstFastLinear以外で実装)。
-	 * + omAlpha が指定された場合はアルファ合成が行われます。
-	 * + omAddAlpha が指定された場合は加算アルファ合成が行われます。この場合は、転送先の Layer.face プロパティが dfOpaque かつ Layer.holdAlpha プロパティが偽のとき、type 引数に stFastLinear を指定することにより線形補間が可能です。
-	 * + omOpaque が指定された場合は src のアルファ情報は無視され、src は常に完全不透明であると見なされます。この場合は、転送先の Layer.face プロパティが dfOpaque かつ Layer.holdAlpha プロパティが偽のとき、type 引数に stFastLinear を指定することにより線形補間が可能です。
+	 * + If omAuto is specified, the operation type is automatically determined according to the Layer.type property of the operation source layer.
+	 * + If omPsNormal is specified, Photoshop compatible alpha compositing is done (implemented outside of stNearest and stFastLinear).
+	 * + If omPsAdditive is specified, Photoshop compatible dodging (linear) compositing is done (implemented outside of stNearest and stFastLinear).
+	 * + If omPsSubtractive is specified, Photoshop compatible burn-in (linear) compositing is performed (implemented other than stNearest and stFastLinear).
+	 * + If omPsMultiplicative is specified, Photoshop compatible multiplication composition is performed (implemented other than stNearest and stFastLinear).
+	 * + If omPsScreen is specified, Photoshop compatible screen composition will be performed (implemented other than stNearest and stFastLinear).
+	 * + If omPsOverlay is specified, Photoshop compatible overlay compositing is done (implemented outside of stNearest and stFastLinear).
+	 * + If omPsHardLight is specified, Photoshop compatible hard light composition will be performed (implemented other than stNearest and stFastLinear).
+	 * + If omPsSoftLight is specified, Photoshop compatible soft light composition will be performed (implemented other than stNearest and stFastLinear).
+	 * + If omPsColorDodge is specified, Photoshop compatible dodge color composition is performed (implemented other than stNearest and stFastLinear).
+	 * + If omPsColorDodge5 is specified, dodge color composition compatible with Photoshop version 5.x and below will be performed (implemented outside of stNearest and stFastLinear).
+	 * + If somPsColorBurn is specified, Photoshop compatible burn-in color composition is performed (implemented other than stNearest and stFastLinear).
+	 * + If omPsLighten is specified, Photoshop compatible comparison (bright) compositing is done (implemented outside of stNearest and stFastLinear).
+	 * + If omPsDarken is specified, Photoshop compatible comparison (dark) compositing is done (implemented outside of stNearest and stFastLinear).
+	 * + If omPsDifference is specified, Photoshop compatible absolute difference composition is done (implemented outside of stNearest and stFastLinear).
+	 * + If omPsDifference5 is specified, absolute value composition of the difference compatible with Photoshop version 5.x and below is performed (implemented other than stNearest and stFastLinear).
+	 * + If omPsExclusion is specified, Photoshop compatible exclusion composition is performed (implemented other than stNearest and stFastLinear).
+	 * + If omAdditive is specified, additive synthesis is performed (implemented outside of stNearest and stFastLinear).
+	 * + If omSubtractive is specified, subtractive synthesis will be performed (implemented outside of stNearest and stFastLinear).
+	 * + If omMultiplicative is specified, multiplication composition is performed (implemented other than stNearest and stFastLinear).
+	 * + If omDodge is specified, dodging compositing is done (implemented outside of stNearest and stFastLinear).
+	 * + If omDarken is specified, comparison (dark) compositing is done (implemented outside of stNearest and stFastLinear).
+	 * + If omLighten is specified, comparison (bright) compositing is done (implemented outside of stNearest and stFastLinear).
+	 * + If omScreen is specified, screen multiplication composition is performed (implemented other than stNearest and stFastLinear).
+	 * + If omAlpha is specified, alpha synthesis will occur.
+	 * + If omAddAlpha is specified, additive alpha composition is done. In this case, when the destination Layer.face property is dfOpaque and the Layer.holdAlpha property is false, linear interpolation is possible by specifying stFastLinear in the type argument.
+	 * + If omOpaque is specified, the alpha information in src is ignored and src is always considered completely opaque. In this case, when the destination Layer.face property is dfOpaque and the Layer.holdAlpha property is false, linear interpolation is possible by specifying stFastLinear in the type argument.
 	 *
-	 * @param opa 演算の強度 ( 0 ～ 255 ) を指定します。
-	 * @param type 拡大縮小のタイプを指定します。
+	 * @param opa Specifies the intensity of the operation (0 to 255).
+	 * @param type Specifies the scale type.
 	 *
-	 * + stNearest           : 最近傍点法が用いられます
-	 * + stFastLinear        : 低精度の線形補間が用いられます(一部実装)
-	 * + stSemiFastLinear    : 固定小数線形補間が用いられます(1.3以降)
-	 * + stLinear            : 線形補間が用いられます(1.3以降実装変更)
-	 * + stFastCubic         : 固定小数３次元補間が用いられます(1.3以降)
-	 * + stCubic             : ３次元補間が用いられます(1.3以降実装変更)
-	 * + stFastLanczos2      : 固定小数Lanczos補間の範囲4x4が用いられます(1.3以降)
-	 * + stLanczos2          : Lanczos補間の範囲4x4が用いられます(1.3以降)
-	 * + stFastLanczos3      : 固定小数Lanczos補間の範囲6x6が用いられます(1.3以降)
-	 * + stLanczos3          : Lanczos補間の範囲6x6が用いられます(1.3以降)
-	 * + stFastSpline16      : 固定小数スプライン補間4x4が用いられます(1.3以降)
-	 * + stSpline16          : スプライン補間4x4が用いられます(1.3以降)
-	 * + stFastSpline36      : 固定小数スプライン補間6x6が用いられます(1.3以降)
-	 * + stSpline36          : スプライン補間6x6が用いられます(1.3以降)
-	 * + stFastAreaAvg       : 固定小数面積平均縮小が用いられます。拡大は出来ません(1.3以降)
-	 * + stAreaAvg           : 面積平均縮小が用いられます。拡大は出来ません(1.3以降)
-	 * + stFastGaussian      : 固定小数ガウス補間4x4が用いられます(1.3以降)
-	 * + stGaussian          : ガウス補間4x4が用いられます(1.3以降)
-	 * + stFastBlackmanSinc  : 固定小数Blackman-Sinc補間8x8が用いられます(1.3以降)
-	 * + stBlackmanSinc      : Blackman-Sinc補間8x8が用いられます(1.3以降)
+	 * + stNearest           : Nearest point method is used
+	 * + stFastLinear        : Low precision linear interpolation is used (partially implemented)
+	 * + stSemiFastLinear    : Fixed decimal linear interpolation is used (1.3+)
+	 * + stLinear            : Linear interpolation is used (implementation changed after 1.3)
+	 * + stFastCubic         : Fixed decimal 3D interpolation is used (1.3 or later)
+	 * + stCubic             : 3D interpolation is used (implementation changed after 1.3)
+	 * + stFastLanczos2      : Fixed decimal Lanczos interpolation range 4x4 is used (1.3+)
+	 * + stLanczos2          : Lanczos interpolation range 4x4 is used (1.3 and above)
+	 * + stFastLanczos3      : Fixed decimal Lanczos interpolation range 6x6 is used (1.3 and above)
+	 * + stLanczos3          : Lanczos interpolation range 6x6 is used (1.3 and above)
+	 * + stFastSpline16      : Fixed decimal spline interpolation 4x4 is used (1.3+)
+	 * + stSpline16          : Spline interpolation 4x4 is used (1.3+)
+	 * + stFastSpline36      : Fixed decimal spline interpolation 6x6 is used (1.3+)
+	 * + stSpline36          : Spline interpolation 6x6 is used (1.3+)
+	 * + stFastAreaAvg       : Fixed decimal area mean reduction is used. Cannot be expanded (1.3 or later)
+	 * + stAreaAvg           : Area average reduction is used. Cannot be expanded (1.3 or later)
+	 * + stFastGaussian      : Fixed decimal Gaussian interpolation 4x4 is used (1.3+)
+	 * + stGaussian          : Gaussian interpolation 4x4 is used (1.3 or later)
+	 * + stFastBlackmanSinc  : Fixed decimal Blackman-Sinc interpolation 8x8 is used (1.3+)
+	 * + stBlackmanSinc      : Blackman-Sinc interpolation 8x8 is used (1.3+)
 	 *
-	 * 速度は stNearest > stFastLinear > stLinear > stCubic の順に高速ですが、画質は速度が速ければ速いタイプほど低画質になります。
-	 * stCubic 以降の補間方法は十分高画質で好みの差とも言えます。
-	 * ただし、ガウス補間についてはぼやけたような画質になります。stFastLinear と他の線形補間(stSemiFastLinear と stLinear)の差は縮小時に大きく出ます。
-	 * stFastLinear は、常に周囲4画素を参照するのに対して、stSemiFastLinear、stLinear は、縮小時は等倍時の影響範囲が4画素となるような範囲、つまりより広い範囲の画素を参照し補間するためより高画質です(アルゴリズム的には本来の線形補間です)。
-	 * stFastLinear に対しては、stRefNoClip をビット論理和で追加指定することができ、この場合は、コピーするビットマップの領域外を参照して色を合成することを許可します。
-	 * これを指定しない場合は、転送元ビットマップの周囲に余裕があったとしても、転送元ビットマップの範囲外を参照することはありません(範囲外の色はもっとも近い位置にある範囲内のピクセルの色と見なされます)。
-	 * @param option ３次元補間時のシャープネスです。
-	 * 他の補間方法では現在のところ意味を持ちません。
-	 * シャープネスの値をプラス方向に大きくするとぼやけていき、マイナス方向に大きくしていくとシャープになっていきます。
-	 * @description 指定された重ね合わせ元レイヤの矩形を、重ね合わせ先 ( メソッドを実行するレイヤ ) の矩形に演算合成します。
-	 * 重ね合わせ元矩形と重ね合わせ先矩形のサイズが異なる場合は拡大または縮小が行われます。
-	 * mode に omAuto を指定した場合は、演算元レイヤのLayer.typeプロパティに従って演算の種類が自動的に決定されます。
+	 * The speed is faster in the order of stNearest> stFastLinear> stLinear> stCubic, but the faster the speed, the lower the image quality.
+	 * The interpolation method after stCubic has sufficiently high image quality and can be said to be a difference in taste.
+	 * However, the image quality will be blurry for Gaussian interpolation. The difference between stFastLinear and other linear interpolations (stSemiFastLinear and stLinear) is large when shrinking.
+	 * While stFastLinear always refers to the surrounding 4 pixels, stSemiFastLinear and stLinear refer to and interpolate a range in which the influence range at 1x magnification is 4 pixels at the time of reduction, that is, a wider range of pixels. Higher image quality (algorithm is the original linear interpolation).
+	 * For stFastLinear, stRefNoClip can be additionally specified by bitwise OR, in which case it is allowed to refer to the outside of the area of the bitmap to be copied and synthesize the color.
+	 * If this is not specified, the out-of-range color will not refer to the closest pixel in the range, even if there is room around the source bitmap. It is considered a color).
+	 * @param option Sharpness during 3D interpolation.
+	 * It currently has no meaning with other interpolation methods.
+	 * Increasing the sharpness value in the positive direction will make it blurry, and increasing it in the negative direction will make it sharper.
+	 * @description Computes the rectangle of the specified overlay source layer to the rectangle of the overlay destination (layer that executes the method).
+	 * If the size of the overlay source rectangle and the overlay destination rectangle are different, enlargement or reduction is performed.
+	 * If omAuto is specified for mode, the operation type is automatically determined according to the Layer.type property of the operation source layer.
 	 */
 	function operateStretch( dleft, dtop, dwidth, dheight, src, sleft, stop, swidth, sheight, mode=omAuto, opa=255, type=stNearest, option=-1.0);
 
 	/**
-	 * アフィン変換コピー
+	 * Affine transformation copy
 	 *
-	 * @param src コピー元のレイヤオブジェクトを指定します。
-	 * Bitmap クラスのオブジェクトも指定可能です。
-	 * @param sleft コピーする矩形の左端位置を ( コピー元レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param stop コピーする矩形の上端位置を ( コピー元レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param swidth コピーする矩形の横幅を ( コピー元レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param sheight コピーする矩形の縦幅を ( コピー元レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param affine 続く６つの引数 (A ～ F パラメータ)をどのように扱うかを指定します。
-	 * 真を指定すると、６つのパラメータはそれぞれ以下のように解釈されます。
+	 * @param src Specifies the layer object to copy from.
+	 * You can also specify an object of the Bitmap class.
+	 * @param sleft Specifies the left edge position of the rectangle to copy, in pixels (at the image position of the source layer).
+	 * @param stop Specifies the top position of the rectangle to copy, in pixels (at the image position of the source layer).
+	 * @param swidth Specifies the width of the rectangle to copy, in pixels (at the image position of the source layer).
+	 * @param sheight Specifies the height of the rectangle to copy, in pixels (at the image position of the source layer).
+	 * @param affine Specifies how to handle the following 6 arguments (A to F parameters).
+	 * If true is specified, each of the six parameters will be interpreted as follows.
 	 *
-	 * + A   : 2Dアフィン変換行列の a
-	 * + B   : 2Dアフィン変換行列の b
-	 * + C   : 2Dアフィン変換行列の c
-	 * + D   : 2Dアフィン変換行列の d
-	 * + E   : 2Dアフィン変換行列の tx
-	 * + F   : 2Dアフィン変換行列の ty
+	 * + A   : 2D affine transformation matrix a
+	 * + B   : 2D affine transformation matrix b
+	 * + C   : 2D affine transformation matrix c
+	 * + D   : D of 2D affine transformation matrix
+	 * + E   : 2D affine transformation matrix tx
+	 * + F   : 2D affine transformation matrix ty
 	 *
-	 * アフィン変換により、コピー元の画像位置 (x, y) ( ただし、コピー元矩形の左上隅を (0, 0) とする ) は以下の式により、コピー先の画像位置 (x', y')に変換されます。
-	 * x' =  a*x + c*y + tx
-	 * y' =  b*x + d*y + ty
-	 * 偽を指定すると、６つのパラメータはそれぞれ以下のように解釈されます。
-	 * これらのパラメータは実数での指定も受け付けます。
+	 * By affine transformation, the copy source image position (x, y) (however, the upper left corner of the copy source rectangle is (0, 0)) is the copy destination image position (x', y') by the following formula. Will be converted to.
+	 * x'= a * x + c * y + tx
+	 * y'= b * x + d * y + ty
+	 * If false is specified, each of the six parameters will be interpreted as follows.
+	 * These parameters can also be specified as real numbers.
 	 *
-	 * + A   : コピー元矩形の左上隅の点の、コピー先での画像位置における X 座標位置(x0)
-	 * + B   : コピー元矩形の左上隅の点の、コピー先での画像位置における Y 座標位置(y0)
-	 * + C   : コピー元矩形の右上隅の点の、コピー先での画像位置における X 座標位置(x1)
-	 * + D   : コピー元矩形の右上隅の点の、コピー先での画像位置における Y 座標位置(y1)
-	 * + E   : コピー元矩形の左下隅の点の、コピー先での画像位置における X 座標位置(x2)
-	 * + F   : コピー元矩形の左下隅の点の、コピー先での画像位置における Y 座標位置(y2)
+	 * + A   : X coordinate position (x0) of the point in the upper left corner of the copy source rectangle at the image position at the copy destination
+	 * + B   : Y coordinate position (y0) of the point in the upper left corner of the copy source rectangle at the image position at the copy destination
+	 * + C   : X coordinate position (x1) of the point in the upper right corner of the copy source rectangle at the image position at the copy destination
+	 * + D   : Y coordinate position (y1) of the point in the upper right corner of the copy source rectangle at the image position at the copy destination
+	 * + E   : X coordinate position (x2) of the point in the lower left corner of the copy source rectangle at the image position at the copy destination
+	 * + F   : Y coordinate position (y2) of the point in the lower left corner of the copy source rectangle at the image position at the copy destination
 	 *
-	 * 偽を指定した場合、コピー元の右下隅に対応する、コピー先位置(x3, y3)は自動的に以下の式によって計算されます。
-	 * x3 = x1 - x0 + x2
-	 * y3 = y1 - y0 + y2
-	 * @param A Aパラメータです。
-	 * affine 引数によって解釈が変わります。
-	 * @param B Bパラメータです。
-	 * affine 引数によって解釈が変わります。
-	 * @param C Cパラメータです。
-	 * affine 引数によって解釈が変わります。
-	 * @param D Dパラメータです。
-	 * affine 引数によって解釈が変わります。
-	 * @param E Eパラメータです。
-	 * affine 引数によって解釈が変わります。
-	 * @param F Fパラメータです。
-	 * affine 引数によって解釈が変わります。
-	 * @param type アフィン変換のタイプを指定します。
+	 * If false is specified, the copy destination position (x3, y3) corresponding to the lower right corner of the copy source is automatically calculated by the following formula.
+	 * x3 = x1-x0 + x2
+	 * y3 = y1 --y0 + y2
+	 * @param A A parameter.
+	 * The interpretation depends on the affine argument.
+	 * @param B B parameter.
+	 * The interpretation depends on the affine argument.
+	 * @param C C parameter.
+	 * The interpretation depends on the affine argument.
+	 * @param D D parameter.
+	 * The interpretation depends on the affine argument.
+	 * @param E E parameter.
+	 * The interpretation depends on the affine argument.
+	 * @param F F parameter.
+	 * The interpretation depends on the affine argument.
+	 * @param type Specifies the type of affine transformation.
 	 *
-	 * + stNearest     : 最近傍点法が用いられます
-	 * + stFastLinear  : 低精度の線形補間が用いられます(一部実装)
-	 * + stLinear      : 線形補間が用いられます(未実装)
-	 * + stCubic       : ３次元補間が用いられます(未実装)
+	 * + stNearest     : Nearest point method is used
+	 * + stFastLinear  : Low precision linear interpolation is used (partially implemented)
+	 * + stLinear      : Linear interpolation is used (not implemented)
+	 * + stCubic       : 3D interpolation is used (not implemented)
 	 *
-	 * stFastLinear や stLinear, stCubic に対しては、stRefNoClip をビット論理和で追加指定することができ、この場合は、コピーするビットマップの領域外を参照して色を合成することを許可します。
-	 * これを指定しない場合は、転送元ビットマップの周囲に余裕があったとしても、転送元ビットマップの範囲外を参照することはありません(範囲外の色はもっとも近い位置にある範囲内のピクセルの色と見なされます)。
-	 * @param clear 転送先レイヤの、アフィン変換された画像の周囲をLayer.neutralColor プロパティで示された色・透明度でクリアするかどうかを指定します。
-	 * 真を指定するとクリアされ、この引数を省略するか偽を渡すとクリアされません。
-	 * クリアされる領域は Layer.setClip メソッドで制限することもできます。
-	 * このクリアの機能を使うと、いったん転送先レイヤをクリアしてからアフィン変換で画像を上書き転送する際の、上書きされる領域(クリアされた場所にアフィン変換で上書きされる部分)のクリアの無駄を省くことができます。
-	 * @description 指定されたコピー元レイヤの矩形を、コピー先 ( メソッドを実行するレイヤ ) に変換を行いながらコピーします。
-	 * affine 引数によって、変形パラメータとして二次元アフィン変換行列を指定するか、あるいは変換後の点を直接指定するかを選ぶことができます。
-	 * 現バージョンでは stFastLinear の指定で線形補間が効くのは、重ね合わせ先の ( メソッドを実行する ) レイヤの Layer.face プロパティが dfAlpha (または dfBoth) または dfAddAlpha の場合です。
-	 * また、Layer.face プロパティが dfOpaque で、Layer.holdAlpha プロパティが偽の時も線形補間が可能です。
-	 * 重ね合わせ先の ( メソッドを実行する ) レイヤの Layer.face プロパティがdfAlpha (または dfBoth) または dfAddAlpha の場合は、メイン画像とマスク画像の両方がコピーされます。
-	 * 重ね合わせ先の ( メソッドを実行する ) レイヤの Layer.face プロパティがdfOpaque (または dfMain) の場合は、Layer.holdAlpha プロパティが真の時はメイン画像のみがコピーされ、偽の時はメイン画像とマスク画像の両方がコピーされます。
-	 * 二次元アフィン変換行列による変換は、コピー元矩形の左上を原点 (0, 0) とし、以下のように定義されます。
-	 * 二次元アフィン変換を行うことにより、拡大縮小、回転、せん断(傾け)、平行移動、反転、あるいはこれらの組み合わせすべての変形を行うことができます。
-	 * 二次元アフィン変換を行うメソッドでは、二次元アフィン行列ではなく、変換後の各頂点を直接指定することでも変形を指定できますが、この場合でも二次元アフィン変換で定義できないような変形は行うことはできません。
-	 * アフィン変換においては、ピクセルは 1.0 × 1.0 のサイズを持っていると見なされます。
-	 * つまり、(0, 0) の位置にあるピクセルは (-0.5, -0.5) - (0.5, 0.5) の範囲にあると見なされます。
+	 * For stFastLinear, stLinear, and stCubic, stRefNoClip can be additionally specified by bitwise OR, in which case it is allowed to refer to the outside of the area of the bitmap to be copied and synthesize the color.
+	 * If this is not specified, the out-of-range color will not refer to the closest pixel in the range, even if there is room around the source bitmap. It is considered a color).
+	 * @param clear Specifies whether to clear the periphery of the affine-transformed image of the transfer destination layer with the color and transparency indicated by the Layer.neutralColor property.
+	 * If true is specified, it will be cleared, and if this argument is omitted or false is passed, it will not be cleared.
+	 * The area to be cleared can also be limited with the Layer.setClip method.
+	 * If you use this clear function, it is a waste of clearing the overwritten area (the part that is overwritten by affine transformation in the cleared place) when overwriting and transferring the image by affine transformation after clearing the transfer destination layer once. Can be omitted.
+	 * @description Copies the rectangle of the specified source layer while converting it to the copy destination (layer that executes the method).
+	 * The affine argument allows you to choose whether to specify a two-dimensional affine transformation matrix as the transformation parameter or to specify the transformed point directly.
+	 * In the current version, linear interpolation is effective when stFastLinear is specified when the Layer.face property of the layer to be overlaid (which executes the method) is dfAlpha (or dfBoth) or dfAddAlpha.
+	 * Linear interpolation is also possible when the Layer.face property is dfOpaque and the Layer.holdAlpha property is false.
+	 * If the Layer.face property of the layer to which you want to overlay (execute the method) is dfAlpha (or dfBoth) or dfAddAlpha, both the main image and the mask image are copied.
+	 * If the Layer.face property of the layer to be overlaid (executes the method) is dfOpaque (or dfMain), only the main image is copied when the Layer.holdAlpha property is true, and the main image and mask are false. Both images are copied.
+	 * The transformation by the two-dimensional affine transformation matrix is defined as follows, with the origin (0, 0) at the upper left of the copy source rectangle.
+	 * Two-dimensional affine transformations allow you to scale, rotate, shear, translate, flip, or transform any combination of these.
+	 * In the method that performs 2D affine transformation, the transformation can be specified by directly specifying each vertex after transformation instead of the 2D affine matrix, but even in this case, transformation that cannot be defined by 2D affine transformation should be performed. You can not.
+	 * For affine transformations, pixels are considered to have a size of 1.0 x 1.0.
+	 * That is, the pixel at position (0, 0) is considered to be in the range (-0.5, -0.5)-(0.5, 0.5).
 	 */
 	function affineCopy( src, sleft, stop, swidth, sheight, affine, A, B, C, D, E, F, type=stNearest, clear=false);
 
 	/**
-	 * アフィン変換演算合成
+	 * Affine transformation arithmetic composition
 	 *
-	 * @param src 重ね合わせ元のレイヤオブジェクトを指定します。
-	 * Bitmap クラスのオブジェクトも指定可能です。
-	 * @param sleft 重ね合わせる矩形の左端位置を ( 重ね合わせ元レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param stop 重ね合わせる矩形の上端位置を ( 重ね合わせ元レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param swidth 重ね合わせる矩形の横幅を ( 重ね合わせ元レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param sheight 重ね合わせる矩形の縦幅を ( 重ね合わせ元レイヤの画像位置における ) ピクセル単位で指定します。
-	 * @param affine 続く６つの引数 (A ～ F パラメータ)をどのように扱うかを指定します。
-	 * 真を指定すると、６つのパラメータはそれぞれ以下のように解釈されます。
+	 * @param src Specifies the layer object to overlay.
+	 * You can also specify an object of the Bitmap class.
+	 * @param sleft Specifies the left edge position of the overlay rectangle in pixels (at the image position of the overlay source layer).
+	 * @param stop Specifies the top position of the overlay rectangle in pixels (at the image position of the overlay source layer).
+	 * @param swidth Specifies the width of the overlay rectangle in pixels (at the image position of the overlay source layer).
+	 * @param sheight Specifies the vertical width of the overlay rectangle in pixels (at the image position of the overlay source layer).
+	 * @param affine Specifies how to handle the following 6 arguments (A to F parameters).
+	 * If true is specified, each of the six parameters will be interpreted as follows.
 	 *
-	 * + A   : 2Dアフィン変換行列の a
-	 * + B   : 2Dアフィン変換行列の b
-	 * + C   : 2Dアフィン変換行列の c
-	 * + D   : 2Dアフィン変換行列の d
-	 * + E   : 2Dアフィン変換行列の tx
-	 * + F   : 2Dアフィン変換行列の ty
+	 * + A   : 2D affine transformation matrix a
+	 * + B   : 2D affine transformation matrix b
+	 * + C   : 2D affine transformation matrix c
+	 * + D   : D of 2D affine transformation matrix
+	 * + E   : 2D affine transformation matrix tx
+	 * + F   : 2D affine transformation matrix ty
 	 *
-	 * アフィン変換により、重ね合わせ元の画像位置 (x, y) ( ただし、重ね合わせ元矩形の左上隅を (0, 0) とする ) は以下の式により、重ね合わせ先の画像位置 (x', y')に変換されます。
-	 * x' =  a*x + c*y + tx
-	 * y' =  b*x + d*y + ty
-	 *偽を指定すると、６つのパラメータはそれぞれ以下のように解釈されます。
+	 * By affine transformation, the image position (x, y) of the overlay source (however, the upper left corner of the overlay source rectangle is (0, 0)) is the image position (x', y) of the overlay destination by the following formula. Converted to y').
+	 * x'= a * x + c * y + tx
+	 * y'= b * x + d * y + ty
+	 * If false is specified, each of the six parameters will be interpreted as follows.
 	 *
-	 * + A   : コピー元矩形の左上隅の点の、コピー先での画像位置における X 座標位置(x0)
-	 * + B   : コピー元矩形の左上隅の点の、コピー先での画像位置における Y 座標位置(y0)
-	 * + C   : コピー元矩形の右上隅の点の、コピー先での画像位置における X 座標位置(x1)
-	 * + D   : コピー元矩形の右上隅の点の、コピー先での画像位置における Y 座標位置(y1)
-	 * + E   : コピー元矩形の左下隅の点の、コピー先での画像位置における X 座標位置(x2)
-	 * + F   : コピー元矩形の左下隅の点の、コピー先での画像位置における Y 座標位置(y2)
+	 * + A   : X coordinate position (x0) of the point in the upper left corner of the copy source rectangle at the image position at the copy destination
+	 * + B   : Y coordinate position (y0) of the point in the upper left corner of the copy source rectangle at the image position at the copy destination
+	 * + C   : X coordinate position (x1) of the point in the upper right corner of the copy source rectangle at the image position at the copy destination
+	 * + D   : Y coordinate position (y1) of the point in the upper right corner of the copy source rectangle at the image position at the copy destination
+	 * + E   : X coordinate position (x2) of the point in the lower left corner of the copy source rectangle at the image position at the copy destination
+	 * + F   : Y coordinate position (y2) of the point in the lower left corner of the copy source rectangle at the image position at the copy destination
 	 *
-	 * 偽を指定した場合、重ね合わせ元の右下隅に対応する、重ね合わせ先位置(x3, y3)は自動的に以下の式によって計算されます。
-	 * x3 = x1 - x0 + x2
-	 * y3 = y1 - y0 + y2
-	 * @param A Aパラメータです。
-	 * affine 引数によって解釈が変わります。
-	 * @param B Bパラメータです。
-	 * affine 引数によって解釈が変わります。
-	 * @param C Cパラメータです。
-	 * affine 引数によって解釈が変わります。
-	 * @param D Dパラメータです。
-	 * affine 引数によって解釈が変わります。
-	 * @param E Eパラメータです。
-	 * affine 引数によって解釈が変わります。
-	 * @param F Fパラメータです。
-	 * affine 引数によって解釈が変わります。
-	 * @param mode 演算のモードを指定します。
+	 * If false is specified, the overlay destination position (x3, y3) corresponding to the lower right corner of the overlay source is automatically calculated by the following formula.
+	 * x3 = x1-x0 + x2
+	 * y3 = y1 --y0 + y2
+	 * @param A A parameter.
+	 * The interpretation depends on the affine argument.
+	 * @param B B parameter.
+	 * The interpretation depends on the affine argument.
+	 * @param C C parameter.
+	 * The interpretation depends on the affine argument.
+	 * @param D D parameter.
+	 * The interpretation depends on the affine argument.
+	 * @param E E parameter.
+	 * The interpretation depends on the affine argument.
+	 * @param F F parameter.
+	 * The interpretation depends on the affine argument.
+	 * @param mode Specifies the operation mode.
 	 *
-	 * + omAuto が指定された場合は演算元レイヤのLayer.typeプロパティに従って演算の種類が自動的に決定されます。
-	 * + omPsNormal が指定された場合はPhotoshop互換のアルファ合成が行われます(現バージョンでは未実装です)。
-	 * + omPsAdditive が指定された場合はPhotoshop互換の覆い焼き(リニア)合成が行われます(現バージョンでは未実装です)。
-	 * + omPsSubtractive が指定された場合はPhotoshop互換の焼き込み(リニア)合成が行われます(現バージョンでは未実装です)。
-	 * + omPsMultiplicative が指定された場合はPhotoshop互換の乗算合成が行われます(現バージョンでは未実装です)。
-	 * + omPsScreen が指定された場合はPhotoshop互換のスクリーン合成が行われます(現バージョンでは未実装です)。
-	 * + omPsOverlay が指定された場合はPhotoshop互換のオーバーレイ合成が行われます(現バージョンでは未実装です)。
-	 * + omPsHardLight が指定された場合はPhotoshop互換のハードライト合成が行われます(現バージョンでは未実装です)。
-	 * + omPsSoftLight が指定された場合はPhotoshop互換のソフトライト合成が行われます(現バージョンでは未実装です)。
-	 * + omPsColorDodge が指定された場合はPhotoshop互換の覆い焼きカラー合成が行われます(現バージョンでは未実装です)。
-	 * + omPsColorDodge5 が指定された場合はPhotoshopのバージョン5.x 以下と互換の覆い焼きカラー合成が行われます(現バージョンでは未実装です)。
-	 * + omPsColorBurn が指定された場合はPhotoshop互換の焼き込みカラー合成が行われます(現バージョンでは未実装です)。
-	 * + omPsLighten が指定された場合はPhotoshop互換の比較(明)合成が行われます(現バージョンでは未実装です)。
-	 * + omPsDarken が指定された場合はPhotoshop互換の比較(暗)合成が行われます(現バージョンでは未実装です)。
-	 * + omPsDifference が指定された場合はPhotoshop互換の差の絶対値合成が行われます(現バージョンでは未実装です)。
-	 * + omPsDifference5 が指定された場合はPhotoshopのバージョン 5.x 以下と互換の差の絶対値合成が行われます(現バージョンでは未実装です)。
-	 * + omPsExclusion が指定された場合はPhotoshop互換の除外合成が行われます(現バージョンでは未実装です)。
-	 * + omAdditive が指定された場合は加算合成が行われます(現バージョンでは未実装です)。
-	 * + omSubtractive が指定された場合は減算合成が行われます(現バージョンでは未実装です)。
-	 * + omMultiplicative が指定された場合は乗算合成が行われます(現バージョンでは未実装です)。
-	 * + omDodge が指定された場合は覆い焼き合成が行われます(現バージョンでは未実装です)。
-	 * + omDarken が指定された場合は比較(暗)合成が行われます(現バージョンでは未実装です)。
-	 * + omLighten が指定された場合は比較(明)合成が行われます(現バージョンでは未実装です)。
-	 * + omScreen が指定された場合はスクリーン乗算合成が行われます(現バージョンでは未実装です)。
-	 * + omAlpha が指定された場合はアルファ合成が行われます。
-	 * + omAddAlpha が指定された場合は加算アルファ合成が行われます。この場合は、転送先の Layer.face プロパティが dfOpaque かつ Layer.holdAlpha プロパティが偽のとき、type 引数に stFastLinear を指定することにより線形補間が可能です。
-	 * + omOpaque が指定された場合は src のアルファ情報は無視され、src は常に完全不透明であると見なされます。この場合は、転送先の Layer.face プロパティが dfOpaque かつ Layer.holdAlpha プロパティが偽のとき、type 引数に stFastLinear を指定することにより線形補間が可能です。
-	 * @param opa 重ね合わせの不透明度 ( 0 ～ 255 ) を指定します。
-	 * @param type アフィン変換のタイプを指定します。
+	 * + If omAuto is specified, the operation type is automatically determined according to the Layer.type property of the operation source layer.
+	 * + If omPsNormal is specified, Photoshop compatible alpha compositing will be performed (not implemented in the current version).
+	 * + If omPsAdditive is specified, Photoshop compatible dodging (linear) compositing is done (not implemented in the current version).
+	 * + If omPsSubtractive is specified, Photoshop compatible burn (linear) compositing is performed (not implemented in the current version).
+	 * + If omPsMultiplicative is specified, Photoshop compatible multiplication and composition will be performed (not implemented in the current version).
+	 * + If omPsScreen is specified, Photoshop compatible screen composition will be performed (not implemented in the current version).
+	 * + If omPsOverlay is specified, Photoshop compatible overlay composition will be performed (not implemented in the current version).
+	 * + If omPsHardLight is specified, Photoshop compatible hard light composition will be performed (not implemented in the current version).
+	 * + If omPsSoftLight is specified, Photoshop compatible softlight composition will be performed (not implemented in the current version).
+	 * + If omPsColorDodge is specified, Photoshop compatible dodging color composition will be performed (not implemented in the current version).
+	 * + If omPsColorDodge5 is specified, dodge color composition compatible with Photoshop version 5.x and below will be performed (not implemented in the current version).
+	 * + If omPsColorBurn is specified, Photoshop compatible burn-in color composition is performed (not implemented in the current version).
+	 * + If omPsLighten is specified, Photoshop compatible comparison (bright) composition will be performed (not implemented in the current version).
+	 * + If omPsDarken is specified, Photoshop compatible comparison (dark) compositing will be performed (not implemented in the current version).
+	 * + If omPsDifference is specified, Photoshop compatible absolute difference composition is performed (not implemented in the current version).
+	 * + If omPsDifference5 is specified, absolute value composition of the difference compatible with Photoshop version 5.x or lower will be performed (not implemented in the current version).
+	 * + If omPsExclusion is specified, Photoshop compatible exclusion composition is performed (not implemented in the current version).
+	 * + If omAdditive is specified, additive synthesis will be performed (not implemented in the current version).
+	 * + If omSubtractive is specified, subtractive synthesis will be performed (not implemented in the current version).
+	 * + If omMultiplicative is specified, multiplication synthesis will be performed (not implemented in the current version).
+	 * + If omDodge is specified, dodging synthesis will be performed (not implemented in the current version).
+	 * + If omDarken is specified, comparison (dark) compositing will be done (not implemented in the current version).
+	 * + If omLighten is specified, comparison (bright) composition will be performed (not implemented in the current version).
+	 * + If omScreen is specified, screen multiplication composition will be performed (not implemented in the current version).
+	 * + If omAlpha is specified, alpha synthesis will occur.
+	 * + If omAddAlpha is specified, additive alpha composition is done. In this case, when the destination Layer.face property is dfOpaque and the Layer.holdAlpha property is false, linear interpolation is possible by specifying stFastLinear in the type argument.
+	 * + If omOpaque is specified, the alpha information in src is ignored and src is always considered completely opaque. In this case, when the destination Layer.face property is dfOpaque and the Layer.holdAlpha property is false, linear interpolation is possible by specifying stFastLinear in the type argument.
+	 * @param opa Specifies the overlay opacity (0 to 255).
+	 * @param type Specifies the type of affine transformation.
 	 *
-	 * + stNearest     : 最近傍点法が用いられます
-	 * + stFastLinear  : 低精度の線形補間が用いられます(一部実装)
-	 * + stLinear      : 線形補間が用いられます(未実装)
-	 * + stCubic       : ３次元補間が用いられます(未実装)
+	 * + stNearest     : Nearest point method is used
+	 * + stFastLinear  : Low precision linear interpolation is used (partially implemented)
+	 * + stLinear      : Linear interpolation is used (not implemented)
+	 * + stCubic       : 3D interpolation is used (not implemented)
 	 *
-	 * 速度は stNearest > stFastLinear > stLinear > stCubic の順に高速ですが、画質は速度が速ければ速いモードほど低画質になります。
-	 * stFastLinear や stLinear, stCubic に対しては、stRefNoClip をビット論理和で追加指定することができ、この場合は、コピーするビットマップの領域外を参照して色を合成することを許可します。
-	 * これを指定しない場合は、転送元ビットマップの周囲に余裕があったとしても、転送元ビットマップの範囲外を参照することはありません(範囲外の色はもっとも近い位置にある範囲内のピクセルの色と見なされます)。
-	 * @description 指定された重ね合わせ元レイヤの矩形を、重ね合わせ先 ( メソッドを実行するレイヤ ) にアフィン変換を行いながら演算合成します。
-	 * アフィン変換については Layer.affineCopy も参照してください。
-	 * mode に omAuto を指定した場合は、演算元レイヤのLayer.typeプロパティに従って演算の種類が自動的に決定されます。
+	 * The speed is faster in the order of stNearest> stFastLinear> stLinear> stCubic, but the faster the speed, the lower the image quality.
+	 * For stFastLinear, stLinear, and stCubic, stRefNoClip can be additionally specified by bitwise OR, in which case it is allowed to refer to the outside of the area of the bitmap to be copied and synthesize the color.
+	 * If this is not specified, the out-of-range color will not refer to the closest pixel in the range, even if there is room around the source bitmap. It is considered a color).
+	 * @description Computes the rectangle of the specified overlay source layer while performing affine transformation to the overlay destination (layer that executes the method).
+	 * See also Layer.affineCopy for affine transformations.
+	 * If omAuto is specified for mode, the operation type is automatically determined according to the Layer.type property of the operation source layer.
 	 */
 	function operateAffine( src, sleft, stop, swidth, sheight, affine, A, B, C, D, E, F, mode=omAuto, opa=255, type=stNearest);
 
 	/**
-	 * 矩形ブラーをかける
+	 * Apply rectangular blur
 	 *
-	 * @param xblur 横方向のブラーの範囲を指定します。
-	 * @param yblur 縦方向のブラーの範囲を指定します。
-	 * @description ブラー(ぼかし)をかけます。
-	 * アルゴリズムは「矩形ブラー」(box blur)です。
-	 * 矩形ブラーは、xblurとyblurの２つのパラメータによって表現される「範囲」中のピクセルの輝度の平均値をとる物です。
-	 * たとえば xblur=10 yblur=2 の場合は、対象のピクセルを中心に、横方向は -10～10、縦方向は -2～2 の矩形範囲のピクセルの輝度の平均をとり、それが最終的なそのピクセルの輝度となります。
-	 * 範囲の面積は (xblur×2+1) × (yblur×2+1) で計算することができます。
-	 * 現バージョンではこの面積が 256 未満 の場合は、面積が256以上の場合よりも高速なアルゴリズムが採用されます。
-	 * Layer.face プロパティが dfAlpha の場合は、アルファ合成用の特別なアルゴリズムを使用しますので、少々遅くなります。
-	 * dfAddAlpha や他の描画方式の場合は、より高速なアルゴリズムとなります。
+	 * @param xblur Specifies the range of horizontal blur.
+	 * @param yblur Specifies the range of vertical blur.
+	 * @description Blur.
+	 * The algorithm is "box blur".
+	 * A rectangular blur is the average of the brightness of pixels in a "range" represented by two parameters, xblur and yblur.
+	 * For example, if xblur = 10 yblur = 2, the brightness of the pixels in the rectangular range of -10 to 10 in the horizontal direction and -2 to 2 in the vertical direction is averaged around the target pixel, and that is the final result. It is the brightness of that pixel.
+	 * The area of the range can be calculated by (xblur × 2 + 1) × (yblur × 2 + 1).
+	 * In the current version, if this area is less than 256, the algorithm is faster than if the area is 256 or more.
+	 * If the Layer.face property is dfAlpha, it will be a bit slower as it uses a special algorithm for alpha compositing.
+	 * For dfAddAlpha and other drawing methods, the algorithm is faster.
 	 */
 	function doBoxBlur( xblur=1, yblur=1);
 
 	/**
-	 * ガンマ補正
+	 * Gamma correction
 	 *
-	 * @param rgamma 赤成分のガンマ値 ( 0.0 ～ 1.0 ～ 9.0 ) を指定します。
-	 * @param rfloor 赤成分の出力最低値 ( 0 ～ 255 ) を指定します。
-	 * @param rceil 赤成分の出力最大値 ( 0 ～ 255 ) を指定します。
-	 * @param ggamma 緑成分のガンマ値 ( 0.0 ～ 1.0 ～ 9.0 ) を指定します。
-	 * @param gfloor 緑成分の出力最低値 ( 0 ～ 255 ) を指定します。
-	 * @param gceil 緑成分の出力最大値 ( 0 ～ 255 ) を指定します。
-	 * @param bgamma 青成分のガンマ値 ( 0.0 ～ 1.0 ～ 9.0 ) を指定します。
-	 * @param bfloor 青成分の出力最低値 ( 0 ～ 255 ) を指定します。
-	 * @param bceil 青成分の出力最大値 ( 0 ～ 255 ) を指定します。
-	 * @description 画像に対してガンマ補正を実行します。
-	 * ガンマ値には 1.0 を指定するとガンマ曲線が直線になります。
-	 * 出力最低値と出力最高値は各成分の輝度の最低値と最高値を指定するものです。
-	 * 最高値に最低値よりも低い値を設定すると画像を反転させることができます。
-	 * このメソッドはLayer.faceプロパティを参照します。
-	 * これが dfAddAlpha の場合、このメソッドは加算アルファ合成用の特別なガンマ補正ルーチンを用います。
-	 * このルーチンは加算アルファ合成のうち、アルファ合成に相当する成分に対してはガンマ補正を行いますが、加算合成に相当する成分に対してはガンマ補正を行いません。
+	 * @param rgamma Specify the gamma value of the red component (0.0 to 1.0 to 9.0).
+	 * @param rfloor Specify the minimum output value (0 to 255) for the red component.
+	 * @param rceil Specifies the maximum output value (0 to 255) for the red component.
+	 * @param ggamma Specify the gamma value of the green component (0.0 to 1.0 to 9.0).
+	 * @param gfloor Specifies the minimum output value (0 to 255) for the green component.
+	 * @param gceil Specify the maximum output value (0 to 255) of the green component.
+	 * @param bgamma Specify the gamma value of the blue component (0.0 to 1.0 to 9.0).
+	 * @param bfloor Specifies the minimum output value (0 to 255) for the blue component.
+	 * @param bceil Specify the maximum output value (0 to 255) of the blue component.
+	 * @description Performs gamma correction on the image.
+	 * If you specify 1.0 for the gamma value, the gamma curve becomes a straight line.
+	 * The output minimum value and output maximum value specify the minimum and maximum values of the brightness of each component.
+	 * You can invert the image by setting the highest value to a value lower than the lowest value.
+	 * This method references the Layer.face property.
+	 * If this is dfAddAlpha, this method uses a special gamma correction routine for additive alpha synthesis.
+	 * This routine performs gamma correction for the components corresponding to alpha synthesis in additive alpha synthesis, but does not perform gamma correction for the components corresponding to additive synthesis.
 	 */
 	function adjustGamma( rgamma=1.0, rfloor=0, rceil=255, ggamma=1.0, gfloor=0, gceil=255, bgamma=1.0, bfloor=0, bceil=255);
 
 	/**
-	 * グレースケール変換
+	 * Grayscale conversion
 	 *
-	 * @description 画像をグレースケールに変換します。
+	 * @description Converts the image to grayscale.
 	 */
 	function doGrayScale( );
 
 	/**
-	 * 左右反転
+	 * Flip horizontal
 	 *
-	 * @description 画像の左右反転を行います。
-	 * このメソッドは、Layer.setClip メソッドなどによる描画クリップ矩形の影響を受けません ( 常にレイヤ画像全体が反転します )。
-	 * また、Layer.face プロパティやLayer.holdAlpha プロパティの影響も受けません。
+	 * @description Flip the image horizontally.
+	 * This method is not affected by the drawing clip rectangle, such as by the Layer.setClip method (always inverts the entire layer image).
+	 * It is also unaffected by the Layer.face and Layer.holdAlpha properties.
 	 */
 	function flipLR( );
 
 	/**
-	 * 上下反転
+	 * flip upside down
 	 *
-	 * @description 画像の上下反転を行います。
-	 * このメソッドは、Layer.setClip メソッドなどによる描画クリップ矩形の影響を受けません ( 常にレイヤ画像全体が反転します )。
-	 * また、Layer.face プロパティやLayer.holdAlpha プロパティの影響も受けません。
+	 * @description Flip the image upside down.
+	 * This method is not affected by the drawing clip rectangle, such as by the Layer.setClip method (always inverts the entire layer image).
+	 * It is also unaffected by the Layer.face and Layer.holdAlpha properties.
 	 */
 	function flipUD( );
 
 	/**
-	 * レイヤ画像表現形式の変換
+	 * Layer image representation format conversion
 	 *
-	 * @param from 変換元となる描画方式タイプを指定します。
-	 * @description レイヤ画像の形式を変換します。
-	 * このメソッドは、ltAlpha (dfAlpha) と ltAddAlpha (dfAddAlpha) のように、「レイヤの画像表現形式が異なるが同様の表現が可能なタイプ」間での画像表現形式の変換を行います。
-	 * たとえば、ltAlpha で表示しているレイヤのタイプをそのまま ltAddAlpha に変更しただけでは、アルファチャンネルと色情報の扱いが異なるので正常に表示されません。
-	 * そのため、このメソッドを用い、dfAlpha から dfAddAlpha に変換を行う必要があります。
-	 * このメソッドでは、変換先の画像表現形式は Layer.face プロパティで指定した描画方式に対応した形式になります (Layer.typeで指定するレイヤタイプではなくて、描画方式であることに注意してください )。
-	 * from 引数には、変換元の画像表現形式に対応する描画方式(dfで始まる定数; Layer.face参照)を指定します。
-	 * from 引数には dfAuto は指定できません。
-	 * 現在サポートされている変換は、dfAlpha→dfAddAlpha と dfAddAlpha→dfAlpha の変換です。dfAddAlpha→dfAlphaでは、変換により色情報が失われる場合があります。
-	 * このメソッドは、描画クリップ矩形の影響を受けません ( 常にレイヤ画像全体が影響を受けます )。
+	 * @param from Specify the drawing method type to be converted.
+	 * @description Converts the format of layer images.
+	 * This method converts the image representation format between "types that have different layer image representation formats but can be represented in the same way", such as ltAlpha (dfAlpha) and ltAddAlpha (dfAddAlpha).
+	 * For example, if you change the layer type displayed by ltAlpha to ltAddAlpha as it is, it will not be displayed properly because the alpha channel and color information are handled differently.
+	 * Therefore, you need to use this method to convert from dfAlpha to dfAddAlpha.
+	 * Note that in this method, the image representation format of the conversion destination corresponds to the drawing method specified by the Layer.face property (not the layer type specified by Layer.type, but the drawing method. ).
+	 * In the from argument, specify the drawing method (constant starting with df; see Layer.face) corresponding to the image representation format of the conversion source.
+	 * You cannot specify dfAuto for the from argument.
+	 * Currently supported conversions are dfAlpha → dfAddAlpha and dfAddAlpha → dfAlpha conversions. In dfAddAlpha → dfAlpha, color information may be lost due to conversion.
+	 * This method is unaffected by the drawing clip rectangle (always the entire layer image is affected).
 	 */
 	function convertType( from);
 
 	/**
-	 * 画像の更新
+	 * Image update
 	 *
-	 * @param left 更新する矩形の左端位置を表示座標におけるピクセル単位で指定します。
-	 * @param top 更新する矩形の上端位置を表示座標におけるピクセル単位で指定します。
-	 * @param width 更新する矩形の横幅を表示座標におけるピクセル単位で指定します。
-	 * @param height 更新する矩形の縦幅を表示座標におけるピクセル単位で指定します。
-	 * @description このメソッドはレイヤを強制的に画面に描画させます。
-	 * 描画系のメソッドなどを実行すると自動的に画面更新が発生しますが、このメソッドで画面への描画を強制的に起こさせることができます。
-	 * 引数をすべて省略するとレイヤ全体が再描画されます。
-	 * このメソッドは、Layer.callOnPaint プロパティを真に設定します。
-	 * 実際に画面に描画されるまでは、何度このメソッドを実行しても画面描画が発生するのは１回のみです ( キャッシュされます )。
+	 * @param left Specifies the left edge position of the rectangle to update, in pixels in display coordinates.
+	 * @param top Specifies the top position of the rectangle to update, in pixels in display coordinates.
+	 * @param width Specifies the width of the rectangle to update, in pixels in display coordinates.
+	 * @param height Specifies the vertical width of the rectangle to update, in pixels in display coordinates.
+	 * @description This method forces the layer to be drawn on the screen.
+	 * The screen is automatically updated when a drawing method is executed, but this method can be used to force drawing on the screen.
+	 * If you omit all the arguments, the entire layer will be redrawn.
+	 * This method sets the Layer.callOnPaint property to true.
+	 * No matter how many times this method is executed, the screen drawing will occur only once (cached) until it is actually drawn on the screen.
 	 */
 	function update( left, top, width, height);
 
 	/**
-	 * マウスカーソル位置の指定
+	 * Specifying the mouse cursor position
 	 *
-	 * @param x マウスカーソルの ( このレイヤの表示座標における ) x 座標値をピクセル単位で指定します。
-	 * この値は Layer.cursorX プロパティでも設定／取得する事ができます。
-	 * @param y マウスカーソルの ( このレイヤの表示座標における ) y 座標値をピクセル単位で指定します。
-	 * この値は Layer.cursorX プロパティでも設定／取得する事ができます。
-	 * @description マウスカーソルの位置を指定します。
+	 * @param x Specifies the x-coordinate value (in the display coordinates of this layer) for the mouse cursor, in pixels.
+	 * This value can also be set / retrieved with the Layer.cursorX property.
+	 * @param y Specifies the y coordinate value of the mouse cursor (in the display coordinates of this layer) in pixels.
+	 * This value can also be set / retrieved with the Layer.cursorX property.
+	 * @description Specifies the position of the mouse cursor.
 	 */
 	function setCursorPos( x, y);
 
 	/**
-	 * フォーカスの設定
+	 * Focus setting
 	 *
-	 * @param direction Layer.onBeforeFocus や Layer.onFocus イベントのdirection 引数に渡される値です。
-	 * @description レイヤにフォーカスを指定します。
-	 * レイヤがフォーカスを受け取るとキーボード入力が可能になります。
+	 * @param direction The value passed to the direction argument of the Layer.onBeforeFocus and Layer.onFocus events.
+	 * @description Specifies the focus on the layer.
+	 * Keyboard input is possible when the layer receives focus.
 	 */
 	function focus( direction=true);
 
 	/**
-	 * 前方のレイヤにフォーカスを設定
+	 * Set focus on the previous layer
 	 *
-	 * @return 新たにフォーカスを得たレイヤオブジェクト
-	 * @description フォーカス可能なレイヤを前方検索し、レイヤが見つかればそのレイヤにフォーカスを設定します。
+	 * @return Newly focused layer object
+	 * @description Search forward for a layer that can be focused, and if a layer is found, focus on that layer.
 	 */
 	function focusPrev( );
 
 	/**
-	 * 後方のレイヤにフォーカスを設定
+	 * Set focus on the back layer
 	 *
-	 * @return 新たにフォーカスを得たレイヤオブジェクト
-	 * @description フォーカス可能なレイヤを後方検索し、レイヤが見つかればそのレイヤにフォーカスを設定します。
+	 * @return Newly focused layer object
+	 * @description Search backwards for focusable layers, and if found, focus on that layer.
 	 */
 	function focusNext( );
 
 	/**
-	 * モーダル状態にする
+	 * Make it modal
 	 *
-	 * @description レイヤにモードを設定します。モードを設定すると ( モーダルになると )、そのレイヤの子レイヤのみがフォーカスやマウスメッセージを受け取ることができるようになります。
-	 * 	
+	 * @description Set the mode for the layer. When you set the mode (modally), only the child layers of that layer can receive focus and mouse messages.
+	 * .
 	 */
 	function setMode( );
 
 	/**
-	 * モーダル状態を解除する
+	 * Release the modal state
 	 *
-	 * @description Layer.setMode で設定したモーダル状態を解除します。
+	 * @description Cancels the modal state set in Layer.setMode.
 	 */
 	function removeMode( );
 
 	/**
-	 * 注視位置の指定
+	 * Designation of gaze position
 	 *
-	 * @param left 注視する ( このレイヤの表示座標における ) x 座標値をピクセル単位で指定します。
-	 * この値は Layer.attentionLeft プロパティでも設定／取得する事ができます。
-	 * @param top 注視する ( このレイヤの表示座標における ) x 座標値をピクセル単位で指定します。
-	 * この値は Layer.attentionTop プロパティでも設定／取得する事ができます。
-	 * @description 注視位置を指定します。
-	 * 注視位置とは通常カレット ( キーボードからの文字入力位置を示すためにテキストエディタなどで点滅する棒 ) の位置に設定します。
-	 * IME の未確定文字はこの注視位置に表示されます。
+	 * @param left Specifies the x-coordinate value (in the display coordinates of this layer) in pixels.
+	 * This value can also be set / obtained with the Layer.attentionLeft property.
+	 * @param top Specifies the x-coordinate value (in the display coordinates of this layer) in pixels.
+	 * This value can also be set / obtained with the Layer.attentionTop property.
+	 * @description Specify the gaze position.
+	 * The gaze position is usually set to the position of the caret (a bar that blinks with a text editor to indicate the character input position from the keyboard).
+	 * IME unconfirmed characters are displayed at this gaze position.
 	 * @see Layer.useAttention
 	 */
 	function setAttentionPos( left, top);
 
 	/**
-	 * トランジションの開始
+	 * Start of transition
 	 *
-	 * @param name トランジション名を指定します。
-	 * デフォルトでは 'crossfade' ( クロスフェード )、'universal' ( ユニバーサルトランジション )、'scroll' ( スクロールトランジション ) が定義されています。
-	 * @param withchildren 子レイヤも一緒にトランジションを行うかどうかです。
-	 * 真を指定すると子レイヤごとトランジションします。
-	 * 偽を指定するとメソッドを実行するレイヤのみがトランジションします。
-	 * @param transsrc 切り替わり先となるレイヤを指定します。
-	 * トランジションによっては指定が必要ないもの ( 単独でトランジションするものなど ) もあるかもしれません。
-	 * @param options トランジションのオプションを辞書配列で指定します。
-	 * 必要なオプションはトランジションの種類によって異なります。
-	 * トランジションの種類に関係なく、共通して指定できるオプションとして 'selfupdate' メンバと 'callback' メンバがあります。
-	 * 'selfupdate' メンバが 真 の場合は、吉里吉里は自動での画面更新を行わなくなります。
-	 * この場合は、適宜プログラム側で Layer.update メソッドなどで画面を更新しなければなりません。
-	 * この機能は、トランジションによる描画とプログラムによる描画を完全に同期させたい場合に便利です。
-	 * 'callback' メンバにTJS2のメソッドを指定すると、描画が実際に行われる度にそのメソッドが呼ばれます。
-	 * このメソッド(コールバックされるメソッド)では 'tick' 値を0以上の値で返してください。
-	 * 多くのトランジションは、ミリ秒単位での実際の時間である 'tick' 値を元にトランジションを行っていますが、このコールバックされるメソッドで任意のtickを返すように実装することにより、トランジションの効果を任意の時点で巻き戻したり、途中で早送りをしたりが可能になり、実際の時間に関係なくトランジションを制御できるようになります。
-	 * 多くのトランジションは、オプションの 'time' メンバで指定した値がトランジションの終端であると見なしています。
-	 * そのため、たとえばオプションの 'time' には 1000 等の適当な値を指定しておき、このコールバックされるメソッドで 1000 未満の値を返すことにより、任意の段階でのトランジションの表示などを行わせることができるようになります。
-	 * また、多くのトランジションの場合、オプションの 'time' で指定された値に 'tick' 値が達すると、トランジションが停止しますので、トランジションを停止させたくない場合は、 'time' で指定した値未満の値を常に指定するようにしてください。
-	 * @description トランジションを開始します。
-	 * children=真 の場合のトランジションは、終了するときに、transsrc で指定したトランジション元とそっくり親子関係のツリー構造が入れ替わります。
-	 * children=偽 の場合は、トランジション元のレイヤとメソッドを実行したレイヤ ( トランジション先のレイヤ ) のみが入れ替わります。
-	 * どちらの場合も、ツリー構造上での入れ替えが行われるため注意してください。
-	 * このメソッドはトランジションを開始させるだけですぐに戻ります。
+	 * @param name Specify the transition name.
+	 * By default,'crossfade','universal', and'scroll' are defined.
+	 * @param withchildren Whether the child layer also transitions with it.
+	 * If true is specified, the transition will be made for each child layer.
+	 * If false is specified, only the layer that executes the method will transition.
+	 * @param transsrc Specify the layer to switch to.
+	 * Some transitions may not need to be specified (for example, transitions by themselves).
+	 * @param options Specifies transition options in a dictionary array.
+	 * The options you need depend on the type of transition.
+	 * Regardless of the type of transition, the options that can be specified in common are the'selfupdate'member and the'callback' member.
+	 * If the'selfupdate'member is true, KiriKiri will not automatically update the screen.
+	 * In this case, he has to update the screen with the Layer.update method etc. on the program side as appropriate.
+	 * This feature is useful if you want the transition drawing to be perfectly synchronized with the program drawing.
+	 * If you specify a TJS2 method in the'callback'member, that method will be called each time the drawing is actually done.
+	 * This method (callback method) should return a'tick' value of 0 or greater.
+	 * Many transitions are based on the'tick'value, which is the actual time in milliseconds, but by implementing this callback method to return any tick, the transition's transition You can rewind the effect at any point, fast forward in the middle, and control the transition regardless of the actual time.
+	 * Many transitions consider the value specified in the optional'time'member to be the end of the transition.
+	 * So, for example, you can specify an appropriate value such as 1000 for the option'time', and in this callback method he will return a value less than 1000 to display the transition at any stage. You will be able to do it.
+	 * Also, for many transitions, the transition will stop when the'tick' value reaches the value specified by the optional'time', so if you don't want to stop the transition, the value specified by'time' Always specify a value less than or equal to.
+	 * @description Start the transition.
+	 * When children = true, the transition has a parent-child tree structure that is exactly the same as the transition source specified in transsrc at the end.
+	 * If children = false, only the layer from which the transition is made and the layer that executed the method (the layer to which the transition is made) are swapped.
+	 * Please note that in both cases, the tree structure is replaced.
+	 * This method returns immediately after initiating a transition.
 	 */
 	function beginTransition( name, withchildren=true, transsrc=null, options=%[ ]);
 
 	/**
-	 * トランジションを停止する
+	 * Stop the transition
 	 *
-	 * @description 進行中のトランジションを停止します。
+	 * @description Stop the transition in progress.
 	 */
 	function stopTransition( );
 
 	/**
-	 * 画像のコピー
+	 * Copy of image
 	 *
-	 * @param src コピー元のレイヤを指定します。
-	 * @description src で指定したレイヤの、メイン画像、マスク画像、領域画像をすべてコピーします。
-	 * 画像サイズはコピー元のレイヤの画像サイズと同一になります。
-	 * それ以外の情報はコピーしません。
-	 * コピーといっても、実際は「同じ画像を二つ以上のレイヤで共有している」という状態になるだけなのでこのメソッドはほとんど実行時間がかかりません。
+	 * @param src Specify the copy source layer.
+	 * @description Copies the main image, mask image, and area image of the layer specified by src.
+	 * The image size will be the same as the image size of the copy source layer.
+	 * No other information will be copied.
+	 * This method takes almost no execution time because copying is actually just a state where "the same image is shared by two or more layers".
 	 */
 	function assignImages( src);
 
 	/**
-	 * 画像の保存
+	 * Save image
 	 *
-	 * @param name 保存するストレージ名を指定します。
-	 * @param type 保存する画像形式を文字列で指定します。
-	 * 現バージョンでは以下の形式を指定可能です。
+	 * @param name Specify the storage name to save.
+	 * @param type Specify the image format to save as a character string.
+	 * The following formats can be specified in the current version.
 	 *
-	 * + "bmp" または "bmp32" : 32bpp の BMP です。アルファチャンネル(マスク)も保存します。
-	 * + "bmp24" : 24bpp の BMP です。アルファチャンネル(マスク)は保存されません。
-	 * + "bmp8" : 8bpp の BMP です。アルファチャンネル(マスク)は保存されません。画像は252色の固定パレットによる4×4組織化ディザリングを用いて減色されます。
-	 * + "jpg" : JPEG です。アルファチャンネル(マスク)は保存されません。画像はクオリティー90%で保存されます。
-	 * + "jpg###" : JPEG です。アルファチャンネル(マスク)は保存されません。画像は###で指定されたクオリティーで保存されます。"jpg010" で 10%、"jpg100" で 100%、"jpg080" で 80%です。
-	 * + "png" : 32bpp の PNG です。アルファチャンネル(マスク)も保存します。
-	 * + "png24" : 24bpp の PNG です。アルファチャンネル(マスク)は保存されません。
-	 * + "tlg5" : 32bpp の TLG5 です。アルファチャンネル(マスク)も保存します。
-	 * + "tlg524" : 24bpp の TLG5 です。アルファチャンネル(マスク)は保存されません。
-	 * + "tlg6" : 32bpp の TLG6 です。アルファチャンネル(マスク)も保存します。
-	 * + "tlg624" : 24bpp の TLG6 です。アルファチャンネル(マスク)は保存されません。
-	 * @description name で指定したストレージ (ファイル) に、type で指定した画像形式でファイルを保存します。
-	 * 保存されるのはレイヤの画像で、領域画像は保存することはできません。
+	 * + "bmp" or "bmp32" : It is a 32bpp BMP. It also saves the alpha channel (mask).
+	 * + "bmp24" : It is a 24bpp BMP. The alpha channel (mask) is not saved.
+	 * + "bmp8" : 8bpp BMP. The alpha channel (mask) is not saved. The image is reduced in color using 4x4 organized dithering with a fixed palette of 252 colors.
+	 * + "jpg" : It's JPEG. The alpha channel (mask) is not saved. Images are saved with 90% quality.
+	 * + "jpg###" : It's JPEG. The alpha channel (mask) is not saved. The image will be saved with the quality specified by ###. "jpg010" is 10%, "jpg100" is 100%, and "jpg080" is 80%.
+	 * + "png" : 32bpp PNG. It also saves the alpha channel (mask).
+	 * + "png24" : 24bpp PNG. The alpha channel (mask) is not saved.
+	 * + "tlg5" : It is a 32bpp TLG5. It also saves the alpha channel (mask).
+	 * + "tlg524" : It is a 24bpp TLG5. The alpha channel (mask) is not saved.
+	 * + "tlg6" : It is a 32bpp TLG6. It also saves the alpha channel (mask).
+	 * + "tlg624" : It is a 24bpp TLG6. The alpha channel (mask) is not saved.
+	 * @description Saves the file in the storage (file) specified by name in the image format specified by type.
+	 * Only layer images are saved, area images cannot be saved.
 	 */
 	function saveLayerImage( name, type="bmp");
 
 	/**
-	 * Bitmap への画像のコピー
+	 * Copy image to Bitmap
 	 *
-	 * @param dest コピー先の Bitmap オブジェクトを指定します。
-	 * @description dest で指定した Bitmap オブジェクトへレイヤのメイン画像をコピーします。
-	 * 画像サイズはコピー元のレイヤの画像サイズと同一になります。
-	 * コピーといっても、実際は「同じ画像を二つ以上のレイヤで共有している」という状態になるだけなのでこのメソッドはほとんど実行時間がかかりません。
+	 * @param dest Specifies the destination Bitmap object.
+	 * @description Copies the layer's main image to the Bitmap object specified by dest.
+	 * The image size will be the same as the image size of the copy source layer.
+	 * This method takes almost no execution time because copying is actually just a state where "the same image is shared by two or more layers".
 	 * @see Layer.copyFromBitmapToMainImage
 	 */
 	function copyToBitmapFromMainImage( dest);
 
 	/**
-	 * Bitmap からの画像のコピー
+	 * Copy image from Bitmap
 	 *
-	 * @param src コピー元の Bitmap オブジェクトを指定します。
-	 * @description src で指定した Bitmap オブジェクトからレイヤのメイン画像へ画像をコピーします。
-	 * 画像サイズはコピー元のBitmap オブジェクトの画像サイズと同一になります。
-	 * コピーといっても、実際は「同じ画像を二つ以上のレイヤで共有している」という状態になるだけなのでこのメソッドはほとんど実行時間がかかりません。
+	 * @param src Specifies the Bitmap object to copy from.
+	 * @description Copies an image from the Bitmap object specified in src to the layer's main image.
+	 * The image size will be the same as the image size of the source Bitmap object.
+	 * This method takes almost no execution time because copying is actually just a state where "the same image is shared by two or more layers".
 	 * @see Layer.copyToBitmapFromMainImage
 	 */
 	function copyFromBitmapToMainImage( src);
 
 	/**
-	 * 親レイヤ
+	 * Parent layer
 	 *
-	 * @description 親レイヤオブジェクトを表します。
-	 * 値を設定することもできます。
-	 * 値を設定するとそのレイヤの子になります。
-	 * 異なるウィンドウや異なるプライマリレイヤに所属するレイヤの子になったり、自分自身や自分の子孫の子になることはできません。
+	 * @description Represents a parent layer object.
+	 * You can also set the value.
+	 * If you set a value, it will be a child of that layer.
+	 * You cannot be a child of a layer that belongs to a different window or a different primary layer, or a child of yourself or your descendants.
 	 */
 	 property parent {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * 子レイヤ配列
+	 * Child layer array
 	 *
-	 * @description 子レイヤの格納された配列オブジェクトを表します。
-	 * ここで得られた配列に値を書き込んだり、項目の削除や追加などをしても実際のレイヤの状態には反映されません。
-	 * 読み取りのみが行えると考えてください。
+	 * @description Represents an array object that contains child layers.
+	 * Even if you write a value to the array obtained here, or delete or add an item, it will not be reflected in the actual layer state.
+	 * Think of it as read-only.
 	 */
 	 property children {
 		 getter() { return value; }
 	}
 	/**
-	 * 相対位置
+	 * relative position
 	 *
-	 * @description 同じ親を持つ兄弟レイヤ間での順位を表します。
-	 * 値が小さいほど奥に表示されます。
-	 * 値を設定すると兄弟レイヤ間での順位を変えることができます。値を設定すると親レイヤの Layer.absoluteOrderMode プロパティが偽に設定されます。
+	 * @description Represents the ranking among sibling layers with the same parent.
+	 * The smaller the value, the deeper it is displayed.
+	 * You can change the ranking among sibling layers by setting a value. Setting the value sets the Layer.absoluteOrderMode property of the parent layer to false.
 	 * @see Layer.absolute
 	 * @see Layer.absoluteOrderMode
 	 * @see Layer.bringToBack
@@ -1472,13 +1472,13 @@ class Layer {
 		 setter( value ) {}
 	}
 	/**
-	 * 絶対位置
+	 * Absolute position
 	 *
-	 * @description 同じ親を持つ兄弟レイヤ間での重ね合わせ順序を表します。
-	 * 値が小さいほど奥に表示されます。
-	 * Layer.order プロパティと違い、同じ兄弟間で値は連続している必要はありません。
-	 * 値を設定すると兄弟レイヤ間での順位を変えることができます。
-	 * 値を設定すると親レイヤの Layer.absoluteOrderMode プロパティが真に設定されます。
+	 * @description Represents the stacking order between sibling layers with the same parent.
+	 * The smaller the value, the deeper it is displayed.
+	 * Unlike the Layer.order property, the values do not have to be consecutive between the same siblings.
+	 * You can change the ranking among sibling layers by setting a value.
+	 * Setting the value sets the Layer.absoluteOrderMode property of the parent layer to true.
 	 * @see Layer.order
 	 * @see Layer.absoluteOrderMode
 	 * @see Layer.bringToBack
@@ -1489,12 +1489,12 @@ class Layer {
 		 setter( value ) {}
 	}
 	/**
-	 * 絶対位置モードかどうか
+	 * Whether it is in absolute position mode
 	 *
-	 * @description 直属の子レイヤの重ね合わせ順モードを表します。
-	 * 値を設定することもできます。
-	 * 偽を指定すると相対位置指定となり、Layer.order プロパティがその順位を表すようになります。
-	 * 真を指定すると絶対位置指定となり、Layer.absolute プロパティがその順位を表すようになります。
+	 * @description Represents the superposition order mode of the child layers that report directly to it.
+	 * You can also set the value.
+	 * If you specify false, it becomes a relative position specification, and the Layer.order property shows the order.
+	 * If true is specified, it will be an absolute position specification, and the Layer.absolute property will represent its rank.
 	 * @see Layer.order
 	 * @see Layer.absolute
 	 * @see Layer.bringToBack
@@ -1505,105 +1505,105 @@ class Layer {
 		 setter( value ) {}
 	}
 	/**
-	 * 可視かどうか
+	 * Whether it is visible
 	 *
-	 * @description 可視かどうかを表します。
-	 * 値を設定することもできます。
-	 * 偽を指定すると不可視になります。
-	 * 真を指定すると可視になります。
+	 * @description Indicates whether it is visible or not.
+	 * You can also set the value.
+	 * If you specify false, it will be invisible.
+	 * If you specify true, it will be visible.
 	 */
 	 property visible {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * キャッシュを行うか
+	 * Do you want to cache
 	 *
-	 * @description キャッシュを行うかどうかを表します。
-	 * 値を設定することもできます。
-	 * キャッシュを行う設定の場合、自分自身と子レイヤをすべて重ね合わせた状態の画像をあらかじめ持っておくことになり、以後、自分や子レイヤに変更が加わらない限り、自分自身と子レイヤの重ね合わせに関する画像演算を行いません(変更があった場合は自動的にキャッシュを再構成します)。キャッシュを行わない設定の場合は、画面更新の際に毎回重ね合わせの演算が行われます。デフォルトではキャッシュは行いませんが、トランジション中は自動的にキャッシュが有効になります (ただしこのプロパティはトランジション中などで自動的に有効になるようなキャッシュの有無の状態までは表しません )。
-	 * あるレイヤの画像とその子レイヤの画像や状態に変化がないことが分かっていて、かつ画面が頻繁に書き換わるような場合では、そのレイヤではキャッシュを行った方が全体のパフォーマンスがあがります。
+	 * @description Indicates whether to cache.
+	 * You can also set the value.
+	 * In the case of setting to cache, you will have an image in which you and all child layers are overlapped in advance, and unless you or the child layer is changed after that, you and the child layer will be overlapped. Does not perform image operations on (automatically reconfigures the cache if changed). If the setting is not cached, the superposition operation is performed every time the screen is updated. By default, it is not cached, but it is automatically cached during transitions (although this property does not represent the presence or absence of caches that are automatically enabled, such as during transitions).
+	 * If you know that there is no change in the image or state of a layer's image and its child layers, and the screen rewrites frequently, caching that layer will improve overall performance.
 	 */
 	 property cached {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * ノードが可視かどうか
+	 * Whether the node is visible
 	 *
-	 * @description ノードが可視かどうかを表します。
-	 * 親レイヤの中で一つでも不可視のレイヤがあると偽になります。
-	 * 親レイヤがすべて可視ならば真になります。
+	 * @description Indicates whether the node is visible.
+	 * If any of the parent layers is invisible, it will be false.
+	 * True if all parent layers are visible.
 	 */
 	 property nodeVisible {
 		 getter() { return value; }
 	}
 	/**
-	 * 中性色
+	 * Neutral color
 	 *
-	 * @description レイヤの中性色を 0xAARRGGBB 形式で表します。
-	 * 値を設定することもできます。
-	 * レイヤの中性色は、Layer.type プロパティを変更したときに、そのタイプの中性色に設定されます。
-	 * 中性色は、レイヤ画像のサイズが拡張されたときに、拡張された部分を塗りつぶす初期値になります。
-	 * 値を設定することにより、レイヤ画像のサイズ拡張時の初期色を指定することができます。
+	 * @description Represents the neutral color of the layer in 0xAARRGGBB format.
+	 * You can also set the value.
+	 * The layer's neutral color is set to that type of neutral color when you change the Layer.type property.
+	 * Neutral color is the default value that fills the expanded area when the size of the layer image is expanded.
+	 * By setting the value, you can specify the initial color when the size of the layer image is expanded.
 	 */
 	 property neutralColor {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * レイヤが画像を持っているかどうか
+	 * Whether the layer has an image
 	 *
-	 * @description レイヤが画像を持っているかどうかを表します。
-	 * 値を設定することもできます。
-	 * 真を指定するとレイヤは画像を持ちます。
-	 * これがデフォルトです。
-	 * 偽を指定するとレイヤの画像は開放され、レイヤは画像を持たなくなります。
-	 * Layer.typeプロパティを設定するとhasImageは真にリセットされます。
-	 * レイヤが画像を持たない場合、Layer.typeがltOpaqueならばレイヤは全面Layer.neutralColorで塗りつぶされているとして表示されます。
-	 * それ以外のタイプの場合は完全に透明として扱われます。
-	 * このプロパティが偽のレイヤはLayer.hitTypeがhtMaskの場合は全面が不透明度0 (完全に透明)であると見なされます。
-	 * また、描画やフォントを操作することはできません。
-	 * このプロパティが偽のレイヤは、通常、複数の子レイヤをまとめ、自分自身は透明なだけのレイヤとして使います。
-	 * 	
+	 * @description Indicates whether the layer has an image.
+	 * You can also set the value.
+	 * If you specify true, the layer will have an image.
+	 * This is the default.
+	 * If you specify false, the image of the layer is released and the layer has no image.
+	 * Setting the Layer.type property resets hasImage to true.
+	 * If the layer does not have an image and the Layer.type is ltOpaque, the layer will appear as fully filled with Layer.neutralColor.
+	 * Other types are treated as completely transparent.
+	 * Layers with this property false are considered to be entirely opaque (fully transparent) if Layer.hitType is htMask.
+	 * Also, you cannot manipulate drawing or fonts.
+	 * Layers with this property fake usually combine multiple child layers and use themselves as layers that are only transparent.
+	 * .
 	 */
 	 property hasImage {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * 不透明度
+	 * Opacity
 	 *
-	 * @description レイヤの不透明度を表します。
-	 * 値を設定することができます。
-	 * 値は 0 ～ 255 の整数で、値が大きいほど不透明な表示になります。
+	 * @description Represents the opacity of a layer.
+	 * You can set the value.
+	 * The value is an integer from 0 to 255, and the larger the value, the more opaque the display.
 	 */
 	 property opacity {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * ウィンドウオブジェクト
+	 * Window object
 	 *
-	 * @description このレイヤを保持しているウィンドウオブジェクトを表します。
+	 * @description Represents the window object that holds this layer.
 	 */
 	 property window {
 		 getter() { return value; }
 	}
 	/**
-	 * プライマリレイヤかどうか
+	 * Whether it is the primary layer
 	 *
-	 * @description プライマリレイヤかどうかを表します。
-	 * プライマリレイヤは親を持たないレイヤで、一番奥に表示されるレイヤです。
+	 * @description Indicates whether it is the primary layer.
+	 * The primary layer is a layer that has no parent and is the layer that is displayed at the back.
 	 */
 	 property isPrimary {
 		 getter() { return value; }
 	}
 	/**
-	 * 左端位置
+	 * Leftmost position
 	 *
-	 * @description レイヤ左端位置を、親レイヤの表示座標におけるピクセル単位で指定します。
-	 * 値を設定することもできます。
+	 * @description Specifies the left edge position of the layer, in pixels, in the display coordinates of the parent layer.
+	 * You can also set the value.
 	 * @see Layer.setPos
 	 */
 	 property left {
@@ -1611,10 +1611,10 @@ class Layer {
 		 setter( value ) {}
 	}
 	/**
-	 * 上端位置
+	 * Top position
 	 *
-	 * @description レイヤ上端位置を、親レイヤの表示座標におけるピクセル単位で指定します。
-	 * 値を設定することもできます。
+	 * @description Specifies the top layer position, in pixels, in the display coordinates of the parent layer.
+	 * You can also set the value.
 	 * @see Layer.setPos
 	 */
 	 property top {
@@ -1622,10 +1622,10 @@ class Layer {
 		 setter( value ) {}
 	}
 	/**
-	 * 横幅
+	 * Width
 	 *
-	 * @description レイヤの表示横幅をピクセル単位で指定します。
-	 * 値を設定することもできます。
+	 * @description Specifies the display width of the layer in pixels.
+	 * You can also set the value.
 	 * @see Layer.setSize
 	 */
 	 property width {
@@ -1633,10 +1633,10 @@ class Layer {
 		 setter( value ) {}
 	}
 	/**
-	 * 縦幅
+	 * Vertical width
 	 *
-	 * @description レイヤの表示縦幅をピクセル単位で指定します。
-	 * 値を設定することもできます。
+	 * @description Specifies the display height of the layer in pixels.
+	 * You can also set the value.
 	 * @see Layer.setSize
 	 */
 	 property height {
@@ -1644,10 +1644,10 @@ class Layer {
 		 setter( value ) {}
 	}
 	/**
-	 * レイヤ画像左端オフセット
+	 * Layer image left edge offset
 	 *
-	 * @description レイヤの表示オフセットの左端をピクセル単位で指定します。
-	 * 値を設定することもできます。
+	 * @description Specifies the left edge of the layer display offset in pixels.
+	 * You can also set the value.
 	 * @see Layer.setImagePos
 	 */
 	 property imageLeft {
@@ -1655,10 +1655,10 @@ class Layer {
 		 setter( value ) {}
 	}
 	/**
-	 * レイヤ画像上端オフセット
+	 * Layer image top offset
 	 *
-	 * @description レイヤの表示オフセットの上端をピクセル単位で指定します。
-	 * 値を設定することもできます。
+	 * @description Specifies the top edge of the layer's display offset in pixels.
+	 * You can also set the value.
 	 * @see Layer.setImagePos
 	 */
 	 property imageTop {
@@ -1666,10 +1666,10 @@ class Layer {
 		 setter( value ) {}
 	}
 	/**
-	 * 画像横幅
+	 * Image width
 	 *
-	 * @description レイヤの画像の横幅をピクセル単位で指定します。
-	 * 値を設定することもできます。
+	 * @description Specifies the width of the layer's image in pixels.
+	 * You can also set the value.
 	 * @see Layer.setImageSize
 	 */
 	 property imageWidth {
@@ -1677,10 +1677,10 @@ class Layer {
 		 setter( value ) {}
 	}
 	/**
-	 * 画像縦幅
+	 * Image height
 	 *
-	 * @description レイヤの画像の縦幅をピクセル単位で指定します。
-	 * 値を設定することもできます。
+	 * @description Specifies the vertical width of the layer's image in pixels.
+	 * You can also set the value.
 	 * @see Layer.setSize
 	 */
 	 property imageHeight {
@@ -1688,10 +1688,10 @@ class Layer {
 		 setter( value ) {}
 	}
 	/**
-	 * 描画クリップ矩形左端位置
+	 * Drawing clip rectangle left edge position
 	 *
-	 * @description 描画クリップ矩形の左端をピクセル単位で指定します。
-	 * 値を設定することもできます。
+	 * @description Specifies the left edge of the drawing clip rectangle in pixels.
+	 * You can also set the value.
 	 * @see Layer.setClip
 	 */
 	 property clipLeft {
@@ -1699,10 +1699,10 @@ class Layer {
 		 setter( value ) {}
 	}
 	/**
-	 * 描画クリップ矩形上端位置
+	 * Top position of drawing clip rectangle
 	 *
-	 * @description 描画クリップ矩形の上端をピクセル単位で指定します。
-	 * 値を設定することもできます。
+	 * @description Specifies the top edge of the drawing clip rectangle in pixels.
+	 * You can also set the value.
 	 * @see Layer.setClip
 	 */
 	 property clipTop {
@@ -1710,10 +1710,10 @@ class Layer {
 		 setter( value ) {}
 	}
 	/**
-	 * 描画クリップ矩形横幅
+	 * Drawing clip rectangle width
 	 *
-	 * @description 描画クリップ矩形の横幅をピクセル単位で指定します。
-	 * 値を設定することもできます。
+	 * @description Specifies the width of the drawing clip rectangle in pixels.
+	 * You can also set the value.
 	 * @see Layer.setClip
 	 */
 	 property clipWidth {
@@ -1721,10 +1721,10 @@ class Layer {
 		 setter( value ) {}
 	}
 	/**
-	 * 描画クリップ矩形縦幅
+	 * Drawing clip rectangle vertical width
 	 *
-	 * @description 描画クリップ矩形の縦幅をピクセル単位で指定します。
-	 * 値を設定することもできます。
+	 * @description Specifies the vertical width of the drawing clip rectangle in pixels.
+	 * You can also set the value.
 	 * @see Layer.setClip
 	 */
 	 property clipHeight {
@@ -1732,23 +1732,23 @@ class Layer {
 		 setter( value ) {}
 	}
 	/**
-	 * レイヤ表示タイプ
+	 * Layer display type
 	 *
-	 * @description レイヤの表示タイプを表します。
-	 * 値を設定することもできます。
+	 * @description Represents the display type of a layer.
+	 * You can also set the value.
 	 *
-	 * + ltOpaque または ltCoverRect を指定すると、ピクセルごとのアルファブレンドが無効になります。ltCoverRectもltOpaqueも同じ意味です。Layer.opacity プロパティが 255 の場合は、完全に不透明の矩形として表示される事になります。マスク画像は無視されます。このタイプに適した描画方式(Layer.faceで指定)はdfOpaqueです。
-	 * + ltAlpha または ltTransparent を指定すると、ピクセルごとのアルファブレンドが有効になります。ltTransparentもltAlphaも同じ意味です。マスク画像が透過に用いられます。このタイプに適した描画方式はdfAlphaです。
-	 * + ltAddAlpha を指定すると、ピクセルごとの加算アルファブレンドが有効になります。このタイプに適した描画方式は dfAddAlpha です。
-	 * + ltAdditive を指定すると、加算合成が行われます。マスク画像は無視されます。このタイプに適した描画方式は dfOpaque です。
-	 * + ltSubtractive を指定すると、減算合成が行われます。マスク画像は無視されます。このタイプに適した描画方式は dfOpaque です。
-	 * + ltMultiplicative を指定すると、乗算合成が行われます。マスク画像は無視されます。このタイプに適した描画方式は dfOpaque です。
-	 * + ltDodge を指定すると、覆い焼き合成が行われます。マスク画像は無視されます。このタイプに適した描画方式は dfOpaque です。
-	 * + ltDarken を指定すると、比較(暗)合成が行われます。マスク画像は無視されます。このタイプに適した描画方式は dfOpaque です。
-	 * + ltLighten を指定すると、比較(明)合成が行われます。マスク画像は無視されます。このタイプに適した描画方式は dfOpaque です。
-	 * + ltScreen を指定すると、スクリーン乗算合成が行われます。マスク画像は無視されます。このタイプに適した描画方式は dfOpaque です。
+	 * + Specifying ltOpaque or ltCoverRect disables pixel-by-pixel alpha blending. Both ltCoverRect and ltOpaque have the same meaning. If the Layer.opacity property is 255, it will appear as a completely opaque rectangle. The mask image is ignored. A suitable drawing method for this type (specified in Layer.face) is dfOpaque.
+	 * + Specifying ltAlpha or ltTransparent enables pixel-by-pixel alpha blending. Both ltTransparent and ltAlpha have the same meaning. The mask image is used for transparency. A suitable drawing method for this type is dfAlpha.
+	 * + Specifying ltAddAlpha enables pixel-by-pixel additive alpha blending. A suitable drawing method for this type is dfAddAlpha.
+	 * + If you specify ltAdditive, additive synthesis is performed. The mask image is ignored. A suitable drawing method for this type is dfOpaque.
+	 * + If you specify ltSubtractive, subtractive synthesis is performed. The mask image is ignored. A suitable drawing method for this type is dfOpaque.
+	 * + If you specify ltMultiplicative, multiplication synthesis is performed. The mask image is ignored. A suitable drawing method for this type is dfOpaque.
+	 * + If ltDodge is specified, dodging synthesis will be performed. The mask image is ignored. A suitable drawing method for this type is dfOpaque.
+	 * + Specify ltDarken for comparative (dark) compositing. The mask image is ignored. A suitable drawing method for this type is dfOpaque.
+	 * + If you specify ltLighten, comparison (bright) composition is performed. The mask image is ignored. A suitable drawing method for this type is dfOpaque.
+	 * + If you specify ltScreen, screen multiplication composition is performed. The mask image is ignored. A suitable drawing method for this type is dfOpaque.
 	 *
-	 * この他のレイヤ表示タイプについてはグラフィックシステムを参照してください。
+	 * See Graphics Systems for other layer display types.
 	 * @see Layer.face
 	 */
 	 property type {
@@ -1756,20 +1756,20 @@ class Layer {
 		 setter( value ) {}
 	}
 	/**
-	 * 描画方式
+	 * Drawing method
 	 *
-	 * @description レイヤへの描画方式を表します。
-	 * 値を設定することもできます。
+	 * @description Indicates the drawing method for the layer.
+	 * You can also set the value.
 	 *
-	 * + dfAlpha または dfBoth を指定すると、画像はアルファチャンネルつき画像と見なされ、描画されます。dfBoth でも dfAlpha でも同じになります。この描画方法に対応するレイヤタイプは ltTransparent または ltAlpha です。
-	 * + dfAddAlpha を指定すると、画像は加算アルファチャンネルつき画像として見なされ、描画されます。この描画方法に対応するレイヤタイプは ltAddAlpha です。
-	 * + dfOpaque または dfMain を指定すると、レイヤの画像はすべて完全不透明であると見なされ、描画されます。この描画方法に対応するレイヤタイプは ltOpaque または ltCoverRect、または ltAdditive のような算術/論理演算を行うレイヤタイプです。
-	 * + dfMask を指定すると、マスク画像(アルファチャンネル)を描画の対象にします。
-	 * + dfProvince を指定すると、領域画像を描画の対象にします。
-	 * + dfAuto を指定すると、現在の Layer.type プロパティに従って描画方式が自動的に決定されます。
+	 * + If you specify dfAlpha or dfBoth, the image is considered as an image with an alpha channel and is drawn. The same is true for dfBoth and dfAlpha. The corresponding layer types for this drawing method are ltTransparent or ltAlpha.
+	 * + If you specify dfAddAlpha, the image is considered as an image with an additive alpha channel and is drawn. The layer type that corresponds to this drawing method is ltAddAlpha.
+	 * + If you specify dfOpaque or dfMain, all images on the layer are considered completely opaque and are drawn. The layer type that corresponds to this drawing method is a layer type that performs arithmetic / logical operations such as ltOpaque or ltCoverRect, or ltAdditive.
+	 * + If dfMask is specified, the mask image (alpha channel) will be drawn.
+	 * + If dfProvince is specified, the area image will be drawn.
+	 * + If you specify dfAuto, the drawing method is automatically determined according to the current Layer.type property.
 	 *
-	 * 作成された直後のレイヤの描画方式は dfAuto です。
-	 * このプロパティの値によっては操作できないメソッドがあります。
+	 * The drawing method of the layer immediately after it is created is dfAuto.
+	 * Not all methods can be manipulated depending on the value of this property.
 	 * @see Layer.type
 	 */
 	 property face {
@@ -1777,15 +1777,15 @@ class Layer {
 		 setter( value ) {}
 	}
 	/**
-	 * アルファチャンネルを保護するか
+	 * Whether to protect the alpha channel
 	 *
-	 * @description 描画においてアルファチャンネルを保護するかどうかを指定します。
-	 * 値を設定することもできます。デフォルトでは偽です。
-	 * いくつかの描画演算では、Layer.face プロパティが dfOpaque のとき、画像のアルファチャンネル(マスク画像)を保持するかどうかをこのプロパティで指定できます。
-	 * 多くのメソッドでは、このプロパティを偽にした方が高速な描画が可能です。
-	 * Layer.type が ltAlpha でも ltAddAlpha でも無い場合は、画像のアルファチャンネルは使用されないので、このプロパティを偽に設定しても問題有りません。
-	 * ただし、このプロパティが偽だとアルファチャンネルは破壊されます。
-	 * 以下のメソッドはこのプロパティの影響を受けません。
+	 * @description Specifies whether to protect the alpha channel in drawing.
+	 * You can also set the value. The default is false.
+	 * For some drawing operations, this property allows you to specify whether to keep the alpha channel (mask image) of the image when the Layer.face property is dfOpaque.
+	 * For many methods, fake this property for faster drawing.
+	 * If the Layer.type is neither ltAlpha nor ltAddAlpha, the alpha channel of the image is not used and it is safe to set this property to false.
+	 * However, if this property is false, the alpha channel will be destroyed.
+	 * The following methods are not affected by this property.
 	 *
 	 * + Layer.loadImages
 	 * + Layer.loadProvinceImage
@@ -1793,13 +1793,13 @@ class Layer {
 	 * + Layer.setMaskPixel
 	 * + Layer.setProvincePixel
 	 * + Layer.piledCopy
-	 * + Layer.adjustGamma(常にアルファチャンネルは保護されます)
-	 * + Layer.doGrayScale(常にアルファチャンネルは保護されます)
+	 * + Layer.adjustGamma(Alpha channel is always protected)
+	 * + Layer.doGrayScale(Alpha channel is always protected)
 	 * + Layer.flipLR
 	 * + Layer.flipUD
 	 * + Layer.assignImages
 	 *
-	 * 以下のメソッドはこのプロパティの影響を受けます。
+	 * The following methods are affected by this property.
 	 *
 	 * + Layer.copyRect
 	 * + Layer.stretchCopy
@@ -1816,62 +1816,62 @@ class Layer {
 		 setter( value ) {}
 	}
 	/**
-	 * 画像が変更されたか
+	 * Did the image change?
 	 *
-	 * @description レイヤの画像が変更されたかどうかを表します。
-	 * 値を設定することもできます。
-	 * レイヤの画像に描画を行ったり、レイヤの画像のサイズを変更したりすると自動的に真に設定されます。
-	 * このプロパティを偽に設定しておけば、レイヤの画像が変更されると真になるので、レイヤの画像が変更されたかどうかを知ることができます。
-	 * このプロパティ自体は、レイヤの動作に影響を与えません。
+	 * @description Indicates whether the image of the layer has changed.
+	 * You can also set the value.
+	 * It is automatically set to true when you draw on the layer's image or resize the layer's image.
+	 * If you set this property to false, it will be true if the layer's image changes, so you can tell if the layer's image has changed.
+	 * This property itself does not affect the behavior of the layer.
 	 */
 	 property imageModified {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * 当たり判定のタイプ
+	 * Collision detection type
 	 *
-	 * @description マウスイベントの当たり判定のタイプを表します。
-	 * 値を設定することもできます。
-	 * htProvince を指定すると、領域画像において 0 以外の領域のみマウスイベントを受け取るようになります。
-	 * htMask を指定すると、マスク(不透明度)画像の値が、Layer.hitThreshold プロパティで指定した値以上の場合のみマウスイベントを受け取るようになります。
-	 * 受け取られなかったマウスイベントは、より奥のレイヤで処理されます。
-	 * 初期状態では htMask となっています。
+	 * @description Represents the type of mouse event collision detection.
+	 * You can also set the value.
+	 * If htProvince is specified, mouse events will be received only in non-zero areas in the area image.
+	 * If you specify htMask, you will only receive mouse events if the mask (opacity) image value is greater than or equal to the value specified by the Layer.hitThreshold property.
+	 * Mouse events that are not received are processed in a deeper layer.
+	 * The initial state is htMask.
 	 */
 	 property hitType {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * 当たり判定の敷居値
+	 * Threshold value for collision detection
 	 *
-	 * @description マウスイベントの当たり判定の式位置を表します。
-	 * 値を設定することもできます。
-	 * このプロパティは Layer.hitType プロパティが htMask の時のみ有効で、マスク(不透明度)画像の値がこのプロパティで指定した値以上の場合にマウスメッセージが受け取られます。
-	 * 0 を指定するとすべてのマウスメッセージが受け取られます。
-	 * 256 を指定するとすべてのマウスメッセージは受け取られません。
-	 * 初期状態では 16 となっています。
+	 * @description Represents the position of the mouse event collision detection formula.
+	 * You can also set the value.
+	 * This property is valid only when the Layer.hitType property is htMask, and a mouse message will be received if the mask (opacity) image value is greater than or equal to the value specified in this property.
+	 * Specify 0 to receive all mouse messages.
+	 * If you specify 256, all mouse messages will not be received.
+	 * The initial state is 16.
 	 */
 	 property hitThreshold {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * マウスカーソル
+	 * Mouse cursor
 	 *
-	 * @description レイヤのマウスカーソルを表します。
-	 * 値を設定することもできます。
-	 * マウスカーソルには、cr で始まるマウスカーソル定数 か、.cur の拡張子を持つマウスカーソルや .ani の拡張子を持つアニメーションマウスカーソルのストレージ名を指定することができます。
+	 * @description Represents a layer's mouse cursor.
+	 * You can also set the value.
+	 * The mouse cursor can be a mouse cursor constant starting with cr, or a storage name for a mouse cursor with a .cur extension or an animated mouse cursor with a .ani extension.
 	 */
 	 property cursor {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * マウスカーソル x 位置
+	 * Mouse cursor x position
 	 *
-	 * @description レイヤのマウスカーソルの x 座標値を、表示座標におけるピクセル単位で表します。値を設定することもできます。値を設定するときは、cursorX プロパティを設定しただけではマウスカーソルは移動しません。
-	 * 		続いて cursorY プロパティを設定したときにマウスカーソルが移動します。
+	 * @description Represents the x-coordinate value of the layer's mouse cursor in pixels in display coordinates. You can also set the value. When setting a value, simply setting the cursorX property does not move the mouse cursor.
+	 * The mouse cursor will then move when you set the cursorY property.
 	 * @see Layer.setCursorPos
 	 */
 	 property cursorX {
@@ -1879,12 +1879,12 @@ class Layer {
 		 setter( value ) {}
 	}
 	/**
-	 * マウスカーソル y 位置
+	 * Mouse cursor y position
 	 *
-	 * @description レイヤのマウスカーソルの y 座標値を、表示座標におけるピクセル単位で表します。
-	 * 値を設定することもできます。
-	 * 値を設定するときは、cursorX プロパティを設定しただけではマウスカーソルは移動しません。
-	 * 続いて cursorY プロパティを設定したときにマウスカーソルが移動します。
+	 * @description Represents the y coordinate value of the layer's mouse cursor in pixels in display coordinates.
+	 * You can also set the value.
+	 * When setting a value, simply setting the cursorX property does not move the mouse cursor.
+	 * The mouse cursor will then move when you set the cursorY property.
 	 * @see Layer.setCursorPos
 	 */
 	 property cursorY {
@@ -1892,12 +1892,12 @@ class Layer {
 		 setter( value ) {}
 	}
 	/**
-	 * ヒント
+	 * Tips
 	 *
-	 * @description レイヤのヒント文字列を表します。
-	 * 値を設定することもできます。
-	 * ヒント文字列はレイヤ上にマウスカーソルを少し静止させたときに、マウスカーソルの近くに表示される文字列です。
-	 * ヒントを表示させたくない場合は空文字列を指定します。
+	 * @description Represents a layer hint string.
+	 * You can also set the value.
+	 * Hint The string is the string that appears near the mouse cursor when you hover the mouse cursor over the layer a bit.
+	 * If you do not want the hint to be displayed, specify an empty string.
 	 * @see Layer.showParentHint
 	 */
 	 property hint {
@@ -1905,95 +1905,95 @@ class Layer {
 		 setter( value ) {}
 	}
 	/**
-	 * 親レイヤのヒントを引き継ぐか
+	 * Do you want to take over the hint of the parent layer?
 	 *
-	 * @description 親レイヤのヒントを引き継ぐかどうかを表します。
-	 * 値を設定することもできます。
-	 * 真の場合は、Layer.hint プロパティが空文字列の場合は、親レイヤをさかのぼり、ヒントが設定されているレイヤのヒントをそのまま引き継いで表示します。
-	 * Layer.hint プロパティが空文字列でなかった場合はそれを表示します。 
-	 * 偽の場合は、Layer.hint プロパティが空文字列でなければそれを表示し、空文字列であればヒントは表示しません。
+	 * @description Indicates whether to inherit the hint of the parent layer.
+	 * You can also set the value.
+	 * If true, if the Layer.hint property is an empty string, it will go back to the parent layer and display the hint of the layer with the hint as it is.
+	 * If the Layer.hint property is not an empty string, it will be displayed.
+	 * If false, the Layer.hint property will show it if it is not an empty string, and will not show hints if it is an empty string.
 	 */
 	 property showParentHint {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * フォーカスを受け取れるかどうか
+	 * Whether to receive focus
 	 *
-	 * @description フォーカスを受け取れるかどうかを表します。
-	 * 値を設定することもできます。
-	 * 真の場合はレイヤはフォーカスを受け取れます。
-	 * 偽の場合はレイヤはフォーカスを受け取れません。
+	 * @description Indicates whether or not the focus can be received.
+	 * You can also set the value.
+	 * If true, the layer will receive focus.
+	 * If false, the layer will not receive focus.
 	 */
 	 property focusable {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * 前方のフォーカスを受け取れるレイヤ
+	 * Layer that can receive forward focus
 	 *
-	 * @description フォーカスを受け取れるレイヤを前方検索します。
-	 * 該当するレイヤがなければ null になります。
+	 * @description Search forward for layers that can receive focus.
+	 * If there is no corresponding layer, it will be null.
 	 */
 	 property prevFocusable {
 		 getter() { return value; }
 	}
 	/**
-	 * 後方のフォーカスを受け取れるレイヤ
+	 * Layer that can receive rear focus
 	 *
-	 * @description フォーカスを受け取れるレイヤを後方検索します。
-	 * 該当するレイヤがなければ null になります。
+	 * @description Search backwards for layers that can receive focus.
+	 * If there is no corresponding layer, it will be null.
 	 */
 	 property nextFocusable {
 		 getter() { return value; }
 	}
 	/**
-	 * フォーカスチェーンに参加するか
+	 * Whether to join the focus chain
 	 *
-	 * @description フォーカスチェーンに参加するかどうかを表します。
-	 * 真を指定するとフォーカスチェーンに参加し、Layer.prevFocusable などに現れるようになったり、TAB キーなどでそのレイヤにフォーカスを移動したりできるようになります。
-	 * 偽を指定するとフォーカスチェーンには参加しませんが、フォーカスを Layer.focusメソッドなどで受け取ることはできます。
+	 * @description Indicates whether to join the focus chain.
+	 * If you specify true, it will join the focus chain and appear in Layer.prevFocusable etc., or you can move the focus to that layer with the TAB key etc.
+	 * If you specify false, it will not join the focus chain, but you can receive the focus with the Layer.focus method.
 	 */
 	 property joinFocusChain {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * フォーカスされているかどうか
+	 * Whether it is in focus
 	 *
-	 * @description フォーカスされているかどうかを表します。
-	 * 真の場合はフォーカスされています。
-	 * 偽の場合はされていません。
+	 * @description Indicates whether it is in focus.
+	 * If true, it is in focus.
+	 * If it is false, it is not.
 	 */
 	 property focused {
 		 getter() { return value; }
 	}
 	/**
-	 * 操作可能かどうか
+	 * Whether it can be operated
 	 *
-	 * @description レイヤが操作可能かどうかを表します。
-	 * 値を設定することもできます。真の場合は操作可能で、フォーカスなどを受け取ることができます。
-	 * 偽の場合は操作不能で、フォーカスなどを受け取ることはできません。
+	 * @description Indicates whether the layer can be manipulated.
+	 * You can also set the value. If true, it can be manipulated and can receive focus, etc.
+	 * If it is false, it cannot be operated and cannot receive focus.
 	 */
 	 property enabled {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * レイヤノードが操作可能かどうか
+	 * Whether the layer node can be operated
 	 *
-	 * @description レイヤノードが操作可能かどうかを表します。
-	 * 自分自身が操作不能だったり、親のレイヤの中に操作不能なレイヤがある場合は偽になります。
-	 * それ以外の場合は真になります。
+	 * @description Indicates whether the layer node can be operated.
+	 * It is false if you are inoperable or if some of the parent layers are inoperable.
+	 * Otherwise it will be true.
 	 */
 	 property nodeEnabled {
 		 getter() { return value; }
 	}
 	/**
-	 * 注視左端位置
+	 * Gaze left end position
 	 *
-	 * @description 注視左端位置を、表示座標におけるピクセル単位で表します。
-	 * 値を設定することもできます。
+	 * @description The position of the left end of the gaze is expressed in pixels in the display coordinates.
+	 * You can also set the value.
 	 * @see Layer.setAttentionPos
 	 * @see Layer.useAttention
 	 */
@@ -2002,10 +2002,10 @@ class Layer {
 		 setter( value ) {}
 	}
 	/**
-	 * 注視上端位置
+	 * Gaze upper end position
 	 *
-	 * @description 注視上端位置を、表示座標におけるピクセル単位で表します。
-	 * 値を設定することもできます。
+	 * @description The position of the upper end of the gaze is expressed in pixels in the display coordinates.
+	 * You can also set the value.
 	 * @see Layer.setAttentionPos
 	 * @see Layer.useAttention
 	 */
@@ -2014,12 +2014,12 @@ class Layer {
 		 setter( value ) {}
 	}
 	/**
-	 * 注視情報を使用するかどうか
+	 * Whether to use gaze information
 	 *
-	 * @description 注視情報を使用するかどうかを表します。
-	 * 値を設定することもできます。
-	 * 真が指定された場合は、そのレイヤの注視情報が使用されます。
-	 * 偽が指定された場合は、そのレイヤの親の注視情報が ( もしあれば ) 使用されます。
+	 * @description Indicates whether to use gaze information.
+	 * You can also set the value.
+	 * If true is specified, the gaze information for that layer is used.
+	 * If false is specified, the gaze information of the layer's parent (if any) is used.
 	 * @see Layer.setAttentionPos
 	 * @see Layer.attentionLeft
 	 * @see Layer.attentionTop
@@ -2029,26 +2029,26 @@ class Layer {
 		 setter( value ) {}
 	}
 	/**
-	 * IMEモード
+	 * IME mode
 	 *
-	 * @description IMEのモードを表します。値を設定することもできます。
-	 * レイヤにフォーカスが設定されると、IMEはここで指定したモードに切り替わります。
-	 * 設定可能な値は以下の通りです。
+	 * @description Represents the IME mode. You can also set the value.
+	 * When the layer is in focus, the IME switches to the mode specified here.
+	 * The values that can be set are as follows.
 	 *
-	 * + imDisable を指定すると、IMEは無効になります。IMEを使用した入力はできませんし、ユーザの操作でもIMEを有効にすることはできません。
-	 * + imClose を指定すると、IMEは無効になります。imDisableと異なり、ユーザの操作でIMEを有効にすることができます。
-	 * + imOpen を指定すると、IMEは有効になります。
-	 * + imDontCare を指定すると、IMEの有効/無効の状態は、前の状態を引き継ぎます。ユーザの操作によってIMEを有効にしたり無効にしたりすることができます。日本語入力においては、半角/全角文字をユーザに自由に入力させる場合の一般的なモードです。
-	 * + imSAlpha を指定すると、IMEは有効になり、半角アルファベット入力モードになります。
-	 * + imAlpha を指定すると、IMEは有効になり、全角アルファベット入力モードになります。
-	 * + imHira を指定すると、IMEは有効になり、ひらがな入力モードになります。
-	 * + imSKata を指定すると、IMEは有効になり、半角カタカナ入力モードになります。
-	 * + imKata を指定すると、IMEは有効になり、全角カタカナ入力モードになります。
-	 * + imChinese を指定すると、IMEは有効になり、2バイト中国語入力を受け付けるモードになります。日本語環境では使用できません。
-	 * + imSHanguel を指定すると、IMEは有効になり、1バイト韓国語入力を受け付けるモードになります。日本語環境では使用できません。
-	 * + imHanguel を指定すると、IMEは有効になり、2バイト韓国語入力を受け付けるモードになります。日本語環境では使用できません。
+	 * + Specifying imDisable disables the IME. IME cannot be used for input, and IME cannot be enabled by user operation.
+	 * + Specifying imClose disables the IME. Unlike imDisable, IME can be enabled by user operation.
+	 * + If you specify imOpen, IME is enabled.
+	 * + If imDontCare is specified, the enabled / disabled state of the IME inherits the previous state. You can enable or disable the IME by user interaction. In Japanese input, this is a general mode for allowing the user to freely enter half-width / full-width characters.
+	 * + If imSAlpha is specified, IME will be enabled and the half-width alphabet input mode will be set.
+	 * + If you specify imAlpha, IME is enabled and you are in full-width alphabet input mode.
+	 * + If you specify imHira, IME is enabled and you are in hiragana input mode.
+	 * + If imSKata is specified, IME will be enabled and the half-width katakana input mode will be set.
+	 * + If imKata is specified, IME will be enabled and the full-width Katakana input mode will be set.
+	 * + If imChinese is specified, IME will be enabled and the mode will accept double-byte Chinese input. It cannot be used in a Japanese environment.
+	 * + If imSHanguel is specified, the IME will be enabled and the mode will accept 1-byte Korean input. It cannot be used in a Japanese environment.
+	 * + If imHanguel is specified, the IME will be enabled and the mode will accept 2-byte Korean input. It cannot be used in a Japanese environment.
 	 *
-	 * 未指定時は imDisable になります。
+	 * If not specified, imDisable will be set.
 	 * @see Window.imeMode
 	 */
 	 property imeMode {
@@ -2056,49 +2056,49 @@ class Layer {
 		 setter( value ) {}
 	}
 	/**
-	 * onPaint イベントを呼ぶかどうか
+	 * Whether to call the onPaint event
 	 *
-	 * @description Layer.onPaint イベントを呼ぶかどうかを表します。
-	 * 値を設定することもできます。
-	 * 真を指定すると、次回の画面への描画の直前に onPaint イベントを呼ぶようになります。
-	 * onPaint イベントが処理し終わるとこのプロパティは自動的に偽に戻されます。
-	 * 偽が指定されている状態では onPaint イベントは発生しません。
-	 * Layer.update メソッドはこのプロパティを真に設定します。
+	 * @description Indicates whether to call the Layer.onPaint event.
+	 * You can also set the value.
+	 * If true is specified, the onPaint event will be called immediately before drawing on the next screen.
+	 * This property is automatically set back to false when the onPaint event has finished processing.
+	 * The onPaint event does not occur when false is specified.
+	 * The Layer.update method sets this property to true.
 	 */
 	 property callOnPaint {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * フォント
+	 * font
 	 *
-	 * @description Layer.drawText メソッドで描画に使用するフォントを表す Font クラスのオブジェクトです。
+	 * @description An object of the Font class that represents the font used for drawing with the Layer.drawText method.
 	 */
 	 property font {
 		 getter() { return value; }
 	}
 	/**
-	 * レイヤ名
+	 * Layer name
 	 *
-	 * @description レイヤ名を表します。
-	 * 値を設定することもできます。
-	 * このプロパティで設定した内容は、Layerクラスの動作には影響しません。
+	 * @description Represents a layer name.
+	 * You can also set the value.
+	 * The contents set in this property do not affect the operation of the Layer class.
 	 */
 	 property name {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * メイン画像バッファポインタ
+	 * Main image buffer pointer
 	 *
-	 * @description メイン画像 ( 色とマスク(不透明度)の情報を含む 32bpp のビットマップ ) の画像バッファ左上隅へのポインタを表します。
-	 * このプロパティは、プラグインなどのために画像バッファへの直接のアクセスの手段を提供するためにあります。
-	 * 整数型で返されますが、プラグインなどでは適切な型 ( const unsigned long * 等 ) にキャストして使ってください。
-	 * このプロパティで得られたポインタには値を書き込まないでください。
-	 * Layer.mainImageBufferForWrite で得られたポインタならば書き込むことができます。
-	 * レイヤに画像が割り当てられていない場合は NULL (0) が返ります。
-	 * 画像のサイズは Layer.imageWidth と Layer.imageHeight プロパティが表しています。
-	 * ポインタの計算方法は Layer.mainImageBufferPitch を参照してください。
+	 * @description Represents a pointer to the upper left corner of the image buffer for the main image (a 32bpp bitmap containing color and mask (opacity) information).
+	 * This property is there to provide a means of direct access to the image buffer for plugins etc.
+	 * It is returned as an integer type, but for plugins etc., cast it to an appropriate type (const unsigned long * etc.) and use it.
+	 * Do not write a value to the pointer obtained by this property.
+	 * Any pointer obtained by Layer.mainImageBufferForWrite can be written.
+	 * Returns NULL (0) if no image has been assigned to the layer.
+	 * The size of the image is represented by the Layer.imageWidth and Layer.imageHeight properties.
+	 * See Layer.mainImageBufferPitch for how to calculate the pointer.
 	 * @see Layer.mainImageBufferForWrite
 	 * @see Layer.mainImageBufferPitch
 	 */
@@ -2106,16 +2106,16 @@ class Layer {
 		 getter() { return value; }
 	}
 	/**
-	 * メイン画像バッファポインタ(書き込み用)
+	 * Main image buffer pointer (for writing)
 	 *
-	 * @description メイン画像 ( 色とマスク(不透明度)の情報を含む 32bpp のビットマップ ) の画像バッファ左上隅へのポインタを表します。
-	 * このプロパティは、プラグインなどのために画像バッファへの直接のアクセスの手段を提供するためにあります。
-	 * 整数型で返されますが、プラグインなどでは適切な型 ( unsigned long * 等 ) にキャストして使ってください。
-	 * このプロパティで得られたポインタには Layer.mainImageBuffer と異なり、値を書き込むことができます。
-	 * 吉里吉里内部では全く同じ画像は複数のレイヤ間等で共有しますが、このプロパティを参照するとその共有状態を解除します。
-	 * レイヤに画像が割り当てられていない場合は NULL (0) が返ります。
-	 * 画像のサイズは Layer.imageWidth と Layer.imageHeight プロパティが表しています。
-	 * ポインタの計算方法は Layer.mainImageBufferPitch を参照してください。
+	 * @description Represents a pointer to the upper left corner of the image buffer for the main image (a 32bpp bitmap containing color and mask (opacity) information).
+	 * This property is there to provide a means of direct access to the image buffer for plugins etc.
+	 * It is returned as an integer type, but for plugins etc., cast it to an appropriate type (unsigned long * etc.) and use it.
+	 * Unlike Layer.mainImageBuffer, you can write a value to the pointer obtained by this property.
+	 * Inside Kirikiri, the exact same image is shared between multiple layers, etc., but if you refer to this property, the shared state will be canceled.
+	 * Returns NULL (0) if no image has been assigned to the layer.
+	 * The size of the image is represented by the Layer.imageWidth and Layer.imageHeight properties.
+	 * See Layer.mainImageBufferPitch for how to calculate the pointer.
 	 * @see Layer.mainImageBuffer
 	 * @see Layer.mainImageBufferPitch
 	 */
@@ -2123,15 +2123,15 @@ class Layer {
 		 getter() { return value; }
 	}
 	/**
-	 * メイン画像バッファピッチ
+	 * Main image buffer pitch
 	 *
-	 * @description メイン画像 ( 色とマスク(不透明度)の情報を含む 32bpp のビットマップ ) の画像バッファのピッチ( 一つ下のスキャンラインまでのバイト数 ) を表します。
-	 * このプロパティは、プラグインなどのために画像バッファへの直接のアクセスの手段を提供するためにあります。
-	 * tjs_uint32 が 32bit の整数型、tjs_uint8 が 8bit (1byte) の整数型として、画像位置 (x, y) へのポインタは C 言語で書くと以下のように計算することができます。
-	 * ( (tjs_uint32*)( (tjs_uint8*)mainImageBuffer + y*mainImageBufferPitch )) + x
-	 * このプロパティは、次のスキャンラインまでのピクセル数ではなく、バイト数を返すことに注意してください。
-	 * この数値は画像横幅ぴったりに必要なバイト数よりも若干大きい場合があります。
-	 * このプロパティは値が負になり得ますので注意してください。
+	 * @description Represents the pitch (in bytes down to the next scanline) of the image buffer of the main image (a 32-bpp bitmap containing color and mask (opacity) information).
+	 * This property is there to provide a means of direct access to the image buffer for plugins etc.
+	 * Assuming that tjs_uint32 is a 32-bit integer type and tjs_uint8 is an 8-bit (1byte) integer type, the pointer to the image position (x, y) can be calculated as follows when written in C language.
+	 * ((tjs_uint32 *) ((tjs_uint8 *) mainImageBuffer + y * mainImageBufferPitch)) + x
+	 * Note that this property returns the number of bytes, not the number of pixels until the next scanline.
+	 * This number may be slightly larger than the exact number of bytes required for the width of the image.
+	 * Note that this property can have a negative value.
 	 * @see Layer.mainImageBuffer
 	 * @see Layer.mainImageBufferForWrite
 	 */
@@ -2139,17 +2139,17 @@ class Layer {
 		 getter() { return value; }
 	}
 	/**
-	 * 領域画像バッファポインタ
+	 * Area image buffer pointer
 	 *
-	 * @description 領域画像 ( 領域の情報を含む 8bpp のビットマップ ) の画像バッファ左上隅へのポインタを表します。
-	 * このプロパティは、プラグインなどのために画像バッファへの直接のアクセスの手段を提供するためにあります。
-	 * 整数型で返されますが、プラグインなどでは適切な型 ( const unsigned char * 等 ) にキャストして使ってください。
-	 * このプロパティで得られたポインタには値を書き込まないでください。
-	 * Layer.provinceImageBufferForWrite で得られたポインタならば書き込むことができます。
-	 * 画像が割り当てられていない場合は NULL (0) が返ります。
-	 * 画像が割り当てられていない場合は全域が領域番号 0 であると見なす必要があります。
-	 * 画像のサイズは Layer.imageWidth と Layer.imageHeight プロパティが表しています。
-	 * ポインタの計算方法は Layer.provinceImageBufferPitch を参照してください。
+	 * @description Represents a pointer to the upper left corner of the image buffer for a region image (an 8bpp bitmap containing region information).
+	 * This property is there to provide a means of direct access to the image buffer for plugins etc.
+	 * It is returned as an integer type, but for plugins etc., cast it to an appropriate type (const unsigned char * etc.) and use it.
+	 * Do not write a value to the pointer obtained by this property.
+	 * Any pointer obtained by Layer.provinceImageBufferForWrite can be written.
+	 * Returns NULL (0) if no image has been assigned.
+	 * If no image is assigned, the entire area should be considered area number 0.
+	 * The size of the image is represented by the Layer.imageWidth and Layer.imageHeight properties.
+	 * See Layer.provinceImageBufferPitch for how to calculate the pointer.
 	 * @see Layer.provinceImageBufferForWrite
 	 * @see Layer.provinceImageBufferPitch
 	 */
@@ -2157,16 +2157,16 @@ class Layer {
 		 getter() { return value; }
 	}
 	/**
-	 * 領域画像バッファポインタ(書き込み用)
+	 * Area image buffer pointer (for writing)
 	 *
-	 * @description 領域画像 ( 領域の情報を含む 8bpp のビットマップ ) の画像バッファ左上隅へのポインタを表します。
-	 * このプロパティは、プラグインなどのために画像バッファへの直接のアクセスの手段を提供するためにあります。
-	 * 整数型で返されますが、プラグインなどでは適切な型 ( unsigned char * 等 ) にキャストして使ってください。
-	 * このプロパティで得られたポインタには Layer.provinceImageBuffer と異なり、値を書き込むことができます。
-	 * 吉里吉里内部では全く同じ画像は複数のレイヤ間等で共有しますが、このプロパティを参照するとその共有状態を解除します。
-	 * レイヤに画像が割り当てられていない場合は自動的にこのプロパティを参照した時点で割り当てられ、全域が領域番号 0 で初期化されます。
-	 * 画像のサイズは Layer.imageWidth と Layer.imageHeight プロパティが表しています。
-	 * ポインタの計算方法は Layer.provinceImageBufferPitch を参照してください。
+	 * @description Represents a pointer to the upper left corner of the image buffer for a region image (an 8bpp bitmap containing region information).
+	 * This property is there to provide a means of direct access to the image buffer for plugins etc.
+	 * It is returned as an integer type, but for plugins etc., cast it to an appropriate type (unsigned char * etc.) and use it.
+	 * Unlike Layer.provinceImageBuffer, you can write a value to the pointer obtained by this property.
+	 * Inside Kirikiri, the exact same image is shared between multiple layers, etc., but if you refer to this property, the shared state will be canceled.
+	 * If no image is assigned to the layer, it will be automatically assigned when this property is referenced, and the entire area will be initialized with area number 0.
+	 * The size of the image is represented by the Layer.imageWidth and Layer.imageHeight properties.
+	 * See Layer.provinceImageBufferPitch for how to calculate the pointer.
 	 * @see Layer.provinceImageBuffer
 	 * @see Layer.provinceImageBufferPitch
 	 */
@@ -2174,14 +2174,14 @@ class Layer {
 		 getter() { return value; }
 	}
 	/**
-	 * 領域画像バッファピッチ
+	 * Area image buffer pitch
 	 *
-	 * @description 領域画像 ( 領域の情報を含む 8bpp のビットマップ ) の画像バッファのピッチ( 一つ下のスキャンラインまでのバイト数 )を表します。
-	 * このプロパティは、プラグインなどのために画像バッファへの直接のアクセスの手段を提供するためにあります。
-	 * tjs_uint8 が 8bit (1byte) の整数型として、画像位置 (x, y) へのポインタは C 言語で書くと以下のように計算することができます。
-	 * (tjs_uint8*)provinceImageBuffer + y*provinceImageBufferPitch + x
-	 * このプロパティの数値は画像横幅ぴったりに必要なバイト数よりも若干大きい場合があります。
-	 * このプロパティは値が負になり得ますので注意してください。
+	 * @description Represents the pitch (number of bytes down to the next scanline) of the image buffer of a region image (an 8bpp bitmap containing region information).
+	 * This property is there to provide a means of direct access to the image buffer for plugins etc.
+	 * As tjs_uint8 is an 8-bit (1byte) integer type, the pointer to the image position (x, y) can be calculated as follows when written in C language.
+	 * (tjs_uint8 *) provideImageBuffer + y * proveinceImageBufferPitch + x
+	 * The number for this property may be slightly larger than the exact number of bytes required for the width of the image.
+	 * Note that this property can have a negative value.
 	 * @see Layer.provinceImageBuffer
 	 * @see Layer.provinceImageBufferForWrite
 	 */
@@ -2189,11 +2189,11 @@ class Layer {
 		 getter() { return value; }
 	}
 	/**
-	 * ヒント表示判定有無
+	 * Hint display judgment presence / absence
 	 *
-	 * @description ヒント表示判定有無を表します。
-	 * trueを設定するとこのレイヤではヒント判定が行われません。
-	 * falseを設定すると判定が行われます。
+	 * @description Hint Indicates the presence or absence of display judgment.
+	 * If set to true, no hint judgment will be performed on this layer.
+	 * If false is set, the judgment will be made.
 	 * @see Window.onHintChanged
 	 */
 	 property ignoreHintSensing {

@@ -1,33 +1,33 @@
 /**
- * @description Plugins クラスは プラグインに関する管理を行うクラスです。
- * このクラスからオブジェクトを作成することはできません。
+ * @description The Plugins class is a class that manages plugins.
+ * You cannot create objects from this class.
  */
 class Plugins {
 	/**
-	 * プラグインの接続
+	 * Plugin connection
 	 *
-	 * @param name 接続するプラグインを指定します。
-	 * @description 指定されたプラグインを吉里吉里本体に接続します ( 読み込みます )。
+	 * @param name Specify the plug-in to connect.
+	 * @description Connects (loads) the specified plug-in to Kirikiri itself.
 	 */
 	function link( name);
 
 	/**
-	 * プラグインの切り離し
+	 * Detaching the plugin
 	 *
-	 * @param name 切り離すプラグインを指定します。
-	 * @return 切り離しに成功すれば真、失敗すれば偽
-	 * @description 指定されたプラグインを切り離します。
-	 * プラグインの中には、解放に応じない物もあります ( オブジェクトが使用中の時など )。
-	 * 解放に応じず、失敗すれば偽が返ります。
+	 * @param name Specify the plug-in to disconnect.
+	 * @return True if the disconnection succeeds, false if it fails
+	 * @description Detach the specified plug-in.
+	 * Some plugins do not respond to release (for example, when the object is in use).
+	 * If it fails, it will return false.
 	 */
 	function unlink( name);
 
 	/**
-	 * リストの取得
+	 * Get list
 	 *
-	 * @return リンクされているプラグイン名が格納された配列
-	 * @description プラグインのリストを取得します。
-	 * 返される配列は、リンクした順番でプラグイン名が列挙された物です。
+	 * @return An array containing the linked plugin names
+	 * @description Get a list of plugins.
+	 * The returned array is a list of plugin names in the order they are linked.
 	 */
 	function getList( );
 

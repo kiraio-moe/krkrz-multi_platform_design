@@ -1,144 +1,144 @@
 /*
- * @description Dictionary クラスは辞書配列を扱うクラスです。
+ * @description The Dictionary class is a class that handles dictionary arrays.
  *
- * 辞書配列は連想配列とも呼ばれ、名前と、それに結びつけられた値を一つのペアとして、それを複数保持するオブジェクトです。
- * 配列と同じように [ ] (間接参照) 演算子でアクセスしますが、添え字の代わりに文字列を使い、それが名前となります。
- * 名前が識別子として有効なものであれば、 . (直接参照) 演算子も使うことができます。
- * また、存在しない名前を参照すると void になります。
- * 要素を削除するには delete 演算子を使います。
+ * A dictionary array, also called an associative array, is an object that holds multiple names and their associated values as a pair.
+ * It is accessed with the [] (indirect reference) operator like an array, but with a string instead of a subscript, which is the name.
+ * You can also use the. (Direct reference) operator if the name is valid as an identifier.
+ * Also, referencing a non-existent name will result in void.
+ * Use the delete operator to delete an element.
  *
- * # 式中辞書配列
- * %[ ] を使って、式中に Dictionary クラスのオブジェクトをその場で記述することができます。
- * 要素名 => 要素の値、をカンマで区切り、初期要素となる式を列挙します。たとえば、
+ * # Dictionary array in formula
+ * You can use %[] to write an object of the Dictionary class in an expression on the fly.
+ * Separate the element name => element value with a comma and enumerate the expressions that will be the initial elements. For example
  *
  * ```
- * var dic = %["a" => 1, "b" => 2, "c" => 3];
+ * var dic =% ["a" => 1, "b" => 2, "c" => 3];
  * ```
  *
- *と記述すれば、dic に、要素名と要素の組がそれぞれ "a":1、 "b":2、 "c":3 となる Dictionary クラスのオブジェクトへの参照が代入されます。
- * 内部的には、=> はカンマと全く同じものですが、読みやすさを考え、=> を使用できるようになっています ( perl と同じです )。
+ * If you write, dic is assigned a reference to an object of the Dictionary class whose element name and element pair are "a": 1, "b": 2, and "c": 3, respectively.
+ * Internally, => is exactly the same as a comma, but for readability, you can use => (same as perl).
  *
- * # Dictionary クラスのメソッドへのアクセス
+ * # Access to methods of Dictionary class
  *
- * Dictionary クラスのオブジェクトは、作成された状態ではメンバを何一つ持っていません。
- * たとえば、assign メソッドを使おうと思って、Dictionary クラスのオブジェクト dict に対してdict.assign(src) のように記述しても、dict が assign というメソッドを持っていないためにエラーになります。
- * したがって、incontextof 演算子を使って、Dictionary クラスに直接属しているメソッドを、対象となる Dictionary クラスのオブジェクトをコンテキストとして実行させます。
+ * Objects of the Dictionary class have no members when they are created.
+ * For example, if you try to use the assign method and write dict.assign (src) for the object dict of the Dictionary class, you will get an error because dict does not have a method called assign.
+ * Therefore, use the incontextof operator to execute a method that belongs directly to the Dictionary class with the object of the Dictionary class of interest as the context.
  *
- * 例:
+ * Example:
  * ```
  * var a = %[];
  * var b = %[];
- * (Dictionary.assign incontextof a)(b); // b を a にコピー
- * (Dictionary.clear incontextof b)(); // b の内容をクリア
+ * (Dictionary.assign incontextof a) (b); // Copy b to a
+ * (Dictionary.clear incontextof b) (); // Clear the contents of b
  * ```
  *
  */
 class Dictionary {
 	/**
-	 * ファイルへ構造化されたデータの出力を行います
-	 * @description 要素の状態を復元可能な状態でファイルに出力します。
-	 * 各要素には文字列、実数、オクテット列、整数を含めることができます。
-	 * また、要素にオブジェクトがあった場合は、それが Array クラスあるいは Dictionary クラスのオブジェクトである場合に限り、そのオブジェクトの中身もファイルに出力します。
-	 * それ以外の要素は void が出力されます。
-	 * @param storage 書き出すファイル名
-	 * @param mode ファイルを書き込む際のモード文字列を指定します。
+	 * Outputs structured data to a file
+	 * @description Outputs the state of the element to a file in a recoverable state.
+	 * Each element can contain strings, real numbers, octet columns, and integers.
+	 * Also, if the element has an object, the contents of that object are also output to a file only if it is an object of the Array class or Dictionary class.
+	 * For other elements, void is output.
+	 * @param storage File name to export
+	 * @param mode Specifies the mode string when writing the file.
 	 *
-	 * + "c" を指定するとファイルに簡単な暗号化がかかります ( そのまま load メソッドで読み込むことができます ) 。
-	 * + "z" を指定するとファイルを圧縮して保存できます ("c" と併用は出来ません; これもそのまま load メソッドで読み込むことができます)。
-	 * + "o" に続いてオフセットを10進で指定するとファイルのそのバイト位置からの書き込みになります。
-	 * + "b"を指定するとバイナリ形式で保存されます(他のモード指定と併用は出来ません; これもそのまま load メソッドで読み込むことができます)。
+	 * + Specifying "c" gives the file a simple encryption (you can just load it with the load method).
+	 * + You can specify "z" to compress the file and save it (it cannot be used with "c"; it can also be loaded by the load method as it is).
+	 * + If you specify the offset in decimal after "o", it will be written from that byte position in the file.
+	 * + If "b" is specified, it will be saved in binary format (cannot be used with other mode specifications; this can also be loaded by the load method as it is).
 	 *
-	 * @return 出力した Dictionary クラスのオブジェクトを返します。
+	 * @return Returns the output Dictionary class object.
 	 * @see Array.saveStruct
 	 */
 	function saveStruct( storage:string, mode:string=null ):Dictionary;
 
 	/**
-	 * ファイルから構造化されたデータの入力を行います
-	 * @description 構造化されたデータをファイルから辞書配列、もしくは配列として読み込みます。
-	 * テキスト形式、バイナリ形式の両方で読み込めます。
-	 * クラスメソッドです。
-	 * @param storage 読み込むファイル名
-	 * @param mode ファイルを読み込む際のモード文字列を指定します。
+	 * Enter structured data from a file
+	 * @description Reads structured data from a file as a dictionary array or array.
+	 * It can be read in both text format and binary format.
+	 * Class method.
+	 * @param storage File name to read
+	 * @param mode Specifies the mode string when reading the file.
 	 *
-	 * + "o" に続いてオフセットを10進で指定するとファイルのそのバイト位置からの書き込みになります。
+	 * + If you specify the offset in decimal after "o", it will be written from that byte position in the file.
 	 *
-	 * @return 読み込んだ Dictionary か Array クラスのオブジェクトを返します。
+	 * @return Returns the loaded Dictionary or Array class object.
 	 * @see Array.loadStruct
 	 */
 	function loadStruct( storage:string, mode:string=null ):Dictionary;
 
 	/**
-	 * 辞書配列をコピーします
-	 * @param src コピー元辞書配列
-	 * @param clear 内容をクリアするか
-	 * @description 引数で指定された他の辞書配列の内容を、そっくりコピーします。
-	 * clar が偽の場合は、コピー先 (メソッドを実行するオブジェクト) の内容をクリアせず、コピー元辞書配列の内容を上書きします。
-	 * コピー元辞書配列と同じ名前のメンバがコピー先辞書配列にあった場合は、コピー元の内容でコピー先が上書きされます。
-	 * 配列 (Arrayクラスのオブジェクト) をコピー元配列に指定した場合は、その配列には、この辞書配列のメンバとなるべき要素が名前、値の順に並んでいるとみなし、その配列の内容をこの辞書配列にコピーします。
+	 * Copy the dictionary array
+	 * @param src Copy source dictionary array
+	 * @param clear Whether to clear the contents
+	 * @description Copies the entire contents of the other dictionary array specified by the argument.
+	 * If clar is false, it does not clear the contents of the destination (the object that executes the method) and overwrites the contents of the source dictionary array.
+	 * If a member with the same name as the copy source dictionary array exists in the copy destination dictionary array, the copy destination will be overwritten with the contents of the copy source.
+	 * When an array (an object of the Array class) is specified as the copy source array, it is assumed that the elements that should be members of this array are arranged in the order of name and value, and the contents of the array are regarded as this dictionary. Copy to the array.
 	 */
 	function assign( src:Dictionary, clear:bool=true );
 
 	/**
-	 * 辞書配列をコピーします
-	 * @param src コピー元辞書配列
-	 * @description 引数で指定された他の辞書配列の内容を、そっくりコピーします。
-	 * assign メソッドと違い、メンバに配列あるいは辞書配列があった場合は、再帰的にその内容もコピーします ( assign メソッドの場合は参照がコピーされるだけです )。
+	 * Copy the dictionary array
+	 * @param src Copy source dictionary array
+	 * @description Copies the entire contents of the other dictionary array specified by the argument.
+	 * Unlike the assign method, if a member has an array or dictionary array, it will also recursively copy its contents (in the case of the assign method, it just copies the reference).
 	 */
 	function assignStruct( src:Dictionary );
 
 	/**
-	 * 辞書配列の内容をすべて消去します
-	 * @description 辞書配列の内容をすべて消去します。
+	 * Erases all the contents of the dictionary array
+	 * @description Erases all the contents of the dictionary array.
 	 */
 	function clear();
 
 	/**
-	 * オブジェクトのメンバの数を返します。
-	 * @description オブジェクトのメンバの数を返します。対象は辞書配列以外でも機能します。
-	 * @param target メンバ数をカウントするオブジェクト
-	 * @return メンバの数
+	 * Returns the number of members of the object.
+	 * @description Returns the number of members of the object. The target works for anything other than dictionary arrays.
+	 * @param target An object that counts the number of members
+	 * @return Number of members
 	 */
 	function getCount( target:Dictionary ):int;
 
 	/**
-	 * オブジェクトのキーの配列を返します。
-	 * @description オブジェクトのキーの配列を返します。対象は辞書配列以外でも機能します。
-	 * 返された配列の順序はArray.assginと同じでソートはされていません。
-	 * @param target メンバ数をカウントするオブジェクト
-	 * @return キーの配列
+	 * Returns an array of objects' keys.
+	 * @description Returns an array of objects' keys. The target works for anything other than dictionary arrays.
+	 * The order of the returned arrays is the same as Array.assgin and is not sorted.
+	 * @param target An object that counts the number of members
+	 * @return Array of keys
 	 */
 	function keys( target:Dictionary ):Array;
 
 	/**
-	 * オブジェクトの値の配列を返します。
-	 * @description オブジェクトの値の配列を返します。対象は辞書配列以外でも機能します。
-	 * @param target メンバ数をカウントするオブジェクト
-	 * @return 値の配列
+	 * Returns an array of object values.
+	 * @description Returns an array of object values. The target works for anything other than dictionary arrays.
+	 * @param target An object that counts the number of members
+	 * @return Array of values
 	 */
 	function values( target:Dictionary ):Array;
 
 	/**
-	 * 辞書配列に指定された key が存在するか判定します。
-	 * @description 辞書に指定されたkey存在する場合はtrue、しない場合はfalseを返します。
-	 * コンテキストがある場合は target を省略できます。
-	 * in 演算子でも判定可能です。
-	 * @param target 存在を確認する辞書配列
-	 * @param key 存在を確認するキー
-	 * @return キーの有無
+	 * Determines if the specified key exists in the dictionary array.
+	 * @description Returns true if the key specified in the dictionary exists, false otherwise.
+	 * You can omit target if you have context.
+	 * It can also be determined by the in operator.
+	 * @param target Dictionary array to confirm existence
+	 * @param key Key to confirm existence
+	 * @return With or without key
 	 */
 	function contains( target:Dictionary, key:string ):bool;
 
 	/**
-	 * 引数の関数を、引数の辞書配列の各要素に対して実行します。
-	 * @description 辞書配列の各要素に対して1回ずつ指定された関数を呼び出します。
-	 * 無名関数などコンテキストが null の場合は辞書配列のコンテキストで呼び出されます。
-	 * 関数が値を返すと処理が中断され、その値をこの関数の返り値にします。
-	 * 関数を文字列で呼び出した時は値を返しても中断せず、全配列要素のメソッドが呼び出されます。
-	 * @param target 辞書配列
-	 * @param func 文字列の場合は配列要素のそのメソッドを、関数の場合は function( value, key, args* ) の形で呼び出されます。
-	 * @param args 呼び出す関数に渡す引数を任意の数指定します。なくても構いません。
-	 * @return 呼び出した関数が返した値
+	 * Execute the argument function for each element of the argument dictionary array.
+	 * @description Calls the specified function once for each element of the dictionary array.
+	 * If the context is null, such as an anonymous function, it will be called in the context of a dictionary array.
+	 * If the function returns a value, processing is interrupted and that value is used as the return value of this function.
+	 * When the function is called as a string, the method of all array elements is called without interruption even if the value is returned.
+	 * @param target Dictionary array
+	 * @param func In the case of a string, that method of the array element is called, and in the case of a function, it is called in the form of function (value, key, args *).
+	 * @param args Specify any number of arguments to pass to the function to call. It does not have to be.
+	 * @return The value returned by the calling function
 	 */
 	function forEach( target:Dictionary, func, args ):variant;
 };

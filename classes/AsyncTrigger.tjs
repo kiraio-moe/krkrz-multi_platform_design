@@ -1,64 +1,64 @@
 /**
- * @description AsyncTrigger クラスは、いったん吉里吉里に制御が戻った直後のイベント配信のタイミングにイベントを発生させるためのクラスです。
- * この機能を非同期トリガ ( asynchronous trigger ) と呼びます。
- * 吉里吉里のようにイベント駆動型のプログラミングモデルをとるスクリプトにおいて、イベントハンドラ内では実行できないような処理 ( たとえばイベントの発生元のオブジェクトをそのイベントハンドラ内で無効化しようとするなど ) を、そのイベントハンドラ外で行いたい時に便利です。
+ * @description The AsyncTrigger class is a class for generating an event at the timing of event distribution immediately after control returns to Kirikiri.
+ * This feature is called an asynchronous trigger.
+ * In a script that takes an event-driven programming model like Kirikiri, processing that cannot be executed in the event handler (for example, trying to invalidate the object that originated the event in the event handler) is performed for that event. This is convenient when you want to do it outside the handler.
  */
 class AsyncTrigger {
 	/**
-	 * AsyncTriger オブジェクトの構築
+	 * Building an AsyncTrigger object
 	 *
-	 * @param owner イベントの発生先を指定します。
-	 * @param actionname owner で指定したイベントの発生先オブジェクトで、イベントを受け取るメソッド名を指定します。
-	 * 空文字列を指定すると owner はメソッドとみなされ、イベントの発生ごとに owner が直接呼ばれます。
-	 * @description AsyncTrigger クラスのオブジェクトを構築します。
+	 * @param owner Specify where the event will occur.
+	 * @param actionname Specifies the method name that receives the event in the event destination object specified by owner.
+	 * If you specify an empty string, the owner is considered a method and the owner is called directly each time an event occurs.
+	 * @description Build an object of class AsyncTrigger.
 	 */
 	function AsyncTrigger( owner, actionname="action");
 
 	/**
-	 * 発砲するとき
+	 * When firing
 	 *
-	 * @description AsyncTrigger.trigger メソッドでトリガを引いた後に発生します。
+	 * @description Occurs after pulling a trigger with the AsyncTrigger.trigger method.
 	 */
 	event onFire( );
 
 	/**
-	 * トリガを引く
+	 * Pull the trigger
 	 *
-	 * @description イベントを発生させます。
-	 * このメソッドを呼んだ後、吉里吉里本体に制御が戻り、吉里吉里本体がたまった非同期イベントを配信する段階になると AsyncTrigger.onFire イベントが発生します。
+	 * @description Raise an event.
+	 * After calling this method, control returns to Kirikiri's body, and when it's time to deliver the accumulated asynchronous events, he fires the AsyncTrigger.onFire event.
 	 */
 	function trigger( );
 
 	/**
-	 * トリガのキャンセル
+	 * Trigger cancellation
 	 *
-	 * @description AsyncTrigger.trigger メソッドで引いたトリガをキャンセルします。発砲前であればいつでもキャンセルできます。
+	 * @description Cancels the trigger pulled by the AsyncTrigger.trigger method. You can cancel at any time before firing.
 	 */
 	function cancel( );
 
 	/**
-	 * イベントをキャッシュするかどうか
+	 * Whether to cache events
 	 *
-	 * @description イベントをキャッシュするかどうかを表します。
-	 * 値を設定することもできます。
-	 * 真を指定すると、発砲までに何度 AsyncTrigger.trigger メソッドを呼んでも発砲は１回だけとなります。
-	 * 偽を指定すると、発砲までに呼んだ回数分、発砲されます。
+	 * @description Indicates whether to cache the event.
+	 * You can also set the value.
+	 * If you specify true, no matter how many times you call the AsyncTrigger.trigger method before firing, it will fire only once.
+	 * If you specify false, it will be fired as many times as you called before firing.
 	 */
 	 property cached {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * モード
+	 * mode
 	 *
-	 * @description 動作のモードを表します。
-	 * 値を設定することもできます。
-	 * 以下の値のいずれかを指定します。
-	 * atmNormal    :  通常のイベント配信の段階で発砲されます。
-	 * atmExclusive :  他の非同期イベントよりも優先されて発砲されます
-	 * atmAtIdle    :  アイドル状態 ( 他に配信するイベントが無くなったとき ) に発砲されます。
-	 * 同時にトリガを引いたときに発砲される順序は atmExclusive, atmNormal, atmIdle の順になります。
-	 * 同じモードのトリガが複数引かれている場合は、トリガが引かれた順に発砲します。
+	 * @description Indicates the mode of operation.
+	 * You can also set the value.
+	 * Specify one of the following values.
+	 * atmNormal: Fired during normal event delivery.
+	 * atmExclusive: Fired in preference to other asynchronous events
+	 * atmAtIdle: Fired when idle (when there are no more events to deliver).
+	 * When the trigger is pulled at the same time, the order of firing is atmExclusive, atmNormal, atmIdle.
+	 * If multiple triggers in the same mode are pulled, they will fire in the order in which the triggers are pulled.
 	 * @see Timer.mode
 	 */
 	 property mode {

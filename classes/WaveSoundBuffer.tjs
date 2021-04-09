@@ -1,279 +1,279 @@
 /**
- * @description WaveSoundBuffer クラスは、PCMの再生を管理するクラスです。
- * WaveSoundBuffer クラスでは、ループチューナ で作成した .sli ファイルを読み込み、処理することができます。
- * 詳しくはループチューナの説明をご覧ください。
+ * @description The WaveSoundBuffer class is a class that manages PCM playback.
+ * The WaveSoundBuffer class can read and process .sli files created with the Loop Tuner.
+ * See the loop tuner description for details.
  */
 class WaveSoundBuffer {
 	/**
-	 * WaveSoundBuffer オブジェクトの構築
+	 * Building a WaveSoundBuffer object
 	 *
-	 * @param owner イベントの発生先を指定します。
-	 * @description WaveSoundBuffer クラスのオブジェクトを構築します。
-	 * イベントが発生すると owner で指定したオブジェクトの action メソッドを呼び出します。
-	 * owner に null を指定すると action メソッドは呼ばれません。
-	 * 通常は Window クラスのオブジェクトを owner に指定します。
+	 * @param owner Specify where the event will occur.
+	 * @description Build an object of the WaveSoundBuffer class.
+	 * When the event occurs, it calls the action method of the object specified by owner.
+	 * If you specify null for owner, the action method will not be called.
+	 * Normally, you specify an object of the Window class as owner.
 	 */
 	function WaveSoundBuffer( owner);
 
 	/**
-	 * ステータスが変更された
+	 * Status changed
 	 *
-	 * @param status 新しいステータスです。WaveSoundBuffer.status プロパティを参照してください。
-	 * @description 再生のステータス ( 状態 ) が変わった時に発生します。
+	 * @param status New status. See the WaveSoundBuffer.status property.
+	 * @description Occurs when the playback status changes.
 	 */
 	event onStatusChanged( status);
 
 	/**
-	 * ラベルを通過した
+	 * Passed the label
 	 *
-	 * @param name 通過したラベル名です。
-	 * @description 再生位置がラベルを通過した際に発生します。
+	 * @param name The name of the label passed.
+	 * @description Occurs when the playback position passes the label.
 	 */
 	event onLabel( name);
 
 	/**
-	 * フェードが終了した
+	 * The fade is over
 	 *
-	 * @description WaveSoundBuffer.fade メソッドで開始したフェードが終了したときに発生します。
+	 * @description Occurs when the fade started by the WaveSoundBuffer.fade method ends.
 	 */
 	event onFadeCompleted( );
 
 	/**
-	 * メディアを開く
+	 * Open media
 	 *
-	 * @param storage 再生したいストレージを指定します。
-	 * @description 指定されたメディアを開きます。
-	 * このメソッドは再生を開始しません。
-	 * 指定されたストレージ名に .sli を付加したファイル名があれば、サウンドループ情報として読み込みます。
+	 * @param storage Specify the storage you want to play.
+	 * @description Opens the specified media.
+	 * This method does not start playback.
+	 * If there is a file name with .sli added to the specified storage name, it will be read as sound loop information.
 	 */
 	function open( storage);
 
 	/**
-	 * メディアを再生する
+	 * Play media
 	 *
-	 * @description メディアの再生を開始します。
+	 * @description Start playing the media.
 	 */
 	function play( );
 
 	/**
-	 * メディアを停止する
+	 * Stop media
 	 *
-	 * @description メディアを停止します。
+	 * @description Stop the media.
 	 */
 	function stop( );
 
 	/**
-	 * フェードを開始する
+	 * Start fading
 	 *
-	 * @param to 到達させる音量を指定します。
-	 * 音量の指定については WaveSoundBuffer.volume プロパティを参照してください。
-	 * @param time フェードにかける時間を ms 単位で指定します。
-	 * @param delay フェード開始までの待ち時間を ms 単位で指定します。
-	 * @description フェード ( 連続的な音量の変化 ) を開始します。
+	 * @param to Specifies the volume to reach.
+	 * See the WaveSoundBuffer.volume property for volume specifications.
+	 * @param time Specifies the time to fade in ms.
+	 * @param delay Specifies the wait time in ms to start the fade.
+	 * @description Starts a fade (continuous change in volume).
 	 */
 	function fade( to, time, delay=0);
 
 	/**
-	 * フェードを停止する
+	 * Stop fading
 	 *
-	 * @description WaveSoundBuffer.fade メソッドで開始したフェードを強制的に停止します。
-	 * 音量は停止させた時点のままになります。
+	 * @description Forcibly stops the fade started by the WaveSoundBuffer.fade method.
+	 * The volume remains as it was when it was stopped.
 	 */
 	function stopFade( );
 
 	/**
-	 * DirectSound の解放
+	 * Release DirectSound
 	 *
-	 * @description DirectSound を解放します。
-	 * すべての WaveSoundBuffer クラスのオブジェクトは停止状態になります。
-	 * DirectSound と WaveMapper ( MCI 等 ) による再生を同時に行えない環境などで DirectSound を 解放するためにこのメソッドを使います。
-	 * このメソッドは WaveSoundBuffer クラス上にしか存在しません (WaveSoundBufferから作られたオブジェクト上にこのメソッドはありません)。
-	 * 使用する際は WaveSoundBuffer.freeDirectSound(); としてください。
+	 * @description Release DirectSound.
+	 * All WaveSoundBuffer class objects are in a stopped state.
+	 * Use this method to release DirectSound in an environment where DirectSound and WaveMapper (MCI, etc.) cannot be played at the same time.
+	 * This method only exists on the WaveSoundBuffer class (it doesn't exist on objects created from WaveSoundBuffer).
+	 * Use WaveSoundBuffer.freeDirectSound (); to use it.
 	 */
 	function freeDirectSound( );
 
 	/**
-	 * 視覚化用データの取得
+	 * Acquisition of data for visualization
 	 *
-	 * @param buffer 出力データを書き込むバッファを指定します。
-	 * バッファは 16bit 符号付き整数の配列で、numsamples 引数および channels 引数で指定したサンプルが書き込まれるのに十分な個数 ( numsamples * channels 以上 )である必要があります。
-	 * channels に 1 以外を指定した場合は、各チャネルのサンプルはインターリーブされて( ステレオならば 右 左 右 左 ・・・・の順に ) 格納されます。
-	 * 配列の先頭要素へのポインタを指定する必要がありますが、整数型にキャストして渡してください。
-	 * @param numsamples 取得するサンプル数を指定します。
-	 * @param channel 取得するチャンネル数を指定します。
-	 * 1 を指定すると、モノラルの場合はそのまま、そうでない場合は 1チャンネルにダウンミックスされたデータを得ることができます。
-	 * 1 以外の数値を指定する場合は、再生中のサウンドと同じチャンネル数を指定する必要があります。
-	 * このばあいは、そのままのデータを得ることができます。
-	 * @param ahead 先読みするサンプル数を指定します。
-	 * 現在の再生位置から、この引数で指定したサンプル数だけ先にあるサンプルから取得することができます。
-	 * 0 を指定するか、この引数を省略すると、現在の再生位置からの取得になります。
-	 * @return 取得できたサンプル数が戻ります。
-	 * @description 視覚化用に PCM データを取得します。
-	 * 現在の再生位置から PCM データを読み込み、buffer 引数で指定した配列に書き込みます。
-	 * ただし、バッファの状態や再生形式によっては正常にデータを読み込めない可能性もあります。
-	 * このメソッドは C や C++ 等で書かれたプラグインから利用されることを想定してますので、たとえばbuffer 引数に TJS の配列を指定する、などのようなことはできません。
-	 * このメソッドを使用するには  WaveSoundBuffer.useVisBuffer プロパティを真に指定する必要があります。
+	 * @param buffer Specifies the buffer to write the output data to.
+	 * The buffer is an array of 16-bit signed integers and must be large enough (numsamples * channels and above) to write the samples specified by the numsamples and channels arguments.
+	 * If you specify a channel other than 1, the samples for each channel are interleaved (in stereo, right, left, right, left, and so on) and stored.
+	 * You need to specify a pointer to the first element of the array, but cast it to an integer type and pass it.
+	 * @param numsamples Specify the number of samples to acquire.
+	 * @param channel Specify the number of channels to acquire.
+	 * If you specify 1, you can get the data downmixed to 1 channel if it is monaural or not.
+	 * If you specify a number other than 1, you must specify the same number of channels as the sound being played.
+	 * In this case, you can get the data as it is.
+	 * @param ahead Specify the number of samples to read ahead.
+	 * You can get from the sample that is ahead by the number of samples specified by this argument from the current playback position.
+	 * If you specify 0 or omit this argument, the acquisition is from the current playback position.
+	 * @return The number of samples that can be obtained is returned.
+	 * @description Acquires PCM data for visualization.
+	 * Reads PCM data from the current playback position and writes it to the array specified by the buffer argument.
+	 * However, depending on the buffer status and playback format, it may not be possible to read the data normally.
+	 * Since this method is supposed to be used by plugins written in C or C ++, it is not possible to specify an array of TJS in the buffer argument, for example.
+	 * The WaveSoundBuffer.useVisBuffer property must be truly specified to use this method.
 	 */
 	function getVisBuffer( buffer, numsamples, channel, ahead=0);
 
 	/**
-	 * 再生位置
+	 * Playback position
 	 *
-	 * @description 再生位置を ms 単位で表します。
-	 * 値を設定するとその位置に移動します。
+	 * @description Represents the playback position in ms.
+	 * If you set a value, it will move to that position.
 	 */
 	 property position {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * 再生位置
+	 * Playback position
 	 *
-	 * @description 再生位置をサンプル数単位で表します。
-	 * 値を設定するとその位置に移動します。
+	 * @description The playback position is expressed in units of the number of samples.
+	 * If you set a value, it will move to that position.
 	 */
 	 property samplePosition {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * 一時停止状態かどうか
+	 * Whether it is in a paused state
 	 *
-	 * @description 一時停止状態かどうかを表します。
-	 * 値を設定することもできます。真の場合は一時停止状態です。
+	 * @description Indicates whether it is in a paused state.
+	 * You can also set the value. If true, it is in a paused state.
 	 */
 	 property paused {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * メディアの再生時間
+	 * Media play time
 	 *
-	 * @description メディアの総再生時間を ms 単位で表します。
+	 * @description Represents the total play time of the media in ms.
 	 */
 	 property totalTime {
 		 getter() { return value; }
 	}
 	/**
-	 * ループ再生を行うかどうか
+	 * Whether to perform loop playback
 	 *
-	 * @description ループ再生を行うかどうかを表します。
-	 * 値を設定することもできます。
-	 * 真を指定するとループ再生がされます。
-	 * 偽を指定しても、再生しているメディアにループ情報があれば、ループ情報が利用されます。
+	 * @description Indicates whether to perform loop playback.
+	 * You can also set the value.
+	 * If true is specified, loop playback will be performed.
+	 * Even if you specify false, if the media being played has loop information, the loop information will be used.
 	 */
 	 property looping {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * 音量
+	 * Volume
 	 *
-	 * @description 再生する音量を表します。
-	 * 値を設定することもできます。
-	 * 0 ～ 100000 の数値で指定し、 0 が完全ミュート、100000 が 100% の音量となります。
+	 * @description Represents the volume to play.
+	 * You can also set the value.
+	 * Specify a number from 0 to 100000, 0 for full mute and 100000 for 100% volume.
 	 */
 	 property volume {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * 第２音量
+	 * 2nd volume
 	 *
-	 * @description 再生する音量を表します。値を設定することができます。
-	 * WaveSoundBuffer.volume プロパティと違うのは、このプロパティはWaveSoundBuffer.fade メソッドでも変化しないということです。
-	 * 最終的な音量は、volume プロパティとこのプロパティの積で決定されます。
-	 * volume プロパティが100000 ( 100% ) で volume2 プロパティも 100000 ( 100% ) ならば 100% × 100% = 100% で100% の音量で再生されます。
-	 * volume プロパティが 50000 ( 50% ) で volume2 プロパティが 75000 ( 75% ) ならば50% × 75% = 37.5% で 37.5 % の音量で再生されます。
+	 * @description Represents the volume to play. You can set the value.
+	 * Unlike the WaveSoundBuffer.volume property, this property does not change with the WaveSoundBuffer.fade method.
+	 * The final volume is determined by the product of the volume property and this property.
+	 * If the volume property is 100000 (100%) and the volume2 property is also 100000 (100%), then 100% x 100% = 100% will play at 100% volume.
+	 * If the volume property is 50000 (50%) and the volume2 property is 75000 (75%), then 50% x 75% = 37.5% will play at 37.5% volume.
 	 */
 	 property volume2 {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * ステータス
+	 * status
 	 *
-	 * @description 現在の状態を表します。
-	 * 状態は文字列で表され、以下の値をとります。
+	 * @description Represents the current state.
+	 * The state is represented by a character string and has the following values.
 	 *
-	 * + "unload"   :  メディアが開かれてない
-	 * + "play"     :  メディアは再生中である
-	 * + "stop"     :  メディアは停止中である
+	 * + "unload"   :   Media is not open
+	 * + "play"     :   Media is playing
+	 * + "stop"     :   Media is down
 	 *
 	 */
 	 property status {
 		 getter() { return value; }
 	}
 	/**
-	 * 視覚化用バッファを使用するかどうか
+	 * Whether to use a visualization buffer
 	 *
-	 * @description 視覚化用バッファを使用するかどうか表します。
-	 * 値を設定することもできます。
-	 * 真を指定すると視覚化用バッファが利用可能になり、WaveSoundBuffer.getVisBuffer メソッドが利用可能になります。
-	 * デフォルトでは偽になっています。
-	 * 真を指定すると偽を指定したときよりも多くのメモリと CPU 時間を消費するようになるので注意してください。
+	 * @description Indicates whether to use a visualization buffer.
+	 * You can also set the value.
+	 * If true, the visualization buffer is available and the WaveSoundBuffer.getVisBuffer method is available.
+	 * The default is false.
+	 * Note that specifying true consumes more memory and CPU time than specifying false.
 	 */
 	 property useVisBuffer {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * チャンネル数
+	 * Number of channels
 	 *
-	 * @description 現在再生中のサウンドのチャンネル数を表します。
-	 * モノラルの場合は 1、ステレオの場合は 2 になります。
-	 * メディアが開かれていない状態では正常な値を返さない可能性があります。
+	 * @description Represents the number of channels of the sound currently playing.
+	 * 1 for monaural and 2 for stereo.
+	 * It may not return normal values when the media is not open.
 	 */
 	 property channels {
 		 getter() { return value; }
 	}
 	/**
-	 * サンプリング周波数
+	 * Sampling frequency
 	 *
-	 * @description 現在再生中のサウンドのサンプリング周波数を表します。
-	 * 値を設定することもできます。
-	 * CD と同じサンプリング周波数の場合は 44100 になります。
-	 * メディアが開かれていない状態では正常な値を返さない可能性があります。
-	 * 値を設定すると、その周波数で再生します。
+	 * @description Represents the sampling frequency of the sound currently being played.
+	 * You can also set the value.
+	 * If the sampling frequency is the same as that of a CD, it will be 44100.
+	 * It may not return normal values when the media is not open.
+	 * If you set a value, it will play at that frequency.
 	 */
 	 property frequency {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * 量子化ビット数
+	 * Number of quantization bits
 	 *
-	 * @description 現在再生中のサウンドの量子化ビット数を表します。
-	 * CD と同じ量子化ビット数の場合は 16 になります。
-	 * メディアが開かれていない状態では正常な値を返さない可能性があります。
+	 * @description Represents the number of quantization bits of the sound currently being played.
+	 * 16 for the same number of quantization bits as a CD.
+	 * It may not return normal values when the media is not open.
 	 */
 	 property bits {
 		 getter() { return value; }
 	}
 	/**
-	 * フラグ
+	 * flag
 	 *
-	 * @description フラグを表すオブジェクトを得ることができます。
-	 * このオブジェクトには 0 ～ 15 のプロパティがあり、それぞれ各フラグの値を表しています。
-	 * プロパティには間接メンバ選択演算子 ('[ ]' 演算子) を用いてアクセスすることができます。
-	 * これらのプロパティには値を設定することもできます。
-	 * 値は 0 ～ 9999 の範囲であり、これを下回ったり、上回ることはできません。
-	 * このオブジェクトの count プロパティは常に 16 を返します。
-	 * このオブジェクトには reset メソッドがあり、このメソッドを実行すると、全てのフラグが 0 にリセットされます。
-	 * メディアを開いていない場合は、このオブジェクトのプロパティに値を設定しても無視されます。
-	 * このオブジェクトは一見配列オブジェクトにも見えますが、いわゆるTJSの配列オブジェクト('Array' クラスのオブジェクト) ではありません。
-	 * フラグは WaveSoundBuffer.open メソッドで全て 0 にリセットされます。
-	 * 例:
+	 * @description You can get an object that represents the flag.
+	 * This object has 0 to 15 properties, each representing the value of each flag.
+	 * Properties can be accessed using the indirect member selection operator ('[]' operator).
+	 * You can also set values for these properties.
+	 * Values range from 0 to 9999 and cannot be below or above this.
+	 * The count property of this object always returns 16.
+	 * This object has a reset method, which resets all flags to 0.
+	 * If you have not opened the media, setting a value for this object's properties will be ignored.
+	 * This object looks like an array object at first glance, but it is not a so-called TJS array object (an object of the'Array' class).
+	 * All flags are reset to 0 with the WaveSoundBuffer.open method.
+	 * Example:
 	 *
 	 * ```
-	 * var buf = new WaveSoundBuffer(window);
-	 * (略)
-	 * buf.flags.reset();
-	 * // 全てのフラグを 0 にリセット
+	 * var buf = new WaveSoundBuffer (window);
+	 * (Omitted)
+	 * buf.flags.reset ();
+	 * // Reset all flags to 0
 	 * var cnt = buf.flags.count;
-	 * // cnt には 16 が入る
-	 * buf.flags[4] = 34;
-	 * // 4番のフラグに34を代入
+	 * // cnt contains 16
+	 * buf.flags [4] = 34;
+	 * // Substitute 34 for flag 4
 	 *```
 	 *
 	 */
@@ -281,22 +281,22 @@ class WaveSoundBuffer {
 		 getter() { return value; }
 	}
 	/**
-	 * ラベル
+	 * label
 	 *
-	 * @description ラベルを表すオブジェクトを得ることができます。
-	 * このオブジェクトは辞書配列で、それぞれ、ループ情報中のラベルの名前をメンバ名とした要素が入っています。
-	 * それぞれの要素も辞書配列で、name メンバはラベルの名前を表し、position メンバはミリ秒単位でのラベルの位置を表し、samplePosition はサンプル数単位でのラベルの位置を表しています。
-	 * この辞書配列は読み出し専用であると考えてください。
-	 * 値を代入したり、新しいメンバを作成しても反映されることはありません。
-	 * 例:
+	 * @description You can get an object that represents the label.
+	 * This object is a dictionary array, each containing an element whose member name is the label name in the loop information.
+	 * Each element is also a dictionary array, the name member represents the name of the label, the position member represents the position of the label in milliseconds, and the samplePosition represents the position of the label in units of samples.
+	 * Think of this dictionary array as read-only.
+	 * Assigning a value or creating a new member will not take effect.
+	 * Example:
 	 *
 	 * ```
-	 * var buf = new WaveSoundBuffer(window);
-	 * (略)
-	 * debug.message(buf.labels['start'].position);
-	 * // 'start' というラベル名の位置をミリ秒単位で
-	 * debug.message(buf.labels['start'].samplePosition);
-	 * // 'start' というラベル名の位置をサンプル数単位で
+	 * var buf = new WaveSoundBuffer (window);
+	 * (Omitted)
+	 * debug.message (buf.labels ['start']. position);
+	 * // Position the label name'start'in milliseconds
+	 * debug.message (buf.labels ['start']. samplePosition);
+	 * // Position the label name'start'in units of sample size
 	 * ```
 	 *
 	 */
@@ -304,70 +304,70 @@ class WaveSoundBuffer {
 		 getter() { return value; }
 	}
 	/**
-	 * パン
+	 * Bread
 	 *
-	 * @description パン (音像位置) を表します。
-	 * 値を設定することもできます。
-	 * 音の聞こえる左右の位置を指定することができます。
-	 * -100000 ～ 0 ～ 100000 の数値で指定し、 -100000 が 完全に左、0 が中央、100000 が完全に右になります。
+	 * @description Represents pan (sound image position).
+	 * You can also set the value.
+	 * You can specify the left and right positions where you can hear the sound.
+	 * Specify a number from -100000 to 0 to 100000, where -100000 is completely left, 0 is center, and 100000 is completely right.
 	 */
 	 property pan {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * 大域音量
+	 * Global volume
 	 *
-	 * @description 大域音量 (マスターボリューム)を表します。
-	 * 値を設定することもできます。
-	 * この音量は、すべての WaveSoundBuffer に影響します。
-	 * 0 ～ 100000 の数値で指定し、 0 が完全ミュート、100000 が 100% の音量となります。
-	 * デフォルトの値は 100000 です。
-	 * このプロパティは WaveSoundBuffer クラス上にしか存在しません (WaveSoundBufferから作られたオブジェクト上にこのプロパティはありません)。
-	 * 使用する際は WaveSoundBuffer.globalVolume としてください。
+	 * @description Represents the global volume (master volume).
+	 * You can also set the value.
+	 * This volume affects all WaveSoundBuffers.
+	 * Specify a number from 0 to 100000, 0 for full mute and 100000 for 100% volume.
+	 * The default value is 100000.
+	 * This property only exists on the WaveSoundBuffer class (it doesn't exist on objects created from WaveSoundBuffer).
+	 * Use WaveSoundBuffer.globalVolume when using it.
 	 */
 	 property globalVolume {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * フォーカスモード
+	 * Focus mode
 	 *
-	 * @description フォーカスモードを表します。
-	 * 値を設定することもできます。
-	 * フォーカスモードは、アプリケーションが最小化したときや非アクティブになったときにミュートするモードです。
+	 * @description Represents the focus mode.
+	 * You can also set the value.
+	 * Focus mode is a mode that mutes when the application is minimized or inactive.
 	 *
-	 * + sgfmNeverMuteを指定すると、アプリケーションがどのような状態でもミュートはしません。
-	 * + sgfmMuteOnMinimizeを指定すると、アプリケーションが最小化時にミュートします。
-	 * + sgfmMuteOnDeactivateを指定すると、アプリケーションが非アクティブ化したときにミュートします。
+	 * + If you specify sgfmNeverMute, the application will not mute under any conditions.
+	 * + If you specify sgfmMuteOnMinimize, the application mutes when minimized.
+	 * + Specify sgfmMuteOnDeactivate to mute when the application is deactivated.
 	 *
-	 * このプロパティは WaveSoundBuffer クラス上にしか存在しません (WaveSoundBufferから作られたオブジェクト上にこのプロパティはありません)。
-	 * 使用する際は WaveSoundBuffer.globalFocusMode としてください。
-	 * このプロパティの設定よりも、コマンドラインオプションで指定した '-wsmute' (DirectSound ミュート) の設定が優先されます。
-	 * Androidでは、非アクティブになった時ミュートされます。
-	 * バックグラウンドでは処理速度が低下し、正常に再生できなくなります。
+	 * This property only exists on the WaveSoundBuffer class (it doesn't exist on objects created from WaveSoundBuffer).
+	 * When using it, set it to WaveSoundBuffer.globalFocusMode.
+	 * The'-wsmute' (DirectSound mute) setting specified in the command line option takes precedence over the setting of this property.
+	 * On Android, it is muted when it becomes inactive.
+	 * In the background, the processing speed will slow down and you will not be able to play normally.
 	 */
 	 property globalFocusMode {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * フィルタ配列
+	 * Filter array
 	 *
-	 * @description インサーションフィルタオブジェクトを保持している配列(Arrayクラスのインスタンス)です。
-	 * この配列にフィルタオブジェクトを登録することにより、再生中にリアルタイムで音声に対して様々な効果をかけることができます。
-	 * フィルタ配列への変更が反映されるのは、WaveSoundBuffer.openメソッドが実行された時だけです。
-	 * それまでは、この配列への変更を行っても反映はされません。
-	 * 例:
+	 * @description An array (an instance of the Array class) that holds the insertion filter object.
+	 * By registering a filter object in this array, you can apply various effects to the audio in real time during playback.
+	 * Changes to the filter array will only take effect when the WaveSoundBuffer.open method is executed.
+	 * Until then, any changes to this array will not take effect.
+	 * Example:
 	 * ```
-	 * var buf = new WaveSoundBuffer(window);
-	 * (略)
-	 * buf.filters.clear();
-	 * // フィルタ配列をクリア
-	 * buf.filters.add(new WaveSoundBuffer.PhaseVocoder());
-	 * // PhaseVocoderフィルタを追加
-	 * buf.filters[0].time = 0.5;
-	 * // 倍速再生
+	 * var buf = new WaveSoundBuffer (window);
+	 * (Omitted)
+	 * buf.filters.clear ();
+	 * // Clear the filter array
+	 * buf.filters.add (new WaveSoundBuffer.PhaseVocoder ());
+	 * // Add Phase Vocoder filter
+	 * buf.filters [0] .time = 0.5;
+	 * // Double speed playback
 	 * ```
 	 */
 	 property filters {

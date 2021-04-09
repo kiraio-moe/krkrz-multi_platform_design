@@ -1,304 +1,304 @@
 /**
- * @description Array クラスは配列を扱うクラスです。
+ * @description The `Array` class is a class that handles arrays.
  *
- * このクラスのオブジェクトを作成し、間接メンバ選択演算子によって指定された添え字を使って配列のように扱うことができます。
- * 添え字は整数です。
- * 0は先頭の要素を表し、1はその次の要素を表します。
- * 負の整数を指定すると、配列の最後から指定したものとして扱われます (-1 は最後の要素を表します)。
- * 配列の大きさは宣言する必要はありません。
- * 指定された添え字の大きさまで自動的にサイズが拡張され、何も値が代入されていない要素は void に初期化されます。
+ * You can create objects of this class and treat them like arrays using the subscripts specified by the indirect member selection operator.
+ * Subscripts are integers.
+ * `0` represents the first element and `1` represents the next element.
+ * If you specify a negative integer, it is treated as specified from the end of the array (`-1` represents the last element).
+ * The size of the array does not need to be declared.
+ * The size is automatically expanded to the size of the specified subscript, and elements with no assigned value are initialized to void.
  * 
- * また、count プロパティがあり、これが配列のサイズを表しています。
- * count プロパティに値を代入しても配列のサイズを変えることができます。
+ * There is also a count property, which represents the size of the array.
+ * You can also change the size of the array by assigning a value to the count property.
  *
- * [ ] を使って、式中に Array クラスのオブジェクトをその場で記述することができます。
- * [ ] にはカンマで区切り、初期要素となる式を列挙します。
- * たとえば、
+ * You can use `[]` to write an object of class Array in an expression on the fly.
+ * In `[]`, separate the expressions that are the initial elements, separated by commas.
+ * For example
  * `var ar = ["a", "b", "c"];`
- * と記述すれば、ar に、 "a" "b" "c" の要素が入った Array クラスのオブジェクトへの参照が代入されます。
- * また、Array クラスを生成する場合も [ ] を使うことができます。
+ * If you write, ar is assigned a reference to an object of the Array class that contains the elements `"a"`, `"b"`, and `"c"`.
+ * You can also use `[]` to generate an Array class.
  * `var ar = [];`
- * と
+ * When
  * `var ar = new Array();`
- * は同じです。
+ * Is the same.
  */
 class Array {
 
 	/**
-	 * 配列の大きさを表します。
+	 * Represents the size of the array.
 	 */
 	property count;
 
 	/**
-	 * 配列の大きさを表します。countと同じです。
+	 * Represents the size of the array. Same as count.
 	 */
 	property length;
 
 	/**
-	 * 配列をファイルから読み込みます。
-	 * @description テキストファイルから配列を読み込みます。
-	 * ファイルのテキストが一行づつ、各要素に入り、最終的に count プロパティはファイルの行数と同じになります。
-	 * @param storage 読み込むファイル名
-	 * @param mode ファイルを読み込む際のモード文字列を指定します。
-	 * "o" に続いてオフセットを10進で指定するとファイルのそのバイト位置からの読み込みになります。
-	 * @return この Array クラスのオブジェクト自身を返します。
+	 * Read the array from a file.
+	 * @description Read an array from a text file.
+	 * The text of the file goes line by line into each element, and finally the count property is the same as the number of lines in the file.
+	 * @param storage File name to read
+	 * @param mode Specifies the mode string when reading the file.
+	 * If you specify the offset in decimal after "o", it will be read from that byte position in the file.
+	 * @return Returns the object itself of this Array class.
 	 */
 	function load( storage:string, mode:string=null ):Array;
 
 	/**
-	 * 配列をファイルに書き出します。
-	 * @description 配列をファイルに書き出します。
-	 * 一行ずつ、各メンバが出力されますが、オブジェクトやクラス、関数などへの参照は空行となります。
-	 * @param storage 書き出すファイル名
-	 * @param mode ファイルを書き込む際のモード文字列を指定します。
+	 * Write the array to a file.
+	 * @description Write the array to a file.
+	 * Each member is output line by line, but references to objects, classes, functions, etc. are blank lines.
+	 * @param storage File name to export
+	 * @param mode Specifies the mode string when writing the file.
 	 *
-	 * + "c" を指定するとファイルに簡単な暗号化がかかります ( そのまま load メソッドで読み込むことができます ) 。
-	 * + "z" を指定するとファイルを圧縮して保存できます ("c" と併用は出来ません; これもそのまま load メソッドで読み込むことができます)。
-	 * + "o" に続いてオフセットを10進で指定するとファイルのそのバイト位置からの書き込みになります。
-	 * + "b"を指定するとバイナリ形式で保存されます(他のモード指定と併用は出来ません; これもそのまま load メソッドで読み込むことができます)。
+	 * + Specifying "c" gives the file a simple encryption (you can just load it with the load method).
+	 * + You can specify "z" to compress the file and save it (it cannot be used with "c"; it can also be loaded by the load method as it is).
+	 * + If you specify the offset in decimal after "o", it will be written from that byte position in the file.
+	 * + If "b" is specified, it will be saved in binary format (cannot be used with other mode specifications; this can also be loaded by the load method as it is).
 	 *
-	 * @return この Array クラスのオブジェクト自身を返します。
+	 * @return Returns the object itself of this Array class.
 	 */
-	function save( storage:string, mode:string=null ):Array;
+	function save( storage:string, mode: string = null): Array;
 
 	/**
-	 * 文字列を分割します。
-	 * @description 配列を初期化し、この配列に、文字列をパターンまたはデリミタ集合で区切った物をコピーします。
-	 * @param pattern パターンまたはデリミタ集合を指定します。
-	 * パターンは正規表現オブジェクトである必要があります。
-	 * デリミタ集合には、区切り記号となる文字を指定します。
-	 * 文字列を指定することで区切り文字を複数指定できます。
-	 * @param text 分割する文字列を指定します。
-	 * @param reserve 将来のバージョンのために予約されています。
-	 * @param ignoreSpace 空の要素 ( たとえばカンマをデリミタにしているときに ,,,,, など ) の場合にその要素を配列にコピーしない場合は true を指定します。
-	 * @return この Array クラスのオブジェクト自身を返します。
+	 * Split the string.
+	 * @description Initialize the array and copy the strings separated by patterns or delimiters into this array.
+	 * @param pattern Specifies a pattern or delimiter set.
+	 * The pattern must be a regular expression object.
+	 * For the delimiter set, specify the character that will be the delimiter.
+	 * You can specify multiple delimiters by specifying a character string.
+	 * @param text Specify the character string to be divided.
+	 * @param reserve Reserved for future versions.
+	 * @param ignoreSpace Specify true if the element is empty (for example, ,,,,, when the comma is the delimiter) and you do not want to copy the element into the array.
+	 * @return Returns the object itself of this Array class.
 	 */
 	function split( pattern:string, text:string, reserve, ignoreSpace:bool=false ):Array;
 
 	/**
-	 * 配列を結合し、一つの文字列にします。
-	 * @description 配列の各要素をデリミタで結合し、結合した文字列を返します。
-	 * @param delimiter デリミタ。区切り文字。
-	 * @param reserve 将来のバージョンのために予約されています。
-	 * @param ignore true の場合は、要素中の void は無視されます。
-	 * @return この Array クラスのオブジェクト自身を返します。
+	 * Combine the arrays into a single string.
+	 * @description Combines each element of the array with a delimiter and returns the combined string.
+	 * @param delimiter delimiter. Delimiter.
+	 * @param reserve Reserved for future versions.
+	 * @param ignore If true, voids in the element will be ignored.
+	 * @return Returns the object itself of this Array class.
 	 */
 	function join( delimiter:string, reserve, ignore:bool=false ):string;
 
 	/**
-	 * 配列の要素の並びを逆さまにします。
+	 * Upside down the order of the elements in the array.
 	 */
 	function reverse();
 
 	/**
-	 * 配列をソート(並び替え)します。
-	 * @description 配列の各要素をデリミタで結合し、結合した文字列を返します。
-	 * @param order ソート順は以下の文字列のどれかです。
-	 * 昇順では小さい物から大きい物へと並び替えられ、降順はその逆です。
-	 * 省略すると '+' を指定されたと見なされます。
+	 * Sort the array.
+	 * @description Combines each element of the array with a delimiter and returns the combined string.
+	 * @param order The sort order is one of the following strings.
+	 * The ascending order is sorted from the smallest to the largest, and the descending order is the opposite.
+	 * If omitted, it is considered that'+' is specified.
 	 *
-	 * + "+"  : 昇順 (通常の < 演算子での比較)
-	 * + "-"  : 降順
-	 * + "0"  : 数値による昇順 ( 10,2,1 は 1,2,10 に並び替えられます )
-	 * + "9"  : 数値による降順
-	 * + "a"  : 文字列による昇順 ( "a","c","b" は "a","b","c" に並び替えられます )
-	 * + "z"  : 文字列による降順
+	 * + "+"  : Ascending order (comparison with the usual <operator)
+	 * + "-"  : descending order
+	 * + "0"  : Numerical ascending order (10,2,1 is sorted into 1,2,10)
+	 * + "9"  : Numerical descending order
+	 * + "a"  : Ascending order by string ("a", "c", "b" are sorted into "a", "b", "c")
+	 * + "z"  : Descending by string
 	 *
-	 * ソート順の文字の変わりに関数を指定することが出来ます。
-	 * 関数は２つの引数を持ちます。
-	 * 第１引数が第２引数よりも前に来るべき場合に真を返す関数を指定します (JavaScript の sort メソッドに渡す関数と、戻り値の意味が違うので注意してください )。
-	 * @param stable 安定ソートを行うかどうかを指定します。
-	 * 省略すると false が指定されたと見なされ、不安定なソートが行われます。
-	 * 安定ソートは、同じ順位の配列要素の順番は、ソート後も同じ順番になります。
-	 * 不安定ソートの場合は同じ順位の配列要素の順番は、ソート後に同じ順番になる保証はありません。
+	 * You can specify a function instead of the characters in the sort order.
+	 * The function has two arguments.
+	 * Specify a function that returns true if the first argument should come before the second argument (note that the return value has a different meaning than the function passed to the JavaScript sort method).
+	 * @param stable Specifies whether to perform stable sorting.
+	 * If omitted, false is assumed and an unstable sort is performed.
+	 * In stable sorting, the order of array elements with the same order will be the same after sorting.
+	 * In the case of unstable sorting, there is no guarantee that the order of array elements with the same order will be the same after sorting.
 	 */
 	function sort( order:string, stable:bool=false );
 
 	/**
-	 * ファイルへ構造化されたデータの出力を行います。
-	 * @description 要素の状態を復元可能な状態でファイルに出力します。
-	 * 各要素には文字列、実数、オクテット列、整数を含めることができます。
-	 * また、要素にオブジェクトがあった場合は、それが Array クラスあるいは Dictionary クラスのオブジェクトである場合に限り、そのオブジェクトの中身もファイルに出力します。
-	 * それ以外の要素は void が出力されます。
-	 * @param storage 書き出すファイル名
-	 * @param mode ファイルを書き込む際のモード文字列を指定します。
+	 * Outputs structured data to a file.
+	 * @description Outputs the state of the element to a file in a recoverable state.
+	 * Each element can contain strings, real numbers, octet columns, and integers.
+	 * Also, if the element has an object, the contents of that object are also output to a file only if it is an object of the Array class or Dictionary class.
+	 * For other elements, void is output.
+	 * @param storage File name to export
+	 * @param mode Specifies the mode string when writing the file.
 	 *
-	 * + "c" を指定するとファイルに簡単な暗号化がかかります ( そのまま load メソッドで読み込むことができます ) 。
-	 * + "z" を指定するとファイルを圧縮して保存できます ("c" と併用は出来ません; これもそのまま load メソッドで読み込むことができます)。
-	 * + "o" に続いてオフセットを10進で指定するとファイルのそのバイト位置からの書き込みになります。
-	 * + "b"を指定するとバイナリ形式で保存されます(他のモード指定と併用は出来ません; これもそのまま load メソッドで読み込むことができます)。
+	 * + Specifying "c" gives the file a simple encryption (you can just load it with the load method).
+	 * + You can specify "z" to compress the file and save it (it cannot be used with "c"; it can also be loaded by the load method as it is).
+	 * + If you specify the offset in decimal after "o", it will be written from that byte position in the file.
+	 * + If "b" is specified, it will be saved in binary format (it cannot be used together with other mode specifications; this can also be loaded by the load method as it is).
 	 *
-	 * @return この Array クラスのオブジェクト自身を返します。
+	 * @return Returns the object itself of this Array class.
 	 */
-	function saveStruct( storage:string, mode:string=null ):Array;
+	function saveStruct( storage:string, mode: string = null): Array;
 
 	/**
-	 * ファイルから構造化されたデータの入力を行います
-	 * @description 構造化されたデータをファイルから配列として読み込みます。
-	 * バイナリ形式で書き出されたファイルのみ対応しています。
-	 * @param storage 読み込むファイル名
-	 * @param mode ファイルを読み込む際のモード文字列を指定します。
+	 * Enter structured data from a file
+	 * @description Reads structured data from a file as an array.
+	 * Only files written in binary format are supported.
+	 * @param storage File name to read
+	 * @param mode Specifies the mode string when reading the file.
 	 *
-	 * + "o" に続いてオフセットを10進で指定するとファイルのそのバイト位置からの書き込みになります。
+	 * + If you specify the offset in decimal after "o", it will be written from that byte position in the file.
 	 *
-	 * @return 読み込みに成功した場合、この Array クラスのオブジェクト自身を返します。
+	 * @return If the read is successful, it returns the object itself of this Array class.
 	 */
-	function loadStruct( storage:string, mode:string=null ):Array;
+	function loadStruct( storage:string, mode: string = null): Array;
 
 	/**
-	 * 配列をコピーします。
-	 * @description 引数で指定された他の配列の内容を、そっくりコピーします。
-	 * 辞書配列 (Dictionaryクラスのオブジェクト) をコピー元配列に指定した場合は、その辞書配列の各メンバが、名前、値の順に交互に現れる配列となります。
-	 * メンバの順番は不定となります。
-	 * @param src コピー元のArray|Dictionaryインスタンス
+	 * Copy the array.
+	 * @description Copies the entire contents of the other array specified by the argument.
+	 * If you specify a dictionary array (an object of the Dictionary class) as the copy source array, each member of the dictionary array will appear alternately in the order of name and value.
+	 * The order of the members is indefinite.
+	 * @param src Source Array | Dictionary instance
 	 */
 	function assign( src:Array );
 
 	/**
-	 * 配列を構造ごとコピーします。
-	 * @description 引数で指定された他の配列の内容を、そっくりコピーします。
-	 * assign メソッドと違い、メンバに配列あるいは辞書配列があった場合は、再帰的にその内容も コピーします ( assign メソッドの場合は参照がコピーされるだけです )。
-	 * @param src コピー元のArray|Dictionaryインスタンス
+	 * Copy the array along with the structure.
+	 * @description Copies the entire contents of the other array specified by the argument.
+	 * Unlike the assign method, if a member has an array or dictionary array, it will recursively copy its contents as well (the assign method only copies the reference).
+	 * @param src Source Array | Dictionary instance
 	 */
 	function assignStruct( src:Array );
 
 	/**
-	 * 配列の要素をすべて削除します。
+	 * Delete all the elements of the array.
 	 */
 	function clear();
 
 	/**
-	 * 指定された添え字の要素を削除します。
-	 * @description 指定された位置にある添え字を削除します。添え字以降の要素は一つずつ前にずれ、詰められます。添え字が範囲外の場合は例外が発生します。
-	 * @param index 位置
+	 * Deletes the specified subscript element.
+	 * @description Deletes the subscript at the specified position. The elements after the subscript are shifted forward one by one and packed. An exception will be thrown if the subscript is out of range.
+	 * @param index position
 	 */
 	function erase(index:int);
 
 	/**
-	 * 指定された値と同じ値を持つ要素を削除します。
-	 * @description 指定された値と各要素を識別比較し ( === 演算子の動作 )、一致した要素を削除します。
-	 * すべて削除するか、が false の場合は、最初に見つかった要素のみを削除します。
-	 * そうでなければ、見つかったすべての要素を削除します。
-	 * @param value 削除する値
-	 * @param all 全て対象とするか否か
+	 * Deletes the element that has the same value as the specified value.
+	 * @description It identifies and compares each element with the specified value (=== operator behavior) and removes the matching element.
+	 * Delete all, or if is false, delete only the first element found.
+	 * Otherwise, delete all found elements.
+	 * @param value Value to delete
+	 * @param all Whether or not to target all
 	 */
 	function remove( value, all:bool=true );
 
 	/**
-	 * 指定された値を指定された位置に挿入します。
-	 * @description 位置で示された添え字位置に、値で示された要素を挿入します。
-	 * 位置以降の要素は一つずつ後ろにずれます。
-	 * @param index 挿入位置
-	 * @param value 挿入値
+	 * Inserts the specified value at the specified position.
+	 * @description Inserts the element indicated by the value at the subscript position indicated by the position.
+	 * The elements after the position are shifted backward one by one.
+	 * @param index Insertion position
+	 * @param value Insert value
 	 */
 	function insert( index:int, value );
 
 	/**
-	 * 指定された値を配列の最後に追加します。
-	 * @description 配列の最後に値で示された要素を追加します。
-	 * このメソッドは値が追加された位置を返します。
-	 * @param value 追加値
-	 * @return 追加された位置
+	 * Adds the specified value to the end of the array.
+	 * @description Adds the element indicated by the value at the end of the array.
+	 * This method returns the position where the value was added.
+	 * @param value Additional value
+	 * @return Added position
 	 */
 	function add( value ):int;
 
 	/**
-	 * 指定された値が最初に現れる添え字を返します。
-	 * @description 指定された値を、検索開始位置の添え字から順に見ていき、最初に現れる添え字を返します。
-	 * 指定された値が見つからなかったときは -1 を返します。
-	 * 比較には識別比較 ( === 演算子の動作 ) が用いられます。
-	 * @param value 検索値
-	 * @param offset 開始位置
-	 * @return 見付かった位置。見付からない時は-1。
+	 * Returns the subscript where the specified value first appears.
+	 * @description The specified value is searched in order from the subscript at the search start position, and the subscript that appears first is returned.
+	 * Returns -1 if the specified value is not found.
+	 * Distinguished comparison (=== operator behavior) is used for comparison.
+	 * @param value Search value
+	 * @param offset Starting position
+	 * @return The position found. -1 if not found.
 	 */
 	function find( value, offset:int=0 ):int;
 
 	/**
-	 * 指定された要素を配列の最後に追加します。
-	 * @description addメソッドと違い、このメソッドは追加後の配列のサイズを返します。
-	 * また、複数の引数を指定した場合は、すべての引数を順番に追加します。
-	 * @param value 追加値
-	 * @return 追加後のサイズ
+	 * Adds the specified element to the end of the array.
+	 * @description Unlike the add method, this method returns the size of the added array.
+	 * Also, if multiple arguments are specified, all the arguments will be added in order.
+	 * @param value Additional value
+	 * @return Size after addition
 	 */
 	function push( value, ... ):int;
 
 	/**
-	 * 配列の最後から一つ要素を取り出し、それを返します。
-	 * @description 取り出された要素は配列から削除されます(配列のサイズは一つ減ります)。
-	 * @return 取り出された要素を返します。要素が無かった場合はvoidを返します。
+	 * Takes one element from the end of the array and returns it.
+	 * @description The retrieved element is removed from the array (the size of the array is reduced by one).
+	 * @return Returns the retrieved element. Returns void if there are no elements.
 	 */
 	function pop():variant;
 
 	/**
-	 * 要素を配列の先頭に追加します。
-	 * @description 複数の要素が指定された場合は複数の要素を先頭に追加することができます。
-	 * この場合は、たとえば a, b, c の順番で渡された場合は、配列の先頭の要素は a, b, c の順番になります。
-	 * @param value 追加値
-	 * @return 追加後のサイズ
+	 * Add the element to the beginning of the array.
+	 * @description If multiple elements are specified, multiple elements can be added at the beginning.
+	 * In this case, for example, if passed in the order of a, b, c, the first element of the array will be in the order of a, b, c.
+	 * @param value Additional value
+	 * @return Size after addition
 	 */
 	function unshift( value, ... ):int;
 
 	/**
-	 * 配列の最初から一つ要素を取り出し、それを返します。
-	 * @description 取り出された要素は配列から削除されます(配列のサイズは一つ減ります)。
-	 * @return 取り出された要素を返します。要素が無かった場合はvoidを返します。
+	 * Takes one element from the beginning of the array and returns it.
+	 * @description The retrieved element is removed from the array (the size of the array is reduced by one).
+	 * @return Returns the retrieved element. Returns void if there are no elements.
 	 */
 	function shift():variant;
 
 	/**
-	 * 引数で指定された文字列に従い、配列要素をバイナリ(Octet)化して返します。
-	 * @description 指定の文字列はテンプレートと呼びます。
-	 * テンプレートは、型指定文字とその長さを並べたものです。
-	 * 長さとして * が指定された時は残り全ての長さを表します。
-	 * 長さが省略された場合は1として扱います。
-	 * @param template テンプレート文字列には以下の文字が使用可能です。
+	 * Returns the array element in octet according to the character string specified by the argument.
+	 * @description The specified string is called a template.
+	 * A template is a list of typed characters and their lengths.
+	 * When * is specified as the length, it represents all the remaining lengths.
+	 * If the length is omitted, it is treated as 1.
+	 * @param template The following characters can be used in the template string.
 	 *
-	 * + a : ASCII 文字列(ヌル文字が補完される)
-	 * + A : ASCII 文字列(スペースが補完される)
-	 * + b : 2進数文字列(下位ビットから上位ビットの順)
-	 * + B : 2進数文字列(上位ビットから下位ビットの順)
-	 * + c : 符号付き1バイト数値(-128 ～ 127)
-	 * + C : 符号無し1バイト数値(0 ～ 255)
-	 * + d : 倍精度浮動小数点値
-	 * + f : 単精度浮動小数点値
-	 * + h : 16進数文字列(low nybble first)
-	 * + H : 16進数文字列(high nybble first)
-	 * + i : 符号付きint数値(通常4バイト)
-	 * + I : 符号無しint数値(通常4バイト)
-	 * + l : 符号付きlong数値(通常4バイト)
-	 * + L : 符号無しlong数値(通常4バイト)
-	 * + n : 符号無しshort数値(ネットワークバイトオーダ)
-	 * + N : 符号無しlong数値(ネットワークバイトオーダ)
-	 * + s : 符号付きshort数値(通常2バイト)
-	 * + S : 符号無しshort数値(通常2バイト)
-	 * + v : 符号無しshort値(リトルエンディアン)
-	 * + V : 符号無しlong値(リトルエンディアン)
-	 * + x : ヌル文字
-	 * + X : 1バイト後退
-	 * + @ : 絶対位置までヌル文字を埋める
+	 * + a : ASCII string (null-terminated)
+	 * + A : ASCII string (spaces are completed)
+	 * + b : Binary string (from low-order bit to high-order bit)
+	 * + B : Binary string (from high-order bit to low-order bit)
+	 * + c : Signed 1-byte number (-128 to 127)
+	 * + C : Unsigned 1-byte number (0 to 255)
+	 * + d : Double precision floating point value
+	 * + f : Single precision floating point value
+	 * + h : Hexagonal string (low nybble first)
+	 * + H : Hexic string (high nybble first)
+	 * + i : Signed int number (usually 4 bytes)
+	 * + I : Unsigned int number (usually 4 bytes)
+	 * + l : Signed long number (usually 4 bytes)
+	 * + L : Unsigned long number (usually 4 bytes)
+	 * + n : Unsigned short number (network byte order)
+	 * + N : Unsigned long number (network byte order)
+	 * + s : Signed short number (usually 2 bytes)
+	 * + S : Unsigned short number (usually 2 bytes)
+	 * + v : Unsigned short value (little endian)
+	 * + V : Unsigned long value (little endian)
+	 * + x : Null character
+	 * + X : 1 byte backward
+	 * + @ : Fill null characters to absolute position
 	 * + m : Base64 decode
 	 */
 	function pack(template:string);
 
 	/**
-	 * 引数の関数を、配列の各要素に対して実行します。
-	 * @description 配列の各要素に対して1回ずつ指定された関数を呼び出します。
-	 * 無名関数などコンテキストが null の場合は配列のコンテキストで呼び出されます。
-	 * 関数が値を返すと処理が中断され、その値をこの関数の返り値にします。
-	 * 関数を文字列で呼び出した時は値を返しても中断せず、全配列要素のメソッドが呼び出されます。
-	 * @param func 文字列の場合は配列要素のそのメソッドを、関数の場合は function( value, index, args* ) の形で呼び出されます。
-	 * @param args 呼び出す関数に渡す引数を任意の数指定します。なくても構いません。
-	 * @return 呼び出した関数が返した値
+	 * Executes the argument function for each element of the array.
+	 * @description Calls the specified function once for each element of the array.
+	 * If the context is null, such as an anonymous function, it will be called in the array context.
+	 * If the function returns a value, processing is interrupted and that value is used as the return value of this function.
+	 * When the function is called as a string, the method of all array elements is called without interruption even if the value is returned.
+	 * @param func In the case of a string, that method of the array element is called, and in the case of a function, it is called in the form of function (value, index, args *).
+	 * @param args Specify any number of arguments to pass to the function to call. It does not have to be.
+	 * @return The value returned by the calling function
 	 */
 	function forEach( func, args ):variant;
 
 	/**
-	 * 指定された値を含んでいるかどうか判定します。
-	 * @description 指定された値を、検索開始位置の添え字から順に見ていき、指定された値が存在するかどうかを返します。
-	 * 比較には識別比較 ( === 演算子の動作 ) が用いられます。
-	 * @param value 検索値
-	 * @param offset 開始位置
-	 * @return 見付かった時は true, 見付からない時は false。
+	 * Determines if it contains the specified value.
+	 * @description It looks at the specified value in order from the subscript of the search start position, and returns whether the specified value exists.
+	 * Distinguished comparison (=== operator behavior) is used for comparison.
+	 * @param value Search value
+	 * @param offset Starting position
+	 * @return True if found, false if not found.
 	 */
 	function includes( value, offset:int=0 ):int;
 };

@@ -1,86 +1,86 @@
 /**
- * @description Storages クラスは 吉里吉里本体のストレージシステムに関するメソッドやプロパティを持ったクラスです。
- * このクラスからオブジェクトを作成することはできません。
+ * @description The Storages class is a class that has methods and properties related to the storage system of KiriKiri itself.
+ * You cannot create objects from this class.
  */
 class Storages {
 	/**
-	 * 自動検索パスへの追加
+	 * Add to automatic search path
 	 *
-	 * @param path 自動検索パスに追加するパスを指定します。
-	 * パスの最後は、アーカイブ内のルートフォルダを指定するときは '>'、通常のフォルダを指定するときは '/' で終わる必要があります
-	 * ( 例 : "Archive/arc.xp3>" や "System/" ) 。2.19 beta 14 よりアーカイブの区切り文字が '#' から '>' に変わりました。
-	 * @description 自動検索パスに、指定したパスを追加します。
-	 * 吉里吉里は、利用可能なストレージを検索するとき、この自動検索パスに登録されたパスを探します。
-	 * 自動検索パスは、後に指定したものがより優先されて検索されます。
-	 * また、プロジェクトフォルダはもっとも優先されて検索されます。
+	 * @param path Specify the path to add to the automatic search path.
+	 * The end of the path must end with'>' when specifying the root folder in the archive and'/' when specifying a regular folder
+	 * (Example: "Archive / arc.xp3>" or "System /"). From 2.19 beta 14, the archive delimiter has changed from'#' to'>'.
+	 * @description Adds the specified path to the automatic search path.
+	 * Kirikiri When searching for available storage, it looks for the path registered in this automatic search path.
+	 * As for the automatic search path, the one specified later is searched with higher priority.
+	 * Also, the project folder is searched with the highest priority.
 	 * @see Storages.removeAutoPath
 	 */
 	function addAutoPath( path);
 
 	/**
-	 * 自動検索パスの削除
+	 * Delete automatic search path
 	 *
-	 * @param path 自動検索から削除するパスを指定します。
-	 * @description 自動検索パスから、指定したパスを削除します。
+	 * @param path Specifies the path to remove from the automatic search.
+	 * @description Deletes the specified path from the automatic search path.
 	 * @see Storages.addAutoPath
 	 */
 	function removeAutoPath( path);
 
 	/**
-	 * 完全な統一ストレージ名の取得
+	 * Get the fully unified storage name
 	 *
-	 * @param path 完全な統一ストレージ名にしたいストレージ名を指定します。
-	 * @return 完全な統一ストレージ名
-	 * @description path で指定されたストレージ名を完全な統一ストレージ名に変換します。
-	 * 冗長なパスアクセス ( たとえば system/flags/../data/ など ) はすべて圧縮されます。
-	 * カレントメディア、カレントフォルダが指定されていなければ、補完します。
+	 * @param path Specify the storage name that you want to be the fully unified storage name.
+	 * @return Fully unified storage name
+	 * @description Converts the storage name specified by path to a fully unified storage name.
+	 * All redundant path access (for example, system / flags / ../ data /) is compressed.
+	 * If the current media and current folder are not specified, they will be complemented.
 	 * @see Storages.getPlacedPath
 	 */
 	function getFullPath( path);
 
 	/**
-	 * ストレージの検索
+	 * Search for storage
 	 *
-	 * @param storage 検索したいストレージ名を指定します。
-	 * @return 発見された場所が統一ストレージ名で返ります。
-	 * 見つからなかった場合は空文字列が返ります。
-	 * @description storage で指定されたストレージを自動検索パスから検索します。
+	 * @param storage Specify the storage name you want to search.
+	 * @return The found location is returned with a unified storage name.
+	 * If not found, an empty string is returned.
+	 * @description Searches the storage specified by storage from the automatic search path.
 	 * @see Storages.getFullPath
 	 * @see Storages.isExistentStorage
 	 */
 	function getPlacedPath( storage);
 
 	/**
-	 * ストレージの検索、拡張子指定版
+	 * Storage search, extension specified version
 	 *
-	 * @param storage 検索したいストレージ名を指定します。
-	 * @param extlist 拡張子リスト。"|"で区切って拡張子を列挙する。例.".tlg|.png|.jpg|.bmp"
-	 * @return 発見された場所が統一ストレージ名で返ります。
-	 * 見つからなかった場合は空文字列が返ります。
-	 * @description storage で指定されたストレージを自動検索パスから検索します。
-	 * storageに拡張子が付いている場合は、拡張子を取り除いてからリストの拡張子が付与されます。
+	 * @param storage Specify the storage name you want to search.
+	 * @param extlist Extension list. List the extensions separated by "|". Example. ".tlg | .png | .jpg | .bmp"
+	 * @return The found location is returned with a unified storage name.
+	 * If not found, an empty string is returned.
+	 * @description Searches the storage specified by storage from the automatic search path.
+	 * If storage has an extension, the list extension is added after removing the extension.
 	 * @see Storages.getFullPath
 	 * @see Storages.isExistentStorage
 	 */
 	function getPlacedPath( storage, extlist );
 
 	/**
-	 * ストレージの存在確認
+	 * Confirmation of storage existence
 	 *
-	 * @param storage 存在を確認したいストレージ名を指定します。
-	 * @return 存在を確認できれば真、なければ偽が返ります。
-	 * @description storage で指定したストレージが存在するかどうかを確認します。
-	 * getPlacedPath を用いるよりは高速です。
+	 * @param storage Specify the storage name whose existence you want to check.
+	 * @return If the existence can be confirmed, it will be true, otherwise it will be false.
+	 * @description Checks if the storage specified in storage exists.
+	 * Faster than using getPlacedPath.
 	 * @see Storages.getPlacedPath
 	 */
 	function isExistentStorage( storage);
 
 	/**
-	 * ストレージ名の拡張子の抽出
+	 * Extraction of storage name extension
 	 *
-	 * @param storage 拡張子部分を抽出したいストレージ名を指定します。
-	 * @return 拡張子部分が返ります。拡張子部分は . (ドット)も含みます。拡張子がなかった場合は空文字列が返ります。
-	 * @description 指定されたストレージ名から拡張子の部分を抽出して返します。
+	 * @param storage Specify the storage name from which you want to extract the extension part.
+	 * @return The extension part is returned. The extension part also includes. (Dot). If there is no extension, an empty string is returned.
+	 * @description Extracts the extension part from the specified storage name and returns it.
 	 * @see Storages.extractStorageName
 	 * @see Storages.extractStoragePath
 	 * @see Storages.chopStorageExt
@@ -88,111 +88,111 @@ class Storages {
 	function extractStorageExt( storage);
 
 	/**
-	 * ストレージ名の抽出
+	 * Extraction of storage name
 	 *
-	 * @param storage ストレージ名を抽出したいストレージ名を指定します。
-	 * @return ストレージ名が返ります。
-	 * ストレージ名がなかった場合は空文字列が返ります。
-	 * @description 指定されたストレージ名から、ストレージ名の部分 ( パスを除く ) を抽出して返します。
-	 * たとえば "System/hoge.txt" を渡した場合、"hoge.txt" が返ります。
+	 * @param storage Specify the storage name from which you want to extract the storage name.
+	 * @return The storage name is returned.
+	 * If there is no storage name, an empty string is returned.
+	 * @description Extracts and returns the part of the storage name (excluding the path) from the specified storage name.
+	 * For example, if you pass "System / hoge.txt", "hoge.txt" will be returned.
 	 * @see Storages.extractStorageExt
 	 * @see Storages.extractStoragePath
 	 */
 	function extractStorageName( storage);
 
 	/**
-	 * ストレージ名のパスの抽出
+	 * Extraction of storage name path
 	 *
-	 * @param storage パスを抽出したいストレージ名を指定します。
-	 * @return パスが返ります。パスがなかった場合は空文字列が返ります。
-	 * @description 指定されたストレージ名から、パスの部分を抽出して返します。
-	 * たとえば "file://home/dee/hoge.txt" を渡した場合、"file://home/dee/" が返ります。
+	 * @param storage Specify the storage name from which you want to extract the path.
+	 * @return The path will be returned. If there is no path, an empty string is returned.
+	 * @description Extracts the path part from the specified storage name and returns it.
+	 * For example, if you pass "file: //home/dee/hoge.txt", "file: // home / dee /" will be returned.
 	 * @see Storages.extractStorageExt
 	 * @see Storages.extractStorageName
 	 */
 	function extractStoragePath( storage);
 
 	/**
-	 * ストレージ名の拡張子の切り落とし
+	 * Truncation of storage name extension
 	 *
-	 * @param storage 拡張子部分を切り落としたいストレージ名を指定します。
-	 * @return 拡張子部分が切り落とされたストレージ名が返ります。
-	 * @description 指定されたストレージ名から拡張子の部分を切り落として返します。
-	 * たとえば "file://home/dee/hoge.txt" を渡した場合、"file://home/dee/hoge" が返ります。
-	 * 	
+	 * @param storage Specify the storage name where you want to cut off the extension part.
+	 * @return Returns the storage name with the extension truncated.
+	 * @description The extension part is cut off from the specified storage name and returned.
+	 * For example, if you pass "file: //home/dee/hoge.txt", "file: // home / dee / hoge" will be returned.
+	 * .
 	 * @see Storages.extractStorageExt
 	 */
 	function chopStorageExt( storage);
 
 	/**
-	 * [Windows+]CD の検索
+	 * [Windows +] Search for CD
 	 *
-	 * @param volume 検索するCDのボリュームラベルを指定します。
-	 * @return 見つかった CD-ROM ドライブのドライブ文字が返ります。
-	 * @description 指定されたボリュームラベルを持つ CD ドライブを探して、そのドライブ文字 ( 'H' など ) を返します。
-	 * もちろん、ドライブには該当する CD-ROM が挿入されていなければなりません。
+	 * @param volume Specify the volume label of the CD to search.
+	 * @return Returns the drive letter of the found CD-ROM drive.
+	 * @description Finds the CD drive with the specified volume label and returns the drive letter (such as'H').
+	 * Of course, the drive must have the appropriate CD-ROM inserted.
 	 */
 	function searchCD( volume);
 
 	/**
-	 * ローカルファイル名の取得
+	 * Get local file name
 	 *
-	 * @param path ローカルファイル名 に変換したい統一ストレージ名を指定します。
-	 * @return ローカルファイル名が返ります。
-	 * ローカルファイル名に変換できなかった場合は空文字が返るか、例外が発生します。
-	 * @description 指定された統一ストレージ名を、OS ネイティブの形式 ( ローカルファイル名 ) に変換して返します。
+	 * @param path Specify the unified storage name that you want to convert to a local file name.
+	 * @return The local file name is returned.
+	 * If it cannot be converted to a local file name, an empty string is returned or an exception is thrown.
+	 * @description Converts the specified unified storage name to the OS native format (local file name) and returns it.
 	 */
 	function getLocalName( path);
 
 	/**
-	 * [Windows+]ファイル選択ダイアログボックスを表示
+	 * Display the [Windows +] file selection dialog box
 	 *
-	 * @param params データの受け渡しに用いる辞書配列を指定します。
-	 * このメソッドに渡すとき、以下のメンバを指定することができます。
-	 * また、いくつかのメンバはこのメソッドが終わると値が変更されます。
-	 * filterフィルタ文字列を配列で渡します。
-	 * フィルタ文字列は、フィルタの説明と フィルタを | (半角縦棒) で区切って指定するもので、フィルタにはワイルドカードを指定します。
-	 * 一つのフィルタに複数の拡張子が対応する場合は ; (半角セミコロン) で区切ります。
-	 * 複数のフィルタを指定するには配列で指定します。
-	 * 省略するとフィルタは用いません。
-	 * 例 :["画像ファイル(*.bmp;*.png;*.jpg;*.jpeg;*.eri;*.tlg)|*.bmp;*.png;*.jpg;*.jpeg;*.eri;*.tlg",  "スクリプトファイル(*.tjs;*.ks)|*.tjs;*.ks"]
-	 * filterIndex選択されているフィルタの番号 ( filter で指定したもの ) を指定します。
-	 * 1 を指定すると、filter で指定された最初のフィルタが初期状態において選択されています。
-	 * 2 を指定すると2番目のフィルタが選択さている状態になります ( 0 から始まるインデックス番号ではないことに注意してください; 先頭は 1 です )。
-	 * 省略すると先頭のフィルタが選択されます。
-	 * また、ユーザが OK ボタンを押した場合、最後にダイアログボックス上で選ばれていたフィルタのインデックスがこのメンバに設定されます。
-	 * nameファイル名を指定します。
-	 * 省略したり、空文字列を指定すると初期状態ではなにもファイルを選択されていない状態にすることができます。
-	 * また、ユーザが OK ボタンを押した場合、選択されたファイルがこのメンバに設定されます。
-	 * initialDir初期状態で表示するフォルダを指定します。
-	 * 省略するとカレントディレクトリが使用されます。
-	 * titleダイアログボックスのタイトルを表示します。
-	 * 省略されるとデフォルトの「開く」や「名前を付けて保存」になります( save メンバの設定によります )。
-	 * saveダイアログボックスの種類を指定します。
-	 * false(デフォルト) の場合、「開く」のダイアログボックスが使われます。
-	 * true の場合、「名前を付けて保存」のダイアログボックスが使われます。
-	 * defaultExtデフォルトの拡張子を指定します。
-	 * ユーザが拡張子を指定しなかった場合に自動的にこの拡張子を付加します。
-	 * ここで指定する拡張子には . (ピリオド)を指定しないでください。
-	 * 省略すると、拡張子が付加されることはありません。
-	 * @return ユーザがファイルを選択して OK ボタンを押せば真、キャンセルボタンを押せば偽が戻ります。
-	 * @description ファイル選択ダイアログボックスを開きます。
-	 * 例:
+	 * @param params Specify the dictionary array used for data transfer.
+	 * When passing to this method, you can specify the following members:
+	 * Also, some members change their values at the end of this method.
+	 * filter Pass the filter string as an array.
+	 * The filter string specifies the filter description and the filter separated by | (half-width vertical bar), and the filter specifies a wildcard.
+	 * If multiple extensions correspond to one filter, separate them with; (half-width semicolon).
+	 * To specify multiple filters, specify them in an array.
+	 * If omitted, the filter will not be used.
+	 * Example: ["Image file (* .bmp; * .png; * .jpg; * .jpeg; * .eri; * .tlg) | * .bmp; * .png; * .jpg; * .jpeg; *. eri; * .tlg "," Script file (* .tjs; * .ks) | * .tjs; * .ks "]
+	 * filterIndex Specifies the number of the selected filter (specified by filter).
+	 * If you specify 1, the first filter specified by filter is initially selected.
+	 * Specifying 2 causes the second filter to be selected (note that it is not a 0-based index number; it starts with 1).
+	 * If omitted, the first filter is selected.
+	 * Also, if the user presses the OK button, the index of the last selected filter on the dialog box will be set to this member.
+	 * name Specify the file name.
+	 * If you omit it or specify an empty string, you can leave no files selected in the initial state.
+	 * Also, if the user presses the OK button, the selected file will be set to this member.
+	 * initialDir Specifies the folder to be displayed in the initial state.
+	 * If omitted, the current directory will be used.
+	 * title Displays the title of the dialog box.
+	 * If omitted, it defaults to "Open" or "Save As" (depending on the save member settings).
+	 * Specifies the type of save dialog box.
+	 * If false (default), the Open dialog box is used.
+	 * If true, the Save As dialog box is used.
+	 * defaultExt Specifies the default extension.
+	 * If the user does not specify an extension, this extension is automatically added.
+	 * Do not specify. (Period) for the extension specified here.
+	 * If omitted, the extension will not be added.
+	 * @return If the user selects a file and presses the OK button, it returns true, and if the cancel button is pressed, it returns false.
+	 * @description Opens a file selection dialog box.
+	 * Example:
 	 *
 	 * ```
-	 * var params = %[filter : [ "テキストファイル(*.txt)|*.txt", "バイナリファイル(*.bin)|*.bin" ],filterIndex : 1,name : "",initialDir : System.exePath,title : "ファイルを開く",save : false,];
+	 * var params = %[filter : [ "text file(*.txt)|*.txt", "Binary file(*.bin)|*.bin" ],filterIndex : 1,name : "",initialDir : System.exePath,title : "Open file",save : false,];
 	 * if(Storages.selectFile(params))
-	 *     System.inform("選択したファイルは : " + params.name);
+	 *     System.inform("The selected file is:" + params.name);
 	 * ```
 	 */
 	function selectFile( params);
 
 	/**
-	 * ファイルプロパティの取得
+	 * Get file properties
 	 *
-	 * @param storage プロパティを取得したいファイル名を指定します。
-	 * @return プロパティが辞書形式で返ります。プロパティがなかった場合はnullが返ります。
-	 * @description 指定されたストレージ名から、プロパティを取得して返します。
+	 * @param storage Specify the file name for which you want to get the properties.
+	 * @return The property is returned in dictionary format. If there is no property, null is returned.
+	 * @description Gets and returns the property from the specified storage name.
 	 */
 	function getFileProperty( storage );
 

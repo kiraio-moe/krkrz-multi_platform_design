@@ -1,57 +1,57 @@
 /**
- * @description オクテット列は擬似的に Octet クラスのオブジェクトということになっていますが、Octet クラスは存在していませんし、実際に Octet クラスのオブジェクトというわけではありません ( ただし オクテット列に対して typeof 演算子を使うと "Octet" を返します )。
- * しかし オクテット列をオブジェクトと見立てて、いくつかのメソッドやプロパティが使用可能になっています。
+ * @description The octet column is supposed to be an object of the Octet class in a pseudo manner, but the Octet class doesn't exist and it's not really an object of the Octet class (although we use the typeof operator on the octet column). And "Octet").
+ * However, the octet column is considered an object, and some methods and properties are available.
  */
 class Octet {
 	/**
-	 * オクテット列の長さ
-	 * @description このプロパティへの値の代入はできません。
+	 * Octet row length
+	 * @description You cannot assign a value to this property.
 	 */
 	property length;
 
 	/**
-	 * '数値' プロパティ
-	 * @description 数値をプロパティとして間接指定すると、その位置にあるオクテットにアクセスできます。
-	 * 結果はオクテットの数値で表されます。
-	 * たとえば、oct がオクテット列を表す式だとすると、oct[0] は先頭のオクテットの値を表す数値になります。
-	 * 数値がオクテット列よりも長い位置や、負の場合は例外が発生します。
+	 * 'Numeric' property
+	 * @description If you indirectly specify a number as a property, you can access the octet at that location.
+	 * The result is expressed as an octet number.
+	 * For example, if oct is an expression that represents a column of octets, then oct [0] is a number that represents the value of the first octet.
+	 * An exception will be thrown if the number is longer than the octet column or if it is negative.
 	 * 
-	 * 代入式を生成することはできません。
+	 * Substitution expressions cannot be generated.
 	 */
 	property ［］;
 
 	/**
-	 * 引数で指定された文字列に従い、バイナリ(Octet)を配列(Array)化して返します
-	 * @description 指定の文字列はテンプレートと呼びます。
-	 * テンプレートは、型指定文字とその長さを並べたものです。
-	 * 長さとして * が指定された時は残り全ての長さを表します。
-	 * 長さが省略された場合は1として扱います。
-	 * @param template テンプレート文字列
-	 * テンプレート文字列には以下の文字が使用可能です。
+	 * Returns the binary (Octet) as an array (Array) according to the character string specified by the argument.
+	 * @description The specified string is called a template.
+	 * A template is a list of typed characters and their lengths.
+	 * When * is specified as the length, it represents all the remaining lengths.
+	 * If the length is omitted, it is treated as 1.
+	 * @param template Template string
+	 * The following characters can be used in the template string.
 	 *
-	 * + a : ASCII 文字列(ヌル文字が補完される)
-	 * + A : ASCII 文字列(スペースが補完される)
-	 * + b : 2進数文字列(下位ビットから上位ビットの順)
-	 * + B : 2進数文字列(上位ビットから下位ビットの順)
-	 * + c : 符号付き1バイト数値(-128 縲鰀 127)
-	 * + C : 符号無し1バイト数値(0縲鰀255)
-	 * + d : 倍精度浮動小数点値
-	 * + f : 単精度浮動小数点値
-	 * + h : 16進数文字列(low nybble first)
-	 * + H : 16進数文字列(high nybble first)
-	 * + i : 符号付きint数値(通常4バイト)
-	 * + I : 符号無しint数値(通常4バイト)
-	 * + l : 符号付きlong数値(通常4バイト)
-	 * + L : 符号無しlong数値(通常4バイト)
-	 * + n : 符号無しshort数値(ネットワークバイトオーダ)
-	 * + N : 符号無しlong数値(ネットワークバイトオーダ)
-	 * + s : 符号付きshort数値(通常2バイト)
-	 * + S : 符号無しshort数値(通常2バイト)
-	 * + v : 符号無しshort値(リトルエンディアン)
-	 * + V : 符号無しlong値(リトルエンディアン)
-	 * + x : 1バイト読み飛ばす
-	 * + X : 1バイト後退
-	 * + @ : 指定位置まで移動
+	 * + a : ASCII string (null-terminated)
+	 * + A : ASCII string (spaces are completed)
+	 * + b : Binary string (from low-order bit to high-order bit)
+	 * + B : Binary string (from high-order bit to low-order bit)
+	 * + c : Signed 1-byte number (-128~127)
+	 * + C : Unsigned 1-byte number (0~255)
+	 * + d : Double precision floating point value
+	 * + f : Single precision floating point value
+	 * + h : Hexagonal string (low nybble first)
+	 * + H : Hexic string (high nybble first)
+	 * + i : Signed int number (usually 4 bytes)
+	 * + I : Unsigned int number (usually 4 bytes)
+	 * + l : Signed long number (usually 4 bytes)
+	 * + L : Unsigned long number (usually 4 bytes)
+	 * + n : Unsigned short number (network byte order)
+	 * + N : Unsigned long number (network byte order)
+	 * + s : Signed short number (usually 2 bytes)
+	 * + S : Unsigned short number (usually 2 bytes)
+	 * + v : Unsigned short value (little endian)
+	 * + V : Unsigned long value (little endian)
+	 * + x : Skip 1 byte
+	 * + X : 1 byte backward
+	 * + @ : Move to specified position
 	 * + m : Base64 encode
 	 *
 	 */

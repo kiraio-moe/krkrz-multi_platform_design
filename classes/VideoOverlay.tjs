@@ -1,58 +1,58 @@
 /**
- * @description VideoOverlay クラスは、MPEG I や WMV、H.264、theora などを表示するため表示領域を作成するクラスです。
- * 吉里吉里のレイヤに表示を行うこともできます。
- * theora を再生するには krdstheora.dll が必要になります。
- * レイヤでの再生を除き、オーバーレイによる再生では、VideoOverlay クラスの表示領域は、すべてのレイヤよりも手前に表示され、透過することはできません。
- * レイヤでの再生は、オーバーレイでの再生に比べ、再生時のプロセッサの負荷は高くなる傾向にあります。
- * Androidでは常に最前面表示されるオーバーレイと等価なモードに限定されます。
- * また再生可能なフォーマットも機種に依存します。
- * H.246 が再生できる端末が多いようです。
- * Androidでは動画ファイルはassets内に格納します。
+ * @description The VideoOverlay class is a class that creates a display area for displaying MPEG I, WMV, H.264, theora, etc.
+ * You can also display on the layer of Kirikiri.
+ * You will need krdstheora.dll to play theora.
+ * With overlay playback, except for layer playback, the display area of the VideoOverlay class is visible in front of all layers and cannot be transparent.
+ * Playback on layers tends to be more processor-intensive during playback than playback on overlays.
+ * On Android, it is limited to the mode equivalent to the overlay that is always displayed in the foreground.
+ * The playable format also depends on the model.
+ * It seems that there are many terminals that can play H.264.
+ * On Android, video files are stored in assets.
  */
 class VideoOverlay {
 	/**
-	 * VideoOverlay オブジェクトの構築
+	 * Building a VideoOverlay object
 	 *
-	 * @param window このレイヤを保有することになるウィンドウ ( Window クラスのオブジェクト ) を指定します。
-	 * @description VideoOverlay クラスのオブジェクトを構築します。
+	 * @param window Specifies the window (an object of the Window class) that will own this layer.
+	 * @description Build an object of the VideoOverlay class.
 	 */
 	function VideoOverlay( window);
 
 	/**
-	 * ステータスが変更された
+	 * Status changed
 	 *
-	 * @param status ステータス文字列を表します。以下のいずれかです。
+	 * @param status Represents a status string. One of the following:
 	 *
-	 * + "unload"   :  メディアが開かれてない
-	 * + "ready"    :  メディアの準備が完了している
-	 * + "play"     :  メディアは再生中である
-	 * + "stop"     :  メディアは停止中である
-	 * + "pause"    :  メディアは一時停止中である
-	 * + "idle"     :  [Android+]メディアはアイドル中。
-	 * + "buffering" :  [Android+]メディアはバッファリング中。
-	 * + "load error" :  [Android+]メディアの読み込みエラー。
-	 * + "player error" :  [Android+]メディアプレイヤーエラー。
+	 * + "unload"   : Media is not open
+	 * + "ready"    :   Media is ready
+	 * + "play"     :   Media is playing
+	 * + "stop"     :   Media is down
+	 * + "pause"    :   Media is paused
+	 * + "idle"     :   [Android +] The media is idle.
+	 * + "buffering" :   [Android +] Media is buffering.
+	 * + "load error" :   [Android +] Media loading error.
+	 * + "player error" :   [Android +] Media player error.
 	 *
-	 * @description このオブジェクトのステータスが変更されたときに発生します。
-	 * ready は、vomMFEVR モード/Androidの時のみ発生します。
+	 * @description Occurs when the status of this object changes.
+	 * ready only occurs in vomMFEVR mode / Android.
 	 */
 	event onStatusChanged( status);
 
 	/**
-	 * [Windows*]Periodイベントが発生した
+	 * [Windows *] Period event has occurred
 	 *
-	 * @param type Periodイベントのタイプを表します。
-	 * 以下のいずれかです。
+	 * @param type Period Represents the type of event.
+	 * One of the following:
 	 *
-	 * + perLoop    :  (通常の)ループの終端に達した
-	 * + perSegLoop :  セグメントループの終端に達した
-	 * + perPeriod  :  setPeriodEvent メソッドで指定されたフレームに達した
-	 * + perPrepare :  prepare メソッドによる再生準備が完了した
+	 * + perLoop    :   Reached the end of the (normal) loop
+	 * + perSegLoop :   Reached the end of the segment loop
+	 * + perPeriod  :   The frame specified by the setPeriodEvent method has been reached
+	 * + perPrepare :   Ready to play with the prepare method
 	 *
-	 * @description ループの終端や、 setPeriodEventによって指定されたフレームに達した場合、または prepare メソッドにより再生準備が完了した場合に呼び出されるメソッドです。
-	 * ループの終端や、setPeriodEvent によって指定されたフレームに達した場合にこのイベントが呼ばれる時点では、再生状況によっては、すでに再生位置が指定された位置を超えている場合があります。
-	 * 現在の実際の再生位置を取得するには frame プロパティを参照してください。
-	 * Androidでは発生しません。
+	 * @description This method is called at the end of the loop, when the frame specified by setPeriodEvent is reached, or when the prepare method is ready to play.
+	 * At the end of the loop or when this event is called when the frame specified by setPeriodEvent is reached, the playback position may have already exceeded the specified position, depending on the playback status.
+	 * See the frame property to get the current actual playback position.
+	 * It does not occur on Android.
 	 * @see VideoOverlay.setPeriodEvent
 	 * @see VideoOverlay.prepare
 	 * @see VideoOverlay.frame
@@ -60,72 +60,72 @@ class VideoOverlay {
 	event onPeriod( type);
 
 	/**
-	 * [Windows*]ビデオフレームが更新された
+	 * [Windows *] Video frame updated
 	 *
-	 * @param frame ビデオのフレーム番号
-	 * @description ビデオフレームが更新された後に呼び出されるメソッドです。
-	 * 引数であるframeは現在表示されているビデオフレームと完全に一致しているとは限りません。
-	 * レイヤ描画モード、ミキサーモード時のみ利用可能です。
-	 * Androidでは発生しません。
+	 * @param frame Video frame number
+	 * @description This method is called after the video frame has been updated.
+	 * The argument frame does not always exactly match the currently displayed video frame.
+	 * Only available in layer drawing mode and mixer mode.
+	 * It does not occur on Android.
 	 */
 	event onFrameUpdate( frame);
 
 	/**
-	 * メディアを開く
+	 * Open media
 	 *
-	 * @param storage 指定されたメディアを開きます。
-	 * @description 指定されたメディアを開きます。
+	 * @param storage Opens the specified media.
+	 * @description Opens the specified media.
 	 */
 	function open( storage);
 
 	/**
-	 * 再生開始
+	 * Start playing
 	 *
-	 * @description メディアの再生を開始します。
+	 * @description Start playing the media.
 	 */
 	function play();
 
 	/**
-	 * 再生停止
+	 * Stop playing
 	 *
-	 * @description メディアの再生を停止します。
+	 * @description Stops playing the media.
 	 */
 	function stop();
 
 	/**
-	 * 一時停止
+	 * pause
 	 *
-	 * @description メディアの再生を一時停止します。
+	 * @description Pauses media playback.
 	 */
 	function pause();
 
 	/**
-	 * 巻き戻し
+	 * Rewind
 	 *
-	 * @description メディアの再生位置を先頭に移動します。
+	 * @description Moves the playback position of the media to the beginning.
 	 */
 	function rewind();
 
 	/**
-	 * [Windows*]再生準備
+	 * [Windows *] Ready to play
 	 *
-	 * @description メディアの1フレーム目を指定されているレイヤーに描画し、描画終了時にonPeriodイベントを発生させます。
-	 * prepareメソッド コール後の再生は、onPeriodイベントを待機してから行ってください。
+	 * @description Draws the first frame of the media on the specified layer and raises the onPeriod event at the end of drawing.
+	 * Wait for the onPeriod event before playing after calling the prepare method.
 	 * @see VideoOverlay.onPeriod
 	 */
 	function prepare();
 
 	/**
-	 * [Windows*]フレーム間ループの設定
+	 * [Windows *] Inter-frame loop settings
 	 *
-	 * @param comeFrame ループ移動先フレーム(ループの始端フレーム)。
-	 * 再生がgoFrameに達したとき、再生ヘッドはこのフレームに移動します。
-	 * @param goFrame ループ終点フレーム(ループの終端フレーム)。
-	 * このフレームの1つ前のフレームの表示が終了した時、再生ヘッドはcomeFrameへ移動します。
-	 * @description 指定されたフレーム間でループ処理を行います。
-	 * ループ終端(goFrame)では、onPeriodイベントが発生します。
-	 * comeFrameのフレームにはムービーファイルにキーフレームを設定しておく必要があります。
-	 * 設定されていない場合は、ループ終点から始点へ移動時に指定されたフレームに最も近いキーフレームへ再生位置が移動することになります。
+	 * @param comeFrame Loop destination frame (loop start frame).
+	 * When playback reaches goFrame, the playhead moves to this frame.
+	 * @param goFrame Loop end frame (loop end frame).
+	 * When the display of the frame immediately before this frame is finished, the playhead moves to comeFrame.
+	 * @description Loops between the specified frames.
+	 * At the end of the loop (goFrame), the onPeriod event is fired.
+	 * It is necessary to set a key frame in the movie file for the frame of comeFrame.
+	 * If not set, the playback position will move to the keyframe closest to the specified frame when moving from the loop end point to the start point.
 	 * @see VideoOverlay.cancelSegmentLoop
 	 * @see VideoOverlay.onPeriod
 	 * @see VideoOverlay.segmentLoopStartFrame
@@ -134,114 +134,114 @@ class VideoOverlay {
 	function setSegmentLoop( comeFrame, goFrame);
 
 	/**
-	 * [Windows*]フレーム間ループの解除
+	 * [Windows *] Breaking the inter-frame loop
 	 *
-	 * @description setSegmentLoopメソッドで指定したセグメント間ループを解除します。
+	 * @description Breaks the intersegment loop specified by the setSegmentLoop method.
 	 * @see VideoOverlay.setSegmentLoop
 	 */
 	function cancelSegmentLoop( );
 
 	/**
-	 * メディアを閉じる
+	 * Close media
 	 *
-	 * @description メディアを閉じます。
-	 * メディアを再生するために確保されていたリソースなどもすべて解放します。
+	 * @description Close the media.
+	 * It also frees all resources reserved for playing media.
 	 * @see VideoOverlay.setSegmentLoop
 	 */
 	function close();
 
 	/**
-	 * [Windows*]指定フレームでのイベント発生の指定
+	 * [Windows *] Specifying the occurrence of an event at a specified frame
 	 *
-	 * @param eventFrame onPeriodイベントを発生させるフレームを指定します。
-	 * @description 指定したフレームでonPeriodイベントを発生させます。
-	 * onPeriodイベントは、一度発生すると解除されます。
-	 * 再び発生させたい場合は再度このメソッドで設定してください。
+	 * @param eventFrame Specifies the frame that raises the onPeriod event.
+	 * @description Raises the onPeriod event at the specified frame.
+	 * The onPeriod event is cleared once it occurs.
+	 * If you want to generate it again, set it again with this method.
 	 * @see VideoOverlay.cancelPeriodEvent
 	 * @see VideoOverlay.onPeriod
 	 */
 	function setPeriodEvent( eventFrame);
 
 	/**
-	 * [Windows*]指定フレームでのイベント発生の解除
+	 * [Windows *] Cancel event occurrence at specified frame
 	 *
-	 * @description setPeriodEventメソッドで設定したイベント発生を解除します。
+	 * @description Cancels the event occurrence set by the setPeriodEvent method.
 	 * @see VideoOverlay.setPeriodEvent
 	 */
 	function cancelPeriodEvent();
 
 	/**
-	 * [Windows*]再生矩形の左上位置を指定
+	 * [Windows *] Specify the upper left position of the playback rectangle
 	 *
-	 * @param left メディアを再生するための矩形領域の左端位置を指定します。
-	 * @param top メディアを再生するための矩形領域の上端位置を指定します。
-	 * @description メディアを再生するための矩形領域の左上位置を指定します。
-	 * 座標は、ウィンドウのクライアント ( レイヤを表示可能な領域 ) 内での座標で、ピクセル単位で指定します。
+	 * @param left Specifies the left edge position of the rectangular area for playing media.
+	 * @param top Specifies the top position of the rectangular area for playing media.
+	 * @description Specifies the upper left position of the rectangular area for playing media.
+	 * Coordinates are the coordinates within the window's client (the area where the layer can be displayed) and are specified in pixels.
 	 */
 	function setPos( left, top);
 
 	/**
-	 * [Windows*]再生矩形のサイズを指定
+	 * [Windows *] Specify the size of the playback rectangle
 	 *
-	 * @param width メディアを再生するための矩形領域の横幅を指定します。
-	 * @param height メディアを再生するための矩形領域の縦幅を指定します。
-	 * @description メディアを再生するための矩形領域のサイズをピクセル単位で指定します。
-	 * 現バージョンでは、レイヤ再生時にはこのメソッドを使用することはできません。
+	 * @param width Specifies the width of the rectangular area for playing media.
+	 * @param height Specifies the vertical width of the rectangular area for playing media.
+	 * @description Specifies the size of the rectangular area for playing media in pixels.
+	 * In the current version, this method cannot be used during layer playback.
 	 */
 	function setSize( width, height);
 
 	/**
-	 * [Windows*]再生矩形の位置とサイズを指定
+	 * [Windows *] Specify the position and size of the playback rectangle
 	 *
-	 * @param left メディアを再生するための矩形領域の左端位置を指定します。
-	 * @param top メディアを再生するための矩形領域の上端位置を指定します。
-	 * @param width メディアを再生するための矩形領域の横幅を指定します。
-	 * @param height メディアを再生するための矩形領域の縦幅を指定します。
-	 * @description メディアを再生するための矩形領域の位置とサイズを指定します。
-	 * 座標は、ウィンドウのクライアント ( レイヤを表示可能な領域 ) 内での座標で、ピクセル単位で指定します。
-	 * 現バージョンでは、レイヤ再生時にはこのメソッドで指定できるのは位置だけで、サイズは無視されます。
+	 * @param left Specifies the left edge position of the rectangular area for playing media.
+	 * @param top Specifies the top position of the rectangular area for playing media.
+	 * @param width Specifies the width of the rectangular area for playing media.
+	 * @param height Specifies the vertical width of the rectangular area for playing media.
+	 * @description Specifies the position and size of the rectangular area for playing media.
+	 * Coordinates are the coordinates within the window's client (the area where the layer can be displayed) and are specified in pixels.
+	 * In the current version, this method can only specify the position during layer playback, ignoring the size.
 	 */
 	function setBounds( left, top, width, height);
 
 	/**
-	 * [Windows*]音声ストリームの選択
+	 * [Windows *] Audio stream selection
 	 *
-	 * @param streamNumber 音声ストリーム番号を指定します。
-	 * @description 指定した音声ストリーム番号を有効にします。
-	 * 音声ストリームを複数含まないビデオでは使用できません。
-	 * Androidでは常に0を返し、設定しても意味はありません。
-	 * 	
+	 * @param streamNumber Specify the audio stream number.
+	 * @description Enables the specified audio stream number.
+	 * Not available for videos that do not contain multiple audio streams.
+	 * On Android it always returns 0 and there is no point in setting it.
+	 * .
 	 * @see VideoOverlay.numberOfAudioStream
 	 * @see VideoOverlay.enabledAudioStream
 	 */
 	function selectAudioStream( streamNumber);
 
 	/**
-	 * [Windows+]ミキシング対象レイヤの設定
+	 * [Windows +] Mixing target layer settings
 	 *
-	 * @param layer レイヤー
-	 * @description 指定したレイヤーとビデオのミキシングを行います。
-	 * ミキシングはこのメソッドが呼び出された時のレイヤー画像と行われます。
-	 * レイヤー画像の更新を反映するには、再度このメソッドを呼び出す必要があります。
-	 * VideOverlay.OnFrameUpdate を使用して、レイヤー画像が更新されたことを調べてこのメソッドを呼び出すようにすれば、自動的に更新が反映されるようになります。
-	 * onFrameUpdateで毎フレームこのメソッドを呼び出した場合、かなり負荷がかかりますのでそれは避けた方が良いです。
-	 * ミキサーモードでのみ利用可能です。
+	 * @param layer layer
+	 * @description Mixes the specified layer and video.
+	 * Mixing is done with the layer image when this method is called.
+	 * You must call this method again for the layer image update to take effect.
+	 * If you use VideOverlay.OnFrameUpdate to check that the layer image has been updated and call this method, the update will be reflected automatically.
+	 * Calling this method every frame with onFrameUpdate can be quite expensive and should be avoided.
+	 * Only available in mixer mode.
 	 */
 	function setMixingLayer( layer);
 
 	/**
-	 * [Windows+]ミキシング対象レイヤの設定解除
+	 * [Windows +] Unsetting the layer to be mixed
 	 *
-	 * @description ビデオとレイヤーのミキシングを解除します。
-	 * ミキサーモードでのみ利用可能です。
+	 * @description Unmix the video and layers.
+	 * Only available in mixer mode.
 	 */
 	function resetMixingLayer( );
 
 	/**
-	 * 再生位置
+	 * Playback position
 	 *
-	 * @description メディアの再生位置を ms 単位で表します。
-	 * 値を設定することもできます。
+	 * @description Represents the playback position of the media in ms.
+	 * You can also set the value.
 	 * @see VideoOverlay.frame
 	 * @see VideoOverlay.totalTime
 	 */
@@ -250,11 +250,11 @@ class VideoOverlay {
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows]現在のフレーム
+	 * [Windows] Current frame
 	 *
-	 * @description メディアの再生位置をフレーム単位で表します。
-	 * 値を設定することもできます。
-	 * Androidでは常に0を返し、設定しても意味はありません。
+	 * @description Represents the playback position of the media in frame units.
+	 * You can also set the value.
+	 * On Android it always returns 0 and there is no point in setting it.
 	 * @see VideoOverlay.position
 	 * @see VideoOverlay.numberOfFrame
 	 */
@@ -263,24 +263,24 @@ class VideoOverlay {
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows*]ループ再生をするかどうか
+	 * [Windows *] Whether to play in a loop
 	 *
-	 * @description ループ再生の有効無効を表します。
-	 * 値を設定することもできます。
-	 * 真ならばループ、偽ならば非ループです。
-	 * Androidでは常に偽を返し、設定しても意味はありません。
+	 * @description Indicates whether loop playback is enabled or disabled.
+	 * You can also set the value.
+	 * If true, it is a loop, if false, it is a non-loop.
+	 * Android always returns false and it doesn't make sense to set it.
 	 */
 	 property loop {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows*]再生矩形の横幅
+	 * [Windows *] Width of playback rectangle
 	 *
-	 * @description 再生矩形の横幅を表します。
-	 * 値を設定することもできます。
-	 * このプロパティは、現バージョンではレイヤ再生時は使用できません(常にサイズはビデオのサイズと同じになります)。
-	 * Androidでは常に0を返し、設定しても意味はありません。
+	 * @description Represents the width of the playback rectangle.
+	 * You can also set the value.
+	 * This property is not available during layer playback in the current version (the size will always be the same as the size of the video).
+	 * On Android it always returns 0 and there is no point in setting it.
 	 * @see VideoOverlay.height
 	 * @see VideoOverlay.setSize
 	 */
@@ -289,12 +289,12 @@ class VideoOverlay {
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows*]再生矩形の縦幅
+	 * [Windows *] Vertical width of playback rectangle
 	 *
-	 * @description 再生矩形の縦幅を表します。
-	 * 値を設定することもできます。
-	 * このプロパティは、現バージョンではレイヤ再生時は使用できません(常にサイズはビデオのサイズと同じになります)。
-	 * Androidでは常に0を返し、設定しても意味はありません。
+	 * @description Represents the vertical width of the playback rectangle.
+	 * You can also set the value.
+	 * This property is not available during layer playback in the current version (the size will always be the same as the size of the video).
+	 * On Android it always returns 0 and there is no point in setting it.
 	 * @see VideoOverlay.width
 	 * @see VideoOverlay.setSize
 	 */
@@ -303,11 +303,11 @@ class VideoOverlay {
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows*]再生矩形の左端位置
+	 * [Windows *] Left edge position of playback rectangle
 	 *
-	 * @description 再生矩形の左端位置を表します。
-	 * 値を設定することもできます。
-	 * Androidでは常に0を返し、設定しても意味はありません。
+	 * @description Represents the left edge position of the playback rectangle.
+	 * You can also set the value.
+	 * On Android it always returns 0 and there is no point in setting it.
 	 * @see VideoOverlay.top
 	 * @see VideoOverlay.setPos
 	 */
@@ -316,11 +316,11 @@ class VideoOverlay {
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows*]再生矩形の上端位置
+	 * [Windows *] Top position of playback rectangle
 	 *
-	 * @description 再生矩形の上端位置を表します。
-	 * 値を設定することもできます。
-	 * Androidでは常に0を返し、設定しても意味はありません。
+	 * @description Represents the top position of the playback rectangle.
+	 * You can also set the value.
+	 * On Android it always returns 0 and there is no point in setting it.
 	 * @see VideoOverlay.left
 	 * @see VideoOverlay.setPos
 	 */
@@ -329,94 +329,94 @@ class VideoOverlay {
 		 setter( value ) {}
 	}
 	/**
-	 * 可視かどうか
+	 * Whether it is visible
 	 *
-	 * @description 再生領域が可視かどうかを指定します。
-	 * 値を設定することもできます。真ならば可視、偽ならば不可視です。
-	 * Androidでは読み込みのみです。
+	 * @description Specifies whether the playback area is visible.
+	 * You can also set the value. If true, it is visible, if false, it is invisible.
+	 * Only read on Android.
 	 */
 	 property visible {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows*]フレームレート
+	 * [Windows *] Frame rate
 	 *
-	 * @description フレームレート(フレーム/秒)を表します。
-	 * Androidでは常に0を返します。
+	 * @description Represents the frame rate (frames / second).
+	 * Android always returns 0.
 	 */
 	 property fps {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows*]全フレーム数
+	 * [Windows *] Total number of frames
 	 *
-	 * @description 全フレーム数を表します。
-	 * Androidでは常に0を返します。
+	 * @description Represents the total number of frames.
+	 * Android always returns 0.
 	 */
 	 property numberOfFrame {
 		 getter() { return value; }
 	}
 	/**
-	 * 合計時間
+	 * total time
 	 *
-	 * @description 合計時間をms単位で表します。
+	 * @description The total time is expressed in ms.
 	 */
 	 property totalTime {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows*]描画レイヤ指定1
+	 * [Windows *] Drawing layer specification 1
 	 *
-	 * @description レイヤ描画モード時、描画するレイヤを表します。
-	 * 値を設定することもできます。
-	 * layer1 プロパティと layer2 プロパティを異なるレイヤに設定することにより、同時に２つのレイヤに同じ動画を表示させることができます。
+	 * @description Layer Indicates the layer to be drawn in the drawing mode.
+	 * You can also set the value.
+	 * By setting the layer1 property and layer2 property to different layers, you can display the same video on two layers at the same time.
 	 */
 	 property layer1 {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows*]描画レイヤ指定2
+	 * [Windows *] Drawing layer specification 2
 	 *
-	 * @description レイヤ描画モード時、描画するレイヤを表します。
-	 * 値を設定することもできます。
+	 * @description Layer Indicates the layer to be drawn in the drawing mode.
+	 * You can also set the value.
 	 */
 	 property layer2 {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows*]オーバーレイorレイヤ描画の指定
+	 * [Windows *] Specify overlay or layer drawing
 	 *
-	 * @description オーバーレイモードであるか、レイヤ描画モードであるか、ミキサーモードであるかを表します。
-	 * 値を設定することもできます。
-	 * オーバーレイモードの場合は vomOverlay、レイヤ描画モードの場合は vomLayer 、ミキサーモードの場合は vomMixer、Media Foundation モードの場合は vomMFEVR となります。
-	 * Androidでは再生モードはありません。
+	 * @description Indicates whether it is in overlay mode, layer drawing mode, or mixer mode.
+	 * You can also set the value.
+	 * VomOverlay for overlay mode, vomLayer for layer drawing mode, vomMixer for mixer mode, and vomMFEVR for Media Foundation mode.
+	 * There is no playback mode on Android.
 	 */
 	 property mode {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows*]再生速度
+	 * [Windows *] Playback speed
 	 *
-	 * @description メディアの再生速度を設定します。
-	 * 1.0 を指定すると通常の再生速度、0.5 では半分の再生速度、2では2倍の再生速度となります。
-	 * 設定可能値はDirectShowのフィルタによって決まります。
-	 * 参考 : 音声付のMPEGファイルの場合、0.0より大きい値から2.0までの値が設定可能です。
-	 * 音声なしのMPEGファイルの場合、0.0より大きい値からdoubleの範囲内(たぶん)で設定可能ですが、実際の再生速度は処理速度によって上限が決まります。
-	 * Androidでは常に0を返します。設定しても何も起こりません。
+	 * @description Set the playback speed of the media.
+	 * Specify 1.0 for normal playback speed, 0.5 for half playback speed, and 2 for double playback speed.
+	 * The configurable value is determined by the DirectShow filter.
+	 * Reference: For MPEG files with audio, values larger than 0.0 to 2.0 can be set.
+	 * For MPEG files without audio, it can be set within the range of double (probably) from a value greater than 0.0, but the actual playback speed is limited by the processing speed.
+	 * Android always returns 0. Nothing happens when I set it.
 	 */
 	 property playRate {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows*]セグメントループの開始フレーム
+	 * [Windows *] Start frame of segment loop
 	 *
-	 * @description セグメントループの始端フレームです。
-	 * Androidでは何も起こりません。
+	 * @description The starting frame of the segment loop.
+	 * Nothing happens on Android.
 	 * @see VideoOverlay.setSegmentLoop
 	 * @see VideoOverlay.cancelSegmentLoop
 	 */
@@ -424,56 +424,56 @@ class VideoOverlay {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows*]セグメントループの開始フレーム
+	 * [Windows *] Start frame of segment loop
 	 *
-	 * @description セグメントループの始端フレームです。
-	 * Androidでは何も起こりません。
+	 * @description The starting frame of the segment loop.
+	 * Nothing happens on Android.
 	 * @see VideoOverlay.setSegmentLoop
 	 */
 	 property segmentLoopEndFrame {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows*]ピリオドイベントフレーム
+	 * [Windows *] Period event frame
 	 *
-	 * @description periodイベントを発生させるフレームです。
-	 * 未設定の場合は負の値となります。
-	 * Androidでは何も起こりません。
+	 * @description period The frame that raises the event.
+	 * If it is not set, it will be a negative value.
+	 * Nothing happens on Android.
 	 */
 	 property periodEventFrame {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows*]音声バランス(パニング)
+	 * [Windows *] Voice balance (panning)
 	 *
-	 * @description パン (音像位置) を表します。
-	 * 値を設定することもできます。
-	 * 音の聞こえる左右の位置を指定することができます。
-	 * -100000 ～ 0 ～ 100000 の数値で指定し、 -100000 が 完全に左、0 が中央、100000 が完全に右になります。
-	 * ステレオのソースを再生する場合は、パンは、左右どちらかのチャンネルを減衰させることで実現されます(0を指定すると両チャンネルが出力され、-100000を指定すると左チャンネルのみが出力される)。
-	 * Androidでは常に0を返す。設定しても意味はない。
+	 * @description Represents pan (sound image position).
+	 * You can also set the value.
+	 * You can specify the left and right positions where you can hear the sound.
+	 * Specify a number from -100000 to 0 to 100000, where -100000 is completely left, 0 is center, and 100000 is completely right.
+	 * When playing a stereo source, panning is achieved by attenuating either the left or right channel (0 specifies both channels, -100000 outputs only the left channel).
+	 * Always returns 0 on Android. There is no point in setting it.
 	 */
 	 property audioBalance {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * 音声ボリューム
+	 * Audio volume
 	 *
-	 * @description 再生する音量を表します。
-	 * 値を設定することもできます。0 ～ 100000 の数値で指定し、 0 が完全ミュート、100000 が 100% の音量となります。
+	 * @description Represents the volume to play.
+	 * You can also set the value. Specify a number from 0 to 100000, 0 for full mute and 100000 for 100% volume.
 	 */
 	 property audioVolume {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows*]音声ストリーム数
+	 * [Windows *] Number of audio streams
 	 *
-	 * @description MPEGファイルのみで利用可能です。
-	 * オーディオストリーム数を取得できます。
-	 * Androidでは常に0を返す。
+	 * @description Only available in MPEG files.
+	 * You can get the number of audio streams.
+	 * Always returns 0 on Android.
 	 * @see VideoOverlay.selectAudioStream
 	 * @see VideoOverlay.enabledAudioStream
 	 */
@@ -481,12 +481,12 @@ class VideoOverlay {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows*]再生対象音声ストリーム番号
+	 * [Windows *] Audio stream number to be played
 	 *
-	 * @description MPEGファイルのみで利用可能です。
-	 * 再生対象のオーディオストリーム番号を取得できます。
-	 * オーディオストリームが見付からない場合は-1を返します。
-	 * Androidでは常に0を返す。
+	 * @description Only available in MPEG files.
+	 * You can get the audio stream number to play.
+	 * Returns -1 if the audio stream is not found.
+	 * Always returns 0 on Android.
 	 * @see VideoOverlay.selectAudioStream
 	 * @see VideoOverlay.numberOfAudioStream
 	 */
@@ -494,228 +494,228 @@ class VideoOverlay {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows+]ビデオの透明度
+	 * [Windows +] Video transparency
 	 *
-	 * @description 0.0(完全に透明)～1.0(完全に不透明)の範囲でビデオの透明度を表します。
-	 * ミキサーモードでのみ利用可能です。
-	 * 	
+	 * @description Represents video transparency in the range 0.0 (fully transparent) to 1.0 (fully opaque).
+	 * Only available in mixer mode.
+	 * .
 	 */
 	 property mixingMovieAlpha {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows+]ビデオの背景色
+	 * [Windows +] Video background color
 	 *
-	 * @description ビデオの背景色を表します。
-	 * ミキサーモードでのみ利用可能です。
+	 * @description Represents the background color of the video.
+	 * Only available in mixer mode.
 	 */
 	 property mixingMovieBGColor {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows+]ビデオのコントラストレンジ最小値
+	 * [Windows +] Minimum video contrast range
 	 *
-	 * @description コントラストの幅の最小値を表します。
-	 * ミキサーモードでのみ利用可能です。
+	 * @description Represents the minimum contrast width.
+	 * Only available in mixer mode.
 	 */
 	 property contrastRangeMin {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows+]ビデオのコントラストレンジ最大値
+	 * [Windows +] Maximum video contrast range
 	 *
-	 * @description コントラストの幅の最大値を表します。
-	 * ミキサーモードでのみ利用可能です。
+	 * @description Represents the maximum contrast width.
+	 * Only available in mixer mode.
 	 */
 	 property contrastRangeMax {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows+]ビデオのコントラスト既定値
+	 * [Windows +] Video contrast default value
 	 *
-	 * @description コントラストの既定値を表します。
-	 * ミキサーモードでのみ利用可能です。
+	 * @description Represents the default contrast value.
+	 * Only available in mixer mode.
 	 */
 	 property contrastDefaultValue {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows+]ビデオのコントラスト増減ステップ値
+	 * [Windows +] Video contrast increase / decrease step value
 	 *
-	 * @description contrastRangeMin から contrastRangeMax への有効な増分を表します。
-	 * この値の単位でコントラストを変更できます。
-	 * ミキサーモードでのみ利用可能です。
+	 * @description Represents a valid increment from contrastRangeMin to contrastRangeMax.
+	 * You can change the contrast in units of this value.
+	 * Only available in mixer mode.
 	 */
 	 property contrastStepSize {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows+]ビデオのコントラスト
+	 * [Windows +] Video contrast
 	 *
-	 * @description ビデオのコントラストを表します。
-	 * ミキサーモードでのみ利用可能です。
+	 * @description Represents the contrast of the video.
+	 * Only available in mixer mode.
 	 */
 	 property contrast {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows+]ビデオの輝度レンジ最小値
+	 * [Windows +] Minimum video brightness range
 	 *
-	 * @description 輝度の幅の最小値を表します。
-	 * ミキサーモードでのみ利用可能です。
+	 * @description Represents the minimum brightness width.
+	 * Only available in mixer mode.
 	 */
 	 property brightnessRangeMin {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows+]ビデオの輝度レンジ最大値
+	 * [Windows +] Maximum brightness range of video
 	 *
-	 * @description 輝度の幅の最大値を表します。
-	 * ミキサーモードでのみ利用可能です。
+	 * @description Represents the maximum brightness width.
+	 * Only available in mixer mode.
 	 */
 	 property brightnessRangeMax {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows+]ビデオの輝度既定値
+	 * [Windows +] Video brightness default
 	 *
-	 * @description 輝度の既定値を表します。
-	 * ミキサーモードでのみ利用可能です。
+	 * @description Represents the default brightness.
+	 * Only available in mixer mode.
 	 */
 	 property brightnessDefaultValue {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows+]ビデオの輝度増減ステップ値
+	 * [Windows +] Video brightness increase / decrease step value
 	 *
-	 * @description brightnessRangeMin から brightnessRangeMax への有効な増分を表します。
-	 * この値の単位で輝度を変更できます。
-	 * ミキサーモードでのみ利用可能です。
+	 * @description Represents a valid increment from brightnessRangeMin to brightnessRangeMax.
+	 * You can change the brightness in units of this value.
+	 * Only available in mixer mode.
 	 */
 	 property brightnessStepSize {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows+]ビデオの輝度
+	 * [Windows +] Video brightness
 	 *
-	 * @description ビデオの輝度を表します。
-	 * ミキサーモードでのみ利用可能です。
+	 * @description Represents the brightness of the video.
+	 * Only available in mixer mode.
 	 */
 	 property brightness {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows+]ビデオの色相レンジ最小値
+	 * [Windows +] Minimum video hue range
 	 *
-	 * @description 色相の幅の最小値を表します。
-	 * ミキサーモードでのみ利用可能です。
+	 * @description Represents the minimum hue width.
+	 * Only available in mixer mode.
 	 */
 	 property hueRangeMin {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows+]ビデオの色相レンジ最大値
+	 * [Windows +] Maximum hue range of video
 	 *
-	 * @description 色相の幅の最大値を表します。
-	 * ミキサーモードでのみ利用可能です。
+	 * @description Represents the maximum hue width.
+	 * Only available in mixer mode.
 	 */
 	 property hueRangeMax {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows+]ビデオの色相既定値
+	 * [Windows +] Video hue default
 	 *
-	 * @description 色相の既定値を表します。
-	 * ミキサーモードでのみ利用可能です。
+	 * @description Represents the default hue.
+	 * Only available in mixer mode.
 	 */
 	 property hueDefaultValue {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows+]ビデオの色相増減ステップ値
+	 * [Windows +] Video hue increase / decrease step value
 	 *
-	 * @description hueRangeMin から hueRangeMax への有効な増分を表します。
-	 * この値の単位で色相を変更できます。
-	 * ミキサーモードでのみ利用可能です。
+	 * @description Represents a valid increment from hueRangeMin to hueRangeMax.
+	 * You can change the hue in units of this value.
+	 * Only available in mixer mode.
 	 */
 	 property hueStepSize {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows+]ビデオの色相
+	 * [Windows +] Video Hue
 	 *
-	 * @description ビデオの色相を表します。
-	 * ミキサーモードでのみ利用可能です。
+	 * @description Represents the hue of the video.
+	 * Only available in mixer mode.
 	 */
 	 property hue {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows+]ビデオの彩度レンジ最小値
+	 * [Windows +] Minimum video saturation range
 	 *
-	 * @description 彩度の幅の最小値を表します。
-	 * ミキサーモードでのみ利用可能です。
+	 * @description Represents the minimum saturation width.
+	 * Only available in mixer mode.
 	 */
 	 property saturationRangeMin {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows+]ビデオの彩度レンジ最大値
+	 * [Windows +] Maximum video saturation range
 	 *
-	 * @description 彩度の幅の最大値を表します。
-	 * ミキサーモードでのみ利用可能です。
+	 * @description Represents the maximum saturation width.
+	 * Only available in mixer mode.
 	 */
 	 property saturationRangeMax {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows+]ビデオの彩度既定値
+	 * [Windows +] Video Saturation Default
 	 *
-	 * @description 彩度の既定値を表します。
-	 * ミキサーモードでのみ利用可能です。
+	 * @description Represents the default saturation value.
+	 * Only available in mixer mode.
 	 */
 	 property saturationDefaultValue {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows+]ビデオの彩度増減ステップ値
+	 * [Windows +] Video saturation increase / decrease step value
 	 *
-	 * @description saturationRangeMin から saturationRangeMax への有効な増分を表します。
-	 * この値の単位で彩度を変更できます。
-	 * ミキサーモードでのみ利用可能です。
+	 * @description Represents a valid increment from saturationRangeMin to saturationRangeMax.
+	 * You can change the saturation in units of this value.
+	 * Only available in mixer mode.
 	 */
 	 property saturationStepSize {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows+]ビデオの彩度
+	 * [Windows +] Video Saturation
 	 *
-	 * @description ビデオの彩度を表します。
-	 * ミキサーモードでのみ利用可能です。
+	 * @description Represents the saturation of the video.
+	 * Only available in mixer mode.
 	 */
 	 property saturation {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * [Windows*]ビデオの実際の幅
+	 * [Windows *] Actual width of video
 	 *
-	 * @description 格納されているビデオの幅です。
-	 * Androidでは常にです。
+	 * @description The width of the stored video.
+	 * Always on Android.
 	 */
 	 property originalWidth {
 		 getter() { return value; }
 	}
 	/**
-	 * [Windows*]ビデオの実際の高さ
+	 * [Windows *] Actual height of the video
 	 *
-	 * @description 格納されているビデオの高さです。
-	 * Androidでは常に0です。
+	 * @description The height of the stored video.
+	 * Always 0 on Android.
 	 */
 	 property originalHeight {
 		 getter() { return value; }

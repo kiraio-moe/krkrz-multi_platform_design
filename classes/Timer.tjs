@@ -1,81 +1,81 @@
 /**
- * @description Timer クラスは、一定時間ごとにイベントを発生するためのクラスです。
+ * @description The Timer class is a class for raising an event at regular intervals.
  */
 class Timer {
 	/**
-	 * Timer オブジェクトの構築
+	 * Constructing a Timer object
 	 *
-	 * @param owner イベントの発生先を指定します。
-	 * @param actionname owner で指定したイベントの発生先オブジェクトで、イベントを受け取るメソッド名を指定します。
-	 * 空文字列を指定すると owner はメソッドとみなされ、イベントの周期ごとにowner が直接呼ばれます。
-	 * @description Timer クラスのオブジェクトを構築します。
-	 * 初期状態では interval プロパティは 1000、enabled プロパティは偽になっています。
+	 * @param owner Specify where the event will occur.
+	 * @param actionname Specifies the method name that receives the event in the event destination object specified by owner.
+	 * If you specify an empty string, the owner is considered a method and the owner is called directly every cycle of the event.
+	 * @description Build an object of the Timer class.
+	 * Initially, the interval property is 1000 and the enabled property is false.
 	 */
 	function Timer( owner, actionname="action");
 
 	/**
-	 * タイマー周期が来た
+	 * The timer cycle has come
 	 *
-	 * @description タイマーの周期ごとに呼ばれます。
-	 * 	
+	 * @description Called every timer cycle.
+	 * .
 	 */
 	event onTimer();
 
 	/**
-	 * イベントの発生周期
+	 * Event occurrence cycle
 	 *
-	 * @description イベントの発生周期を表します。
-	 * 値を設定することもできます。
-	 * 単位は ms ( ミリ秒 ) で、指定された時間ごとにイベントが発生します。
-	 * 実数で発生周期を指定することもできます。
-	 * 現バージョンでは、1/65536ミリ秒精度で指定することができます (小数点以下の数値は、この精度に丸められます)。
-	 * 1/65536ミリ秒程度の精度があると言っても、実際にこの精度でイベントハンドラが呼び出される保証はありません。
-	 * 実際には、イベントが呼び出されるタイミングには3～10ms程度のぶれがあります。
-	 * しかし、平均的・長期的にはこのプロパティで指定した周期でイベントが発生するように自動的に調整が行われます。
+	 * @description Represents the event occurrence cycle.
+	 * You can also set the value.
+	 * The unit is ms (milliseconds), and the event fires every specified time.
+	 * You can also specify the generation cycle with a real number.
+	 * In the current version, you can specify with a precision of 1/65536 milliseconds (numbers after the decimal point are rounded to this precision).
+	 * Even if it has an accuracy of about 1/65536 milliseconds, there is no guarantee that the event handler will actually be called with this accuracy.
+	 * Actually, there is a fluctuation of about 3 to 10 ms when the event is called.
+	 * However, on average and in the long run, the event will be automatically adjusted to occur at the cycle specified by this property.
 	 */
 	 property interval {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * イベントの最大発生許容量
+	 * Maximum event allowance
 	 *
-	 * @description どれだけのイベントを、一時期に発生させることができるかを指定します。
-	 * 値を設定することもできます。
-	 * タイマの周期よりも長い処理が行われた時など、タイマイベントを処理しきれない場合があります。
-	 * このとき、タイマはイベントをイベントキューには溜めますが、そのイベントキューに溜めるイベントの数には上限があります。
-	 * このプロパティはその最大数を指定します。
-	 * イベントを処理する段階になった場合、吉里吉里はキューに溜まった数のイベントを一時期に処理しようとします。
-	 * 1を指定すると、イベントキューには最大1個までしかイベントが溜まりません。
-	 * 0 を指定するとイベントキューに溜まるイベントの数に制限はなくなりますが、あまりにイベントが溜まりすぎると、フリーズしたようになる可能性があるので注意してください。
-	 * デフォルトは 6 です。
+	 * @description Specifies how many events can be fired at one time.
+	 * You can also set the value.
+	 * It may not be possible to process the timer event, such as when processing is performed longer than the timer cycle.
+	 * At this time, the timer stores events in the event queue, but there is an upper limit to the number of events that can be stored in the event queue.
+	 * This property specifies the maximum number.
+	 * When it comes time to process the events, Kirikiri tries to process the number of events in the queue at one time.
+	 * If you specify 1, only one event can be stored in the event queue.
+	 * Specifying 0 does not limit the number of events that can be stored in the event queue, but be aware that if too many events are stored, it may appear to freeze.
+	 * The default is 6.
 	 */
 	 property capacity {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * イベントを発生させるかどうか
+	 * Whether to raise an event
 	 *
-	 * @description イベントを発生させるかどうかを表します。
-	 * 値を設定することもできます。
-	 * 真ならばイベントが発生します。
-	 * 偽ならばイベントは発生しません。
+	 * @description Indicates whether to raise an event.
+	 * You can also set the value.
+	 * If true, the event will occur.
+	 * If false, the event will not occur.
 	 */
 	 property enabled {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * モード
+	 * mode
 	 *
-	 * @description 動作のモードを表します。
-	 * 値を設定することもできます。
-	 * 以下の値のいずれかを指定します。
+	 * @description Indicates the mode of operation.
+	 * You can also set the value.
+	 * Specify one of the following values.
 	 *
-	 * + atmNormal    :  通常のイベント配信の優先度でイベントが配信されます。
-	 * + atmExclusive :  他の非同期イベントよりも優先されて配信されます
-	 * + atmAtIdle    :  アイドル状態 ( 他に配信するイベントが無くなったとき ) に配信されます。
+	 * + atmNormal    :   Events are delivered with normal event delivery priority.
+	 * + atmExclusive :   Delivered in preference to other asynchronous events
+	 * + atmAtIdle    :   It will be delivered in the idle state (when there are no other events to be delivered).
 	 *
 	 * @see AsyncTrigger.mode
 	 */

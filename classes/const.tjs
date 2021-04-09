@@ -1,39 +1,39 @@
 /**
- * 追加される内部定数。
+ * Internal constant to be added.
  */
 
 
-/** RGBAテクスチャカラー */
+/** RGBA texture color */
 const tcfRGBA = 0;
-/** アルファテクスチャカラー */
+/** Alpha texture color */
 const tcfAlpha = 1;
 
-/** 不透明合成 */
+/** Opaque composition */
 const bmOpaque = 0;
-/** アルファ合成 */
+/** Alpha compositing */
 const bmAlpha = 1;
-/** 加算合成 */
+/** Additive synthesis */
 const bmAdd = 2;
-/** アルファ付き加算合成 */
+/** Additive synthesis with alpha */
 const bmAddWithAlpha = 3;
 
 
-/* 不明な入力タイプ */
+/* Unknown input type */
 const ptUnknown = 0;
-/* マウス左入力 */
+/* Left mouse input */
 const ptMouseLeft = 1;
-/* マウス右入力 */
+/* Mouse right input */
 const ptMouseRight = 2;
-/* マウス中入力 */
+/* Input with mouse */
 const ptMouseMiddle = 3;
-/* マウスX1入力 */
+/* Mouse X1 input */
 const ptMouseX1 = 4;
-/* マウスX2入力 */
+/* Mouse X2 input */
 const ptMouseX2 = 5;
-/* マウス入力 */
+/* Mouse input */
 const ptMouse = 6;
-/* タッチ入力 */
+/* Touch input */
 const ptTouch = 7;
-/* ペン入力 */
+/* Pen input */
 const ptPen = 8;
 

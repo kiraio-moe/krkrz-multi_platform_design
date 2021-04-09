@@ -1,136 +1,136 @@
 /**
- * @description Scripts クラスは TJS2 に関するメソッドやプロパティを管理します。
- * このクラスからオブジェクトを作成することはできません。
+ * @description The Scripts class manages methods and properties related to TJS2.
+ * You cannot create objects from this class.
  */
 class Scripts {
 	/**
-	 * ストレージ上のスクリプトの実行
+	 * Run scripts on storage
 	 *
-	 * @param storage 実行するストレージを指定します。
-	 * @param mode ファイルを読み込む際のモード文字列を指定します。
-	 * "o" に続いてオフセットを10進で指定するとファイルのそのバイト位置からの読み込みになります。
-	 * @param context 実行コンテキストを指定します。
-	 * @return スクリプトを実行した結果が戻ります。
-	 * @description 指定されたストレージを読み込み、その内容を TJS2 スクリプトとして実行します。
-	 * スクリプトを実行中に発生した例外はこのメソッド内では捕捉されませんので、このメソッドの呼び出し側で捕捉することができます。
+	 * @param storage Specifies the storage to run.
+	 * @param mode Specifies the mode string when reading the file.
+	 * If you specify the offset in decimal after "o", it will be read from that byte position in the file.
+	 * @param context Specifies the execution context.
+	 * @return The result of executing the script is returned.
+	 * @description Loads the specified storage and executes its contents as a TJS2 script.
+	 * Exceptions that occur during script execution are not caught within this method and can be caught by the caller of this method.
 	 * @see Scripts.evalStorage
 	 */
 	function execStorage( storage, mode='', context=global);
 
 	/**
-	 * ストレージ上の式の評価
+	 * Evaluation of expressions on storage
 	 *
-	 * @param storage 評価するストレージを指定します。
-	 * @param mode ファイルを読み込む際のモード文字列を指定します。
-	 * "o" に続いてオフセットを10進で指定するとファイルのそのバイト位置からの読み込みになります。
-	 * @param context 実行コンテキストを指定します。
-	 * @return 式を評価した結果が戻ります。
-	 * @description 指定されたストレージを読み込み、その内容を TJS2 式として評価します。
-	 * スクリプトを実行中に発生した例外はこのメソッド内では捕捉されませんので、このメソッドの呼び出し側で捕捉することができます。
+	 * @param storage Specify the storage to evaluate.
+	 * @param mode Specifies the mode string when reading the file.
+	 * If you specify the offset in decimal after "o", it will be read from that byte position in the file.
+	 * @param context Specifies the execution context.
+	 * @return The result of evaluating the expression is returned.
+	 * @description Reads the specified storage and evaluates its contents as a TJS2 expression.
+	 * Exceptions that occur during script execution are not caught within this method and can be caught by the caller of this method.
 	 * @see Scripts.execStorage
 	 */
 	function evalStorage( storage, mode='', context=global);
 
 	/**
-	 * ストレージ上のスクリプトのコンパイル
+	 * Compiling scripts on storage
 	 *
-	 * @param inputfile コンパイル対象ストレージを指定します。
-	 * @param outputfile 出力バイトコードストレージを指定します。
-	 * @param isresult 戻り値が必要かどうかを指定します。
-	 * @param outputdebug デバッグ情報を含めるかどうかを指定します。
-	 * @param isexpression 式かどうかを指定します。
-	 * @description 指定されたストレージを読み込み、その内容をコンパイルしてバイトコードファイルとして出力します。
-	 * コンパイルされたバイトコードファイルは execStorage もしくは、evalStorage で通常のスクリプトと同じように実行できます。
+	 * @param inputfile Specify the storage to be compiled.
+	 * @param outputfile Specifies the output bytecode storage.
+	 * @param isresult Specifies whether a return value is required.
+	 * @param outputdebug Specifies whether to include debug information.
+	 * @param isexpression Specifies whether it is an expression.
+	 * @description Reads the specified storage, compiles its contents and outputs it as a bytecode file.
+	 * The compiled bytecode file can be executed with execStorage or evalStorage in the same way as a normal script.
 	 * @see Scripts.execStorage
 	 * @see Scripts.evalStorage
 	 */
 	function compileStorage( inputfile, outputfile, isresult=false, outputdebug=false, isexpression=false);
 
 	/**
-	 * スクリプトの実行
+	 * Script execution
 	 *
-	 * @param script 実行するスクリプトを文字列で指定します。
-	 * @param name エラーメッセージ用ファイル名の指定
-	 * @param linesof エラーメッセージ用行番号の指定
-	 * @param context 実行コンテキストを指定します。
-	 * @return スクリプトを実行した結果が戻ります。
-	 * @description script で指定された文字列を TJS2 スクリプトとして実行します。
-	 * スクリプトを実行中に発生した例外はこのメソッド内では捕捉されませんので、このメソッドの呼び出し側で捕捉することができます。
+	 * @param script Specify the script to be executed as a character string.
+	 * @param name Specifying the file name for the error message
+	 * @param linesof Specifying the line number for the error message
+	 * @param context Specifies the execution context.
+	 * @return The result of executing the script is returned.
+	 * @description Executes the string specified in script as a TJS2 script.
+	 * Exceptions that occur during script execution are not caught within this method and can be caught by the caller of this method.
 	 * @see Scripts.execStorage
 	 * @see Scripts.eval
 	 */
 	function exec( script, name='', linesof=0, context=global);
 
 	/**
-	 * 式の評価
+	 * Evaluation of the expression
 	 *
-	 * @param expression 実行する式を文字列で指定します。
-	 * @param name エラーメッセージ用ファイル名の指定
-	 * @param linesof エラーメッセージ用行番号の指定
-	 * @param context 実行コンテキストを指定します。
-	 * @return 式を評価した結果が戻ります。
-	 * @description expression で指定された文字列を TJS2 式として実行します。
-	 * スクリプトを実行中に発生した例外はこのメソッド内では捕捉されませんので、このメソッドの呼び出し側で捕捉することができます。
+	 * @param expression Specify the expression to be executed as a character string.
+	 * @param name Specifying the file name for the error message
+	 * @param linesof Specifying the line number for the error message
+	 * @param context Specifies the execution context.
+	 * @return The result of evaluating the expression is returned.
+	 * @description Executes the string specified by expression as a TJS2 expression.
+	 * Exceptions that occur during script execution are not caught within this method and can be caught by the caller of this method.
 	 * @see Scripts.execStorage
 	 * @see Scripts.exec
 	 */
 	function eval( expression, name='', linesof=0, context=global);
 
 	/**
-	 * コンテキストのダンプ
+	 * Context dump
 	 *
-	 * @description 現時点で TJS2 に読み込まれているスクリプトブロック内の各コンテキストの内容の詳細をローカルファイルに出力します。
-	 * 主に VM コードの逆アセンブル結果が出力されます。
-	 * 出力ファイルは、吉里吉里の実行可能ファイルと同じフォルダに出力され、そのファイル名は吉里吉里の実行可能ファイルに .dump.txt が付加されたものになります。
+	 * @description Outputs the details of the contents of each context in the script block currently loaded by TJS2 to a local file.
+	 * The disassembled result of the VM code is mainly output.
+	 * The output file will be output to the same folder as the Kirikiri executable file, and its file name will be the Kirikiri executable file with .dump.txt added.
 	 */
 	function dump( );
 
 	/**
-	 * 呼び出し履歴の取得
+	 * Get call history
 	 *
-	 * @param limit 履歴を取得する最大呼び出し深さを指定します。
-	 * この引数を省略するか 0 を指定すると、取得できる限りの履歴を取得します。
-	 * @return 呼び出し履歴を文字列化した物
-	 * @description メソッドの呼び出し履歴を文字列として取得します。
-	 * このメソッドが呼ばれた時点での履歴を取得することができます。
-	 * このメソッドを使用するには、コマンドラインオプションで -debug (デバッグモード) が有効になっていなければなりません。
-	 * デバッグモードが無効の場合はこのメソッドは空文字列を返します。
-	 * 返される文字列はたとえば
-	 *  'messagelayer.tjs(1561)[(function) addButton] <-- mainwindow.tjs(4463)[(function expression) (anonymous)] <-- conductor.tjs(427)[(function) onTag] <-- conductor.tjs(95)[(function) timerCallback]' 
-	 * のような物です。
+	 * @param limit Specifies the maximum call depth for which history is to be retrieved.
+	 * If you omit this argument or specify 0, you get as much history as you can get.
+	 * @return A string of call history
+	 * @description Gets the method call history as a string.
+	 * You can get the history at the time this method was called.
+	 * To use this method, the command line option must have -debug (debug mode) enabled.
+	 * If debug mode is disabled, this method returns an empty string.
+	 * The returned string is, for example
+	 *  'messagelayer.tjs (1561) [(function) addButton] <-mainwindow.tjs (4463) [(function expression) (anonymous)] <-conductor.tjs (427) [(function) onTag] <-conductor .tjs (95) [(function) timerCallback]'
+	 * It is something like.
 	 */
 	function getTraceString( limit=0);
 
 	/**
-	 * missingメソッドの呼び出し設定
+	 * missing method call settings
 	 *
-	 * @param obj メンバが見つからない時にmissingメソッドが呼び出されるようにするオブジェクト。
-	 * @description メンバが見つからない時にmissingメソッドが呼び出されるように設定します。
-	 * このメソッドで登録したオブジェクトでメンバが見つからない場合、function missing( isset, name, prop ) の形式でメソッドが呼び出されます。
-	 * isset は、true なら設定、false なら取得です。
-	 * name は見付からなかったメンバの名前です。
-	 * prop は設定時は代入される値、取得時は返す値の代入先です。
-	 * nameメンバがmissingメソッドでも見付からない場合は、0以外の値を返します。
-	 * 0以外を返すとメンバが見付からないという例外が発生します。
-	 * 関数が見付からない場合でも、getで呼び出されます。
-	 * finalize関数も対象なので、この設定をするクラスにはfinalize関数を定義しておいた方が良いです。
+	 * @param obj An object that causes the missing method to be called when no member is found.
+	 * @description Set the missing method to be called when no member is found.
+	 * If no member is found in the object registered by this method, the method will be called in the form of function missing (isset, name, prop).
+	 * isset is set if true, get if false.
+	 * name is the name of the member that was not found.
+	 * prop is the assignment destination of the value to be assigned at the time of setting and the value to be returned at the time of acquisition.
+	 * If the name member is not found by the missing method, it returns a non-zero value.
+	 * If you return a non-zero, you will get an exception that the member cannot be found.
+	 * Even if the function is not found, it will be called with get.
+	 * Since the finalize function is also the target, it is better to define the finalize function in the class that sets this.
 	 */
 	function setCallMissing( obj );
 
 	/**
-	 * クラス名を取得
+	 * Get class name
 	 *
-	 * @param obect クラス名を取得するオブジェクト。
-	 * @return クラス名の配列
-	 * @description オブジェクトからクラス名を取得します。
+	 * @param obect An object to get the class name.
+	 * @return Array of class names
+	 * @description Get the class name from the object.
 	 */
 	function getClassNames( obect);
 
 	/**
-	 * スクリプトを読み込む時に使用するテキストエンコーディングを指定
+	 * Specify the text encoding to use when loading the script
 	 *
-	 * @description スクリプトを読み込む時に使用するテキストエンコーディングを指定します。
-	 * 現在指定できるのは"UTF-8"か"Shift_JIS"のどちらかです。
+	 * @description Specifies the text encoding to use when loading the script.
+	 * Currently, you can specify either "UTF-8" or "Shift_JIS".
 	 */
 	 property textEncoding {
 		 getter() { return value; }

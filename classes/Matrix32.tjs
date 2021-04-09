@@ -1,182 +1,182 @@
 /**
- * @description 2次元用の3x2行列です。
- * OpenGLのため列優先行列であることに注意してください。
+ * @description A 3x2 matrix for 2 dimensions.
+ * Note that it is a column-preferred matrix because of OpenGL.
  */
 class Matrix32 {
 	/**
-	 * コンストラクタ(単位行列)
+	 * Constructor (identity matrix)
 	 */
 	function Matrix32();
 
 	/**
-	 * コンストラクタ
-	 * @description 引数値を入れて初期化します。
-	 * @param m11 [1][1]位置の値です。
-	 * @param m12 [1][2]位置の値です。
-	 * @param m21 [2][1]位置の値です。
-	 * @param m22 [2][2]位置の値です。
-	 * @param m31 [3][1]位置の値です。
-	 * @param m32 [3][2]位置の値です。
+	 * constructor
+	 * @description Initialize with an argument value.
+	 * @param m11 [1] [1] Position value.
+	 * @param m12 [1] [2] Position value.
+	 * @param m21 [2] [1] Position value.
+	 * @param m22 [2] [2] Position value.
+	 * @param m31 [3] [1] Position value.
+	 * @param m32 [3] [2] Position value.
 	 */
 	function Matrix32( m11:real, m12:real, m21:real, m22:real, m31:real, m32:real );
 
 	/**
-	 * マトリックス設定
-	 * @param m11 [1][1]位置の値です。
-	 * @param m12 [1][2]位置の値です。
-	 * @param m21 [2][1]位置の値です。
-	 * @param m22 [2][2]位置の値です。
-	 * @param m31 [3][1]位置の値です。
-	 * @param m32 [3][2]位置の値です。
+	 * Matrix settings
+	 * @param m11 [1] [1] Position value.
+	 * @param m12 [1] [2] Position value.
+	 * @param m21 [2] [1] Position value.
+	 * @param m22 [2] [2] Position value.
+	 * @param m31 [3] [1] Position value.
+	 * @param m32 [3] [2] Position value.
 	 */
 	function set( m11:real, m12:real, m21:real, m22:real, m31:real, m32:real );
 
 	/**
-	 * マトリックス設定
-	 * @description 1次元配列からコピー
-	 * @param array 6要素の配列を渡します。
+	 * Matrix settings
+	 * @description Copy from one-dimensional array
+	 * @param array Pass an array of 6 elements.
 	 */
 	function set( array:Array );
 
 	/**
-	 * マトリックス設定
-	 * @description matrixからコピー
-	 * @param matrix Matrix32クラスのインスタンスを渡します。
+	 * Matrix settings
+	 * @description Copy from matrix
+	 * @param matrix Pass an instance of the Matrix32 class.
 	 */
 	function set( matrix:Matrix32 );
 
 	/**
-	 * 単位行列化
+	 * Identity matrix
 	 */
 	function reset();
 
 	/**
-	 * 移動行列を設定する
-	 * @param x 設定するX座標値
-	 * @param y 設定するY座標値
+	 * Set the moving matrix
+	 * @param x X coordinate value to set
+	 * @param y Y coordinate value to set
 	 */
 	function setTranslate( x:real, y:real );
 
 	/**
-	 * 拡大行列を設定する
-	 * @param x 設定するX軸拡大率
-	 * @param y 設定するY軸拡大率
+	 * Set the augmented matrix
+	 * @param x X-axis magnification to set
+	 * @param y Y-axis magnification to set
 	 */
 	function setScale( x:real, y:real );
 
 	/**
-	 * 回転行列を設定する
-	 * @param degree 回転角度
+	 * Set the rotation matrix
+	 * @param degree rotation angle
 	 */
 	function setRotate( degree:real );
 
 	/**
-	 * X軸傾斜行列を設定する
-	 * @param degree 傾斜角度
+	 * Set the X-axis tilt matrix
+	 * @param degree Tilt angle
 	 */
 	function setSkewX( degree:real );
 
 	/**
-	 * Y軸傾斜行列を設定する
-	 * @param degree 傾斜角度
+	 * Set the Y-axis tilt matrix
+	 * @param degree Tilt angle
 	 */
 	function setSkewY( degree:real );
 
 	/**
-	 * 行列を移動させる
-	 * @param x 移動するX座標値
-	 * @param y 移動するY座標値
+	 * Move the matrix
+	 * @param x X coordinate value to move
+	 * @param y Y coordinate value to move
 	 */
 	function translate( x:real, y:real );
 
 	/**
-	 * 行列を回転させる
-	 * @param degree 回転角度
+	 * Rotate the matrix
+	 * @param degree rotation angle
 	 */
 	function rotate( degree:real );
 
 	/**
-	 * 行列を回転させる
-	 * @param degree 回転角度
-	 * @param px 中心点
-	 * @param py 中心点
+	 * Rotate the matrix
+	 * @param degree rotation angle
+	 * @param px Center point
+	 * @param py Center point
 	 */
 	function rotate( degree:real, px:real, py:real );
 
 	/**
-	 * 行列を拡大させる
-	 * @param x 拡大率X座標値
-	 * @param y 拡大率Y座標値
+	 * Expand the matrix
+	 * @param x Magnification X coordinate value
+	 * @param y Magnification Y coordinate value
 	 */
 	function scale( x:real, y:real );
 
 	/**
-	 * 行列を拡大させる(事前拡大)
-	 * @param x 拡大率X座標値
-	 * @param y 拡大率Y座標値
+	 * Expand the matrix (pre-expansion)
+	 * @param x Magnification X coordinate value
+	 * @param y Magnification Y coordinate value
 	 */
 	function preScale( x:real, y:real );
 
 	/**
-	 * 行列をX軸傾斜させる
-	 * @param degree 傾斜角度
+	 * Tilt the matrix on the X axis
+	 * @param degree Tilt angle
 	 */
 	function skewX( degree:real );
 
 	/**
-	 * 行列をY軸傾斜させる
-	 * @param degree 傾斜角度
+	 * Tilt the matrix on the Y axis
+	 * @param degree Tilt angle
 	 */
 	function skewY( degree:real );
 
 	/**
-	 * XY座標値をこの行列にかけ合わせて変換する
-	 * @description 入力引き数がそのまま出力となる
-	 * @param x X座標値
-	 * @param y Y座標値
+	 * Convert XY coordinate values by multiplying this matrix
+	 * @description The input argument becomes the output as it is
+	 * @param x X coordinate value
+	 * @param y Y coordinate value
 	 */
 	function transform( x:real, y:real );
 
 	/**
-	 * 行列をかける(this = this * matrix)
-	 * @param matrix かける行列
+	 * Multiply a matrix (this = this * matrix)
+	 * @param matrix Matrix to multiply
 	 */
 	function multiply( matrix:Matrix32 );
 
 	/**
-	 * 行列を後ろにかける(this = matrix * this)
-	 * @param matrix かける行列
+	 * Put the matrix behind (this = matrix * this)
+	 * @param matrix Matrix to multiply
 	 */
 	function premultiply( matrix:Matrix32 );
 
 
 	/**
-	 * 1次元配列で受け取る[r]
+	 * Receive as a one-dimensional array [r]
 	 */
 	property array;
 
 	/**
-	 * [1][1]位置の値[r/w]
+	 * [1] [1] Position value [r / w]
 	 */
 	property m11;
 	/**
-	 * [1][2]位置の値[r/w]
+	 * [1] [2] Position value [r / w]
 	 */
 	property m12;
 	/**
-	 * [2][1]位置の値[r/w]
+	 * [2] [1] Position value [r / w]
 	 */
 	property m21;
 	/**
-	 * [2][2]位置の値[r/w]
+	 * [2] [2] Position value [r / w]
 	 */
 	property m22;
 	/**
-	 * [3][1]位置の値[r/w]
+	 * [3] [1] Position value [r / w]
 	 */
 	property m31;
 	/**
-	 * [3][2]位置の値[r/w]
+	 * [3] [2] Position value [r / w]
 	 */
 	property m32;
 };

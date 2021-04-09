@@ -1,168 +1,167 @@
 /**
- * @description TJS2 では、文字列は擬似的に String クラスのオブジェクトということになっていますが、String クラスは存在していませんし、実際に String クラスのオブジェクトというわけではありません ( ただし 文字列に対して typeof 演算子を使うと "String" を返します )。
- * しかし 文字列をオブジェクトと見立てて、いくつかのメソッドやプロパティが使用可能になっています。
+ * @description In TJS2, a string is supposed to be an object of the String class in a pseudo manner, but the String class doesn't exist and it's not really an object of the String class (although the typeof operation on the string). If you use a child, it returns "String").
+ * However, some methods and properties are available, as if the string were an object.
  */
 class String {
 	/**
-	 * 文字列の長さを返します
-	 * @description メソッドではなくてプロパティですので注意してください。
-	 * ただし、このプロパティへの値の代入はできません。
-	 * 内部的に文字をすべて UNICODE で扱っていますので、全角文字も 1 文字、半角文字も 1 文字と数えられます。
+	 * Returns the length of the string
+	 * @description Note that it is a property, not a method.
+	 * However, you cannot assign a value to this property.
+	 * Since all characters are handled internally by UNICODE, double-byte characters can be counted as one character and half-width characters can be counted as one character.
 	 */
 	property length;
 
 	/**
-	 * '数値' プロパティ
-	 * @description 数値をプロパティとして間接指定すると、その文字位置にある文字にアクセスできます。
-	 * たとえば、str が文字列あるいは文字列を表す式だとすると、str[0] は先頭の一文字を表す文字列になります。
-	 * 数値が文字列よりも長い位置や、負の場合は例外が発生します ( ただし文字列の最後の文字は 空文字 が返されます )。
+	 * 'Numeric' property
+	 * @description If you indirectly specify a number as a property, you can access the character at that character position.
+	 * For example, if str is a string or an expression that represents a string, then str [0] is the string that represents the first character.
+	 * An exception is raised if the number is longer than the string or if it is negative (although the last character in the string returns an empty string).
 	 *
-	 * 代入式を生成することはできません。
+	 * Substitution expressions cannot be generated.
 	 */
 	property ［］;
 
 	/**
-	 * 文字列の指定位置で指定された位置の文字を返します
-	 * @description 文字列の指定位置で指定された位置の文字を返します。
-	 * '数値' プロパティと同様の動作をしますが、範囲外の場合は常に空文字を返します (例外を出しません)。
-	 * @param index 位置
-	 * @return 文字
+	 * Returns the character at the specified position in the string
+	 * @description Returns the character at the specified position in the string.
+	 * It behaves like a'numeric'property, but always returns an empty string if it is out of range (no exception).
+	 * @param index position
+	 * @return letter
 	 */
 	function charAt( index:int ):int;
 
 	/**
-	 * 部分文字列の位置を返します
-	 * @description 文字列から、textをoffsetから検索し、最初に見つかった位置を返します。
-	 * offsetを省略すると、文字列の先頭からの検索になります。
-	 * @param text 部分文字列
-	 * @param offset 検索開始位置
-	 * @return 0 が返されれば文字列の先頭です、-1 が返されたときは見つからなかったときです。
+	 * Returns the position of the substring
+	 * @description Searches for text from offset in a string and returns the first found position.
+	 * If offset is omitted, the search starts from the beginning of the character string.
+	 * @param text Substring
+	 * @param offset Search start position
+	 * @return If 0 is returned it is the beginning of the string, if -1 is returned it is not found.
 	 */
 	function indexOf( text:string, offset:int=void ):int;
 
 	/**
-	 * 文字列のアルファベットを小文字にした文字列を返します
-	 * @description 文字列のアルファベットを小文字にした文字列を返します。
-	 * 全角文字は変換されません。
-	 * これらのメソッドは、もとの文字列には影響を与えません。
-	 * 現バージョンでは 文字コード 0x80 未満の文字に対してのみ変換を行います。
-	 * @return 変換後文字列
-	 * @return 
+	 * Returns a string with the alphabet in lowercase.
+	 * @description Returns a string with the alphabet in lowercase.
+	 * Double-byte characters are not converted.
+	 * These methods have no effect on the original string.
+	 * The current version only converts characters with a character code less than 0x80.
+	 * @return Converted string
 	 */
 	 
 	function toLowerCase():string;
 
 	/**
-	 * 小文字のアルファベットを大文字にした文字列を返します
-	 * @description 小文字のアルファベットを大文字にした文字列を返します。
-	 * 全角文字は変換されません。
-	 * これらのメソッドは、もとの文字列には影響を与えません。
-	 * 現バージョンでは 文字コード 0x80 未満の文字に対してのみ変換を行います。
-	 * @return 変換後文字列
+	 * Returns a string with a lowercase alphabet capitalized
+	 * @description Returns a string with the lowercase alphabet capitalized.
+	 * Double-byte characters are not converted.
+	 * These methods have no effect on the original string.
+	 * The current version only converts characters with a character code less than 0x80.
+	 * @return Converted string
 	 */
 	function toUpperCase():string;
 
 	/**
-	 * 文字列の部分文字列を返します
-	 * @description 文字列の、offsetからcountの部分文字列を返します。
-	 * 元の文字列に影響は与えません。
-	 * countを省略すると、offset以降の文字列がすべて返されます。
-	 * JavaScript の同メソッドとは引数の意味が違うので注意してください。
-	 * @param offset 開始文字位置
-	 * @param count 文字数、省略可能。
-	 * @return 部分文字列
+	 * Returns a substring of a string
+	 * @description Returns a substring from offset to count of the string.
+	 * It does not affect the original string.
+	 * If count is omitted, all strings after offset are returned.
+	 * Please note that the meaning of the argument is different from the same method of JavaScript.
+	 * @param offset Start character position
+	 * @param count Number of characters, optional.
+	 * @return Substring
 	 */
 	function substring( offset:int, count:int=void ):string;
 
 	/**
-	 * 文字列の部分文字列を返します
-	 * @description 文字列の、offsetからcountの部分文字列を返します。
-	 * 元の文字列に影響は与えません。
-	 * countを省略すると、offset以降の文字列がすべて返されます。
-	 * JavaScript の同メソッドとは引数の意味が違うので注意してください。
-	 * @param offset 開始文字位置
-	 * @param count 文字数、省略可能。
-	 * @return 部分文字列
+	 * Returns a substring of a string
+	 * @description Returns a substring from offset to count of the string.
+	 * It does not affect the original string.
+	 * If count is omitted, all strings after offset are returned.
+	 * Please note that the meaning of the argument is different from the same method of JavaScript.
+	 * @param offset Start character position
+	 * @param count Number of characters, optional.
+	 * @return Substring
 	 */
 	function substr( offset:int, count:int=void ):string;
 
 	/**
-	 * 文字列を書式化します
-	 * @description 文字列を書式文字列と見なし、C言語における sprintf 同様のテキストのフォーマッティングを行った文字列を返します。
-	 * 元の文字列には影響を与えません。
-	 * @param arg 置き換え変数
-	 * @return 書式化文字列
+	 * Format the string
+	 * @description Considers a string as a format string and returns a string with text formatting similar to sprintf in C.
+	 * It does not affect the original string.
+	 * @param arg Replacement variable
+	 * @return Formatted string
 	 */
 	function sprintf( arg, ... ):string;
 
 	/**
-	 * 文字列の置き換えを行います
-	 * @description 正規表現パターンに従って文字列の置き換えを行い、置き換えを行ったあとの文字列を返します。
-	 * 元の文字列には影響を与えません。
-	 * @param pattern 正規表現
-	 * @param replaced 置き換え後文字列
-	 * @return 置き換えられた文字列
+	 * Replaces a string
+	 * @description Replaces the string according to the regular expression pattern and returns the replaced string.
+	 * It does not affect the original string.
+	 * @param pattern Regular expression
+	 * @param replaced String after replacement
+	 * @return Replaced string
 	 * @see RegExp.replace
 	 */
 	function replace( pattern:string, replaced:string ):string;
 
 	/**
-	 * 文字列を分割します
-	 * @description 文字列を分割します
-	 * @param pattern 区切り文字か正規表現
-	 * @param reserve 予約
-	 * @param ignore 空の要素を無視するか
-	 * @return 文字列を分割した結果が格納された配列オブジェクトを返します。
+	 * Split the string
+	 * @description Split the string
+	 * @param pattern Delimiter or regular expression
+	 * @param reserve Reservation
+	 * @param ignore Whether to ignore empty elements
+	 * @return Returns an array object that contains the result of splitting the string.
 	 * @see Array.split
 	 */
 	function split( pattern:string, reserve, ignore=false ):Array;
 
 	/**
-	 * 文字列を、TJSの文字列即値内で表現可能な形式に変換します
-	 * @description \ や " などの記号はすべて \ 記号を用いて特殊な用途として解釈されなくされます (エスケープされます)。
-	 * @return エスケープされた文字列を返します。
+	 * Converts a string to a format that can be represented within the TJS string immediate value
+	 * @description All symbols such as \ and "are deinterpreted (escaped) for special purposes using the \ symbol.
+	 * @return Returns the escaped string.
 	 */
 	function escape():string;
 
 	/**
-	 * 文字列の先頭と最後の空白を取り除いた文字列を返します
-	 * @description 元の文字列には影響を与えません。
-	 * 先頭と最後の空白とは、文字コードがU+0001～+0020の文字を指します。
-	 * つまり、ASCII制御文字なども含まれますが、いわゆる全角の空白は含みません。
-	 * 連続して先頭または最後にこれらの空白があった場合は、すべて取り除かれます。
-	 * @return 先頭と末尾の空白文字が削除された文字列を返します。
+	 * Returns a string with leading and trailing whitespace removed
+	 * @description It does not affect the original string.
+	 * The leading and trailing spaces refer to the characters whose character code is U + 0001 to +0020.
+	 * In other words, it includes ASCII control characters, but does not include so-called double-byte spaces.
+	 * Any consecutive leading or trailing whitespace will be removed.
+	 * @return Returns a string with leading and trailing whitespace removed.
 	 */
 	function trim():string;
 
 	/**
-	 * 文字の並びを逆転した文字列を返します
-	 * @description 元の文字列には影響を与えません。
-	 * 現バージョンでは、UTF-16のうちサロゲートペアを含む文字列の動作は保証しません。
-	 * @return 文字の並びを逆転した文字列を返します。
+	 * Returns a string with the sequence of characters reversed
+	 * @description It does not affect the original string.
+	 * The current version does not guarantee the operation of strings containing surrogate pairs in UTF-16.
+	 * @return Returns a string with the sequence of characters reversed.
 	 */
 	function reverse():string;
 
 	/**
-	 * 指定した回数だけ文字列を繰り返した文字列を返します
-	 * @description 元の文字列には影響を与えません。
-	 * @param count 繰り返す回数
-	 * @return count個、この文字列を繰り返した文字列を返します。
+	 * Returns a string that repeats the string the specified number of times
+	 * @description It does not affect the original string.
+	 * @param count Number of repetitions
+	 * @return Returns a string that repeats this string count counts.
 	 */
 	function repeat(count):string;
 
 	/**
-	 * 文字列が指定された部分文字列で開始されているかどうかを返します
-	 * @description textで指定された部分文字列と文字列を先頭から比較して、部分文字列分の長さの範囲で一致しているかどうか判定します。
-	 * @param text 部分文字列
-	 * @return 指定文字列で始まっているかどうか
+	 * Returns whether the string starts with the specified substring
+	 * @description The substring specified by text is compared with the character string from the beginning to determine whether they match within the length range of the substring.
+	 * @param text Substring
+	 * @return Whether it starts with the specified string
 	 */
 	function startsWith( text:string ):int;
 
 	/**
-	 * 文字列が指定された部分文字列で終了しているかどうかを返します
-	 * @description textで指定された部分文字列と文字列を末尾から比較して、部分文字列分の長さの範囲で一致しているかどうか判定します。
-	 * @param text 部分文字列
-	 * @return 指定文字列で始まっているかどうか
+	 * Returns whether the string ends with the specified substring
+	 * @description Compares the substring specified by text with the string from the end to determine if they match within the length range of the substring.
+	 * @param text Substring
+	 * @return Whether it starts with the specified string
 	 */
 	function endsWith( text:string ):int;
 };

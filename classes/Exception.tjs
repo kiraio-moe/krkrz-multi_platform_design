@@ -1,22 +1,22 @@
 /**
- * @description Exception クラスは、例外オブジェクトを生成するためのクラスです。
- * メッセージは、生成されたオブジェクトの message プロパティに設定されます。
+ * @description The Exception class is a class for creating an exception object.
+ * The message is set in the message property of the generated object.
  */
 class Exception {
 	/**
-	 * コンストラクタ
-	 * @description スクリプト以外の要因で発生する例外オブジェクトはすべて Exception クラスのオブジェクトです ( たとえば 除算エラー例外など )。
-	 * @param message 例外メッセージを渡します。
+	 * constructor
+	 * @description All exception objects that occur due to non-script factors are objects of the Exception class (for example, division error exceptions).
+	 * @param message Pass an exception message.
 	 */
 	function Exception( message:string );
 
 	/**
-	 * 例外の理由を表す文字列を表すプロパティです。
+	 * A property that represents a string that represents the reason for the exception.
 	 */
 	property message;
 
 	/**
-	 * 例外が発生するまでに通過した関数などの情報が記録されています ( 人間が読むための文字列として記録されています )。
+	 * It records information such as the functions that were passed before the exception occurred (recorded as a human-readable string).
 	 */
 	property trace;
 };

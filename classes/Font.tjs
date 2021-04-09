@@ -1,41 +1,41 @@
 /**
- * @description Font クラスは、フォントを管理するためのクラスです。
+ * @description The Font class is a class for managing fonts.
  */
 class Font {
 	/**
-	 * コンストラクタ
-	 * @description Layerメンバのfontは、引数にLayerを渡す特殊版。
-	 * 単体使用する場合は引数なしで生成する。
+	 * constructor
+	 * @description Layer member font is a special version that passes Layer as an argument.
+	 * When using alone, generate without arguments.
 	 */
 	function Font();
 
 	/**
-	 * 文字列の横幅を得る
+	 * Get the width of the string
 	 *
-	 * @param text 横幅を得たい文字列を指定します。
-	 * @return 指定された文字列の横幅がピクセル単位で戻ります
-	 * @description このメソッドでは、現在のフォントの設定で指定の文字列を描画したときに必要な横幅を得ることができます。
+	 * @param text Specify the character string for which you want to obtain the width.
+	 * @return Returns the width of the specified string in pixels
+	 * @description This method allows you to get the width you need when drawing the specified string with the current font settings.
 	 * @see Font.getTextHeight
 	 */
 	function getTextWidth( text);
 
 	/**
-	 * 文字列の縦幅を得る
+	 * Get the height of the string
 	 *
-	 * @param text 縦幅を得たい文字列を指定します。
-	 * @return 指定された文字列の縦幅がピクセル単位で戻ります
-	 * @description このメソッドでは、このフォントで指定の文字列を描画したときに必要な縦幅を得ることができます。
+	 * @param text Specify the character string for which you want to obtain the vertical width.
+	 * @return Returns the vertical width of the specified string in pixels
+	 * @description With this method, you can get the required height when drawing the specified string with this font.
 	 * @see Font.getTextWidth
 	 */
 	function getTextHeight( text);
 
 	/**
-	 * 文字の横方向への X 座標の移動量
+	 * Amount of movement of the X coordinate in the horizontal direction of the character
 	 *
-	 * @param text 文字の横方向への X 座標の移動量を得たい文字列を指定します。
-	 * @return 文字の横方向への X 座標の移動量がピクセル単位で戻ります
-	 * @description 現在のフォントの設定で指定された文字を描画したときに必要な文字描画位置の移動量を得ることができます。
-	 * このメソッドでは、文字の描画方向に対して横 ( 左 ) に進んだときの X 座標上での移動量を得ることができます。
+	 * @param text Specify the character string for which you want to obtain the amount of movement of the X coordinate in the horizontal direction of the character.
+	 * @return Returns the amount of horizontal movement of the X coordinate of the character in pixels
+	 * @description You can get the amount of movement of the character drawing position required when drawing the character specified by the current font setting.
+	 * With this method, you can get the amount of movement on the X coordinate when moving horizontally (left) with respect to the drawing direction of the character.
 	 * @see Font.getEscWidthY
 	 * @see Font.getEscHeightX
 	 * @see Font.getEscHeightY
@@ -43,12 +43,12 @@ class Font {
 	function getEscWidthX( text);
 
 	/**
-	 * 文字の横方向への Y 座標の移動量
+	 * Amount of movement of the Y coordinate in the horizontal direction of the character
 	 *
-	 * @param text 文字の横方向への Y 座標の移動量を得たい文字列を指定します。
-	 * @return 文字の横方向への Y 座標の移動量がピクセル単位で戻ります
-	 * @description 現在のフォントの設定で指定された文字を描画したときに必要な文字描画位置の移動量を得ることができます。
-	 * このメソッドでは、文字の描画方向に対して横 ( 左 ) に進んだときの Y 座標上での移動量を得ることができます。
+	 * @param text Specify the character string for which you want to obtain the amount of movement of the Y coordinate in the horizontal direction of the character.
+	 * @return Returns the amount of movement of the Y coordinate in the horizontal direction of the character in pixels.
+	 * @description You can get the amount of movement of the character drawing position required when drawing the character specified by the current font setting.
+	 * With this method, you can get the amount of movement on the Y coordinate when moving horizontally (left) with respect to the drawing direction of the character.
 	 * @see Font.getEscWidthX
 	 * @see Font.getEscHeightX
 	 * @see Font.getEscHeightY
@@ -56,12 +56,12 @@ class Font {
 	function getEscWidthY( text);
 
 	/**
-	 * 文字の縦方向への X 座標の移動量
+	 * Amount of movement of the X coordinate in the vertical direction of the character
 	 *
-	 * @param text 文字の縦方向への X 座標の移動量を得たい文字列を指定します。
-	 * @return 文字の縦方向への X 座標の移動量がピクセル単位で戻ります
-	 * @description 現在のフォントの設定で指定された文字を描画したときに必要な文字描画位置の移動量を得ることができます。
-	 * このメソッドでは、文字の描画方向に対して縦 ( 下 ) に進んだときの X 座標上での移動量を得ることができます。
+	 * @param text Specify the character string for which you want to obtain the amount of movement of the X coordinate in the vertical direction of the character.
+	 * @return Returns the amount of vertical X-coordinate movement of a character in pixels
+	 * @description You can get the amount of movement of the character drawing position required when drawing the character specified by the current font setting.
+	 * With this method, you can get the amount of movement on the X coordinate when moving vertically (down) with respect to the drawing direction of the character.
 	 * @see Font.getEscWidthX
 	 * @see Font.getEscWidthY
 	 * @see Font.getEscHeightY
@@ -69,12 +69,12 @@ class Font {
 	function getEscHeightX( text);
 
 	/**
-	 * 文字の縦方向への Y 座標の移動量
+	 * Amount of movement of the Y coordinate in the vertical direction of the character
 	 *
-	 * @param text 文字の縦方向への Y 座標の移動量を得たい文字列を指定します。
-	 * @return 文字の縦方向への Y 座標の移動量がピクセル単位で戻ります
-	 * @description 現在のフォントの設定で指定された文字を描画したときに必要な文字描画位置の移動量を得ることができます。
-	 * このメソッドでは、文字の描画方向に対して縦 ( 下 ) に進んだときの Y 座標上での移動量を得ることができます。
+	 * @param text Specify the character string for which you want to obtain the amount of movement of the Y coordinate in the vertical direction of the character.
+	 * @return Returns the amount of vertical Y-coordinate movement of a character in pixels
+	 * @description You can get the amount of movement of the character drawing position required when drawing the character specified by the current font setting.
+	 * With this method, you can get the amount of movement on the Y coordinate when moving vertically (down) with respect to the drawing direction of the character.
 	 * @see Font.getEscWidthX
 	 * @see Font.getEscWidthY
 	 * @see Font.getEscHeightX
@@ -82,161 +82,161 @@ class Font {
 	function getEscHeightY( text);
 
 	/**
-	 * 文字列の実描画範囲
+	 * Actual drawing range of the character string
 	 *
-	 * @param text 範囲を得たい文字列を指定します。
-	 * @return 文字列の実描画範囲
-	 * @description 現在のフォントの設定で指定された文字を描画したときに、グリフ画像が描かれる範囲を得ることができます。
-	 * 得られる範囲は 0,0 座標を基準にした Rect クラスのオブジェクトです。
-	 * 横向きのみ対応しています。
+	 * @param text Specify the character string for which you want to get the range.
+	 * @return Actual drawing range of the character string
+	 * @description You can get the range where the glyph image is drawn when you draw the characters specified by the current font settings.
+	 * The resulting range is an object of the Rect class relative to the 0,0 coordinates.
+	 * Only landscape orientation is supported.
 	 * @see Rect
 	 */
 	function getGlyphDrawRect( text);
 
 	/**
-	 * フォント名の列挙
+	 * Font name enumeration
 	 *
-	 * @param flags フォントをどのように列挙するかを指定します。
-	 * 次の値のビット論理和による組み合わせ指定します。
+	 * @param flags Specifies how to enumerate the fonts.
+	 * Specify the combination of the following values by bitwise OR.
 	 *
-	 * + fsfFixedPitch     : 固定ピッチフォントのみ列挙します
-	 * + fsfSameCharSet    : 同じキャラクタセットのフォントのみ列挙します
-	 * + fsfNoVertical     : 縦書き用フォントを列挙しません
-	 * + fsfTrueTypeOnly   : TrueType フォントのみ列挙します
-	 * + fsfIgnoreSymbol   : シンボルキャラセットを除外します
-	 * + fsfSameCharSet を指定した場合は、現在選択されているフォントと同じキャラクタセットのフォントが列挙されます。
+	 * + fsfFixedPitch     :  List only fixed pitch fonts
+	 * + fsfSameCharSet    :  List only fonts of the same character set
+	 * + fsfNoVertical     :  Do not enumerate fonts for vertical writing
+	 * + fsfTrueTypeOnly   :  Enumerate only TrueType fonts
+	 * + fsfIgnoreSymbol   :  Exclude symbol character sets
+	 * + If fsfSameCharSet is specified, fonts with the same character set as the currently selected font will be listed.
 	 *
-	 * @return フォント名(文字列)が各要素として格納されている配列
-	 * @description フォント名を列挙し、配列として返します。
-	 * 	
+	 * @return An array in which the font name (character string) is stored as each element
+	 * @description Enumerates font names and returns them as an array.
+	 * .
 	 */
 	function getList( flags);
 
 	/**
-	 * レンダリング済みフォントの割り当て
+	 * Rendered font assignment
 	 *
-	 * @param fontstorage レンダリング済みフォントストレージを指定します。
-	 * @description 現在選択されているフォント名に対してレンダリング済みフォントの割り当てを行います。
-	 * 以降、同じ設定のフォントに対しては指定されたレンダリング済みフォントが代わりに使われます。
-	 * すべてのレイヤに対して設定が有効になります。
+	 * @param fontstorage Specifies rendered font storage.
+	 * @description Assigns a rendered font to the currently selected font name.
+	 * From now on, the specified rendered font will be used instead for fonts with the same settings.
+	 * The setting is valid for all layers.
 	 * @see Font.unmapPrerenderedFont
 	 */
 	function mapPrerenderedFont( fontstorage);
 
 	/**
-	 * レンダリング済みフォントの割り当て解除
+	 * Unassign rendered fonts
 	 *
-	 * @description 現在選択されているフォント名に対するレンダリング済みフォントの割り当てを解除します。
+	 * @description Deassigns the rendered font to the currently selected font name.
 	 * @see Font.mapPrerenderedFont
 	 */
 	function unmapPrerenderedFont( );
 
 	/**
-	 * フォントシステムにフォントを追加する。
-	 * @param storage フォントファイル名
-	 * @return ファイルに入っているフェイス名を配列で返す。
+	 * Add fonts to the font system.
+	 * @param storage Font file name
+	 * @return Returns an array of face names contained in the file.
 	 */
 	function addFont( storage ) : Array;
 
 	/**
-	 * フォント名
+	 * Font name
 	 *
-	 * @description フォント名を表します。
-	 * 値を設定することもできます。
-	 * カンマで区切って複数の候補を指定することができます。
-	 * この場合は、実際に存在するフォントが使用され、先頭に書いたものほど優先されます。
-	 * 実際に存在するフォントかどうかは OS のフォントのリストを参照することにより行われます。
-	 * どの候補にも合致しなかった場合は、デフォルトのフォントが使用されます (現バージョンではシステム標準フォント)。
-	 * FreeTypeラスタライザでは、複数候補を指定した場合、フォールバックフォントとして扱われ、前から順にグリフを検索し、見付かったグリフをレンダリングするようになります。
-	 * 言語ごとや絵文字など別ファイルとしてフォントファイルが存在する場合は、このフォールバックフォントの仕組みを利用します。
-	 * 先頭をカンマにし、直後にフォント名を書くと、実際にそのフォントをOSが列挙しなくても、OSにそのフォントを指定しようとします (たとえば ",My Original Font" )。
-	 * これにより AddFontResource Win32 API 等で登録した列挙不可能なフォントを使用することができます。
+	 * @description Represents a font name.
+	 * You can also set the value.
+	 * You can specify multiple candidates separated by commas.
+	 * In this case, the font that actually exists is used, and the one written at the beginning has priority.
+	 * Whether or not the font actually exists is determined by referring to the list of fonts in the OS.
+	 * If none of the candidates match, the default font will be used (the system standard font in the current version).
+	 * In FreeType rasterizer, if multiple candidates are specified, it will be treated as a fallback font, glyphs will be searched in order from the front, and the found glyph will be rendered.
+	 * If the font file exists as a separate file such as for each language or pictogram, use this fallback font mechanism.
+	 * If you start with a comma and write the font name immediately after it, the OS will try to specify the font without actually enumerating it (for example, ", My Original Font").
+	 * This makes it possible to use non-enumable fonts registered with the AddFontResource Win32 API.
 	 */
 	 property face {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * フォント高さ
+	 * Font height
 	 *
-	 * @description 描画される文字の高さをピクセル単位で表します。
-	 * 値を設定することもできます。
+	 * @description Represents the height of the drawn characters in pixels.
+	 * You can also set the value.
 	 */
 	 property height {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * ボールド
+	 * bold
 	 *
-	 * @description ボールド ( 太字 ) であるかどうかを表します。
-	 * 値を設定することもできます。
-	 * 真を指定するとボールドになります。
+	 * @description Indicates whether it is bold.
+	 * You can also set the value.
+	 * If you specify true, it will be bold.
 	 */
 	 property bold {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * イタリック
+	 * italic
 	 *
-	 * @description イタリック ( 斜体 ) であるかどうかを表します。
-	 * 値を設定することもできます。
-	 * 真を指定するとイタリックになります。
+	 * @description Indicates whether it is italic.
+	 * You can also set the value.
+	 * Specifying true makes it italic.
 	 */
 	 property italic {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * 取消線
+	 * Cancellation line
 	 *
-	 * @description 取消線を描画するかどうか表します。
-	 * 値を設定することもできます。
-	 * 真を指定すると文字の上に取消線を描画します。
+	 * @description Indicates whether to draw a strikethrough.
+	 * You can also set the value.
+	 * If true is specified, a strikethrough will be drawn above the character.
 	 */
 	 property strikeout {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * アンダーライン
+	 * Underline
 	 *
-	 * @description アンダーライン ( 下線または傍線 ) を描画するかどうか表します。
-	 * 値を設定することもできます。
-	 * 真を指定するとアンダーラインを描画します。
+	 * @description Indicates whether to draw an underline (underline or sideline).
+	 * You can also set the value.
+	 * If true is specified, the underline will be drawn.
 	 */
 	 property underline {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * 文字描画角度
+	 * Character drawing angle
 	 *
-	 * @description 文字描画角度を表します。
-	 * 値を設定することもできます。
-	 * 単位は角度 ( degree ) の 10 倍の値です。0 ～ 3600 の値をとります。
-	 * 縦書きを行う場合はフォント名に縦書き用のフォント名を指定した上で、このプロパティに 2700 を指定します。
+	 * @description Indicates the character drawing angle.
+	 * You can also set the value.
+	 * The unit is 10 times the angle (degree). It takes a value between 0 and 3600.
+	 * For vertical writing, specify the font name for vertical writing in the font name, and then specify 2700 for this property.
 	 */
 	 property angle {
 		 getter() { return value; }
 		 setter( value ) {}
 	}
 	/**
-	 * 文字列描画方式
+	 * Character string drawing method
 	 *
-	 * @description 文字列描画方式を表します。
-	 * 値を設定することもできます。
-	 * 値は以下のどちらかを指定します(Windows以外では常にFreeTypeです)。
+	 * @description Indicates the character string drawing method.
+	 * You can also set the value.
+	 * Specify one of the following values (always FreeType except on Windows).
 	 *
-	 * + frGDI       : GDI を使って文字を描画します(Windows版のみ)
-	 * + frFreeType  : FreeType を使って文字を描画します
+	 * + frGDI       :  Draw characters using GDI (Windows version only)
+	 * + frFreeType  :  Draw characters using FreeType
 	 *
-	 * FreeType を指定した場合、横書きにのみ対応しています。
-	 * その他は未対応です。
-	 * このプロパティはスタティックです。
-	 * Font.rasterizer を用いて値を設定してください。
-	 * マルチプラットフォーム版からデフォルトがFreeTypeになりました。
+	 * If FreeType is specified, only horizontal writing is supported.
+	 * Others are not supported.
+	 * This property is static.
+	 * Use Font.rasterizer to set the value.
+	 * From the multi-platform version, the default is FreeType.
 	 */
 	 property rasterizer {
 		 getter() { return value; }

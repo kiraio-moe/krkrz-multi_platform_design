@@ -1,114 +1,114 @@
 /**
- * @description 文字列 から Date オブジェクトを作る機能とオブジェクトから 文字列を作る機能が未実装ですが、他は JavaScript の Date とほぼ互換です。
+ * @description The function to create a Date object from a string and the function to create a string from an object are not implemented yet, but the others are almost compatible with JavaScript Date.
  */
 class Date {
 	/**
-	 * 現在日時コンストラクタ
-	 * @description このコンストラクタが実行された時点での現在の日付時間を保持します。
+	 * Current date and time constructor
+	 * @description Holds the current date and time when this constructor was executed.
 	 */
 	function Date();
 
 	/**
-	 * 日付文字列コンストラクタ
-	 * @description 日付文字列は ANSI C の asctime() 書式のもの、RFC1123 で定義されているもの、RFC1036 で定義されているもの、"年/月/日 時:分:秒" の形式のいずれかを指定する必要があります。
-	 * 日付文字列の認識は自動で行われ、ある程度の書式の変形には対応しますが、あまりに想定している書式と異なる場合は認識できない場合があります。
-	 * @param date 日付文字列
+	 * Date string constructor
+	 * @description The date string can be in ANSI C asctime () format, defined in RFC1123, defined in RFC1036, or in the form "year / month / day: hour: minute: second". is needed.
+	 * The date string is recognized automatically and can handle some format transformations, but it may not be recognized if the format is too different from what you expected.
+	 * @param date Date string
 	 */
 	function Date( date:string );
 
 	/**
-	 * 年月日時分秒を指定コンストラクタ
-	 * @description 年月日時分秒を指定して生成
-	 * @param year 年
-	 * @param month 月(0～
-	 * @param date 日
-	 * @param hour 時間
-	 * @param min 分
-	 * @param sec 秒
+	 * Specify year, month, day, hour, minute, and second Constructor
+	 * @description Generate by specifying the year, month, day, hour, minute, and second
+	 * @param year Year
+	 * @param month Month (0 ~
+	 * @param date Day
+	 * @param hour time
+	 * @param min Minutes
+	 * @param sec Seconds
 	 */
 	function Date( year:int, month:int=0, date:int=1, hour:int=0, min:int=0, sec:int=0 );
 
 	/**
-	 * 地域時間による4桁の西暦年の設定
-	 * @param year 年
+	 * 4-digit year setting by regional time
+	 * @param year Year
 	 */
 	function setYear( year:int );
 	/**
-	 * 地域時間による4桁の西暦年の取得
-	 * @return 4桁の西暦年
+	 * Acquisition of 4-digit year by regional time
+	 * @return 4-digit year
 	 */
 	function getYear():int;
 	/**
-	 * 地域時間による月の設定
-	 * @param month 月
+	 * Setting the month by regional time
+	 * @param month Month
 	 */
 	function setMonth( month:int );
 	/**
-	 * 地域時間による月の取得
-	 * @return 月
+	 * Get the month by local time
+	 * @return Month
 	 */
 	function getMonth():int;
 	/**
-	 * 地域時間による日の設定
-	 * @param date 日
+	 * Setting the day by local time
+	 * @param date Day
 	 */
 	function setDate( date:int );
 	/**
-	 * 地域時間による日の取得
-	 * @return 日
+	 * Get the day by local time
+	 * @return Day
 	 */
 	function getDate():int;
 	/**
-	 * 地域時間による時の設定
-	 * @param hour 時間
+	 * Time setting by local time
+	 * @param hour time
 	 */
 	function setHours( hour:int );
 	/**
-	 * 地域時間による時の取得
-	 * @return 時間
+	 * Acquisition of time by local time
+	 * @return time
 	 */
 	function getHours():int;
 	/**
-	 * 地域時間による分の設定
-	 * @param min 分
+	 * Setting minutes by regional time
+	 * @param min Minutes
 	 */
 	function setMinutes( min:int );
 	/**
-	 * 地域時間による分の取得
-	 * @return 分
+	 * Acquisition of minutes by local time
+	 * @return Minutes
 	 */
 	function getMinutes():int;
 	/**
-	 * 地域時間による秒の設定
-	 * @param sec 秒
+	 * Setting seconds by regional time
+	 * @param sec Seconds
 	 */
 	function setSeconds( sec:int );
 	/**
-	 * 地域時間による秒の取得
-	 * @return 秒
+	 * Get seconds by local time
+	 * @return Seconds
 	 */
 	function getSeconds():int;
 	/**
-	 * 1970年1月1日0:00からの経過ミリ秒の設定
-	 * @param time 経過ミリ秒
+	 * Setting the number of milliseconds elapsed since 0:00 on January 1, 1970
+	 * @param time Elapsed milliseconds
 	 */
 	function setTime( time:int );
 	/**
-	 * 1970年1月1日0:00からの経過ミリ秒の設定
-	 * @description マルチプラットフォーム版前まではミリ秒単位の取得は出来なかったが、マルチプラットフォーム版でミリ秒まで対応した。
-	 * @return 経過ミリ秒
+	 * Setting the number of milliseconds elapsed since 0:00 on January 1, 1970
+	 * @description Before the multi-platform version, it was not possible to acquire in milliseconds, but the multi-platform version supports up to milliseconds.
+	 * @return Elapsed milliseconds
 	 */
 	function getTime():int;
 
 	/**
-	 * 曜日の取得
-	 * @return 曜日
+	 * Get the day of the week
+	 * @return Day of the week
 	 */
 	function getDay():int;
 
 	/**
-	 * 日付文字列の解釈
-	 * @param daytime 日付文字列
+	 * Interpretation of date strings
+	 * @param daytime Date string
 	 */
 	function parse( daytime:string );
 };

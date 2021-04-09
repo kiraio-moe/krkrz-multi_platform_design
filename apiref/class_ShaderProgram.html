@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>ShaderProgram - </title>
+</head>
+<body>
+<h1><a name="top" id="top">ShaderProgram</a></h1>
+<div class="para"><p>A class that stores a compiled / linked version of the Vertex / Fragment shader.<br />
+Compile / link is executed in the constructor, and if there is an error, an exception will be thrown, so look at the log and correct it.<br />
+The parameters used to enter the shader are added to the member so you can set the value via the member.<br />
+The variable name is obtained from the shader using reflection.<br />
+Designation such as Texture is decided in advance as a reserved word, and it is made with that name.<br />
+The Attribute attribute value that becomes the vertex information can be set via the member only when <code>VertexBuffer</code> / <code>VertexBinder</code> is used in <code>drawMesh</code>.<br />
+The original member functions and properties of ShaderProgram cannot necessarily be used as input variable names in the shader (so we currently add only a minimal number of members).</p>
+
+<p>If you set a value for the property added as the input name defined in the shader, that value will be set at the time of drawing.<br />
+The added property can only be set to a value and cannot be obtained.<br />
+The value will be retained, so if you want to use the same shader, you need to change it to the value you want to specify before drawing.<br />
+The property type is obtained from the shader script.<br />
+<code>vec4</code> etc. are passed to <code>Array</code> class as an array of real type.</p>
+
+<p>Reserved words are automatically set internally when drawing is executed, so there is no need to set a value explicitly (except for <code>drawMesh</code>).<br />
+The first texture id is passed to ex. <code>s_tex0</code>.<br />
+The value that is set automatically depends on the drawing instruction.</p>
+
+<p>If the shader can be specified from the script and can be replaced freely, the TJS2 script alone can produce the effect faster than the conventional CPU processing, without writing a plug-in to extend the function to the layer as in the past. You can expect to be able to add.<br />
+There is no function equivalent to <code>Layer</code> at present, but if you enhance the peripheral functions required to realize <code>Layer</code> / <code>Sprite</code> etc. with TJS2 script, you can write with a script around that, and the number of native (C++) plugins is less than before. I can do it.<br />
+On Android, where binaries need to be prepared for multiple CPUs, scripting enhancements also help reduce the apk size.<br />
+It is also advantageous for multi-platform.<br />
+If you distribute a set of TJS2 scripts that realize shaders + Sprites that handle them, you can enhance the production.</p>
+
+<p>When inputting the shader script to a file, write it in UTF-8.</p>
+
+<p>Variable names that cannot be used in shaders (internally defined)</p>
+
+<ul>
+<li><code>ShaderProgram</code></li>
+<li><code>finalize</code></li>
+</ul>
+
+<p>The name of the value that is set automatically</p>
+
+<ul>
+<li>texture : <code>s_tex0</code>, <code>s_tex1</code>, <code>s_tex2</code>, <code>s_tex3</code>...</li>
+<li>Vertex coordinates : <code>a_pos(vec2)</code></li>
+<li>Texture coordinates : <code>a_texCoord(vec2)</code></li>
+<li>queue : <code>a_modelMat4(mat4)</code></li>
+</ul>
+
+<p>GLSL structures and arrays are not initially supported.</p>
+</div>
+<h1>Member</h1><div class="para">
+<dl>
+<dt>Constructor</dt>
+<dd>
+<a class="jump" href="func_ShaderProgram_ShaderProgram.html">ShaderProgram</a> (constructor)<br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

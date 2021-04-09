@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>convertType - Layer image representation format conversion</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.convertType</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Layer image representation format conversion</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Layer.html">Layerclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">convertType(<span class="arg">from</span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="convertTypeArguments of">
+<tr><td valign="top"><span class="argname">from</span></td>
+<td><p>Specify the drawing method type to be converted.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Converts the format of layer images.<br />
+This method converts the image representation format between "types that have different layer image representation formats but can be represented in the same way", such as ltAlpha (dfAlpha) and ltAddAlpha (dfAddAlpha).<br />
+For example, if you change the layer type displayed by ltAlpha to ltAddAlpha as it is, it will not be displayed properly because the alpha channel and color information are handled differently.<br />
+Therefore, you need to use this method to convert from dfAlpha to dfAddAlpha.<br />
+Note that in this method, the image representation format of the conversion destination corresponds to the drawing method specified by the Layer.face property (not the layer type specified by Layer.type, but the drawing method. ).<br />
+In the from argument, specify the drawing method (constant starting with df; see Layer.face) corresponding to the image representation format of the conversion source.<br />
+You cannot specify dfAuto for the from argument.<br />
+Currently supported conversions are dfAlpha → dfAddAlpha and dfAddAlpha → dfAlpha conversions. In dfAddAlpha → dfAlpha, color information may be lost due to conversion.<br />
+This method is unaffected by the drawing clip rectangle (always the entire layer image is affected).</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

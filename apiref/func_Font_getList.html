@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>getList - Font name enumeration</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Font.getList</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Font name enumeration</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Font.html">Fontclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">getList(<span class="arg">flags</span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="getListArguments of">
+<tr><td valign="top"><span class="argname">flags</span></td>
+<td><p>Specifies how to enumerate the fonts.<br />
+Specify the combination of the following values by bitwise OR.</p>
+
+<ul>
+<li>fsfFixedPitch     :  List only fixed pitch fonts</li>
+<li>fsfSameCharSet    :  List only fonts of the same character set</li>
+<li>fsfNoVertical     :  Do not enumerate fonts for vertical writing</li>
+<li>fsfTrueTypeOnly   :  Enumerate only TrueType fonts</li>
+<li>fsfIgnoreSymbol   :  Exclude symbol character sets</li>
+<li>If fsfSameCharSet is specified, fonts with the same character set as the currently selected font will be listed.</li>
+</ul>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd><p>An array in which the font name (character string) is stored as each element</p>
+</dd>
+<dt>Explanation</dt>
+<dd><p>Enumerates font names and returns them as an array.<br />
+.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

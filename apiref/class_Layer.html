@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>Layer - </title>
+</head>
+<body>
+<h1><a name="top" id="top">Layer</a></h1>
+<div class="para"><p>The Layer class is a class for managing layers.</p>
+</div>
+<h1>Member</h1><div class="para">
+<dl>
+<dt>Constructor</dt>
+<dd>
+<a class="jump" href="func_Layer_Layer.html">Layer</a> (Building a Layer object)<br />
+</dd>
+<dt>Method</dt>
+<dd>
+<a class="jump" href="func_Layer_adjustGamma.html">adjustGamma</a> (Gamma correction)<br />
+<a class="jump" href="func_Layer_affineCopy.html">affineCopy</a> (Affine transformation copy)<br />
+<a class="jump" href="func_Layer_assignImages.html">assignImages</a> (Copy of image)<br />
+<a class="jump" href="func_Layer_beginTransition.html">beginTransition</a> (Start of transition)<br />
+<a class="jump" href="func_Layer_bringToBack.html">bringToBack</a> (Move to the back)<br />
+<a class="jump" href="func_Layer_bringToFront.html">bringToFront</a> (Move to the front)<br />
+<a class="jump" href="func_Layer_colorRect.html">colorRect</a> (Rectangle translucent fill)<br />
+<a class="jump" href="func_Layer_convertType.html">convertType</a> (Layer image representation format conversion)<br />
+<a class="jump" href="func_Layer_copy9Patch.html">copy9Patch</a> (Image copy using 9 path)<br />
+<a class="jump" href="func_Layer_copyFromBitmapToMainImage.html">copyFromBitmapToMainImage</a> (Copy image from Bitmap)<br />
+<a class="jump" href="func_Layer_copyRect.html">copyRect</a> (Rectangle copy)<br />
+<a class="jump" href="func_Layer_copyToBitmapFromMainImage.html">copyToBitmapFromMainImage</a> (Copy image to Bitmap)<br />
+<a class="jump" href="func_Layer_doBoxBlur.html">doBoxBlur</a> (Apply rectangular blur)<br />
+<a class="jump" href="func_Layer_doGrayScale.html">doGrayScale</a> (Grayscale conversion)<br />
+<a class="jump" href="func_Layer_drawGlyph.html">drawGlyph</a> (Character drawing)<br />
+<a class="jump" href="func_Layer_drawText.html">drawText</a> (Character drawing)<br />
+<a class="jump" href="func_Layer_fillRect.html">fillRect</a> (Rectangle fill)<br />
+<a class="jump" href="func_Layer_flipLR.html">flipLR</a> (Flip horizontal)<br />
+<a class="jump" href="func_Layer_flipUD.html">flipUD</a> (flip upside down)<br />
+<a class="jump" href="func_Layer_focus.html">focus</a> (Focus setting)<br />
+<a class="jump" href="func_Layer_focusNext.html">focusNext</a> (Set focus on the back layer)<br />
+<a class="jump" href="func_Layer_focusPrev.html">focusPrev</a> (Set focus on the previous layer)<br />
+<a class="jump" href="func_Layer_getLayerAt.html">getLayerAt</a> (Get the layer at the specified position)<br />
+<a class="jump" href="func_Layer_getMainPixel.html">getMainPixel</a> (Get the color of the main image)<br />
+<a class="jump" href="func_Layer_getMaskPixel.html">getMaskPixel</a> (Get the value of the mask image)<br />
+<a class="jump" href="func_Layer_getProvincePixel.html">getProvincePixel</a> (Get the value of the area image)<br />
+<a class="jump" href="func_Layer_independMainImage.html">independMainImage</a> (Unsharing the main image)<br />
+<a class="jump" href="func_Layer_independProvinceImage.html">independProvinceImage</a> (Canceling sharing of area images)<br />
+<a class="jump" href="func_Layer_loadImages.html">loadImages</a> (Image loading)<br />
+<a class="jump" href="func_Layer_loadProvinceImage.html">loadProvinceImage</a> (Loading area image)<br />
+<a class="jump" href="func_Layer_moveBefore.html">moveBefore</a> (Move to the front of the specified layer)<br />
+<a class="jump" href="func_Layer_moveBehind.html">moveBehind</a> (Move to the back of the specified layer)<br />
+<a class="jump" href="func_Layer_operateAffine.html">operateAffine</a> (Affine transformation arithmetic composition)<br />
+<a class="jump" href="func_Layer_operateRect.html">operateRect</a> (Rectangle arithmetic composition)<br />
+<a class="jump" href="func_Layer_operateStretch.html">operateStretch</a> (Enlargement / reduction operation composition)<br />
+<a class="jump" href="func_Layer_piledCopy.html">piledCopy</a> (Copy the image with the layers superimposed)<br />
+<a class="jump" href="func_Layer_releaseCapture.html">releaseCapture</a> (Cancel mouse event capture)<br />
+<a class="jump" href="func_Layer_removeMode.html">removeMode</a> (Release the modal state)<br />
+<a class="jump" href="func_Layer_saveLayerImage.html">saveLayerImage</a> (Save image)<br />
+<a class="jump" href="func_Layer_setAttentionPos.html">setAttentionPos</a> (Designation of gaze position)<br />
+<a class="jump" href="func_Layer_setClip.html">setClip</a> (Drawing clip rectangle settings)<br />
+<a class="jump" href="func_Layer_setCursorPos.html">setCursorPos</a> (Specifying the mouse cursor position)<br />
+<a class="jump" href="func_Layer_setImagePos.html">setImagePos</a> (Layer image offset setting)<br />
+<a class="jump" href="func_Layer_setImageSize.html">setImageSize</a> (Layer image size setting)<br />
+<a class="jump" href="func_Layer_setMainPixel.html">setMainPixel</a> (Main image color settings)<br />
+<a class="jump" href="func_Layer_setMaskPixel.html">setMaskPixel</a> (Setting the value of the mask image)<br />
+<a class="jump" href="func_Layer_setMode.html">setMode</a> (Make it modal)<br />
+<a class="jump" href="func_Layer_setPos.html">setPos</a> (Layer display position setting)<br />
+<a class="jump" href="func_Layer_setProvincePixel.html">setProvincePixel</a> (Setting the value of the area image)<br />
+<a class="jump" href="func_Layer_setSize.html">setSize</a> (Layer display size setting)<br />
+<a class="jump" href="func_Layer_setSizeToImageSize.html">setSizeToImageSize</a> (Match the layer display size to the image size)<br />
+<a class="jump" href="func_Layer_stopTransition.html">stopTransition</a> (Stop the transition)<br />
+<a class="jump" href="func_Layer_stretchCopy.html">stretchCopy</a> (Enlargement / reduction copy)<br />
+<a class="jump" href="func_Layer_update.html">update</a> (Image update)<br />
+</dd>
+<dt>Property</dt>
+<dd>
+<a class="jump" href="prop_Layer_absolute.html">absolute</a> (Absolute position)<br />
+<a class="jump" href="prop_Layer_absoluteOrderMode.html">absoluteOrderMode</a> (Whether it is in absolute position mode)<br />
+<a class="jump" href="prop_Layer_attentionLeft.html">attentionLeft</a> (Gaze left end position)<br />
+<a class="jump" href="prop_Layer_attentionTop.html">attentionTop</a> (Gaze upper end position)<br />
+<a class="jump" href="prop_Layer_cached.html">cached</a> (Do you want to cache)<br />
+<a class="jump" href="prop_Layer_callOnPaint.html">callOnPaint</a> (Whether to call the onPaint event)<br />
+<a class="jump" href="prop_Layer_children.html">children</a> (Child layer array)<br />
+<a class="jump" href="prop_Layer_clipHeight.html">clipHeight</a> (Drawing clip rectangle vertical width)<br />
+<a class="jump" href="prop_Layer_clipLeft.html">clipLeft</a> (Drawing clip rectangle left edge position)<br />
+<a class="jump" href="prop_Layer_clipTop.html">clipTop</a> (Top position of drawing clip rectangle)<br />
+<a class="jump" href="prop_Layer_clipWidth.html">clipWidth</a> (Drawing clip rectangle width)<br />
+<a class="jump" href="prop_Layer_cursor.html">cursor</a> (Mouse cursor)<br />
+<a class="jump" href="prop_Layer_cursorX.html">cursorX</a> (Mouse cursor x position)<br />
+<a class="jump" href="prop_Layer_cursorY.html">cursorY</a> (Mouse cursor y position)<br />
+<a class="jump" href="prop_Layer_enabled.html">enabled</a> (Whether it can be operated)<br />
+<a class="jump" href="prop_Layer_face.html">face</a> (Drawing method)<br />
+<a class="jump" href="prop_Layer_focusable.html">focusable</a> (Whether to receive focus)<br />
+<a class="jump" href="prop_Layer_focused.html">focused</a> (Whether it is in focus)<br />
+<a class="jump" href="prop_Layer_font.html">font</a> (font)<br />
+<a class="jump" href="prop_Layer_hasImage.html">hasImage</a> (Whether the layer has an image)<br />
+<a class="jump" href="prop_Layer_height.html">height</a> (Vertical width)<br />
+<a class="jump" href="prop_Layer_hint.html">hint</a> (Tips)<br />
+<a class="jump" href="prop_Layer_hitThreshold.html">hitThreshold</a> (Threshold value for collision detection)<br />
+<a class="jump" href="prop_Layer_hitType.html">hitType</a> (Collision detection type)<br />
+<a class="jump" href="prop_Layer_holdAlpha.html">holdAlpha</a> (Whether to protect the alpha channel)<br />
+<a class="jump" href="prop_Layer_ignoreHintSensing.html">ignoreHintSensing</a> (Hint display judgment presence / absence)<br />
+<a class="jump" href="prop_Layer_imageHeight.html">imageHeight</a> (Image height)<br />
+<a class="jump" href="prop_Layer_imageLeft.html">imageLeft</a> (Layer image left edge offset)<br />
+<a class="jump" href="prop_Layer_imageModified.html">imageModified</a> (Did the image change?)<br />
+<a class="jump" href="prop_Layer_imageTop.html">imageTop</a> (Layer image top offset)<br />
+<a class="jump" href="prop_Layer_imageWidth.html">imageWidth</a> (Image width)<br />
+<a class="jump" href="prop_Layer_imeMode.html">imeMode</a> (IME mode)<br />
+<a class="jump" href="prop_Layer_isPrimary.html">isPrimary</a> (Whether it is the primary layer)<br />
+<a class="jump" href="prop_Layer_joinFocusChain.html">joinFocusChain</a> (Whether to join the focus chain)<br />
+<a class="jump" href="prop_Layer_left.html">left</a> (Leftmost position)<br />
+<a class="jump" href="prop_Layer_mainImageBuffer.html">mainImageBuffer</a> (Main image buffer pointer)<br />
+<a class="jump" href="prop_Layer_mainImageBufferForWrite.html">mainImageBufferForWrite</a> (Main image buffer pointer (for writing))<br />
+<a class="jump" href="prop_Layer_mainImageBufferPitch.html">mainImageBufferPitch</a> (Main image buffer pitch)<br />
+<a class="jump" href="prop_Layer_name.html">name</a> (Layer name)<br />
+<a class="jump" href="prop_Layer_neutralColor.html">neutralColor</a> (Neutral color)<br />
+<a class="jump" href="prop_Layer_nextFocusable.html">nextFocusable</a> (Layer that can receive rear focus)<br />
+<a class="jump" href="prop_Layer_nodeEnabled.html">nodeEnabled</a> (Whether the layer node can be operated)<br />
+<a class="jump" href="prop_Layer_nodeVisible.html">nodeVisible</a> (Whether the node is visible)<br />
+<a class="jump" href="prop_Layer_opacity.html">opacity</a> (Opacity)<br />
+<a class="jump" href="prop_Layer_order.html">order</a> (relative position)<br />
+<a class="jump" href="prop_Layer_parent.html">parent</a> (Parent layer)<br />
+<a class="jump" href="prop_Layer_prevFocusable.html">prevFocusable</a> (Layer that can receive forward focus)<br />
+<a class="jump" href="prop_Layer_provinceImageBuffer.html">provinceImageBuffer</a> (Area image buffer pointer)<br />
+<a class="jump" href="prop_Layer_provinceImageBufferForWrite.html">provinceImageBufferForWrite</a> (Area image buffer pointer (for writing))<br />
+<a class="jump" href="prop_Layer_provinceImageBufferPitch.html">provinceImageBufferPitch</a> (Area image buffer pitch)<br />
+<a class="jump" href="prop_Layer_showParentHint.html">showParentHint</a> (Do you want to take over the hint of the parent layer?)<br />
+<a class="jump" href="prop_Layer_top.html">top</a> (Top position)<br />
+<a class="jump" href="prop_Layer_type.html">type</a> (Layer display type)<br />
+<a class="jump" href="prop_Layer_useAttention.html">useAttention</a> (Whether to use gaze information)<br />
+<a class="jump" href="prop_Layer_visible.html">visible</a> (Whether it is visible)<br />
+<a class="jump" href="prop_Layer_width.html">width</a> (Width)<br />
+<a class="jump" href="prop_Layer_window.html">window</a> (Window object)<br />
+</dd>
+<dt>Event</dt>
+<dd>
+<a class="jump" href="event_Layer_onBeforeFocus.html">onBeforeFocus</a> (Immediately before receiving focus)<br />
+<a class="jump" href="event_Layer_onBlur.html">onBlur</a> (Lost focus)<br />
+<a class="jump" href="event_Layer_onClick.html">onClick</a> (The layer was clicked)<br />
+<a class="jump" href="event_Layer_onDoubleClick.html">onDoubleClick</a> (The layer was double-clicked)<br />
+<a class="jump" href="event_Layer_onFocus.html">onFocus</a> (Got focus)<br />
+<a class="jump" href="event_Layer_onHitTest.html">onHitTest</a> (collision detection)<br />
+<a class="jump" href="event_Layer_onKeyDown.html">onKeyDown</a> (The key was pressed)<br />
+<a class="jump" href="event_Layer_onKeyPress.html">onKeyPress</a> (Characters have been entered)<br />
+<a class="jump" href="event_Layer_onKeyUp.html">onKeyUp</a> (The key was released)<br />
+<a class="jump" href="event_Layer_onMouseDown.html">onMouseDown</a> (Mouse button pressed)<br />
+<a class="jump" href="event_Layer_onMouseEnter.html">onMouseEnter</a> (The mouse came in)<br />
+<a class="jump" href="event_Layer_onMouseLeave.html">onMouseLeave</a> (The mouse came out)<br />
+<a class="jump" href="event_Layer_onMouseMove.html">onMouseMove</a> (The mouse has moved)<br />
+<a class="jump" href="event_Layer_onMouseUp.html">onMouseUp</a> (Mouse button released)<br />
+<a class="jump" href="event_Layer_onMouseWheel.html">onMouseWheel</a> (Mouse wheel rotated)<br />
+<a class="jump" href="event_Layer_onMultiTouch.html">onMultiTouch</a> (Multi-touch state changed)<br />
+<a class="jump" href="event_Layer_onNodeDisabled.html">onNodeDisabled</a> (Node becomes inoperable)<br />
+<a class="jump" href="event_Layer_onNodeEnabled.html">onNodeEnabled</a> (The node is now operational)<br />
+<a class="jump" href="event_Layer_onPaint.html">onPaint</a> (When drawn)<br />
+<a class="jump" href="event_Layer_onSearchNextFocusable.html">onSearchNextFocusable</a> (Search backwards for focusable layers)<br />
+<a class="jump" href="event_Layer_onSearchPrevFocusable.html">onSearchPrevFocusable</a> (Search forward for focusable layers)<br />
+<a class="jump" href="event_Layer_onTouchDown.html">onTouchDown</a> (The screen was touched)<br />
+<a class="jump" href="event_Layer_onTouchMove.html">onTouchMove</a> (The finger has moved)<br />
+<a class="jump" href="event_Layer_onTouchRotate.html">onTouchRotate</a> (Rotated)<br />
+<a class="jump" href="event_Layer_onTouchScaling.html">onTouchScaling</a> (Enlarged operation)<br />
+<a class="jump" href="event_Layer_onTouchUp.html">onTouchUp</a> (Your finger was released from the screen)<br />
+<a class="jump" href="event_Layer_onTransitionCompleted.html">onTransitionCompleted</a> (The transition is over)<br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

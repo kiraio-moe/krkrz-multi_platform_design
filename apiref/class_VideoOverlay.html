@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>VideoOverlay - </title>
+</head>
+<body>
+<h1><a name="top" id="top">VideoOverlay</a></h1>
+<div class="para"><p>The VideoOverlay class is a class that creates a display area for displaying MPEG I, WMV, H.264, theora, etc.<br />
+You can also display on the layer of Kirikiri.<br />
+You will need krdstheora.dll to play theora.<br />
+With overlay playback, except for layer playback, the display area of the VideoOverlay class is visible in front of all layers and cannot be transparent.<br />
+Playback on layers tends to be more processor-intensive during playback than playback on overlays.<br />
+On Android, it is limited to the mode equivalent to the overlay that is always displayed in the foreground.<br />
+The playable format also depends on the model.<br />
+It seems that there are many terminals that can play H.264.<br />
+On Android, video files are stored in assets.</p>
+</div>
+<h1>Member</h1><div class="para">
+<dl>
+<dt>Constructor</dt>
+<dd>
+<a class="jump" href="func_VideoOverlay_VideoOverlay.html">VideoOverlay</a> (Building a VideoOverlay object)<br />
+</dd>
+<dt>Method</dt>
+<dd>
+<a class="jump" href="func_VideoOverlay_cancelPeriodEvent.html">cancelPeriodEvent</a> ([Windows *] Cancel event occurrence at specified frame)<br />
+<a class="jump" href="func_VideoOverlay_cancelSegmentLoop.html">cancelSegmentLoop</a> ([Windows *] Breaking the inter-frame loop)<br />
+<a class="jump" href="func_VideoOverlay_close.html">close</a> (Close media)<br />
+<a class="jump" href="func_VideoOverlay_open.html">open</a> (Open media)<br />
+<a class="jump" href="func_VideoOverlay_pause.html">pause</a> (pause)<br />
+<a class="jump" href="func_VideoOverlay_play.html">play</a> (Start playing)<br />
+<a class="jump" href="func_VideoOverlay_prepare.html">prepare</a> ([Windows *] Ready to play)<br />
+<a class="jump" href="func_VideoOverlay_resetMixingLayer.html">resetMixingLayer</a> ([Windows +] Unsetting the layer to be mixed)<br />
+<a class="jump" href="func_VideoOverlay_rewind.html">rewind</a> (Rewind)<br />
+<a class="jump" href="func_VideoOverlay_selectAudioStream.html">selectAudioStream</a> ([Windows *] Audio stream selection)<br />
+<a class="jump" href="func_VideoOverlay_setBounds.html">setBounds</a> ([Windows *] Specify the position and size of the playback rectangle)<br />
+<a class="jump" href="func_VideoOverlay_setMixingLayer.html">setMixingLayer</a> ([Windows +] Mixing target layer settings)<br />
+<a class="jump" href="func_VideoOverlay_setPeriodEvent.html">setPeriodEvent</a> ([Windows *] Specifying the occurrence of an event at a specified frame)<br />
+<a class="jump" href="func_VideoOverlay_setPos.html">setPos</a> ([Windows *] Specify the upper left position of the playback rectangle)<br />
+<a class="jump" href="func_VideoOverlay_setSegmentLoop.html">setSegmentLoop</a> ([Windows *] Inter-frame loop settings)<br />
+<a class="jump" href="func_VideoOverlay_setSize.html">setSize</a> ([Windows *] Specify the size of the playback rectangle)<br />
+<a class="jump" href="func_VideoOverlay_stop.html">stop</a> (Stop playing)<br />
+</dd>
+<dt>Property</dt>
+<dd>
+<a class="jump" href="prop_VideoOverlay_audioBalance.html">audioBalance</a> ([Windows *] Voice balance (panning))<br />
+<a class="jump" href="prop_VideoOverlay_audioVolume.html">audioVolume</a> (Audio volume)<br />
+<a class="jump" href="prop_VideoOverlay_brightness.html">brightness</a> ([Windows +] Video brightness)<br />
+<a class="jump" href="prop_VideoOverlay_brightnessDefaultValue.html">brightnessDefaultValue</a> ([Windows +] Video brightness default)<br />
+<a class="jump" href="prop_VideoOverlay_brightnessRangeMax.html">brightnessRangeMax</a> ([Windows +] Maximum brightness range of video)<br />
+<a class="jump" href="prop_VideoOverlay_brightnessRangeMin.html">brightnessRangeMin</a> ([Windows +] Minimum video brightness range)<br />
+<a class="jump" href="prop_VideoOverlay_brightnessStepSize.html">brightnessStepSize</a> ([Windows +] Video brightness increase / decrease step value)<br />
+<a class="jump" href="prop_VideoOverlay_contrast.html">contrast</a> ([Windows +] Video contrast)<br />
+<a class="jump" href="prop_VideoOverlay_contrastDefaultValue.html">contrastDefaultValue</a> ([Windows +] Video contrast default value)<br />
+<a class="jump" href="prop_VideoOverlay_contrastRangeMax.html">contrastRangeMax</a> ([Windows +] Maximum video contrast range)<br />
+<a class="jump" href="prop_VideoOverlay_contrastRangeMin.html">contrastRangeMin</a> ([Windows +] Minimum video contrast range)<br />
+<a class="jump" href="prop_VideoOverlay_contrastStepSize.html">contrastStepSize</a> ([Windows +] Video contrast increase / decrease step value)<br />
+<a class="jump" href="prop_VideoOverlay_enabledAudioStream.html">enabledAudioStream</a> ([Windows *] Audio stream number to be played)<br />
+<a class="jump" href="prop_VideoOverlay_fps.html">fps</a> ([Windows *] Frame rate)<br />
+<a class="jump" href="prop_VideoOverlay_frame.html">frame</a> ([Windows] Current frame)<br />
+<a class="jump" href="prop_VideoOverlay_height.html">height</a> ([Windows *] Vertical width of playback rectangle)<br />
+<a class="jump" href="prop_VideoOverlay_hue.html">hue</a> ([Windows +] Video Hue)<br />
+<a class="jump" href="prop_VideoOverlay_hueDefaultValue.html">hueDefaultValue</a> ([Windows +] Video hue default)<br />
+<a class="jump" href="prop_VideoOverlay_hueRangeMax.html">hueRangeMax</a> ([Windows +] Maximum hue range of video)<br />
+<a class="jump" href="prop_VideoOverlay_hueRangeMin.html">hueRangeMin</a> ([Windows +] Minimum video hue range)<br />
+<a class="jump" href="prop_VideoOverlay_hueStepSize.html">hueStepSize</a> ([Windows +] Video hue increase / decrease step value)<br />
+<a class="jump" href="prop_VideoOverlay_layer1.html">layer1</a> ([Windows *] Drawing layer specification 1)<br />
+<a class="jump" href="prop_VideoOverlay_layer2.html">layer2</a> ([Windows *] Drawing layer specification 2)<br />
+<a class="jump" href="prop_VideoOverlay_left.html">left</a> ([Windows *] Left edge position of playback rectangle)<br />
+<a class="jump" href="prop_VideoOverlay_loop.html">loop</a> ([Windows *] Whether to play in a loop)<br />
+<a class="jump" href="prop_VideoOverlay_mixingMovieAlpha.html">mixingMovieAlpha</a> ([Windows +] Video transparency)<br />
+<a class="jump" href="prop_VideoOverlay_mixingMovieBGColor.html">mixingMovieBGColor</a> ([Windows +] Video background color)<br />
+<a class="jump" href="prop_VideoOverlay_mode.html">mode</a> ([Windows *] Specify overlay or layer drawing)<br />
+<a class="jump" href="prop_VideoOverlay_numberOfAudioStream.html">numberOfAudioStream</a> ([Windows *] Number of audio streams)<br />
+<a class="jump" href="prop_VideoOverlay_numberOfFrame.html">numberOfFrame</a> ([Windows *] Total number of frames)<br />
+<a class="jump" href="prop_VideoOverlay_originalHeight.html">originalHeight</a> ([Windows *] Actual height of the video)<br />
+<a class="jump" href="prop_VideoOverlay_originalWidth.html">originalWidth</a> ([Windows *] Actual width of video)<br />
+<a class="jump" href="prop_VideoOverlay_periodEventFrame.html">periodEventFrame</a> ([Windows *] Period event frame)<br />
+<a class="jump" href="prop_VideoOverlay_playRate.html">playRate</a> ([Windows *] Playback speed)<br />
+<a class="jump" href="prop_VideoOverlay_position.html">position</a> (Playback position)<br />
+<a class="jump" href="prop_VideoOverlay_saturation.html">saturation</a> ([Windows +] Video Saturation)<br />
+<a class="jump" href="prop_VideoOverlay_saturationDefaultValue.html">saturationDefaultValue</a> ([Windows +] Video Saturation Default)<br />
+<a class="jump" href="prop_VideoOverlay_saturationRangeMax.html">saturationRangeMax</a> ([Windows +] Maximum video saturation range)<br />
+<a class="jump" href="prop_VideoOverlay_saturationRangeMin.html">saturationRangeMin</a> ([Windows +] Minimum video saturation range)<br />
+<a class="jump" href="prop_VideoOverlay_saturationStepSize.html">saturationStepSize</a> ([Windows +] Video saturation increase / decrease step value)<br />
+<a class="jump" href="prop_VideoOverlay_segmentLoopEndFrame.html">segmentLoopEndFrame</a> ([Windows *] Start frame of segment loop)<br />
+<a class="jump" href="prop_VideoOverlay_segmentLoopStartFrame.html">segmentLoopStartFrame</a> ([Windows *] Start frame of segment loop)<br />
+<a class="jump" href="prop_VideoOverlay_top.html">top</a> ([Windows *] Top position of playback rectangle)<br />
+<a class="jump" href="prop_VideoOverlay_totalTime.html">totalTime</a> (total time)<br />
+<a class="jump" href="prop_VideoOverlay_visible.html">visible</a> (Whether it is visible)<br />
+<a class="jump" href="prop_VideoOverlay_width.html">width</a> ([Windows *] Width of playback rectangle)<br />
+</dd>
+<dt>Event</dt>
+<dd>
+<a class="jump" href="event_VideoOverlay_onFrameUpdate.html">onFrameUpdate</a> ([Windows *] Video frame updated)<br />
+<a class="jump" href="event_VideoOverlay_onPeriod.html">onPeriod</a> ([Windows *] Period event has occurred)<br />
+<a class="jump" href="event_VideoOverlay_onStatusChanged.html">onStatusChanged</a> (Status changed)<br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

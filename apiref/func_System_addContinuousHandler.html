@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>addContinuousHandler - Add Continuous Handler</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">System.addContinuousHandler</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Add Continuous Handler</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_System.html">Systemclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">addContinuousHandler(<span class="arg">callback</span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="addContinuousHandlerArguments of">
+<tr><td valign="top"><span class="argname">callback</span></td>
+<td><p>Specify the function to be the handler.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Register a Continuous Handler.<br />
+Continuous handlers are event handlers that are called "as often as possible".<br />
+If there is nothing else to do, Kirikiri keeps calling her Continuous Handler.<br />
+If another event occurs, that will be given priority.<br />
+However, if the command line option -contfreq specifies the frequency of calls, it follows.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

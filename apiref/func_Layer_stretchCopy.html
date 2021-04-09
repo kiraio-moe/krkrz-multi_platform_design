@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>stretchCopy - Enlargement / reduction copy</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.stretchCopy</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Enlargement / reduction copy</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Layer.html">Layerclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">stretchCopy(<span class="arg">dleft</span>, <span class="arg">dtop</span>, <span class="arg">dwidth</span>, <span class="arg">dheight</span>, <span class="arg">src</span>, <span class="arg">sleft</span>, <span class="arg">stop</span>, <span class="arg">swidth</span>, <span class="arg">sheight</span>, <span class="arg">type</span><span class="defarg">=<span class="defargval">stNearest</span></span>, <span class="arg">option</span><span class="defarg">=<span class="defargval">1</span></span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="stretchCopyArguments of">
+<tr><td valign="top"><span class="argname">dleft</span></td>
+<td><p>Specifies the left edge position of the destination rectangle in pixels (at the image position of the destination layer).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">dtop</span></td>
+<td><p>Specifies the top position of the destination rectangle in pixels (at the image position of the destination layer).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">dwidth</span></td>
+<td><p>Specifies the width of the destination rectangle in pixels (at the image position of the destination layer).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">dheight</span></td>
+<td><p>Specifies the height of the destination rectangle in pixels (at the image position of the destination layer).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">src</span></td>
+<td><p>Specifies the layer object to copy from.<br />
+You can also specify an object of the Bitmap class.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">sleft</span></td>
+<td><p>Specifies the left edge position of the rectangle to copy, in pixels (at the image position of the source layer).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">stop</span></td>
+<td><p>Specifies the top position of the rectangle to copy, in pixels (at the image position of the source layer).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">swidth</span></td>
+<td><p>Specifies the width of the rectangle to copy, in pixels (at the image position of the source layer).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">sheight</span></td>
+<td><p>Specifies the height of the rectangle to copy, in pixels (at the image position of the source layer).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">type</span></td>
+<td><p>Specifies the scale type.</p>
+
+<ul>
+<li>stNearest           : Nearest point method is used</li>
+<li>stFastLinear        : Low precision linear interpolation is used (partially implemented)</li>
+<li>stSemiFastLinear    : Fixed decimal linear interpolation is used</li>
+<li>stLinear            : Linear interpolation is used</li>
+<li>stFastCubic         : Fixed decimal 3D interpolation is used</li>
+<li>stCubic             : 3D interpolation is used</li>
+<li>stFastLanczos2      : Fixed decimal Lanczos interpolation range 4x4 is used</li>
+<li>stLanczos2          : Lanczos interpolation range 4x4 is used</li>
+<li>stFastLanczos3      : Fixed decimal Lanczos interpolation range 6x6 is used</li>
+<li>stLanczos3          : Lanczos interpolation range 6x6 is used</li>
+<li>stFastSpline16      : Fixed decimal spline interpolation 4x4 is used</li>
+<li>stSpline16          : Spline interpolation 4x4 is used</li>
+<li>stFastSpline36      : Fixed decimal spline interpolation 6x6 is used</li>
+<li>stSpline36          : Spline interpolation 6x6 is used</li>
+<li>stFastAreaAvg       : Fixed decimal area mean reduction is used. Cannot be expanded</li>
+<li>stAreaAvg           : Area average reduction is used. Cannot be expanded</li>
+<li>stFastGaussian      : Fixed decimal Gaussian interpolation 4x4 is used</li>
+<li>stGaussian          : Gaussian interpolation 4x4 is used</li>
+<li>stFastBlackmanSinc  : Fixed decimal Blackman-Sinc interpolation 8x8 is used</li>
+<li>stBlackmanSinc      : Blackman-Sinc interpolation 8x8 is used</li>
+</ul>
+
+<p>The speed is faster in the order of stNearest> stFastLinear> stLinear> stCubic, but the faster the speed, the lower the image quality.<br />
+The interpolation method after stCubic has sufficiently high image quality and can be said to be a difference in taste.<br />
+However, the image quality will be blurry for Gaussian interpolation.<br />
+The difference between stFastLinear and other linear interpolations (stSemiFastLinear and stLinear) is large when shrinking.<br />
+While stFastLinear always refers to the surrounding 4 pixels, stSemiFastLinear and stLinear refer to and interpolate a range in which the influence range at 1x magnification is 4 pixels at the time of reduction, that is, a wider range of pixels. Higher image quality (algorithm is the original linear interpolation).<br />
+For stFastLinear, stRefNoClip can be additionally specified by bitwise OR, in which case it is allowed to refer to the outside of the area of the bitmap to be copied and synthesize the color.<br />
+If this is not specified, the out-of-range color will not refer to the closest pixel in the range, even if there is room around the source bitmap. It is considered a color).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">option</span></td>
+<td><p>Sharpness during 3D interpolation.<br />
+It currently has no meaning with other interpolation methods.<br />
+Increasing the sharpness value in the positive direction will make it blurry, and increasing it in the negative direction will make it sharper.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Copies the rectangle of the specified source layer to the rectangle of the destination (layer that executes the method).<br />
+If the copy source rectangle and the copy destination rectangle are different in size, they will be enlarged or reduced.<br />
+In the current version, linear interpolation is effective when stFastLinear is specified when the Layer.face property of the layer to be overlaid (which executes the method) is dfAlpha (or dfBoth) or dfAddAlpha.<br />
+Linear interpolation is also possible when the Layer.face property is dfOpaque and the Layer.holdAlpha property is false.<br />
+Also, in the current version, the specification of stLinear or stCubic is valid only when the destination rectangle does not extend beyond the layer without horizontal / vertical inversion.<br />
+If the Layer.face property of the layer to which you want to overlay (execute the method) is dfAlpha (or dfBoth) or dfAddAlpha, both the main image and the mask image are copied.<br />
+For dfOpaque (or dfMain), only the main image is copied when the Layer.holdAlpha property is true, and both the main image and the mask image are copied when false.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

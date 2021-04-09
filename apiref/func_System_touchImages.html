@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>touchImages - Loading images into cache</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">System.touchImages</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Loading images into cache</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_System.html">Systemclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">touchImages(<span class="arg">storages</span>, <span class="arg">limitbytes</span><span class="defarg">=<span class="defargval">0</span></span>, <span class="arg">timeout</span><span class="defarg">=<span class="defargval">0</span></span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="touchImagesArguments of">
+<tr><td valign="top"><span class="argname">storages</span></td>
+<td><p>Pass the image storage name you want to cache as an array (Object of Array class).<br />
+The one written earlier has priority.<br />
+Kirikiri manages the cache using the character string specified in the first argument of Layer.loadImages as a key, so to make the cache meaningful, the image storage name specified here is Layer.loadImages. Must be the same as the one specified in the first argument of.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">limitbytes</span></td>
+<td><p>Specifies the cache capacity limit to use in calling this method, in bytes.<br />
+Specify 0 to use all cache. If you specify a positive number, it will try to use the cache up to that number of bytes.<br />
+If you specify a negative number, the current cache limit (System.graphicCacheLimit) plus that number (but actually subtracted because it adds a "negative number") is used as the limit.<br />
+If the result is a limit of 0 or negative, this method exits without doing anything.<br />
+For example, if you specify -2 * 1024 * 1024, he is considered to have specified the current cache limit minus 2MB.<br />
+This is useful if you want to leave some room in the cache.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">timeout</span></td>
+<td><p>Specifies the timeout (time limit) in ms. If you specify 0, there is no limit.<br />
+This method will stop loading subsequent images and return after the time specified by this argument has elapsed.<br />
+However, if a timeout occurs while loading an image, it will not return until the image has finished loading.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>This method attempts to cache the specified image.<br />
+However, while this method attempts to cache the image, there is no guarantee that the image will actually be cached.<br />
+If the image cache limit is exceeded or a timeout occurs, image loading will be interrupted.<br />
+The image specified in the storages argument is more likely to be cached (priority is given) as it is written first.<br />
+If the specified image is already in the cache, it just raises the rank of survival in the cache.<br />
+This method ignores any errors during image loading.<br />
+In the current version, the images that can be cached with this method are usually images that can be loaded by Layer.loadImages and do not specify a color key (images with an alpha channel are fine).<br />
+Universal transition rule images and area images will be read, but they will not be valid data as a cache (the read data will be wasted), so do not specify them.<br />
+See System.graphicCacheLimit for the number of bytes an image uses in the cache.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

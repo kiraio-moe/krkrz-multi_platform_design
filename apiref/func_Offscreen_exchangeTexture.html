@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>exchangeTexture - Swap the texture set in the framebuffer with the texture pointed to by the Texture class.</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Offscreen.exchangeTexture</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Swap the texture set in the framebuffer with the texture pointed to by the Texture class.</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Offscreen.html">Offscreenclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">exchangeTexture(<span class="arg">texture</span>:Texture)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="exchangeTextureArguments of">
+<tr><td valign="top"><span class="argname">texture</span></td>
+<td><p>Instances of the Texture class to be exchanged.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>The exception is if the size of the texture to be exchanged is not matched.<br />
+The color format must also be RGBA.<br />
+It may be better not to replace it during rendering (confirmation required).<br />
+If you don't need to draw on both sides, such as with a crossfade, you can reduce the overhead by taking the old image as a Texture and replacing it with a new Texture.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

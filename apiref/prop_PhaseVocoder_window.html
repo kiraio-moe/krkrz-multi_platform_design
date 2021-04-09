@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>window - Window size</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">PhaseVocoder.window</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd>Window size</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_PhaseVocoder.html">PhaseVocoder Class</a> Properties</dd>
+<dt>Explanation</dt>
+<dd><p>Represents the FFT (Fast Fourier Transform) window size (frame size) used inside the Phase Vocoder.<br />
+Specify a power of 2 between 64 and 32768.<br />
+The default is 4096.<br />
+Increasing this number will increase the resolution in the frequency axis direction (less pitch deviation), but decrease the resolution in the time axis direction (sound attack will be dull).<br />
+Increasing the value will use more CPU.<br />
+Find the lowest value that does not compromise the sound quality.<br />
+For 44.1KHz audio, window size = 256 is recommended.<br />
+For music, window size = 4096 is recommended.<br />
+Changes to this property will take effect when the WaveSoundBuffer.open method is executed.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

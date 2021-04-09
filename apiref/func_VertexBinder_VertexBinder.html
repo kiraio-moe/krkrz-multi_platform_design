@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>VertexBinder - constructor</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">VertexBinder.VertexBinder</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>constructor</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_VertexBinder.html">VertexBinderclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">VertexBinder(<span class="arg">vertex</span>:VertexBuffer, <span class="arg">stride</span>:int<span class="defarg">=<span class="defargval">0</span></span>, <span class="arg">componentCount</span>:int<span class="defarg">=<span class="defargval">4</span></span>, <span class="arg">offset</span>:int<span class="defarg">=<span class="defargval">0</span></span>, <span class="arg">normalize</span>:bool<span class="defarg">=<span class="defargval">false</span></span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="VertexBinderArguments of">
+<tr><td valign="top"><span class="argname">vertex</span></td>
+<td><p>VertexBuffer to associate</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">stride</span></td>
+<td><p>Specifies the stride for each vertex in bytes. If you want to pass XY coordinates as float type, sizeof (float) * 2, so specify 8.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">componentCount</span></td>
+<td><p>Pass the number of vertex elements. Specify 2 if you want to pass XY coordinates. 4 for RGBA color.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">offset</span></td>
+<td><p>Specifies the offset from the beginning of VertexBuffer in bytes. It is used when multiple vertex information is stored in one Vertex Buffer.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">normalize</span></td>
+<td><p>Specifies whether to normalize. If true, it will be normalized between [-1.0 to 0.0 to 1.0] when it is a non-float type and sent to the shader.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd></dd>
+</dl>
+</div>
+</body>
+</html>

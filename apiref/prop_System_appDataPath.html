@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>appDataPath - The path of the user's home directory</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">System.appDataPath</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd>The path of the user's home directory</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_System.html">System Class</a> Properties</dd>
+<dt>Explanation</dt>
+<dd><p>Represents the path of the user's home directory.<br />
+For Windows, the folder represented by AppData in HKEY<em>CURRENT</em>USER \ Software \ Microsoft \ Windows \ CurrentVersion \ Explorer \ Shell Folders in the registry is returned.<br />
+If this folder does not exist, it returns the same folder as System.exePath.<br />
+This is typically:<br />
+For XP C: \ Documents and Settings \ <username> \ Application Data \ (C: part depends on the environment)<br />
+For Vista, 7 and 8 C: \ Users \ <username> \ AppData \ Roaming (C: part depends on the environment) If for some reason his registry key (see above) could not be read Kirikiri Will be the folder (System.exePath) containing the executable files of<br />
+Same as filesDir on Android.</p>
+</dd>
+<dt>Reference</dt>
+<dd>
+<a class="jump" href="prop_System_exePath.html">System.exePath</a><br />
+<a class="jump" href="prop_System_personalPath.html">System.personalPath</a><br />
+<a class="jump" href="prop_System_filesDir.html">System.filesDir</a><br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

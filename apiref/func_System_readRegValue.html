@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>readRegValue - [Windows +] Loading the registry</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">System.readRegValue</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>[Windows +] Loading the registry</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_System.html">Systemclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">readRegValue(<span class="arg">key</span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="readRegValueArguments of">
+<tr><td valign="top"><span class="argname">key</span></td>
+<td><p>Specifies the registry key to load.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd><p>If the execution succeeds, the registry value is returned, and if it fails, void is returned.</p>
+</dd>
+<dt>Explanation</dt>
+<dd><p>Reads the Windows registry specified by key.<br />
+The registry key can start with the following root key name:<br />
+HKEY<em>CLASSES</em>ROOTHKEY<em>CURRENT</em>CONFIGHKEY<em>CURRENT</em>USERHKEY<em>LOCAL</em>MACHINEHKEY<em>USERSHKEY</em>PERFORMANCE<em>DATA HKEY</em>DYN<em>DATA<br />
+For example, you can specify the following string for key.<br />
+HKEY</em>LOCAL_MACHINE \ SOFTWARE \ Microsoft \ Windows \ CurrentVersion \ Uninstall \ hoeg \ installdir<br />
+Only numbers and single strings can be read.<br />
+If it is a number, it returns an integer type result, and if it is a character string, it returns a character string type result.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

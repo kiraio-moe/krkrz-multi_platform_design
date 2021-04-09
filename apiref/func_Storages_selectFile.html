@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>selectFile - Display the [Windows +] file selection dialog box</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Storages.selectFile</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Display the [Windows +] file selection dialog box</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Storages.html">Storagesclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">selectFile(<span class="arg">params</span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="selectFileArguments of">
+<tr><td valign="top"><span class="argname">params</span></td>
+<td><p>Specify the dictionary array used for data transfer.<br />
+When passing to this method, you can specify the following members:<br />
+Also, some members change their values at the end of this method.<br />
+filter Pass the filter string as an array.<br />
+The filter string specifies the filter description and the filter separated by | (half-width vertical bar), and the filter specifies a wildcard.<br />
+If multiple extensions correspond to one filter, separate them with; (half-width semicolon).<br />
+To specify multiple filters, specify them in an array.<br />
+If omitted, the filter will not be used.<br />
+Example: ["Image file (* .bmp; * .png; * .jpg; * .jpeg; * .eri; * .tlg) | * .bmp; * .png; * .jpg; * .jpeg; <em>. eri; * .tlg "," Script file (</em> .tjs; * .ks) | * .tjs; * .ks "]<br />
+filterIndex Specifies the number of the selected filter (specified by filter).<br />
+If you specify 1, the first filter specified by filter is initially selected.<br />
+Specifying 2 causes the second filter to be selected (note that it is not a 0-based index number; it starts with 1).<br />
+If omitted, the first filter is selected.<br />
+Also, if the user presses the OK button, the index of the last selected filter on the dialog box will be set to this member.<br />
+name Specify the file name.<br />
+If you omit it or specify an empty string, you can leave no files selected in the initial state.<br />
+Also, if the user presses the OK button, the selected file will be set to this member.<br />
+initialDir Specifies the folder to be displayed in the initial state.<br />
+If omitted, the current directory will be used.<br />
+title Displays the title of the dialog box.<br />
+If omitted, it defaults to "Open" or "Save As" (depending on the save member settings).<br />
+Specifies the type of save dialog box.<br />
+If false (default), the Open dialog box is used.<br />
+If true, the Save As dialog box is used.<br />
+defaultExt Specifies the default extension.<br />
+If the user does not specify an extension, this extension is automatically added.<br />
+Do not specify. (Period) for the extension specified here.<br />
+If omitted, the extension will not be added.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd><p>If the user selects a file and presses the OK button, it returns true, and if the cancel button is pressed, it returns false.</p>
+</dd>
+<dt>Explanation</dt>
+<dd><p>Opens a file selection dialog box.<br />
+Example:</p>
+
+<p><code><br />
+var params = %[filter : [ "text file(*.txt)|*.txt", "Binary file(*.bin)|*.bin" ],filterIndex : 1,name : "",initialDir : System.exePath,title : "Open file",save : false,];<br />
+if(Storages.selectFile(params))<br />
+System.inform("The selected file is:" + params.name);<br />
+</code></p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

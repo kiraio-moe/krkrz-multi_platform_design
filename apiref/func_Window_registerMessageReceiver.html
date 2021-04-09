@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>registerMessageReceiver - [Windows +] Register / delete message reception function</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Window.registerMessageReceiver</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>[Windows +] Register / delete message reception function</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Window.html">Windowclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">registerMessageReceiver(<span class="arg">mode</span>, <span class="arg">func</span>, <span class="arg">userdata</span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="registerMessageReceiverArguments of">
+<tr><td valign="top"><span class="argname">mode</span></td>
+<td><p>Specify whether to register or unregister.<br />
+If you specify wrmRegister, it will be registered.<br />
+If wrmUnregister is specified, the registration will be deleted.<br />
+Constants starting with wrm are defined in tp_stub.h.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">func</span></td>
+<td><p>Specifies the message receiving function.<br />
+The message receiving function must be in the form bool <em>_stdcall func (void * userdata, tTVPWindowMessage * Message), and the function pointer must be cast to an integer when passed to this method.<br />
+The structure tTVPWindowMessage is defined in tp</em>stub.h.<br />
+If this function returns true, Kirikiri itself will not be aware of the window message.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">userdata</span></td>
+<td><p>Specifies the data pointer to pass to the userdata argument of the receiving function specified by the func argument.<br />
+When passing to this method, the pointer must be cast to an integer type.<br />
+This argument is ignored if the mode argument is not his wrmRegister.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>This method is supposed to be used by plugins written in C ++ etc.<br />
+It cannot be used normally from TJS2.<br />
+This method allows you to register a message receiving function to trap messages that pass through this window.<br />
+In addition to normal window messages, the message receiving function can also trap two important messages, TVP<em>WM</em>DETACH and TVP<em>WM</em>ATTACH, which can be used to remove child windows when the window is rebuilt or destroyed. ..<br />
+His src / plugins / win32 / wmrdump in the Kirikiri source distribution package has a brief usage description.</p>
+</dd>
+<dt>Reference</dt>
+<dd>
+<a class="jump" href="prop_Window_HWND.html">Window.HWND</a><br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

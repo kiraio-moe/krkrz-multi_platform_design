@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>onTouchUp - Your finger was released from the screen</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.onTouchUp</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Your finger was released from the screen</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Layer.html">Layerclass</a>Event</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">onTouchUp(<span class="arg">x</span>, <span class="arg">y</span>, <span class="arg">cx</span>, <span class="arg">cy</span>, <span class="arg">id</span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="onTouchUpArguments of">
+<tr><td valign="top"><span class="argname">x</span></td>
+<td><p>The x-coordinate (in client coordinates) value of the separated position.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">y</span></td>
+<td><p>The y-coordinate (in client coordinates) value of the separated position.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">cx</span></td>
+<td><p>The number of horizontal pixels that the finger is in contact with.<br />
+Always 1 if the device does not support it.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">cy</span></td>
+<td><p>The number of vertical pixels that the finger is in contact with.<br />
+Always 1 if the device does not support it.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">id</span></td>
+<td><p>Touch ID.<br />
+At the time of multi-touch, a unique value is set for each position, and the position can be identified by this ID.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Occurs when the finger is released from the touch panel.<br />
+This event occurs when the X, Y coordinates are in this layer.<br />
+However, unlike the mouse, it is determined by the current coordinates, so it may not be the same as the layer where onTouchDown occurred.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

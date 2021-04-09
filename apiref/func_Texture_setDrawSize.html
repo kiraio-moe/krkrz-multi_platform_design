@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>setDrawSize - Setting drawing standard size</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Texture.setDrawSize</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Setting drawing standard size</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Texture.html">Textureclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">setDrawSize(<span class="arg">width</span>:int, <span class="arg">height</span>:int)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="setDrawSizeArguments of">
+<tr><td valign="top"><span class="argname">width</span></td>
+<td><p>Display reference width</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">height</span></td>
+<td><p>Display standard height</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>When drawing at the same size with Canvas.drawTexture, if nothing is specified, it will be drawn with the texture size, but if you set the width and height with this method, it will be drawn with the size set when drawing with this texture instance. It will be so.<br />
+Enlargement / reduction etc. are also drawn based on this size.<br />
+If you set it when the size of the internal image data and the size you normally draw are different, you can specify the enlargement ratio based on the size you want to display.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

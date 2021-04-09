@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>exceptionHandler - Handler function for uncaught exception</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">System.exceptionHandler</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd>Handler function for uncaught exception</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_System.html">System Class</a> Properties</dd>
+<dt>Explanation</dt>
+<dd><p>Represents a function that handles uncaught exceptions (exceptions passed to Kirikiri itself without being caught anywhere).<br />
+Specifying null is the default behavior.<br />
+The default behavior is to stop the delivery of asynchronous events (set System.eventDisabled to true) and start outputting logs to a file (call Debug.logAsError) to display a dialog box informing you of the error and in the script editor. It shows the place.<br />
+The handler function takes one argument, which becomes the exception object.<br />
+If no handler function is specified, the handler function is null, or the handler function returns false, the default behavior is taken.<br />
+If the handler function returns true, the above default behavior will not occur.<br />
+Consider the possibility of an asynchronous event occurring while executing a handler function.<br />
+If Kirikiri itself can handle asynchronous events, an unexpected exception may occur again while executing the exception handler.<br />
+To avoid this, normally, if you want to wait for something in the handler function (when Kirikiri has a chance to handle the asynchronous event), stop the occurrence of the asynchronous event.<br />
+Example:</p>
+
+<p><code><br />
+System.exceptionHandler = function (e){<br />
+// This function is called when an exception that is not caught anywhere is caught on the system side. e is an exception object.<br />
+if(e instanceof "ConductorException"){<br />
+// In the case of a conductor thrown exception<br />
+Debug.logAsError();<br />
+// Start of writing log to file, etc.<br />
+var event_disabled = System.eventDisabled;System.eventDisabled = true;<br />
+// It is troublesome if an event occurs while displaying the reason for the error, so stop the event occurrence once<br />
+System.inform(e.message);<br />
+System.eventDisabled = event_disabled;<br />
+// Whether to raise an event or not to the original state<br />
+return true;<br />
+// If true is returned, exception handling will not be performed on the main unit side.<br />
+}else{<br />
+return false;<br />
+// Normal exception handling if false is returned<br />
+}<br />
+};<br />
+</code></p>
+</dd>
+<dt>Reference</dt>
+<dd>
+<a class="jump" href="prop_System_eventDisabled.html">System.eventDisabled</a><br />
+<a class="jump" href="func_Debug_logAsError.html">Debug.logAsError</a><br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

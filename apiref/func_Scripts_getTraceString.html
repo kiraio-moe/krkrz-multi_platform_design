@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>getTraceString - Get call history</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Scripts.getTraceString</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Get call history</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Scripts.html">Scriptsclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">getTraceString(<span class="arg">limit</span><span class="defarg">=<span class="defargval">0</span></span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="getTraceStringArguments of">
+<tr><td valign="top"><span class="argname">limit</span></td>
+<td><p>Specifies the maximum call depth for which history is to be retrieved.<br />
+If you omit this argument or specify 0, you get as much history as you can get.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd><p>A string of call history</p>
+</dd>
+<dt>Explanation</dt>
+<dd><p>Gets the method call history as a string.<br />
+You can get the history at the time this method was called.<br />
+To use this method, the command line option must have -debug (debug mode) enabled.<br />
+If debug mode is disabled, this method returns an empty string.<br />
+The returned string is, for example<br />
+'messagelayer.tjs (1561) [(function) addButton] &lt;-mainwindow.tjs (4463) [(function expression) (anonymous)] &lt;-conductor.tjs (427) [(function) onTag] &lt;-conductor .tjs (95) [(function) timerCallback]'<br />
+It is something like.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>labels - label</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">WaveSoundBuffer.labels</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd>label</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_WaveSoundBuffer.html">WaveSoundBuffer Class</a> Properties</dd>
+<dt>Explanation</dt>
+<dd><p>You can get an object that represents the label.<br />
+This object is a dictionary array, each containing an element whose member name is the label name in the loop information.<br />
+Each element is also a dictionary array, the name member represents the name of the label, the position member represents the position of the label in milliseconds, and the samplePosition represents the position of the label in units of samples.<br />
+Think of this dictionary array as read-only.<br />
+Assigning a value or creating a new member will not take effect.<br />
+Example:</p>
+
+<p><code><br />
+var buf = new WaveSoundBuffer (window);<br />
+(Omitted)<br />
+debug.message (buf.labels ['start']. position);<br />
+// Position the label name'start'in milliseconds<br />
+debug.message (buf.labels ['start']. samplePosition);<br />
+// Position the label name'start'in units of sample size<br />
+</code></p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

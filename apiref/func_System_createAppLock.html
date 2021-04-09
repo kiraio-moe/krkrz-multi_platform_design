@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>createAppLock - [Windows +] Double boot check</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">System.createAppLock</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>[Windows +] Double boot check</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_System.html">Systemclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">createAppLock(<span class="arg">key</span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="createAppLockArguments of">
+<tr><td valign="top"><span class="argname">key</span></td>
+<td><p>Specify the key string to perform the check. If the same key string was specified for this method by another running Kirikiri, false is returned.<br />
+Consider that you can basically use only the same characters in the key string as the TJS variable naming convention.<br />
+The key string must be unique enough.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd><p>If Kirikiri, which already has the same key string, is running, false is returned, otherwise true is returned.</p>
+</dd>
+<dt>Explanation</dt>
+<dd><p>If another Kirikiri with the same key string is running, false is returned, otherwise true is returned.<br />
+It is used to prevent double startup.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

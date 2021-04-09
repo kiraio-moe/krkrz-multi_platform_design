@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>drawTexture - Draw 3 textures by specifying shader</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Canvas.drawTexture</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Draw 3 textures by specifying shader</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Canvas.html">Canvasclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">drawTexture(<span class="arg">texture</span>:Texture, <span class="arg">texture2</span>:Texture, <span class="arg">texture3</span>:Texture, <span class="arg">shader</span>:ShaderProgram)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="drawTextureArguments of">
+<tr><td valign="top"><span class="argname">texture</span></td>
+<td><p>Specifies the texture to use for drawing</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">texture2</span></td>
+<td><p>Specifies the second texture to use for drawing</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">texture3</span></td>
+<td><p>Specifies the third texture to use for drawing</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">shader</span></td>
+<td><p>Specifies the shader to use for drawing</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>In the case of OpenGL ES 2.0, the maximum number of textures is 8, and in 3.0, the maximum number is 16 on the vertex side and 16 on the fragment side, so you can still add them, but for the time being, up to 3 are defined.<br />
+In the future, we will make a version that passes textures in an array, and we will consider dealing with 4 or more sheets there.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

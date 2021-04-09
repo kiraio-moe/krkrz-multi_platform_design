@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>onKeyPress - Characters have been entered</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.onKeyPress</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Characters have been entered</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Layer.html">Layerclass</a>Event</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">onKeyPress(<span class="arg">key</span>, <span class="arg">process</span><span class="defarg">=<span class="defargval">true</span></span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="onKeyPressArguments of">
+<tr><td valign="top"><span class="argname">key</span></td>
+<td><p>The entered character.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">process</span></td>
+<td><p>If you pass false to this argument when calling onKeyPress of the parent class, the parent class will not do the default processing for that key (such as moving focus).</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Occurs when characters are entered.<br />
+Unlike Layer.onKeyDown, onKeyDown handles virtual keycodes, whereas this event handles the characters themselves.<br />
+This event does not occur if the key pressed is a key that has nothing to do with the character (such as a function key).</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>onPeriod - [Windows *] Period event has occurred</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">VideoOverlay.onPeriod</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>[Windows *] Period event has occurred</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_VideoOverlay.html">VideoOverlayclass</a>Event</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">onPeriod(<span class="arg">type</span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="onPeriodArguments of">
+<tr><td valign="top"><span class="argname">type</span></td>
+<td><p>Period Represents the type of event.<br />
+One of the following:</p>
+
+<ul>
+<li>perLoop    :   Reached the end of the (normal) loop</li>
+<li>perSegLoop :   Reached the end of the segment loop</li>
+<li>perPeriod  :   The frame specified by the setPeriodEvent method has been reached</li>
+<li>perPrepare :   Ready to play with the prepare method</li>
+</ul>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>This method is called at the end of the loop, when the frame specified by setPeriodEvent is reached, or when the prepare method is ready to play.<br />
+At the end of the loop or when this event is called when the frame specified by setPeriodEvent is reached, the playback position may have already exceeded the specified position, depending on the playback status.<br />
+See the frame property to get the current actual playback position.<br />
+It does not occur on Android.</p>
+</dd>
+<dt>Reference</dt>
+<dd>
+<a class="jump" href="func_VideoOverlay_setPeriodEvent.html">VideoOverlay.setPeriodEvent</a><br />
+<a class="jump" href="func_VideoOverlay_prepare.html">VideoOverlay.prepare</a><br />
+<a class="jump" href="prop_VideoOverlay_frame.html">VideoOverlay.frame</a><br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

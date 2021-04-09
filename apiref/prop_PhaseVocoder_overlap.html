@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>overlap - Overlap count</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">PhaseVocoder.overlap</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd>Overlap count</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_PhaseVocoder.html">PhaseVocoder Class</a> Properties</dd>
+<dt>Explanation</dt>
+<dd><p>Represents the overlap count (oversampling factor).<br />
+Specify a number that is 0 or a power of 2 between 2 and 32.<br />
+The default is 0.<br />
+If you specify 0, the appropriate value is set according to the value of the current time property.<br />
+Increasing this number will increase the resolution along the time axis.<br />
+Especially when slowing down the playback speed, it is better to set a large number.<br />
+Increasing the value will use more CPU.<br />
+Changes to this property will be reflected in real time, but due to buffering, it will take about 2 seconds to actually play.<br />
+In addition, noise may occur when switching.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

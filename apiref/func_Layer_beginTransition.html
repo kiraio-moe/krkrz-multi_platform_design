@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>beginTransition - Start of transition</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.beginTransition</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Start of transition</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Layer.html">Layerclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">beginTransition(<span class="arg">name</span>, <span class="arg">withchildren</span><span class="defarg">=<span class="defargval">true</span></span>, <span class="arg">transsrc</span><span class="defarg">=<span class="defargval">null</span></span>, <span class="arg">options</span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="beginTransitionArguments of">
+<tr><td valign="top"><span class="argname">name</span></td>
+<td><p>Specify the transition name.<br />
+By default,'crossfade','universal', and'scroll' are defined.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">withchildren</span></td>
+<td><p>Whether the child layer also transitions with it.<br />
+If true is specified, the transition will be made for each child layer.<br />
+If false is specified, only the layer that executes the method will transition.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">transsrc</span></td>
+<td><p>Specify the layer to switch to.<br />
+Some transitions may not need to be specified (for example, transitions by themselves).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">options</span></td>
+<td><p>Specifies transition options in a dictionary array.<br />
+The options you need depend on the type of transition.<br />
+Regardless of the type of transition, the options that can be specified in common are the'selfupdate'member and the'callback' member.<br />
+If the'selfupdate'member is true, KiriKiri will not automatically update the screen.<br />
+In this case, he has to update the screen with the Layer.update method etc. on the program side as appropriate.<br />
+This feature is useful if you want the transition drawing to be perfectly synchronized with the program drawing.<br />
+If you specify a TJS2 method in the'callback'member, that method will be called each time the drawing is actually done.<br />
+This method (callback method) should return a'tick' value of 0 or greater.<br />
+Many transitions are based on the'tick'value, which is the actual time in milliseconds, but by implementing this callback method to return any tick, the transition's transition You can rewind the effect at any point, fast forward in the middle, and control the transition regardless of the actual time.<br />
+Many transitions consider the value specified in the optional'time'member to be the end of the transition.<br />
+So, for example, you can specify an appropriate value such as 1000 for the option'time', and in this callback method he will return a value less than 1000 to display the transition at any stage. You will be able to do it.<br />
+Also, for many transitions, the transition will stop when the'tick' value reaches the value specified by the optional'time', so if you don't want to stop the transition, the value specified by'time' Always specify a value less than or equal to.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Start the transition.<br />
+When children = true, the transition has a parent-child tree structure that is exactly the same as the transition source specified in transsrc at the end.<br />
+If children = false, only the layer from which the transition is made and the layer that executed the method (the layer to which the transition is made) are swapped.<br />
+Please note that in both cases, the tree structure is replaced.<br />
+This method returns immediately after initiating a transition.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

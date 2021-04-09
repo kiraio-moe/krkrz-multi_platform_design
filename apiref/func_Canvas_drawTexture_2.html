@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>drawTexture - Draw a single texture</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Canvas.drawTexture</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Draw a single texture</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Canvas.html">Canvasclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">drawTexture(<span class="arg">texture</span>:Texture)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="drawTextureArguments of">
+<tr><td valign="top"><span class="argname">texture</span></td>
+<td><p>Specifies the texture to use for drawing</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>It is drawn with the defaultShader.<br />
+The position, scaling, and rotation are specified by matrix.<br />
+It doesn't matter if you specify the Offscreen class as well as the Texture class for the texture.<br />
+If you specify an Offscreen class, it is assumed that the Offscreen class has been removed from the renderTarget (so that it does not cycle).</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

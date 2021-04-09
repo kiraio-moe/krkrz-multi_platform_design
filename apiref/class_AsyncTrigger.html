@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>AsyncTrigger - </title>
+</head>
+<body>
+<h1><a name="top" id="top">AsyncTrigger</a></h1>
+<div class="para"><p>The AsyncTrigger class is a class for generating an event at the timing of event distribution immediately after control returns to Kirikiri.<br />
+This feature is called an asynchronous trigger.<br />
+In a script that takes an event-driven programming model like Kirikiri, processing that cannot be executed in the event handler (for example, trying to invalidate the object that originated the event in the event handler) is performed for that event. This is convenient when you want to do it outside the handler.</p>
+</div>
+<h1>Member</h1><div class="para">
+<dl>
+<dt>Constructor</dt>
+<dd>
+<a class="jump" href="func_AsyncTrigger_AsyncTrigger.html">AsyncTrigger</a> (Building an AsyncTrigger object)<br />
+</dd>
+<dt>Method</dt>
+<dd>
+<a class="jump" href="func_AsyncTrigger_cancel.html">cancel</a> (Trigger cancellation)<br />
+<a class="jump" href="func_AsyncTrigger_trigger.html">trigger</a> (Pull the trigger)<br />
+</dd>
+<dt>Property</dt>
+<dd>
+<a class="jump" href="prop_AsyncTrigger_cached.html">cached</a> (Whether to cache events)<br />
+<a class="jump" href="prop_AsyncTrigger_mode.html">mode</a> (mode)<br />
+</dd>
+<dt>Event</dt>
+<dd>
+<a class="jump" href="event_AsyncTrigger_onFire.html">onFire</a> (When firing)<br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>onLoaded - Asynchronous read completed</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Bitmap.onLoaded</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Asynchronous read completed</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Bitmap.html">Bitmapclass</a>Event</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">onLoaded(<span class="arg">meta</span>, <span class="arg">async</span>, <span class="arg">error</span>, <span class="arg">message</span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="onLoadedArguments of">
+<tr><td valign="top"><span class="argname">meta</span></td>
+<td><p>This is the tag information of the loaded image.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">async</span></td>
+<td><p>Whether it was loaded asynchronously. If the image data is in the cache, this event will occur during Bitmap.loadAsync execution.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">error</span></td>
+<td><p>Whether or not an error occurred when reading the image.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">message</span></td>
+<td><p>This is an error message. If an error occurs, an error message will be passed.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Occurs when asynchronous reading is complete.<br />
+The imported image can be copied to the Layer with Layer.copyFromBitmapToMainImage.<br />
+Since the reading process is asynchronous, the layer that passes the image may already be disabled when the reading is complete.<br />
+If you want to access other objects in this event, please check if they are disabled.<br />
+Alternatively, please do not invalidate the target object until this event is completed.</p>
+</dd>
+<dt>Reference</dt>
+<dd>
+<a class="jump" href="func_Bitmap_loadAsync.html">Bitmap.loadAsync</a><br />
+<a class="jump" href="func_Layer_copyFromBitmapToMainImage.html">Layer.copyFromBitmapToMainImage</a><br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

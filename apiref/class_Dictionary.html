@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>Dictionary - </title>
+</head>
+<body>
+<h1><a name="top" id="top">Dictionary</a></h1>
+<div class="para"><p>The Dictionary class is a class that handles dictionary arrays.</p>
+
+<p>A dictionary array, also called an associative array, is an object that holds multiple names and their associated values as a pair.<br />
+It is accessed with the [] (indirect reference) operator like an array, but with a string instead of a subscript, which is the name.<br />
+You can also use the. (Direct reference) operator if the name is valid as an identifier.<br />
+Also, referencing a non-existent name will result in void.<br />
+Use the delete operator to delete an element.</p>
+
+<h1>Dictionary array in formula</h1>
+
+<p>You can use %[] to write an object of the Dictionary class in an expression on the fly.<br />
+Separate the element name => element value with a comma and enumerate the expressions that will be the initial elements. For example</p>
+
+<p><code><br />
+var dic =% ["a" =&gt; 1, "b" =&gt; 2, "c" =&gt; 3];<br />
+</code></p>
+
+<p>If you write, dic is assigned a reference to an object of the Dictionary class whose element name and element pair are "a": 1, "b": 2, and "c": 3, respectively.<br />
+Internally, => is exactly the same as a comma, but for readability, you can use => (same as perl).</p>
+
+<h1>Access to methods of Dictionary class</h1>
+
+<p>Objects of the Dictionary class have no members when they are created.<br />
+For example, if you try to use the assign method and write dict.assign (src) for the object dict of the Dictionary class, you will get an error because dict does not have a method called assign.<br />
+Therefore, use the incontextof operator to execute a method that belongs directly to the Dictionary class with the object of the Dictionary class of interest as the context.</p>
+
+<p>Example:<br />
+<code><br />
+var a = %[];<br />
+var b = %[];<br />
+(Dictionary.assign incontextof a) (b); // Copy b to a<br />
+(Dictionary.clear incontextof b) (); // Clear the contents of b<br />
+</code></p>
+</div>
+<h1>Member</h1><div class="para">
+<dl>
+<dt>Method</dt>
+<dd>
+<a class="jump" href="func_Dictionary_assign.html">assign</a> (Copy the dictionary array)<br />
+<a class="jump" href="func_Dictionary_assignStruct.html">assignStruct</a> (Copy the dictionary array)<br />
+<a class="jump" href="func_Dictionary_clear.html">clear</a> (Erases all the contents of the dictionary array)<br />
+<a class="jump" href="func_Dictionary_contains.html">contains</a> (Determines if the specified key exists in the dictionary array.)<br />
+<a class="jump" href="func_Dictionary_forEach.html">forEach</a> (Execute the argument function for each element of the argument dictionary array.)<br />
+<a class="jump" href="func_Dictionary_getCount.html">getCount</a> (Returns the number of members of the object.)<br />
+<a class="jump" href="func_Dictionary_keys.html">keys</a> (Returns an array of objects' keys.)<br />
+<a class="jump" href="func_Dictionary_loadStruct.html">loadStruct</a> (Enter structured data from a file)<br />
+<a class="jump" href="func_Dictionary_saveStruct.html">saveStruct</a> (Outputs structured data to a file)<br />
+<a class="jump" href="func_Dictionary_values.html">values</a> (Returns an array of object values.)<br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

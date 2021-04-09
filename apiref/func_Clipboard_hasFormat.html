@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>hasFormat - [Windows *] Does the specified format exist in the clipboard?</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Clipboard.hasFormat</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>[Windows *] Does the specified format exist in the clipboard?</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Clipboard.html">Clipboardclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">hasFormat(<span class="arg">format</span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="hasFormatArguments of">
+<tr><td valign="top"><span class="argname">format</span></td>
+<td><p>Specify the format you want to check for existence.<br />
+In the current version, you can only specify cbfText, which allows you to check if there is textual data in the clipboard.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd><p>True if the specified format exists in the clipboard, false if it does not exist</p>
+</dd>
+<dt>Explanation</dt>
+<dd><p>You can check if the specified format exists in the clipboard.<br />
+The OS-provided clipboard can have multiple formats at the same time, so you can use this method to find out if there is a particular format in it.<br />
+Android always returns false.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

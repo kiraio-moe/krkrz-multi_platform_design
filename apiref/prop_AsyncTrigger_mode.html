@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>mode - mode</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">AsyncTrigger.mode</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd>mode</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_AsyncTrigger.html">AsyncTrigger Class</a> Properties</dd>
+<dt>Explanation</dt>
+<dd><p>Indicates the mode of operation.<br />
+You can also set the value.<br />
+Specify one of the following values.<br />
+atmNormal: Fired during normal event delivery.<br />
+atmExclusive: Fired in preference to other asynchronous events<br />
+atmAtIdle: Fired when idle (when there are no more events to deliver).<br />
+When the trigger is pulled at the same time, the order of firing is atmExclusive, atmNormal, atmIdle.<br />
+If multiple triggers in the same mode are pulled, they will fire in the order in which the triggers are pulled.</p>
+</dd>
+<dt>Reference</dt>
+<dd>
+<a class="jump" href="prop_Timer_mode.html">Timer.mode</a><br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

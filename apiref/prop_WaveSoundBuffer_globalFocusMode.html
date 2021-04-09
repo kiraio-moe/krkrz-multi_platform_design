@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>globalFocusMode - Focus mode</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">WaveSoundBuffer.globalFocusMode</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd>Focus mode</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_WaveSoundBuffer.html">WaveSoundBuffer Class</a> Properties</dd>
+<dt>Explanation</dt>
+<dd><p>Represents the focus mode.<br />
+You can also set the value.<br />
+Focus mode is a mode that mutes when the application is minimized or inactive.</p>
+
+<ul>
+<li>If you specify sgfmNeverMute, the application will not mute under any conditions.</li>
+<li>If you specify sgfmMuteOnMinimize, the application mutes when minimized.</li>
+<li>Specify sgfmMuteOnDeactivate to mute when the application is deactivated.</li>
+</ul>
+
+<p>This property only exists on the WaveSoundBuffer class (it doesn't exist on objects created from WaveSoundBuffer).<br />
+When using it, set it to WaveSoundBuffer.globalFocusMode.<br />
+The'-wsmute' (DirectSound mute) setting specified in the command line option takes precedence over the setting of this property.<br />
+On Android, it is muted when it becomes inactive.<br />
+In the background, the processing speed will slow down and you will not be able to play normally.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

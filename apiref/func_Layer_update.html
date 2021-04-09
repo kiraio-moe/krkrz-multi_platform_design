@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>update - Image update</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.update</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Image update</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Layer.html">Layerclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">update(<span class="arg">left</span>, <span class="arg">top</span>, <span class="arg">width</span>, <span class="arg">height</span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="updateArguments of">
+<tr><td valign="top"><span class="argname">left</span></td>
+<td><p>Specifies the left edge position of the rectangle to update, in pixels in display coordinates.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">top</span></td>
+<td><p>Specifies the top position of the rectangle to update, in pixels in display coordinates.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">width</span></td>
+<td><p>Specifies the width of the rectangle to update, in pixels in display coordinates.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">height</span></td>
+<td><p>Specifies the vertical width of the rectangle to update, in pixels in display coordinates.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>This method forces the layer to be drawn on the screen.<br />
+The screen is automatically updated when a drawing method is executed, but this method can be used to force drawing on the screen.<br />
+If you omit all the arguments, the entire layer will be redrawn.<br />
+This method sets the Layer.callOnPaint property to true.<br />
+No matter how many times this method is executed, the screen drawing will occur only once (cached) until it is actually drawn on the screen.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>onCloseQuery - [Windows *] Confirmation to close the window</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Window.onCloseQuery</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>[Windows *] Confirmation to close the window</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Window.html">Windowclass</a>Event</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">onCloseQuery(<span class="arg">canclose</span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="onCloseQueryArguments of">
+<tr><td valign="top"><span class="argname">canclose</span></td>
+<td><p>You will be passed if you can close the window.<br />
+In the course where the event handler of the upper class is called from the lower class, "Can the window be closed?" Determined by the lower class is passed.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>This is an event to check if the window can be closed.<br />
+If you cannot close the window, pass false as an argument to the same method in the upper class.<br />
+For Android, you need to quit yourself with the back key on the title screen (handle onKeyXXX yourself).<br />
+When the system stops it, it can't be stopped and it may be stopped suddenly.<br />
+No questions asked when you are finished from the task list.<br />
+On Android, the only countermeasure against sudden termination is to auto-save when onDeactivate comes.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

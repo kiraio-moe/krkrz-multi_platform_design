@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>operateAffine - Affine transformation arithmetic composition</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.operateAffine</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Affine transformation arithmetic composition</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Layer.html">Layerclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">operateAffine(<span class="arg">src</span>, <span class="arg">sleft</span>, <span class="arg">stop</span>, <span class="arg">swidth</span>, <span class="arg">sheight</span>, <span class="arg">affine</span>, <span class="arg">A</span>, <span class="arg">B</span>, <span class="arg">C</span>, <span class="arg">D</span>, <span class="arg">E</span>, <span class="arg">F</span>, <span class="arg">mode</span><span class="defarg">=<span class="defargval">omAuto</span></span>, <span class="arg">opa</span><span class="defarg">=<span class="defargval">255</span></span>, <span class="arg">type</span><span class="defarg">=<span class="defargval">stNearest</span></span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="operateAffineArguments of">
+<tr><td valign="top"><span class="argname">src</span></td>
+<td><p>Specifies the layer object to overlay.<br />
+You can also specify an object of the Bitmap class.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">sleft</span></td>
+<td><p>Specifies the left edge position of the overlay rectangle in pixels (at the image position of the overlay source layer).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">stop</span></td>
+<td><p>Specifies the top position of the overlay rectangle in pixels (at the image position of the overlay source layer).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">swidth</span></td>
+<td><p>Specifies the width of the overlay rectangle in pixels (at the image position of the overlay source layer).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">sheight</span></td>
+<td><p>Specifies the vertical width of the overlay rectangle in pixels (at the image position of the overlay source layer).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">affine</span></td>
+<td><p>Specifies how to handle the following 6 arguments (A to F parameters).<br />
+If true is specified, each of the six parameters will be interpreted as follows.</p>
+
+<ul>
+<li>A   : 2D affine transformation matrix a</li>
+<li>B   : 2D affine transformation matrix b</li>
+<li>C   : 2D affine transformation matrix c</li>
+<li>D   : D of 2D affine transformation matrix</li>
+<li>E   : 2D affine transformation matrix tx</li>
+<li>F   : 2D affine transformation matrix ty</li>
+</ul>
+
+<p>By affine transformation, the image position (x, y) of the overlay source (however, the upper left corner of the overlay source rectangle is (0, 0)) is the image position (x', y) of the overlay destination by the following formula. Converted to y').<br />
+x'= a * x + c * y + tx<br />
+y'= b * x + d * y + ty<br />
+If false is specified, each of the six parameters will be interpreted as follows.</p>
+
+<ul>
+<li>A   : X coordinate position (x0) of the point in the upper left corner of the copy source rectangle at the image position at the copy destination</li>
+<li>B   : Y coordinate position (y0) of the point in the upper left corner of the copy source rectangle at the image position at the copy destination</li>
+<li>C   : X coordinate position (x1) of the point in the upper right corner of the copy source rectangle at the image position at the copy destination</li>
+<li>D   : Y coordinate position (y1) of the point in the upper right corner of the copy source rectangle at the image position at the copy destination</li>
+<li>E   : X coordinate position (x2) of the point in the lower left corner of the copy source rectangle at the image position at the copy destination</li>
+<li>F   : Y coordinate position (y2) of the point in the lower left corner of the copy source rectangle at the image position at the copy destination</li>
+</ul>
+
+<p>If false is specified, the overlay destination position (x3, y3) corresponding to the lower right corner of the overlay source is automatically calculated by the following formula.<br />
+x3 = x1-x0 + x2<br />
+y3 = y1 --y0 + y2</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">A</span></td>
+<td><p>A parameter.<br />
+The interpretation depends on the affine argument.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">B</span></td>
+<td><p>B parameter.<br />
+The interpretation depends on the affine argument.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">C</span></td>
+<td><p>C parameter.<br />
+The interpretation depends on the affine argument.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">D</span></td>
+<td><p>D parameter.<br />
+The interpretation depends on the affine argument.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">E</span></td>
+<td><p>E parameter.<br />
+The interpretation depends on the affine argument.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">F</span></td>
+<td><p>F parameter.<br />
+The interpretation depends on the affine argument.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">mode</span></td>
+<td><p>Specifies the operation mode.</p>
+
+<ul>
+<li>If omAuto is specified, the operation type is automatically determined according to the Layer.type property of the operation source layer.</li>
+<li>If omPsNormal is specified, Photoshop compatible alpha compositing will be performed (not implemented in the current version).</li>
+<li>If omPsAdditive is specified, Photoshop compatible dodging (linear) compositing is done (not implemented in the current version).</li>
+<li>If omPsSubtractive is specified, Photoshop compatible burn (linear) compositing is performed (not implemented in the current version).</li>
+<li>If omPsMultiplicative is specified, Photoshop compatible multiplication and composition will be performed (not implemented in the current version).</li>
+<li>If omPsScreen is specified, Photoshop compatible screen composition will be performed (not implemented in the current version).</li>
+<li>If omPsOverlay is specified, Photoshop compatible overlay composition will be performed (not implemented in the current version).</li>
+<li>If omPsHardLight is specified, Photoshop compatible hard light composition will be performed (not implemented in the current version).</li>
+<li>If omPsSoftLight is specified, Photoshop compatible softlight composition will be performed (not implemented in the current version).</li>
+<li>If omPsColorDodge is specified, Photoshop compatible dodging color composition will be performed (not implemented in the current version).</li>
+<li>If omPsColorDodge5 is specified, dodge color composition compatible with Photoshop version 5.x and below will be performed (not implemented in the current version).</li>
+<li>If omPsColorBurn is specified, Photoshop compatible burn-in color composition is performed (not implemented in the current version).</li>
+<li>If omPsLighten is specified, Photoshop compatible comparison (bright) composition will be performed (not implemented in the current version).</li>
+<li>If omPsDarken is specified, Photoshop compatible comparison (dark) compositing will be performed (not implemented in the current version).</li>
+<li>If omPsDifference is specified, Photoshop compatible absolute difference composition is performed (not implemented in the current version).</li>
+<li>If omPsDifference5 is specified, absolute value composition of the difference compatible with Photoshop version 5.x or lower will be performed (not implemented in the current version).</li>
+<li>If omPsExclusion is specified, Photoshop compatible exclusion composition is performed (not implemented in the current version).</li>
+<li>If omAdditive is specified, additive synthesis will be performed (not implemented in the current version).</li>
+<li>If omSubtractive is specified, subtractive synthesis will be performed (not implemented in the current version).</li>
+<li>If omMultiplicative is specified, multiplication synthesis will be performed (not implemented in the current version).</li>
+<li>If omDodge is specified, dodging synthesis will be performed (not implemented in the current version).</li>
+<li>If omDarken is specified, comparison (dark) compositing will be done (not implemented in the current version).</li>
+<li>If omLighten is specified, comparison (bright) composition will be performed (not implemented in the current version).</li>
+<li>If omScreen is specified, screen multiplication composition will be performed (not implemented in the current version).</li>
+<li>If omAlpha is specified, alpha synthesis will occur.</li>
+<li>If omAddAlpha is specified, additive alpha composition is done. In this case, when the destination Layer.face property is dfOpaque and the Layer.holdAlpha property is false, linear interpolation is possible by specifying stFastLinear in the type argument.</li>
+<li>If omOpaque is specified, the alpha information in src is ignored and src is always considered completely opaque. In this case, when the destination Layer.face property is dfOpaque and the Layer.holdAlpha property is false, linear interpolation is possible by specifying stFastLinear in the type argument.</li>
+</ul>
+</td></tr>
+<tr><td valign="top"><span class="argname">opa</span></td>
+<td><p>Specifies the overlay opacity (0 to 255).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">type</span></td>
+<td><p>Specifies the type of affine transformation.</p>
+
+<ul>
+<li>stNearest     : Nearest point method is used</li>
+<li>stFastLinear  : Low precision linear interpolation is used (partially implemented)</li>
+<li>stLinear      : Linear interpolation is used (not implemented)</li>
+<li>stCubic       : 3D interpolation is used (not implemented)</li>
+</ul>
+
+<p>The speed is faster in the order of stNearest> stFastLinear> stLinear> stCubic, but the faster the speed, the lower the image quality.<br />
+For stFastLinear, stLinear, and stCubic, stRefNoClip can be additionally specified by bitwise OR, in which case it is allowed to refer to the outside of the area of the bitmap to be copied and synthesize the color.<br />
+If this is not specified, the out-of-range color will not refer to the closest pixel in the range, even if there is room around the source bitmap. It is considered a color).</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Computes the rectangle of the specified overlay source layer while performing affine transformation to the overlay destination (layer that executes the method).<br />
+See also Layer.affineCopy for affine transformations.<br />
+If omAuto is specified for mode, the operation type is automatically determined according to the Layer.type property of the operation source layer.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

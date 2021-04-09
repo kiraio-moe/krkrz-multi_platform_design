@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>operateStretch - Enlargement / reduction operation composition</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">ImageFunction.operateStretch</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Enlargement / reduction operation composition</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_ImageFunction.html">ImageFunctionclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">operateStretch(<span class="arg">dst</span>, <span class="arg">src</span>, <span class="arg">dstrect</span><span class="defarg">=<span class="defargval">null</span></span>, <span class="arg">srcrect</span><span class="defarg">=<span class="defargval">null</span></span>, <span class="arg">cliprect</span><span class="defarg">=<span class="defargval">null</span></span>, <span class="arg">mode</span><span class="defarg">=<span class="defargval">omAuto</span></span>, <span class="arg">face</span><span class="defarg">=<span class="defargval">dfAlpha</span></span>, <span class="arg">opa</span><span class="defarg">=<span class="defargval">255</span></span>, <span class="arg">type</span><span class="defarg">=<span class="defargval">stNearest</span></span>, <span class="arg">hda</span><span class="defarg">=<span class="defargval">false</span></span>, <span class="arg">option</span><span class="defarg">=<span class="defargval">1</span></span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="operateStretchArguments of">
+<tr><td valign="top"><span class="argname">dst</span></td>
+<td><p>Specifies the Bitmap object to overlay.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">src</span></td>
+<td><p>Specifies the Bitmap object to overlay.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">dstrect</span></td>
+<td><p>Specifies the overlay rectangle in the Rect object in pixels (at the image position of the overlay Bitmap).<br />
+When not specified, the entire target is applicable.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">srcrect</span></td>
+<td><p>Specifies the overlay rectangle in a pixel-by-pixel Rect object (at the image position of the overlay Bitmap).<br />
+When not specified, the entire target is applicable.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">cliprect</span></td>
+<td><p>Specifies the clipping rectangle in the Rect object (at the image position of the overlay destination Bitmap).<br />
+Clipping is not performed when not specified.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">mode</span></td>
+<td><p>Specifies the operation mode.</p>
+
+<ul>
+<li>If omPsNormal is specified, Photoshop compatible alpha compositing will be performed (implemented in 1.3 and later except stNearest and stFastLinear).</li>
+<li>If omPsAdditive is specified, Photoshop compatible dodging (linear) compositing is performed (implemented in 1.3 and later except stNearest and stFastLinear).</li>
+<li>If omPsSubtractive is specified, Photoshop-compatible burn-in (linear) compositing is performed (implemented in 1.3 and later other than stNearest and stFastLinear).</li>
+<li>If omPsMultiplicative is specified, Photoshop compatible multiplication and composition will be performed (implemented in 1.3 and later other than stNearest and stFastLinear).</li>
+<li>If omPsScreen is specified, Photoshop compatible screen composition will be performed (implemented in 1.3 or later other than stNearest and stFastLinear).</li>
+<li>If omPsOverlay is specified, Photoshop compatible overlay compositing is performed (implemented in 1.3 and later other than stNearest and stFastLinear).</li>
+<li>If omPsHardLight is specified, Photoshop compatible hard light composition will be performed (implemented in 1.3 or later other than stNearest and stFastLinear).</li>
+<li>If omPsSoftLight is specified, Photoshop compatible soft light composition will be performed (implemented in 1.3 or later other than stNearest and stFastLinear).</li>
+<li>If omPsColorDodge is specified, Photoshop compatible dodge color composition is performed (implemented in 1.3 and later except stNearest and stFastLinear).</li>
+<li>If omPsColorDodge5 is specified, dodge color composition compatible with Photoshop version 5.x and below will be performed (implemented in 1.3 and later except stNearest and stFastLinear).</li>
+<li>If omPsColorBurn is specified, Photoshop-compatible burn-in color composition is performed (implemented in 1.3 and later other than stNearest and stFastLinear).</li>
+<li>If omPsLighten is specified, Photoshop compatible comparison (bright) composition is performed (implemented in 1.3 or later other than stNearest and stFastLinear).</li>
+<li>If omPsDarken is specified, Photoshop compatible comparison (dark) compositing is performed (implemented in 1.3 and later other than stNearest and stFastLinear).</li>
+<li>If omPsDifference is specified, Photoshop compatible absolute value composition of the difference is performed (implemented in 1.3 or later other than stNearest and stFastLinear).</li>
+<li>If omPsDifference5 is specified, absolute value composition of the difference compatible with Photoshop version 5.x or lower is performed (implemented in 1.3 or later except stNearest and stFastLinear).</li>
+<li>If omPsExclusion is specified, Photoshop compatible exclusion composition is performed (implemented in 1.3 or later other than stNearest and stFastLinear).</li>
+<li>If omAdditive is specified, additive synthesis is performed (implemented in 1.3 and later except stNearest and stFastLinear).</li>
+<li>If omSubtractive is specified, subtractive synthesis will be performed (implemented in 1.3 and later except stNearest and stFastLinear).</li>
+<li>If omMultiplicative is specified, multiplication synthesis is performed (implemented in 1.3 and later other than stNearest and stFastLinear).</li>
+<li>If omDodge is specified, dodging synthesis will be performed (implemented in 1.3 and later except stNearest and stFastLinear).</li>
+<li>If omDarken is specified, comparison (dark) compositing is done (implemented outside of stNearest and stFastLinear in 1.3 and later).</li>
+<li>If omLighten is specified, comparison (bright) composition is performed (implemented in 1.3 or later other than stNearest and stFastLinear).</li>
+<li>If omScreen is specified, screen multiplication composition is performed (implemented in 1.3 and later other than stNearest and stFastLinear).</li>
+<li>If omAlpha is specified, alpha synthesis will occur. If omAddAlpha is specified, additive alpha composition is done. In this case, when face is dfOpaque and hda is false, linear interpolation is possible by specifying stFastLinear in the type argument.</li>
+<li>If omOpaque is specified, the alpha information in src is ignored and src is always considered completely opaque. In this case, when face is dfOpaque and hda is false, linear interpolation is possible by specifying stFastLinear in the type argument.</li>
+</ul>
+</td></tr>
+<tr><td valign="top"><span class="argname">face</span></td>
+<td><p>Specify the drawing method.</p>
+
+<ul>
+<li>If dfAlpha is specified, the image is considered an image with an alpha channel and is drawn.</li>
+<li>If dfAddAlpha is specified, the image is considered as an image with an additive alpha channel and is drawn.</li>
+<li>If dfOpaque is specified, all images are considered completely opaque and will be drawn.</li>
+</ul>
+</td></tr>
+<tr><td valign="top"><span class="argname">opa</span></td>
+<td><p>Specifies the intensity of the operation (0 to 255).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">type</span></td>
+<td><p>Specifies the scale type.</p>
+
+<ul>
+<li>stNearest           : Nearest point method is used</li>
+<li>stFastLinear        : Low precision linear interpolation is used (partially implemented)</li>
+<li>stSemiFastLinear    : Fixed decimal linear interpolation is used (1.3+)</li>
+<li>stLinear            : Linear interpolation is used (implementation changed after 1.3)</li>
+<li>stFastCubic         : Fixed decimal 3D interpolation is used (1.3 or later)</li>
+<li>stCubic             : 3D interpolation is used (implementation changed after 1.3)</li>
+<li>stFastLanczos2      : Fixed decimal Lanczos interpolation range 4x4 is used (1.3+)</li>
+<li>stLanczos2          : Lanczos interpolation range 4x4 is used (1.3 and above)</li>
+<li>stFastLanczos3      : Fixed decimal Lanczos interpolation range 6x6 is used (1.3 and above)</li>
+<li>stLanczos3          : Lanczos interpolation range 6x6 is used (1.3 and above)</li>
+<li>stFastSpline16      : Fixed decimal spline interpolation 4x4 is used (1.3+)</li>
+<li>stSpline16          : Spline interpolation 4x4 is used (1.3+)</li>
+<li>stFastSpline36      : Fixed decimal spline interpolation 6x6 is used (1.3+)</li>
+<li>stSpline36          : Spline interpolation 6x6 is used (1.3+)</li>
+<li>stFastAreaAvg       : Fixed decimal area mean reduction is used. Cannot be expanded (1.3 or later)</li>
+<li>stAreaAvg           : Area average reduction is used. Cannot be expanded (1.3 or later)</li>
+<li>stFastGaussian      : Fixed decimal Gaussian interpolation 4x4 is used (1.3+)</li>
+<li>stGaussian          : Gaussian interpolation 4x4 is used (1.3 or later)</li>
+<li>stFastBlackmanSinc  : Fixed decimal Blackman-Sinc interpolation 8x8 is used (1.3+)</li>
+<li>stBlackmanSinc      : Blackman-Sinc interpolation 8x8 is used (1.3+)</li>
+</ul>
+
+<p>The speed is faster in the order of stNearest> stFastLinear> stLinear> stCubic, but the faster the speed, the lower the image quality.<br />
+The interpolation method after stCubic has sufficiently high image quality and can be said to be a difference in taste.<br />
+However, the image quality will be blurry for Gaussian interpolation.<br />
+The difference between stFastLinear and other linear interpolations (stSemiFastLinear and stLinear) is large when shrinking.<br />
+While stFastLinear always refers to the surrounding 4 pixels, stSemiFastLinear and stLinear refer to and interpolate a range in which the influence range at 1x magnification is 4 pixels at the time of reduction, that is, a wider range of pixels. Higher image quality (algorithm is the original linear interpolation).<br />
+For stFastLinear, stRefNoClip can be additionally specified by bitwise OR, in which case it is allowed to refer to the outside of the area of the bitmap to be copied and synthesize the color.<br />
+If this is not specified, the out-of-range color will not refer to the closest pixel in the range, even if there is room around the source bitmap. It is considered a color).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">hda</span></td>
+<td><p>Specifies whether to protect the alpha channel.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">option</span></td>
+<td><p>Added in 1.3 and later. Sharpness during 3D interpolation.<br />
+It currently has no meaning with other interpolation methods.<br />
+Increasing the sharpness value in the positive direction will make it blurry, and increasing it in the negative direction will make it sharper.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Computes the specified overlay source Bitmap rectangle to the overlay destination Bitmap rectangle.<br />
+If the size of the overlay source rectangle and the overlay destination rectangle are different, enlargement or reduction is performed.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>piledCopy - Copy the image with the layers superimposed</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.piledCopy</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Copy the image with the layers superimposed</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Layer.html">Layerclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">piledCopy(<span class="arg">dleft</span>, <span class="arg">dtop</span>, <span class="arg">src</span>, <span class="arg">sleft</span>, <span class="arg">stop</span>, <span class="arg">swidth</span>, <span class="arg">sheight</span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="piledCopyArguments of">
+<tr><td valign="top"><span class="argname">dleft</span></td>
+<td><p>Specifies the left edge position of the destination rectangle in pixels (at the image position of the destination layer).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">dtop</span></td>
+<td><p>Specifies the top position of the destination rectangle in pixels (at the image position of the destination layer).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">src</span></td>
+<td><p>Specifies the layer object to copy from.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">sleft</span></td>
+<td><p>Specifies the left edge position of the rectangle to copy, in pixels (at the display position of the source layer).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">stop</span></td>
+<td><p>Specifies the top position of the rectangle to copy, in pixels (at the display position of the source layer).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">swidth</span></td>
+<td><p>Specifies the width of the rectangle to copy, in pixels (at the display position of the source layer).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">sheight</span></td>
+<td><p>Specifies the vertical width of the rectangle to copy, in pixels (at the display position of the source layer).</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Superimposes the specified rectangular part of the specified copy source layer including the child layer, and copies the resulting image to the specified position of your own layer.<br />
+This method is not affected by the Layer.face property of the source or destination layer.<br />
+.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>sort - Sort the array.</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Array.sort</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Sort the array.</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Array.html">Arrayclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">sort(<span class="arg">order</span>:string, <span class="arg">stable</span>:bool<span class="defarg">=<span class="defargval">false</span></span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="sortArguments of">
+<tr><td valign="top"><span class="argname">order</span></td>
+<td><p>The sort order is one of the following strings.<br />
+The ascending order is sorted from the smallest to the largest, and the descending order is the opposite.<br />
+If omitted, it is considered that'+' is specified.</p>
+
+<ul>
+<li>"+"  : Ascending order (comparison with the usual <operator)</li>
+<li>"-"  : descending order</li>
+<li>"0"  : Numerical ascending order (10,2,1 is sorted into 1,2,10)</li>
+<li>"9"  : Numerical descending order</li>
+<li>"a"  : Ascending order by string ("a", "c", "b" are sorted into "a", "b", "c")</li>
+<li>"z"  : Descending by string</li>
+</ul>
+
+<p>You can specify a function instead of the characters in the sort order.<br />
+The function has two arguments.<br />
+Specify a function that returns true if the first argument should come before the second argument (note that the return value has a different meaning than the function passed to the JavaScript sort method).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">stable</span></td>
+<td><p>Specifies whether to perform stable sorting.<br />
+If omitted, false is assumed and an unstable sort is performed.<br />
+In stable sorting, the order of array elements with the same order will be the same after sorting.<br />
+In the case of unstable sorting, there is no guarantee that the order of array elements with the same order will be the same after sorting.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Combines each element of the array with a delimiter and returns the combined string.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

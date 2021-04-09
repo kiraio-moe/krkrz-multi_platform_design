@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>BitmapLayerTreeOwner - </title>
+</head>
+<body>
+<h1><a name="top" id="top">BitmapLayerTreeOwner</a></h1>
+<div class="para"><p>The BitmapLayerTreeOwner class is a class that holds the layer tree and can get the drawing result with the Bitmap class.<br />
+By passing it as the first argument of the constructor of the Layer class instead of window, you can get the drawing result of those Layers as a Bitmap class as an image.<br />
+By transferring the drawing result Bitmap to Texture, the Layer drawing system can be used in Canvas.</p>
+</div>
+<h1>Member</h1><div class="para">
+<dl>
+<dt>Constructor</dt>
+<dd>
+<a class="jump" href="func_BitmapLayerTreeOwner_BitmapLayerTreeOwner.html">BitmapLayerTreeOwner</a> (Building a BitmapLayerTreeOwner object)<br />
+</dd>
+<dt>Method</dt>
+<dd>
+<a class="jump" href="func_BitmapLayerTreeOwner_clearDirtyRect.html">clearDirtyRect</a> (Clear update rectangle information)<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireClick.html">fireClick</a> (Notify layers of clicks (not recommended))<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireDisplayRotate.html">fireDisplayRotate</a> (Notify the layer that the screen has been rotated)<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireDoubleClick.html">fireDoubleClick</a> (Notify layer of double click (not recommended))<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireKeyDown.html">fireKeyDown</a> (Notify the layer that a key has been pressed)<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireKeyPress.html">fireKeyPress</a> (Notifies the layer that a character has been entered)<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireKeyUp.html">fireKeyUp</a> (Notifies the layer that the key has been released)<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireMouseDown.html">fireMouseDown</a> (Notify the layer of mouse presses)<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireMouseMove.html">fireMouseMove</a> (Notify layer of mouse movement)<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireMouseOutOfWindow.html">fireMouseOutOfWindow</a> (Notifies the layer that the mouse has gone out of the window)<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireMouseUp.html">fireMouseUp</a> (Notify the layer of mouse presses)<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireMouseWheel.html">fireMouseWheel</a> (Notifies the layer of mouse wheel rotation)<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireMultiTouch.html">fireMultiTouch</a> (Notify layers of multi-touch state changes)<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireRecheckInputState.html">fireRecheckInputState</a> (Call every 1 second if necessary.)<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireReleaseCapture.html">fireReleaseCapture</a> (Notify layer of mouse capture release)<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireTouchDown.html">fireTouchDown</a> (Notify the layer that it has been touched)<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireTouchMove.html">fireTouchMove</a> (Notify the layer that the touch has been moved)<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireTouchRotate.html">fireTouchRotate</a> (Notifies the layer that the rotation operation has been performed)<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireTouchScaling.html">fireTouchScaling</a> (Notifies the layer that the enlargement operation has been performed)<br />
+<a class="jump" href="func_BitmapLayerTreeOwner_fireTouchUp.html">fireTouchUp</a> (Notifies the layer that the touch has been released)<br />
+</dd>
+<dt>Property</dt>
+<dd>
+<a class="jump" href="prop_BitmapLayerTreeOwner_height.html">height</a> (Height (read only) )<br />
+<a class="jump" href="prop_BitmapLayerTreeOwner_layerTreeOwnerInterface.html">layerTreeOwnerInterface</a> (LTO interface, readonly )<br />
+<a class="jump" href="prop_BitmapLayerTreeOwner_primaryLayer.html">primaryLayer</a> (Primary layer (read only) )<br />
+<a class="jump" href="prop_BitmapLayerTreeOwner_width.html">width</a> (Width (read only) )<br />
+</dd>
+<dt>Event</dt>
+<dd>
+<a class="jump" href="event_BitmapLayerTreeOwner_onChangeLayerImage.html">onChangeLayerImage</a> (Layer image updated)<br />
+<a class="jump" href="event_BitmapLayerTreeOwner_onDisableAttentionPoint.html">onDisableAttentionPoint</a> (The gaze position has been dedesignated from the layer)<br />
+<a class="jump" href="event_BitmapLayerTreeOwner_onGetCursorPos.html">onGetCursorPos</a> (Cursor position acquisition was called from Layer)<br />
+<a class="jump" href="event_BitmapLayerTreeOwner_onReleaseMouseCapture.html">onReleaseMouseCapture</a> (Mouse capture release called from Layer)<br />
+<a class="jump" href="event_BitmapLayerTreeOwner_onResetImeMode.html">onResetImeMode</a> (IME mode reset)<br />
+<a class="jump" href="event_BitmapLayerTreeOwner_onResizeLayer.html">onResizeLayer</a> (Primary layer resized)<br />
+<a class="jump" href="event_BitmapLayerTreeOwner_onSetAttentionPoint.html">onSetAttentionPoint</a> (The gaze position specification was called from the layer)<br />
+<a class="jump" href="event_BitmapLayerTreeOwner_onSetCursorPos.html">onSetCursorPos</a> (Cursor position setting was called from Layer)<br />
+<a class="jump" href="event_BitmapLayerTreeOwner_onSetHintText.html">onSetHintText</a> (The hint text setting was called from the layer)<br />
+<a class="jump" href="event_BitmapLayerTreeOwner_onSetImeMode.html">onSetImeMode</a> (IME mode set)<br />
+<a class="jump" href="event_BitmapLayerTreeOwner_onSetMouseCursor.html">onSetMouseCursor</a> (Cursor setting was called from Layer)<br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

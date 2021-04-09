@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>loadImages - Image loading</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.loadImages</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Image loading</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Layer.html">Layerclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">loadImages(<span class="arg">image</span>, <span class="arg">colorkey</span><span class="defarg">=<span class="defargval">clNone</span></span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="loadImagesArguments of">
+<tr><td valign="top"><span class="argname">image</span></td>
+<td><p>Specify the image storage to read.<br />
+If there is an image storage with _m added to the storage name (excluding the extension) specified here, it will be read as a mask (opacity) image.<br />
+If there is an image storage with _p added to the storage name (excluding the extension) specified here, it will be read as an area image.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">colorkey</span></td>
+<td><p>Specify the color key (transparent color) of the image to be imported.<br />
+If you specify a color in the 0xRRGGBB format, that color is used as the color key. If you specify clPalIdx plus an arbitrary palette index, the palette index becomes transparent (for images of 256 colors or less).<br />
+If you specify clAdapt, the most used color in the top line of the image is automatically made transparent.<br />
+If you specify clAlphaMat plus a number that represents a color in the 0xRRGGBB format, the image is overlaid on top of that color using an alpha blend (ltAlpha method).<br />
+For example, (clAlphaMat + 0xffffff) will overlay the imported image on top of the white color.<br />
+All images will be opaque (note that all images will be opaque, but no tag information will be changed in this mode).</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd><p>Dictionary array of tag information</p>
+</dd>
+<dt>Explanation</dt>
+<dd><p>Load the image into the layer.<br />
+This method changes the image size of the layer, but does not change the display size of the layer unless the image size is smaller than the display size of the layer.<br />
+As a return value, a dictionary array of tag information (information about the image itself, such as the layer type and display position of the image) is returned.<br />
+Be careful not to confuse it with the meaning of "tag" in KAG.<br />
+If the image has no tag information, null will be returned. In the current version, tag information can only be in PNG, TLG5 / 6 format.<br />
+See Image Format Converter for the information available.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

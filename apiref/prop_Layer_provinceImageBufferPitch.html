@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>provinceImageBufferPitch - Area image buffer pitch</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.provinceImageBufferPitch</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd>Area image buffer pitch</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Layer.html">Layer Class</a> Properties</dd>
+<dt>Explanation</dt>
+<dd><p>Represents the pitch (number of bytes down to the next scanline) of the image buffer of a region image (an 8bpp bitmap containing region information).<br />
+This property is there to provide a means of direct access to the image buffer for plugins etc.<br />
+As tjs<em>uint8 is an 8-bit (1byte) integer type, the pointer to the image position (x, y) can be calculated as follows when written in C language.<br />
+(tjs</em>uint8 *) provideImageBuffer + y * proveinceImageBufferPitch + x<br />
+The number for this property may be slightly larger than the exact number of bytes required for the width of the image.<br />
+Note that this property can have a negative value.</p>
+</dd>
+<dt>Reference</dt>
+<dd>
+<a class="jump" href="prop_Layer_provinceImageBuffer.html">Layer.provinceImageBuffer</a><br />
+<a class="jump" href="prop_Layer_provinceImageBufferForWrite.html">Layer.provinceImageBufferForWrite</a><br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

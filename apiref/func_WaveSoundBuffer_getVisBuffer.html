@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>getVisBuffer - Acquisition of data for visualization</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">WaveSoundBuffer.getVisBuffer</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Acquisition of data for visualization</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_WaveSoundBuffer.html">WaveSoundBufferclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">getVisBuffer(<span class="arg">buffer</span>, <span class="arg">numsamples</span>, <span class="arg">channel</span>, <span class="arg">ahead</span><span class="defarg">=<span class="defargval">0</span></span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="getVisBufferArguments of">
+<tr><td valign="top"><span class="argname">buffer</span></td>
+<td><p>Specifies the buffer to write the output data to.<br />
+The buffer is an array of 16-bit signed integers and must be large enough (numsamples * channels and above) to write the samples specified by the numsamples and channels arguments.<br />
+If you specify a channel other than 1, the samples for each channel are interleaved (in stereo, right, left, right, left, and so on) and stored.<br />
+You need to specify a pointer to the first element of the array, but cast it to an integer type and pass it.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">numsamples</span></td>
+<td><p>Specify the number of samples to acquire.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">channel</span></td>
+<td><p>Specify the number of channels to acquire.<br />
+If you specify 1, you can get the data downmixed to 1 channel if it is monaural or not.<br />
+If you specify a number other than 1, you must specify the same number of channels as the sound being played.<br />
+In this case, you can get the data as it is.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">ahead</span></td>
+<td><p>Specify the number of samples to read ahead.<br />
+You can get from the sample that is ahead by the number of samples specified by this argument from the current playback position.<br />
+If you specify 0 or omit this argument, the acquisition is from the current playback position.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd><p>The number of samples that can be obtained is returned.</p>
+</dd>
+<dt>Explanation</dt>
+<dd><p>Acquires PCM data for visualization.<br />
+Reads PCM data from the current playback position and writes it to the array specified by the buffer argument.<br />
+However, depending on the buffer status and playback format, it may not be possible to read the data normally.<br />
+Since this method is supposed to be used by plugins written in C or C ++, it is not possible to specify an array of TJS in the buffer argument, for example.<br />
+The WaveSoundBuffer.useVisBuffer property must be truly specified to use this method.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

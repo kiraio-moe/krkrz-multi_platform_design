@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>doBoxBlur - Apply rectangular blur</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.doBoxBlur</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Apply rectangular blur</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Layer.html">Layerclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">doBoxBlur(<span class="arg">xblur</span><span class="defarg">=<span class="defargval">1</span></span>, <span class="arg">yblur</span><span class="defarg">=<span class="defargval">1</span></span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="doBoxBlurArguments of">
+<tr><td valign="top"><span class="argname">xblur</span></td>
+<td><p>Specifies the range of horizontal blur.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">yblur</span></td>
+<td><p>Specifies the range of vertical blur.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Blur.<br />
+The algorithm is "box blur".<br />
+A rectangular blur is the average of the brightness of pixels in a "range" represented by two parameters, xblur and yblur.<br />
+For example, if xblur = 10 yblur = 2, the brightness of the pixels in the rectangular range of -10 to 10 in the horizontal direction and -2 to 2 in the vertical direction is averaged around the target pixel, and that is the final result. It is the brightness of that pixel.<br />
+The area of the range can be calculated by (xblur × 2 + 1) × (yblur × 2 + 1).<br />
+In the current version, if this area is less than 256, the algorithm is faster than if the area is 256 or more.<br />
+If the Layer.face property is dfAlpha, it will be a bit slower as it uses a special algorithm for alpha compositing.<br />
+For dfAddAlpha and other drawing methods, the algorithm is faster.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>setCallMissing - missing method call settings</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Scripts.setCallMissing</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>missing method call settings</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Scripts.html">Scriptsclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">setCallMissing(<span class="arg">obj</span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="setCallMissingArguments of">
+<tr><td valign="top"><span class="argname">obj</span></td>
+<td><p>An object that causes the missing method to be called when no member is found.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Set the missing method to be called when no member is found.<br />
+If no member is found in the object registered by this method, the method will be called in the form of function missing (isset, name, prop).<br />
+isset is set if true, get if false.<br />
+name is the name of the member that was not found.<br />
+prop is the assignment destination of the value to be assigned at the time of setting and the value to be returned at the time of acquisition.<br />
+If the name member is not found by the missing method, it returns a non-zero value.<br />
+If you return a non-zero, you will get an exception that the member cannot be found.<br />
+Even if the function is not found, it will be called with get.<br />
+Since the finalize function is also the target, it is better to define the finalize function in the class that sets this.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

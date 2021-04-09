@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>capture - Capture the entire current drawing content in Bitmap / Texture / Offscreen</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Canvas.capture</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Capture the entire current drawing content in Bitmap / Texture / Offscreen</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Canvas.html">Canvasclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">capture(<span class="arg">dest</span>, <span class="arg">front</span>:bool<span class="defarg">=<span class="defargval">true</span></span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="captureArguments of">
+<tr><td valign="top"><span class="argname">dest</span></td>
+<td><p>Capture destination Bitmap / Texture / Offscreen</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">front</span></td>
+<td><p>Specify whether to capture from the front buffer or from the back buffer. true for front, false for back</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Bitmap size corrected to screen size<br />
+Not changed for Texture / Offscreen</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

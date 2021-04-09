@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>replace - Replaces a string and returns the string after the replacement</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">RegExp.replace</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Replaces a string and returns the string after the replacement</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_RegExp.html">RegExpclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">replace(<span class="arg">text</span>:string, <span class="arg">replace</span>:string) :string</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="replaceArguments of">
+<tr><td valign="top"><span class="argname">text</span></td>
+<td><p>Target character string</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">replace</span></td>
+<td><p>Replacement string</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd><p>Matches the target character string, replaces the matched part with the replacement character string, and returns the character string after the replacement.</p>
+</dd>
+<dt>Explanation</dt>
+<dd><p>If you pass a function as the replacement string instead of a string, that function will be called for the replacement operation.<br />
+The function takes one argument and is passed an array object that represents the matched part of the target string (see the exec method for this array).<br />
+The matched part in the target string is replaced with the string returned by the function.<br />
+This method ignores the start property.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

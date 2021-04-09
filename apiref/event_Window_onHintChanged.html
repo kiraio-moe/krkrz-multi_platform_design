@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>onHintChanged - [Windows *] When the state of the hint changes</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Window.onHintChanged</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>[Windows *] When the state of the hint changes</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Window.html">Windowclass</a>Event</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">onHintChanged(<span class="arg">text</span>, <span class="arg">x</span>, <span class="arg">y</span>, <span class="arg">isshow</span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="onHintChangedArguments of">
+<tr><td valign="top"><span class="argname">text</span></td>
+<td><p>The string to be displayed in the hint is passed.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">x</span></td>
+<td><p>Tip Display X-axis coordinate values are passed.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">y</span></td>
+<td><p>Tip Display Y-axis coordinate values are passed.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">isshow</span></td>
+<td><p>You will be passed whether to show or hide the hint.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Represents an event function that is called when the state of the hint changes.<br />
+The hint is displayed according to the display / non-display.<br />
+If you want the hint to appear on a layer, set Layer.hitThreshold to 256 so that mouse messages for that layer are ignored.<br />
+Layer.ignoreHintSensing also specifies true.</p>
+</dd>
+<dt>Reference</dt>
+<dd>
+<a class="jump" href="prop_Window_hintDelay.html">Window.hintDelay</a><br />
+<a class="jump" href="prop_Layer_ignoreHintSensing.html">Layer.ignoreHintSensing</a><br />
+<a class="jump" href="prop_Layer_hitThreshold.html">Layer.hitThreshold</a><br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

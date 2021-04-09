@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>face - Font name</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Font.face</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd>Font name</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Font.html">Font Class</a> Properties</dd>
+<dt>Explanation</dt>
+<dd><p>Represents a font name.<br />
+You can also set the value.<br />
+You can specify multiple candidates separated by commas.<br />
+In this case, the font that actually exists is used, and the one written at the beginning has priority.<br />
+Whether or not the font actually exists is determined by referring to the list of fonts in the OS.<br />
+If none of the candidates match, the default font will be used (the system standard font in the current version).<br />
+In FreeType rasterizer, if multiple candidates are specified, it will be treated as a fallback font, glyphs will be searched in order from the front, and the found glyph will be rendered.<br />
+If the font file exists as a separate file such as for each language or pictogram, use this fallback font mechanism.<br />
+If you start with a comma and write the font name immediately after it, the OS will try to specify the font without actually enumerating it (for example, ", My Original Font").<br />
+This makes it possible to use non-enumable fonts registered with the AddFontResource Win32 API.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

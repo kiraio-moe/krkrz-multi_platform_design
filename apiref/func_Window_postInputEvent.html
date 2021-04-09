@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>postInputEvent - Generate input event</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Window.postInputEvent</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Generate input event</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Window.html">Windowclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">postInputEvent(<span class="arg">eventname</span>, <span class="arg">params</span><span class="defarg">=<span class="defargval">null</span></span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="postInputEventArguments of">
+<tr><td valign="top"><span class="argname">eventname</span></td>
+<td><p>Specify the event name.<br />
+Specify with the following character string.</p>
+
+<ul>
+<li>"onKeyDown" will generate a Window.onKeyDown event.</li>
+<li>"onKeyPress" will generate a Window.onKeyPress event.</li>
+<li>"onKeyUp" will generate a Window.onKeyUp event.</li>
+</ul>
+
+<p>Since onKeyDown and onKeyUp are paired, it is recommended to generate the corresponding onKeyUp when onKeyDown is generated.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">params</span></td>
+<td><p>Specifies a dictionary array that contains event parameters.<br />
+In the "onKeyDown" and "onKeyUp" events, the virtual key code is stored in "key" and the shift state is stored in "shift".<br />
+If "shift" is omitted, it is considered to be 0.<br />
+In the "onKeyPress" event, specify a character for "key".</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Generates an input event.<br />
+The current version can generate three keystroke events.<br />
+This method generates the event as an asynchronous event.<br />
+That is, this method returns without waiting for the corresponding event handler to finish.<br />
+The event handler is actually called and processed only after control is returned to Kirikiri.<br />
+In addition to the Window class, the input event also occurs as the corresponding event of the Layer class, just like a normal input event.<br />
+Example:</p>
+
+<p><code><br />
+postInputEvent ('onKeyDown',% [key: VK_UP, shift: ssShift]);<br />
+postInputEvent ('onKeyUp',% [key: VK_UP, shift: ssShift]);<br />
+// Press the left cursor key<br />
+</code></p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

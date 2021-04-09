@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>operateRect - Rectangle arithmetic composition</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.operateRect</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Rectangle arithmetic composition</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Layer.html">Layerclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">operateRect(<span class="arg">dleft</span>, <span class="arg">dtop</span>, <span class="arg">src</span>, <span class="arg">sleft</span>, <span class="arg">stop</span>, <span class="arg">swidth</span>, <span class="arg">sheight</span>, <span class="arg">mode</span><span class="defarg">=<span class="defargval">omAuto</span></span>, <span class="arg">opa</span><span class="defarg">=<span class="defargval">255</span></span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="operateRectArguments of">
+<tr><td valign="top"><span class="argname">dleft</span></td>
+<td><p>Specifies the left edge position of the calculation destination rectangle in pixels (at the image position of the calculation destination layer).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">dtop</span></td>
+<td><p>Specifies the top position of the calculation destination rectangle in pixels (at the image position of the calculation destination layer).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">src</span></td>
+<td><p>Specify the layer object from which the operation is performed.<br />
+You can also specify an object of the Bitmap class.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">sleft</span></td>
+<td><p>Specifies the left edge position of the rectangle to be calculated, in pixels (at the image position of the calculation source layer).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">stop</span></td>
+<td><p>Specifies the top position of the rectangle to be calculated, in pixels (at the image position of the calculation source layer).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">swidth</span></td>
+<td><p>Specifies the width of the rectangle to be calculated, in pixels (at the image position of the calculation source layer).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">sheight</span></td>
+<td><p>Specifies the vertical width of the rectangle to be calculated, in pixels (at the image position of the calculation source layer).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">mode</span></td>
+<td><p>Specifies the operation mode.</p>
+
+<ul>
+<li>If omAuto is specified, the operation type is automatically determined according to the Layer.type property of the operation source layer.</li>
+<li>If omPsNormal is specified, Photoshop compatible alpha compositing is done.</li>
+<li>If omPsAdditive is specified, Photoshop compatible dodging (linear) compositing is done.</li>
+<li>If omPsSubtractive is specified, Photoshop compatible burn (linear) compositing is performed.</li>
+<li>If omPsMultiplicative is specified, Photoshop compatible multiplication and composition will be performed.</li>
+<li>If omPsScreen is specified, Photoshop compatible screen composition will be performed.</li>
+<li>If omPsOverlay is specified, Photoshop compatible overlay compositing is done.</li>
+<li>If omPsHardLight is specified, Photoshop compatible hard light composition will be performed.</li>
+<li>If omPsSoftLight is specified, Photoshop compatible softlight compositing will be performed.</li>
+<li>If omPsColorDodge is specified, Photoshop compatible dodge color composition will be performed.</li>
+<li>If omPsColorDodge5 is specified, dodge color composition compatible with Photoshop version 5.x and below will be performed.</li>
+<li>If omPsColorBurn is specified, Photoshop compatible burn-in color composition will be performed.</li>
+<li>If omPsLighten is specified, Photoshop compatible comparison (bright) compositing is performed.</li>
+<li>If omPsDarken is specified, Photoshop compatible comparison (dark) compositing is done.</li>
+<li>If omPsDifference is specified, Photoshop compatible absolute difference composition is performed.</li>
+<li>If omPsDifference5 is specified, absolute value composition of the difference compatible with Photoshop version 5.x and below is performed.</li>
+<li>If omPsExclusion is specified, Photoshop compatible exclusion composition is performed.</li>
+<li>If omAdditive is specified, additive synthesis is performed.</li>
+<li>If omSubtractive is specified, subtractive synthesis will be performed.</li>
+<li>If omMultiplicative is specified, multiplication synthesis is performed.</li>
+<li>If omDodge is specified, dodging synthesis will be performed.</li>
+<li>If omDarken is specified, comparative (dark) compositing is done.</li>
+<li>If omLighten is specified, comparison (bright) composition will be performed.</li>
+<li>If omScreen is specified, screen multiplication composition is performed.</li>
+<li>If omAlpha is specified, alpha synthesis will occur.</li>
+<li>If omAddAlpha is specified, additive alpha composition is done.</li>
+<li>If omOpaque is specified, the alpha information in src is ignored and src is always considered completely opaque.</li>
+</ul>
+</td></tr>
+<tr><td valign="top"><span class="argname">opa</span></td>
+<td><p>Specifies the intensity of the operation (0 to 255).</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Computes the rectangular part of the specified calculation source layer at the specified position of your layer in the specified mode.<br />
+The value of the Layer.face property of the calculation destination layer (which executes the method) and the calculation source layer is ignored.<br />
+If omAuto is specified for mode, the operation type is automatically determined according to the Layer.type property of the operation source layer.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>drawThreadNum - Number of threads used for drawing</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">System.drawThreadNum</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd>Number of threads used for drawing</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_System.html">System Class</a> Properties</dd>
+<dt>Explanation</dt>
+<dd><p>Kiriki Represents the number of threads used by Kiriki's layer system when drawing.<br />
+You can also set the value.<br />
+If you specify dtnAuto, the same number of threads as the OS recognizes is automatically allocated.<br />
+Setting multiple drawing threads may improve drawing performance in a multi-core environment, but it may also reduce performance.<br />
+Good results may be obtained by applying it to processing with a large drawing area, high-load processing of Affine series, and layer composition processing with heavy calculation.<br />
+Even if you set to use multithreading, if the system determines that the drawing process load is light and the effect of multithreading cannot be obtained, it may not be executed in multithreading.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

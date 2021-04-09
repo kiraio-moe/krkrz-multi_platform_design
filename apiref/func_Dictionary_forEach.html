@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>forEach - Execute the argument function for each element of the argument dictionary array.</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Dictionary.forEach</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Execute the argument function for each element of the argument dictionary array.</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Dictionary.html">Dictionaryclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">forEach(<span class="arg">target</span>:Dictionary, <span class="arg">func</span>, <span class="arg">args</span>) :variant</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="forEachArguments of">
+<tr><td valign="top"><span class="argname">target</span></td>
+<td><p>Dictionary array</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">func</span></td>
+<td><p>In the case of a string, that method of the array element is called, and in the case of a function, it is called in the form of function (value, key, args *).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">args</span></td>
+<td><p>Specify any number of arguments to pass to the function to call. It does not have to be.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd><p>The value returned by the calling function</p>
+</dd>
+<dt>Explanation</dt>
+<dd><p>Calls the specified function once for each element of the dictionary array.<br />
+If the context is null, such as an anonymous function, it will be called in the context of a dictionary array.<br />
+If the function returns a value, processing is interrupted and that value is used as the return value of this function.<br />
+When the function is called as a string, the method of all array elements is called without interruption even if the value is returned.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

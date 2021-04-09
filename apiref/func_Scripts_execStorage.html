@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>execStorage - Run scripts on storage</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Scripts.execStorage</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Run scripts on storage</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Scripts.html">Scriptsclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">execStorage(<span class="arg">storage</span>, <span class="arg">mode</span><span class="defarg">=<span class="defargval"></span></span>, <span class="arg">context</span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="execStorageArguments of">
+<tr><td valign="top"><span class="argname">storage</span></td>
+<td><p>Specifies the storage to run.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">mode</span></td>
+<td><p>Specifies the mode string when reading the file.<br />
+If you specify the offset in decimal after "o", it will be read from that byte position in the file.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">context</span></td>
+<td><p>Specifies the execution context.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd><p>The result of executing the script is returned.</p>
+</dd>
+<dt>Explanation</dt>
+<dd><p>Loads the specified storage and executes its contents as a TJS2 script.<br />
+Exceptions that occur during script execution are not caught within this method and can be caught by the caller of this method.</p>
+</dd>
+<dt>Reference</dt>
+<dd>
+<a class="jump" href="func_Scripts_evalStorage.html">Scripts.evalStorage</a><br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

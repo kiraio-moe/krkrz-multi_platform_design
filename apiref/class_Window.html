@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>Window - </title>
+</head>
+<body>
+<h1><a name="top" id="top">Window</a></h1>
+<div class="para"><p>The Window class is a class for managing windows.<br />
+Window size control is only possible on Windows.<br />
+On Android it depends on the screen size.<br />
+Generate the Offscreen class in the size you want to render and do the normal drawing there.<br />
+Enlargement according to the window (screen) size is controlled by a script.<br />
+It is also possible to display the UI and characters neatly at the same size with a script.</p>
+
+<p>Events that Android does not support will not occur on Android.</p>
+</div>
+<h1>Member</h1><div class="para">
+<dl>
+<dt>Constructor</dt>
+<dd>
+<a class="jump" href="func_Window_Window.html">Window</a> (Building a Window object)<br />
+</dd>
+<dt>Method</dt>
+<dd>
+<a class="jump" href="func_Window_add.html">add</a> (Add managed object)<br />
+<a class="jump" href="func_Window_bringToFront.html">bringToFront</a> ([Windows *] Bring the window to the front)<br />
+<a class="jump" href="func_Window_close.html">close</a> (close the window)<br />
+<a class="jump" href="func_Window_getMouseVelocity.html">getMouseVelocity</a> ([Windows *] Get mouse coordinate movement speed)<br />
+<a class="jump" href="func_Window_getTouchPoint.html">getTouchPoint</a> (Get touch coordinates)<br />
+<a class="jump" href="func_Window_getTouchVelocity.html">getTouchVelocity</a> (Get touch coordinate movement speed)<br />
+<a class="jump" href="func_Window_hideMouseCursor.html">hideMouseCursor</a> ([Windows *] Temporarily hide the mouse cursor)<br />
+<a class="jump" href="func_Window_postInputEvent.html">postInputEvent</a> (Generate input event)<br />
+<a class="jump" href="func_Window_registerMessageReceiver.html">registerMessageReceiver</a> ([Windows +] Register / delete message reception function)<br />
+<a class="jump" href="func_Window_remove.html">remove</a> (Delete managed object)<br />
+<a class="jump" href="func_Window_removeMaskRegion.html">removeMaskRegion</a> ([Windows +] Unlock window region)<br />
+<a class="jump" href="func_Window_resetMouseVelocity.html">resetMouseVelocity</a> ([Windows *] Reset mouse coordinate movement speed measurement)<br />
+<a class="jump" href="func_Window_setInnerSize.html">setInnerSize</a> ([Windows *] Client size setting)<br />
+<a class="jump" href="func_Window_setMaskRegion.html">setMaskRegion</a> (Set Windows + window region according to mask)<br />
+<a class="jump" href="func_Window_setMaxSize.html">setMaxSize</a> ([Windows *] Setting the maximum size of the window)<br />
+<a class="jump" href="func_Window_setMinSize.html">setMinSize</a> ([Windows *] Setting the minimum size of the window)<br />
+<a class="jump" href="func_Window_setPos.html">setPos</a> ([Windows *] Window position setting)<br />
+<a class="jump" href="func_Window_setSize.html">setSize</a> ([Windows *] Window size setting)<br />
+<a class="jump" href="func_Window_setZoom.html">setZoom</a> ([Windows *] Layer magnification setting)<br />
+<a class="jump" href="func_Window_showModal.html">showModal</a> ([Windows +] Modal window display)<br />
+<a class="jump" href="func_Window_startDrawing.html">startDrawing</a> (Explicitly call drawing.)<br />
+<a class="jump" href="func_Window_update.html">update</a> ([Windows *] Forced drawing of window contents)<br />
+</dd>
+<dt>Property</dt>
+<dd>
+<a class="jump" href="prop_Window_borderStyle.html">borderStyle</a> ([Windows *] Window appearance)<br />
+<a class="jump" href="prop_Window_canvas.html">canvas</a> (Get an instance of the Canvas class for drawing)<br />
+<a class="jump" href="prop_Window_caption.html">caption</a> (Window caption)<br />
+<a class="jump" href="prop_Window_displayDensity.html">displayDensity</a> (Screen density (dpi))<br />
+<a class="jump" href="prop_Window_displayOrientation.html">displayOrientation</a> (Display orientation)<br />
+<a class="jump" href="prop_Window_displayRotate.html">displayRotate</a> (Display rotation angle)<br />
+<a class="jump" href="prop_Window_drawCycle.html">drawCycle</a> (Draw in a specified cycle)<br />
+<a class="jump" href="prop_Window_drawDevice.html">drawDevice</a> ([Windows +] Drawing device)<br />
+<a class="jump" href="prop_Window_enableTouch.html">enableTouch</a> (Touch event enabled / disabled)<br />
+<a class="jump" href="prop_Window_focusable.html">focusable</a> ([Windows *] Can I get focus?)<br />
+<a class="jump" href="prop_Window_focusedLayer.html">focusedLayer</a> ([Windows +] Layer object with focus)<br />
+<a class="jump" href="prop_Window_fullScreen.html">fullScreen</a> ([Windows *] Whether it is full screen)<br />
+<a class="jump" href="prop_Window_height.html">height</a> (Window height)<br />
+<a class="jump" href="prop_Window_hintDelay.html">hintDelay</a> ([Windows *] Hint display wait time)<br />
+<a class="jump" href="prop_Window_HWND.html">HWND</a> ([Windows +] window handle)<br />
+<a class="jump" href="prop_Window_imeMode.html">imeMode</a> ([Windows *] Default IME mode)<br />
+<a class="jump" href="prop_Window_innerHeight.html">innerHeight</a> (Vertical width of client area)<br />
+<a class="jump" href="prop_Window_innerWidth.html">innerWidth</a> (Width of client area)<br />
+<a class="jump" href="prop_Window_left.html">left</a> ([Windows *] Left edge position of the window)<br />
+<a class="jump" href="prop_Window_mainWindow.html">mainWindow</a> (Main window)<br />
+<a class="jump" href="prop_Window_maxHeight.html">maxHeight</a> ([Windows *] Maximum height of the window)<br />
+<a class="jump" href="prop_Window_maxWidth.html">maxWidth</a> ([Windows *] Maximum width of the window)<br />
+<a class="jump" href="prop_Window_minHeight.html">minHeight</a> ([Windows *] Minimum height of the window)<br />
+<a class="jump" href="prop_Window_minWidth.html">minWidth</a> ([Windows *] Minimum width of the window)<br />
+<a class="jump" href="prop_Window_mouseCursorState.html">mouseCursorState</a> ([Windows *] Mouse cursor display status)<br />
+<a class="jump" href="prop_Window_primaryLayer.html">primaryLayer</a> ([Windows +] Primary layer object)<br />
+<a class="jump" href="prop_Window_stayOnTop.html">stayOnTop</a> ([Windows *] Whether to always display at the top)<br />
+<a class="jump" href="prop_Window_top.html">top</a> ([Windows *] Top position of the window)<br />
+<a class="jump" href="prop_Window_touchPointCount.html">touchPointCount</a> (Number of touches)<br />
+<a class="jump" href="prop_Window_touchRotateThreshold.html">touchRotateThreshold</a> (Multi-touch rotation threshold)<br />
+<a class="jump" href="prop_Window_touchScaleThreshold.html">touchScaleThreshold</a> (Multi-touch expansion threshold)<br />
+<a class="jump" href="prop_Window_trapKey.html">trapKey</a> ([Windows *] Whether to trap keystrokes)<br />
+<a class="jump" href="prop_Window_useMouseKey.html">useMouseKey</a> ([Windows *] Whether to use MouseKeys)<br />
+<a class="jump" href="prop_Window_visible.html">visible</a> ([Windows *] Whether the window is displayed)<br />
+<a class="jump" href="prop_Window_waitVSync.html">waitVSync</a> (Waiting for vertical synchronization)<br />
+<a class="jump" href="prop_Window_width.html">width</a> (Window width)<br />
+<a class="jump" href="prop_Window_zoomDenom.html">zoomDenom</a> ([Windows *] Layer magnification (denominator))<br />
+<a class="jump" href="prop_Window_zoomNumer.html">zoomNumer</a> ([Windows *] Layer magnification (molecule))<br />
+</dd>
+<dt>Event</dt>
+<dd>
+<a class="jump" href="event_Window_onActivate.html">onActivate</a> (When the window becomes active)<br />
+<a class="jump" href="event_Window_onClick.html">onClick</a> ([Windows *] The window was clicked)<br />
+<a class="jump" href="event_Window_onCloseQuery.html">onCloseQuery</a> ([Windows *] Confirmation to close the window)<br />
+<a class="jump" href="event_Window_onDeactivate.html">onDeactivate</a> (When the window becomes inactive)<br />
+<a class="jump" href="event_Window_onDisplayRotate.html">onDisplayRotate</a> (When the screen is rotated)<br />
+<a class="jump" href="event_Window_onDoubleClick.html">onDoubleClick</a> ([Windows *] The window was double-clicked)<br />
+<a class="jump" href="event_Window_onDraw.html">onDraw</a> (Screen update callback event)<br />
+<a class="jump" href="event_Window_onFileDrop.html">onFileDrop</a> ([Windows *] file dropped)<br />
+<a class="jump" href="event_Window_onHintChanged.html">onHintChanged</a> ([Windows *] When the state of the hint changes)<br />
+<a class="jump" href="event_Window_onKeyDown.html">onKeyDown</a> (The key was pressed)<br />
+<a class="jump" href="event_Window_onKeyPress.html">onKeyPress</a> ([Windows *] characters have been entered)<br />
+<a class="jump" href="event_Window_onKeyUp.html">onKeyUp</a> (The key was released)<br />
+<a class="jump" href="event_Window_onMouseDown.html">onMouseDown</a> ([Windows *] Mouse button pressed)<br />
+<a class="jump" href="event_Window_onMouseEnter.html">onMouseEnter</a> ([Windows *] Mouse came in)<br />
+<a class="jump" href="event_Window_onMouseLeave.html">onMouseLeave</a> ([Windows *] The mouse came out)<br />
+<a class="jump" href="event_Window_onMouseMove.html">onMouseMove</a> ([Windows *] Mouse moved)<br />
+<a class="jump" href="event_Window_onMouseUp.html">onMouseUp</a> ([Windows *] Mouse button released)<br />
+<a class="jump" href="event_Window_onMouseWheel.html">onMouseWheel</a> ([Windows *] Mouse wheel rotated)<br />
+<a class="jump" href="event_Window_onMultiTouch.html">onMultiTouch</a> (Multi-touch state changed)<br />
+<a class="jump" href="event_Window_onPointerDown.html">onPointerDown</a> (Pressed by some pointing device)<br />
+<a class="jump" href="event_Window_onPointerMove.html">onPointerMove</a> (Some pointing device has been moved)<br />
+<a class="jump" href="event_Window_onPointerUp.html">onPointerUp</a> (Some pointing device has been released)<br />
+<a class="jump" href="event_Window_onPopupHide.html">onPopupHide</a> ([Windows *] Close the pop-up window)<br />
+<a class="jump" href="event_Window_onResize.html">onResize</a> ([Windows *] The size of the window has changed)<br />
+<a class="jump" href="event_Window_onTouchDown.html">onTouchDown</a> (The screen was touched)<br />
+<a class="jump" href="event_Window_onTouchMove.html">onTouchMove</a> (The finger has moved)<br />
+<a class="jump" href="event_Window_onTouchRotate.html">onTouchRotate</a> (Rotated)<br />
+<a class="jump" href="event_Window_onTouchScaling.html">onTouchScaling</a> (Enlarged operation)<br />
+<a class="jump" href="event_Window_onTouchUp.html">onTouchUp</a> (Your finger was released from the screen)<br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

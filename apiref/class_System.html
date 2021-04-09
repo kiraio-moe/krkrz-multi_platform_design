@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>System - </title>
+</head>
+<body>
+<h1><a name="top" id="top">System</a></h1>
+<div class="para"><p>The System class is a class for acquiring and setting information about KiriKiri itself and the environment in which KiriKiri is running.<br />
+You cannot create objects from this class.</p>
+</div>
+<h1>Member</h1><div class="para">
+<dl>
+<dt>Method</dt>
+<dd>
+<a class="jump" href="func_System_addContinuousHandler.html">addContinuousHandler</a> (Add Continuous Handler)<br />
+<a class="jump" href="func_System_assignMessage.html">assignMessage</a> (Change message assignment)<br />
+<a class="jump" href="func_System_createAppLock.html">createAppLock</a> ([Windows +] Double boot check)<br />
+<a class="jump" href="func_System_createUUID.html">createUUID</a> (UUID string generation)<br />
+<a class="jump" href="func_System_doCompact.html">doCompact</a> (Compact memory)<br />
+<a class="jump" href="func_System_dumpHeap.html">dumpHeap</a> ([Windows +] Heap information dump)<br />
+<a class="jump" href="func_System_exit.html">exit</a> (Kirikiri's synchronization ends)<br />
+<a class="jump" href="func_System_getArgument.html">getArgument</a> (Get command line options)<br />
+<a class="jump" href="func_System_getKeyState.html">getKeyState</a> ([Windows *] Get key status)<br />
+<a class="jump" href="func_System_getTickCount.html">getTickCount</a> (Get tick count)<br />
+<a class="jump" href="func_System_inform.html">inform</a> (Display message)<br />
+<a class="jump" href="func_System_nullpo.html">nullpo</a> (Raise null pointer access)<br />
+<a class="jump" href="func_System_readRegValue.html">readRegValue</a> ([Windows +] Loading the registry)<br />
+<a class="jump" href="func_System_removeContinuousHandler.html">removeContinuousHandler</a> (Delete Continuous Handler)<br />
+<a class="jump" href="func_System_setArgument.html">setArgument</a> (Setting command line options)<br />
+<a class="jump" href="func_System_shellExecute.html">shellExecute</a> ([Windows *] Run files / programs)<br />
+<a class="jump" href="func_System_showVersion.html">showVersion</a> (Displaying the [Windows +] about dialog)<br />
+<a class="jump" href="func_System_terminate.html">terminate</a> (Asynchronous termination of Kirikiri)<br />
+<a class="jump" href="func_System_toActualColor.html">toActualColor</a> (Getting the actual color of a color constant)<br />
+<a class="jump" href="func_System_touchImages.html">touchImages</a> (Loading images into cache)<br />
+</dd>
+<dt>Property</dt>
+<dd>
+<a class="jump" href="prop_System_appDataPath.html">appDataPath</a> (The path of the user's home directory)<br />
+<a class="jump" href="prop_System_cacheDir.html">cacheDir</a> ([Android +] Internal cache area [r])<br />
+<a class="jump" href="prop_System_dataDirectory.html">dataDirectory</a> ([Android +] Data area [r])<br />
+<a class="jump" href="prop_System_dataPath.html">dataPath</a> (Data storage path)<br />
+<a class="jump" href="prop_System_desktopHeight.html">desktopHeight</a> (Desktop height)<br />
+<a class="jump" href="prop_System_desktopLeft.html">desktopLeft</a> (Desktop left edge position)<br />
+<a class="jump" href="prop_System_desktopTop.html">desktopTop</a> (Desktop top position)<br />
+<a class="jump" href="prop_System_desktopWidth.html">desktopWidth</a> (Desktop width)<br />
+<a class="jump" href="prop_System_downloadCacheDirectory.html">downloadCacheDirectory</a> ([Android +] Download cache path [r])<br />
+<a class="jump" href="prop_System_drawThreadNum.html">drawThreadNum</a> (Number of threads used for drawing)<br />
+<a class="jump" href="prop_System_eventDisabled.html">eventDisabled</a> (Whether event delivery is stopped)<br />
+<a class="jump" href="prop_System_exceptionHandler.html">exceptionHandler</a> (Handler function for uncaught exception)<br />
+<a class="jump" href="prop_System_exeBits.html">exeBits</a> (Kirikiri Whether the main body is his 32-bit version or 64-bit version (1.3.0 or later))<br />
+<a class="jump" href="prop_System_exeName.html">exeName</a> (Kirikiri body pass)<br />
+<a class="jump" href="prop_System_exePath.html">exePath</a> (Kirikiri The path of the folder containing the main body)<br />
+<a class="jump" href="prop_System_exitOnWindowClose.html">exitOnWindowClose</a> ([Windows] Whether to exit when the main window is closed)<br />
+<a class="jump" href="prop_System_externalCacheDir.html">externalCacheDir</a> ([Android +] External cache area path [r])<br />
+<a class="jump" href="prop_System_externalFilesDir.html">externalFilesDir</a> ([Android +] External data area [r])<br />
+<a class="jump" href="prop_System_externalPublicAlaramsPath.html">externalPublicAlaramsPath</a> ([Android +] Alarm sound data path [r])<br />
+<a class="jump" href="prop_System_externalPublicDCIMPath.html">externalPublicDCIMPath</a> ([Android +] DCIM (camera) data path [r])<br />
+<a class="jump" href="prop_System_externalPublicDocumentsPath.html">externalPublicDocumentsPath</a> ([Android +] Document data path [r])<br />
+<a class="jump" href="prop_System_externalPublicDownloadsPath.html">externalPublicDownloadsPath</a> ([Android +] Download path [r])<br />
+<a class="jump" href="prop_System_externalPublicMoviesPath.html">externalPublicMoviesPath</a> ([Android +] Video data path [r])<br />
+<a class="jump" href="prop_System_externalPublicMusicPath.html">externalPublicMusicPath</a> ([Android +] Music data path [r])<br />
+<a class="jump" href="prop_System_externalPublicNotificationsPath.html">externalPublicNotificationsPath</a> ([Android +] Notification sound data path [r])<br />
+<a class="jump" href="prop_System_externalPublicPicturesPath.html">externalPublicPicturesPath</a> ([Android +] Photo data path [r])<br />
+<a class="jump" href="prop_System_externalPublicPodcastsPath.html">externalPublicPodcastsPath</a> ([Android +] Podcast Data Path [r])<br />
+<a class="jump" href="prop_System_externalPublicRingtonesPath.html">externalPublicRingtonesPath</a> ([Android +] Ring data path [r])<br />
+<a class="jump" href="prop_System_externalStorageDirectory.html">externalStorageDirectory</a> ([Android +] External shared area [r])<br />
+<a class="jump" href="prop_System_externalStorageState.html">externalStorageState</a> ([Android +] External storage status [r])<br />
+<a class="jump" href="prop_System_filesDir.html">filesDir</a> ([Android +] Internal data area [r])<br />
+<a class="jump" href="prop_System_graphicCacheLimit.html">graphicCacheLimit</a> (Image cache limit)<br />
+<a class="jump" href="prop_System_isAndroid.html">isAndroid</a> (Determine if the system is Android [r])<br />
+<a class="jump" href="prop_System_isExternalStorageEmulated.html">isExternalStorageEmulated</a> ([Android +] Whether it is emulated external storage [r])<br />
+<a class="jump" href="prop_System_isExternalStorageRemovable.html">isExternalStorageRemovable</a> ([Android +] Whether external storage is removable [r])<br />
+<a class="jump" href="prop_System_isWindows.html">isWindows</a> (Determine if the system is Windows [r])<br />
+<a class="jump" href="prop_System_obbDir.html">obbDir</a> ([Android +] Extended file (OBB format) storage area [r])<br />
+<a class="jump" href="prop_System_onActivate.html">onActivate</a> (When the application becomes active)<br />
+<a class="jump" href="prop_System_onDeactivate.html">onDeactivate</a> (When the application becomes inactive)<br />
+<a class="jump" href="prop_System_openGLESVersion.html">openGLESVersion</a> (OpenGL ES version)<br />
+<a class="jump" href="prop_System_osBits.html">osBits</a> (Whether the OS is his 32-bit version or 64-bit version (1.3.0 or later))<br />
+<a class="jump" href="prop_System_osName.html">osName</a> (OS name)<br />
+<a class="jump" href="prop_System_packageCodePath.html">packageCodePath</a> ([Android +] App package code path [r])<br />
+<a class="jump" href="prop_System_packageName.html">packageName</a> ([Android +] App package name [r])<br />
+<a class="jump" href="prop_System_packageResourcePath.html">packageResourcePath</a> ([Android +] App package resource path [r])<br />
+<a class="jump" href="prop_System_personalPath.html">personalPath</a> (My document path)<br />
+<a class="jump" href="prop_System_platformName.html">platformName</a> (Platform name)<br />
+<a class="jump" href="prop_System_rootDirectory.html">rootDirectory</a> ([Android +] Root directory [r])<br />
+<a class="jump" href="prop_System_savedGamesPath.html">savedGamesPath</a> (Saved game path (1.1.0 or later))<br />
+<a class="jump" href="prop_System_screenHeight.html">screenHeight</a> (Screen height)<br />
+<a class="jump" href="prop_System_screenWidth.html">screenWidth</a> (Screen width)<br />
+<a class="jump" href="prop_System_sharedObjectPath.html">sharedObjectPath</a> ([Android +] Shared Object (* .so) file storage area of the application [r])<br />
+<a class="jump" href="prop_System_title.html">title</a> (title)<br />
+<a class="jump" href="prop_System_versionInformation.html">versionInformation</a> (Version information string)<br />
+<a class="jump" href="prop_System_versionString.html">versionString</a> (Version string)<br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

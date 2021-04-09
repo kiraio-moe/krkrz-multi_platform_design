@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>setClip - Drawing clip rectangle settings</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.setClip</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Drawing clip rectangle settings</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Layer.html">Layerclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">setClip(<span class="arg">left</span>, <span class="arg">top</span>, <span class="arg">width</span><span class="defarg">=<span class="defargval">void</span></span>, <span class="arg">height</span><span class="defarg">=<span class="defargval">void</span></span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="setClipArguments of">
+<tr><td valign="top"><span class="argname">left</span></td>
+<td><p>Specifies the left edge position (in image coordinates of the layer) of the drawing clip rectangle in pixels.<br />
+This value can also be obtained and set with the Layer.clipLeft property.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">top</span></td>
+<td><p>Specifies the top position of the drawing clip rectangle (in the image coordinates of the layer) in pixels.<br />
+This value can also be obtained and set with the Layer.clipTop property.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">width</span></td>
+<td><p>Specifies the width of the drawing clip rectangle in pixels.<br />
+This value can also be obtained and set with the Layer.clipWidth property.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">height</span></td>
+<td><p>Specifies the vertical width of the drawing clip rectangle in pixels.<br />
+This value can also be obtained and set with the Layer.clipHeight property.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Sets the drawing clip rectangle for the layer. Drawing on the layer is restricted to the inside of this drawing clip rectangle (the part outside the rectangle is not drawn).<br />
+However, some methods, such as Layer.flipLR and Layer.flipUD, are not affected by the drawing clip rectangle.<br />
+By default, the clip rectangle is set to the entire layer image area (it can be drawn on the entire layer).<br />
+The drawing clip rectangle returns to its default value when the image is loaded, the image size is changed, or the display type of the layer is changed.<br />
+You can also call this method with no arguments to restore the drawing clip rectangle to its default value.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

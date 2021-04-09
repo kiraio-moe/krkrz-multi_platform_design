@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>mainImageBuffer - Main image buffer pointer</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.mainImageBuffer</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd>Main image buffer pointer</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Layer.html">Layer Class</a> Properties</dd>
+<dt>Explanation</dt>
+<dd><p>Represents a pointer to the upper left corner of the image buffer for the main image (a 32bpp bitmap containing color and mask (opacity) information).<br />
+This property is there to provide a means of direct access to the image buffer for plugins etc.<br />
+It is returned as an integer type, but for plugins etc., cast it to an appropriate type (const unsigned long * etc.) and use it.<br />
+Do not write a value to the pointer obtained by this property.<br />
+Any pointer obtained by Layer.mainImageBufferForWrite can be written.<br />
+Returns NULL (0) if no image has been assigned to the layer.<br />
+The size of the image is represented by the Layer.imageWidth and Layer.imageHeight properties.<br />
+See Layer.mainImageBufferPitch for how to calculate the pointer.</p>
+</dd>
+<dt>Reference</dt>
+<dd>
+<a class="jump" href="prop_Layer_mainImageBufferForWrite.html">Layer.mainImageBufferForWrite</a><br />
+<a class="jump" href="prop_Layer_mainImageBufferPitch.html">Layer.mainImageBufferPitch</a><br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

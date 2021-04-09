@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>setArgument - Setting command line options</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">System.setArgument</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Setting command line options</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_System.html">Systemclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">setArgument(<span class="arg">name</span>, <span class="arg">value</span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="setArgumentArguments of">
+<tr><td valign="top"><span class="argname">name</span></td>
+<td><p>Specify the command line option name to be set. Start with a'-' (hyphen) (eg'-contfreq').</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">value</span></td>
+<td><p>Specify the value to be set. (Example: '60').</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Dynamically set command line options.<br />
+Not all command line options are configurable.<br />
+See Command Line Options for configurable command line options.<br />
+Do not change options that are not marked as dynamically changeable here.<br />
+This method does not check whether the option can be changed dynamically, the existence of the option, the validity of the value, etc.<br />
+Be careful when setting the value.</p>
+</dd>
+<dt>Reference</dt>
+<dd>
+<a class="jump" href="func_System_getArgument.html">System.getArgument</a><br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

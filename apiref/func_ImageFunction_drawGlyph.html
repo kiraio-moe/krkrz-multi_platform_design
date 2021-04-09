@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>drawGlyph - Character drawing</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">ImageFunction.drawGlyph</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Character drawing</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_ImageFunction.html">ImageFunctionclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">drawGlyph(<span class="arg">bmp</span>, <span class="arg">x</span>, <span class="arg">y</span>, <span class="arg">glyph</span>, <span class="arg">color</span>, <span class="arg">opa</span><span class="defarg">=<span class="defargval">255</span></span>, <span class="arg">aa</span><span class="defarg">=<span class="defargval">true</span></span>, <span class="arg">face</span><span class="defarg">=<span class="defargval">dfAlpha</span></span>, <span class="arg">shadowlevel</span><span class="defarg">=<span class="defargval">0</span></span>, <span class="arg">shadowcolor</span><span class="defarg">=<span class="defargval">0</span></span>, <span class="arg">shadowwidth</span><span class="defarg">=<span class="defargval">0</span></span>, <span class="arg">shadowofsx</span><span class="defarg">=<span class="defargval">0</span></span>, <span class="arg">shadowofsy</span><span class="defarg">=<span class="defargval">0</span></span>, <span class="arg">hda</span><span class="defarg">=<span class="defargval">false</span></span>, <span class="arg">cliprect</span><span class="defarg">=<span class="defargval">null</span></span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="drawGlyphArguments of">
+<tr><td valign="top"><span class="argname">bmp</span></td>
+<td><p>Specifies the Bitmap object to draw the character.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">x</span></td>
+<td><p>Specifies the x-coordinate (at the image position) of the origin where the character drawing starts, in pixels.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">y</span></td>
+<td><p>Specifies the y coordinate (at the image position) of the origin where the character drawing starts, in pixels.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">glyph</span></td>
+<td><p>Specifies the glyph to draw.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">color</span></td>
+<td><p>Specifies the color of the characters to draw in the 0xRRGGBB format.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">opa</span></td>
+<td><p>Specifies the opacity (-255 to 0 to 255) of the characters to draw.<br />
+Negative numbers are only valid if face is dfAlpha, in which case the opacity of the character shape will be removed (the smaller the value, the greater the effect).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">aa</span></td>
+<td><p>Specifies whether to perform antialiasing.<br />
+If true is specified, antialiasing will be performed.<br />
+If you specify false, it will not be done.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">face</span></td>
+<td><p>Specify the drawing method.</p>
+
+<ul>
+<li>If dfAlpha is specified, the image is considered an image with an alpha channel and is drawn.</li>
+<li>If dfAddAlpha is specified, the image is considered as an image with an additive alpha channel and is drawn.</li>
+<li>If dfOpaque is specified, all images are considered completely opaque and will be drawn.</li>
+</ul>
+</td></tr>
+<tr><td valign="top"><span class="argname">shadowlevel</span></td>
+<td><p>Specifies the opacity of the shadow.<br />
+The appropriate value will vary depending on the value of the shadowwidth argument.<br />
+If you specify 0, no shadow is drawn.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">shadowcolor</span></td>
+<td><p>Specifies the shadow color in 0xRRGGBB format.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">shadowwidth</span></td>
+<td><p>Specifies the shadow width (blurring).<br />
+0 is the sharpest (no blur), and increasing the value will blur the shadow.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">shadowofsx</span></td>
+<td><p>Specifies the x-coordinate value of the shadow position, in pixels.<br />
+If you specify 0, the shadow is drawn directly below.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">shadowofsy</span></td>
+<td><p>Specifies the y-coordinate value of the shadow position, in pixels.<br />
+If you specify 0, the shadow is drawn directly below.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">hda</span></td>
+<td><p>Specifies whether to protect the alpha channel.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">cliprect</span></td>
+<td><p>Specify the clipping area with the Rect object (at the image position of the Bitmap).<br />
+When not specified, the entire target is applicable.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd><p>Drawing area (Rect object)</p>
+</dd>
+<dt>Explanation</dt>
+<dd><p>Draw a glyph in the Bitmap.<br />
+If dfOpaque is specified for face, it depends on hda whether the mask to be drawn is destroyed or protected.<br />
+A glyph specifies an array of the form <code>glyph: Array [9] = [width, height, originx, originy, incx, incy, inc, bitmap (Octet), colors]</code>.<br />
+If the glyph colors are omitted, it is considered to be 256 gradations.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

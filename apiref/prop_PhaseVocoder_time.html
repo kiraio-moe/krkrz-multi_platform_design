@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>time - Scale in the time axis direction</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">PhaseVocoder.time</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd>Scale in the time axis direction</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_PhaseVocoder.html">PhaseVocoder Class</a> Properties</dd>
+<dt>Explanation</dt>
+<dd><p>Represents a scale along the time axis. You can also set the value.<br />
+Possible numbers are real numbers greater than 0.<br />
+However, if the value is too small, the CPU load will be high, and in the worst case, playback may not be possible.<br />
+In addition, the sound quality deteriorates from around 1.95, and the sound quality may not be improved even if the overlap is increased (due to the characteristics of the internal algorithm).<br />
+If you specify 1.0, the scale along the time axis does not change (the playback speed does not change).<br />
+For example, if you specify 1.5, the scale along the time axis will be 1.5 times faster and the playback will be slower (playback will take 1.5 times longer).<br />
+For example, if you specify 0.5, the scale along the time axis will be 0.5 times faster and will play faster (play at double speed).<br />
+The Phase Vocoder filter works even if both the time and pitch properties are 1, the sound quality is slightly degraded, and it also uses CPU time.<br />
+If you want to keep both at 1, it's a good idea to remove this filter from the filter array.<br />
+Changes to this property will be reflected in real time, but due to buffering, it will take about 2 seconds to actually play.<br />
+In addition, noise may occur when switching.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>buffer - Image buffer pointer</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Bitmap.buffer</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd>Image buffer pointer</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Bitmap.html">Bitmap Class</a> Properties</dd>
+<dt>Explanation</dt>
+<dd><p>Represents a pointer to the upper left corner of the image buffer for an image (a 32bpp bitmap containing color and mask (opacity) information).<br />
+This property is there to provide a means of direct access to the image buffer for plugins etc.<br />
+It is returned as an integer type, but for plugins etc., cast it to an appropriate type (const unsigned long * etc.) and use it.<br />
+Do not write a value to the pointer obtained by this property.<br />
+Any pointer obtained by Bitmap.bufferForWrite can be written.<br />
+The size of the image is represented by the Bitmap.width and Bitmap.height properties.<br />
+See Bitmap.bufferPitch for how to calculate pointers.</p>
+</dd>
+<dt>Reference</dt>
+<dd>
+<a class="jump" href="prop_Bitmap_bufferForWrite.html">Bitmap.bufferForWrite</a><br />
+<a class="jump" href="prop_Bitmap_bufferPitch.html">Bitmap.bufferPitch</a><br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

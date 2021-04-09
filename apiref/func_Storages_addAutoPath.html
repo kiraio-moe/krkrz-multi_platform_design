@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>addAutoPath - Add to automatic search path</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Storages.addAutoPath</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Add to automatic search path</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Storages.html">Storagesclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">addAutoPath(<span class="arg">path</span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="addAutoPathArguments of">
+<tr><td valign="top"><span class="argname">path</span></td>
+<td><p>Specify the path to add to the automatic search path.<br />
+The end of the path must end with'>' when specifying the root folder in the archive and'/' when specifying a regular folder<br />
+(Example: "Archive / arc.xp3>" or "System /"). From 2.19 beta 14, the archive delimiter has changed from'#' to'>'.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Adds the specified path to the automatic search path.<br />
+Kirikiri When searching for available storage, it looks for the path registered in this automatic search path.<br />
+As for the automatic search path, the one specified later is searched with higher priority.<br />
+Also, the project folder is searched with the highest priority.</p>
+</dd>
+<dt>Reference</dt>
+<dd>
+<a class="jump" href="func_Storages_removeAutoPath.html">Storages.removeAutoPath</a><br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

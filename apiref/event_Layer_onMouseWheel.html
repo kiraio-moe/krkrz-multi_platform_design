@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>onMouseWheel - Mouse wheel rotated</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.onMouseWheel</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Mouse wheel rotated</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Layer.html">Layerclass</a>Event</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">onMouseWheel(<span class="arg">shift</span>, <span class="arg">delta</span>, <span class="arg">x</span>, <span class="arg">y</span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="onMouseWheelArguments of">
+<tr><td valign="top"><span class="argname">shift</span></td>
+<td><p>This is the state of shift keys and mouse buttons that were pressed at the same time when the mouse was moving.<br />
+It is a combination of the following values by bit OR.</p>
+
+<ul>
+<li>ssAlt     : The ALT key was pressed</li>
+<li>ssShift   : The SHIFT key was pressed</li>
+<li>ssCtrl    : CTRL key was pressed</li>
+<li>ssLeft    : The left mouse button was pressed</li>
+<li>ssMiddle  : The middle mouse button was pressed</li>
+<li>ssRight   : The right mouse button was pressed</li>
+</ul>
+</td></tr>
+<tr><td valign="top"><span class="argname">delta</span></td>
+<td><p>The angle of rotation of the wheel.<br />
+If it is turned upward (the direction opposite to the user), it will be a positive value, and if it is turned downward (the direction toward the user), it will be a negative value.<br />
+The minimum amount is usually 120.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">x</span></td>
+<td><p>The x-coordinate (in the layer's display coordinates) value of where the wheel was rotated.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">y</span></td>
+<td><p>The y-coordinate value (in the layer's display coordinates) where the wheel was rotated.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Occurs when the mouse wheel rotates.<br />
+This event, like the keyboard event, only fires on the layer that has focus.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

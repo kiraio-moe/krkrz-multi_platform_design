@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>type - Layer display type</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.type</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd>Layer display type</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Layer.html">Layer Class</a> Properties</dd>
+<dt>Explanation</dt>
+<dd><p>Represents the display type of a layer.<br />
+You can also set the value.</p>
+
+<ul>
+<li>Specifying ltOpaque or ltCoverRect disables pixel-by-pixel alpha blending. Both ltCoverRect and ltOpaque have the same meaning. If the Layer.opacity property is 255, it will appear as a completely opaque rectangle. The mask image is ignored. A suitable drawing method for this type (specified in Layer.face) is dfOpaque.</li>
+<li>Specifying ltAlpha or ltTransparent enables pixel-by-pixel alpha blending. Both ltTransparent and ltAlpha have the same meaning. The mask image is used for transparency. A suitable drawing method for this type is dfAlpha.</li>
+<li>Specifying ltAddAlpha enables pixel-by-pixel additive alpha blending. A suitable drawing method for this type is dfAddAlpha.</li>
+<li>If you specify ltAdditive, additive synthesis is performed. The mask image is ignored. A suitable drawing method for this type is dfOpaque.</li>
+<li>If you specify ltSubtractive, subtractive synthesis is performed. The mask image is ignored. A suitable drawing method for this type is dfOpaque.</li>
+<li>If you specify ltMultiplicative, multiplication synthesis is performed. The mask image is ignored. A suitable drawing method for this type is dfOpaque.</li>
+<li>If ltDodge is specified, dodging synthesis will be performed. The mask image is ignored. A suitable drawing method for this type is dfOpaque.</li>
+<li>Specify ltDarken for comparative (dark) compositing. The mask image is ignored. A suitable drawing method for this type is dfOpaque.</li>
+<li>If you specify ltLighten, comparison (bright) composition is performed. The mask image is ignored. A suitable drawing method for this type is dfOpaque.</li>
+<li>If you specify ltScreen, screen multiplication composition is performed. The mask image is ignored. A suitable drawing method for this type is dfOpaque.</li>
+</ul>
+
+<p>See Graphics Systems for other layer display types.</p>
+</dd>
+<dt>Reference</dt>
+<dd>
+<a class="jump" href="prop_Layer_face.html">Layer.face</a><br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

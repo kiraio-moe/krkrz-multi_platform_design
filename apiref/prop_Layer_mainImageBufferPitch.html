@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>mainImageBufferPitch - Main image buffer pitch</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.mainImageBufferPitch</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd>Main image buffer pitch</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Layer.html">Layer Class</a> Properties</dd>
+<dt>Explanation</dt>
+<dd><p>Represents the pitch (in bytes down to the next scanline) of the image buffer of the main image (a 32-bpp bitmap containing color and mask (opacity) information).<br />
+This property is there to provide a means of direct access to the image buffer for plugins etc.<br />
+Assuming that tjs<em>uint32 is a 32-bit integer type and tjs</em>uint8 is an 8-bit (1byte) integer type, the pointer to the image position (x, y) can be calculated as follows when written in C language.<br />
+((tjs<em>uint32 *) ((tjs</em>uint8 *) mainImageBuffer + y * mainImageBufferPitch)) + x<br />
+Note that this property returns the number of bytes, not the number of pixels until the next scanline.<br />
+This number may be slightly larger than the exact number of bytes required for the width of the image.<br />
+Note that this property can have a negative value.</p>
+</dd>
+<dt>Reference</dt>
+<dd>
+<a class="jump" href="prop_Layer_mainImageBuffer.html">Layer.mainImageBuffer</a><br />
+<a class="jump" href="prop_Layer_mainImageBufferForWrite.html">Layer.mainImageBufferForWrite</a><br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

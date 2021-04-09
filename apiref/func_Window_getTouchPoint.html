@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>getTouchPoint - Get touch coordinates</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Window.getTouchPoint</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Get touch coordinates</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Window.html">Windowclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">getTouchPoint(<span class="arg">index</span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="getTouchPointArguments of">
+<tr><td valign="top"><span class="argname">index</span></td>
+<td><p>Specifies the index of the touch coordinate array.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Gets the coordinate information of the specified index from the current touch coordinate array.<br />
+The number of coordinates can be obtained with the Window.touchPointCount property.<br />
+Coordinate information is returned in a dictionary that contains the following elements:</p>
+
+<ul>
+<li>startX     : The x coordinate value (client coordinate system) of the start coordinate of this touch</li>
+<li>startY   : The y coordinate value (client coordinate system) of the start coordinate of this touch</li>
+<li>x    : The x coordinate value (client coordinate system) of the current coordinate of this touch</li>
+<li>y    : The y coordinate value (client coordinate system) of the current coordinate of this touch</li>
+<li>ID    : The ID for identifying this touch</li>
+</ul>
+</dd>
+<dt>Reference</dt>
+<dd>
+<a class="jump" href="prop_Window_touchPointCount.html">Window.touchPointCount</a><br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

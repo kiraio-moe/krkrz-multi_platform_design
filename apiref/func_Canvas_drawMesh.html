@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>drawMesh - Version using index buffer for mesh drawing</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Canvas.drawMesh</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Version using index buffer for mesh drawing</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Canvas.html">Canvasclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">drawMesh(<span class="arg">shader</span>:ShaderProgram, <span class="arg">index</span>:VertexBinder, <span class="arg">count</span>:int, <span class="arg">primitiveType</span>:int<span class="defarg">=<span class="defargval">VertexBuffer.ptTriangles</span></span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="drawMeshArguments of">
+<tr><td valign="top"><span class="argname">shader</span></td>
+<td><p>Specify the shader associated with the texture and vertex information</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">index</span></td>
+<td><p>Specify the index buffer</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">count</span></td>
+<td><p>Number of indexes to draw</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">primitiveType</span></td>
+<td><p>Designation such as triangle</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>The mesh (VertexBinder: vertex information) must be associated with the shader (set in the properties) before calling.<br />
+Texture information should be associated as well.<br />
+After calling, cancel (= void) the information associated with shader.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

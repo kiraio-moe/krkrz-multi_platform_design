@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>onHitTest - collision detection</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.onHitTest</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>collision detection</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Layer.html">Layerclass</a>Event</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">onHitTest(<span class="arg">x</span>, <span class="arg">y</span>, <span class="arg">hit</span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="onHitTestArguments of">
+<tr><td valign="top"><span class="argname">x</span></td>
+<td><p>The x coordinate (within the display coordinates of the layer) of the position where collision detection is performed.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">y</span></td>
+<td><p>The y coordinate (within the display coordinates of the layer) at the position where collision detection is performed.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">hit</span></td>
+<td><p>As a result of the hit judgment, if it is hit, it will be true, and if it is not, it will be false.<br />
+Pass the collision result to this argument of the superclass event of the same name.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Called when a collision detection (hit test) is performed on a point in the layer.<br />
+For the result of the collision detection, pass the result of the collision detection to the third argument of this event of the superclass (pass the first argument and the second argument as they are).<br />
+As a result of collision detection, if it hits, the mouse message becomes opaque and processed in that layer.<br />
+If not hit, it will be transparent and the mouse message will be processed in a deeper layer.<br />
+This event is called after the collision detection performed by Layer.hitThreshold and Layer.hitType determines that it is "hit".<br />
+Therefore, this event will not be called if the Layer.hitThreshold or Layer.hitType determines that it is "not hit".</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

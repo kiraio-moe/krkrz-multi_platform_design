@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>adjustGamma - Gamma correction</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.adjustGamma</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Gamma correction</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Layer.html">Layerclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">adjustGamma(<span class="arg">rgamma</span><span class="defarg">=<span class="defargval">1</span></span>, <span class="arg">rfloor</span><span class="defarg">=<span class="defargval">0</span></span>, <span class="arg">rceil</span><span class="defarg">=<span class="defargval">255</span></span>, <span class="arg">ggamma</span><span class="defarg">=<span class="defargval">1</span></span>, <span class="arg">gfloor</span><span class="defarg">=<span class="defargval">0</span></span>, <span class="arg">gceil</span><span class="defarg">=<span class="defargval">255</span></span>, <span class="arg">bgamma</span><span class="defarg">=<span class="defargval">1</span></span>, <span class="arg">bfloor</span><span class="defarg">=<span class="defargval">0</span></span>, <span class="arg">bceil</span><span class="defarg">=<span class="defargval">255</span></span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="adjustGammaArguments of">
+<tr><td valign="top"><span class="argname">rgamma</span></td>
+<td><p>Specify the gamma value of the red component (0.0 to 1.0 to 9.0).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">rfloor</span></td>
+<td><p>Specify the minimum output value (0 to 255) for the red component.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">rceil</span></td>
+<td><p>Specifies the maximum output value (0 to 255) for the red component.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">ggamma</span></td>
+<td><p>Specify the gamma value of the green component (0.0 to 1.0 to 9.0).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">gfloor</span></td>
+<td><p>Specifies the minimum output value (0 to 255) for the green component.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">gceil</span></td>
+<td><p>Specify the maximum output value (0 to 255) of the green component.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">bgamma</span></td>
+<td><p>Specify the gamma value of the blue component (0.0 to 1.0 to 9.0).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">bfloor</span></td>
+<td><p>Specifies the minimum output value (0 to 255) for the blue component.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">bceil</span></td>
+<td><p>Specify the maximum output value (0 to 255) of the blue component.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Performs gamma correction on the image.<br />
+If you specify 1.0 for the gamma value, the gamma curve becomes a straight line.<br />
+The output minimum value and output maximum value specify the minimum and maximum values of the brightness of each component.<br />
+You can invert the image by setting the highest value to a value lower than the lowest value.<br />
+This method references the Layer.face property.<br />
+If this is dfAddAlpha, this method uses a special gamma correction routine for additive alpha synthesis.<br />
+This routine performs gamma correction for the components corresponding to alpha synthesis in additive alpha synthesis, but does not perform gamma correction for the components corresponding to additive synthesis.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

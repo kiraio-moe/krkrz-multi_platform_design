@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>saveStruct - Outputs structured data to a file.</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Array.saveStruct</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Outputs structured data to a file.</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Array.html">Arrayclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">saveStruct(<span class="arg">storage</span>:string, <span class="arg">mode</span>:string<span class="defarg">=<span class="defargval">null</span></span>) :Array</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="saveStructArguments of">
+<tr><td valign="top"><span class="argname">storage</span></td>
+<td><p>File name to export</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">mode</span></td>
+<td><p>Specifies the mode string when writing the file.</p>
+
+<ul>
+<li>Specifying "c" gives the file a simple encryption (you can just load it with the load method).</li>
+<li>You can specify "z" to compress the file and save it (it cannot be used with "c"; it can also be loaded by the load method as it is).</li>
+<li>If you specify the offset in decimal after "o", it will be written from that byte position in the file.</li>
+<li>If "b" is specified, it will be saved in binary format (it cannot be used together with other mode specifications; this can also be loaded by the load method as it is).</li>
+</ul>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd><p>Returns the object itself of this Array class.</p>
+</dd>
+<dt>Explanation</dt>
+<dd><p>Outputs the state of the element to a file in a recoverable state.<br />
+Each element can contain strings, real numbers, octet columns, and integers.<br />
+Also, if the element has an object, the contents of that object are also output to a file only if it is an object of the Array class or Dictionary class.<br />
+For other elements, void is output.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

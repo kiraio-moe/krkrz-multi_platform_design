@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>displayDensity - Screen density (dpi)</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Window.displayDensity</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd>Screen density (dpi)</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Window.html">Window Class</a> Properties</dd>
+<dt>Explanation</dt>
+<dd><p>Returns the dpi value.<br />
+Only read is possible.<br />
+For Windows, this is the value obtained with GetDeviceCaps.<br />
+Android is a config value, and some values are returned from the screen size.<br />
+When excluding input by swiping in from the side of the screen, Android recognizes (int) (20 * displayDensity + 0.5) as the range of the screen corner, so when touchDown is in this range, swipe in as well. Should be considered.<br />
+On Android, swipe-ins other than from the right at full screen are assigned functions, so it is recommended to ignore them when it is judged to be a swipe-in.<br />
+When you want to display the menu, it is common on Android to display the menu by swiping in from the right.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

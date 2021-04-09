@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>affineCopy - Affine transformation copy</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.affineCopy</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Affine transformation copy</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Layer.html">Layerclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">affineCopy(<span class="arg">src</span>, <span class="arg">sleft</span>, <span class="arg">stop</span>, <span class="arg">swidth</span>, <span class="arg">sheight</span>, <span class="arg">affine</span>, <span class="arg">A</span>, <span class="arg">B</span>, <span class="arg">C</span>, <span class="arg">D</span>, <span class="arg">E</span>, <span class="arg">F</span>, <span class="arg">type</span><span class="defarg">=<span class="defargval">stNearest</span></span>, <span class="arg">clear</span><span class="defarg">=<span class="defargval">false</span></span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="affineCopyArguments of">
+<tr><td valign="top"><span class="argname">src</span></td>
+<td><p>Specifies the layer object to copy from.<br />
+You can also specify an object of the Bitmap class.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">sleft</span></td>
+<td><p>Specifies the left edge position of the rectangle to copy, in pixels (at the image position of the source layer).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">stop</span></td>
+<td><p>Specifies the top position of the rectangle to copy, in pixels (at the image position of the source layer).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">swidth</span></td>
+<td><p>Specifies the width of the rectangle to copy, in pixels (at the image position of the source layer).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">sheight</span></td>
+<td><p>Specifies the height of the rectangle to copy, in pixels (at the image position of the source layer).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">affine</span></td>
+<td><p>Specifies how to handle the following 6 arguments (A to F parameters).<br />
+If true is specified, each of the six parameters will be interpreted as follows.</p>
+
+<ul>
+<li>A   : 2D affine transformation matrix a</li>
+<li>B   : 2D affine transformation matrix b</li>
+<li>C   : 2D affine transformation matrix c</li>
+<li>D   : D of 2D affine transformation matrix</li>
+<li>E   : 2D affine transformation matrix tx</li>
+<li>F   : 2D affine transformation matrix ty</li>
+</ul>
+
+<p>By affine transformation, the copy source image position (x, y) (however, the upper left corner of the copy source rectangle is (0, 0)) is the copy destination image position (x', y') by the following formula. Will be converted to.<br />
+x'= a * x + c * y + tx<br />
+y'= b * x + d * y + ty<br />
+If false is specified, each of the six parameters will be interpreted as follows.<br />
+These parameters can also be specified as real numbers.</p>
+
+<ul>
+<li>A   : X coordinate position (x0) of the point in the upper left corner of the copy source rectangle at the image position at the copy destination</li>
+<li>B   : Y coordinate position (y0) of the point in the upper left corner of the copy source rectangle at the image position at the copy destination</li>
+<li>C   : X coordinate position (x1) of the point in the upper right corner of the copy source rectangle at the image position at the copy destination</li>
+<li>D   : Y coordinate position (y1) of the point in the upper right corner of the copy source rectangle at the image position at the copy destination</li>
+<li>E   : X coordinate position (x2) of the point in the lower left corner of the copy source rectangle at the image position at the copy destination</li>
+<li>F   : Y coordinate position (y2) of the point in the lower left corner of the copy source rectangle at the image position at the copy destination</li>
+</ul>
+
+<p>If false is specified, the copy destination position (x3, y3) corresponding to the lower right corner of the copy source is automatically calculated by the following formula.<br />
+x3 = x1-x0 + x2<br />
+y3 = y1 --y0 + y2</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">A</span></td>
+<td><p>A parameter.<br />
+The interpretation depends on the affine argument.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">B</span></td>
+<td><p>B parameter.<br />
+The interpretation depends on the affine argument.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">C</span></td>
+<td><p>C parameter.<br />
+The interpretation depends on the affine argument.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">D</span></td>
+<td><p>D parameter.<br />
+The interpretation depends on the affine argument.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">E</span></td>
+<td><p>E parameter.<br />
+The interpretation depends on the affine argument.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">F</span></td>
+<td><p>F parameter.<br />
+The interpretation depends on the affine argument.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">type</span></td>
+<td><p>Specifies the type of affine transformation.</p>
+
+<ul>
+<li>stNearest     : Nearest point method is used</li>
+<li>stFastLinear  : Low precision linear interpolation is used (partially implemented)</li>
+<li>stLinear      : Linear interpolation is used (not implemented)</li>
+<li>stCubic       : 3D interpolation is used (not implemented)</li>
+</ul>
+
+<p>For stFastLinear, stLinear, and stCubic, stRefNoClip can be additionally specified by bitwise OR, in which case it is allowed to refer to the outside of the area of the bitmap to be copied and synthesize the color.<br />
+If this is not specified, the out-of-range color will not refer to the closest pixel in the range, even if there is room around the source bitmap. It is considered a color).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">clear</span></td>
+<td><p>Specifies whether to clear the periphery of the affine-transformed image of the transfer destination layer with the color and transparency indicated by the Layer.neutralColor property.<br />
+If true is specified, it will be cleared, and if this argument is omitted or false is passed, it will not be cleared.<br />
+The area to be cleared can also be limited with the Layer.setClip method.<br />
+If you use this clear function, it is a waste of clearing the overwritten area (the part that is overwritten by affine transformation in the cleared place) when overwriting and transferring the image by affine transformation after clearing the transfer destination layer once. Can be omitted.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Copies the rectangle of the specified source layer while converting it to the copy destination (layer that executes the method).<br />
+The affine argument allows you to choose whether to specify a two-dimensional affine transformation matrix as the transformation parameter or to specify the transformed point directly.<br />
+In the current version, linear interpolation is effective when stFastLinear is specified when the Layer.face property of the layer to be overlaid (which executes the method) is dfAlpha (or dfBoth) or dfAddAlpha.<br />
+Linear interpolation is also possible when the Layer.face property is dfOpaque and the Layer.holdAlpha property is false.<br />
+If the Layer.face property of the layer to which you want to overlay (execute the method) is dfAlpha (or dfBoth) or dfAddAlpha, both the main image and the mask image are copied.<br />
+If the Layer.face property of the layer to be overlaid (executes the method) is dfOpaque (or dfMain), only the main image is copied when the Layer.holdAlpha property is true, and the main image and mask are false. Both images are copied.<br />
+The transformation by the two-dimensional affine transformation matrix is defined as follows, with the origin (0, 0) at the upper left of the copy source rectangle.<br />
+Two-dimensional affine transformations allow you to scale, rotate, shear, translate, flip, or transform any combination of these.<br />
+In the method that performs 2D affine transformation, the transformation can be specified by directly specifying each vertex after transformation instead of the 2D affine matrix, but even in this case, transformation that cannot be defined by 2D affine transformation should be performed. You can not.<br />
+For affine transformations, pixels are considered to have a size of 1.0 x 1.0.<br />
+That is, the pixel at position (0, 0) is considered to be in the range (-0.5, -0.5)-(0.5, 0.5).</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

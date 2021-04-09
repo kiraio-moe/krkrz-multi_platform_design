@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>interval - Event occurrence cycle</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Timer.interval</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd>Event occurrence cycle</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Timer.html">Timer Class</a> Properties</dd>
+<dt>Explanation</dt>
+<dd><p>Represents the event occurrence cycle.<br />
+You can also set the value.<br />
+The unit is ms (milliseconds), and the event fires every specified time.<br />
+You can also specify the generation cycle with a real number.<br />
+In the current version, you can specify with a precision of 1/65536 milliseconds (numbers after the decimal point are rounded to this precision).<br />
+Even if it has an accuracy of about 1/65536 milliseconds, there is no guarantee that the event handler will actually be called with this accuracy.<br />
+Actually, there is a fluctuation of about 3 to 10 ms when the event is called.<br />
+However, on average and in the long run, the event will be automatically adjusted to occur at the cycle specified by this property.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

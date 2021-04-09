@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>Array - </title>
+</head>
+<body>
+<h1><a name="top" id="top">Array</a></h1>
+<div class="para"><p>The <code>Array</code> class is a class that handles arrays.</p>
+
+<p>You can create objects of this class and treat them like arrays using the subscripts specified by the indirect member selection operator.<br />
+Subscripts are integers.<br />
+<code>0</code> represents the first element and <code>1</code> represents the next element.<br />
+If you specify a negative integer, it is treated as specified from the end of the array (<code>-1</code> represents the last element).<br />
+The size of the array does not need to be declared.<br />
+The size is automatically expanded to the size of the specified subscript, and elements with no assigned value are initialized to void.</p>
+
+<p>There is also a count property, which represents the size of the array.<br />
+You can also change the size of the array by assigning a value to the count property.</p>
+
+<p>You can use <code>[]</code> to write an object of class Array in an expression on the fly.<br />
+In <code>[]</code>, separate the expressions that are the initial elements, separated by commas.<br />
+For example<br />
+<code>var ar = ["a", "b", "c"];</code><br />
+If you write, ar is assigned a reference to an object of the Array class that contains the elements <code>"a"</code>, <code>"b"</code>, and <code>"c"</code>.<br />
+You can also use <code>[]</code> to generate an Array class.<br />
+<code>var ar = [];</code><br />
+When<br />
+<code>var ar = new Array();</code><br />
+Is the same.</p>
+</div>
+<h1>Member</h1><div class="para">
+<dl>
+<dt>Method</dt>
+<dd>
+<a class="jump" href="func_Array_add.html">add</a> (Adds the specified value to the end of the array.)<br />
+<a class="jump" href="func_Array_assign.html">assign</a> (Copy the array.)<br />
+<a class="jump" href="func_Array_assignStruct.html">assignStruct</a> (Copy the array along with the structure.)<br />
+<a class="jump" href="func_Array_clear.html">clear</a> (Delete all the elements of the array.)<br />
+<a class="jump" href="func_Array_erase.html">erase</a> (Deletes the specified subscript element.)<br />
+<a class="jump" href="func_Array_find.html">find</a> (Returns the subscript where the specified value first appears.)<br />
+<a class="jump" href="func_Array_forEach.html">forEach</a> (Executes the argument function for each element of the array.)<br />
+<a class="jump" href="func_Array_includes.html">includes</a> (Determines if it contains the specified value.)<br />
+<a class="jump" href="func_Array_insert.html">insert</a> (Inserts the specified value at the specified position.)<br />
+<a class="jump" href="func_Array_join.html">join</a> (Combine the arrays into a single string.)<br />
+<a class="jump" href="func_Array_load.html">load</a> (Read the array from a file.)<br />
+<a class="jump" href="func_Array_loadStruct.html">loadStruct</a> (Enter structured data from a file)<br />
+<a class="jump" href="func_Array_pack.html">pack</a> (Returns the array element in octet according to the character string specified by the argument.)<br />
+<a class="jump" href="func_Array_pop.html">pop</a> (Takes one element from the end of the array and returns it.)<br />
+<a class="jump" href="func_Array_push.html">push</a> (Adds the specified element to the end of the array.)<br />
+<a class="jump" href="func_Array_remove.html">remove</a> (Deletes the element that has the same value as the specified value.)<br />
+<a class="jump" href="func_Array_reverse.html">reverse</a> (Upside down the order of the elements in the array.)<br />
+<a class="jump" href="func_Array_save.html">save</a> (Write the array to a file.)<br />
+<a class="jump" href="func_Array_saveStruct.html">saveStruct</a> (Outputs structured data to a file.)<br />
+<a class="jump" href="func_Array_shift.html">shift</a> (Takes one element from the beginning of the array and returns it.)<br />
+<a class="jump" href="func_Array_sort.html">sort</a> (Sort the array.)<br />
+<a class="jump" href="func_Array_split.html">split</a> (Split the string.)<br />
+<a class="jump" href="func_Array_unshift.html">unshift</a> (Add the element to the beginning of the array.)<br />
+</dd>
+<dt>Property</dt>
+<dd>
+<a class="jump" href="prop_Array_count.html">count</a> (Represents the size of the array.)<br />
+<a class="jump" href="prop_Array_length.html">length</a> (Represents the size of the array. Same as count.)<br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

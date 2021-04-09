@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>match - Regular expression pattern matching is performed on the character string specified in the argument, and an array containing the matching result is returned.</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">RegExp.match</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Regular expression pattern matching is performed on the character string specified in the argument, and an array containing the matching result is returned.</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_RegExp.html">RegExpclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">match(<span class="arg">text</span>:string) :Array</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="matchArguments of">
+<tr><td valign="top"><span class="argname">text</span></td>
+<td><p>String</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd><p>If the pattern does not match, the number of elements in the array will be 0.<br />
+If there is a match, element 0 (the first element) contains the entire matched part, and subsequent elements contain each matching part (the part specified by () in the regular expression pattern).</p>
+</dd>
+<dt>Explanation</dt>
+<dd><p>It is the same as the exec method, except that it does not update the value of the property of this object.</p>
+</dd>
+<dt>Reference</dt>
+<dd>
+RegExt.exec<br />
+
+</dd>
+</dl>
+</div>
+</body>
+</html>

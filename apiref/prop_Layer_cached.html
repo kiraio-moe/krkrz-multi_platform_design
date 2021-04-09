@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>cached - Do you want to cache</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.cached</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd>Do you want to cache</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Layer.html">Layer Class</a> Properties</dd>
+<dt>Explanation</dt>
+<dd><p>Indicates whether to cache.<br />
+You can also set the value.<br />
+In the case of setting to cache, you will have an image in which you and all child layers are overlapped in advance, and unless you or the child layer is changed after that, you and the child layer will be overlapped. Does not perform image operations on (automatically reconfigures the cache if changed). If the setting is not cached, the superposition operation is performed every time the screen is updated. By default, it is not cached, but it is automatically cached during transitions (although this property does not represent the presence or absence of caches that are automatically enabled, such as during transitions).<br />
+If you know that there is no change in the image or state of a layer's image and its child layers, and the screen rewrites frequently, caching that layer will improve overall performance.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

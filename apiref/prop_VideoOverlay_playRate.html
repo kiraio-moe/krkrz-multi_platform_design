@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>playRate - [Windows *] Playback speed</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">VideoOverlay.playRate</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd>[Windows *] Playback speed</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_VideoOverlay.html">VideoOverlay Class</a> Properties</dd>
+<dt>Explanation</dt>
+<dd><p>Set the playback speed of the media.<br />
+Specify 1.0 for normal playback speed, 0.5 for half playback speed, and 2 for double playback speed.<br />
+The configurable value is determined by the DirectShow filter.<br />
+Reference: For MPEG files with audio, values larger than 0.0 to 2.0 can be set.<br />
+For MPEG files without audio, it can be set within the range of double (probably) from a value greater than 0.0, but the actual playback speed is limited by the processing speed.<br />
+Android always returns 0. Nothing happens when I set it.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

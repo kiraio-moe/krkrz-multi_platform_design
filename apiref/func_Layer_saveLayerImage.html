@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>saveLayerImage - Save image</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.saveLayerImage</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Save image</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Layer.html">Layerclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">saveLayerImage(<span class="arg">name</span>, <span class="arg">type</span><span class="defarg">=<span class="defargval">bmp</span></span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="saveLayerImageArguments of">
+<tr><td valign="top"><span class="argname">name</span></td>
+<td><p>Specify the storage name to save.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">type</span></td>
+<td><p>Specify the image format to save as a character string.<br />
+The following formats can be specified in the current version.</p>
+
+<ul>
+<li>"bmp" or "bmp32" : It is a 32bpp BMP. It also saves the alpha channel (mask).</li>
+<li>"bmp24" : It is a 24bpp BMP. The alpha channel (mask) is not saved.</li>
+<li>"bmp8" : 8bpp BMP. The alpha channel (mask) is not saved. The image is reduced in color using 4x4 organized dithering with a fixed palette of 252 colors.</li>
+<li>"jpg" : It's JPEG. The alpha channel (mask) is not saved. Images are saved with 90% quality.</li>
+<li>"jpg###" : It's JPEG. The alpha channel (mask) is not saved. The image will be saved with the quality specified by ###. "jpg010" is 10%, "jpg100" is 100%, and "jpg080" is 80%.</li>
+<li>"png" : 32bpp PNG. It also saves the alpha channel (mask).</li>
+<li>"png24" : 24bpp PNG. The alpha channel (mask) is not saved.</li>
+<li>"tlg5" : It is a 32bpp TLG5. It also saves the alpha channel (mask).</li>
+<li>"tlg524" : It is a 24bpp TLG5. The alpha channel (mask) is not saved.</li>
+<li>"tlg6" : It is a 32bpp TLG6. It also saves the alpha channel (mask).</li>
+<li>"tlg624" : It is a 24bpp TLG6. The alpha channel (mask) is not saved.</li>
+</ul>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Saves the file in the storage (file) specified by name in the image format specified by type.<br />
+Only layer images are saved, area images cannot be saved.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

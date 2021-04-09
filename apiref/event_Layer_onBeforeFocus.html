@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>onBeforeFocus - Immediately before receiving focus</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.onBeforeFocus</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Immediately before receiving focus</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Layer.html">Layerclass</a>Event</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">onBeforeFocus(<span class="arg">layer</span>, <span class="arg">blurred</span>, <span class="arg">direction</span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="onBeforeFocusArguments of">
+<tr><td valign="top"><span class="argname">layer</span></td>
+<td><p>A layer object that receives focus.<br />
+Normally this is passed, but you can have the focus passed to that layer by specifying a different layer object when calling the event of the same name in the superclass.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">blurred</span></td>
+<td><p>A layer object that loses focus.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">direction</span></td>
+<td><p>True if the focus is changed by a backward search of the focus, false if it is done by a forward search of the focus.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>This event occurs just before receiving focus.<br />
+When specifying the layer that receives the focus, that layer can be specified in the first argument of the event with the same name in the superclass.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

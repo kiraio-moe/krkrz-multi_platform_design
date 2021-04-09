@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>setZoom - [Windows *] Layer magnification setting</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Window.setZoom</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>[Windows *] Layer magnification setting</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Window.html">Windowclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">setZoom(<span class="arg">numer</span>, <span class="arg">denom</span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="setZoomArguments of">
+<tr><td valign="top"><span class="argname">numer</span></td>
+<td><p>Specify the numerator of magnification as an integer.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">denom</span></td>
+<td><p>Specify the denominator of the magnification as an integer.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Specifies the magnification of the layer.<br />
+The image is enlarged or reduced to the size specified by the numerator / denominator.<br />
+If the numerator / denominator has a common divisor, it is automatically reduced, so the value read by the Window.zoomNumer property or Window.zoomDenom property may differ from the value specified by this method.<br />
+In the current version of Kirikiri, whether or not interpolation is applied when enlarging / reducing depends on the hardware and driver of the graphic card.<br />
+If the hardware or driver does not require interpolation, the image quality will be poor.<br />
+Depending on the option, KiriKiri investigates the hardware that can be used for enlargement / reduction every time the magnification is changed, so this method is suitable for applications where the enlargement ratio is continuously changed for production. Is not ...<br />
+Has no meaning when drawing the Canvas</p>
+</dd>
+<dt>Reference</dt>
+<dd>
+<a class="jump" href="prop_Window_zoomNumer.html">Window.zoomNumer</a><br />
+<a class="jump" href="prop_Window_zoomDenom.html">Window.zoomDenom</a><br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

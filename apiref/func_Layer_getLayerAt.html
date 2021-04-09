@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>getLayerAt - Get the layer at the specified position</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.getLayerAt</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Get the layer at the specified position</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Layer.html">Layerclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">getLayerAt(<span class="arg">x</span>, <span class="arg">y</span>, <span class="arg">exclude_self</span><span class="defarg">=<span class="defargval">false</span></span>, <span class="arg">get_disabled</span><span class="defarg">=<span class="defargval">false</span></span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="getLayerAtArguments of">
+<tr><td valign="top"><span class="argname">x</span></td>
+<td><p>Specify the x-coordinate of the position of the layer you want to acquire in pixels on the display coordinates.<br />
+The display coordinates of the layer that executes this method are used (not the display coordinates on the primary layer).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">y</span></td>
+<td><p>Specify the y coordinate of the position of the layer you want to acquire in pixel units on the display coordinates.<br />
+The display coordinates of the layer that executes this method are used (not the display coordinates on the primary layer).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">exclude_self</span></td>
+<td><p>Specifies whether to exclude itself from the layer search.<br />
+If you specify false, your own layer is also included in the search.<br />
+If you specify true, your own layer is excluded from the search and treated as if it did not exist.<br />
+If this argument is omitted, false is assumed.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">get_disabled</span></td>
+<td><p>Specifies whether to get objects for layers that are disabled.<br />
+If false is specified, null is returned if a layer that is disabled (for example, the Layer.enabled property is false) is in the specified position.<br />
+If true is specified, if an invalid layer is in the specified position, that layer object is returned.<br />
+If this argument is omitted, false is assumed.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd><p>The layer object that was in the specified position.<br />
+Null is returned if there is no layer at the specified position.</p>
+</dd>
+<dt>Explanation</dt>
+<dd><p>Returns the layer object at the position indicated by x, y.<br />
+The collision detection uses the same mechanism as the normal mouse event collision detection.<br />
+In other words, the specified position is viewed from the front in the layer stacking order, and the layer corresponding to the hit judgment is returned first.<br />
+You can exclude the layer that executes this method from the search by specifying true with the exclude_self argument.</p>
+</dd>
+<dt>Reference</dt>
+<dd>
+<a class="jump" href="prop_Layer_hitType.html">Layer.hitType</a><br />
+<a class="jump" href="prop_Layer_hitThreshold.html">Layer.hitThreshold</a><br />
+<a class="jump" href="event_Layer_onHitTest.html">Layer.onHitTest</a><br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

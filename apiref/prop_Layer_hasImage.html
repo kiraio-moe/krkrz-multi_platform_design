@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>hasImage - Whether the layer has an image</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.hasImage</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd>Whether the layer has an image</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Layer.html">Layer Class</a> Properties</dd>
+<dt>Explanation</dt>
+<dd><p>Indicates whether the layer has an image.<br />
+You can also set the value.<br />
+If you specify true, the layer will have an image.<br />
+This is the default.<br />
+If you specify false, the image of the layer is released and the layer has no image.<br />
+Setting the Layer.type property resets hasImage to true.<br />
+If the layer does not have an image and the Layer.type is ltOpaque, the layer will appear as fully filled with Layer.neutralColor.<br />
+Other types are treated as completely transparent.<br />
+Layers with this property false are considered to be entirely opaque (fully transparent) if Layer.hitType is htMask.<br />
+Also, you cannot manipulate drawing or fonts.<br />
+Layers with this property fake usually combine multiple child layers and use themselves as layers that are only transparent.<br />
+.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

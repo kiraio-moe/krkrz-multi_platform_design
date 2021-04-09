@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>Texture - </title>
+</head>
+<body>
+<h1><a name="top" id="top">Texture</a></h1>
+<div class="para"><p>Texture class.<br />
+It almost corresponds to the texture on the hardware.</p>
+
+<p>Since the texture is invalidated by invalidating, it is recommended to explicitly call invalidate when it is no longer needed.</p>
+</div>
+<h1>Member</h1><div class="para">
+<dl>
+<dt>Constructor</dt>
+<dd>
+<a class="jump" href="func_Texture_Texture.html">Texture</a> (File read version constructor)<br />
+<a class="jump" href="func_Texture_Texture_1.html">Texture</a> (Mipmap generated constructor)<br />
+<a class="jump" href="func_Texture_Texture_2.html">Texture</a> (Sized constructor)<br />
+<a class="jump" href="func_Texture_Texture_3.html">Texture</a> (Bitmap copy version constructor)<br />
+</dd>
+<dt>Method</dt>
+<dd>
+<a class="jump" href="func_Texture_copyRect.html">copyRect</a> (Rectangle copy (position specified Rect version))<br />
+<a class="jump" href="func_Texture_copyRect_1.html">copyRect</a> (Rectangle copy (position designation))<br />
+<a class="jump" href="func_Texture_copyRect_2.html">copyRect</a> (Rectangle copy (all copy))<br />
+<a class="jump" href="func_Texture_setDrawSize.html">setDrawSize</a> (Setting drawing standard size)<br />
+</dd>
+<dt>Property</dt>
+<dd>
+<a class="jump" href="prop_Texture_height.html">height</a> (Height (effective range))<br />
+<a class="jump" href="prop_Texture_isGray.html">isGray</a> (Whether it is 8-bit color (alpha texture inside))<br />
+<a class="jump" href="prop_Texture_isPowerOfTwo.html">isPowerOfTwo</a> (Whether the texture size is a power of 2)<br />
+<a class="jump" href="prop_Texture_margin9Patch.html">margin9Patch</a> (9patch margin)<br />
+<a class="jump" href="prop_Texture_memoryHeight.html">memoryHeight</a> (Actual (on hardware) height)<br />
+<a class="jump" href="prop_Texture_memoryWidth.html">memoryWidth</a> (Actual (on hardware) width)<br />
+<a class="jump" href="prop_Texture_nativeHandle.html">nativeHandle</a> (Native handle (environment dependent))<br />
+<a class="jump" href="prop_Texture_stretchType.html">stretchType</a> (Interpolation method when scaling)<br />
+<a class="jump" href="prop_Texture_width.html">width</a> (Width (effective range))<br />
+<a class="jump" href="prop_Texture_wrapModeHorizontal.html">wrapModeHorizontal</a> (Horizontal lap mode)<br />
+<a class="jump" href="prop_Texture_wrapModeVertical.html">wrapModeVertical</a> (Vertical lap mode)<br />
+</dd>
+<dt>Constant</dt>
+<dd>
+stLinear (Linear interpolation. Set to the stretchType property.)<br />
+stNearest (Nearest point method. Set to the stretchType property.)<br />
+wmClampToEdge (Stretching the edge color. Set to the wrapModeHorizontal / wrapModeVertical property. Must be this constant if it is not a power of 2 size (default).)<br />
+wmMirror (Mirror repeat. Set to the wrapModeHorizontal / wrapModeVertical property.)<br />
+wmRepeat (repetition. Set to the wrapModeHorizontal / wrapModeVertical property.)<br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

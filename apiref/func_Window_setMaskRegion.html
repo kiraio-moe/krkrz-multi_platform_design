@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>setMaskRegion - Set Windows + window region according to mask</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Window.setMaskRegion</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Set Windows + window region according to mask</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Window.html">Windowclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">setMaskRegion(<span class="arg">threshold</span><span class="defarg">=<span class="defargval">1</span></span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="setMaskRegionArguments of">
+<tr><td valign="top"><span class="argname">threshold</span></td>
+<td><p>Specifies the mask threshold (threshold value).<br />
+The window is cropped and displayed in the shape of the mask of the primary layer (layer opacity information) that is larger than this value.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Set the window region according to the mask of the primary layer (layer opacity information).<br />
+You can make the window irregular.<br />
+To prevent the window size and position from shifting from the displayed primary layer, you need to do the following.<br />
+Set Window.borderStyle to bsNone.<br />
+Set Layer.imageLeft and Layer.imageTop to 0.</p>
+</dd>
+<dt>Reference</dt>
+<dd>
+<a class="jump" href="func_Window_removeMaskRegion.html">Window.removeMaskRegion</a><br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

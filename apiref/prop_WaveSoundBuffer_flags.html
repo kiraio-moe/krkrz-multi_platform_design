@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>flags - flag</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">WaveSoundBuffer.flags</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd>flag</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_WaveSoundBuffer.html">WaveSoundBuffer Class</a> Properties</dd>
+<dt>Explanation</dt>
+<dd><p>You can get an object that represents the flag.<br />
+This object has 0 to 15 properties, each representing the value of each flag.<br />
+Properties can be accessed using the indirect member selection operator ('[]' operator).<br />
+You can also set values for these properties.<br />
+Values range from 0 to 9999 and cannot be below or above this.<br />
+The count property of this object always returns 16.<br />
+This object has a reset method, which resets all flags to 0.<br />
+If you have not opened the media, setting a value for this object's properties will be ignored.<br />
+This object looks like an array object at first glance, but it is not a so-called TJS array object (an object of the'Array' class).<br />
+All flags are reset to 0 with the WaveSoundBuffer.open method.<br />
+Example:</p>
+
+<p><code><br />
+var buf = new WaveSoundBuffer (window);<br />
+(Omitted)<br />
+buf.flags.reset ();<br />
+// Reset all flags to 0<br />
+var cnt = buf.flags.count;<br />
+// cnt contains 16<br />
+buf.flags [4] = 34;<br />
+// Substitute 34 for flag 4<br />
+</code></p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

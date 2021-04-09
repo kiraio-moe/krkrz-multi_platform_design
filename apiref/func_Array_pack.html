@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>pack - Returns the array element in octet according to the character string specified by the argument.</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Array.pack</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Returns the array element in octet according to the character string specified by the argument.</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Array.html">Arrayclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">pack(<span class="arg">template</span>:string)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="packArguments of">
+<tr><td valign="top"><span class="argname">template</span></td>
+<td><p>The following characters can be used in the template string.</p>
+
+<ul>
+<li>a : ASCII string (null-terminated)</li>
+<li>A : ASCII string (spaces are completed)</li>
+<li>b : Binary string (from low-order bit to high-order bit)</li>
+<li>B : Binary string (from high-order bit to low-order bit)</li>
+<li>c : Signed 1-byte number (-128 to 127)</li>
+<li>C : Unsigned 1-byte number (0 to 255)</li>
+<li>d : Double precision floating point value</li>
+<li>f : Single precision floating point value</li>
+<li>h : Hexagonal string (low nybble first)</li>
+<li>H : Hexic string (high nybble first)</li>
+<li>i : Signed int number (usually 4 bytes)</li>
+<li>I : Unsigned int number (usually 4 bytes)</li>
+<li>l : Signed long number (usually 4 bytes)</li>
+<li>L : Unsigned long number (usually 4 bytes)</li>
+<li>n : Unsigned short number (network byte order)</li>
+<li>N : Unsigned long number (network byte order)</li>
+<li>s : Signed short number (usually 2 bytes)</li>
+<li>S : Unsigned short number (usually 2 bytes)</li>
+<li>v : Unsigned short value (little endian)</li>
+<li>V : Unsigned long value (little endian)</li>
+<li>x : Null character</li>
+<li>X : 1 byte backward</li>
+<li>@ : Fill null characters to absolute position</li>
+<li>m : Base64 decode</li>
+</ul>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>The specified string is called a template.<br />
+A template is a list of typed characters and their lengths.<br />
+When * is specified as the length, it represents all the remaining lengths.<br />
+If the length is omitted, it is treated as 1.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

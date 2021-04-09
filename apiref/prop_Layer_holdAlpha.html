@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>holdAlpha - Whether to protect the alpha channel</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.holdAlpha</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd>Whether to protect the alpha channel</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Layer.html">Layer Class</a> Properties</dd>
+<dt>Explanation</dt>
+<dd><p>Specifies whether to protect the alpha channel in drawing.<br />
+You can also set the value. The default is false.<br />
+For some drawing operations, this property allows you to specify whether to keep the alpha channel (mask image) of the image when the Layer.face property is dfOpaque.<br />
+For many methods, fake this property for faster drawing.<br />
+If the Layer.type is neither ltAlpha nor ltAddAlpha, the alpha channel of the image is not used and it is safe to set this property to false.<br />
+However, if this property is false, the alpha channel will be destroyed.<br />
+The following methods are not affected by this property.</p>
+
+<ul>
+<li>Layer.loadImages</li>
+<li>Layer.loadProvinceImage</li>
+<li>Layer.setMainPixel</li>
+<li>Layer.setMaskPixel</li>
+<li>Layer.setProvincePixel</li>
+<li>Layer.piledCopy</li>
+<li>Layer.adjustGamma(Alpha channel is always protected)</li>
+<li>Layer.doGrayScale(Alpha channel is always protected)</li>
+<li>Layer.flipLR</li>
+<li>Layer.flipUD</li>
+<li>Layer.assignImages</li>
+</ul>
+
+<p>The following methods are affected by this property.</p>
+
+<ul>
+<li>Layer.copyRect</li>
+<li>Layer.stretchCopy</li>
+<li>Layer.affineCopy</li>
+<li>Layer.fillRect</li>
+<li>Layer.colorRect</li>
+<li>Layer.drawText</li>
+<li>Layer.operateRect</li>
+<li>Layer.operateStretch</li>
+<li>Layer.operateAffine</li>
+</ul>
+</dd>
+</dl>
+</div>
+</body>
+</html>

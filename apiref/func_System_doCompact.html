@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>doCompact - Compact memory</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">System.doCompact</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Compact memory</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_System.html">Systemclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">doCompact(<span class="arg">level</span><span class="defarg">=<span class="defargval">clAll</span></span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="doCompactArguments of">
+<tr><td valign="top"><span class="argname">level</span></td>
+<td><p>Specify the level. Specifying clIdle does the same thing as compactification, which occurs when the system is idle (the system is relatively inactive).<br />
+The current version features his TJS2 garbage collection.</p>
+
+<ul>
+<li>If you specify clDeactivate, it does the same compactification that occurs when Kirikiri becomes inactive (when other applications become active). The current version clears the temporary image buffer for layer operations, the layer cache, the XP3 archive segment (storage fragment) cache, and the automatic search path cache.</li>
+<li>If you specify clMinimize, it does the same compactification that occurs when Kirikiri is minimized. In the current version, the drawing character cache and image cache are cleared.</li>
+<li>If clAll is specified, all of the above compactifications will be performed.</li>
+</ul>
+
+<p>The level of compactification increases in the order of clIdle <clDeactivate <clMinimize <clAll.<br />
+Specifying a higher level also results in the compactification that is done at the lower levels.<br />
+For example, running clDeactivate also does what clIdle does.<br />
+If the argument is omitted, clAll is assumed to be specified.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Makes the memory compact.<br />
+Compactification is the process of reducing memory usage by releasing unused memory and memory for various caches.<br />
+Kirikiri does this automatically, so you don't usually have to worry too much, but you can use this method if you want to force it to be done on the program side.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

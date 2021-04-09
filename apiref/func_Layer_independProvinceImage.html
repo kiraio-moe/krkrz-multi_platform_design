@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>independProvinceImage - Canceling sharing of area images</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.independProvinceImage</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Canceling sharing of area images</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Layer.html">Layerclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">independProvinceImage(<span class="arg">copy</span><span class="defarg">=<span class="defargval">true</span></span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="independProvinceImageArguments of">
+<tr><td valign="top"><span class="argname">copy</span></td>
+<td><p>Specifies whether to copy the original image when unsharing.<br />
+If true is specified, the original image will be copied.<br />
+If false is specified, the original image will not be copied and the content of the image will be undefined.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Forcibly cancels the sharing state of the area image.<br />
+Kirikiri When you copy an entire image to another layer with assignImages etc., the same image will be shared without actually copying the image buffer.<br />
+Normally, this sharing state is automatically released just before you try to make changes to the image, but you can force it to be released with this method.<br />
+If you specify false for the copy argument, the image is unshared, but the original image is not guaranteed to be inherited (the content of the image is undefined), but the unsharing is done faster. can do.<br />
+Since it is not necessary to inherit the original image when rewriting the entire image of the layer, it may be more efficient to call this method with false specified in advance before drawing.<br />
+This method does nothing if the image is not shared.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

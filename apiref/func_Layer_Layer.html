@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>Layer - Building a Layer object</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.Layer</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Building a Layer object</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Layer.html">Layerclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">Layer(<span class="arg">window</span>, <span class="arg">parent</span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="LayerArguments of">
+<tr><td valign="top"><span class="argname">window</span></td>
+<td><p>Specifies the window (an object of the Window class) that will own this layer.<br />
+Once the window is determined, it cannot be changed.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">parent</span></td>
+<td><p>Specifies the layer that will be the parent of this layer. If null is specified, it will be the primary layer.<br />
+There can only be one primary layer in a window, and it is the parent layer of all layers that must exist when using layers.<br />
+However, some drawing devices (configurable in Window.drawDevice) allow windows to have multiple primary layers.<br />
+The parent of the layer can be changed with the Layer.parent property.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Build an object of Layer class. The Layer class is built in a hidden state.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

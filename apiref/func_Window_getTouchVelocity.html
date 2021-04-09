@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>getTouchVelocity - Get touch coordinate movement speed</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Window.getTouchVelocity</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Get touch coordinate movement speed</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Window.html">Windowclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">getTouchVelocity(<span class="arg">id</span>, <span class="arg">x</span>, <span class="arg">y</span>, <span class="arg">speed</span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="getTouchVelocityArguments of">
+<tr><td valign="top"><span class="argname">id</span></td>
+<td><p>Specify Touch ID.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">x</span></td>
+<td><p>Returns the mouse coordinate movement speed in the X-axis direction.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">y</span></td>
+<td><p>Returns the mouse coordinate movement speed in the Y-axis direction.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">speed</span></td>
+<td><p>The mouse coordinate movement speed is returned.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd><p>Returns whether the acquisition was successful or unsuccessful</p>
+</dd>
+<dt>Explanation</dt>
+<dd><p>Get the current touch movement speed in pixel / sec.<br />
+It is measured from the time it is pressed until it is released.<br />
+Since it supports multi-touch, the speed is measured for each ID.<br />
+Note that the measured speed information disappears when the method call of the Window.onTouchUp event ends.</p>
+</dd>
+<dt>Reference</dt>
+<dd>
+<a class="jump" href="func_Window_getMouseVelocity.html">Window.getMouseVelocity</a><br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

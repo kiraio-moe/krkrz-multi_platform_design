@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>KiriKiri Z Multi-Platform API Reference</title>
+</head>
+<body>
+<h1>KiriKiri Z Multi-Platform API Reference</h1>
+
+<p>KiriKiri Z Multi-platform API reference.  </p>
+
+<h1>About the multi-platform version</h1>
+
+<p>It is a version that works on Android in addition to Windows.  <br />
+GPU drawing is the main draw so that drawing speed can be obtained even in a weak environment.  <br />
+Currently it is not partially compatible with older versions.  </p>
+
+<h1>Environment-dependent functions</h1>
+
+<p>Not all methods and properties are available in the multi-platform version in all environments.  <br />
+Some functions are specific to the environment.  <br />
+Environment-specific methods etc. are written at the beginning of the sentence as [Windows] or [Android] in the explanation summary.  <br />
+Methods etc. written that way can only be used in that environment.  <br />
+Some call nothing and some exceptions occur.  <br />
+For more information, use the trailing symbol as shown below.  </p>
+
+<ul>
+<li>[Windows+] It can be used only on Windows, and it is prohibited to use it in other environments because there are exceptions and indefinite operation.</li>
+<li>[Windows*] It can be used on Windows, and nothing happens in other environments.</li>
+<li>[Windows] It can be used on Windows, and its operation is uncertain in other environments.</li>
+<li>[Android+] It can be used on Android, and it is prohibited to use it in other environments because there are exceptions and indefinite behavior.</li>
+<li>[Android*] It can be used on Android, and nothing happens in other environments.</li>
+<li>[Android] It can be used on Android, and its operation is uncertain in other environments.</li>
+</ul>
+
+<p>You can dynamically determine which environment you have by using the <code>System.isWindows</code> or <code>System.isAndroid</code> properties.<br />
+For static judgment, use the preprocessor.<br />
+"Windows" is set to 1 on Windows and "android" is set to 1 on Android.  <br />
+When making a static judgment, be aware that the output result of bytecode depends on the environment.  <br />
+The bytecode for the compiled environment is output.  <br />
+To avoid this, it is necessary to change the preprocessor value in advance before calling the compile function to make it suitable for each environment and bytecode it.</p>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>focusable - [Windows *] Can I get focus?</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Window.focusable</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd>[Windows *] Can I get focus?</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Window.html">Window Class</a> Properties</dd>
+<dt>Explanation</dt>
+<dd><p>Indicates whether focus can be obtained.<br />
+You can also set the value.<br />
+If set to false, you will not be able to get focus, that is, the window will not be active.<br />
+As a side effect, you will not be able to grab the title bar to move the window, resize the window, or press the "x" button to close the window.<br />
+You can use the Window.trapKey property if you want to get keyboard input.<br />
+This is usually used to implement a window that appears in the foreground, such as a pop-up menu, but does not get its own focus.<br />
+In the current version, the settings for this property may be lost when the window goes to full screen or returns from full screen.<br />
+Always true on Android.</p>
+</dd>
+<dt>Reference</dt>
+<dd>
+<a class="jump" href="prop_Window_trapKey.html">Window.trapKey</a><br />
+<a class="jump" href="event_Window_onPopupHide.html">Window.onPopupHide</a><br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

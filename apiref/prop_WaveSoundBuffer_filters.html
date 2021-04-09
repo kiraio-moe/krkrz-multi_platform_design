@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>filters - Filter array</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">WaveSoundBuffer.filters</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd>Filter array</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_WaveSoundBuffer.html">WaveSoundBuffer Class</a> Properties</dd>
+<dt>Explanation</dt>
+<dd><p>An array (an instance of the Array class) that holds the insertion filter object.<br />
+By registering a filter object in this array, you can apply various effects to the audio in real time during playback.<br />
+Changes to the filter array will only take effect when the WaveSoundBuffer.open method is executed.<br />
+Until then, any changes to this array will not take effect.<br />
+Example:<br />
+<code><br />
+var buf = new WaveSoundBuffer (window);<br />
+(Omitted)<br />
+buf.filters.clear ();<br />
+// Clear the filter array<br />
+buf.filters.add (new WaveSoundBuffer.PhaseVocoder ());<br />
+// Add Phase Vocoder filter<br />
+buf.filters [0] .time = 0.5;<br />
+// Double speed playback<br />
+</code></p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

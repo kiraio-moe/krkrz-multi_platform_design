@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>assign - Copy the dictionary array</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Dictionary.assign</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Copy the dictionary array</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Dictionary.html">Dictionaryclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">assign(<span class="arg">src</span>:Dictionary, <span class="arg">clear</span>:bool<span class="defarg">=<span class="defargval">true</span></span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="assignArguments of">
+<tr><td valign="top"><span class="argname">src</span></td>
+<td><p>Copy source dictionary array</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">clear</span></td>
+<td><p>Whether to clear the contents</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Copies the entire contents of the other dictionary array specified by the argument.<br />
+If clar is false, it does not clear the contents of the destination (the object that executes the method) and overwrites the contents of the source dictionary array.<br />
+If a member with the same name as the copy source dictionary array exists in the copy destination dictionary array, the copy destination will be overwritten with the contents of the copy source.<br />
+When an array (an object of the Array class) is specified as the copy source array, it is assumed that the elements that should be members of this array are arranged in the order of name and value, and the contents of the array are regarded as this dictionary. Copy to the array.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

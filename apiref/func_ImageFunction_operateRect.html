@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>operateRect - Rectangle arithmetic composition</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">ImageFunction.operateRect</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Rectangle arithmetic composition</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_ImageFunction.html">ImageFunctionclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">operateRect(<span class="arg">dst</span>, <span class="arg">dleft</span>, <span class="arg">dtop</span>, <span class="arg">src</span>, <span class="arg">srcrect</span><span class="defarg">=<span class="defargval">null</span></span>, <span class="arg">cliprect</span><span class="defarg">=<span class="defargval">null</span></span>, <span class="arg">mode</span><span class="defarg">=<span class="defargval">omAuto</span></span>, <span class="arg">face</span><span class="defarg">=<span class="defargval">dfAlpha</span></span>, <span class="arg">opa</span><span class="defarg">=<span class="defargval">255</span></span>, <span class="arg">hda</span><span class="defarg">=<span class="defargval">false</span></span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="operateRectArguments of">
+<tr><td valign="top"><span class="argname">dst</span></td>
+<td><p>Specifies the Bitmap object to overlay.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">dleft</span></td>
+<td><p>Specifies the leftmost position of the calculation destination rectangle in pixels (at the image position of the calculation destination Bitmap).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">dtop</span></td>
+<td><p>Specifies the top position of the calculation destination rectangle in pixels (at the image position of the calculation destination Bitmap).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">src</span></td>
+<td><p>Specifies the Bitmap object from which to calculate. If not specified, the entire target will be applied.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">srcrect</span></td>
+<td><p>Specifies the rectangle to be calculated in a pixel-by-pixel Rect object (at the image position of the source Bitmap).<br />
+If not specified, the entire target will be applied.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">cliprect</span></td>
+<td><p>Specifies the clipping rectangle in the Rect object (at the image position of the overlay destination Bitmap).<br />
+Clipping is not performed when not specified.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">mode</span></td>
+<td><p>Specifies the operation mode.</p>
+
+<ul>
+<li>If omPsNormal is specified, Photoshop compatible alpha compositing is done.</li>
+<li>If omPsAdditive is specified, Photoshop compatible dodging (linear) compositing is done.</li>
+<li>If omPsSubtractive is specified, Photoshop compatible burn (linear) compositing is performed.</li>
+<li>If omPsMultiplicative is specified, Photoshop compatible multiplication and composition will be performed.</li>
+<li>If omPsScreen is specified, Photoshop compatible screen composition will be performed.</li>
+<li>If omPsOverlay is specified, Photoshop compatible overlay compositing is done.</li>
+<li>If omPsHardLight is specified, Photoshop compatible hard light composition will be performed.</li>
+<li>If omPsSoftLight is specified, Photoshop compatible softlight compositing will be performed.</li>
+<li>If omPsColorDodge is specified, Photoshop compatible dodge color composition will be performed.</li>
+<li>If omPsColorDodge5 is specified, dodge color composition compatible with Photoshop version 5.x and below will be performed.</li>
+<li>If omPsColorBurn is specified, Photoshop compatible burn-in color composition will be performed.</li>
+<li>If omPsLighten is specified, Photoshop compatible comparison (bright) compositing is performed.</li>
+<li>If omPsDarken is specified, Photoshop compatible comparison (dark) compositing is done.</li>
+<li>If omPsDifference is specified, Photoshop compatible absolute difference composition is performed.</li>
+<li>If omPsDifference5 is specified, absolute value composition of the difference compatible with Photoshop version 5.x and below is performed.</li>
+<li>If omPsExclusion is specified, Photoshop compatible exclusion composition is performed.</li>
+<li>If omAdditive is specified, additive synthesis is performed.</li>
+<li>If omSubtractive is specified, subtractive synthesis will be performed.</li>
+<li>If omMultiplicative is specified, multiplication synthesis is performed.</li>
+<li>If omDodge is specified, dodging synthesis will be performed.</li>
+<li>If omDarken is specified, comparative (dark) compositing is done.</li>
+<li>If omLighten is specified, comparison (bright) composition will be performed.</li>
+<li>If omScreen is specified, screen multiplication composition is performed.</li>
+<li>If omAlpha is specified, alpha synthesis will occur.</li>
+<li>If omAddAlpha is specified, additive alpha composition is done.</li>
+<li>If omOpaque is specified, the alpha information in src is ignored and src is always considered completely opaque.</li>
+</ul>
+</td></tr>
+<tr><td valign="top"><span class="argname">face</span></td>
+<td><p>Specify the drawing method.</p>
+
+<ul>
+<li>If dfAlpha is specified, the image is considered an image with an alpha channel and is drawn.</li>
+<li>If dfAddAlpha is specified, the image is considered as an image with an additive alpha channel and is drawn.</li>
+<li>If dfOpaque is specified, all images are considered completely opaque and will be drawn.</li>
+</ul>
+</td></tr>
+<tr><td valign="top"><span class="argname">opa</span></td>
+<td><p>Specifies the intensity of the operation (0 to 255).</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">hda</span></td>
+<td><p>Specifies whether to protect the alpha channel.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Computes the rectangular part of the specified operation source Bitmap at the specified position of the operation destination Bitmap in the specified mode.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

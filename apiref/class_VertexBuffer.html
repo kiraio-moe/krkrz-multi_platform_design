@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>VertexBuffer - </title>
+</head>
+<body>
+<h1><a name="top" id="top">VertexBuffer</a></h1>
+<div class="para"><p>VertexBuffer is a class that holds vertex information.</p>
+
+<p>It is used when you want to specify the position, UV coordinates, vertex color, etc. in detail.<br />
+It is also used when you want to perform mesh deformation instead of a simple rectangle, or when you want to use point sprites.</p>
+
+<p>Pointer access is also possible so that the plugin can change the array of vertices directly (but since OpenGL ES 3.0).<br />
+You can ensure the conventional layer extensibility by manipulating vertices with shader + TJS2 script + plug-in.<br />
+It's a bit more complicated than what was almost complete within a traditional plugin.</p>
+</div>
+<h1>Member</h1><div class="para">
+<dl>
+<dt>Constructor</dt>
+<dd>
+<a class="jump" href="func_VertexBuffer_VertexBuffer.html">VertexBuffer</a> (Create a vertex buffer by specifying a vertex array)<br />
+<a class="jump" href="func_VertexBuffer_VertexBuffer_1.html">VertexBuffer</a> (Create an uninitialized vertex buffer)<br />
+</dd>
+<dt>Method</dt>
+<dd>
+<a class="jump" href="func_VertexBuffer_lock.html">lock</a> (Locks vertex data and returns a pointer to the data (read / write specified))<br />
+<a class="jump" href="func_VertexBuffer_setVertex.html">setVertex</a> (Set / update vertex data)<br />
+<a class="jump" href="func_VertexBuffer_unlock.html">unlock</a> (Unlock vertex data)<br />
+</dd>
+<dt>Property</dt>
+<dd>
+<a class="jump" href="prop_VertexBuffer_dataType.html">dataType</a> (Vertex data type (readonly))<br />
+<a class="jump" href="prop_VertexBuffer_isIndex.html">isIndex</a> (Whether it is an index buffer (read only))<br />
+<a class="jump" href="prop_VertexBuffer_nativeHandle.html">nativeHandle</a> (Native handle)<br />
+<a class="jump" href="prop_VertexBuffer_size.html">size</a> (Buffer size (readonly))<br />
+<a class="jump" href="prop_VertexBuffer_updateType.html">updateType</a> (Data update frequency (readonly))<br />
+</dd>
+<dt>Constant</dt>
+<dd>
+dtByte (Data type constant (byte))<br />
+dtFixed (Data type constant (fixed))<br />
+dtFloat (Data type constant (float))<br />
+dtInt (Data type constant (int) ES3.0 or later required)<br />
+dtShort (Data type constant (short))<br />
+dtUByte (Data type constant (unsigned byte))<br />
+dtUInt (Data type constant (unsinged int) ES3.0 or later required)<br />
+dtUShort (Data type constant (unsigned short))<br />
+ptLineLoop (Primitive type constant (line loop))<br />
+ptLines (Primitive type constant (line list))<br />
+ptLineStrip (Primitive type constant (line strip))<br />
+ptPoints (Primitive type constant (point list))<br />
+ptTriangleFan (Primitive type constant (triangle fan))<br />
+ptTriangles (Primitive type constant (triangle list))<br />
+ptTriangleStrip (Primitive type constant (triangle strap))<br />
+utDynamic (Update frequency constant: Updated frequently)<br />
+utStatic (Update frequency constant: unchanged)<br />
+utStream (Update frequency constant: Update every frame)<br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

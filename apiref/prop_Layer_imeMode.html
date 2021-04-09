@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>imeMode - IME mode</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.imeMode</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd>IME mode</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Layer.html">Layer Class</a> Properties</dd>
+<dt>Explanation</dt>
+<dd><p>Represents the IME mode. You can also set the value.<br />
+When the layer is in focus, the IME switches to the mode specified here.<br />
+The values that can be set are as follows.</p>
+
+<ul>
+<li>Specifying imDisable disables the IME. IME cannot be used for input, and IME cannot be enabled by user operation.</li>
+<li>Specifying imClose disables the IME. Unlike imDisable, IME can be enabled by user operation.</li>
+<li>If you specify imOpen, IME is enabled.</li>
+<li>If imDontCare is specified, the enabled / disabled state of the IME inherits the previous state. You can enable or disable the IME by user interaction. In Japanese input, this is a general mode for allowing the user to freely enter half-width / full-width characters.</li>
+<li>If imSAlpha is specified, IME will be enabled and the half-width alphabet input mode will be set.</li>
+<li>If you specify imAlpha, IME is enabled and you are in full-width alphabet input mode.</li>
+<li>If you specify imHira, IME is enabled and you are in hiragana input mode.</li>
+<li>If imSKata is specified, IME will be enabled and the half-width katakana input mode will be set.</li>
+<li>If imKata is specified, IME will be enabled and the full-width Katakana input mode will be set.</li>
+<li>If imChinese is specified, IME will be enabled and the mode will accept double-byte Chinese input. It cannot be used in a Japanese environment.</li>
+<li>If imSHanguel is specified, the IME will be enabled and the mode will accept 1-byte Korean input. It cannot be used in a Japanese environment.</li>
+<li>If imHanguel is specified, the IME will be enabled and the mode will accept 2-byte Korean input. It cannot be used in a Japanese environment.</li>
+</ul>
+
+<p>If not specified, imDisable will be set.</p>
+</dd>
+<dt>Reference</dt>
+<dd>
+<a class="jump" href="prop_Window_imeMode.html">Window.imeMode</a><br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

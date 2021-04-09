@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>fillRect - Rectangle fill</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">ImageFunction.fillRect</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Rectangle fill</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_ImageFunction.html">ImageFunctionclass</a>method of</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">fillRect(<span class="arg">bmp</span>, <span class="arg">value</span>, <span class="arg">rect</span><span class="defarg">=<span class="defargval">null</span></span>, <span class="arg">isalpha</span><span class="defarg">=<span class="defargval">true</span></span>, <span class="arg">cliprect</span><span class="defarg">=<span class="defargval">null</span></span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="fillRectArguments of">
+<tr><td valign="top"><span class="argname">bmp</span></td>
+<td><p>Specifies the Bitmap object to fill.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">value</span></td>
+<td><p>Specify the fill color and value.<br />
+This value depends on the value of isalpha.</p>
+
+<ul>
+<li>true   : Specify the opacity and color in the 0xAARRGGBB format. Both the main and the mask are filled.</li>
+<li>false  : Specify the color in 0xRRGGBB format.</li>
+</ul>
+</td></tr>
+<tr><td valign="top"><span class="argname">rect</span></td>
+<td><p>Specifies the rectangle to fill with a Rect object in pixels (at the image position).<br />
+If not specified, the entire target will be applied.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">isalpha</span></td>
+<td><p>Specifies whether to have an alpha channel.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">cliprect</span></td>
+<td><p>Specify the clipping area with the Rect object (at the image position of the Bitmap).<br />
+When not specified, the entire target is applicable.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Fills the rectangle of the specified Bitmap image in the specified way.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

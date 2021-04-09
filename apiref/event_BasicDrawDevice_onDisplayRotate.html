@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>onDisplayRotate - [Windows +] When the screen is rotated</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">BasicDrawDevice.onDisplayRotate</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>[Windows +] When the screen is rotated</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_BasicDrawDevice.html">BasicDrawDeviceclass</a>Event</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">onDisplayRotate(<span class="arg">orientation</span>, <span class="arg">angle</span>, <span class="arg">bpp</span>, <span class="arg">width</span>, <span class="arg">height</span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="onDisplayRotateArguments of">
+<tr><td valign="top"><span class="argname">orientation</span></td>
+<td><p>The orientation of the screen.<br />
+It can be one of the following values:</p>
+
+<ul>
+<li>oriUnknown (Acquisition failure / unknown)</li>
+<li>oriPortrait(Vertical)</li>
+<li>oriLandscape(Landscape)</li>
+</ul>
+</td></tr>
+<tr><td valign="top"><span class="argname">angle</span></td>
+<td><p>The angle.<br />
+The angle is 0, 90, 180, 270, or -1, and if it cannot be obtained, it will be -1.<br />
+The angle is the rotation angle from the device default, so it will be 0 in portrait orientation for portrait devices.<br />
+On a normal device, it seems that there are many 0s in landscape orientation.<br />
+The portrait orientation is 0 for recent 8-inch tablets, etc., and the portrait orientation is the standard orientation.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">bpp</span></td>
+<td><p>bits per pixel.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">width</span></td>
+<td><p>The width of the screen.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">height</span></td>
+<td><p>The height of the screen.</p>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>Represents an event function that is called when the screen is rotated.</p>
+</dd>
+<dt>Reference</dt>
+<dd>
+<a class="jump" href="event_Window_onDisplayRotate.html">Window.onDisplayRotate</a><br />
+<a class="jump" href="prop_Window_displayOrientation.html">Window.displayOrientation</a><br />
+<a class="jump" href="prop_Window_displayRotate.html">Window.displayRotate</a><br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

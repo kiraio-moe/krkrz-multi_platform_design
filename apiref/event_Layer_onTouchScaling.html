@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>onTouchScaling - Enlarged operation</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.onTouchScaling</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd><p>Enlarged operation</p>
+</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Layer.html">Layerclass</a>Event</dd>
+<dt>Syntax</dt>
+<dd><span class="funcdecl">onTouchScaling(<span class="arg">startdistance</span>, <span class="arg">currentdistance</span>, <span class="arg">cx</span>, <span class="arg">cy</span>, <span class="arg">flag</span>)</span></dd>
+<dt>Arguments</dt>
+<dd><table rules="all" frame="box" cellpadding="3" summary="onTouchScalingArguments of">
+<tr><td valign="top"><span class="argname">startdistance</span></td>
+<td><p>The pixel distance when multi-touch is started.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">currentdistance</span></td>
+<td><p>The pixel distance of the touch when the event occurs.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">cx</span></td>
+<td><p>The x-coordinate (in client coordinates) value of the center position.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">cy</span></td>
+<td><p>The y-coordinate (in client coordinates) value of the center position.</p>
+</td></tr>
+<tr><td valign="top"><span class="argname">flag</span></td>
+<td><p>Multi-touch status flag.</p>
+
+<ul>
+<li>0x01     : It is set to the first event when multi-touch is started.</li>
+</ul>
+</td></tr>
+</table></dd>
+<dt>Return value</dt>
+<dd>None (void)</dd>
+<dt>Explanation</dt>
+<dd><p>It occurs when the enlargement operation is performed by multi-touch on the touch panel.<br />
+This event occurs on the layer with focus.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>pitch - Frequency axis scale</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">PhaseVocoder.pitch</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd>Frequency axis scale</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_PhaseVocoder.html">PhaseVocoder Class</a> Properties</dd>
+<dt>Explanation</dt>
+<dd><p>Represents the scale in the frequency axis direction.<br />
+You can also set the value.<br />
+The number that can be specified is greater than 0.0.<br />
+If you specify 1.0, the scale along the frequency axis does not change (the pitch does not change).<br />
+For example, if you specify 1.0594630943593, the pitch will be increased by a semitone.<br />
+For example, if you specify 0.9438743126817, the pitch will be lowered by a semitone.<br />
+The Phase Vocoder filter works even if both the time and pitch properties are 1, the sound quality is slightly degraded, and it also uses CPU time.<br />
+If you want to keep both at 1, it's a good idea to remove this filter from the filter array.<br />
+Changes to this property will be reflected in real time, but due to buffering, it will take about 2 seconds to actually play.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>capacity - Maximum event allowance</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Timer.capacity</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd>Maximum event allowance</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Timer.html">Timer Class</a> Properties</dd>
+<dt>Explanation</dt>
+<dd><p>Specifies how many events can be fired at one time.<br />
+You can also set the value.<br />
+It may not be possible to process the timer event, such as when processing is performed longer than the timer cycle.<br />
+At this time, the timer stores events in the event queue, but there is an upper limit to the number of events that can be stored in the event queue.<br />
+This property specifies the maximum number.<br />
+When it comes time to process the events, Kirikiri tries to process the number of events in the queue at one time.<br />
+If you specify 1, only one event can be stored in the event queue.<br />
+Specifying 0 does not limit the number of events that can be stored in the event queue, but be aware that if too many events are stored, it may appear to freeze.<br />
+The default is 6.</p>
+</dd>
+</dl>
+</div>
+</body>
+</html>

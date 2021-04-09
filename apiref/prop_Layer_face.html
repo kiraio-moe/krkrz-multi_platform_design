@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>face - Drawing method</title>
+</head>
+<body>
+<h1><span class="fheader"><a name="top" id="top">Layer.face</a></span></h1><div class="para">
+<dl>
+<dt>Function/Meaning</dt>
+<dd>Drawing method</dd>
+<dt>Type</dt>
+<dd><a class="jump" href="class_Layer.html">Layer Class</a> Properties</dd>
+<dt>Explanation</dt>
+<dd><p>Indicates the drawing method for the layer.<br />
+You can also set the value.</p>
+
+<ul>
+<li>If you specify dfAlpha or dfBoth, the image is considered as an image with an alpha channel and is drawn. The same is true for dfBoth and dfAlpha. The corresponding layer types for this drawing method are ltTransparent or ltAlpha.</li>
+<li>If you specify dfAddAlpha, the image is considered as an image with an additive alpha channel and is drawn. The layer type that corresponds to this drawing method is ltAddAlpha.</li>
+<li>If you specify dfOpaque or dfMain, all images on the layer are considered completely opaque and are drawn. The layer type that corresponds to this drawing method is a layer type that performs arithmetic / logical operations such as ltOpaque or ltCoverRect, or ltAdditive.</li>
+<li>If dfMask is specified, the mask image (alpha channel) will be drawn.</li>
+<li>If dfProvince is specified, the area image will be drawn.</li>
+<li>If you specify dfAuto, the drawing method is automatically determined according to the current Layer.type property.</li>
+</ul>
+
+<p>The drawing method of the layer immediately after it is created is dfAuto.<br />
+Not all methods can be manipulated depending on the value of this property.</p>
+</dd>
+<dt>Reference</dt>
+<dd>
+<a class="jump" href="prop_Layer_type.html">Layer.type</a><br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

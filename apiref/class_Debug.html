@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="api.css" type="text/css" rel="stylesheet" title="APIStandard style for reference" />
+<title>Debug - </title>
+</head>
+<body>
+<h1><a name="top" id="top">Debug</a></h1>
+<div class="para"><p>The Debug class is a class that provides functions related to debugging KiriKiri.<br />
+You cannot create objects from this class.<br />
+The name of the Kirikiri console log will be krkr.console.log.<br />
+Also, the file created when a hardware exception occurs is her hwexcept.log.<br />
+These log files default to the project directory.<br />
+However, if the project directory is a non-writable directory such as an archive, it will not be output.<br />
+The output destination of the log file can be changed with the logLocation property (in the case of KAG, it is set as the save destination of bookmark data).<br />
+On Windows, the console is the command prompt, and on Android, the output is to logCat.</p>
+</div>
+<h1>Member</h1><div class="para">
+<dl>
+<dt>Method</dt>
+<dd>
+<a class="jump" href="func_Debug_addLoggingHandler.html">addLoggingHandler</a> (Add a log handler)<br />
+<a class="jump" href="func_Debug_getLastLog.html">getLastLog</a> (Get unoutput logs)<br />
+<a class="jump" href="func_Debug_logAsError.html">logAsError</a> (Start outputting the log to a file as in the case of an error)<br />
+<a class="jump" href="func_Debug_message.html">message</a> (Output message to console)<br />
+<a class="jump" href="func_Debug_notice.html">notice</a> (Output important messages to the console)<br />
+<a class="jump" href="func_Debug_removeLoggingHandler.html">removeLoggingHandler</a> (Delete the log handler)<br />
+<a class="jump" href="func_Debug_startLogToFile.html">startLogToFile</a> (Start output of console log)<br />
+</dd>
+<dt>Property</dt>
+<dd>
+<a class="jump" href="prop_Debug_clearLogFileOnError.html">clearLogFileOnError</a> (Whether to clear the console log file when an error occurs)<br />
+<a class="jump" href="prop_Debug_logLocation.html">logLocation</a> (Log file output destination)<br />
+<a class="jump" href="prop_Debug_logToFileOnError.html">logToFileOnError</a> (Whether to output the console log to a file when an error occurs)<br />
+</dd>
+</dl>
+</div>
+</body>
+</html>

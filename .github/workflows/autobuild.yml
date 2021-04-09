@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [uyjworking]
   pull_request:
-    branches: [main]
+    branches: [uyjworking]
 
 jobs:
   build-and-deploy:

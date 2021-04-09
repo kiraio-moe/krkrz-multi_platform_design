@@ -20,12 +20,12 @@ jobs:
           persist-credentials: false
 
       - name: Install dependencies
-      - run: |
+        run: |
           sudo apt-get update
           sudo apt-get install mono-complete perl
 
       - name: Build API reference
-      - run: |
+        run: |
           cd classes
           perl tjs2.pl
           cd ..

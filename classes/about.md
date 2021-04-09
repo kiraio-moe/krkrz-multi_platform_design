@@ -21,7 +21,7 @@ For more information, use the trailing symbol as shown below.
 * [Android\*] It can be used on Android, and nothing happens in other environments.
 * [Android] It can be used on Android, and its operation is uncertain in other environments.
 
-You can dynamically determine which environment you have by using the System.isWindows or System.isAndroid properties.
+You can dynamically determine which environment you have by using the `System.isWindows` or `System.isAndroid` properties.
 For static judgment, use the preprocessor.
 "Windows" is set to 1 on Windows and "android" is set to 1 on Android.  
 When making a static judgment, be aware that the output result of bytecode depends on the environment.  

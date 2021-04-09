@@ -5,6 +5,7 @@ on:
       - "**.tjs"
       - "**.md"
   pull_request:
+    paths:
       - "**.tjs"
       - "**.md"
 

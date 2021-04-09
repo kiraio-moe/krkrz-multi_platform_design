@@ -13,7 +13,8 @@ system( "mono apijsontohtml.exe '*'.json 'KiriKiri Z Multi-Platform API Referenc
 
 while( glob("*.html") ) {
 	my $inname = $_;
-	my $outname = "../docs/apiref";
+	my $outname = "../docs/apiref/";
+	$outname .= $_;
 	move $inname, $outname;
 }
 

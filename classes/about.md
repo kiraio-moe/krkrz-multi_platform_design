@@ -8,7 +8,7 @@ Currently it is not partially compatible with older versions.
 
 # Environment-dependent functions
 Not all methods and properties are available in the multi-platform version in all environments.  
-Some functions are environment-specific.  
+Some functions are specific to the environment.  
 Environment-specific methods etc. are written at the beginning of the sentence as [Windows] or [Android] in the explanation summary.  
 Methods etc. written that way can only be used in that environment.  
 Some call nothing and some exceptions occur.  
